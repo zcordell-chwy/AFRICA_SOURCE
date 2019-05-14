@@ -1,0 +1,18 @@
+version: "1.0"
+requires:
+  jsModule:
+  - standard
+  - mobile
+attributes:
+  type: 
+    name: type
+    type: string
+    description: The type of view to display
+    default: 'pledges'
+    required: false
+extends:
+  widget: standard/reports/Multiline
+  components:
+  - css
+  overrideViewAndLogic: "true"
+  

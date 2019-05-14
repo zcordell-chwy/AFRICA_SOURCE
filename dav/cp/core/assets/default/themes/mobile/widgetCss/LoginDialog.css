@@ -1,0 +1,134 @@
+.rn_LoginDialog {
+  *zoom: 1;
+  padding: 2em; }
+  .rn_LoginDialog:before, .rn_LoginDialog:after {
+    content: " ";
+    display: table; }
+  .rn_LoginDialog:after {
+    clear: both; }
+  @media screen and (max-width: 400px) {
+    .rn_LoginDialog {
+      padding: 0; } }
+  .rn_LoginDialog .rn_FormContent {
+    float: left;
+    display: block;
+    margin-right: 2.35765%;
+    width: 65.88078%; }
+    .rn_LoginDialog .rn_FormContent:last-child {
+      margin-right: 0; }
+    .rn_LoginDialog .rn_FormContent input::-webkit-input-placeholder {
+      color: #4c4c4c;
+      opacity: 1; }
+    .rn_LoginDialog .rn_FormContent input:-moz-placeholder {
+      /* Firefox 18- */
+      color: #4c4c4c;
+      opacity: 1; }
+    .rn_LoginDialog .rn_FormContent input::-moz-placeholder {
+      /* Firefox 19+ */
+      color: #4c4c4c;
+      opacity: 1; }
+    .rn_LoginDialog .rn_FormContent input:-ms-input-placeholder {
+      color: #4c4c4c;
+      opacity: 1; }
+  .rn_LoginDialog .rn_OpenLoginAlternative {
+    float: left;
+    display: block;
+    margin-right: 2.35765%;
+    width: 31.76157%;
+    padding-right: 1em;
+    border-right: 1px solid #DDD; }
+    .rn_LoginDialog .rn_OpenLoginAlternative:last-child {
+      margin-right: 0; }
+    @media screen and (max-width: 720px) {
+      .rn_LoginDialog .rn_OpenLoginAlternative {
+        border-bottom: 1px solid #DDD;
+        margin-bottom: 1.5em; } }
+  @media screen and (max-width: 720px) {
+    .rn_LoginDialog .rn_FormContent, .rn_LoginDialog .rn_OpenLoginAlternative {
+      border-left: 0;
+      padding: 0 0 1.5em;
+      float: left;
+      display: block;
+      margin-right: 2.35765%;
+      width: 100%; }
+      .rn_LoginDialog .rn_FormContent:last-child, .rn_LoginDialog .rn_OpenLoginAlternative:last-child {
+        margin-right: 0; } }
+  .rn_LoginDialog .rn_OpenLoginIntro, .rn_LoginDialog .rn_FormTypeToggle {
+    display: block;
+    font-size: larger;
+    margin-bottom: 1em;
+    font-weight: bold; }
+  .rn_LoginDialog .rn_FormTypeToggle a {
+    border: 1px solid #CCC;
+    background: none;
+    border-radius: 5px;
+    padding: 2px 10px 4px;
+    white-space: nowrap; }
+  .rn_LoginDialog .rn_LoginDialogContent, .rn_LoginDialog .rn_SignUpDialogContent {
+    -webkit-animation-name: fadeIn;
+    -moz-animation-name: fadeIn;
+    animation-name: fadeIn;
+    -webkit-animation-duration: 0.5s;
+    -moz-animation-duration: 0.5s;
+    animation-duration: 0.5s;
+    -webkit-animation-timing-function: ease;
+    -moz-animation-timing-function: ease;
+    animation-timing-function: ease;
+    -webkit-animation-iteration-count: 1;
+    -moz-animation-iteration-count: 1;
+    animation-iteration-count: 1;
+    -webkit-animation-fill-mode: both;
+    -moz-animation-fill-mode: both;
+    animation-fill-mode: both; }
+  .rn_LoginDialog.rn_ContentLoading .rn_FormContent:before {
+    font-family: 'FontAwesome';
+    line-height: 1em;
+    margin-right: 6px;
+    content: "\f110";
+    -webkit-animation: fa-spin 2s infinite linear;
+    -moz-animation: fa-spin 2s infinite linear;
+    animation: fa-spin 2s infinite linear;
+    display: block;
+    font-size: 2em;
+    position: relative;
+    text-align: center; }
+  .rn_LoginDialog.rn_ContentLoading .rn_FormContent > * {
+    visibility: hidden; }
+  .rn_LoginDialog .rn_WarningMessage {
+    margin: 1.75em 0 0; }
+
+@-webkit-keyframes fadeIn {
+  0% {
+    opacity: 0;
+    -webkit-transform: translateY(4px); }
+
+  100% {
+    opacity: 1;
+    -webkit-transform: translateY(0); } }
+
+@-moz-keyframes fadeIn {
+  0% {
+    opacity: 0;
+    -moz-transform: translateY(4px); }
+
+  100% {
+    opacity: 1;
+    -moz-transform: translateY(0); } }
+
+@-o-keyframes fadeIn {
+  0% {
+    opacity: 0;
+    -o-transform: translateY(4px); }
+
+  100% {
+    opacity: 1;
+    -o-transform: translateY(0); } }
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(4px); }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0); } }

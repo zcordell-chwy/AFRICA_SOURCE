@@ -1,0 +1,18 @@
+.rn_Multiline {
+  overflow: hidden; }
+  .rn_Multiline .rn_Loading {
+    font-size: 2.5em;
+    line-height: 2em;
+    text-align: center; }
+  .rn_Multiline .rn_Element3 {
+    display: block; }
+  .rn_Multiline .rn_ElementsHeader, .rn_Multiline .rn_ElementsData {
+    color: #5e5e5e;
+    font-size: 0.8em; }
+  .rn_Multiline .rn_Highlight {
+    font-style: normal;
+    font-weight: bold; }
+  .rn_Multiline ol, .rn_Multiline ul {
+    padding-top: 0.5em; }
+    .rn_Multiline ol li, .rn_Multiline ul li {
+      margin-bottom: 0.5em; }

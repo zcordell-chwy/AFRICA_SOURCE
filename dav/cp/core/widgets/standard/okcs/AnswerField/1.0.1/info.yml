@@ -1,0 +1,40 @@
+version: "1.0.1"
+requires:
+  framework: ["3.2", "3.3"]
+  jsModule: [standard, mobile]
+attributes:
+  label:
+    name: rn:msg:FIELD_LABEL_LBL
+    type: STRING
+    description: rn:msg:LABEL_TO_DISP_FOR_THE_FLD_IF_1_IS_MSG
+  answer_key:
+    name: rn:msg:FIELD_KEY_LBL
+    type: STRING
+    description: rn:msg:THIS_FLD_ALLOWS_YOU_TO_DISP_STATUS_MSG
+    options:
+    - docID
+    - version
+    - status
+    - publishedDate
+  value:
+    name: rn:msg:FLD_VAL_LBL
+    type: STRING
+    description: rn:msg:VALUE_OF_THE_FIELD_LBL
+  type:
+    name: rn:msg:FLD_TYPE_LBL
+    type: OPTION
+    description: rn:msg:TYPE_OF_THE_FIELD_LBL
+    default: DISPLAY
+    options:
+    - NODE
+    - LIST
+    - CHECKBOX
+    - FILE
+    - DISPLAY
+  path:
+    name: rn:msg:FIELD_PATH_LBL
+    type: STRING
+    description: rn:msg:PATH_OF_THE_FIELD_TO_BE_DISPLAYED_MSG
+info:
+  description: rn:msg:RNDRS_DT_L_TTRB_PRV_TTRB_BG_DSP_PRV_DF_L_K_MSG
+  

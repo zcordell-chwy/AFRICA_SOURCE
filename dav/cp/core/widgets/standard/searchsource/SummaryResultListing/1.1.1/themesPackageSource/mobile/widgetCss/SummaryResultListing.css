@@ -1,0 +1,25 @@
+.rn_SummaryResultListing li {
+  clear: none;
+  margin: 0;
+  padding: 0 0 0 10px;
+  overflow: auto; }
+  .rn_SummaryResultListing li.rn_SocialSearch:before {
+    font-family: 'FontAwesome';
+    line-height: 1em;
+    margin-right: 6px;
+    content: "\f086";
+    margin-right: 3px;
+    font-size: 1.6em; }
+  .rn_SummaryResultListing li.rn_KFSearch:before {
+    font-family: 'FontAwesome';
+    line-height: 1em;
+    margin-right: 6px;
+    content: "\f0eb";
+    margin-left: 1px;
+    margin-right: 5px;
+    font-size: 1.6em; }
+.rn_SummaryResultListing .rn_AdditionalResults {
+  text-align: left;
+  font-size: 0.8em; }
+.rn_SummaryResultListing .rn_NoResults {
+  font-style: italic; }

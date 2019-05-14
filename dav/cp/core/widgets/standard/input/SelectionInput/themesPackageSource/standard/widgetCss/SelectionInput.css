@@ -1,0 +1,34 @@
+.rn_SelectionInput {
+  clear: both;
+  margin-bottom: 1.6em;
+  overflow: visible;
+  position: relative; }
+  .rn_SelectionInput legend {
+    visibility: visible; }
+  .rn_SelectionInput fieldset {
+    background: none;
+    border: 0;
+    padding: 0.5em 0; }
+  .rn_SelectionInput fieldset label {
+    display: inline;
+    margin: 0 4px;
+    vertical-align: sub; }
+  .rn_SelectionInput input[type="radio"] {
+    border: 0;
+    display: inline;
+    margin-top: 2px;
+    vertical-align: middle;
+    width: auto; }
+  .rn_SelectionInput .rn_HintBox, .rn_SelectionInput .rn_HintBoxRight {
+    border: 1px solid #DBDBDB;
+    max-width: 200px;
+    padding: 4px 16px 2px;
+    word-wrap: break-word; }
+  .rn_SelectionInput .rn_HintBox.rn_AlwaysVisibleHint, .rn_SelectionInput .rn_HintBoxRight.rn_AlwaysVisibleHint {
+    max-width: 300px;
+    opacity: 1;
+    z-index: 0; }
+  .rn_SelectionInput .rn_Label {
+    display: inline-block;
+    font-weight: bold;
+    margin-bottom: 2px; }

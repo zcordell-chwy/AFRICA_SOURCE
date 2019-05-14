@@ -1,0 +1,34 @@
+version: "1.2.1"
+requires:
+  framework: ["3.5", "3.6", "3.7"]
+  jsModule: [standard, mobile]
+attributes:
+  label_unsub_button:
+    name: rn:msg:UNSUBSCRIBE_BUTTON_LABEL_LBL
+    description: rn:msg:LABEL_ON_THE_UNSUBSCRIBE_BUTTON_LBL
+    default: rn:msg:UNSUBSCRIBE_LBL
+    type: STRING
+  label_sub_button:
+    name: rn:msg:SUBSCRIBE_BUTTON_LABEL_LBL
+    description: rn:msg:LABEL_ON_THE_SUBSCRIBE_BUTTON_LBL
+    default: rn:msg:SUBSCRIBE_LBL
+    type: STRING
+  label_subscribe_msg:
+    name: rn:msg:SUBSCRIBE_SUCCESS_LABEL_LBL
+    type: STRING
+    description: rn:msg:MESSAGE_USE_SUCCESSFUL_SUBSCRIPTIONS_LBL
+    default: rn:msg:HAVE_SUBSCRIBED_NOTIFICATIONS_ANSWER_LBL
+  label_unsubscribe_msg:
+    name: rn:msg:UNSUBSCRIBE_SUCCESS_LABEL_LBL
+    type: STRING
+    description: rn:msg:MESSAGE_USE_UNSUCCESSFUL_SUBSCRIPTIONS_LBL
+    default: rn:msg:HAVE_UNSUBSCRIBED_NOTIFICATIONS_ANSWER_LBL
+  get_okcs_data_ajax:
+    name: rn:msg:RATING_SUBMIT_AJAX_URL_LBL
+    type: AJAX
+    description: rn:msg:ENDPOINT_FOR_OKCS_LBL
+    default: /ci/okcsAjaxRequest/getOkcsData
+info:
+  category:
+    - OKCS
+  description: rn:msg:ALLOWS_L_USERS_UNSUB_T_GIVEN_ANSWER_MSG

@@ -1,0 +1,87 @@
+version: "1.0.1"
+requires:
+  framework: ["3.0", "3.1", "3.2"]
+  jsModule: [mobile]
+attributes:
+  submit_rating_ajax: 
+      name: rn:msg:SUBMIT_RATING_AJAX_CMD
+      type: ajax
+      description: rn:msg:ENDPOINT_ANS_RATING_AJAX_REQUEST_LBL
+      default: /ci/ajaxRequest/submitAnswerRating
+  submit_feedback_ajax: 
+      name: rn:msg:SUBMIT_FEEDBACK_AJAX_CMD
+      type: ajax
+      description: rn:msg:ENDPOINT_ANS_FEEDBACK_AJAX_REQUEST_LBL
+      default: /ci/ajaxRequest/submitAnswerFeedback
+  label_title:
+    name: rn:msg:HEADER_LABEL_LBL
+    type: STRING
+    description: rn:msg:LABEL_TO_DISPLAY_ABOVE_FORM_LBL
+    default: rn:msg:WAS_THIS_ANSWER_HELPFUL_MSG
+  label_yes_button:
+    name: rn:msg:LABEL_FOR_YES_BUTTON_LBL
+    type: STRING
+    description: rn:msg:LABEL_FOR_YES_BUTTON_LBL
+    default: rn:msg:YES_LBL
+  label_no_button:
+    name: rn:msg:LABEL_FOR_NO_BUTTON_LBL
+    type: STRING
+    description: rn:msg:LABEL_FOR_NO_BUTTON_LBL
+    default: rn:msg:NO_LBL
+  label_dissatisfied:
+    name: rn:msg:LABEL_DISSATISFIED_LBL
+    type: STRING
+    description: rn:msg:LABEL_DISPLAY_RATING_LBL
+    default: rn:msg:WERE_SORRY_THIS_ANSWER_DIDNT_HELP_MSG
+  label_satisfied:
+    name: rn:msg:SATISFIED_LABEL_LBL
+    type: STRING
+    description: rn:msg:LABEL_DISPLAY_YES_RATING_LBL
+    default: rn:msg:THANKS_FOR_YOUR_FEEDBACK_MSG
+  label_provide_feedback:
+    name: rn:msg:LABEL_PROVIDE_FEEDBACK_LBL
+    type: STRING
+    description: rn:msg:LABEL_DISP_LINK_ALLOWS_INVOKE_LBL
+    default: rn:msg:PROVIDE_FEEDBACK_ANSWER_USEFUL_MSG
+  label_dialog_title:
+    name: rn:msg:DIALOG_TITLE_LBL
+    type: STRING
+    description: rn:msg:LABEL_DISPLAY_DIALOG_TITLE_LBL
+    default: rn:msg:RATING_SUBMITTED_LBL
+  label_dialog_prompt:
+    name: rn:msg:DIALOG_PROMPT_LABEL_LBL
+    type: STRING
+    description: rn:msg:LABEL_DISP_SUBTITLE_PROMPT_DIALOG_LBL
+    default: rn:msg:PLEASE_TELL_ANSWER_USEFUL_MSG
+  label_feedback_submit_success:
+    name: rn:msg:FEEDBACK_SUBMIT_SUCCESS_LABEL_LBL
+    type: STRING
+    description: rn:msg:LABEL_DISP_RATES_ANS_SUCC_SUBMITS_LBL
+    default: rn:msg:THANKS_FOR_YOUR_FEEDBACK_MSG
+  label_email_address:
+    name: rn:msg:EMAIL_ADDRESS_LABEL_LBL
+    type: STRING
+    description: rn:msg:LABEL_FOR_EMAIL_ADDRESS_MSG
+    default: rn:msg:EMAIL_LBL
+  label_comment_box:
+    name: rn:msg:FEEDBACK_LABEL_LBL
+    type: STRING
+    description: rn:msg:LABEL_FOR_FEEDBACK_TEXTBOX_MSG
+    default: rn:msg:YOUR_FEEDBACK_HDG
+  label_send_button:
+    name: rn:msg:LABEL_SEND_BUTTON_LBL
+    type: STRING
+    description: rn:msg:LABEL_TO_DISPLAY_ON_SUBMIT_BUTTON_LBL
+    default: rn:msg:SUBMIT_CMD
+  label_cancel_button:
+    name: rn:msg:LABEL_CANCEL_BUTTON_LBL
+    type: STRING
+    description: rn:msg:LABEL_TO_DISPLAY_ON_CANCEL_BUTTON_LBL
+    default: rn:msg:CANCEL_LBL
+info:
+  description: rn:msg:WIDGET_DISP_ANS_FEEDBK_CTRL_PG_MSG
+  urlParameters:
+    a_id:
+      name: rn:msg:ANS_ID_LBL
+      description: rn:msg:ANSWER_ID_WHICH_ASSOCIATE_FEEDBACK_LBL
+      example: a_id/3

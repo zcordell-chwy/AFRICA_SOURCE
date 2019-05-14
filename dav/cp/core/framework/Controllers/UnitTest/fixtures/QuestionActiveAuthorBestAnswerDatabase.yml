@@ -1,0 +1,31 @@
+type: SocialQuestion
+object:
+  CreatedBySocialUser: useractive1
+  Subject: Question with active user
+  Body: Test question body
+  Attributes.ContentLocked: false
+  StatusWithType.Status.LookupName: Active
+  _comments:
+    - fixture: CommentActiveUserActive
+      parameters:
+        SocialQuestion: this.ID
+    - fixture: CommentPendingModActive
+      parameters:
+        SocialQuestion: this.ID
+    - fixture: CommentDeletedModActive
+      parameters:
+        SocialQuestion: this.ID
+    - fixture: CommentWithRepliesUserArchive
+      parameters:
+        SocialQuestion: this.ID
+    - fixture: CommentSuspendedModActive
+      parameters:
+        SocialQuestion: this.ID
+    - fixture: CommentActiveUserArchive
+      parameters:
+        SocialQuestion: this.ID
+    - fixture: CommentPendingUserActive
+      parameters:
+        SocialQuestion: this.ID
+  BestSocialQuestionAnswers:
+    - fixture: BestAnswerAuthorDatabase

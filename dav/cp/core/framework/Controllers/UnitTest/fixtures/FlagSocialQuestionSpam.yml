@@ -1,0 +1,5 @@
+type: SocialQuestionContentFlag
+object:
+  SocialUser:
+    fixture: UserModActive
+  Type.LookupName: Spam

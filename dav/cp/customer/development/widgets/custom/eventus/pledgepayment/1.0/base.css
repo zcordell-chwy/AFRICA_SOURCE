@@ -1,0 +1,45 @@
+div.currentPledge{
+	background-color: #D4ECD3;
+}
+
+div.latePledge{
+	background-color: #ECDCD9;
+}
+
+
+.fa {
+    font-size: 25px !important;
+    margin-right: 5px;
+}
+
+#changeMethodLink{
+	color: darkblue;
+    text-decoration: underline;
+    margin-left: 10px;
+}
+
+.pledgeotheramount{
+	width: 65px;
+    margin-left: 10px;
+    height: 20px;
+    margin: 0px 10px;
+}
+
+.paymentAmountSelection input[type="radio"]{
+	width: 15px;
+    height: 14px;
+    margin: 4px 6px 4px 12px;
+}
+
+.loading{
+	background: url(images/loading.gif) no-repeat ;
+	background-position:center center !important;
+    opacity: .5;
+    background-size: 20px 20px;
+    color: #304764 !important;
+}
+
+.paymentButton{
+	width: 175px;
+    height: 40px;
+}

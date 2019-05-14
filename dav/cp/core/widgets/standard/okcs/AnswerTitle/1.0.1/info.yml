@@ -1,0 +1,12 @@
+version: "1.0.1"
+requires:
+  framework: ["3.2"]
+  jsModule: [standard, mobile]
+attributes:
+  label_no_title:
+    name: rn:msg:NO_TTLE_LBL
+    description: rn:msg:DEF_TITLE_WHICH_IS_DISPLAYED_WHEN_MSG
+    default: rn:msg:NO_TTLE_LBL
+    type: STRING
+info:
+  description: rn:msg:THIS_WIDGET_DISP_TITLE_OF_THE_ANS_MSG

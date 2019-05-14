@@ -1,0 +1,23 @@
+.rn_DiscussionPagination {
+  padding-top: 3em; }
+  .rn_DiscussionPagination .rn_DiscussionPaginationLinks {
+    padding: 0.5em 0;
+    border-bottom: 2px dashed #b7cce7;
+    border-top: 2px dashed #b7cce7;
+    text-align: center; }
+    .rn_DiscussionPagination .rn_DiscussionPaginationLinks .rn_FirstDiscussion:before {
+      font-family: 'FontAwesome';
+      line-height: 1em;
+      margin-right: 6px;
+      content: "\f060"; }
+    .rn_DiscussionPagination .rn_DiscussionPaginationLinks .rn_LastDiscussion:after {
+      font-family: 'FontAwesome';
+      line-height: 1em;
+      margin-left: 6px;
+      content: "\f061"; }
+    .rn_DiscussionPagination .rn_DiscussionPaginationLinks a {
+      font-size: large; }
+    .rn_DiscussionPagination .rn_DiscussionPaginationLinks .rn_Separator::before {
+      content: '';
+      border: 1px solid #555;
+      margin: 1em; }

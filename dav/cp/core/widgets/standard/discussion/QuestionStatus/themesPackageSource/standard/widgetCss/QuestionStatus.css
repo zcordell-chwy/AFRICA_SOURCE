@@ -1,0 +1,39 @@
+.rn_QuestionStatus {
+  *zoom: 1;
+  vertical-align: center;
+  padding: 0.5em;
+  margin-bottom: 1em; }
+  .rn_QuestionStatus:before, .rn_QuestionStatus:after {
+    content: " ";
+    display: table; }
+  .rn_QuestionStatus:after {
+    clear: both; }
+  .rn_QuestionStatus.rn_Locked {
+    margin-top: 10px;
+    background: #CAFCFC; }
+  .rn_QuestionStatus.rn_Pending {
+    background: #FFA; }
+  .rn_QuestionStatus.rn_Suspended {
+    background: #FFCACA; }
+  .rn_QuestionStatus .rn_LockedContainer {
+    float: left;
+    display: block;
+    margin-right: 2.35765%;
+    width: 6.17215%;
+    font-style: normal;
+    text-align: center; }
+    .rn_QuestionStatus .rn_LockedContainer:before {
+      font-family: 'FontAwesome';
+      margin-right: 6px;
+      content: "\f023"; }
+    .rn_QuestionStatus .rn_LockedContainer:last-child {
+      margin-right: 0; }
+  .rn_QuestionStatus .rn_StatusContainer {
+    float: left;
+    display: block;
+    margin-right: 2.35765%;
+    width: 91.4702%;
+    text-align: center;
+    font-style: italic; }
+    .rn_QuestionStatus .rn_StatusContainer:last-child {
+      margin-right: 0; }

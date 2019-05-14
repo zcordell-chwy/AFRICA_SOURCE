@@ -1,0 +1,12 @@
+version: "1.0"
+requires:
+  jsModule:
+  - standard
+  - mobile
+attributes:
+  pledge_id:
+    name: pledge_id
+    type: string
+    description: ID for the pledge
+    default: ""
+    required: false

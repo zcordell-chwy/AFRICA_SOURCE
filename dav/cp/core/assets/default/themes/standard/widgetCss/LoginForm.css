@@ -1,0 +1,27 @@
+.rn_LoginForm .rn_ThirdPartyLogin {
+  float: left;
+  display: block;
+  margin-right: 2.35765%;
+  width: 48.82117%;
+  border-right: 1px solid #999;
+  padding-right: 2em; }
+  .rn_LoginForm .rn_ThirdPartyLogin:last-child {
+    margin-right: 0; }
+  .rn_LoginForm .rn_ThirdPartyLogin .rn_LoginUsingMessage {
+    margin: 1em 0; }
+  .rn_LoginForm .rn_ThirdPartyLogin .rn_OpenLogins {
+    *zoom: 1; }
+    .rn_LoginForm .rn_ThirdPartyLogin .rn_OpenLogins:before, .rn_LoginForm .rn_ThirdPartyLogin .rn_OpenLogins:after {
+      content: " ";
+      display: table; }
+    .rn_LoginForm .rn_ThirdPartyLogin .rn_OpenLogins:after {
+      clear: both; }
+.rn_LoginForm .rn_StandardLogin {
+  float: left;
+  display: block;
+  margin-right: 2.35765%;
+  width: 48.82117%;
+  margin-right: 0;
+  padding-left: 2em; }
+  .rn_LoginForm .rn_StandardLogin:last-child {
+    margin-right: 0; }

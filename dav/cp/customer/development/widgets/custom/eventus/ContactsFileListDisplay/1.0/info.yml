@@ -1,0 +1,19 @@
+version: "1.0"
+requires:
+  jsModule:
+  - standard
+  - mobile
+attributes:
+  include_only:
+    name: include_only
+    type: string
+    description: comma separated list of file names to include in the list.  blank
+      will return all files associated with the logged in contact.
+    default: ""
+    required: false  
+  content_type_allowed:
+    name: file_ext_allowed
+    type: string
+    description: comma separated list of mime types to include in the list.  blank value will ignore this param. example application/pdf, text/html
+    default: ""
+    required: false  

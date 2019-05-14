@@ -1,0 +1,57 @@
+.rn_OkcsAnswerNotificationManager .yui3-datatable-table th, .rn_OkcsAnswerNotificationManager .yui3-datatable-table th a, .rn_OkcsAnswerNotificationManager .yui3-datatable-table th a:hover {
+  color: #000;
+  font-weight: normal;
+  text-decoration: none;
+  vertical-align: bottom;
+  min-width: 110px; }
+
+.rn_OkcsAnswerNotificationManager .yui3-datatable-table {
+  border: 1px solid #ccc;
+  border-spacing: 0;
+  border-collapse: separate; }
+  .rn_OkcsAnswerNotificationManager .yui3-datatable-table th {
+    padding: 10px; }
+  .rn_OkcsAnswerNotificationManager .yui3-datatable-table td {
+    padding: 10px; }
+.rn_OkcsAnswerNotificationManager .yui3-datatable-sortable-column {
+  cursor: pointer; }
+.rn_OkcsAnswerNotificationManager .yui3-datatable-even .yui3-datatable-cell {
+  background-color: #FFF; }
+.rn_OkcsAnswerNotificationManager .yui3-datatable-odd .yui3-datatable-cell {
+  background-color: #F7F7F7; }
+.rn_OkcsAnswerNotificationManager .yui3-datatable-sort-liner {
+  position: relative; }
+.rn_OkcsAnswerNotificationManager .yui3-datatable-sort-indicator {
+  padding-left: 8px; }
+  .rn_OkcsAnswerNotificationManager .yui3-datatable-sort-indicator:before {
+    font-family: 'FontAwesome';
+    margin-right: 6px;
+    content: "\f0dc"; }
+.rn_OkcsAnswerNotificationManager .yui3-datatable-sorted .yui3-datatable-sort-indicator:before {
+  font-family: 'FontAwesome';
+  margin-right: 6px;
+  content: "\f0de"; }
+.rn_OkcsAnswerNotificationManager .yui3-datatable-sorted-desc .yui3-datatable-sort-indicator:before {
+  font-family: 'FontAwesome';
+  margin-right: 6px;
+  content: "\f0dd"; }
+.rn_OkcsAnswerNotificationManager .rn_NoNotification {
+  background: #F2FAFD;
+  border: 1px solid #DDD;
+  margin: 10px 0 20px;
+  padding: 10px 4px 8px; }
+.rn_OkcsAnswerNotificationManager .rn_NotificationList {
+  background: #F2FAFD;
+  border: 1px solid #DDD;
+  margin: 10px 0 20px;
+  padding: 10px 4px 8px; }
+.rn_OkcsAnswerNotificationManager .rn_Notification {
+  margin: 0 auto; }
+.rn_OkcsAnswerNotificationManager .rn_Notification_Info {
+  border-bottom: 1px solid #DDD;
+  color: #6F6F6F;
+  padding: 0 4px 10px 0; }
+.rn_OkcsAnswerNotificationManager .rn_Notification_Actions button {
+  float: left;
+  margin-top: 4px;
+  margin-right: 8px; }

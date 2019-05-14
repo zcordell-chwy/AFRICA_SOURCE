@@ -1,0 +1,21 @@
+<rn:block id="preInsertLinkDialog"/>
+<form class="rn_InsertLinkForm rn_InsertForm">
+    <div class="rn_LinkTextInput">
+        <rn:block id="preLinkTextInput"/>
+        <label>
+            <%= messages.link_text %>
+            <input type="text" id="<%= messages.domID %>_link_text"/>
+        </label>
+        <rn:block id="postLinkTextInput"/>
+    </div>
+    <div class="rn_LinkUrlInput">
+        <rn:block id="preLinkUrlInput"/>
+        <label>
+            <%= messages.link_to %>
+            <%= getRequiredLabel() %>
+            <input type="url" placeholder="http://example.com" id="<%= messages.domID %>_link_to"/>
+        </label>
+        <rn:block id="postLinkUrlInput"/>
+    </div>
+</form>
+<rn:block id="postInsertLinkDialog"/>

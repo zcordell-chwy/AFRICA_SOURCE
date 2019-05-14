@@ -1,0 +1,44 @@
+.rn_AnswerFeedback .rn_Title {
+  margin-bottom: 10px;
+  padding-bottom: 2px;
+  font-size: 1.333em;
+  font-weight: bold;
+  line-height: 1.4em; }
+.rn_AnswerFeedback .rn_ThanksLabel {
+  display: block;
+  padding-bottom: 18px; }
+.rn_AnswerFeedback .rn_RatingMeter a.rn_RatingCell {
+  background: url('../images/RatingStars.png') 0 0 no-repeat;
+  display: inline-block;
+  height: 18px;
+  margin: 4px 0;
+  text-decoration: none;
+  width: 20px; }
+.rn_AnswerFeedback .rn_RatingMeter a.rn_RatingCellOver {
+  background-position: 0 -18px;
+  cursor: pointer; }
+@media print {
+  .rn_AnswerFeedback {
+    display: none; } }
+
+.rn_AnswerFeedbackForm .rn_DialogSubtitle {
+  margin-bottom: 6px;
+  text-align: left; }
+.rn_AnswerFeedbackForm label {
+  clear: left;
+  display: block; }
+.rn_AnswerFeedbackForm .rn_EmailField {
+  clear: left;
+  display: block;
+  margin-bottom: 1em;
+  width: 340px; }
+.rn_AnswerFeedbackForm .rn_Textarea {
+  clear: left;
+  display: block;
+  margin-bottom: 1em;
+  width: 340px; }
+
+.rn_HighContrastMode .rn_AnswerFeedback .rn_RatingMeter a.rn_RatingCell:before {
+  content: "\2606"; }
+.rn_HighContrastMode .rn_AnswerFeedback .rn_RatingMeter a.rn_RatingCellOver:before {
+  content: "\2605"; }

@@ -1,0 +1,27 @@
+/**
+ * base.css: Base CSS for cart
+ */
+.rn_cart {
+
+}
+
+div.donate-total a.rn_cartPayNow{
+	color: #FFF;
+    cursor: pointer;
+    padding: 8.5px 20px;
+    text-decoration: none;
+    background-color: #e44c2e;
+    box-shadow: none;
+    text-shadow: none;
+    border: none;
+    border-radius: initial;
+    font-family: Gotham, Arial;
+    font: small-caption;
+    font-size: 13px;
+    font-style: normal;
+    font-weight: bold;
+    text-transform: uppercase;
+    line-height: 21px;
+    font-stretch: ultra-condensed;
+    margin: 10px;
+}

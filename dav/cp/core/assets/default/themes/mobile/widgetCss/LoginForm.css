@@ -1,0 +1,24 @@
+.rn_LoginForm {
+  *zoom: 1;
+  display: block;
+  margin-bottom: 0.5em; }
+  .rn_LoginForm:before, .rn_LoginForm:after {
+    content: " ";
+    display: table; }
+  .rn_LoginForm:after {
+    clear: both; }
+  .rn_LoginForm .rn_StandardLogin, .rn_LoginForm .rn_ThirdPartyLogin {
+    float: left;
+    display: block;
+    margin-right: 2.35765%;
+    width: 48.82117%; }
+    .rn_LoginForm .rn_StandardLogin:last-child, .rn_LoginForm .rn_ThirdPartyLogin:last-child {
+      margin-right: 0; }
+    @media screen and (max-width: 960px) {
+      .rn_LoginForm .rn_StandardLogin, .rn_LoginForm .rn_ThirdPartyLogin {
+        float: left;
+        display: block;
+        margin-right: 2.35765%;
+        width: 100%; }
+        .rn_LoginForm .rn_StandardLogin:last-child, .rn_LoginForm .rn_ThirdPartyLogin:last-child {
+          margin-right: 0; } }

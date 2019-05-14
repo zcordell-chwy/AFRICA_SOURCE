@@ -1,0 +1,11 @@
+/**
+ * base.css: Base CSS for ajaxCustomFormSubmit
+ */
+.rn_ajaxCustomFormSubmit.rn_FormSubmit {
+
+}
+
+.rn_ajaxCustomFormSubmit.rn_FormSubmit input[type="submit"]{
+	background-color: black;
+	font-size: 13.2px;
+}

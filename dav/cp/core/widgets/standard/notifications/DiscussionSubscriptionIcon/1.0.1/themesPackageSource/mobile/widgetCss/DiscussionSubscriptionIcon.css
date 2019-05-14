@@ -1,0 +1,35 @@
+.rn_DiscussionSubscriptionIcon .rn_Loading {
+  display: inline-block; }
+  .rn_DiscussionSubscriptionIcon .rn_Loading:before {
+    font-family: 'FontAwesome';
+    line-height: 1em;
+    margin-right: 6px;
+    content: "\f110";
+    -webkit-animation: fa-spin 2s infinite linear;
+    -moz-animation: fa-spin 2s infinite linear;
+    animation: fa-spin 2s infinite linear;
+    display: block;
+    font-size: 1em;
+    position: relative;
+    text-align: center; }
+.rn_DiscussionSubscriptionIcon .rn_Show {
+  display: inline; }
+.rn_DiscussionSubscriptionIcon .rn_Unsubscribe > a:before {
+  font-family: 'FontAwesome';
+  line-height: 1em;
+  margin-right: 6px;
+  content: "\f0e0"; }
+.rn_DiscussionSubscriptionIcon .rn_Subscribe > a:before {
+  font-family: 'FontAwesome';
+  line-height: 1em;
+  margin-right: 6px;
+  content: "\f003"; }
+.rn_DiscussionSubscriptionIcon .rn_SpillOverText {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap; }
+.rn_DiscussionSubscriptionIcon .rn_SpillOverText:hover {
+  overflow: visible;
+  white-space: normal;
+  word-break: break-all;
+  word-wrap: break-word; }

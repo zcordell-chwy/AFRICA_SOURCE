@@ -1,0 +1,24 @@
+version: "1.0.1"
+requires:
+  framework: ["3.3", "3.4", "3.5"]
+  jsModule: [standard]
+attributes:
+  show_icon:
+    name: rn:msg:SHOW_ICON_CMD
+    type: BOOLEAN
+    description: rn:msg:FLTRS_REM_ON_S_LABELFILTER_DISP_INSTEAD_MSG
+    default: true
+  label_filter_remove:
+    name: rn:msg:FILTER_REMOVE_LABEL_LBL
+    type: STRING
+    description: rn:msg:LABEL_DISPLAY_FILTER_REMOVAL_LBL
+    default: rn:msg:REMOVE_CMD
+  label_input:
+    name: rn:msg:TITLE_LABEL_LBL
+    type: STRING
+    description: rn:msg:LABEL_HEADING_SET_TXT_STRING_MSG_MSG
+    default: rn:msg:SEARCH_FILTERS_APPLIED_CMD
+info:
+  category:
+    - Source Search
+  description: rn:msg:FLTRS_ALLWS_REMOVAL_DISP_FLTRS_SERCH_MSG

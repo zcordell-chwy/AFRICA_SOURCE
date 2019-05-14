@@ -1,0 +1,31 @@
+.rn_NavigationTab .rn_ButtonOff {
+  font-style: normal; }
+  .rn_NavigationTab .rn_ButtonOff:before {
+    font-family: 'FontAwesome';
+    line-height: 1em;
+    margin-right: 6px;
+    content: "\f078";
+    font-size: 1em;
+    padding: 0.6em; }
+    @media screen and (max-width: 960px) {
+      .rn_NavigationTab .rn_ButtonOff:before {
+        font-size: 1.6em;
+        padding: 0.2em 0.6em; } }
+.rn_NavigationTab .rn_SubNavigation {
+  background: #313e52;
+  border-bottom-left-radius: 3px;
+  border-bottom-right-radius: 3px;
+  padding: 1em 1em 0;
+  margin-left: -1em;
+  position: absolute;
+  z-index: 10; }
+  @media screen and (max-width: 960px) {
+    .rn_NavigationTab .rn_SubNavigation {
+      display: block;
+      position: static;
+      padding-top: 0;
+      padding-left: 2.5em; }
+      .rn_NavigationTab .rn_SubNavigation.rn_ScreenReaderOnly {
+        position: absolute; } }
+  .rn_NavigationTab .rn_SubNavigation a {
+    display: block; }

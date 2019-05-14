@@ -1,0 +1,10 @@
+<ul class="rn_List">
+    <% if (header !== '' && show_headers) { %>
+        <h3><%= header %></h3>
+    <% } %>
+    <% for (var i=0; i < data.length; i++) { %>
+        <li>
+            <a href="<%= url %>/a_id/<%= data[i].answerId%>/answer_data/<%= data[i].encryptedTitle %>" target="<%= this.target %>"><%= data[i].title %></a>
+        </li>
+    <% } %>
+</ul>

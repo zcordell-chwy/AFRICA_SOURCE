@@ -1,0 +1,186 @@
+.rn_SmartAssistantDialogContainer {
+  float: left;
+  display: block;
+  margin-right: 2.35765%;
+  width: 40.29137%;
+  min-width: 46em; }
+  .rn_SmartAssistantDialogContainer:last-child {
+    margin-right: 0; }
+  @media screen and (max-width: 720px) {
+    .rn_SmartAssistantDialogContainer {
+      min-width: 0;
+      float: left;
+      display: block;
+      margin-right: 2.35765%;
+      width: 100%; }
+      .rn_SmartAssistantDialogContainer:last-child {
+        margin-right: 0; } }
+  .rn_SmartAssistantDialogContainer a {
+    padding: 10px;
+    white-space: nowrap; }
+  .rn_SmartAssistantDialogContainer .yui3-widget-ft {
+    text-align: center; }
+    @media screen and (max-width: 720px) {
+      .rn_SmartAssistantDialogContainer .yui3-widget-ft {
+        float: left;
+        display: block;
+        margin-right: 2.35765%;
+        width: 100%; }
+        .rn_SmartAssistantDialogContainer .yui3-widget-ft:last-child {
+          margin-right: 0; }
+        .rn_SmartAssistantDialogContainer .yui3-widget-ft .yui3-button {
+          float: left;
+          display: block;
+          margin-right: 2.35765%;
+          width: 100%;
+          margin-left: 0;
+          margin-bottom: 8px;
+          white-space: normal; }
+          .rn_SmartAssistantDialogContainer .yui3-widget-ft .yui3-button:last-child {
+            margin-right: 0; } }
+
+.rn_SmartAssistantDialog .rn_Heading {
+  font-size: 1.333em;
+  font-weight: bold;
+  line-height: 1.4em; }
+.rn_SmartAssistantDialog .rn_Answer, .rn_SmartAssistantDialog .rn_Response, .rn_SmartAssistantDialog .rn_List {
+  border-radius: 3px;
+  background: #F0F0F0 none repeat scroll 0 0;
+  border: 1px solid #B0B3B8;
+  color: #222;
+  margin: 10px 0;
+  padding: 10px;
+  text-shadow: 0 1px 1px #FFF; }
+  .rn_SmartAssistantDialog .rn_Answer ul, .rn_SmartAssistantDialog .rn_Answer ol, .rn_SmartAssistantDialog .rn_Response ul, .rn_SmartAssistantDialog .rn_Response ol, .rn_SmartAssistantDialog .rn_List ul, .rn_SmartAssistantDialog .rn_List ol {
+    *zoom: 1;
+    padding-left: 2em; }
+    .rn_SmartAssistantDialog .rn_Answer ul:before, .rn_SmartAssistantDialog .rn_Answer ul:after, .rn_SmartAssistantDialog .rn_Answer ol:before, .rn_SmartAssistantDialog .rn_Answer ol:after, .rn_SmartAssistantDialog .rn_Response ul:before, .rn_SmartAssistantDialog .rn_Response ul:after, .rn_SmartAssistantDialog .rn_Response ol:before, .rn_SmartAssistantDialog .rn_Response ol:after, .rn_SmartAssistantDialog .rn_List ul:before, .rn_SmartAssistantDialog .rn_List ul:after, .rn_SmartAssistantDialog .rn_List ol:before, .rn_SmartAssistantDialog .rn_List ol:after {
+      content: " ";
+      display: table; }
+    .rn_SmartAssistantDialog .rn_Answer ul:after, .rn_SmartAssistantDialog .rn_Answer ol:after, .rn_SmartAssistantDialog .rn_Response ul:after, .rn_SmartAssistantDialog .rn_Response ol:after, .rn_SmartAssistantDialog .rn_List ul:after, .rn_SmartAssistantDialog .rn_List ol:after {
+      clear: both; }
+  .rn_SmartAssistantDialog .rn_Answer ul li, .rn_SmartAssistantDialog .rn_Response ul li, .rn_SmartAssistantDialog .rn_List ul li {
+    list-style: disc; }
+    .rn_SmartAssistantDialog .rn_Answer ul li li, .rn_SmartAssistantDialog .rn_Response ul li li, .rn_SmartAssistantDialog .rn_List ul li li {
+      list-style: circle; }
+      .rn_SmartAssistantDialog .rn_Answer ul li li li, .rn_SmartAssistantDialog .rn_Response ul li li li, .rn_SmartAssistantDialog .rn_List ul li li li {
+        list-style: square; }
+  .rn_SmartAssistantDialog .rn_Answer ol li, .rn_SmartAssistantDialog .rn_Answer li ol li, .rn_SmartAssistantDialog .rn_Answer li li ol li, .rn_SmartAssistantDialog .rn_Response ol li, .rn_SmartAssistantDialog .rn_Response li ol li, .rn_SmartAssistantDialog .rn_Response li li ol li, .rn_SmartAssistantDialog .rn_List ol li, .rn_SmartAssistantDialog .rn_List li ol li, .rn_SmartAssistantDialog .rn_List li li ol li {
+    list-style: decimal; }
+.rn_SmartAssistantDialog .rn_Response {
+  max-height: 300px;
+  overflow-y: auto; }
+.rn_SmartAssistantDialog a {
+  font-weight: normal;
+  white-space: normal; }
+.rn_SmartAssistantDialog .rn_List > li {
+  font-size: 1.3em;
+  margin: 1em 0.8em 1em 0; }
+.rn_SmartAssistantDialog .rn_Prompt {
+  font-size: 1em;
+  font-weight: bold;
+  line-height: 1.3em; }
+.rn_SmartAssistantDialog .rn_Summary {
+  font-size: 1.3em;
+  font-weight: bold;
+  letter-spacing: -0.01em;
+  line-height: 1em;
+  padding: 7px 0 0; }
+.rn_SmartAssistantDialog .rn_Solution {
+  padding: 6px 0 10px;
+  max-height: 300px;
+  overflow-y: auto; }
+.rn_SmartAssistantDialog .rn_InlineAnswers {
+  overflow: hidden; }
+.rn_SmartAssistantDialog .rn_List.rn_InlineAnswers > li {
+  border-bottom: 1px solid #FFF;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  position: relative; }
+.rn_SmartAssistantDialog .rn_InlineAnswerLink {
+  display: block;
+  border-bottom: 1px solid #CCC;
+  color: #000;
+  padding: 3px 0 3px 0;
+  text-decoration: none;
+  text-shadow: 0 1px 0 #FFF;
+  line-height: 1.5em; }
+.rn_SmartAssistantDialog .rn_ExpandAnswer:before {
+  font-family: 'FontAwesome';
+  margin-right: 6px;
+  content: "\f0da"; }
+.rn_SmartAssistantDialog .rn_KBAnswerImage:before {
+  font-family: 'FontAwesome';
+  margin-right: 6px;
+  content: "\f0eb";
+  display: inline-block;
+  margin-right: 6px; }
+.rn_SmartAssistantDialog .rn_SocialDiscussionImage:before {
+  font-family: 'FontAwesome';
+  margin-right: 6px;
+  content: "\f0e6";
+  display: inline-block;
+  margin-right: 1px;
+  font-size: 0.9em; }
+.rn_SmartAssistantDialog a.rn_ExpandedAnswer {
+  background-color: rgba(208, 208, 208, 0.8);
+  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, rgba(208, 208, 208, 0.8)), color-stop(100%, rgba(254, 254, 254, 0.6)));
+  background-image: -webkit-linear-gradient(rgba(208, 208, 208, 0.8), rgba(254, 254, 254, 0.6));
+  background-image: linear-gradient(rgba(208, 208, 208, 0.8), rgba(254, 254, 254, 0.6));
+  border-bottom: 1px solid #DDD;
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.5);
+  opacity: 0.9; }
+  .rn_SmartAssistantDialog a.rn_ExpandedAnswer:before {
+    font-family: 'FontAwesome';
+    margin-right: 6px;
+    content: "\f0d7"; }
+.rn_SmartAssistantDialog .rn_ExpandedAnswerContent {
+  background: #FFF;
+  border: 0;
+  border-radius: 0;
+  display: block;
+  font-size: 0.8em;
+  margin: 0;
+  max-height: 200px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding: 2%; }
+.rn_SmartAssistantDialog .rn_AnswerDiscussionSummary {
+  display: block;
+  margin-bottom: 12px;
+  padding-top: 19px; }
+.rn_SmartAssistantDialog .rn_AnswerDiscussionSummary > ol, .rn_SmartAssistantDialog .rn_AnswerSolution > ol, .rn_SmartAssistantDialog .rn_AnswerDiscussionSummary > ul, .rn_SmartAssistantDialog .rn_AnswerSolution > ul {
+  margin-bottom: 1em; }
+.rn_SmartAssistantDialog .rn_DiscussionSolution > ul {
+  margin-bottom: 1em; }
+.rn_SmartAssistantDialog .rn_Solution_List {
+  border-radius: 3px;
+  background: #F6F6F6 none repeat scroll 0 0;
+  border: 1px solid #B0B3B8;
+  color: #222;
+  margin: 10px 0;
+  padding: 10px;
+  text-shadow: 0 1px 1px #FFF;
+  overflow: auto; }
+.rn_SmartAssistantDialog .rn_BestAnswerImage:before {
+  font-family: 'FontAwesome';
+  margin-right: 6px;
+  content: "\f058";
+  color: #4DB84D;
+  float: right;
+  line-height: 1em; }
+.rn_SmartAssistantDialog .rn_UserAvatarLeft {
+  float: left;
+  margin-right: 12px;
+  line-height: 1.5em; }
+.rn_SmartAssistantDialog .rn_AvatarImage {
+  width: 48px;
+  height: 48px; }
+.rn_SmartAssistantDialog .rn_OpenDiscussionLinkText a {
+  color: #3b6db1;
+  float: right;
+  font-size: 0.8em;
+  line-height: 0.1em;
+  padding-top: 0;
+  padding-bottom: 17px; }

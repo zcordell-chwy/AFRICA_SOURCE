@@ -1,0 +1,21 @@
+version: "1.0.1"
+requires:
+  framework: ["3.2"]
+  jsModule: [standard, mobile]
+attributes:
+  label_language:
+    name: rn:msg:SPECIFIED_LANGUAGES_LABEL_LBL
+    type: STRING
+    description: rn:msg:LABEL_FOR_THE_SPEC_LANGUAGES_LINK_LBL
+    default: rn:msg:SPECIFIED_LANGUAGES_LBL
+  source_id:
+    name: rn:msg:SOURCE_ID_LBL
+    type: STRING
+    description: rn:msg:NAME_OFSRCH_SRC_TO_BE_USED_ONLY_1_MSG
+    required: true
+    default: OKCSSearch
+    options:
+    - OKCSSearch
+    - Any additional custom search sources 
+info:
+  description: rn:msg:THIS_WIDGET_DISP_THE_AVAIL_MSG

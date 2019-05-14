@@ -1,0 +1,26 @@
+.rn_DateInput {
+  clear: both;
+  margin-bottom: 0.5em;
+  overflow: visible;
+  position: relative; }
+  .rn_DateInput .rn_Label {
+    display: block;
+    font-size: inherit;
+    font-weight: bold;
+    margin-bottom: 2px; }
+  .rn_DateInput fieldset {
+    background: none;
+    border: 0;
+    padding: 0;
+    margin: 0; }
+  .rn_DateInput select {
+    display: inline;
+    margin-bottom: 0;
+    width: 32%; }
+    @media screen and (max-width: 400px) {
+      .rn_DateInput select {
+        display: block;
+        margin-bottom: 1em;
+        width: 100%; } }
+  .rn_DateInput select:last-child {
+    margin-bottom: 0; }

@@ -1,0 +1,12 @@
+<rn:block id="itemContent">
+	<div class="rn_DonationFundPopupGalleryItemImageContainer">
+		<% if(data.photoURL !== null){ %>
+		<img class="rn_DonationFundPopupGalleryItemImage" src="<%= data.photoURL %>" />
+		<% }else{ %>
+		<div class="rn_DonationFundPopupGalleryItemNoImagePlaceholder">No Image</div>
+		<% } %>
+	</div>
+	<div class="rn_DonationFundPopupGalleryItemTitleContainer">
+		<span class="rn_DonationFundPopupGalleryItemTitle"><%= data.title %></span>
+	</div>
+</rn:block>

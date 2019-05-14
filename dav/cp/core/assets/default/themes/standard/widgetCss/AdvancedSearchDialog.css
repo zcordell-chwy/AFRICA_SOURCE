@@ -1,0 +1,37 @@
+.rn_AdvancedSearchDialog {
+  overflow: visible; }
+  .rn_AdvancedSearchDialog .rn_DialogContent {
+    position: relative;
+    width: 500px; }
+    .rn_AdvancedSubWidget .rn_AdvancedSearchDialog .rn_DialogContent:empty {
+      display: none; }
+    .rn_AdvancedSearchDialog .rn_DialogContent .rn_ProductCategorySearchFilter {
+      width: 100%; }
+      .rn_AdvancedSearchDialog .rn_DialogContent .rn_ProductCategorySearchFilter .rn_PanelContainer {
+        width: auto; }
+      @media screen and (max-width: 720px) {
+        .rn_AdvancedSearchDialog .rn_DialogContent .rn_ProductCategorySearchFilter {
+          margin: 0; } }
+    .rn_AdvancedSearchDialog .rn_DialogContent label, .rn_AdvancedSearchDialog .rn_DialogContent .rn_ProductCategorySearchFilter .rn_Label {
+      float: left;
+      display: block;
+      margin-right: 2.35765%;
+      width: 40.29137%; }
+      .rn_AdvancedSearchDialog .rn_DialogContent label:last-child, .rn_AdvancedSearchDialog .rn_DialogContent .rn_ProductCategorySearchFilter .rn_Label:last-child {
+        margin-right: 0; }
+    .rn_AdvancedSearchDialog .rn_DialogContent .rn_DisplayButton, .rn_AdvancedSearchDialog .rn_DialogContent select {
+      float: left;
+      display: block;
+      margin-right: 2.35765%;
+      width: 57.35098%;
+      margin: 0 0 10px;
+      min-height: 1.5em; }
+      .rn_AdvancedSearchDialog .rn_DialogContent .rn_DisplayButton:last-child, .rn_AdvancedSearchDialog .rn_DialogContent select:last-child {
+        margin-right: 0; }
+    .rn_AdvancedSearchDialog .rn_DialogContent select {
+      padding: 2px 20px 2px 2px; }
+  .rn_AdvancedSearchDialog .rn_SearchTips {
+    color: #333;
+    position: absolute;
+    right: 0;
+    top: -25px; }

@@ -1,0 +1,166 @@
+.rn_RecentlyAnsweredQuestions {
+  *zoom: 1;
+  max-width: 68em;
+  margin-left: auto;
+  margin-right: auto; }
+  .rn_RecentlyAnsweredQuestions:before, .rn_RecentlyAnsweredQuestions:after {
+    content: " ";
+    display: table; }
+  .rn_RecentlyAnsweredQuestions:after {
+    clear: both; }
+  .rn_RecentlyAnsweredQuestions .rn_Author {
+    float: left;
+    display: block;
+    margin-right: 2.35765%;
+    width: 6.17215%; }
+    .rn_RecentlyAnsweredQuestions .rn_Author:last-child {
+      margin-right: 0; }
+    @media screen and (max-width: 720px) {
+      .rn_RecentlyAnsweredQuestions .rn_Author {
+        float: left;
+        display: block;
+        margin-right: 2.35765%;
+        width: 14.70196%; }
+        .rn_RecentlyAnsweredQuestions .rn_Author:last-child {
+          margin-right: 0; } }
+  .rn_RecentlyAnsweredQuestions .rn_RecentlyAnsweredQuestionsItem {
+    border-radius: 6px;
+    padding: 10px;
+    background: #f7f7f7;
+    float: left;
+    display: block;
+    margin-right: 2.35765%;
+    width: 100%;
+    border: 1px solid #999;
+    margin-bottom: 1em; }
+    .rn_RecentlyAnsweredQuestions .rn_RecentlyAnsweredQuestionsItem:last-child {
+      margin-right: 0; }
+    @media screen and (max-width: 400px) {
+      .rn_RecentlyAnsweredQuestions .rn_RecentlyAnsweredQuestionsItem {
+        float: left;
+        display: block;
+        margin-right: 2.35765%;
+        width: 100%; }
+        .rn_RecentlyAnsweredQuestions .rn_RecentlyAnsweredQuestionsItem:last-child {
+          margin-right: 0; } }
+  .rn_RecentlyAnsweredQuestions .rn_RecentlyAnsweredQuestionsItem:first-child {
+    margin-top: 0; }
+  .rn_RecentlyAnsweredQuestions .rn_QuestionInfo {
+    *zoom: 1;
+    margin-bottom: 1em; }
+    .rn_RecentlyAnsweredQuestions .rn_QuestionInfo:before, .rn_RecentlyAnsweredQuestions .rn_QuestionInfo:after {
+      content: " ";
+      display: table; }
+    .rn_RecentlyAnsweredQuestions .rn_QuestionInfo:after {
+      clear: both; }
+    .rn_RecentlyAnsweredQuestions .rn_QuestionInfo .rn_QuestionSubject {
+      float: left;
+      display: block;
+      margin-right: 2.35765%;
+      width: 91.4702%; }
+      .rn_RecentlyAnsweredQuestions .rn_QuestionInfo .rn_QuestionSubject:last-child {
+        margin-right: 0; }
+      @media screen and (max-width: 720px) {
+        .rn_RecentlyAnsweredQuestions .rn_QuestionInfo .rn_QuestionSubject {
+          float: left;
+          display: block;
+          margin-right: 2.35765%;
+          width: 82.94039%; }
+          .rn_RecentlyAnsweredQuestions .rn_QuestionInfo .rn_QuestionSubject:last-child {
+            margin-right: 0; } }
+      .rn_RecentlyAnsweredQuestions .rn_QuestionInfo .rn_QuestionSubject a {
+        display: inline-block; }
+    .rn_RecentlyAnsweredQuestions .rn_QuestionInfo .rn_AvatarLink {
+      visibility: hidden; }
+      .rn_RecentlyAnsweredQuestions .rn_QuestionInfo .rn_AvatarLink:before {
+        font-family: 'FontAwesome';
+        line-height: 1em;
+        margin-right: 6px;
+        content: "\f059";
+        visibility: visible;
+        font-size: 1.6em;
+        color: #333; }
+  .rn_RecentlyAnsweredQuestions .rn_AnswerInfo {
+    margin-left: 8.5298%;
+    float: left;
+    display: block;
+    margin-right: 2.35765%;
+    width: 91.4702%;
+    *zoom: 1;
+    display: block;
+    margin-top: 10px; }
+    .rn_RecentlyAnsweredQuestions .rn_AnswerInfo:last-child {
+      margin-right: 0; }
+    .rn_RecentlyAnsweredQuestions .rn_AnswerInfo:before, .rn_RecentlyAnsweredQuestions .rn_AnswerInfo:after {
+      content: " ";
+      display: table; }
+    .rn_RecentlyAnsweredQuestions .rn_AnswerInfo:after {
+      clear: both; }
+    .rn_RecentlyAnsweredQuestions .rn_AnswerInfo .rn_AnswerContent {
+      margin-left: 8.5298%;
+      float: left;
+      display: block;
+      margin-right: 2.35765%;
+      width: 91.4702%;
+      border-radius: 6px;
+      padding: 10px;
+      background: #EFEFEF;
+      border: 1px solid #DDD;
+      box-shadow: 0 1px 2px rgba(20, 20, 20, 0.1);
+      color: #222;
+      padding-bottom: 1em;
+      position: relative; }
+      .rn_RecentlyAnsweredQuestions .rn_AnswerInfo .rn_AnswerContent:last-child {
+        margin-right: 0; }
+      @media screen and (max-width: 720px) {
+        .rn_RecentlyAnsweredQuestions .rn_AnswerInfo .rn_AnswerContent {
+          float: left;
+          display: block;
+          margin-right: 2.35765%;
+          width: 82.94039%; }
+          .rn_RecentlyAnsweredQuestions .rn_AnswerInfo .rn_AnswerContent:last-child {
+            margin-right: 0; } }
+      .rn_RecentlyAnsweredQuestions .rn_AnswerInfo .rn_AnswerContent:before {
+        font-family: 'FontAwesome';
+        margin-right: 6px; }
+      .rn_RecentlyAnsweredQuestions .rn_AnswerInfo .rn_AnswerContent:before {
+        content: "\f0d9";
+        font-size: 1.5em;
+        position: absolute;
+        left: -8px;
+        top: 10px;
+        color: #EFEFEF;
+        z-index: 1; }
+      .rn_RecentlyAnsweredQuestions .rn_AnswerInfo .rn_AnswerContent:after {
+        font-family: 'FontAwesome';
+        margin-left: 6px; }
+      .rn_RecentlyAnsweredQuestions .rn_AnswerInfo .rn_AnswerContent:after {
+        content: "\f0d9";
+        font-size: 1.6em;
+        position: absolute;
+        left: -15px;
+        top: 10px;
+        color: #DDD; }
+      .rn_RecentlyAnsweredQuestions .rn_AnswerInfo .rn_AnswerContent .rn_AnswerText {
+        word-wrap: break-word; }
+      .rn_RecentlyAnsweredQuestions .rn_AnswerInfo .rn_AnswerContent .rn_BestAnswerLabel {
+        font-weight: bold; }
+      .rn_RecentlyAnsweredQuestions .rn_AnswerInfo .rn_AnswerContent .rn_AnswerMoreLink {
+        display: block;
+        text-align: right;
+        color: #2e568b; }
+        .rn_RecentlyAnsweredQuestions .rn_AnswerInfo .rn_AnswerContent .rn_AnswerMoreLink:after {
+          font-family: 'FontAwesome';
+          line-height: 1em;
+          margin-left: 6px;
+          content: "\f054";
+          font-size: smaller;
+          margin-left: 0; }
+  .rn_RecentlyAnsweredQuestions .rn_ContentLocked:after {
+    font-family: 'FontAwesome';
+    line-height: 1em;
+    margin-left: 6px;
+    content: "\f023"; }
+
+.rn_HighContrastMode .rn_RecentlyAnsweredQuestions .rn_AnswerContent:before, .rn_HighContrastMode .rn_RecentlyAnsweredQuestions .rn_AnswerContent:after {
+  content: none; }

@@ -1,0 +1,14 @@
+.rn_AnswerContent .rn_Indent {
+  margin-left: 20px; }
+.rn_AnswerContent .rn_ExternalContent {
+  width: 100%;
+  padding-top: 16px; }
+.rn_AnswerContent iframe {
+  min-height: 650px; }
+.rn_AnswerContent .normal {
+  font-weight: normal; }
+.rn_AnswerContent .ok-highlight-title {
+  background-color: #FF0;
+  font-weight: bold; }
+.rn_AnswerContent .ok-highlight-sentence {
+  background-color: #D8DFE8; }

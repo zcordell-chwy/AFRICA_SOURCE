@@ -1,0 +1,17 @@
+<div class="rn_LineItem" data-id="<%= id %>">
+	<rn:block id="lineItem">
+		<div class="rn_LineItemTitleContainer">
+			<span class="rn_LineItemTitle"><%= merch.title %></span>
+		</div>
+		<div class="rn_LineItemPriceContainer">
+			<span class="rn_LineItemPrice"><%= formatPrice(merch.price) %></span>
+		</div>
+		<div class="rn_LineItemQuantityContainer">
+			<span>Qty:&nbsp;</span>
+			<input type="text" class="rn_LineItemQuantity" value="<%= quantity %>" />
+		</div>
+		<div class="rn_LineItemRemoveLinkContainer">
+			<a href="javascript: void(0)" class="rn_LineItemRemoveLink"><i class="fa fa-times"></i></a>
+		</div>
+	</rn:block> 
+</div>

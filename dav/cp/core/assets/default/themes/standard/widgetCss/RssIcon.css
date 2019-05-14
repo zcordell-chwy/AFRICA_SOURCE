@@ -1,0 +1,5 @@
+.rn_RssIcon a.rn_RssImgLink:before {
+  font-family: 'FontAwesome';
+  margin-right: 6px;
+  content: "\f143";
+  color: #FF9933; }

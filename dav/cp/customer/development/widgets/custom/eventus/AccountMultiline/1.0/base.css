@@ -1,0 +1,113 @@
+/**
+ * base.css: Base CSS for AccountMultiline
+ */
+.rn_AccountMultiline.rn_Multiline {
+
+}
+
+.rn_AfricaNewLifeLayoutSingleColumn {
+    display: inline-block;
+}
+
+.rn_PledgeList .listElement{
+    display: inline-block;
+    width: 95%;
+    height: auto;
+    margin-bottom: 20px;
+}
+
+.topContent {
+    display: block;
+    background-color: #f6f6f6!important;
+    border: 1px #ddd solid;
+    border-radius: 4px 4px 0 0;
+    float: left;
+    width: 100%;
+}
+
+.topContentLeft {
+    display: block;
+    float: left;
+    width: 55%;
+    padding: 14px;
+}
+
+.topContentRight {
+    float: right;
+    width: 33%;
+    padding: 14px;
+}
+
+.detailColumn {
+    float: left;
+    font-size: 11px!important;
+    line-height: 1.465!important
+    color: #555!important;
+    margin-right: 3%;
+}
+
+.topContentRight .detailColumn{
+	float:right;
+	clear:both;	
+}
+
+.detailHeader{
+	text-transform: uppercase;
+	text-decoration: underline;
+}
+
+.bottomContent{
+	float: left;
+    width: 100%;
+    display: inline-table;
+    border-radius: 4px;
+    border: 1px #ddd solid;
+    background-color: #fff;
+    border-radius: 0 0 4px 4px;
+    height: 150px;
+}
+
+.FundContent{
+	width: 65%;
+    float: left;
+    padding: 14px 26px;
+}
+.FundContent img {
+    height: 120px;
+}
+
+.FundDetail{
+	width: 40%;
+    display: inline-block;
+    /* height: 100%; */
+    vertical-align: top;
+    padding: 10px;
+}
+
+.FundDetail ul, .PledgeStatus ul{
+	line-height:18px;
+}
+
+.FundDetail ul li, .PledgeStatus ul li{
+	margin-bottom:0px;
+}
+
+.PledgeStatus ul{
+	padding:12px;	
+}
+
+.PledgeStatus{
+	width: 28%;
+    float: right;
+    height: 100%;
+    border-left: 1px solid #ddd;
+}
+
+.pledgeInfo{
+	background: url(images/infogreen.png) #D4ECD3 no-repeat 7px 15px;
+    border: 1px solid darkgreen;
+    margin: 20px 20px 20px 0px;
+    padding: 20px 7px 20px 38px;
+    width:95%;
+}
+

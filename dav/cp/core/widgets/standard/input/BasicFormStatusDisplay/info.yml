@@ -1,0 +1,11 @@
+version: "1.0.1"
+requires:
+  framework: ["3.1", "3.2", "3.3", "3.4", "3.5", "3.6", "3.7"]
+  jsModule: [none]
+info:
+  description: rn:msg:WIDGET_DISP_STATUS_ERR_MSGS_BASIC_MSG
+attributes:
+  label:
+    name: rn:msg:STATUS_LABEL_LBL
+    type: STRING
+    description: rn:msg:OPT_LABEL_DISP_STATUS_MSGS_FORM_MSG

@@ -1,0 +1,70 @@
+<rn:block id="itemPopupContent">
+	<div class="rn_GiftPopupGalleryItemPopupContainer">
+		<div class="rn_GiftPopupGalleryItemPopupLeftColumn">
+			<div class="rn_GiftPopupGalleryItemPopupImageContainer">
+				<img class="rn_GiftPopupGalleryItemPopupImage" src="<%= data.photoURL %>" />
+			</div>
+		</div>
+		<div class="rn_GiftPopupGalleryItemPopupRightColumn">
+			<div class="rn_GiftPopupGalleryItemPopupTitleContainer">
+				<span class="rn_GiftPopupGalleryItemPopupTitle"><%= data.title %></span>
+			</div>
+			<div class="rn_GiftPopupGalleryItemPopupAmountContainer">
+				<span class="rn_GiftPopupGalleryItemPopupAmount">Price: $<%= data.amount %></span>
+			</div>
+			<div class="rn_GiftPopupGalleryItemPopupDescriptionContainer">
+				<span class="rn_GiftPopupGalleryItemPopupDescription"><%= data.description %></span>
+			</div>
+			<div class="rn_GiftPopupGalleryItemPopupAddToCartForm">
+			    <% if (giftPage && !loggedIn){ %>
+			    	<div class="giftAdditionalInfo">
+					  <p><a href="/app/utils/login_form/redirect/give">Log In</a> to order this item for your sponsored child or a needy child</p>
+					</div>	
+				<% } else { %>
+				<fieldset class="rn_GiftPopupGalleryItemPopupSponsoredChildFieldset">
+					<legend>To which sponsored children would you like to give this gift?</legend>
+					<% if(data.eligibleChildren.length > 1){ %>
+						<% 	var halfIndex = Math.floor(data.eligibleChildren.length/2); %>
+						<div class="rn_GiftPopupGalleryItemPopupSponsoredChildFieldsetColumn">
+							<div>
+								<input class="rn_GiftPopupGalleryItemPopupSponsoredChildRecipient" type="checkbox" value="all" />
+								<span>All</span>
+							</div>
+						<%	for(var i = 0; i < halfIndex; i++){ %>
+							<div>
+								<input class="rn_GiftPopupGalleryItemPopupSponsoredChildRecipient" type="checkbox" value="<%= data.eligibleChildren[i].id %>" />
+								<span><%= data.eligibleChildren[i].name %></span>
+							</div>
+						<%  } %>
+						</div>
+						<div class="rn_GiftPopupGalleryItemPopupSponsoredChildFieldsetColumn">
+						<% for(var i = halfIndex; i < data.eligibleChildren.length; i++){ %>
+							<div>
+								<input class="rn_GiftPopupGalleryItemPopupSponsoredChildRecipient" type="checkbox" value="<%= data.eligibleChildren[i].id %>" />
+								<span><%= data.eligibleChildren[i].name %></span>
+							</div>
+						<% } %>
+						</div>
+					<% }else{ %>
+						<div>
+							<input class="rn_GiftPopupGalleryItemPopupSponsoredChildRecipient" type="checkbox" value="<%= data.eligibleChildren[0].id %>" disabled checked />
+							<span><%= data.eligibleChildren[0].name %></span>
+						</div>
+					<% } %>
+					<div class="rn_GiftPopupGalleryItemPopupSponsoredChildrenFieldsetErrorContainer"></div>	
+				</fieldset>
+				<div class="rn_GiftPopupGalleryItemPopupInputContainer" data-field="quantity">
+					<span class="rn_GiftPopupGalleryItemPopupAddToCartFormLabel">Quantity:</span>
+					<input class="rn_GiftPopupGalleryItemPopupQuantity" type="number" value="0" />
+					<div class="rn_GiftPopupGalleryItemPopupInputErrorContainer">
+					</div>
+				</div>
+				<div class="rn_GiftPopupGalleryItemPopupInputContainer">
+					<button value="submit">Add to Cart</button>
+					<button value="cancel">Cancel</button>
+				</div>
+				<% } %>
+			</div>
+		</div>
+	</div>
+</rn:block>

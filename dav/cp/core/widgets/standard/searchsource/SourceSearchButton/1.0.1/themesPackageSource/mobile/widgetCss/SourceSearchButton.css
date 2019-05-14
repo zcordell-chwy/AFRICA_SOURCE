@@ -1,0 +1,17 @@
+.rn_SourceSearchButton {
+    display:inline;
+    bottom: 0;
+}
+.rn_SourceSearchButton input {
+    border:none;
+    vertical-align:top;
+}
+.rn_SourceSearchButton .rn_SubmitButton {
+    background-color:#0E53A7;
+    color:#FFF;
+    cursor:pointer;
+    font-weight:bold;
+    width:99.5%;
+    font-size:1.3em;
+    margin:5px 0;
+}

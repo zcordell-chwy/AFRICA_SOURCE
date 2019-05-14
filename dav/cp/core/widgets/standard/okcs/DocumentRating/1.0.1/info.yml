@@ -1,0 +1,49 @@
+version: "1.0.1"
+requires:
+  framework: ["3.2"]
+  jsModule: [standard, mobile]
+attributes:
+  label_title:
+    name: rn:msg:RATING_TITLE_LBL
+    type: STRING
+    description: rn:msg:LABEL_TEXT_TO_DISP_ON_THE_WIDGET_LBL
+    default: rn:msg:RATE_THIS_ARTICLE_LBL
+  label_button:
+    name: rn:msg:SUBMIT_BUTTON_LEVEL_CMD
+    type: STRING
+    description: rn:msg:CAPTION_FOR_DOC_RATING_SUBMIT_BTN_LBL
+    default: rn:msg:RATE_CONTENT_LBL
+  label_thanks_msg:
+    name: rn:msg:FEEDBACK_SUBMISSION_MESSAGE_LBL
+    type: STRING
+    description: rn:msg:MSG_TO_DISP_ON_THE_WIDGET_ONCE_USER_LBL
+    default: rn:msg:THANK_YOU_FOR_YOUR_FEEDBACK_LBL
+  get_okcs_data_ajax:
+    name: rn:msg:RATING_SUBMIT_AJAX_URL_LBL
+    type: AJAX
+    description: rn:msg:ENDPOINT_FOR_OKCS_LBL
+    default: /ci/okcsAjaxRequest/getOkcsData
+  max_rating_count:
+    name: rn:msg:MAXIMUM_RATING_LBL
+    type: INT
+    description: rn:msg:MAX_RATING_VAL_THE_USER_IS_ALLOWED_MSG
+    default: 5
+    min: 1
+    max: 5
+  loading_icon_path:
+    name: rn:msg:LOADING_ICON_PATH_LBL
+    description: rn:msg:FILE_PATH_IMG_DISP_SUBMITTING_FORM_LBL
+    default: images/documentRatingIndicator.gif
+    type: FILEPATH
+  label_submitting_message:
+    name: rn:msg:SUBMITTING_MESSAGE_LABEL_LBL
+    description: rn:msg:LABEL_DISPLAYS_FORM_IS_SUBMITTING_MSG
+    type: STRING
+    default: rn:msg:SUBMITTING_ELLIPSIS_MSG
+  label_rating:
+    name: rn:msg:RATING_LABEL_LBL
+    type: STRING
+    description: rn:msg:TEXT_OF_BUTTONS_FOR_RATINGS_LBL
+    default: rn:msg:RATE_ANSWER_PCT_D_OF_PCT_D_LBL
+info:
+  description: rn:msg:DOCUMENTRATING_WIDGET_ALLOWS_USERS_MSG

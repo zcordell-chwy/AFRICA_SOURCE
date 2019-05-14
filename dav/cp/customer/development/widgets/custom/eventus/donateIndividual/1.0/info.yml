@@ -1,0 +1,12 @@
+version: "1.0"
+requires:
+  jsModule:
+  - standard
+  - mobile
+attributes:
+  f_id:
+    name: f_id
+    type: string
+    description: The individual fund id from the Online.Items.Donation table.
+    default: ""
+    required: false

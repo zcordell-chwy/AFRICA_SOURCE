@@ -1,0 +1,10 @@
+.rn_OracleLogo {
+  *zoom: 1;
+  display: block; }
+  .rn_OracleLogo:before, .rn_OracleLogo:after {
+    content: " ";
+    display: table; }
+  .rn_OracleLogo:after {
+    clear: both; }
+  .rn_OracleLogo a {
+    float: right; }

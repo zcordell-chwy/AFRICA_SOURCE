@@ -1,0 +1,25 @@
+.rn_MoveDialogContainer {
+  float: left;
+  display: block;
+  margin-right: 2.35765%;
+  width: 40.29137%; }
+  .rn_MoveDialogContainer:last-child {
+    margin-right: 0; }
+  @media screen and (max-width: 720px) {
+    .rn_MoveDialogContainer {
+      float: left;
+      display: block;
+      margin-right: 2.35765%;
+      width: 65.88078%; }
+      .rn_MoveDialogContainer:last-child {
+        margin-right: 0; } }
+  @media screen and (max-width: 400px) {
+    .rn_MoveDialogContainer {
+      float: left;
+      display: block;
+      margin-right: 2.35765%;
+      width: 82.94039%; }
+      .rn_MoveDialogContainer:last-child {
+        margin-right: 0; } }
+  .rn_MoveDialogContainer .rn_ProductCategoryInput button.rn_DisplayButton {
+    min-width: 11em; }

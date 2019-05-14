@@ -1,0 +1,12 @@
+version: "1.0"
+requires:
+  jsModule:
+  - standard
+  - mobile
+extends:
+  widget: custom/shopping/ShoppingCart
+  components:
+  - php
+  - view
+  - js
+  - css

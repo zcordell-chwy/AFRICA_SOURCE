@@ -1,0 +1,19 @@
+/**
+ * base.css: Base CSS for checkoutSummary
+ */
+.rn_checkoutSummary {
+
+}
+
+@media only screen and (max-width: 380px){
+	div.esg_checkoutSummary{font-size: .8em;}
+}
+@media only screen and (max-width: 350px){
+	div.esg_checkoutSummary{font-size: .7em;}
+}
+@media only screen and (max-width: 319px){
+	div.esg_checkoutSummary{font-size: .6em;}
+}
+@media only screen and (max-width: 300px){
+	div.esg_checkoutSummary{font-size: .5em;}
+}

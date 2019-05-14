@@ -1,0 +1,27 @@
+.rn_OkcsRecommendContent .rn_RecommendContentButton {
+  margin-top: 1em; }
+.rn_OkcsRecommendContent .rn_LabelInput {
+  font-weight: bold;
+  margin-top: 1em; }
+.rn_OkcsRecommendContent .rn_Fieldset {
+  margin-top: 4em; }
+.rn_OkcsRecommendContent .rn_RecommendationHeader {
+  background: #536a8b;
+  color: #FFF;
+  font-weight: normal;
+  border-bottom: 1px solid #CCC;
+  padding: 7px;
+  line-height: 1.4em;
+  margin-bottom: 2em; }
+.rn_OkcsRecommendContent section {
+  margin-top: 1em; }
+  .rn_OkcsRecommendContent section select {
+    margin-bottom: 0;
+    width: 30%; }
+  .rn_OkcsRecommendContent section option {
+    cursor: pointer;
+    min-height: 1.5em; }
+.rn_OkcsRecommendContent .rn_InputArea {
+  margin-bottom: 0 !important; }
+.rn_OkcsRecommendContent .rn_ButtonDiv {
+  margin: 1em 0; }

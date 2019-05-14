@@ -1,0 +1,12 @@
+type: SocialQuestion
+object:
+  CreatedBySocialUser:
+    fixture: UserModActive
+  Subject: Deleted question by an active user
+  Body: Test question body
+  Attributes.ContentLocked: false
+  StatusWithType.Status.LookupName: Deleted
+  _comments:
+    - fixture: CommentActiveUserActive
+      parameters:
+        SocialQuestion: this.ID

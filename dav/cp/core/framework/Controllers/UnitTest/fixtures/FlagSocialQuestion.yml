@@ -1,0 +1,5 @@
+type: SocialQuestionContentFlag
+object:
+  SocialUser:
+    fixture: UserActive1
+  Type.LookupName: Inappropriate

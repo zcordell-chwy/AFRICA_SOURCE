@@ -1,0 +1,36 @@
+.rn_MobileMultiline {
+  overflow: hidden; }
+  .rn_MobileMultiline .rn_Loading:before {
+    font-family: 'FontAwesome';
+    line-height: 1em;
+    margin-right: 6px;
+    content: "\f110";
+    -webkit-animation: fa-spin 2s infinite linear;
+    -moz-animation: fa-spin 2s infinite linear;
+    animation: fa-spin 2s infinite linear;
+    display: block;
+    font-size: 1em;
+    position: relative;
+    text-align: center; }
+  .rn_MobileMultiline .rn_Element1, .rn_MobileMultiline .rn_Element1 a, .rn_MobileMultiline .rn_Element2, .rn_MobileMultiline .rn_Element3 {
+    display: block; }
+  .rn_MobileMultiline .rn_Element1 {
+    font-size: 1.333em;
+    line-height: 1.4em;
+    margin-bottom: 0.3em; }
+    .rn_MobileMultiline .rn_Element1 .rn_FileTypeIcon {
+      float: right;
+      position: relative;
+      top: 10px; }
+  .rn_MobileMultiline .rn_Element2, .rn_MobileMultiline .rn_Element3 {
+    font-size: 1.1em;
+    line-height: 1.3em; }
+  .rn_MobileMultiline .rn_ElementsHeader, .rn_MobileMultiline .rn_ElementsData {
+    display: none; }
+  .rn_MobileMultiline .rn_Highlight {
+    font-style: normal;
+    font-weight: bold; }
+  .rn_MobileMultiline ol, .rn_MobileMultiline ul {
+    padding-top: 3px; }
+    .rn_MobileMultiline ol li, .rn_MobileMultiline ul li {
+      margin-bottom: 20px; }

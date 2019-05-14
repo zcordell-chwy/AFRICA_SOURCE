@@ -1,0 +1,15 @@
+.rn_RelatedAnswers li:before {
+  font-family: 'FontAwesome';
+  line-height: 1em;
+  margin-right: 6px;
+  content: "\f0eb";
+  margin-left: 1px;
+  margin-right: 5px;
+  font-size: 1.4em; }
+.rn_RelatedAnswers .rn_Highlight {
+  font-style: normal;
+  font-weight: bold; }
+
+@media print {
+  .rn_RelatedAnswers {
+    display: none; } }

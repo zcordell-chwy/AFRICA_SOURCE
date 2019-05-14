@@ -1,0 +1,18 @@
+version: "1.0.1"
+requires:
+  framework: ["3.2"]
+  jsModule: [standard, mobile]
+attributes:
+  report_page_url:
+    name: rn:msg:REPORT_PAGE_LBL
+    type: STRING
+    description: rn:msg:PG_DSP_BTN_CLICKED_LEAVE_BLANK_MSG
+    default: /app/search
+
+extends:
+  widget: standard/search/SimpleSearch
+  versions: ["1.1"]
+  components: [php, view, js]
+
+info:
+  description: rn:msg:OKCSSIMPLESEARCH_WIDGET_IS_MSG

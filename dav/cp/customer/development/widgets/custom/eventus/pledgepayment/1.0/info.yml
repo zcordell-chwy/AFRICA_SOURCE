@@ -1,0 +1,42 @@
+version: "1.0"
+requires:
+  jsModule:
+  - standard
+  - mobile
+attributes:
+    pledgeid:
+        name: pledgeid
+        type: string
+        description: ID for the pledge
+        default: ""
+        required: false
+    pledgeamount:
+        name: pledgeamount
+        type: string
+        description: The recurring payment due each month
+        default: ""
+        required: false
+    aheadbehind:
+        name: aheadbehind
+        type: string
+        description: The amount the donor is behind or ahead on a pledge
+        default: ""
+        required: false
+    label_button:
+        name: label_button
+        type: string
+        description: Label of the payment button before amount selection
+        default: "Make a Payment"
+        required: false
+    label_payment:
+        name: label_payment
+        type: string
+        description: Label of the payment button after amount selection
+        default: "Pay Now"
+        required: false
+    setsessionforpledge:
+        name: setsessionforpledge
+        type: ajax
+        description: Session session data for single pledge payment
+        default: /ci/ajax/widget
+        required: false

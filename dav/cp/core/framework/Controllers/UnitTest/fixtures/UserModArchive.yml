@@ -1,0 +1,7 @@
+type: SocialUser
+object:
+  DisplayName: moderator
+  StatusWithType.Status.LookupName: Archive
+  Contact:
+    fixture: ContactModArchive
+  moderatorType: moderator

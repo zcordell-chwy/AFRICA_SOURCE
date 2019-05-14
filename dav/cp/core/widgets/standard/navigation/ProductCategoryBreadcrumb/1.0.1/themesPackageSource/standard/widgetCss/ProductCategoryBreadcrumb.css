@@ -1,0 +1,24 @@
+.rn_ProductCategoryBreadcrumb ol {
+  *zoom: 1;
+  padding: 0; }
+  .rn_ProductCategoryBreadcrumb ol:before, .rn_ProductCategoryBreadcrumb ol:after {
+    content: " ";
+    display: table; }
+  .rn_ProductCategoryBreadcrumb ol:after {
+    clear: both; }
+  .rn_ProductCategoryBreadcrumb ol li {
+    line-height: 3em; }
+    .rn_ProductCategoryBreadcrumb ol li a {
+      cursor: default; }
+      .rn_ProductCategoryBreadcrumb ol li a:before {
+        font-family: 'FontAwesome';
+        margin-right: 6px;
+        content: "\f105";
+        margin-left: 10px;
+        font-size: 3em;
+        line-height: 0.75em;
+        vertical-align: -25%; }
+      .rn_ProductCategoryBreadcrumb ol li a span {
+        cursor: pointer; }
+    .rn_ProductCategoryBreadcrumb ol li:first-child a:before {
+      content: none; }

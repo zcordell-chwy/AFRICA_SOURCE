@@ -1,0 +1,42 @@
+.rn_UserList .rn_UsersTableView table {
+  border-top: 1px solid #888;
+  border-spacing: 0;
+  border-collapse: separate;
+  table-layout: auto; }
+  .rn_UserList .rn_UsersTableView table th {
+    padding: 4px 10px 4px 6px;
+    background-color: white;
+    text-align: center; }
+  .rn_UserList .rn_UsersTableView table tr:nth-child(2n+1) {
+    background-color: #f4f4f4; }
+  .rn_UserList .rn_UsersTableView table td {
+    padding: 4px 10px 4px 6px;
+    text-overflow: ellipsis;
+    overflow: hidden; }
+    .rn_UserList .rn_UsersTableView table td .rn_ProfileAvatar {
+      float: left;
+      display: inline-block;
+      width: 25%;
+      margin-right: 0.3em; }
+    .rn_UserList .rn_UsersTableView table td .rn_DisplayName {
+      display: inline-block;
+      text-overflow: ellipsis;
+      overflow: hidden;
+      max-width: 70%;
+      vertical-align: text-top; }
+  .rn_UserList .rn_UsersTableView table .rn_Count {
+    text-align: center; }
+.rn_UserList .rn_UsersListView .rn_UserItem .rn_UserListAvatar {
+  display: inline-block;
+  margin-right: 0.5em; }
+.rn_UserList .rn_UsersListView .rn_UserItem .rn_UserListDetails {
+  display: inline-block;
+  vertical-align: top;
+  padding-top: 5px;
+  padding-bottom: 5px; }
+  .rn_UserList .rn_UsersListView .rn_UserItem .rn_UserListDetails span {
+    display: block;
+    line-height: 1.5em;
+    font-size: 0.8em; }
+    .rn_UserList .rn_UsersListView .rn_UserItem .rn_UserListDetails span a {
+      font-size: medium; }

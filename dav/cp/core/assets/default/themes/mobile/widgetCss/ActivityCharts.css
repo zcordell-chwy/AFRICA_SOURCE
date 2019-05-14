@@ -1,0 +1,37 @@
+.rn_ActivityCharts {
+  margin-bottom: 15px;
+  clear: both; }
+  .rn_ActivityCharts .yui3-widget-hidden {
+    display: none; }
+  .rn_ActivityCharts .yui3-widget-content {
+    overflow: hidden; }
+  .rn_ActivityCharts .yui3-widget-content-expanded {
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -ms-box-sizing: border-box;
+    box-sizing: border-box;
+    height: 100%; }
+  .rn_ActivityCharts .yui3-widget-tmp-forcesize {
+    overflow: hidden !important; }
+  .rn_ActivityCharts #yui3-css-stamp .skin-sam-widget-base {
+    display: none; }
+  .rn_ActivityCharts .yui3-widget-stacked .yui3-widget-shim {
+    opacity: 0;
+    filter: alpha(opacity=0);
+    position: absolute;
+    border: 0;
+    top: 0;
+    left: 0;
+    padding: 0;
+    margin: 0;
+    z-index: -1;
+    width: 100%;
+    height: 100%; }
+  .rn_ActivityCharts #yui3-css-stamp .skin-sam-widget-stack {
+    display: none; }
+  .rn_ActivityCharts .rn_CountChart {
+    width: 90%;
+    height: 300px; }
+  .rn_ActivityCharts .rn_ChartTitle {
+    font-size: 1em;
+    font-weight: bold; }

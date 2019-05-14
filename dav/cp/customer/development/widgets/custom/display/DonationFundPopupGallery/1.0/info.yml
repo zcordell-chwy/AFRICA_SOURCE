@@ -1,0 +1,29 @@
+version: "1.0"
+requires:
+  jsModule:
+  - standard
+  - mobile
+  yui:
+  - selector-css3
+  - panel
+attributes:
+  mission_members_sort_index:
+    name: mission_members_sort_index
+    type: int
+    description: The display index starting from 0 (first) to place the Mission Team Members fund at in the gallery view. A
+      value of -1 will place the Mission Team Members fund as the last item in the gallery.
+    default: -1
+    required: false
+  mission_members_photo_url: 
+    name: mission_members_photo_url
+    type: string
+    description: The URL for the Mission Team Members fund photo. A blank value will result in no photo.
+    default: ''
+    required: false
+extends:
+  widget: custom/display/ItemPopupGallery
+  components:
+  - php
+  - view
+  - js
+  - css

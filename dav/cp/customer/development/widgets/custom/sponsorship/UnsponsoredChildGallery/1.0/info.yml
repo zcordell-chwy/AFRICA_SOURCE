@@ -1,0 +1,31 @@
+version: "1.0"
+requires:
+  jsModule:
+  - standard
+  - mobile
+attributes:
+  rows:
+  	name: rows
+  	type: integer
+  	description: The number of rows of children to display
+  	default: 4
+  	required: false
+  columns:
+    name: columns
+    type: integer
+    description: The number of columns of children to display
+    default: 4
+    required: false
+  default_ajax_endpoint:
+    name: default_ajax_endpoint
+    type: ajax
+    description: Default AJAX endpoint
+    default: /ci/ajax/widget
+    required: false
+  advocacy_page:
+    name: advocacy_page
+    type: boolean
+    description: defines if this is a sponsorship or advocacy table 
+    default: false
+    required: false
+    

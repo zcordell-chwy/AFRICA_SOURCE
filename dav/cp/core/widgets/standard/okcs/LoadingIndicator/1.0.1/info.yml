@@ -1,0 +1,13 @@
+version: "1.0.1"
+requires:
+  framework: ["3.2", "3.3"]
+  jsModule: [standard, mobile]
+attributes:
+  dom_id_loading_icon:
+    name: rn:msg:NODE_ELEMENT_ID_LBL
+    description: rn:msg:ID_OF_THE_NODE_ELEMENT_FOR_MSG
+    default: rn_PageLoadingIndicator
+    type: STRING
+
+info:
+  description: rn:msg:LOADINGINDICATOR_WIDGET_IS_USED_TO_MSG

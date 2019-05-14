@@ -1,0 +1,20 @@
+.rn_SupportedLanguages {
+  margin-bottom: 20px; }
+  .rn_SupportedLanguages a:link {
+    color: #FFF;
+    line-height: 30px; }
+  .rn_SupportedLanguages fieldset {
+    padding: 14px;
+    background: none;
+    border: 0; }
+    .rn_SupportedLanguages fieldset label {
+      padding-left: 5px;
+      display: inline;
+      color: #FFF;
+      font-weight: normal; }
+  .rn_SupportedLanguages .rn_SupportedLanguagesCheckbox {
+    float: left;
+    height: 1em;
+    width: 5%;
+    min-width: 20px;
+    min-height: 20px; }

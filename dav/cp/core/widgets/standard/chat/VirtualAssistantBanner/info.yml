@@ -1,0 +1,10 @@
+version: "1.0.1"
+requires:
+  framework: ["3.1", "3.2", "3.3", "3.4", "3.5", "3.6", "3.7"]
+  jsModule: [standard, mobile]
+attributes:
+
+info:
+  category:
+    - Chat
+  description: rn:msg:WIDGET_DISP_CONTEXT_SPECIFIC_BANNER_MSG

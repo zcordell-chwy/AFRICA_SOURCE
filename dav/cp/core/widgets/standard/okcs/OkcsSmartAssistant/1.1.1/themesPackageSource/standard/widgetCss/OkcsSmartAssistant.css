@@ -1,0 +1,162 @@
+.rn_SmartAssistantDialogContainer {
+  width: 70%; }
+  .rn_SmartAssistantDialogContainer .yui3-widget-ft {
+    text-align: right; }
+
+.rn_SmartAssistantDialog .rn_Answer, .rn_SmartAssistantDialog .rn_Response, .rn_SmartAssistantDialog .rn_List {
+  background: none;
+  border: 0; }
+.rn_SmartAssistantDialog .rn_InlineAnswerLink {
+  font-size: 0.8em; }
+
+.rn_OkcsSmartAssistant .rn_ExpandedAnswerContentExplorer {
+  border-left: 1px solid #E2E2E0;
+  border-radius: 0; }
+.rn_OkcsSmartAssistant .rn_NewTabButton {
+  margin-right: 3px; }
+.rn_OkcsSmartAssistant .rn_Heading {
+  font-size: 1.333em;
+  font-weight: bold;
+  line-height: 1.4em; }
+.rn_OkcsSmartAssistant .rn_List {
+  margin-top: 6px;
+  padding: 4px; }
+  .rn_OkcsSmartAssistant .rn_List > li {
+    list-style: disc outside none;
+    margin: 0.5em 0.5em 0.5em 2em; }
+.rn_OkcsSmartAssistant .rn_Prompt {
+  color: #000;
+  font-size: 1em;
+  font-weight: bold;
+  line-height: 1.3em; }
+.rn_OkcsSmartAssistant .rn_Summary {
+  font-size: 1.3em;
+  font-weight: bold;
+  letter-spacing: -0.01em;
+  line-height: 1em;
+  padding: 7px 0 0; }
+.rn_OkcsSmartAssistant .rn_Solution {
+  padding: 6px 0 10px; }
+.rn_OkcsSmartAssistant .rn_InlineAnswersExplorer li a {
+  padding: 2px; }
+.rn_OkcsSmartAssistant .rn_List.rn_InlineAnswers > li {
+  border-bottom: 1px solid #DDD;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  position: relative; }
+  .rn_OkcsSmartAssistant .rn_List.rn_InlineAnswers > li:last-child {
+    border-bottom: 0; }
+.rn_OkcsSmartAssistant .rn_InlineAnswersLimitedText {
+  max-height: 60px; }
+.rn_OkcsSmartAssistant .rn_InlineAnswerLink {
+  display: inline-block;
+  border-bottom: 1px solid #CCC;
+  color: #000;
+  padding: 0 4px 6px 0;
+  text-decoration: none;
+  text-shadow: 0 1px 0 #FFF;
+  line-height: 1.5em; }
+.rn_OkcsSmartAssistant .rn_Loading {
+  height: 100%;
+  position: absolute;
+  top: 4px;
+  right: 2px;
+  width: 16px; }
+.rn_OkcsSmartAssistant .rn_ExpandAnswer {
+  font-size: 0.8em; }
+.rn_OkcsSmartAssistant .rn_ExpandAnswer, .rn_OkcsSmartAssistant a.rn_ExpandedAnswer {
+  margin-right: 1px;
+  padding-left: 2px;
+  font-size: 1em;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; }
+.rn_OkcsSmartAssistant .rn_ExpandAnswer:before, .rn_OkcsSmartAssistant a.rn_ExpandedAnswer {
+  padding-right: 5px; }
+  .rn_OkcsSmartAssistant .rn_ExpandAnswer:before:before, .rn_OkcsSmartAssistant a.rn_ExpandedAnswer:before {
+    font-family: 'FontAwesome';
+    margin-right: 6px;
+    content: "\f0da"; }
+.rn_OkcsSmartAssistant .rn_ExpandAnswerSolution, .rn_OkcsSmartAssistant a.rn_ExpandedAnswerSolution {
+  margin-right: 1px;
+  padding-left: 0;
+  font-size: 1em;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; }
+.rn_OkcsSmartAssistant .rn_ExpandAnswerSolution:before, .rn_OkcsSmartAssistant a.rn_ExpandedAnswerSolution {
+  padding-right: 5px; }
+  .rn_OkcsSmartAssistant .rn_ExpandAnswerSolution:before:before, .rn_OkcsSmartAssistant a.rn_ExpandedAnswerSolution:before {
+    font-family: 'FontAwesome';
+    margin-right: 6px;
+    content: "\f0d7"; }
+.rn_OkcsSmartAssistant .rn_ExpandedAnswer {
+  color: #666; }
+.rn_OkcsSmartAssistant .rn_ExpandedAnswerContent {
+  background: #FFF;
+  padding: 6px; }
+.rn_OkcsSmartAssistant .rn_AccesskeyPrompt {
+  font-style: italic;
+  color: #404040;
+  font-size: 0.96em; }
+.rn_OkcsSmartAssistant .rn_AnswerSummary {
+  display: block;
+  margin-bottom: 12px; }
+.rn_OkcsSmartAssistant a.rn_ExpandedAnswerExplorer {
+  background: #426FD9;
+  color: #fff; }
+.rn_OkcsSmartAssistant .rn_AnswerSolution {
+  display: block; }
+.rn_OkcsSmartAssistant .rn_AnswerPDFSolution {
+  height: 420px;
+  border: 0; }
+.rn_OkcsSmartAssistant .rn_AnswerSummary ol, .rn_OkcsSmartAssistant .rn_AnswerSolution ol, .rn_OkcsSmartAssistant .rn_AnswerSummary ul, .rn_OkcsSmartAssistant .rn_AnswerSolution ul {
+  padding-top: 0; }
+.rn_OkcsSmartAssistant .rn_AnswerSummary > ol, .rn_OkcsSmartAssistant .rn_AnswerSolution > ol, .rn_OkcsSmartAssistant .rn_AnswerSummary > ul, .rn_OkcsSmartAssistant .rn_AnswerSolution > ul {
+  margin-bottom: 1em; }
+.rn_OkcsSmartAssistant .rn_OkcsSmartAssistantContainer {
+  width: 600px; }
+  .rn_OkcsSmartAssistant .rn_OkcsSmartAssistantContainer .yui3-widget-buttons a {
+    padding-left: 8px; }
+.rn_OkcsSmartAssistant section {
+  display: inline-block;
+  padding: 3px;
+  width: 48%; }
+  .rn_OkcsSmartAssistant section span {
+    padding-left: 5px; }
+.rn_OkcsSmartAssistant .ok-highlight-title {
+  background-color: #FF0;
+  font-weight: bold; }
+.rn_OkcsSmartAssistant .ok-highlight-sentence {
+  background-color: #D8DFE8; }
+.rn_OkcsSmartAssistant .rn_SchemaAttribute {
+  margin-bottom: 5px;
+  font-weight: bold; }
+  .rn_OkcsSmartAssistant .rn_SchemaAttribute input {
+    margin-right: 5px;
+    vertical-align: middle;
+    float: left; }
+.rn_OkcsSmartAssistant .rn_SchemaAttributeValue {
+  margin-bottom: 30px; }
+.rn_OkcsSmartAssistant .rn_SectionTitle {
+  border-bottom: 1px solid #E2E2E0;
+  color: #666;
+  margin: 0 0 20px; }
+.rn_OkcsSmartAssistant .rn_AnswerInfo {
+  color: #666;
+  margin: 6px 0 20px;
+  padding-bottom: 10px; }
+.rn_OkcsSmartAssistant .rn_AnswerInfo_Top {
+  border-bottom: 1px solid #E2E2E0; }
+.rn_OkcsSmartAssistant .rn_AnswerInfo .rn_InfoLabel {
+  width: 40%;
+  display: inline-block;
+  font-weight: bold; }
+.rn_OkcsSmartAssistant .rn_AnswerText {
+  clear: both;
+  line-height: 1.4em;
+  padding: 5px 0 15px; }
+.rn_OkcsSmartAssistant .rn_AnswerSolution iframe {
+  width: 100%;
+  min-height: 90%; }
+
+.rn_ExternalContent {
+  width: 100%;
+  min-height: 90%; }

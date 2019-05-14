@@ -1,0 +1,12 @@
+version: "1.0"
+requires:
+  jsModule:
+  - standard
+  - mobile
+attributes:
+  Total:
+    name: Total
+    type: string
+    description: Total dollar amount for a donation.
+    default: "0"
+    required: true

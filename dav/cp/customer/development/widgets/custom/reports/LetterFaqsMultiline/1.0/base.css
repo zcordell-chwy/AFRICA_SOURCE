@@ -1,0 +1,6 @@
+/**
+ * base.css: Base CSS for LetterFaqsMultiline
+ */
+.rn_LetterFaqsMultiline.rn_Multiline .accordion-title{
+	cursor: pointer;
+}

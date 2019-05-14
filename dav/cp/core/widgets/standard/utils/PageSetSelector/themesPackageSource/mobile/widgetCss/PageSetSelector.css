@@ -1,0 +1,11 @@
+.rn_PageSetSelector {
+  display: block;
+  margin: 8px 0; }
+  .rn_PageSetSelector .rn_Bold {
+    font-weight: bold; }
+  @media screen and (max-width: 720px) {
+    .rn_PageSetSelector a, .rn_PageSetSelector span.rn_Bold {
+      display: block; } }
+  @media screen and (max-width: 720px) {
+    .rn_PageSetSelector .rn_PageSetDivider {
+      display: none; } }

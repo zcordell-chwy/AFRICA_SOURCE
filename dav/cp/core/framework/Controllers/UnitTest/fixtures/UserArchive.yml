@@ -1,0 +1,6 @@
+type: SocialUser
+object:
+  DisplayName: Archived User
+  StatusWithType.Status.LookupName: Archive
+  Contact:
+    fixture: ContactArchive

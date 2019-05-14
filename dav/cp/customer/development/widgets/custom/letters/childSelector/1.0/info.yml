@@ -1,0 +1,24 @@
+version: "1.0"
+requires:
+  jsModule:
+  - standard
+  - mobile
+attributes:
+  default_ajax_endpoint:
+    name: default_ajax_endpoint
+    type: ajax
+    description: Default AJAX endpoint
+    default: /ci/ajax/widget
+    required: false
+  contactId:
+    name: contactId
+    type: int
+    description: Contact Id
+    default: ~
+    required: false
+  childId:
+    name: childId
+    type: int
+    description: Child Id
+    default: ~
+    required: false

@@ -1,0 +1,43 @@
+.rn_MobileProductCategoryInput {
+  /* Dialog styling */ }
+  .rn_MobileProductCategoryInput.rn_HideEmpty {
+    visibility: hidden; }
+  .rn_MobileProductCategoryInput .rn_Label {
+    font-weight: bold;
+    margin-bottom: 2px; }
+  .rn_MobileProductCategoryInput.rn_Input, .rn_MobileProductCategoryInput.rn_PanelContent {
+    padding: 0; }
+  .rn_MobileProductCategoryInput.rn_Input {
+    margin-bottom: 0.5em; }
+    .rn_MobileProductCategoryInput.rn_Input .rn_Selected {
+      background-color: rgba(56, 121, 217, 0.6); }
+    .rn_MobileProductCategoryInput.rn_Input .rn_Parent, .rn_MobileProductCategoryInput.rn_Input .rn_SubItem {
+      border-bottom: 1px solid #DDD; }
+    .rn_MobileProductCategoryInput.rn_Input .rn_Parent label, .rn_MobileProductCategoryInput.rn_Input .rn_SubItem label {
+      color: #000;
+      display: block;
+      font-size: 1.5em;
+      font-weight: bold;
+      line-height: 1.2em;
+      padding: 20px 16px;
+      width: auto; }
+    .rn_MobileProductCategoryInput.rn_Input label.rn_HasChildren:after {
+      font-family: 'FontAwesome';
+      line-height: 1em;
+      margin-left: 6px;
+      content: "\f105"; }
+  .rn_MobileProductCategoryInput .rn_LoadingIcon:before {
+    font-family: 'FontAwesome';
+    line-height: 1em;
+    margin-right: 6px;
+    content: "\f110";
+    -webkit-animation: fa-spin 2s infinite linear;
+    -moz-animation: fa-spin 2s infinite linear;
+    animation: fa-spin 2s infinite linear;
+    display: block;
+    font-size: 1em;
+    position: relative;
+    text-align: center;
+    right: 10px;
+    position: absolute;
+    color: #333; }

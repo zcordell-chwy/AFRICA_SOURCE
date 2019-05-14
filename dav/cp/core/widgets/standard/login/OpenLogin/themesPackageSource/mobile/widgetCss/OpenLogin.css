@@ -1,0 +1,77 @@
+.rn_OpenLogin {
+  position: relative;
+  *zoom: 1; }
+  .rn_OpenLogin:before, .rn_OpenLogin:after {
+    content: " ";
+    display: table; }
+  .rn_OpenLogin:after {
+    clear: both; }
+  .rn_OpenLogin .rn_ActionArea {
+    clear: both;
+    margin-top: 20px; }
+    @media screen and (max-width: 720px) {
+      .rn_OpenLogin .rn_ActionArea {
+        opacity: 1;
+        background: #FFF;
+        padding: 10px;
+        z-index: 10;
+        border-radius: 0.1875em;
+        border: 1px solid #999;
+        margin: 0 5%;
+        width: 90%; } }
+  .rn_OpenLogin input {
+    margin: 0 auto 18px;
+    min-width: 210px; }
+    .rn_OpenLogin input[type="text"] {
+      min-width: 210px; }
+  .rn_OpenLogin .rn_Explanation {
+    background-color: #EBEFF5;
+    border: 1px solid #CCC;
+    font-size: 1.11em;
+    line-height: 1.2em;
+    padding: 10px;
+    position: relative;
+    text-shadow: 1px 0 0 #FFF; }
+  .rn_OpenLogin .rn_Header {
+    color: #404040;
+    display: block;
+    font-size: 1em;
+    font-weight: bold;
+    line-height: 1.3em;
+    margin: 4px 0 10px;
+    text-shadow: 0 1px 0 #FFF; }
+    .rn_OpenLogin .rn_Header em {
+      left: -18px;
+      height: 40px;
+      position: absolute;
+      top: -18px;
+      width: 22px; }
+  .rn_OpenLogin .rn_LoginProvider {
+    -webkit-transition: box-shadow 0.5s;
+    -moz-transition: box-shadow 0.5s;
+    transition: box-shadow 0.5s;
+    float: left;
+    margin: 4px 6px 8px;
+    width: 120px;
+    border: 1px solid #DDD;
+    border-radius: 3px;
+    text-align: center;
+    padding: 6px; }
+  .rn_OpenLogin .rn_HighContrastMode .rn_Header em {
+    display: none; }
+  .rn_OpenLogin .rn_HighContrastMode .rn_LoginProvider {
+    color: #000;
+    font-size: 1.4em;
+    height: 22px;
+    padding: 10px 0 4px 30px;
+    text-decoration: none;
+    width: 100px; }
+  .rn_OpenLogin.rn_OpenLoginDialog .rn_ActionArea {
+    position: static; }
+  .rn_OpenLogin.rn_OpenLoginDialog .rn_EmailLabel {
+    display: block;
+    font-weight: bold;
+    margin-top: 20px; }
+  .rn_OpenLogin.rn_OpenLoginDialog .rn_EmailInput {
+    margin-bottom: 8px;
+    width: 92%; }

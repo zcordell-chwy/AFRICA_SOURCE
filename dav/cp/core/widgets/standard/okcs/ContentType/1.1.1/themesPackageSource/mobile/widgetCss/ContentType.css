@@ -1,0 +1,14 @@
+.rn_ContentType li {
+  border-bottom: 1px solid #DDD;
+  cursor: pointer;
+  padding: 0.5em; }
+  .rn_ContentType li a {
+    color: #FFF;
+    display: block;
+    margin: 0;
+    padding: 10px 30px 10px 8px;
+    text-decoration: none;
+    font-size: 1em;
+    line-height: 1em; }
+.rn_ContentType .rn_Selected {
+  font-weight: bold; }

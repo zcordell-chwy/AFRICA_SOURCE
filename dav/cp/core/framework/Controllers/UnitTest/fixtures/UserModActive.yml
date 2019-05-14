@@ -1,0 +1,7 @@
+type: SocialUser
+object:
+  DisplayName: moderator
+  StatusWithType.Status.LookupName: Active
+  Contact:
+    fixture: ContactModActive
+  moderatorType: moderator

@@ -1,0 +1,78 @@
+.rn_UserActivity {
+  margin-bottom: 1em; }
+  .rn_UserActivity .rn_ActionLabel {
+    font-size: 1.2em; }
+    .rn_UserActivity .rn_ActionLabel::before {
+      border-radius: 50%;
+      padding: 10px;
+      background: #DDD;
+      border: 1px solid #dadada; }
+  .rn_UserActivity .rn_Activity {
+    margin-bottom: 0.5em; }
+    .rn_UserActivity .rn_Activity .rn_ActivityTitle {
+      *zoom: 1;
+      display: block; }
+      .rn_UserActivity .rn_Activity .rn_ActivityTitle:before, .rn_UserActivity .rn_Activity .rn_ActivityTitle:after {
+        content: " ";
+        display: table; }
+      .rn_UserActivity .rn_Activity .rn_ActivityTitle:after {
+        clear: both; }
+      .rn_UserActivity .rn_Activity .rn_ActivityTitle .rn_ActionLabel {
+        font-size: 1.2em; }
+    .rn_UserActivity .rn_Activity .rn_Time {
+      color: #5e5e5e;
+      font-size: 0.75em; }
+    .rn_UserActivity .rn_Activity .rn_ActivityContent {
+      *zoom: 1;
+      display: block;
+      clear: both;
+      padding: 0.5em;
+      background-color: #f4f4f4;
+      border: 1px solid #ececec; }
+      .rn_UserActivity .rn_Activity .rn_ActivityContent:before, .rn_UserActivity .rn_Activity .rn_ActivityContent:after {
+        content: " ";
+        display: table; }
+      .rn_UserActivity .rn_Activity .rn_ActivityContent:after {
+        clear: both; }
+      .rn_UserActivity .rn_Activity .rn_ActivityContent .rn_ParentContent {
+        *zoom: 1;
+        display: block; }
+        .rn_UserActivity .rn_Activity .rn_ActivityContent .rn_ParentContent:before, .rn_UserActivity .rn_Activity .rn_ActivityContent .rn_ParentContent:after {
+          content: " ";
+          display: table; }
+        .rn_UserActivity .rn_Activity .rn_ActivityContent .rn_ParentContent:after {
+          clear: both; }
+        .rn_UserActivity .rn_Activity .rn_ActivityContent .rn_ParentContent .rn_Info {
+          float: left;
+          display: block;
+          margin-right: 2.35765%;
+          width: 82.94039%; }
+          .rn_UserActivity .rn_Activity .rn_ActivityContent .rn_ParentContent .rn_Info:last-child {
+            margin-right: 0; }
+      .rn_UserActivity .rn_Activity .rn_ActivityContent .rn_SubContent {
+        *zoom: 1;
+        display: block;
+        margin-left: 17.05961%;
+        margin-top: 1em; }
+        .rn_UserActivity .rn_Activity .rn_ActivityContent .rn_SubContent:before, .rn_UserActivity .rn_Activity .rn_ActivityContent .rn_SubContent:after {
+          content: " ";
+          display: table; }
+        .rn_UserActivity .rn_Activity .rn_ActivityContent .rn_SubContent:after {
+          clear: both; }
+        .rn_UserActivity .rn_Activity .rn_ActivityContent .rn_SubContent .rn_Info {
+          float: left;
+          display: block;
+          margin-right: 2.35765%;
+          width: 82.94039%; }
+          .rn_UserActivity .rn_Activity .rn_ActivityContent .rn_SubContent .rn_Info:last-child {
+            margin-right: 0; }
+      .rn_UserActivity .rn_Activity .rn_ActivityContent .rn_ActivityUser {
+        float: left;
+        display: block;
+        margin-right: 2.35765%;
+        width: 14.70196%; }
+        .rn_UserActivity .rn_Activity .rn_ActivityContent .rn_ActivityUser:last-child {
+          margin-right: 0; }
+      .rn_UserActivity .rn_Activity .rn_ActivityContent .rn_Info {
+        margin-right: 0;
+        word-wrap: break-word; }

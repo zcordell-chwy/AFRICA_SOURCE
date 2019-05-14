@@ -1,0 +1,101 @@
+.rn_MobileSourceProductCategorySearchFilter {
+  padding-top: 4px;
+  @-webkit-keyframes blink {
+    from {
+      text-shadow: 0 -1px 3px rgba(255, 255, 255, 0.7); }
+
+    to {
+      text-shadow: 0 1px 3px rgba(255, 255, 255, 0.7); } }
+
+  /* Dialog styling */ }
+  .rn_MobileSourceProductCategorySearchFilter.rn_HideEmpty {
+    visibility: hidden; }
+  .rn_MobileSourceProductCategorySearchFilter .rn_FilterDisplay {
+    overflow: visible;
+    border-top: 1px solid #DDD; }
+  .rn_MobileSourceProductCategorySearchFilter .rn_LinkOpener {
+    color: #FFF;
+    display: inline-block;
+    font-weight: bold;
+    padding: 8px 0; }
+    .rn_MobileSourceProductCategorySearchFilter .rn_LinkOpener:after {
+      font-family: 'FontAwesome';
+      line-height: 1em;
+      margin-left: 6px;
+      content: "\f101"; }
+  .rn_MobileSourceProductCategorySearchFilter .rn_Opener {
+    -webkit-animation-name: blink;
+    -webkit-animation-duration: 2s;
+    -webkit-animation-iteration-count: 4;
+    -webkit-animation-direction: alternate;
+    -webkit-animation-timing-function: ease-in-out; }
+  .rn_MobileSourceProductCategorySearchFilter .rn_Heading .rn_Remove {
+    color: #FFF;
+    font-weight: normal;
+    text-shadow: none;
+    float: right;
+    margin-top: 8px; }
+    .rn_MobileSourceProductCategorySearchFilter .rn_Heading .rn_Remove:before {
+      font-family: 'FontAwesome';
+      line-height: 1em;
+      margin-right: 6px;
+      content: "\f00d"; }
+  .rn_MobileSourceProductCategorySearchFilter .rn_Filters {
+    *zoom: 1; }
+    .rn_MobileSourceProductCategorySearchFilter .rn_Filters:before, .rn_MobileSourceProductCategorySearchFilter .rn_Filters:after {
+      content: " ";
+      display: table; }
+    .rn_MobileSourceProductCategorySearchFilter .rn_Filters:after {
+      clear: both; }
+  .rn_MobileSourceProductCategorySearchFilter .rn_FilterItem {
+    border-width: 0 12px 0 4px;
+    color: #FFF;
+    float: left;
+    font-weight: normal;
+    height: 33px;
+    max-width: 200px;
+    overflow: hidden;
+    padding: 8px 12px 2px 4px;
+    text-decoration: none;
+    text-overflow: ellipsis;
+    white-space: nowrap; }
+  .rn_MobileSourceProductCategorySearchFilter .rn_FilterItem.rn_Selected {
+    color: #FFF;
+    font-weight: bold;
+    text-shadow: 0 1px 1px rgba(0, 0, 0, 0.7); }
+  .rn_MobileSourceProductCategorySearchFilter.rn_Input, .rn_MobileSourceProductCategorySearchFilter.rn_PanelContent {
+    margin: 0;
+    padding: 0;
+    width: auto; }
+  .rn_MobileSourceProductCategorySearchFilter.rn_Input .rn_Selected {
+    background-color: rgba(56, 121, 217, 0.6); }
+  .rn_MobileSourceProductCategorySearchFilter.rn_Input .rn_Parent, .rn_MobileSourceProductCategorySearchFilter.rn_Input .rn_SubItem {
+    border-bottom: 1px solid #DDD; }
+  .rn_MobileSourceProductCategorySearchFilter.rn_Input label {
+    color: #333;
+    display: block;
+    font-size: 1.5em;
+    font-weight: bold;
+    line-height: 1.2em;
+    padding: 20px 16px;
+    width: auto; }
+    .rn_MobileSourceProductCategorySearchFilter.rn_Input label.rn_HasChildren:after {
+      font-family: 'FontAwesome';
+      line-height: 1em;
+      margin-left: 6px;
+      content: "\f105"; }
+  .rn_MobileSourceProductCategorySearchFilter .rn_LoadingIcon:before {
+    font-family: 'FontAwesome';
+    line-height: 1em;
+    margin-right: 6px;
+    content: "\f110";
+    -webkit-animation: fa-spin 2s infinite linear;
+    -moz-animation: fa-spin 2s infinite linear;
+    animation: fa-spin 2s infinite linear;
+    display: block;
+    font-size: 1em;
+    position: relative;
+    text-align: center;
+    right: 10px;
+    position: absolute;
+    color: #333; }

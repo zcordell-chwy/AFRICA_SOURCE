@@ -1,0 +1,35 @@
+version: "1.0.1"
+requires:
+  framework: ["3.0", "3.1", "3.2"]
+  jsModule: [mobile]
+attributes:
+  report_page_url:
+    name: rn:msg:REPORT_PAGE_LBL
+    type: STRING
+    description: rn:msg:PG_DISP_BTN_CLICKED_LEAVE_BLANK_MSG
+    default: /app/answers/list
+  search_icon_path:
+    name: rn:msg:SEARCH_ICON_PATH_CMD
+    type: filepath
+    description: rn:msg:LOC_IMG_FILE_SRCH_ICON_UNSPEC_SRCH_MSG
+  clear_text_icon_path:
+    name: rn:msg:CLEAR_TEXT_ICON_PATH_CMD
+    type: filepath
+    description: rn:msg:LOC_IMG_PRESSED_CLEARS_TXT_SRCH_LBL
+    default: images/x.png
+  label_clear_text_icon:
+    name: rn:msg:CLEAR_TEXT_ICON_LABEL_CMD
+    type: STRING
+    description: rn:msg:LABEL_TEXT_ICON_SCREEN_READERS_LBL
+    default: rn:msg:CLEAR_THE_TEXT_CMD
+  label_search:
+    name: rn:msg:LABEL_SEARCH_LBL
+    type: STRING
+    description: rn:msg:ALT_TXT_SRCH_IMG_SRCH_ICONPATH_MSG
+    default: rn:msg:SEARCH_CMD
+  label_hint:
+    name: rn:msg:HINT_LABEL_LBL
+    type: STRING
+    description: rn:msg:LABEL_DISP_SRCH_FLDS_INIT_HINT_VAL_LBL
+info:
+  description: rn:msg:WIDGET_PROV_SRCH_FLD_INTENDED_MSG

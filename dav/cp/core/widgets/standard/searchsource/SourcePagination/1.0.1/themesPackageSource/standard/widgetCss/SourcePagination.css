@@ -1,0 +1,33 @@
+.rn_SourcePagination li {
+    display: inline;
+    list-style-type: none;
+}
+.rn_SourcePagination a {
+    color: #222;
+    text-decoration: none;
+    font-weight: bold;
+}
+.rn_SourcePagination .rn_CurrentPage {
+    font-weight: normal;
+    cursor: default;
+}
+
+.rn_SourcePagination .rn_PreviousPage {
+    margin-right: .7em;
+}
+
+.rn_SourcePagination .rn_PreviousPage:before {
+    font-family: 'FontAwesome';
+    margin-right: 6px;
+    content: "\f053"; /* icon-chevron-left */
+}
+
+.rn_SourcePagination .rn_NextPage {
+    margin-left: .7em;
+}
+
+.rn_SourcePagination .rn_NextPage:after {
+    font-family: 'FontAwesome';
+    margin-left: 6px;
+    content: "\f054"; /* icon-chevron-right */
+}

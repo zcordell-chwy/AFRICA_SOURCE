@@ -1,0 +1,67 @@
+version: "1.0"
+requires:
+  jsModule:
+  - standard
+  - mobile
+attributes:
+  getLineItemsAJAX:
+    name: getLineItemsAJAX
+    type: ajax
+    description: Retrieves all line items from the server.
+    default: /ci/ajax/widget
+    required: false
+  initiateCheckoutAJAX:
+    name: initiateCheckoutAJAX
+    type: ajax
+    description: Initiates a checkout of the current items in the shopping cart's
+      session storage.
+    default: /ci/ajax/widget
+    required: false
+  removeLineItemFromShoppingCartSessionDataAJAX:
+    name: removeLineItemFromShoppingCartSessionDataAJAX
+    type: ajax
+    description: Removes a line item from the shopping cart's session storage.
+    default: /ci/ajax/widget
+    required: false
+  addLineItemsToShoppingCartSessionDataAJAX:
+    name: addLineItemsToShoppingCartSessionDataAJAX
+    type: ajax
+    description: Adds one or more line items to the shopping cart's session storage.
+    default: /ci/ajax/widget
+    required: false
+  updateLineItemQtyInShoppingCartSessionDataAJAX:
+    name: updateLineItemQtyInShoppingCartSessionDataAJAX
+    type: ajax
+    description: Updates a line item's quantity in the shopping cart's session storage.
+    default: /ci/ajax/widget
+    required: false
+  updateLineItemCustomDataInShoppingCartSessionDataAJAX:
+    name: updateLineItemCustomDataInShoppingCartSessionDataAJAX
+    type: ajax
+    description: Updates a line item's custom data in the shopping cart's session storage.
+    default: /ci/ajax/widget
+    required: false
+  id:
+    name: id
+    type: string
+    description: The identifier for this shopping cart's data in session storage.
+    default: ""
+    required: true
+  header_text:
+    name: header_text
+    type: string
+    description: The text to display in the shopping cart header.
+    default: 'Shopping Cart'
+    required: false
+  checkout_button_label:
+    name: checkout_button_label
+    type: string
+    description: The label for the checkout button.
+    default: 'Checkout'
+    required: false
+  loading_msg:
+    name: loading_msg
+    type: string
+    description: The message to display next to the loading indicator gif.
+    default: 'Loading cart data...'
+    required: false

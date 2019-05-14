@@ -1,0 +1,155 @@
+.rn_ModerationGrid .rn_Highlight {
+  font-style: normal;
+  font-weight: bold; }
+.rn_ModerationGrid table {
+  table-layout: auto; }
+  .rn_ModerationGrid table th.yui3-datatable-header {
+    vertical-align: middle; }
+    .rn_ModerationGrid table th.yui3-datatable-header div {
+      padding-right: 4px;
+      white-space: nowrap; }
+  .rn_ModerationGrid table th.rn_HideText {
+    text-indent: -9999px; }
+
+.rn_ModerationGrid.rn_SocialQuestion table th.rn_GridColumn_4:before {
+  font-family: 'FontAwesome';
+  margin-right: 6px;
+  content: "\f024";
+  color: #F00;
+  left: 0;
+  font-size: 1.2em; }
+.rn_ModerationGrid.rn_SocialQuestion table th.rn_GridColumn_4 .yui3-datatable-sort-indicator {
+  padding-left: 2px; }
+.rn_ModerationGrid.rn_SocialQuestion table th div {
+  display: inline; }
+
+.rn_ModerationGrid.rn_SocialComment table th {
+  white-space: nowrap; }
+  .rn_ModerationGrid.rn_SocialComment table th.rn_GridColumn_5:before {
+    font-family: 'FontAwesome';
+    margin-right: 6px;
+    content: "\f024";
+    color: #F00;
+    left: 0;
+    font-size: 1.2em; }
+  .rn_ModerationGrid.rn_SocialComment table th.rn_GridColumn_5 .yui3-datatable-sort-indicator {
+    padding-left: 2px; }
+  .rn_ModerationGrid.rn_SocialComment table th div {
+    display: inline; }
+.rn_ModerationGrid.rn_SocialComment table td p {
+  margin: 0; }
+
+.rn_ModerationGrid.rn_SocialUser table th.rn_GridColumn_6 {
+  position: relative; }
+  .rn_ModerationGrid.rn_SocialUser table th.rn_GridColumn_6:before {
+    font-family: 'FontAwesome';
+    margin-right: 6px;
+    content: "\f0f6";
+    color: #3B6DB1;
+    left: 0;
+    font-size: 1.2em; }
+  .rn_ModerationGrid.rn_SocialUser table th.rn_GridColumn_6 .yui3-datatable-sort-indicator {
+    padding-left: 2px; }
+.rn_ModerationGrid.rn_SocialUser table th.rn_GridColumn_7 {
+  position: relative; }
+  .rn_ModerationGrid.rn_SocialUser table th.rn_GridColumn_7:before {
+    font-family: 'FontAwesome';
+    margin-right: 6px;
+    content: "\f075";
+    color: #3B6DB1;
+    left: 0;
+    font-size: 1.2em; }
+  .rn_ModerationGrid.rn_SocialUser table th.rn_GridColumn_7 .yui3-datatable-sort-indicator {
+    padding-left: 2px; }
+.rn_ModerationGrid.rn_SocialUser table th.rn_GridColumn_8 {
+  position: relative;
+  position: relative; }
+  .rn_ModerationGrid.rn_SocialUser table th.rn_GridColumn_8:before {
+    font-family: 'FontAwesome';
+    margin-right: 6px;
+    content: "\f0f6";
+    color: #3B6DB1;
+    left: 0;
+    font-size: 1.2em; }
+  .rn_ModerationGrid.rn_SocialUser table th.rn_GridColumn_8:after {
+    font-family: 'FontAwesome';
+    margin-left: 6px;
+    content: "\f05e";
+    color: #F00;
+    margin-left: 0;
+    position: absolute;
+    left: 0.4em;
+    top: 40%;
+    font-size: 0.8em;
+    line-height: 1.2em; }
+  .rn_ModerationGrid.rn_SocialUser table th.rn_GridColumn_8 .yui3-datatable-sort-indicator {
+    padding-left: 2px; }
+.rn_ModerationGrid.rn_SocialUser table th.rn_GridColumn_9 {
+  position: relative; }
+  .rn_ModerationGrid.rn_SocialUser table th.rn_GridColumn_9:before {
+    font-family: 'FontAwesome';
+    margin-right: 6px;
+    content: "\f075";
+    color: #3B6DB1;
+    left: 0;
+    font-size: 1.2em; }
+  .rn_ModerationGrid.rn_SocialUser table th.rn_GridColumn_9:after {
+    font-family: 'FontAwesome';
+    margin-left: 6px;
+    content: "\f05e";
+    color: #F00;
+    margin-left: 0;
+    position: absolute;
+    left: 0.4em;
+    top: 40%;
+    font-size: 0.8em;
+    line-height: 1.2em; }
+  .rn_ModerationGrid.rn_SocialUser table th.rn_GridColumn_9 .yui3-datatable-sort-indicator {
+    padding-left: 2px; }
+.rn_ModerationGrid.rn_SocialUser table th.rn_GridColumn_10 {
+  position: relative;
+  position: relative; }
+  .rn_ModerationGrid.rn_SocialUser table th.rn_GridColumn_10:before {
+    font-family: 'FontAwesome';
+    margin-right: 6px;
+    content: "\f0f6";
+    color: #3B6DB1;
+    left: 0;
+    font-size: 1.2em; }
+  .rn_ModerationGrid.rn_SocialUser table th.rn_GridColumn_10:after {
+    font-family: 'FontAwesome';
+    margin-left: 6px;
+    content: "\f024";
+    color: #F00;
+    margin-left: 0;
+    position: absolute;
+    left: 0.4em;
+    top: 40%;
+    font-size: 0.8em;
+    line-height: 1.2em; }
+  .rn_ModerationGrid.rn_SocialUser table th.rn_GridColumn_10 .yui3-datatable-sort-indicator {
+    padding-left: 2px; }
+.rn_ModerationGrid.rn_SocialUser table th.rn_GridColumn_11 {
+  position: relative; }
+  .rn_ModerationGrid.rn_SocialUser table th.rn_GridColumn_11:before {
+    font-family: 'FontAwesome';
+    margin-right: 6px;
+    content: "\f075";
+    color: #3B6DB1;
+    left: 0;
+    font-size: 1.2em; }
+  .rn_ModerationGrid.rn_SocialUser table th.rn_GridColumn_11:after {
+    font-family: 'FontAwesome';
+    margin-left: 6px;
+    content: "\f024";
+    color: #F00;
+    margin-left: 0;
+    position: absolute;
+    left: 0.4em;
+    top: 40%;
+    font-size: 0.8em;
+    line-height: 1.2em; }
+  .rn_ModerationGrid.rn_SocialUser table th.rn_GridColumn_11 .yui3-datatable-sort-indicator {
+    padding-left: 2px; }
+.rn_ModerationGrid.rn_SocialUser table th div {
+  display: inline; }

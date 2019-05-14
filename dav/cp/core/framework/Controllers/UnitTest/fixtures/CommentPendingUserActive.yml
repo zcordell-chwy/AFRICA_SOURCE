@@ -1,0 +1,8 @@
+type: SocialQuestionComment
+object:
+  CreatedBySocialUser:
+    fixture: UserActive1
+  Body: Comment by an active user.
+  StatusWithType.Status.LookupName: Pending
+  BodyContentType.LookupName: text/x-markdown
+

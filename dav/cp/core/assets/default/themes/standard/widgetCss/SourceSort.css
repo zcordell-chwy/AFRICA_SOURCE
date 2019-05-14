@@ -1,0 +1,68 @@
+.rn_SourceSort {
+  float: left;
+  display: block;
+  margin-right: 2.35765%;
+  width: 23.23176%; }
+  .rn_SourceSort:last-child {
+    margin-right: 0; }
+  @media screen and (max-width: 720px) {
+    .rn_SourceSort {
+      *zoom: 1;
+      display: block;
+      margin-left: 17.05961%;
+      float: left;
+      display: block;
+      margin-right: 2.35765%;
+      width: 65.88078%;
+      margin-bottom: 1em; }
+      .rn_SourceSort:before, .rn_SourceSort:after {
+        content: " ";
+        display: table; }
+      .rn_SourceSort:after {
+        clear: both; }
+      .rn_SourceSort:last-child {
+        margin-right: 0; } }
+  @media screen and (max-width: 400px) {
+    .rn_SourceSort {
+      *zoom: 1;
+      display: block;
+      margin-left: 0%;
+      float: left;
+      display: block;
+      margin-right: 2.35765%;
+      width: 100%; }
+      .rn_SourceSort:before, .rn_SourceSort:after {
+        content: " ";
+        display: table; }
+      .rn_SourceSort:after {
+        clear: both; }
+      .rn_SourceSort:last-child {
+        margin-right: 0; } }
+  .rn_SourceSort select {
+    -webkit-transition: all 0.2s ease-in-out;
+    -moz-transition: all 0.2s ease-in-out;
+    transition: all 0.2s ease-in-out;
+    width: 100%;
+    border: 1px solid #999;
+    letter-spacing: 1.1px;
+    cursor: pointer;
+    padding: 0.5em 0.2em;
+    margin-bottom: 0; }
+    .rn_SourceSort select:hover, .rn_SourceSort select:focus {
+      box-shadow: none;
+      background-color: #DDD; }
+    .rn_SourceSort select::-ms-expand {
+      height: 0;
+      width: 0;
+      border-color: transparent;
+      border-style: solid;
+      border-width: 0.5em;
+      border-top-color: #000;
+      background-color: rgba(255, 0, 0, 0);
+      content: "";
+      margin-top: 4px;
+      margin-bottom: -4px;
+      margin-right: 2px; }
+    .rn_SourceSort select option {
+      letter-spacing: 1.1px;
+      background-color: #fff; }

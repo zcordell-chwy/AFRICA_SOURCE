@@ -1,0 +1,136 @@
+@import 'widget-includes';
+
+.rn_Facet {
+    .rn_ClearContainer {
+        margin-left: 3px;
+    }
+
+    .rn_ClearFacets {
+        font-weight: normal;
+        color: #00C;
+
+        &:hover {
+            cursor: pointer;
+            text-decoration: underline;
+        }
+    }
+
+    .rn_FacetExpanded {
+        @include icon($fa-var-minus-square);
+    }
+    
+    .rn_FacetCollapsed {
+        @include icon($fa-var-plus-square);
+    }
+
+    .rn_FacetExpanded, .rn_FacetCollapsed {
+        display: inline-block;
+        margin-right: 3px;
+        vertical-align: top;
+        
+        &:before {
+            margin-right: 0;
+        }
+    }
+    
+    .rn_Content {
+        ul li {
+            list-style-type: none;
+            padding-left: 13px;
+            font-weight: bold;
+        }
+
+        table {
+            border-spacing: 0;
+            margin-left: 10px;
+        }
+    }
+
+    .rn_FacetsTitle {
+        background: lighten($hero-background, 10%);
+        color: $hero-color;
+        font-weight: normal;
+        border: 1px solid #CCC;
+        border-bottom: 0;
+        padding: 7px;
+
+        a {
+            color: $hero-color;
+        }
+    }
+
+    .rn_FacetsList {
+        border: 1px solid #BEBEBE;
+        padding: 10px;
+        overflow: auto;
+    }
+
+    .rn_ActiveFacet {
+        background: #EBEFF5;
+        border: 1px solid #CCC;
+        padding: 10px;
+        font-size: $form-font-size;
+        font-family: $form-font-family;
+        font-weight: bold;
+    }
+
+    .rn_FacetLink {
+        padding: 3px;
+        cursor: pointer;
+        display: block;
+        font-weight: lighter;
+        text-decoration: none;
+    }
+
+    .rn_FacetText {
+        display: inline-block;
+        width: 80%;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+
+    .rn_ActiveFacet .rn_FacetText {
+        display: inline-block;
+        width: 70%;
+        overflow: initial;
+        text-overflow: initial;
+        word-wrap: break-word;
+        white-space: pre-line;
+        @include media($rn-large) {
+            width: 58%;
+        }
+        @include media($rn-medium) {
+            width: 50%;
+        }
+        @include media($rn-small) {
+            width: 40%;
+        }
+    }
+    
+    .rn_ActiveFacet .rn_FacetClearIcon {
+        @include icon($fa-var-times-circle, after);
+
+        &:after {
+            display: inline-block;
+            float: right;
+            margin-left: 0;
+        }
+    }
+}
+
+.rn_CategoryExplorerExpanded {
+    @include icon($fa-var-minus-square);
+    display: inline-block;
+    margin-right: 3px;
+}
+
+.rn_CategoryExplorerCollapsed {
+    @include icon($fa-var-plus-square);
+    display: inline-block;
+    margin-right: 3px;
+}
+
+.rn_FacetTreeIndent {
+    padding-left: 8px;
+}

@@ -1,0 +1,31 @@
+<rn:block id='lineItem'>
+	<div class="rn_LineItemTitleContainer">
+		<span class="rn_LineItemTitle"><%= merch.title %></span>
+	</div>
+	<div class="rn_LineItemOneTimeAmountContainer rn_LineItemAmountContainer">
+		<span class="rn_LineItemAmountLabel">One Time:</span>
+		<input type="text" class="rn_LineItemOneTimeAmount rn_LineItemAmount" value="<%= formatPrice(customData.amountOneTime, false) %>" />
+	</div>
+	<% /* Only allow monthly donations for funds, not individual missionaries. */ %>
+	<% if(customData.donationType === "fund"){ %>
+	<div class="rn_LineItemMonthlyAmountContainer rn_LineItemAmountContainer">
+		<span class="rn_LineItemAmountLabel">Monthly:</span>
+		<input type="text" class="rn_LineItemMonthlyAmount rn_LineItemAmount" value="<%= formatPrice(customData.amountMonthly, false) %>" />
+	</div>
+	<% }else{ %>
+	<div class="rn_LineItemMonthlyAmountContainer rn_LineItemAmountContainer rn_HiddenLineItemContainer">
+		<span class="rn_LineItemAmountLabel">Monthly:</span>
+		<input type="text" class="rn_LineItemMonthlyAmount rn_LineItemAmount" value="<%= formatPrice(customData.amountMonthly, false) %>" />
+	</div>
+	<% } %>
+	<div class="rn_LineItemPriceContainer">
+			<span class="rn_LineItemPrice"><%= formatPrice(merch.price) %></span>
+		</div>
+	<div class="rn_LineItemQuantityContainer">
+			<span>Qty:&nbsp;</span>
+			<input type="text" class="rn_LineItemQuantity" value="<%= quantity %>" />
+		</div>
+	<div class="rn_LineItemRemoveLinkContainer">
+		<a href="javascript: void(0)" class="rn_LineItemRemoveLink"><i class="fa fa-times"></i></a>
+	</div>
+</rn:block>

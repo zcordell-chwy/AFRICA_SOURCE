@@ -1,0 +1,8 @@
+type: SocialQuestion
+object:
+  CreatedBySocialUser:
+    fixture: UserActive2
+  Subject: Question with category assoc
+  Body: Test question body
+  StatusWithType.Status.LookupName: Active
+  Category: 70

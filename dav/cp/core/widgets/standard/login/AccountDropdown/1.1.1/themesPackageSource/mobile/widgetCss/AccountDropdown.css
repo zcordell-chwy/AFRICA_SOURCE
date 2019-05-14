@@ -1,0 +1,119 @@
+.rn_AccountDropdown {
+  *zoom: 1;
+  max-width: 100%; }
+  .rn_AccountDropdown:before, .rn_AccountDropdown:after {
+    content: " ";
+    display: table; }
+  .rn_AccountDropdown:after {
+    clear: both; }
+  .rn_AccountDropdown .rn_AccountDropdownParent {
+    -webkit-transition: all 0.2s ease-in-out;
+    -moz-transition: all 0.2s ease-in-out;
+    transition: all 0.2s ease-in-out;
+    float: right;
+    display: inline-block;
+    position: relative; }
+    .rn_AccountDropdown .rn_AccountDropdownParent > a {
+      min-width: 150px;
+      color: #FFF;
+      display: block;
+      font-size: 1em;
+      /* Used to resize the account dropdown link as
+               screen size changes */ }
+      @media screen and (max-width: 1088px) {
+        .rn_AccountDropdown .rn_AccountDropdownParent > a {
+          min-width: 0; } }
+    .rn_AccountDropdown .rn_AccountDropdownParent .rn_LoggedInUser, .rn_AccountDropdown .rn_AccountDropdownParent #rn_LoginLink, .rn_AccountDropdown .rn_AccountDropdownParent #rn_DisabledLoginLink {
+      background: #3873c4;
+      border-radius: 0.1875em;
+      padding: 0.5em 1em; }
+      .rn_AccountDropdown .rn_AccountDropdownParent .rn_LoggedInUser:hover, .rn_AccountDropdown .rn_AccountDropdownParent .rn_LoggedInUser:focus, .rn_AccountDropdown .rn_AccountDropdownParent #rn_LoginLink:hover, .rn_AccountDropdown .rn_AccountDropdownParent #rn_LoginLink:focus, .rn_AccountDropdown .rn_AccountDropdownParent #rn_DisabledLoginLink:hover, .rn_AccountDropdown .rn_AccountDropdownParent #rn_DisabledLoginLink:focus {
+        background: #4b80cb; }
+    .rn_AccountDropdown .rn_AccountDropdownParent #rn_LoginLink, .rn_AccountDropdown .rn_AccountDropdownParent #rn_DisabledLoginLink {
+      margin: 0.6em 0 0; }
+    .rn_AccountDropdown .rn_AccountDropdownParent .rn_LoggedInUser {
+      *zoom: 1;
+      margin-top: 0.7em;
+      padding: 0.4em 0.5em; }
+      .rn_AccountDropdown .rn_AccountDropdownParent .rn_LoggedInUser:before, .rn_AccountDropdown .rn_AccountDropdownParent .rn_LoggedInUser:after {
+        content: " ";
+        display: table; }
+      .rn_AccountDropdown .rn_AccountDropdownParent .rn_LoggedInUser:after {
+        clear: both; }
+      .rn_AccountDropdown .rn_AccountDropdownParent .rn_LoggedInUser .rn_AvatarHolder {
+        float: left; }
+      .rn_AccountDropdown .rn_AccountDropdownParent .rn_LoggedInUser .rn_DisplayName {
+        min-width: 100px;
+        max-width: 120px;
+        display: inline-block;
+        float: left;
+        overflow: hidden;
+        padding: 0 1em 0 0.2em;
+        position: relative;
+        text-align: right;
+        text-overflow: ellipsis;
+        white-space: nowrap; }
+        .rn_AccountDropdown .rn_AccountDropdownParent .rn_LoggedInUser .rn_DisplayName:after {
+          font-family: 'FontAwesome';
+          margin-left: 6px; }
+        .rn_AccountDropdown .rn_AccountDropdownParent .rn_LoggedInUser .rn_DisplayName:after {
+          content: "\f0d7";
+          margin-left: 4px;
+          position: absolute;
+          right: 0;
+          top: 0; }
+  .rn_AccountDropdown .rn_SubNavigation {
+    -webkit-transition: all 0.3s ease;
+    -moz-transition: all 0.3s ease;
+    transition: all 0.3s ease;
+    background: #FFF;
+    border: 1px solid #DDD;
+    border-radius: 0.1875em;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    opacity: 1;
+    right: 0;
+    top: 120%;
+    visibility: visible;
+    width: 250px; }
+    .rn_AccountDropdown .rn_SubNavigation.rn_ScreenReaderOnly {
+      opacity: 0;
+      visibility: hidden; }
+    .rn_AccountDropdown .rn_SubNavigation a {
+      display: block;
+      border-bottom: 1px solid #f1f1f1;
+      line-height: 0.9em;
+      padding: 12px;
+      /* Don't let hover background seep outside of parent's
+               border-radius. */ }
+      .rn_AccountDropdown .rn_SubNavigation a:first-child {
+        border-top-right-radius: 0.1875em;
+        border-top-left-radius: 0.1875em; }
+      .rn_AccountDropdown .rn_SubNavigation a:last-child {
+        border-bottom-right-radius: 0.1875em;
+        border-bottom-left-radius: 0.1875em; }
+      .rn_AccountDropdown .rn_SubNavigation a:hover, .rn_AccountDropdown .rn_SubNavigation a:focus {
+        background: #f2f2f2; }
+    .rn_AccountDropdown .rn_SubNavigation:before {
+      font-family: 'FontAwesome';
+      margin-right: 6px; }
+    .rn_AccountDropdown .rn_SubNavigation:before {
+      content: "\f0d8";
+      font-size: 2em;
+      position: absolute;
+      right: 6px;
+      top: -17px;
+      color: #FFF;
+      z-index: 1; }
+    .rn_AccountDropdown .rn_SubNavigation:after {
+      font-family: 'FontAwesome';
+      margin-left: 6px; }
+    .rn_AccountDropdown .rn_SubNavigation:after {
+      content: "\f0d8";
+      font-size: 2.1em;
+      position: absolute;
+      right: 11px;
+      top: -19px;
+      color: #DDD; }
+
+.rn_HighContrastMode .rn_AccountDropdown .rn_SubNavigation:before, .rn_HighContrastMode .rn_AccountDropdown .rn_SubNavigation:after {
+  content: none; }

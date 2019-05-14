@@ -1,0 +1,29 @@
+.rn_OkcsPagination li {
+  display: inline;
+  list-style-type: none; }
+.rn_OkcsPagination a {
+  font-size: 1.3em;
+  line-height: 2em; }
+.rn_OkcsPagination .rn_CurrentPage {
+  font-weight: normal;
+  cursor: default; }
+.rn_OkcsPagination .rn_PreviousPage {
+  margin-right: 0.7em; }
+  .rn_OkcsPagination .rn_PreviousPage:before {
+    font-family: 'FontAwesome';
+    line-height: 1em;
+    margin-right: 6px;
+    content: "\f053"; }
+  .rn_OkcsPagination .rn_PreviousPage:before {
+    font-family: 'FontAwesome';
+    margin-right: 6px; }
+.rn_OkcsPagination .rn_NextPage {
+  margin-left: 0.7em; }
+  .rn_OkcsPagination .rn_NextPage:after {
+    font-family: 'FontAwesome';
+    line-height: 1em;
+    margin-left: 6px;
+    content: "\f054"; }
+  .rn_OkcsPagination .rn_NextPage:after {
+    font-family: 'FontAwesome';
+    margin-left: 6px; }

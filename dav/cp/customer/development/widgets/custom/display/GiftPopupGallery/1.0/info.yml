@@ -1,0 +1,15 @@
+version: "1.0"
+requires:
+  jsModule:
+  - standard
+  - mobile
+  yui:
+  - selector-css3
+  - panel
+extends:
+  widget: custom/display/ItemPopupGallery
+  components:
+  - php
+  - view
+  - js
+  - css

@@ -1,0 +1,57 @@
+<rn:block id="preResultList"/>
+    <div class="rn_SearchResultTitle">
+        <div class="rn_SearchResultTitleAnswer"><%= title %></div>
+    </div>
+    <table>
+        <rn:block id="topResultList"/>
+            <% for (var i = 0; i < data.length; i++) { %>
+                <rn:block id="resultListItem">
+                    <tr>
+                        <td class="rn_SearchResultAnswer">
+                            <% if(data[i].type === 'template') {
+                                data[i].fileType = 'intent';
+                            }
+                            var fileCss = 'rn_ResultIcon rn_File_' + data[i].fileType.replace(new RegExp('-', 'g'), '_').toLowerCase(); %>
+                            <div class="rn_ResultElement">
+                                <span class="<%= fileCss %>"></span>
+                                <span class="rn_Element1">
+                                <% var fileType = data[i].fileType, type = data[i].type, typeOfFile;
+                                if(fileType) {
+                                    typeOfFile = fileType.toLowerCase().replace(new RegExp('-', 'g'), '_');
+                                }
+                                else if(type === 'template') {
+                                    typeOfFile = 'intent';
+                                } %>
+                                <span class="rn_SearchResultIcon rn_File_<%= typeOfFile %>">
+                                </span>
+                                    <% var dataHref = (data[i].href.indexOf('ci/okcs') > 0) ? data[i].href : answerPageUrl.concat(data[i].href); %>
+                                    <% var href = (data[i].href.indexOf('ci/okcs') > 0) ? data[i].dataHref : (answerPageUrl.concat(data[i].dataHref) + (session ? '/session/' + session : '')); %>
+                                    <a id="<%= widgetInstanceID + '_' + data[i].answerId %>" data-id="<%= data[i].docId %>" href="<%= href %>" data-href="<%= dataHref %>" data-url="<%= data[i].clickThroughUrl %>" data-isHighlighted="<%= data[i].isHighlightingEnabled %>">
+                                        <%= data[i].title %>
+                                    </a>
+                                </span>
+                                <% if(data[i].textElements && data[i].textElements.length > 0) { %>
+                                    <div class="rn_SearchResultExcerpt">
+                                    <% var excerptElement = ''; %>
+                                        <% for (var j = 0; j < data[i].textElements.length; j++) { %>
+                                            <% for (var k = 0; k < data[i].textElements[j].snippets.length; k++) {%>
+                                                <% var contentType = data[i].textElements[j].type, searchExcerpt; %>
+                                                <% if(type === 'template'&& contentType === 'HTML') { %>
+                                                    <% searchExcerpt = data[i].textElements[j].snippets[k].text; %>
+                                                <% } else{ %>
+                                                    <% searchExcerpt = this.yuiObj.Escape.html(data[i].textElements[j].snippets[k].text); %>
+                                                <% } %>
+                                                <% excerptElement += '<span class="rn_SnippetLevel' +  data[i].textElements[j].snippets[k].level + '">' + searchExcerpt + '</span>'; %>
+                                            <% } %>
+                                        <% } %>
+                                        <%= excerptElement %>
+                                    </div>
+                                <% } %>
+                            </div>
+                        </td>
+                    </tr>
+                </rn:block>
+            <% } %>
+        <rn:block id="bottomResultList"/>
+    </table>
+<rn:block id="postResultList"/>

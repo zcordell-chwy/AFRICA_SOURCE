@@ -1,0 +1,55 @@
+version: "1.0"
+requires:
+  jsModule:
+  - standard
+  - mobile
+  yui: [selector-css3, panel]
+attributes:
+  getItemMetadataForPage:
+    name: getItemMetadataForPage
+    type: ajax
+    description: Returns the item metadata object for a given page, which includes the item and pagination data for that page.
+    default: /ci/ajax/widget
+    required: false
+  getItemPopupDataByID:
+    name: getItemPopupDataByID
+    type: ajax
+    description: Returns the item popup data by ID.
+    default: /ci/ajax/widget
+    required: false
+  preload_item_popup_data:
+    name: preload_item_popup_data
+    type: boolean
+    description: If true, the widget will preload item popup data. If false, popup data will be fetched with AJAX. 
+    default: false
+    required: false
+  rows:
+    name: rows
+    type: int
+    description: The number of item rows to display in the gallery per page.
+    default: 3
+    required: false
+  columns:
+    name: columns
+    type: int
+    description: The number of item columns to display in the gallery per page.
+    default: 5
+    required: false
+  title: 
+    name: title
+    type: string
+    description: The title to display at the top of the item popup gallery.
+    default: 'Title Placeholder'
+    required: false
+  description: 
+    name: description
+    type: string
+    description: The description to display at the top of the item popup gallery.
+    default: 'Description Placeholder'
+    required: false
+  loading_msg:
+    name: loading_msg
+    type: string
+    description: The message to display next to the loading indicator gif.
+    default: 'Loading...'
+    required: false

@@ -1,0 +1,13 @@
+.rn_ModerationStatusFilter li {
+  padding-left: 5px; }
+.rn_ModerationStatusFilter input {
+  vertical-align: middle; }
+.rn_ModerationStatusFilter label {
+  display: inline-block;
+  vertical-align: baseline;
+  zoom: 1;
+  *display: inline;
+  *vertical-align: auto;
+  width: 80%;
+  vertical-align: top;
+  font-weight: normal; }

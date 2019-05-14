@@ -1,0 +1,47 @@
+version: "1.1.1"
+requires:
+  framework: ["3.3", "3.4", "3.5", "3.6", "3.7"]
+  jsModule: [standard, mobile]
+attributes:
+  source_id:
+    name: rn:msg:SOURCE_ID_LBL
+    description: rn:msg:NAMES_OFSRCH_SOURCES_TO_BE_USED_MSG
+    required: true
+    type: STRING
+    options:
+    - KFSearch
+    - OKCSSearch
+    - SocialSearch
+    - rn:msg:ANY_ADDITIONAL_CUSTOM_SEARCH_SOURCES_LBL
+  filter_label:
+    name: rn:msg:FILTER_LABEL_LBL
+    type: STRING
+    description: rn:msg:THE_LABEL_USED_BY_THE_FLTR_WHEN_LBL
+  filter_type:
+    name: rn:msg:FILTER_NAME_LBL
+    type: STRING
+    description: rn:msg:THE_FLTR_TYPE_FOR_THIS_WIDGET_MAPS_S_UHK
+    default: query
+  allow_empty_search:
+    name: rn:msg:ALLOW_EMPTY_SEARCH_LBL
+    type: BOOLEAN
+    description: rn:msg:TH_ACCT_NOW_PCT_EMPTY_RETURN_RESULTS_MSG
+    default: false
+  label_input:
+    name: rn:msg:LABEL_LBL
+    type: STRING
+    description: rn:msg:STRING_LABEL_DISP_WARN_MODIFICATION_LBL
+    default: rn:msg:SEARCH_BY_KEYWORD_CMD
+  label_placeholder:
+    name: rn:msg:LABEL_LBL
+    type: STRING
+    description: rn:msg:STRING_LABEL_DISP_WARN_MODIFICATION_LBL
+    default: rn:msg:SEARCH_ELLIPSIS_LBL
+  initial_focus:
+    name: rn:msg:INITIAL_FOCUS_LBL
+    type: BOOLEAN
+    description: rn:msg:SET_TRUE_FIELD_FOCUSED_PAGE_LOADED_MSG
+info:
+  category:
+    - Source Search
+  description: rn:msg:THIS_WIDGET_DISP_AN_INPUT_TEXTBOX_MSG

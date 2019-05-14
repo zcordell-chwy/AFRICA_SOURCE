@@ -1,0 +1,51 @@
+version: "1.0.1"
+requires:
+  framework: ["3.2"]
+  jsModule: [standard, mobile]
+attributes:
+  source_id:
+    name: rn:msg:SOURCE_ID_LBL
+    description: rn:msg:NAMES_OFSRCH_SOURCES_TO_BE_USED_MSG
+    required: true
+    type: STRING
+    options:
+    - KFSearch
+    - OkcsSearch
+    - Any additional custom search sources
+  label_button:
+    name: rn:msg:BUTTON_LABEL_LBL
+    type: STRING
+    description: rn:msg:STRING_LABEL_DISP_BTN_ICON_PATH_SET_MSG
+    default: rn:msg:SEARCH_CMD
+  search_results_url:
+    name: rn:msg:SEARCH_RESULTS_URL_CMD
+    type: STRING
+    description: rn:msg:PATH_TO_A_PG_THAT_WILL_BE_USED_TO_MSG
+  target:
+    name: rn:msg:TARGET_LBL
+    type: STRING
+    description: rn:msg:If search_results_url is specified, this is the target of the opened results page
+    default: _self
+  search_ajax:
+    name: rn:msg:SEARCH_AJAX_ENDPOINT_CMD
+    description: rn:msg:THE_AJAX_ENDPOINT_TO_SEND_SRCH_MSG
+    default: /ci/ajaxRequest/search
+    type: AJAX
+  history_source_id:
+    name: rn:msg:HISTORY_SOURCE_ID_LBL
+    description: rn:msg:THE_SRCH_SRC_ID_THAT_IMPACTS_THE_MSG
+    type: STRING
+    options:
+    - KFSearch
+    - SocialSearch
+    - Any additional custom search sources
+  per_page:
+    name: rn:msg:ITEMS_PER_PAGE_LBL
+    type: INT
+    description: rn:msg:INDICATES_HOW_MANY_RES_TO_DISP_PER_LBL
+    default: 10
+    min: 1
+info:
+  category:
+    - Source Search
+  description: rn:msg:WIDGET_DISP_BTN_IMG_LINK_SEARCHES_MSG

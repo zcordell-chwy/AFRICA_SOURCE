@@ -1,0 +1,18 @@
+version: "1.0"
+requires:
+  jsModule:
+  - standard
+  - mobile
+attributes:
+  alerts_report:
+    name: alerts_report
+    type: bool
+    description: indicates if this is a list of account alerts
+    required: false
+    default: false
+extends:
+  widget: standard/reports/Multiline
+  components:
+  - php
+  - css
+  overrideViewAndLogic: "true"

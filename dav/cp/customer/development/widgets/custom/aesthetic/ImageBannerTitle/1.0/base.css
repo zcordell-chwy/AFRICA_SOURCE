@@ -1,0 +1,47 @@
+/**
+ * base.css: Base CSS for ImageBannerTitle
+ */
+.rn_ImageBannerTitle {
+	position: relative;
+    margin-bottom: 38px;
+}
+
+/* Banner Image */
+.rn_ImageBannerTitle
+.rn_BannerImageContainer {
+	width: 100%;
+    height: 100%; }
+    .rn_ImageBannerTitle
+    .rn_BannerImageContainer .rn_BannerImage{
+    	width: 100%;
+    	height: 100%; }
+
+/* Banner Text */
+.rn_ImageBannerTitle
+.rn_BannerTextContainer{
+	position: absolute;
+    top: 0;
+    width: 100%;
+    height: 100%; }
+    .rn_ImageBannerTitle
+    .rn_BannerTextContainer .rn_BannerTextInnerContainer{
+    	position: relative;
+	    top: 3%;
+	    padding: 0 4.2%;
+	    margin: 0;
+	    height: 94%;
+	    width: 91.6%; }
+	    .rn_ImageBannerTitle
+	    .rn_BannerTextContainer .rn_BannerTextInnerContainer .rn_BannerText{
+	    	position: relative;
+		    height: 20%;
+		    top: 40%;
+		    color: white;
+		    font-family: Gotham, Arial;
+		    font-size: 32px;
+		    font-style: normal;
+		    font-weight: lighter;
+		    letter-spacing: 2.4px;
+		    line-height: 100%;
+		    text-transform: uppercase; 
+		        width: 34%;}

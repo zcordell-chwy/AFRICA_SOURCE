@@ -1,0 +1,23 @@
+.rn_RecentlyActiveUsers .rn_RecentUsersGrid {
+  line-height: normal; }
+  .rn_RecentlyActiveUsers .rn_RecentUsersGrid .rn_ProfileAvatar {
+    display: inline-block; }
+    .rn_RecentlyActiveUsers .rn_RecentUsersGrid .rn_ProfileAvatar a {
+      padding: 0; }
+      .rn_RecentlyActiveUsers .rn_RecentUsersGrid .rn_ProfileAvatar a span, .rn_RecentlyActiveUsers .rn_RecentUsersGrid .rn_ProfileAvatar a img {
+        vertical-align: bottom; }
+.rn_RecentlyActiveUsers .rn_RecentUsersList .rn_RecentUsers .rn_RecentUserAvatar {
+  display: inline-block;
+  width: 20%; }
+.rn_RecentlyActiveUsers .rn_RecentUsersList .rn_RecentUsers .rn_RecentUserDetails {
+  display: inline-block;
+  vertical-align: top;
+  width: 78%;
+  padding-top: 5px;
+  padding-bottom: 5px; }
+  .rn_RecentlyActiveUsers .rn_RecentUsersList .rn_RecentUsers .rn_RecentUserDetails span {
+    display: block;
+    line-height: 1.5em;
+    font-size: 0.8em; }
+    .rn_RecentlyActiveUsers .rn_RecentUsersList .rn_RecentUsers .rn_RecentUserDetails span a {
+      font-size: medium; }

@@ -1,0 +1,35 @@
+<rn:block id="topHeader"/>
+<% if (attrs.display_metadata && attrs.metadata_position.toLowerCase() === 'top') { %>
+<div class="rn_AnswerInfo rn_AnswerInfo_Top">
+    <section><span class="rn_InfoLabel"><%= attrs.label_doc_id %></span><span><%= id %></span></section>
+    <section><span class="rn_InfoLabel"><%= attrs.label_version %></span><span><%= version %></span></section>
+    <section><span class="rn_InfoLabel"><%= attrs.label_status %></span><span><%= (published === true) ? attrs.label_published : attrs.label_draft %></span></section>
+    <% if (published === true ) { %>
+        <section><span class="rn_InfoLabel"><%= attrs.label_published_date %></span><span><%= publishedDate %></span></section>
+    <% } %>
+</div>
+<% } %>
+<rn:block id="bottomHeader"/>
+<rn:block id="topBody"/>
+    <div class="rn_AnswerDetail">
+        <rn:block id="topChannelView"/>
+            <div class="rn_AnswerText"><%= channelView %></div>
+        <rn:block id="bottomChannelView"/>
+        <% if (metaView !== '') { %>
+            <rn:block id="topMetaView"/>
+                <div class="rn_SectionTitle"></div>
+                <div id="rn_AnswerText"><%= metaView %></div>
+            <rn:block id="bottomMetaView"/>
+        <% } %>
+    </div>
+    <% if (attrs.display_metadata && attrs.metadata_position.toLowerCase() === 'bottom') { %>
+        <div class="rn_AnswerInfo">
+            <section><span class="rn_InfoLabel"><%= attrs.label_doc_id %></span><span><%= id %></span></section>
+            <section><span class="rn_InfoLabel"><%= attrs.label_version %></span><span><%= version %></span></section>
+            <section><span class="rn_InfoLabel"><%= attrs.label_status %></span><span><%= (published === true) ? attrs.label_published : attrs.label_draft %></span></section>
+            <% if (published === true ) { %>
+                <section><span class="rn_InfoLabel"><%= attrs.label_published_date %></span><span><%= publishedDate %></span></section>
+            <% } %>
+        </div>
+    <% } %>
+<rn:block id="bottomBody"/>

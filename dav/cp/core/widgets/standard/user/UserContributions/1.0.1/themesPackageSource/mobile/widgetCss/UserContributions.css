@@ -1,0 +1,13 @@
+.rn_UserContributions {
+  float: left;
+  display: block;
+  margin-right: 2.35765%;
+  width: 100%; }
+  .rn_UserContributions:last-child {
+    margin-right: 0; }
+  .rn_UserContributions fieldset legend {
+    padding: 0; }
+  .rn_UserContributions fieldset li {
+    font-size: 0.75em;
+    padding-right: 0.7em;
+    display: block; }

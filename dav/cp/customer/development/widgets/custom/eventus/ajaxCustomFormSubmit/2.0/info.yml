@@ -1,0 +1,54 @@
+version: "2.0"
+requires:
+  jsModule:
+  - standard
+  - mobile
+attributes:
+  default_ajax_endpoint:
+    name: default_ajax_endpoint
+    type: ajax
+    description: Default AJAX endpoint
+    default: /ci/ajax/widget
+    required: false
+  deletepaymethod_ajax_endpoint:
+    name: deletepaymethod_ajax_endpoint
+    type: ajax
+    description: Default AJAX endpoint
+    default: /ci/ajax/widget
+    required: false
+  changepaymethod_ajax_endpoint:
+    name: changepaymethod_ajax_endpoint
+    type: ajax
+    description: Default AJAX endpoint
+    default: /ci/ajax/widget
+    required: false
+  confirm_message:
+    name: confirm_message
+    type: string
+    description: confirm_message
+    default: ""
+    required: false
+  label_button:
+    name: label_button
+    type: string
+    description: label_button
+    default: ""
+    required: false
+  on_success_url:
+    name: on_success_url
+    type: string
+    description: on_success_url
+    default: ""
+    required: false
+  error_location:
+    name: error_location
+    type: string
+    description: error_location
+    default: ""
+    required: false
+  formName:
+    name: formName
+    type: string
+    description: formName
+    default: ""
+    required: false

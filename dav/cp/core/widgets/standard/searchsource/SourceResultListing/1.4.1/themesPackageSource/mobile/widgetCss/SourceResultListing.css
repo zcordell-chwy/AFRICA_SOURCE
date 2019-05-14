@@ -1,0 +1,18 @@
+.rn_SourceResultListing li {
+  clear: both;
+  margin: 10px 0;
+  overflow: hidden;
+  padding: 6px 0;
+  font-size: 1.1em;
+  line-height: 1.3em; }
+.rn_SourceResultListing .rn_Highlight {
+  font-style: normal;
+  font-weight: bold; }
+.rn_SourceResultListing .rn_AdditionalResults {
+  text-align: right; }
+  .rn_SourceResultListing .rn_AdditionalResults a:after {
+    font-family: 'FontAwesome';
+    line-height: 1em;
+    margin-left: 6px;
+    content: "\f054";
+    font-size: smaller; }

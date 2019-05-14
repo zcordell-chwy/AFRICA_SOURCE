@@ -1,0 +1,26 @@
+version: "1.0"
+requires:
+  jsModule:
+  - standard
+  - mobile
+attributes:
+  ccNumLabel:
+    name: Credit Card Number Label
+    description: Credit Card Number Label
+    type: string
+    default: Credit Card Number
+  expMonthLabel:
+    name: Expiration Month Number Label
+    description: CExpiration Month Number Label
+    type: string
+    default: Expiration Month
+  expYearLabel:
+    name: Expiration Year Number Label
+    description: Expiration Year Number Label
+    type: string
+    default: Expiration Year
+  cvvLabel:
+    name: cvv Number Label
+    description: cvv Number Label
+    type: string
+    default: CVV Code

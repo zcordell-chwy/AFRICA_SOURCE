@@ -1,0 +1,29 @@
+version: "1.3.1"
+requires:
+  framework: ["3.5"]
+  jsModule: [standard, mobile]
+attributes:
+  source_id:
+    name: rn:msg:SOURCE_ID_LBL
+    description: rn:msg:SRC_SRC_DF_CPCSTMRDVLPMNTCNFGSRCHSRCSYML_MSG
+    required: true
+    type: STRING
+    default: SocialSearch
+    options:
+     - SocialSearch
+     - rn:msg:ANY_ADDITIONAL_CUSTOM_SEARCH_SOURCES_LBL
+  show_dates:
+    name: rn:msg:SHOW_DATES_LBL
+    description: rn:msg:WHETHER_SHOW_DATE_DATES_RESULT_LISTING_MSG
+    required: true
+    type: BOOLEAN
+    default: true
+extends:
+  widget: standard/searchsource/SourceResultListing
+  versions: ["1.4"]
+  components: [php, view, js, css]
+info:
+  category:
+    - Community
+    - Source Search
+  description: rn:msg:SOURCEID_END_L_SUBJ_RPT_DATE_DATES_MSG

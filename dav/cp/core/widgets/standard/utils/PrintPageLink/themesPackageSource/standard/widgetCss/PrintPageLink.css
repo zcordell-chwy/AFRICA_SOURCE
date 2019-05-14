@@ -1,0 +1,4 @@
+.rn_PrintPageLink a:before {
+  font-family: 'FontAwesome';
+  margin-right: 6px;
+  content: "\f02f"; }

@@ -1,0 +1,6 @@
+type: SocialUser
+object:
+  DisplayName: Active User2
+  StatusWithType.Status.LookupName: Active
+  Contact:
+    fixture: ContactActive2

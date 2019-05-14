@@ -1,0 +1,25 @@
+.rn_SourceSearchField {
+    display: inline;
+}
+.rn_SourceSearchField input {
+    font-size: 1.3em;
+    -webkit-appearance: textfield;
+    -moz-appearance: textfield;
+    -msie-appearance: textfield;
+    appearance: textfield;
+    padding: 4px;
+    width: 80%;
+    margin-top:4px;
+}
+.rn_SourceSearchField input::-webkit-search-cancel-button {
+    display: none;
+}
+.rn_SourceSearchField label {
+    /* Visually hide label */
+    position: absolute;
+    height: 1px;
+    left: -10000px;
+    overflow: hidden;
+    top: auto;
+    width: 1px;
+}

@@ -1,0 +1,12 @@
+<div class="CheckoutAssistantTabControlsContainer" data-id="<%= data.id %>">
+	<% if(data.showBackButton){ %>
+	<div class="CheckoutAssistantButtonContainer">
+		<button class="CheckoutAssistantBackButton"><%= data.backButtonLabel %></button>
+	</div>
+	<% } %>
+	<% if(data.showContinueButton){ %>
+	<div class="CheckoutAssistantButtonContainer">
+		<button class="CheckoutAssistantContinueButton"><%= data.continueButtonLabel %></button>
+	</div>
+	<% } %>
+</div>

@@ -1,0 +1,32 @@
+/**
+ * base.css: Base CSS for CheckoutAssistant
+ */
+.rn_CheckoutAssistant {
+
+}
+
+/* Tab Header */
+.rn_CheckoutAssistant
+.AccordionTabHeader{
+	position: relative; }
+	.rn_CheckoutAssistant 
+	.AccordionTabHeader .AccordionTabStatusIcon{
+	    position: absolute;
+	    left: 10px;
+	    top: 6px;
+	    font-size: 18px; }
+
+/* Tab Controls */
+.rn_CheckoutAssistant
+.CheckoutAssistantTabControlsContainer{
+	}
+	.rn_CheckoutAssistant
+	.CheckoutAssistantButtonContainer{
+		float: left;
+	}
+
+@media only screen and (max-width: 510px){
+	.ccProcessContainer{
+		padding: 1em 1em !important;
+	}
+}

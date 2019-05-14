@@ -1,0 +1,4 @@
+.rn_EmailAnswerLink > a:before {
+  font-family: 'FontAwesome';
+  margin-right: 6px;
+  content: "\f0e0"; }

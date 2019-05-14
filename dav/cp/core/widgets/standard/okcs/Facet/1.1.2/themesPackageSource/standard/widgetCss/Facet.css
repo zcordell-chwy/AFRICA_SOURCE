@@ -1,0 +1,68 @@
+.rn_Facet .rn_ClearContainer {
+  margin-left: 3px; }
+.rn_Facet .rn_ClearFacets {
+  font-weight: normal;
+  color: #00C; }
+  .rn_Facet .rn_ClearFacets:hover {
+    cursor: pointer;
+    text-decoration: underline; }
+.rn_Facet .rn_Content ul li {
+  list-style-type: none;
+  padding-left: 13px;
+  font-weight: bold; }
+.rn_Facet .rn_Content table {
+  border-spacing: 0;
+  margin-left: 10px; }
+.rn_Facet .rn_FacetsTitle {
+  background: #536a8b;
+  color: #FFF;
+  font-weight: normal;
+  border: 1px solid #CCC;
+  border-bottom: 0;
+  padding: 7px; }
+  .rn_Facet .rn_FacetsTitle a {
+    color: #FFF; }
+.rn_Facet .rn_FacetsList {
+  border: 1px solid #BEBEBE;
+  padding: 10px;
+  overflow: auto; }
+.rn_Facet .rn_ActiveFacet {
+  background: #EBEFF5;
+  border: 1px solid #CCC;
+  padding: 10px;
+  font-size: 1em;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-weight: bold; }
+  .rn_Facet .rn_ActiveFacet:after {
+    font-family: 'FontAwesome';
+    margin-left: 6px;
+    content: "\f057"; }
+  .rn_Facet .rn_ActiveFacet:after {
+    float: right; }
+.rn_Facet .rn_FacetLink {
+  padding: 3px;
+  cursor: pointer;
+  display: block;
+  font-weight: lighter;
+  text-decoration: none; }
+
+.rn_CategoryExplorerExpanded {
+  font-family: 'FontAwesome';
+  display: inline-block;
+  margin-right: 3px; }
+  .rn_CategoryExplorerExpanded:before {
+    font-family: 'FontAwesome';
+    margin-right: 6px;
+    content: "\f146"; }
+
+.rn_CategoryExplorerCollapsed {
+  font-family: 'FontAwesome';
+  display: inline-block;
+  margin-right: 3px; }
+  .rn_CategoryExplorerCollapsed:before {
+    font-family: 'FontAwesome';
+    margin-right: 6px;
+    content: "\f0fe"; }
+
+.rn_FacetTreeIndent {
+  padding-left: 8px; }

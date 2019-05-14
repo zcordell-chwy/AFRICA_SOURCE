@@ -1,0 +1,41 @@
+version: "1.0.1"
+requires:
+  framework: ["3.2"]
+  jsModule: [standard, mobile]
+attributes:
+  source_id:
+    name: rn:msg:SOURCE_ID_LBL
+    description: rn:msg:NAMES_OFSRCH_SOURCES_TO_BE_USED_MSG
+    required: true
+    type: STRING
+    options:
+    - KFSearch
+    - OkcsSearch
+    - Any additional custom search sources
+  filter_label:
+    name: rn:msg:FILTER_LABEL_LBL
+    type: STRING
+    description: rn:msg:THE_LABEL_USED_BY_THE_FLTR_WHEN_LBL
+  filter_type:
+    name: rn:msg:FILTER_NAME_LBL
+    type: STRING
+    description: rn:msg:THE_FLTR_TYPE_FOR_THIS_WIDGET_MAPS_S_UHK
+    default: query
+  label_input:
+    name: rn:msg:LABEL_LBL
+    type: STRING
+    description: rn:msg:STRING_LABEL_DISP_WARN_MODIFICATION_LBL
+    default: rn:msg:SEARCH_BY_KEYWORD_CMD
+  label_placeholder:
+    name: rn:msg:LABEL_LBL
+    type: STRING
+    description: rn:msg:STRING_LABEL_DISP_WARN_MODIFICATION_LBL
+    default: rn:msg:ASK_A_QUESTION_ELLIPSIS_MSG
+  initial_focus:
+    name: rn:msg:INITIAL_FOCUS_LBL
+    type: BOOLEAN
+    description: rn:msg:SET_TRUE_FIELD_FOCUSED_PAGE_LOADED_MSG
+info:
+  category:
+    - Source Search
+  description: rn:msg:THIS_WIDGET_DISP_AN_INPUT_TEXTBOX_MSG

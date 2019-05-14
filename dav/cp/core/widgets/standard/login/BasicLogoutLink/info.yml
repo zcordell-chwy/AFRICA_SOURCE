@@ -1,0 +1,15 @@
+version: "1.1.1"
+requires:
+  framework: ["3.2", "3.3", "3.4", "3.5", "3.6", "3.7"]
+  jsModule:
+  - none
+info:
+  description: rn:msg:WIDGET_DISP_BASIC_LINK_LOGS_MSG
+attributes:
+  logout_ajax: unset
+extends:
+  widget: standard/login/LogoutLink
+  versions:
+  - "1.1"
+  components: [php]
+  overrideViewAndLogic: true

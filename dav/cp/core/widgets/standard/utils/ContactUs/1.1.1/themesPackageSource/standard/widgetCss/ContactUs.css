@@ -1,0 +1,34 @@
+.rn_ContactUs fieldset {
+  background: #FFF; }
+.rn_ContactUs legend {
+  display: block; }
+.rn_ContactUs div:before {
+  color: #505050; }
+.rn_ContactUs .rn_QuestionLink:before {
+  font-family: 'FontAwesome';
+  margin-right: 6px;
+  content: "\f128";
+  margin-left: 3px;
+  margin-right: 7px; }
+.rn_ContactUs .rn_CommunityLink:before {
+  font-family: 'FontAwesome';
+  margin-right: 6px;
+  content: "\f086";
+  margin-right: 3px;
+  font-size: 1em; }
+.rn_ContactUs .rn_ChatLink a:before {
+  font-family: 'FontAwesome';
+  margin-right: 6px;
+  content: "\f0e5";
+  margin-right: 7px;
+  font-size: 1em; }
+.rn_ContactUs .rn_FeedbackLink .rn_SiteFeedback:before {
+  font-family: 'FontAwesome';
+  margin-right: 6px;
+  content: "\f0a1";
+  margin-right: 2px;
+  font-size: 1em; }
+.rn_ContactUs .rn_SiteFeedback, .rn_ContactUs .rn_ConditionalChatLink, .rn_ContactUs .rn_Chat {
+  display: inline; }
+.rn_ContactUs .rn_Chat span {
+  display: block; }

@@ -1,0 +1,77 @@
+version: "1.0.1"
+requires:
+  framework: ["3.2"]
+  jsModule: [standard, mobile]
+attributes:
+  source_id:
+    name: rn:msg:SOURCE_ID_LBL
+    type: STRING
+    description: rn:msg:NAME_OFSRCH_SRC_TO_BE_USED_ONLY_1_MSG
+    required: true
+    default: OKCSSearch
+    options:
+    - OKCSSearch
+    - Any additional custom search sources
+  label_results:
+    name: rn:msg:RESULTS_LABEL_LBL
+    description: rn:msg:TITLE_FOR_SEARCH_RESULT_WIDGET_LBL
+    default: rn:msg:RESULTS_LBL
+    type: STRING
+  add_params_to_url:
+    name: rn:msg:ADD_PRMS_TO_URL_CMD
+    type: STRING
+    description: rn:msg:COMMA_SEPARATED_L_URL_PARMS_LINKS_MSG
+    default: kw
+  hide_when_no_results:
+    name: rn:msg:HIDE_WHEN_NO_RESULTS_CMD
+    type: BOOLEAN
+    description: rn:msg:HIDES_ENTIRE_WIDGET_CONTENT_CSS_RES_MSG
+    default: true
+  label_no_results:
+    name: rn:msg:LABEL_NO_RESULTS_LBL
+    description: rn:msg:DISPLAYS_WHEN_NO_RESULTS_ARE_FOUND_MSG
+    default: rn:msg:NO_RESULTS_FOUND_MSG
+    type: STRING
+  answer_detail_url:
+    name: rn:msg:ANSWER_DETAIL_PAGE_URL_LBL
+    type: STRING
+    description: rn:msg:SPECIFIES_THE_URL_USED_TO_DISP_DET_LBL
+  get_okcs_data_ajax:
+    name: rn:msg:AJAX_COMMAND_TO_GET_DET_OF_IM_LBL
+    type: AJAX
+    description: rn:msg:ENDPOINT_FOR_OKCS_LBL
+    default: /ci/okcsAjaxRequest/getOkcsData
+  target:
+    name: rn:msg:TARGET_LBL
+    description: rn:msg:DETERMINES_THE_NEW_PG_TARG_NOTE_MSG
+    default: _self
+    type: OPTION
+    options:
+    - _blank
+    - _self
+  truncate_size:
+    name: rn:msg:TRUNCATE_SIZE_LBL
+    type: INT
+    description: rn:msg:NUM_OF_CHARS_TO_TRUNCATE_THE_RES_MSG
+    default: 200
+    min: 1
+  label_screen_reader_search_success_alert:
+    name: rn:msg:SCREEN_READER_SEARCH_SUCCESS_ALERT_LBL
+    type: STRING
+    description: rn:msg:MSG_ANNOUNCD_SCREEN_READER_USERS_MSG
+    default: rn:msg:YOUR_SEARCH_IS_COMPLETE_MSG
+info:
+  description: rn:msg:WIDGET_DISP_DATA_MULTILINE_FMT_MSG
+  urlParameters:
+    kw:
+      name: rn:msg:KEYWORD_LBL
+      description: rn:msg:THE_CURRENT_SEARCH_TERM_LBL
+      example: kw/search
+    page:
+      name: rn:msg:PAGE_LBL
+      description: rn:msg:SETS_SELECT_PAGE_URL_PARAMETER_LBL
+      example: page/2
+    loc:
+      name: Locale, will be converted to message base
+      description: selected locale, will be converted to message base
+      example: loc/en-US,it-IT

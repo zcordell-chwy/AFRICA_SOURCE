@@ -1,0 +1,5 @@
+.rn_AnswerList {
+  min-height: auto;
+  padding-top: 30px; }
+  .rn_AnswerList li:last-child {
+    border-bottom: 0; }

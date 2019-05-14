@@ -1,0 +1,16 @@
+/**
+ * base.css: Base CSS for AccoutOverviewMultiline
+ */
+.rn_AccoutOverviewMultiline.rn_Multiline {
+
+}
+
+.alertLink{
+	display:inline-block;
+	margin-left:10px;
+}
+
+.alertDetail{
+	margin: 0px 30px;
+    font-size: 1.2em;
+}

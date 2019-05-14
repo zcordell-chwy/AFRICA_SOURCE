@@ -1,0 +1,74 @@
+.rn_SocialResultListing {
+  *zoom: 1;
+  display: block; }
+  .rn_SocialResultListing:before, .rn_SocialResultListing:after {
+    content: " ";
+    display: table; }
+  .rn_SocialResultListing:after {
+    clear: both; }
+  .rn_SocialResultListing .rn_AuthorAvatar {
+    float: left;
+    display: block;
+    margin-right: 2.35765%;
+    width: 6.17215%; }
+    .rn_SocialResultListing .rn_AuthorAvatar:last-child {
+      margin-right: 0; }
+    @media screen and (max-width: 720px) {
+      .rn_SocialResultListing .rn_AuthorAvatar {
+        float: left;
+        display: block;
+        margin-right: 2.35765%;
+        width: 100%;
+        margin-bottom: 5px; }
+        .rn_SocialResultListing .rn_AuthorAvatar:last-child {
+          margin-right: 0; }
+        .rn_SocialResultListing .rn_AuthorAvatar .rn_Avatar {
+          float: left;
+          display: block;
+          margin-right: 2.35765%;
+          width: 6.17215%; }
+          .rn_SocialResultListing .rn_AuthorAvatar .rn_Avatar:last-child {
+            margin-right: 0; }
+        .rn_SocialResultListing .rn_AuthorAvatar .rn_DisplayName {
+          float: left;
+          display: block;
+          margin-right: 2.35765%;
+          width: 91.4702%;
+          font-size: 1em; }
+          .rn_SocialResultListing .rn_AuthorAvatar .rn_DisplayName:last-child {
+            margin-right: 0; } }
+  .rn_SocialResultListing .rn_SocialSearch_QuestionResult {
+    float: left;
+    display: block;
+    margin-right: 2.35765%;
+    width: 91.4702%; }
+    .rn_SocialResultListing .rn_SocialSearch_QuestionResult:last-child {
+      margin-right: 0; }
+    .rn_SocialResultListing .rn_SocialSearch_QuestionResult a {
+      display: inline-block; }
+  .rn_SocialResultListing .rn_AdditionalInfo {
+    font-size: smaller; }
+  .rn_SocialResultListing .rn_Timestamps {
+    color: #5E5E5E; }
+  .rn_SocialResultListing .rn_Counts {
+    *zoom: 1; }
+    .rn_SocialResultListing .rn_Counts:before, .rn_SocialResultListing .rn_Counts:after {
+      content: " ";
+      display: table; }
+    .rn_SocialResultListing .rn_Counts:after {
+      clear: both; }
+    .rn_SocialResultListing .rn_Counts > div {
+      float: left;
+      margin-right: 0.9em; }
+  .rn_SocialResultListing .rn_CommentCount:before {
+    font-family: 'FontAwesome';
+    line-height: 1em;
+    margin-right: 6px;
+    content: "\f075";
+    color: #4A4A85; }
+  .rn_SocialResultListing .rn_BestAnswerCount:before {
+    font-family: 'FontAwesome';
+    line-height: 1em;
+    margin-right: 6px;
+    content: "\f05d";
+    color: #008000; }

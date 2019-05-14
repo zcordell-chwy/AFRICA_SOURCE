@@ -1,0 +1,22 @@
+.rn_TopicWords {
+  background: #EFEFEF;
+  margin: 8px 0 20px;
+  padding: 1.5em; }
+  .rn_TopicWords .rn_Title {
+    font-size: 1.2em;
+    font-weight: bold; }
+  .rn_TopicWords dl {
+    margin: 0; }
+  .rn_TopicWords dt a.rn_ExternalLinkIcon {
+    padding-right: 5px; }
+    .rn_TopicWords dt a.rn_ExternalLinkIcon:before {
+      font-family: 'FontAwesome';
+      margin-right: 6px;
+      content: "\f14c";
+      margin-right: 6px;
+      font-size: 1em; }
+  .rn_TopicWords img {
+    margin-right: 5px;
+    vertical-align: middle; }
+  .rn_TopicWords a {
+    color: #213f65; }

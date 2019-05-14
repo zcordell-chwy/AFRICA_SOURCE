@@ -1,0 +1,130 @@
+.rn_OkcsProductCategorySearchFilter {
+  float: left;
+  width: 101%;
+  margin-bottom: 15px; }
+  .rn_OkcsProductCategorySearchFilter button.rn_DisplayButton {
+    font-family: 'FontAwesome';
+    display: inline-block;
+    margin-right: 5px;
+    border: 1px solid #B1B1B1; }
+    .rn_OkcsProductCategorySearchFilter button.rn_DisplayButton:after {
+      font-family: 'FontAwesome';
+      line-height: 1em;
+      margin-left: 6px;
+      content: "\f0dd"; }
+  .rn_OkcsProductCategorySearchFilter .rn_Panel {
+    background: #FFF;
+    border: 1px solid #B1B1B1;
+    max-height: 200px;
+    overflow: auto;
+    padding: 6px; }
+  .rn_OkcsProductCategorySearchFilter .rn_PanelContainer {
+    border: 1px solid #B1B1B1;
+    border-top: 0; }
+    .rn_OkcsProductCategorySearchFilter .rn_PanelContainer .rn_Panel {
+      border: 0; }
+  .rn_OkcsProductCategorySearchFilter .rn_SelectionButtons {
+    background: #F8F8F8;
+    border-top: 1px solid #B1B1B1; }
+    .rn_OkcsProductCategorySearchFilter .rn_SelectionButtons button {
+      font-size: 0.95em;
+      margin: 7px 0 7px 5px;
+      padding: 5px; }
+  .rn_OkcsProductCategorySearchFilter button.rn_DisplayButton:hover, .rn_OkcsProductCategorySearchFilter button.rn_DisplayButton:focus {
+    background-color: #F8F8F8; }
+  .rn_OkcsProductCategorySearchFilter table {
+    border-collapse: collapse; }
+  .rn_OkcsProductCategorySearchFilter .rn_Label {
+    color: #333;
+    float: left;
+    font-weight: bold; }
+  .rn_OkcsProductCategorySearchFilter .rn_OkcsProductCategorySearchFilterExplorerView {
+    border: 1px solid #B1B1B1; }
+  .rn_OkcsProductCategorySearchFilter .rn_CategoryExplorer {
+    border: 1px solid #cccccc; }
+  .rn_OkcsProductCategorySearchFilter .rn_CategoryExplorerTitleDiv {
+    font-weight: normal;
+    border-bottom: 1px solid #cccccc;
+    padding: 7px;
+    line-height: 2em;
+    font-size: 1.2em; }
+  .rn_OkcsProductCategorySearchFilter .rn_CategoryExplorerContentDiv {
+    padding: 12px; }
+    .rn_OkcsProductCategorySearchFilter .rn_CategoryExplorerContentDiv ul {
+      list-style: none outside none; }
+  .rn_OkcsProductCategorySearchFilter .rn_CategoryExplorerExpandedHidden {
+    display: none; }
+  .rn_OkcsProductCategorySearchFilter .rn_CategoryExplorerCollapsedHidden {
+    visibility: hidden;
+    width: 16px; }
+  .rn_OkcsProductCategorySearchFilter .rn_CategoryExplorerCollapsed:before {
+    font-family: 'FontAwesome';
+    line-height: 1em;
+    margin-right: 6px;
+    content: "\f0fe"; }
+  .rn_OkcsProductCategorySearchFilter .rn_CategoryExplorerExpanded:before {
+    font-family: 'FontAwesome';
+    line-height: 1em;
+    margin-right: 6px;
+    content: "\f146"; }
+  .rn_OkcsProductCategorySearchFilter .rn_CategoryExplorerCollapsed:before, .rn_OkcsProductCategorySearchFilter .rn_CategoryExplorerExpanded:before {
+    margin-right: 4px; }
+  .rn_OkcsProductCategorySearchFilter .rn_CategoryExplorer a {
+    vertical-align: middle; }
+    .rn_OkcsProductCategorySearchFilter .rn_CategoryExplorer a.rn_CategoryExplorerLink {
+      display: inline-block;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      width: 95%;
+      white-space: nowrap; }
+      @media screen and (max-width: 720px) {
+        .rn_OkcsProductCategorySearchFilter .rn_CategoryExplorer a.rn_CategoryExplorerLink {
+          width: 90%; } }
+    .rn_OkcsProductCategorySearchFilter .rn_CategoryExplorer a:link {
+      color: #FFF;
+      font-size: 1.2em;
+      line-height: 2em; }
+  .rn_OkcsProductCategorySearchFilter .rn_CategoryExplorerItem {
+    display: inline-block;
+    width: 100%; }
+  .rn_OkcsProductCategorySearchFilter .rn_CategoryExplorerItem ul {
+    padding-left: 17px; }
+  .rn_OkcsProductCategorySearchFilter .rn_CategoryExplorerListHidden {
+    display: none; }
+  .rn_OkcsProductCategorySearchFilter .rn_CategoryExplorerItem .rn_CategoryExplorerLinkSelected {
+    background: #666666;
+    padding: 10px;
+    word-wrap: break-word;
+    display: inline-block;
+    width: 97%; }
+    @media screen and (max-width: 720px) {
+      .rn_OkcsProductCategorySearchFilter .rn_CategoryExplorerItem .rn_CategoryExplorerLinkSelected {
+        width: 90%; } }
+    .rn_OkcsProductCategorySearchFilter .rn_CategoryExplorerItem .rn_CategoryExplorerLinkSelected:after {
+      font-family: 'FontAwesome';
+      line-height: 1em;
+      margin-left: 6px;
+      content: "\f057"; }
+    .rn_OkcsProductCategorySearchFilter .rn_CategoryExplorerItem .rn_CategoryExplorerLinkSelected:after {
+      margin-left: 10px;
+      float: right;
+      margin-top: 1%; }
+
+.rn_HighContrastMode .rn_OkcsProductCategorySearchFilter button.rn_DisplayButton {
+  border: 1px outset; }
+  .rn_HighContrastMode .rn_OkcsProductCategorySearchFilter button.rn_DisplayButton:after {
+    font-family: 'FontAwesome';
+    margin-left: 6px; }
+  .rn_HighContrastMode .rn_OkcsProductCategorySearchFilter button.rn_DisplayButton:after {
+    content: "\f0d7";
+    position: absolute;
+    right: 5px;
+    font-size: 1em; }
+
+.ygtvlabel {
+  color: #111; }
+  .ygtvlabel:link, .ygtvlabel:visited, .ygtvlabel:hover {
+    color: #111; }
+
+.rn_ProductCategoryLinks {
+  width: 400px; }

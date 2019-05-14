@@ -1,0 +1,25 @@
+.rn_SimpleSearch span.rn_ButtonLabel {
+  height: 1px;
+  left: -10000px;
+  overflow: hidden;
+  position: absolute;
+  top: auto;
+  width: 1px; }
+
+.rn_SimpleSearch input {
+  display: block;
+  width: 80%;
+  font-size: 0.85em; }
+  .rn_SimpleSearch input::-webkit-search-cancel-button {
+    -webkit-appearance: none; }
+.rn_SimpleSearch button {
+  padding: 0;
+  width: 18%;
+  display: inline-block;
+  font-size: 0.85em;
+  min-height: 2.5em; }
+  .rn_SimpleSearch button:before {
+    font-family: 'FontAwesome';
+    margin-right: 6px;
+    content: "\f002";
+    margin: 0; }

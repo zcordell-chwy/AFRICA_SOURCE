@@ -1,0 +1,102 @@
+.rn_ProductCatalogInput {
+  *zoom: 1;
+  display: block;
+  margin-bottom: 8px; }
+  .rn_ProductCatalogInput:before, .rn_ProductCatalogInput:after {
+    content: " ";
+    display: table; }
+  .rn_ProductCatalogInput:after {
+    clear: both; }
+  .rn_ProductCatalogInput .rn_Label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 2px;
+    width: 36%; }
+  .rn_ProductCatalogInput .rn_ErrorLabel {
+    display: block;
+    font-style: italic;
+    font-weight: normal; }
+  .rn_ProductCatalogInput button.rn_DisplayButton {
+    float: left;
+    display: block;
+    margin-right: 2.35765%;
+    width: 31.76157%;
+    border: 1px solid #999;
+    font-weight: normal;
+    margin-top: auto;
+    min-height: 1.5em;
+    padding: 4px 20px 4px 4px;
+    position: relative;
+    text-align: left;
+    text-shadow: none;
+    margin-right: 0;
+    border-radius: 0;
+    box-shadow: none; }
+    .rn_ProductCatalogInput button.rn_DisplayButton:last-child {
+      margin-right: 0; }
+    .rn_ProductCatalogInput button.rn_DisplayButton:after {
+      font-family: 'FontAwesome';
+      margin-left: 6px; }
+    .rn_ProductCatalogInput button.rn_DisplayButton:after {
+      content: "\f0d7";
+      position: absolute;
+      right: 5px; }
+    .rn_ProductCatalogInput button.rn_DisplayButton:hover, .rn_ProductCatalogInput button.rn_DisplayButton:focus {
+      box-shadow: none;
+      background-color: #DDD; }
+  .rn_ProductCatalogInput .rn_Panel {
+    width: 100%;
+    background: #FFF;
+    border: 1px solid #999;
+    max-height: 200px;
+    overflow: auto;
+    padding: 6px; }
+  .rn_ProductCatalogInput .rn_PanelContainer {
+    width: 300px;
+    border: 1px solid #999;
+    border-top: 0; }
+    @media screen and (max-width: 400px) {
+      .rn_ProductCatalogInput .rn_PanelContainer {
+        width: 100%; } }
+    .rn_ProductCatalogInput .rn_PanelContainer .rn_Panel {
+      border: 0; }
+  .rn_ProductCatalogInput .rn_SelectionButtons {
+    background: #DDD;
+    border-top: 1px solid #999; }
+    .rn_ProductCatalogInput .rn_SelectionButtons button {
+      font-size: 0.95em;
+      margin: 7px 0 7px 5px;
+      padding: 5px; }
+  .rn_ProductCatalogInput .rn_HintBox {
+    border: 1px solid #999;
+    margin: 0 0 0 0.3em;
+    max-width: 200px;
+    padding: 4px 16px 2px;
+    word-wrap: break-word;
+    opacity: 0.9; }
+    .rn_ProductCatalogInput .rn_HintBox.rn_AlwaysVisibleHint {
+      max-width: 200px;
+      opacity: 1; }
+    .rn_ProductCatalogInput .rn_HintBox:before {
+      font-family: 'FontAwesome';
+      margin-right: 6px; }
+    .rn_ProductCatalogInput .rn_HintBox:before {
+      content: "\f0d9";
+      position: absolute;
+      font-size: 1em;
+      color: #FFF;
+      left: -1px;
+      top: 2px;
+      z-index: 1; }
+    .rn_ProductCatalogInput .rn_HintBox:after {
+      font-family: 'FontAwesome';
+      margin-left: 6px; }
+    .rn_ProductCatalogInput .rn_HintBox:after {
+      content: "\f0d9";
+      position: absolute;
+      font-size: 1.1em;
+      color: #999;
+      left: -7px;
+      top: 2px; }
+  .rn_ProductCatalogInput .rn_Disabled {
+    color: #808080 !important; }

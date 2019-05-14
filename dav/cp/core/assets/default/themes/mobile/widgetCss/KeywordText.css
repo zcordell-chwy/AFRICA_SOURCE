@@ -1,0 +1,15 @@
+.rn_KeywordText label {
+  height: 1px;
+  left: -10000px;
+  overflow: hidden;
+  position: absolute;
+  top: auto;
+  width: 1px; }
+
+.rn_KeywordText input::-webkit-input-placeholder {
+  color: #737373; }
+.rn_KeywordText input::-moz-placeholder {
+  color: #737373;
+  opacity: 1; }
+.rn_KeywordText input:-ms-input-placeholder {
+  color: #737373; }

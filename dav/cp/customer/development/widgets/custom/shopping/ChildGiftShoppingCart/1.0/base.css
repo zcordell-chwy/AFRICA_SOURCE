@@ -1,0 +1,33 @@
+/**
+ * base.css: Base CSS for ChildGiftShoppingCart
+ */
+.rn_ChildGiftShoppingCart.rn_ShoppingCart {
+
+}
+
+/* Child Line Item Group */
+.rn_ChildGiftShoppingCart.rn_ShoppingCart
+.rn_ChildLineItemGroup{
+	border: 1px solid #ccc;
+    padding: 5px;
+    background-color: rgb(252,252,252);
+    margin: 10px 0; }
+    .rn_ChildGiftShoppingCart.rn_ShoppingCart
+    .rn_ChildLineItemGroupChildImgContainer{
+    	height: 102px;
+    	text-align: center; }
+    	.rn_ChildGiftShoppingCart.rn_ShoppingCart
+    	img.rn_ChildLineItemGroupChildImg{
+    		width: 75px;
+		    height: 100px;
+		    border: 1px solid #ccc; }
+	.rn_ChildGiftShoppingCart.rn_ShoppingCart
+	.rn_ChildLineItemGroupChildNameContainer{
+		text-align: center;
+    	margin: 5px 0; }
+    	.rn_ChildGiftShoppingCart.rn_ShoppingCart
+    	span.rn_ChildLineItemGroupChildName{
+    		font-family: Gotham, Arial;
+		    font-size: 12px;
+		    font-weight: bold;
+		    color: #706359; }

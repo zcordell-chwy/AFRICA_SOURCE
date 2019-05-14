@@ -1,0 +1,10 @@
+.rn_RightNowLogo a {
+    background:url(/euf/core/static/PoweredByOracle.png) no-repeat scroll right 0 !important;
+    display:block !important;
+    height:29px !important;
+    width:134px !important;
+}
+.rn_RightNowLogo a:focus,
+.rn_RightNowLogo a:hover {
+    background-position:right -37px !important;
+}

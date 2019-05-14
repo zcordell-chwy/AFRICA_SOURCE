@@ -1,0 +1,25 @@
+version: "1.0"
+requires:
+  jsModule:
+  - standard
+  - mobile
+attributes:
+  target_ajax_endpoint:
+    name: target_ajax_endpoint
+    type: string
+    description: ajax endpoint to submit to
+    default: ajaxCustom/processTransaction
+    required: true
+  confirm_message:
+    name: confirm_message
+    type: string
+    description: the message displayed upon click
+    required: false
+extends:
+  widget: standard/input/FormSubmit
+  components:
+  - php
+  - js
+  - css 
+  - view
+

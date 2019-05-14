@@ -1,0 +1,24 @@
+version: "1.5.2"
+requires:
+  framework: ["3.4", "3.5", "3.6", "3.7"]
+  jsModule: [none]
+attributes:
+  always_show_hint: unset
+  initial_focus: unset
+  validate_on_blur: unset
+  label_required: unset
+  hint_separator:
+    name: rn:msg:HINT_SEPARATOR_LBL
+    type: string
+    description: rn:php:sprintf(\RightNow\Utils\Config::getMessage(CHAR_STRING_SEPARATE_PCT_S_TXT_PCT_MSG), 'label_input', 'hint')
+    default: ' - '
+extends:
+  widget: standard/input/DateInput
+  versions: ["1.8"]
+  components: [php]
+  overrideViewAndLogic: true
+contains:
+  - widget: standard/output/FieldDisplay
+    versions: ["1.1"]
+info:
+  description: rn:msg:WIDGET_EXTENSION_STD_DATEINPUT_MSG

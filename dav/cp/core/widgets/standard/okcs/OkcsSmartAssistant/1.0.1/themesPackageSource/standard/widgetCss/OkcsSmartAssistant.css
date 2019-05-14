@@ -1,0 +1,186 @@
+.rn_OkcsSmartAssistant .rn_Heading {
+    font-size:1.333em;
+    font-weight:bold;
+    line-height:1.4em;
+}
+.rn_OkcsSmartAssistant .rn_List {
+    background: #F0F0F0;
+    border: 1px solid #B0B3B8;
+    margin-top: 6px;
+    padding: 4px;
+}
+.rn_OkcsSmartAssistant .rn_List > li {
+    list-style:disc outside none;
+    margin: 4px 4px 4px 16px;
+}
+.rn_OkcsSmartAssistant .rn_Prompt {
+    color:#000;
+    font-size:1em;
+    font-weight:bold;
+    line-height:1.3em;
+}
+.rn_OkcsSmartAssistant .rn_Summary {
+    font-size:1.3em;
+    font-weight:bold;
+    letter-spacing:-0.01em;
+    line-height:1em;
+    padding:7px 0 0;
+}
+.rn_OkcsSmartAssistant .rn_Solution {
+    padding:6px 0 10px;
+}
+.rn_OkcsSmartAssistant .rn_InlineAnswersExplorer li a{
+    padding: 9px;
+}
+.rn_OkcsSmartAssistant .rn_List.rn_InlineAnswers > li{
+    border-bottom: 1px solid #DDD;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    position: relative;
+    *position:static;
+}
+.rn_OkcsSmartAssistant .rn_List.rn_InlineAnswers > li:last-child{
+    border-bottom: none;
+}
+.rn_OkcsSmartAssistant .rn_InlineAnswersLimitedText {
+    max-height: 60px;
+}
+.rn_OkcsSmartAssistant .rn_InlineAnswerLink{
+    color: #000;
+    padding: 9px 4px 9px 21px;
+    text-decoration: none;
+}
+.rn_OkcsSmartAssistant .rn_Loading{
+    background: url(../images/loadingIndicator.gif) no-repeat;
+    height: 100%;
+    position: absolute;
+    top: 4px;
+    right:2px;
+    *right:16px;
+    width: 16px;
+}
+/* Below two CSS classes are for the caret-left arrow image using FontAwesome */
+.rn_OkcsSmartAssistant .rn_ExpandAnswer, .rn_OkcsSmartAssistant a.rn_ExpandedAnswer {
+    margin-right: 1px;
+    padding-left: 2px;
+    font-family: 'FontAwesome';
+    font-size: 1.3em;
+}
+.rn_OkcsSmartAssistant .rn_ExpandAnswer:before, .rn_OkcsSmartAssistant a.rn_ExpandedAnswer:before {
+    content: "\f0da"; /* icon-caret-right */
+    padding-right: 5px;
+}
+/* Below two CSS classes are for the caret-down arrow image using FontAwesome */
+.rn_OkcsSmartAssistant .rn_ExpandAnswerSolution, .rn_OkcsSmartAssistant a.rn_ExpandedAnswerSolution {
+    margin-right: 1px;
+    padding-left: 0;
+    font-size: 1.2em;
+    font-family: 'FontAwesome';
+}
+.rn_OkcsSmartAssistant .rn_ExpandAnswerSolution:before, .rn_OkcsSmartAssistant a.rn_ExpandedAnswerSolution:before {
+    content: "\f0d7"; /* icon-caret-down */
+    padding-right: 5px;
+}
+.rn_OkcsSmartAssistant .rn_ExpandedAnswer {
+    color: #666;
+}
+.rn_OkcsSmartAssistant .rn_ExpandedAnswerContent{
+    background: #FFF;
+    padding: 6px;
+}
+.rn_OkcsSmartAssistant .rn_AccesskeyPrompt {
+    font-style:italic;
+    color:#404040;
+    font-size:.96em;
+}
+.rn_OkcsSmartAssistant .rn_AnswerSummary {
+    display: block;
+    margin-bottom: 12px;
+}
+.rn_OkcsSmartAssistant a.rn_ExpandedAnswerExplorer{
+    background: #426FD9;
+    color: #fff;
+}
+.rn_OkcsSmartAssistant .rn_AnswerSolution{
+    display: block;
+}
+
+.rn_OkcsSmartAssistant .rn_AnswerPDFSolution{
+    height: 420px;
+}
+
+/* Override .rn_Dialog ol, ul rule in site.css */
+.rn_OkcsSmartAssistant .rn_AnswerSummary ol,
+.rn_OkcsSmartAssistant .rn_AnswerSolution ol,
+.rn_OkcsSmartAssistant .rn_AnswerSummary ul,
+.rn_OkcsSmartAssistant .rn_AnswerSolution ul {
+    padding-top: 0;
+}
+.rn_OkcsSmartAssistant .rn_AnswerSummary > ol,
+.rn_OkcsSmartAssistant .rn_AnswerSolution > ol,
+.rn_OkcsSmartAssistant .rn_AnswerSummary > ul,
+.rn_OkcsSmartAssistant .rn_AnswerSolution > ul {
+    margin-bottom: 1em;
+}
+.rn_OkcsSmartAssistant .rn_OkcsSmartAssistantContainer {
+    width: 600px;
+}
+.rn_OkcsSmartAssistant .rn_OkcsSmartAssistantContainer .yui3-widget-buttons a{
+    padding-left: 8px;
+}
+.rn_OkcsSmartAssistant section {
+    display: inline-block;
+    padding: 3px;
+    width: 48%;
+}
+.rn_OkcsSmartAssistantsection span {
+    padding-left: 5px;
+}
+.rn_OkcsSmartAssistant .rn_AnswerInfo {
+    color: #666;
+    margin: 6px 0 20px;
+    padding-bottom: 10px;
+}
+.rn_OkcsSmartAssistant .rn_AnswerInfo_Top {
+    border-bottom: 1px solid #E2E2E0;
+}
+.rn_OkcsSmartAssistant .rn_AnswerInfo .rn_InfoLabel {
+    width: 40%;
+    display: inline-block;
+    font-weight: bold;
+}
+.rn_OkcsSmartAssistant .rn_AnswerText {
+    clear:both;
+    line-height:1.4em;
+    padding:5px 0 15px;
+}
+
+.rn_OkcsSmartAssistant .rn_AnswerSolution iframe, .rn_ExternalContent {
+    width: 100%;
+    min-height: 90%;
+}
+.rn_OkcsSmartAssistant .ok-highlight-title {
+    background-color: #FF0;
+    font-weight: bold;
+}
+.rn_OkcsSmartAssistant .ok-highlight-sentence {
+    background-color: #EBEFF5;
+}
+.rn_OkcsSmartAssistant .rn_SchemaAttribute {
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+.rn_OkcsSmartAssistant .rn_SchemaAttribute  input{
+    margin-right: 5px;
+    vertical-align: middle;
+    float: left;
+}
+.rn_OkcsSmartAssistant .rn_SchemaAttributeValue {
+    margin-bottom: 30px;
+}
+.rn_OkcsSmartAssistant .rn_SectionTitle {
+    border-bottom: 1px solid #E2E2E0;
+    color: #666;
+    margin: 0 0 20px;
+}

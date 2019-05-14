@@ -1,0 +1,112 @@
+version: "1.0.1"
+requires:
+  framework: ["3.2"]
+  jsModule: [standard, mobile]
+attributes:
+  source_id:
+    name: rn:msg:SOURCE_ID_LBL
+    type: STRING
+    description: rn:msg:NAME_OFSRCH_SRC_TO_BE_USED_ONLY_1_MSG
+    required: true
+    default: OKCSBrowse
+    options:
+    - OKCSBrowse
+    - Any additional custom search sources
+  show_headers:
+    name: rn:msg:SHOW_HEADERS_CMD
+    description: rn:msg:IF_SET_TO_TRUE_WIDGET_HDR_IS_MSG
+    default: true
+    type: BOOLEAN
+  get_okcs_data_ajax:
+    name: rn:msg:AJAX_COMMAND_TO_GET_DET_OF_IM_LBL
+    type: ajax
+    description: rn:msg:ENDPOINT_FOR_OKCS_LBL
+    default: /ci/okcsAjaxRequest/getOkcsData
+  label_no_categories:
+    name: rn:msg:LABEL_NO_CATEGORIES_LBL
+    description: rn:msg:DISPLAYS_WHEN_NO_CATEGORIES_ARE_PRESENT
+    default: rn:msg:No categories present.
+    type: STRING
+  dom_id_loading_icon:
+    name: rn:msg:ARTICLES_LOADING_ICON_LBL
+    description: rn:msg:ID_OF_THE_NODE_ELEMENT_FOR_SHOWING_MSG
+    default: rn_Articles_Loading
+    type: STRING
+  label_category_selected:
+    name: Category Selected Label
+    type: STRING
+    description: rn:msg:SCREEN_READER_LABEL_FOR_SEL_CAT_LBL
+    default: rn:msg:THE_SELECTED_CATEGORY_IS_PCT_S_MSG
+  label_product_selected:
+    name: Product Selected Label
+    type: STRING
+    description: rn:msg:SCREEN_READER_LABEL_FOR_SEL_PROD_LBL
+    default: rn:msg:THE_SELECTED_PRODUCT_IS_PCT_S_MSG
+  label_expand_icon:
+    name: Expand Label
+    type: STRING
+    description: rn:msg:SCREEN_READR_LABEL_INSTRUCTION_FOR_LBL
+    default: rn:msg:COLLAPSE_CMD
+  label_collapse_icon:
+    name: Collapse Label
+    type: STRING
+    description: rn:msg:SCREEN_READER_LABEL_INSTRUCTION_FOR_LBL
+    default: rn:msg:EXPAND_CMD
+  toggle_selection:
+    name: rn:msg:TOGGLE_SELECTION_LBL
+    type: BOOLEAN
+    description: rn:msg:SETS_TOGGLE_EVENT_WHEN_A_PROD_S_CAT_MSG
+    default: false
+  toggle_state:
+    name: rn:msg:TOGGLE_STATE_LBL
+    type: OPTION
+    description: rn:msg:INIT_TOGGLESTATE_WORKS_ONLY_IF_MSG
+    default: collapsed
+    options:
+    - expanded
+    - collapsed
+  item_to_toggle:
+    name: rn:msg:ITEM_TO_TOGGLE_LBL
+    type: STRING
+    description: rn:msg:ID_HTML_ELMENT_HIDDEN_SHOWN_TOGGLE_MSG
+  toggle:
+    name: rn:msg:TOGGLE_LBL
+    type: STRING
+    description: rn:msg:ID_HTML_ELEMENT_PRESSED_TOGGLES_LBL
+  expanded_css_class:
+    name: rn:msg:EXPANDED_CSS_CLASS_LBL
+    type: STRING
+    description: rn:msg:CSS_CLASS_TOGGLE_ELEMENT_EXPANDED_MSG
+    default: rn_Expanded
+  collapsed_css_class:
+    name: rn:msg:COLLAPSED_CSS_CLASS_LBL
+    type: STRING
+    description: rn:msg:CSS_CLASS_TOGGLE_ELEMENT_COLLAPSED_MSG
+    default: rn_Collapsed
+  label_collapsed:
+    name: rn:msg:COLLAPSED_LABEL_LBL
+    type: STRING
+    description: rn:msg:LABEL_PLACED_TOGGLE_ELEMENT_NOTIF_MSG
+    default: rn:msg:SECTION_CLOSED_CLICK_DOUBLE_TAP_LBL
+  label_expanded:
+    name: rn:msg:EXPANDED_LABEL_LBL
+    type: STRING
+    description: rn:msg:LBEL_PLACED_TOGGLE_ELEMENT_NOTIF_MSG
+    default: rn:msg:SECT_OPENED_CLICK_DOUBLE_TAP_CLOSE_LBL
+  expand_icon_collapsed_css:
+    name: rn:msg:COLLAPSED_CSS_CLASS_LBL
+    type: STRING
+    description: rn:msg:CSS_CLASS_TOGGLE_ELEMENT_COLLAPSED_MSG
+    default: rn_Expand
+  expand_icon_expanded_css:
+    name: rn:msg:EXPANDED_CSS_CLASS_LBL
+    type: STRING
+    description: rn:msg:CSS_CLASS_TOGGLE_ELEMENT_EXPANDED_MSG
+    default: rn_Collapse
+extends:
+  widget: standard/search/ProductCategorySearchFilter
+  versions: ["2.0"]
+  components: php
+  overrideViewAndLogic: true
+info:
+  description: rn:msg:THIS_WIDGET_DISP_A_DROPDOWN_MENU_OR_MSG

@@ -1,0 +1,7 @@
+type: SocialQuestionComment
+object:
+  CreatedBySocialUser:
+    fixture: UserActive1
+  Body: Comment by an active user with **special formatting**.
+  StatusWithType.Status.LookupName: Active
+  BodyContentType.LookupName: text/x-markdown

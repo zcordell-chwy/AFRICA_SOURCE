@@ -1,0 +1,89 @@
+version: "1.1.1"
+requires:
+  framework: ["3.3"]
+  jsModule: [standard, mobile]
+attributes:
+  get_okcs_data_ajax:
+    name: rn:msg:AJAX_ENDPOINT_FOR_OKCS_LBL
+    type: ajax
+    description: rn:msg:ENDPOINT_FOR_OKCS_TO_GET_DET_OF_IM_LBL
+    default: /ci/okcsAjaxRequest/getOkcsData
+  view_type:
+    name: rn:msg:DISPLAY_VIEW_TYPE_CMD
+    type: OPTION
+    description: rn:php:sprintf(\RightNow\Utils\Config::getMessage(DSPLYNLN_NC_TTCH_LBLNW_TTRB_TTCH_TB_WNDW_MSG), 'explorer', 'inline', 'inline')
+    default: explorer
+    options:
+    - inline
+    - explorer
+  display_metadata:
+    name: rn:msg:DISPLAY_METADATA_OF_CONTENT_CMD
+    type: BOOLEAN
+    description: rn:msg:SHOWS_OR_HIDES_METADATA_DOC_ID_LBL
+    default: true
+  metadata_position:
+    name: rn:msg:POSITION_OF_METADATA_IN_CONTENT_LBL
+    type: OPTION
+    description: rn:php:sprintf(\RightNow\Utils\Config::getMessage(DSPLYNLN_MTDT_DSP_MTDT_BF_MTDT_TT_CNTNT_MSG), 'top', 'bottom')
+    default: top
+    options:
+    - top
+    - bottom
+  truncate_size:
+    name: rn:msg:TRUNCATE_SIZE_LBL
+    type: INT
+    description: rn:msg:NUM_OF_CHARS_TO_TRUNCATE_THE_RES_MSG
+    default: 200
+    min: 1
+  label_close_answer:
+    name: rn:msg:CLOSE_CONTENT_BUTTON_LABEL_CMD
+    description: rn:msg:TXTTO_DISP_ON_THE_BTN_FOR_CLOSING_MSG
+    type: STRING
+    default: rn:msg:BACK_TO_RESULTS_CMD
+  label_doc_id:
+    name: rn:msg:DOC_ID_LABEL_LBL
+    type: STRING
+    description: rn:msg:LABEL_DOC_ONLY_USED_DISPLAYINLINE_TRUE_MSG
+    default: rn:msg:DOC_ID_LBL
+  label_version:
+    name: rn:msg:VERSION_LBL
+    type: STRING
+    description: rn:msg:LABEL_VERSION_ONLY_DISPLAYINLINE_TRUE_MSG
+    default: rn:msg:VERSION_LBL
+  label_status:
+    name: rn:msg:STATUS_LABEL_LBL
+    type: STRING
+    description: rn:msg:LABEL_STATUS_ONLY_DISPLAYINLINE_TRUE_MSG
+    default: rn:msg:STATUS_LBL
+  label_published_date:
+    name: rn:msg:PUBLISHED_DATE_LABEL_LBL
+    type: STRING
+    description: rn:msg:LABEL_PUBLISHED_DISPLAYINLINE_TRUE_MSG
+    default: rn:msg:PUBLISHED_DATE_LBL
+  label_published:
+    name: rn:msg:PUBLISHED_LBL
+    type: STRING
+    description: rn:msg:PUBLISHED_DOCUMENT_DISPLAYINLINE_TRUE_MSG
+    default: rn:msg:PUBLISHED_LBL
+  label_draft:
+    name: rn:msg:DRAFT_LBL
+    type: STRING
+    description: rn:msg:UNPUBLISHED_DOCUMENT_DISPLAYINLINE_TRUE_MSG
+    default: rn:msg:DRAFT_LBL
+  label_new_tab:
+    name: rn:msg:NEW_TAB_LBL
+    type: STRING
+    description: rn:msg:LABEL_FOR_THE_BTN_TO_OPEN_DOCS_IN_A_MSG
+    default: rn:msg:OPEN_IN_NEW_TAB_CMD
+  dnc_label_cancel_button: unset
+  dnc_label_banner: unset
+  dnc_label_dialog_title: unset
+  dnc_redirect_url: unset
+  label_download_attachment: unset
+  label_view_guide: unset
+extends:
+  widget: standard/input/SmartAssistantDialog
+  versions: ["3.0"]
+  components: [php, view, js, css]
+info:
+  description: rn:msg:THIS_WIDGET_IS_AN_EXTENSION_OF_MSG

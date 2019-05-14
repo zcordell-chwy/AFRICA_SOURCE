@@ -1,0 +1,17 @@
+version: "1.1.2"
+requires:
+  framework: ["3.3", "3.4", "3.5", "3.6", "3.7"]
+  jsModule: [none]
+attributes:
+  add_params_to_url:
+    name: rn:msg:ADD_PRMS_TO_URL_CMD
+    description: rn:msg:CMMA_SPRATED_L_URL_PARMS_LINKS_MSG
+    type: STRING
+    default: p,c,kw
+extends:
+  widget: standard/reports/Paginator
+  versions: ["1.1", "1.2"]
+  components: [php]
+  overrideViewAndLogic: true
+info:
+  description: rn:msg:WIDGET_EXTENSION_STD_PAGINATOR_MSG

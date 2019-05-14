@@ -1,0 +1,33 @@
+version: "1.0.2"
+requires:
+  framework: ["3.3", "3.4", "3.5", "3.6", "3.7"]
+  jsModule: [standard, mobile]
+attributes:
+  parent_selector:
+    name: rn:msg:CLASS_OF_THE_SEARCH_CONTAINER_LBL
+    description: rn:msg:T_LC_STNDRDSRCHSRCSRC_RR_NTRCTV_SL_CHCKR_MSG
+    required: true
+    default: rn_SearchInput
+    type: STRING
+  label_did_you_mean:
+    name: rn:msg:LABEL_SPELLING_LBL
+    description: rn:msg:DISP_SPELLING_SUGG_EU_SRCH_TERM_MSG
+    default: rn:msg:DID_YOU_MEAN_LBL
+    type: STRING
+  document_id_reg_ex:
+    name: rn:msg:REGULAR_EXPRESSION_FOR_DOCUMENT_ID_LBL
+    type: STRING
+    description: rn:msg:T_AR_EXPR_DOC_EXCTLY_XPR_RS_RS_DC_MPTY_MSG
+  source_id:
+    name: rn:msg:SOURCE_ID_LBL
+    description: rn:msg:NAMES_OFSRCH_SOURCES_TO_BE_USED_MSG
+    required: true
+    type: STRING
+    options:
+    - KFSearch
+    - OKCSSearch
+    - SocialSearch
+    - rn:msg:ANY_ADDITIONAL_CUSTOM_SEARCH_SOURCES_LBL
+
+info:
+  description: rn:msg:T_SSS_SL_QST_MSSPLLD_WRD_RR_NS_HD_ND_PPR_MSG

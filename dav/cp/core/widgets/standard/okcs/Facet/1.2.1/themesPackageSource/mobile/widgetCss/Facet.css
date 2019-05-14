@@ -1,0 +1,99 @@
+.rn_Facet {
+  font-size: 1em; }
+  .rn_Facet .rn_ClearContainer {
+    margin-left: 3px; }
+  .rn_Facet .rn_ClearFacets {
+    font-weight: normal;
+    color: #FFF;
+    font-size: 1em; }
+    .rn_Facet .rn_ClearFacets:hover {
+      cursor: pointer;
+      text-decoration: underline; }
+  .rn_Facet .rn_Content ul li {
+    list-style-type: none;
+    padding-left: 8px;
+    font-weight: bold; }
+  .rn_Facet .rn_Content table {
+    border-spacing: 0;
+    margin-left: 10px; }
+  .rn_Facet .rn_FacetsTitle {
+    background: #536A8B;
+    background: -moz-linear-gradient(top, #536A8B, #536A8B);
+    background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#536A8B), to(#536A8B));
+    font-weight: normal;
+    border: 1px solid #cccccc;
+    border-bottom: 0;
+    padding: 12px;
+    font-size: 1em;
+    color: #FFF; }
+  .rn_Facet .rn_FacetsList {
+    border: 1px solid #999;
+    padding: 10px; }
+  .rn_Facet .rn_ActiveFacet {
+    background: #e1eefd;
+    border: 1px solid #cccccc;
+    font-size: 1.2em; }
+  .rn_Facet .rn_FacetLink {
+    padding: 10px;
+    cursor: pointer;
+    display: block;
+    font-weight: lighter;
+    text-decoration: none;
+    word-wrap: break-word; }
+  .rn_Facet .rn_FacetExpanded:before {
+    font-family: 'FontAwesome';
+    line-height: 1em;
+    margin-right: 6px;
+    content: "\f146"; }
+  .rn_Facet .rn_FacetCollapsed:before {
+    font-family: 'FontAwesome';
+    line-height: 1em;
+    margin-right: 6px;
+    content: "\f0fe"; }
+  .rn_Facet .rn_FacetExpanded, .rn_Facet .rn_FacetCollapsed {
+    display: inline-block;
+    margin-right: 6px;
+    vertical-align: top; }
+    .rn_Facet .rn_FacetExpanded:before, .rn_Facet .rn_FacetCollapsed:before {
+      margin-right: 0; }
+  .rn_Facet .rn_FacetText {
+    display: inline-block;
+    width: 97%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap; }
+    @media screen and (max-width: 960px) {
+      .rn_Facet .rn_FacetText {
+        width: 96%; } }
+    @media screen and (max-width: 720px) {
+      .rn_Facet .rn_FacetText {
+        width: 90%; } }
+    @media screen and (max-width: 400px) {
+      .rn_Facet .rn_FacetText {
+        width: 80%; } }
+  .rn_Facet .rn_ActiveFacet .rn_FacetText {
+    display: inline-block;
+    width: 94%;
+    overflow: initial;
+    text-overflow: initial;
+    word-wrap: break-word;
+    white-space: pre-line; }
+    @media screen and (max-width: 960px) {
+      .rn_Facet .rn_ActiveFacet .rn_FacetText {
+        width: 92%; } }
+    @media screen and (max-width: 720px) {
+      .rn_Facet .rn_ActiveFacet .rn_FacetText {
+        width: 80%; } }
+    @media screen and (max-width: 400px) {
+      .rn_Facet .rn_ActiveFacet .rn_FacetText {
+        width: 55%; } }
+  .rn_Facet .rn_ActiveFacet .rn_FacetClearIcon:after {
+    font-family: 'FontAwesome';
+    line-height: 1em;
+    margin-left: 6px;
+    content: "\f057"; }
+  .rn_Facet .rn_ActiveFacet .rn_FacetClearIcon:after {
+    display: inline-block;
+    float: right; }
+  .rn_Facet .rn_FacetTreeIndent {
+    padding-left: 8px; }

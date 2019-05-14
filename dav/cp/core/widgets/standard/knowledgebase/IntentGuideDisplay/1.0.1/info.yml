@@ -1,0 +1,32 @@
+version: "1.0.1"
+requires:
+  framework: ["3.0"]
+  jsModule: [standard, mobile]
+attributes:
+  intent_guide_id:
+    name: rn:msg:INTENT_GUIDE_ID_LBL
+    description: rn:msg:ID_INTENT_GUIDE_DISP_TAKES_LBL
+    default: 0
+    min: 0
+    type: int
+  label_category:
+    name: rn:msg:CATEGORY_LABEL_LBL
+    description: rn:msg:LABEL_DISP_BEF_CAT_INTENT_GUIDE_L_MSG
+    default: 'rn:php:\RightNow\Utils\Config::getMessage(CATEGORY_LBL) . ": "'
+    type: string
+  highlight:
+    name: rn:msg:HIGHLIGHT_LBL
+    description: rn:msg:SET_TRUE_WORDS_INTENT_GUIDE_MSG
+    default: true
+    type: boolean
+info:
+  description: rn:msg:WDGET_DISP_INTENT_GUIDES_QUEST_LBL
+  urlParameters:
+    ig_id:
+      name: rn:msg:INTENT_GUIDE_ID_LBL
+      description: rn:msg:ID_INTENT_GUIDE_DISPLAY_LBL
+      example: ig_id/45
+    kw:
+      name: rn:msg:KEYWORD_LBL
+      description: rn:msg:HIGHLIGHT_WORDS_INTENT_GUIDE_LBL
+      example: kw/searchTerm

@@ -1,0 +1,16 @@
+version: "1.0"
+requires:
+  jsModule:
+  - standard
+  - mobile
+attributes:
+  banner_title:
+  	name: banner_title
+  	type: string
+  	description: The title to display in the image banner
+  	required: true
+  banner_img_path:
+  	name: banner_img_path
+  	type: string
+  	description: The path for the banner image to display
+  	required: true

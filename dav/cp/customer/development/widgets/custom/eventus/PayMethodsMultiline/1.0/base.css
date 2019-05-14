@@ -1,0 +1,86 @@
+.rn_PayMethodsList{
+	width:100%;
+}
+
+.payMethodContainer {
+	border-radius: 4px;
+	margin-top: 0;
+	border: 1px solid #ddd;
+	margin-bottom: 6px !important;
+	width: 66%;
+	text-align: left !important;
+}
+
+.payMethodDetail{
+	margin-bottom:10px;
+}
+
+.payMethodHeader{
+	    border-radius: 4px 4px 0 0;
+    padding: 11px 54px 11px 18px;
+    display: block;
+    position: relative;
+    color: #111;
+    background-color: #f3f3f3;
+    font-size: 17px!important;
+    line-height: 1.255!important;
+    clear: both;
+    float: left;
+    width: 100%;
+}
+
+.ccImage, .ccInfo{
+	float: left;
+    padding-right: 10px;
+}
+
+.billingHeader{
+	font-weight:bold;
+}
+
+.billingDetails{
+	margin: 17px 17px 0px;
+	max-width: 250px;
+}
+
+td{
+	vertical-align:top;
+}
+
+.payMethodDetail li{
+	display:inline-block;
+	margin-left: 10px;
+}
+
+.infoBox{
+	background: url(images/info.jpg) no-repeat 7px 15px;
+    border: 1px solid lightblue;
+    margin: 20px 20px 20px 10px;
+    padding: 20px 7px 20px 38px;
+}
+
+.pledgeInfo{
+	background: url(images/infogreen.png) #D4ECD3 no-repeat 7px 15px;
+    border: 1px solid darkgreen;
+    margin: 20px 20px 20px 0px;
+    padding: 20px 7px 20px 38px;
+    width:66%;
+}
+
+.ccValidationError{
+	color:red;
+}
+
+#newPaymentLink{
+	font-size: 1.4em;
+}
+
+#newPaymentLink img{
+	height:30px;
+}
+
+#newPaymentLink span{
+	vertical-align: super;
+}
+
+

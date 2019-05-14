@@ -1,0 +1,12 @@
+@import 'widget-includes';
+
+.rn_AnswerList {
+    min-height: auto;
+    padding-top: 30px;
+
+    li {
+        &:last-child {
+            border-bottom: 0;
+        }
+    }
+}

@@ -1,0 +1,26 @@
+version: "1.0.1"
+requires:
+  framework: ["3.0", "3.1", "3.2", "3.3", "3.4", "3.5", "3.6", "3.7"]
+  jsModule: [standard, mobile]
+attributes:
+  label_chat_hours: unset
+  label_holiday: unset
+  label_chat_available:
+    name: rn:msg:CHAT_AVAILABLE_LABEL_LBL
+    description: rn:msg:MESSAGE_DISPLAY_CHAT_SERVICE_AVAIL_MSG
+    default: rn:msg:CHAT_AVAIL_MSG
+    type: STRING
+  label_chat_unavailable:
+    name: rn:msg:CHAT_UNAVAILABLE_LABEL_LBL
+    description: rn:msg:MESSAGE_DISP_CHAT_SERVICE_AVAIL_MSG
+    default: rn:msg:SORRY_CHAT_UNAVAILABLE_MSG
+    type: STRING
+extends:
+  widget: standard/chat/ChatHours
+  versions: ["1.0"]
+  components: php
+  overrideViewAndLogic: true
+info:
+  category:
+    - Chat
+  description: rn:msg:CHAT_AVAILABLE_BASED_CHAT_HOURS_MSG

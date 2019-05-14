@@ -1,0 +1,15 @@
+.rn_RecentlyViewedContent li.rn_SocialQuestionItem:before {
+  font-family: 'FontAwesome';
+  line-height: 1em;
+  margin-right: 6px;
+  content: "\f086";
+  margin-right: 3px;
+  font-size: 1em; }
+.rn_RecentlyViewedContent li.rn_AnswerContentItem:before {
+  font-family: 'FontAwesome';
+  line-height: 1em;
+  margin-right: 6px;
+  content: "\f0eb";
+  margin-left: 1px;
+  margin-right: 5px;
+  font-size: 1.4em; }

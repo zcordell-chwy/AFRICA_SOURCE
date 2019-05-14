@@ -1,0 +1,118 @@
+.rn_HighContrastMode .rn_OkcsProductCategorySearchFilter button.rn_DisplayButton {
+  border: 1px outset; }
+  .rn_HighContrastMode .rn_OkcsProductCategorySearchFilter button.rn_DisplayButton:after {
+    font-family: 'FontAwesome';
+    margin-left: 6px; }
+  .rn_HighContrastMode .rn_OkcsProductCategorySearchFilter button.rn_DisplayButton:after {
+    content: "\f0d7";
+    position: absolute;
+    right: 5px;
+    font-size: 1em; }
+
+.rn_OkcsProductCategorySearchFilter {
+  margin-bottom: 15px; }
+  .rn_OkcsProductCategorySearchFilter button.rn_DisplayButton {
+    background: #FFF url('../images/split_Button_Arrow.png') no-repeat scroll right center;
+    border: 1px solid #B1B1B1;
+    min-height: 1.5em;
+    min-width: 250px;
+    padding: 4px 20px 4px 4px;
+    position: relative;
+    text-align: left;
+    text-shadow: none; }
+  .rn_OkcsProductCategorySearchFilter .rn_Panel {
+    background: #FFF;
+    border: 1px solid #CCC;
+    max-height: 200px;
+    overflow: auto;
+    padding: 6px; }
+  .rn_OkcsProductCategorySearchFilter .rn_PanelContainer {
+    border: 1px solid #B1B1B1;
+    border-top: 0; }
+    .rn_OkcsProductCategorySearchFilter .rn_PanelContainer .rn_Panel {
+      border: 0; }
+  .rn_OkcsProductCategorySearchFilter .rn_SelectionButtons {
+    background: #F8F8F8;
+    border-top: 1px solid #B1B1B1; }
+    .rn_OkcsProductCategorySearchFilter .rn_SelectionButtons button {
+      font-size: 0.95em;
+      margin: 7px 0 7px 5px;
+      padding: 5px; }
+  .rn_OkcsProductCategorySearchFilter button.rn_DisplayButton:hover, .rn_OkcsProductCategorySearchFilter button.rn_DisplayButton:focus {
+    background-color: #F8F8F8; }
+  .rn_OkcsProductCategorySearchFilter table {
+    border-collapse: collapse; }
+  .rn_OkcsProductCategorySearchFilter .rn_Label {
+    color: #333;
+    float: left;
+    font-weight: bold; }
+  .rn_OkcsProductCategorySearchFilter .rn_OkcsProductCategorySearchFilterExplorerView {
+    border: 1px solid #BEBEBE; }
+  .rn_OkcsProductCategorySearchFilter .rn_CategoryExplorer {
+    border: 1px solid #CCC; }
+  .rn_OkcsProductCategorySearchFilter .rn_CategoryExplorerTitleDiv {
+    background: #536a8b;
+    color: #FFF;
+    font-weight: normal;
+    border-bottom: 1px solid #CCC;
+    padding: 7px;
+    line-height: 1.4em; }
+  .rn_OkcsProductCategorySearchFilter .rn_CategoryExplorerContentDiv {
+    padding: 12px;
+    overflow: auto; }
+    .rn_OkcsProductCategorySearchFilter .rn_CategoryExplorerContentDiv ul {
+      list-style: none outside none; }
+  .rn_OkcsProductCategorySearchFilter .rn_CategoryExplorerExpandedHidden {
+    display: none; }
+  .rn_OkcsProductCategorySearchFilter .rn_CategoryExplorerCollapsedHidden {
+    visibility: hidden;
+    width: 16px; }
+  .rn_OkcsProductCategorySearchFilter .rn_CategoryExplorerCollapsed, .rn_OkcsProductCategorySearchFilter .rn_CategoryExplorerExpanded {
+    font-family: 'FontAwesome';
+    display: inline-block;
+    margin-right: 5px;
+    text-decoration: none; }
+  .rn_OkcsProductCategorySearchFilter .rn_CategoryExplorerCollapsed:before {
+    font-family: 'FontAwesome';
+    margin-right: 6px;
+    content: "\f0fe"; }
+  .rn_OkcsProductCategorySearchFilter .rn_CategoryExplorerExpanded:before {
+    font-family: 'FontAwesome';
+    margin-right: 6px;
+    content: "\f146"; }
+  .rn_OkcsProductCategorySearchFilter .rn_CategoryExplorer a.rn_CategoryExplorerLink {
+    line-height: 26px; }
+  .rn_OkcsProductCategorySearchFilter .rn_CategoryExplorer a:link {
+    color: #3B6DB1;
+    white-space: nowrap; }
+  .rn_OkcsProductCategorySearchFilter .rn_CategoryExplorerItem {
+    line-height: 30px;
+    white-space: nowrap; }
+    .rn_OkcsProductCategorySearchFilter .rn_CategoryExplorerItem ul {
+      padding-left: 17px; }
+  .rn_OkcsProductCategorySearchFilter .rn_CategoryExplorerListHidden {
+    display: none; }
+  .rn_OkcsProductCategorySearchFilter .rn_CategoryExplorerLinkSelected {
+    background: #EBEFF5;
+    border: 1px solid #CCC;
+    padding: 10px;
+    font-size: 1em;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-weight: bold; }
+    .rn_OkcsProductCategorySearchFilter .rn_CategoryExplorerLinkSelected:after {
+      font-family: 'FontAwesome';
+      margin-left: 6px;
+      content: "\f057"; }
+    .rn_OkcsProductCategorySearchFilter .rn_CategoryExplorerLinkSelected:after {
+      margin-left: 10px; }
+
+.ygtvlabel {
+  color: #111; }
+  .ygtvlabel:link, .ygtvlabel:visited, .ygtvlabel:hover {
+    color: #111; }
+
+.rn_ProductCategoryLinks {
+  width: 400px; }
+
+.rn_LeafNode {
+  margin-left: 15px; }

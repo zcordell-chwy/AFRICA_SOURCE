@@ -1,0 +1,25 @@
+.rn_OkcsSimpleSearch {
+    margin: auto;
+    max-width: 400px;
+    width: 180px;
+}
+.rn_OkcsSimpleSearch form {
+    background-color: #FFF;
+    border: 1px solid #B1B1B1;
+}
+.rn_OkcsSimpleSearch .rn_SearchField {
+    border: 0 none;
+    color: #222;
+    font-weight: bold;
+    height: 1.8em;
+    max-width: 200px;
+    padding: 4px 4px 0;
+    width: 85%;
+}
+.rn_OkcsSimpleSearch .rn_SearchImage {
+    border: medium none;
+    padding: 0;
+    position: absolute;
+    right: 0.2em;
+    top: 0.46em;
+}

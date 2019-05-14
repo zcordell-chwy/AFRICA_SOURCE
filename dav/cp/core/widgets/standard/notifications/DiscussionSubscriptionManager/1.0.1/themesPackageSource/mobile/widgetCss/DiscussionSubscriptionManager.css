@@ -1,0 +1,46 @@
+.rn_DiscussionSubscriptionManager .rn_Content {
+  background: #F2FAFD;
+  border: solid #DDD;
+  border-width: 1px 1px 0;
+  margin: 10px 0 0;
+  padding: 10px 4px 0; }
+.rn_DiscussionSubscriptionManager .rn_Bottom {
+  background: #F2FAFD;
+  border: solid #DDD;
+  border-width: 0 1px 1px;
+  margin: 0 0 20px;
+  padding: 0 4px 8px; }
+.rn_DiscussionSubscriptionManager .rn_Discussions {
+  margin: 0 auto;
+  overflow: auto;
+  padding: 8px 0;
+  width: 80%; }
+  .rn_DiscussionSubscriptionManager .rn_Discussions .rn_Element1 {
+    font-size: inherit;
+    display: block; }
+  .rn_DiscussionSubscriptionManager .rn_Discussions .rn_Discussion_Info {
+    border-bottom: 1px solid #DDD;
+    padding: 0 4px 10px 0;
+    float: left;
+    overflow: hidden;
+    width: 62%; }
+  .rn_DiscussionSubscriptionManager .rn_Discussions .rn_ElementsHeader, .rn_DiscussionSubscriptionManager .rn_Discussions .rn_ElementsData {
+    font-size: inherit; }
+.rn_DiscussionSubscriptionManager .rn_Discussion_Actions {
+  float: right;
+  width: 34%; }
+.rn_DiscussionSubscriptionManager .rn_ButtonGroup {
+  text-align: center; }
+  .rn_DiscussionSubscriptionManager .rn_ButtonGroup .rn_AddButton {
+    display: inline-block;
+    margin: 10px auto; }
+
+/**dialog */
+.rn_DiscussionSubscriptionManager_Dialog .rn_SelectionWidget {
+  float: left;
+  margin: 0 4px;
+  width: 97%; }
+  .rn_DiscussionSubscriptionManager_Dialog .rn_SelectionWidget button.rn_DisplayButton {
+    margin: 5px 0;
+    min-width: 0;
+    width: 100%; }

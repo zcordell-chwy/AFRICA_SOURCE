@@ -1,0 +1,278 @@
+.rn_SocialUserAvatar {
+  *zoom: 1;
+  display: block; }
+  .rn_SocialUserAvatar:before, .rn_SocialUserAvatar:after {
+    content: " ";
+    display: table; }
+  .rn_SocialUserAvatar:after {
+    clear: both; }
+  .rn_SocialUserAvatar h2 {
+    margin-bottom: 20px; }
+  @media screen and (min-width: 53.75em) {
+    .rn_SocialUserAvatar .rn_PreviewImage {
+      float: left;
+      display: block;
+      margin-right: 2.35765%;
+      width: 14.70196%; }
+      .rn_SocialUserAvatar .rn_PreviewImage:last-child {
+        margin-right: 0; } }
+  .rn_SocialUserAvatar .rn_PreviewImage img {
+    width: 96px;
+    position: absolute;
+    top: 0; }
+  .rn_SocialUserAvatar .rn_PreviewImage .rn_Refresh {
+    margin-top: 0.4em;
+    margin-right: 0.5em; }
+    .rn_SocialUserAvatar .rn_PreviewImage .rn_Refresh:before {
+      font-family: 'FontAwesome';
+      line-height: 1em;
+      margin-right: 6px;
+      content: "\f021"; }
+  .rn_SocialUserAvatar .rn_PreviewImage .rn_image {
+    float: left;
+    display: block;
+    margin-right: 2.35765%;
+    width: 23.23176%; }
+    .rn_SocialUserAvatar .rn_PreviewImage .rn_image:last-child {
+      margin-right: 0; }
+  .rn_SocialUserAvatar .rn_PreviewImage .rn_DisplayName {
+    float: left;
+    display: block;
+    margin-right: 2.35765%;
+    width: 74.41059%;
+    font-weight: bold;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden; }
+    .rn_SocialUserAvatar .rn_PreviewImage .rn_DisplayName:last-child {
+      margin-right: 0; }
+  .rn_SocialUserAvatar .rn_Loading::before {
+    display: inline; }
+  @media screen and (min-width: 53.75em) {
+    .rn_SocialUserAvatar .rn_AvatarOptions {
+      float: left;
+      display: block;
+      margin-right: 2.35765%;
+      width: 74.41059%; }
+      .rn_SocialUserAvatar .rn_AvatarOptions:last-child {
+        margin-right: 0; } }
+  .rn_SocialUserAvatar .rn_AvatarOptions .rn_AvatarOption {
+    *zoom: 1;
+    display: block;
+    padding: 1em 0.5em;
+    border-bottom: 1px dotted #999;
+    float: left; }
+    .rn_SocialUserAvatar .rn_AvatarOptions .rn_AvatarOption:before, .rn_SocialUserAvatar .rn_AvatarOptions .rn_AvatarOption:after {
+      content: " ";
+      display: table; }
+    .rn_SocialUserAvatar .rn_AvatarOptions .rn_AvatarOption:after {
+      clear: both; }
+    .rn_SocialUserAvatar .rn_AvatarOptions .rn_AvatarOption .rn_OptionTitle {
+      display: block;
+      font-size: larger;
+      margin: 0.4em 0;
+      font-weight: bold; }
+    .rn_SocialUserAvatar .rn_AvatarOptions .rn_AvatarOption.rn_Gravatar .rn_OptionTitle {
+      background: url('../images/gravatar.png') 0 0 no-repeat no-repeat;
+      padding-left: 28px;
+      min-height: 16px; }
+    .rn_SocialUserAvatar .rn_AvatarOptions .rn_AvatarOption.rn_Facebook .rn_NewSocialFacebookInput .rn_LoginProvider {
+      background-color: #3b6db1;
+      margin: 0.4em 0;
+      border: 0 none;
+      color: #ffffff;
+      font-size: 1em;
+      font-weight: 800;
+      letter-spacing: 1.1px;
+      padding: 0.5em 0;
+      width: 12.3em;
+      cursor: pointer;
+      white-space: nowrap;
+      display: inline-block;
+      line-height: 1.2em;
+      text-shadow: 0 1px 0 #1b509a; }
+      .rn_SocialUserAvatar .rn_AvatarOptions .rn_AvatarOption.rn_Facebook .rn_NewSocialFacebookInput .rn_LoginProvider:hover {
+        background: #5b8cd0 none repeat scroll 0 0;
+        box-shadow: none; }
+      .rn_SocialUserAvatar .rn_AvatarOptions .rn_AvatarOption.rn_Facebook .rn_NewSocialFacebookInput .rn_LoginProvider.rn_Disabled {
+        cursor: not-allowed;
+        opacity: 0.5;
+        pointer-events: none; }
+    .rn_SocialUserAvatar .rn_AvatarOptions .rn_AvatarOption.rn_Facebook .rn_NewSocialFacebookInput .rn_OpenLogin .rn_ActionArea {
+      padding-left: 1em; }
+    .rn_SocialUserAvatar .rn_AvatarOptions .rn_AvatarOption.rn_Facebook .rn_FacebookIcon {
+      background: url('../images/facebook.png') 0 0 no-repeat no-repeat;
+      padding-left: 28px;
+      min-height: 16px; }
+    .rn_SocialUserAvatar .rn_AvatarOptions .rn_AvatarOption.rn_Facebook .rn_CurrentSocialFacebookAvatar {
+      overflow: hidden; }
+      .rn_SocialUserAvatar .rn_AvatarOptions .rn_AvatarOption.rn_Facebook .rn_CurrentSocialFacebookAvatar .rn_FacebookSuccessMessage {
+        float: left;
+        display: block;
+        margin-right: 2.35765%;
+        width: 82.94039%;
+        vertical-align: top; }
+        .rn_SocialUserAvatar .rn_AvatarOptions .rn_AvatarOption.rn_Facebook .rn_CurrentSocialFacebookAvatar .rn_FacebookSuccessMessage:last-child {
+          margin-right: 0; }
+        .rn_SocialUserAvatar .rn_AvatarOptions .rn_AvatarOption.rn_Facebook .rn_CurrentSocialFacebookAvatar .rn_FacebookSuccessMessage a {
+          color: #23416a; }
+    .rn_SocialUserAvatar .rn_AvatarOptions .rn_AvatarOption.rn_Facebook button.rn_SelectFacebook {
+      float: left;
+      display: block;
+      margin-right: 2.35765%;
+      width: 14.70196%;
+      background: none;
+      margin: 0;
+      padding: 0.2em 0 0.5em;
+      text-align: left; }
+      .rn_SocialUserAvatar .rn_AvatarOptions .rn_AvatarOption.rn_Facebook button.rn_SelectFacebook:last-child {
+        margin-right: 0; }
+      .rn_SocialUserAvatar .rn_AvatarOptions .rn_AvatarOption.rn_Facebook button.rn_SelectFacebook img {
+        width: 96px; }
+    @media screen and (max-width: 400px) {
+      .rn_SocialUserAvatar .rn_AvatarOptions .rn_AvatarOption.rn_Facebook .rn_OpenLogin input {
+        font-size: 0.8em; } }
+    .rn_SocialUserAvatar .rn_AvatarOptions .rn_AvatarOption.rn_Facebook .rn_Explanation {
+      font-style: normal;
+      font-weight: bold;
+      line-height: normal; }
+      .rn_SocialUserAvatar .rn_AvatarOptions .rn_AvatarOption.rn_Facebook .rn_Explanation label {
+        font-weight: normal; }
+    .rn_SocialUserAvatar .rn_AvatarOptions .rn_AvatarOption.rn_Facebook .rn_StatusIcon {
+      vertical-align: top;
+      display: inline-block;
+      margin-top: 0;
+      margin-left: 0.2em; }
+    .rn_SocialUserAvatar .rn_AvatarOptions .rn_AvatarOption.rn_Facebook .rn_OpenLogin input {
+      min-width: auto;
+      margin-bottom: 0.5em; }
+    .rn_SocialUserAvatar .rn_AvatarOptions .rn_AvatarOption.rn_ChosenAvatar {
+      background: #DDD; }
+    .rn_SocialUserAvatar .rn_AvatarOptions .rn_AvatarOption button {
+      margin: 0.4em 0;
+      background-color: #3B6DB1; }
+      .rn_SocialUserAvatar .rn_AvatarOptions .rn_AvatarOption button:hover {
+        background-color: #5888c7; }
+    .rn_SocialUserAvatar .rn_AvatarOptions .rn_AvatarOption .rn_Success {
+      color: #008000; }
+    .rn_SocialUserAvatar .rn_AvatarOptions .rn_AvatarOption .rn_Error {
+      color: #F00; }
+    .rn_SocialUserAvatar .rn_AvatarOptions .rn_AvatarOption .rn_StatusIcon {
+      margin-top: 0.6em;
+      display: inline; }
+      .rn_SocialUserAvatar .rn_AvatarOptions .rn_AvatarOption .rn_StatusIcon.rn_Permanent i {
+        display: none; }
+    .rn_SocialUserAvatar .rn_AvatarOptions .rn_AvatarOption .rn_HintText {
+      display: block;
+      font-size: smaller;
+      font-style: normal;
+      font-weight: bold; }
+  .rn_SocialUserAvatar .rn_AvatarOptions .rn_CurrentSocialAvatar {
+    font-style: italic; }
+  .rn_SocialUserAvatar .rn_AvatarOptions .rn_AvatarLibraryForm .rn_LoadingIcon {
+    text-align: center;
+    padding: 3em; }
+    .rn_SocialUserAvatar .rn_AvatarOptions .rn_AvatarLibraryForm .rn_LoadingIcon img {
+      width: 100px; }
+  .rn_SocialUserAvatar .rn_AvatarOptions .rn_AvatarLibraryForm .rn_NoImages {
+    text-align: center;
+    padding: 3em; }
+  .rn_SocialUserAvatar .rn_AvatarOptions .rn_AvatarLibraryForm .rn_ClickToChooseText {
+    float: left;
+    display: block;
+    margin-right: 2.35765%;
+    width: 91.4702%;
+    margin-bottom: 1em;
+    margin-top: 1em;
+    font-weight: bold; }
+    .rn_SocialUserAvatar .rn_AvatarOptions .rn_AvatarLibraryForm .rn_ClickToChooseText:last-child {
+      margin-right: 0; }
+  .rn_SocialUserAvatar .rn_AvatarOptions .rn_AvatarLibraryForm .rn_CloseGallery {
+    float: left;
+    display: block;
+    margin-right: 2.35765%;
+    width: 6.17215%;
+    text-align: right;
+    margin-right: 0;
+    color: black;
+    padding: 10px; }
+    .rn_SocialUserAvatar .rn_AvatarOptions .rn_AvatarLibraryForm .rn_CloseGallery:last-child {
+      margin-right: 0; }
+    .rn_SocialUserAvatar .rn_AvatarOptions .rn_AvatarLibraryForm .rn_CloseGallery:before {
+      font-family: 'FontAwesome';
+      line-height: 1em;
+      margin-right: 6px;
+      content: "\f00d"; }
+  .rn_SocialUserAvatar .rn_AvatarOptions .rn_AvatarLibraryForm .rn_ProfilePictures {
+    display: inline-block; }
+    .rn_SocialUserAvatar .rn_AvatarOptions .rn_AvatarLibraryForm .rn_ProfilePictures div {
+      padding: 1em;
+      display: inline-block; }
+      .rn_SocialUserAvatar .rn_AvatarOptions .rn_AvatarLibraryForm .rn_ProfilePictures div img {
+        padding: 2px;
+        border-style: groove; }
+        .rn_SocialUserAvatar .rn_AvatarOptions .rn_AvatarLibraryForm .rn_ProfilePictures div img.rn_Clicked {
+          border-color: green;
+          border-style: solid;
+          border-width: thick; }
+  .rn_SocialUserAvatar .rn_AvatarOptions .rn_AvatarLibraryForm .rn_ImagePaginator {
+    text-align: center;
+    padding-top: 2em; }
+    .rn_SocialUserAvatar .rn_AvatarOptions .rn_AvatarLibraryForm .rn_ImagePaginator a {
+      color: black;
+      padding: 8px 16px;
+      border: 1px solid gray; }
+    .rn_SocialUserAvatar .rn_AvatarOptions .rn_AvatarLibraryForm .rn_ImagePaginator .rn_CurrentPages a.rn_Selected {
+      background-color: #3B6DB1;
+      color: white;
+      border: #3B6DB1; }
+    .rn_SocialUserAvatar .rn_AvatarOptions .rn_AvatarLibraryForm .rn_ImagePaginator .rn_CurrentPages a:hover:not(.rn_Selected) {
+      background-color: lightgrey; }
+  .rn_SocialUserAvatar .rn_AvatarOptions .rn_RoleSetTabs {
+    margin-top: 1em;
+    font-size: 0; }
+    .rn_SocialUserAvatar .rn_AvatarOptions .rn_RoleSetTabs a {
+      color: black;
+      display: inline-block;
+      padding: 8px 10px;
+      border: 1px solid gray;
+      font-size: 16px; }
+      .rn_SocialUserAvatar .rn_AvatarOptions .rn_RoleSetTabs a:hover {
+        background-color: #ddd; }
+      .rn_SocialUserAvatar .rn_AvatarOptions .rn_RoleSetTabs a.rn_SelectedTab {
+        background-color: #CCC; }
+  .rn_SocialUserAvatar .rn_NoSocialUser {
+    padding: 4px 0 4px 40px;
+    font-size: 1.2em;
+    font-style: italic; }
+  .rn_SocialUserAvatar .rn_AvatarButtons {
+    margin-top: 2em;
+    display: inline-block; }
+
+.rn_SocialUserAvatarDialog .rn_DialogNote {
+  float: left;
+  display: block;
+  margin-right: 2.35765%;
+  width: 57.35098%; }
+  .rn_SocialUserAvatarDialog .rn_DialogNote:last-child {
+    margin-right: 0; }
+  .rn_SocialUserAvatarDialog .rn_DialogNote .rn_DialogNoteLabel {
+    font-weight: bold; }
+.rn_SocialUserAvatarDialog .rn_DialogAvatarImages {
+  float: left;
+  display: block;
+  margin-right: 2.35765%;
+  width: 40.29137%; }
+  .rn_SocialUserAvatarDialog .rn_DialogAvatarImages:last-child {
+    margin-right: 0; }
+  .rn_SocialUserAvatarDialog .rn_DialogAvatarImages .rn_UserAvatar {
+    text-align: center; }
+    .rn_SocialUserAvatarDialog .rn_DialogAvatarImages .rn_UserAvatar img {
+      float: right; }
+    .rn_SocialUserAvatarDialog .rn_DialogAvatarImages .rn_UserAvatar div {
+      width: 96px;
+      height: 96px;
+      position: relative;
+      float: right; }
+    .rn_SocialUserAvatarDialog .rn_DialogAvatarImages .rn_UserAvatar:last-child {
+      margin-top: 1em; }

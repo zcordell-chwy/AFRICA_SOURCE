@@ -1,0 +1,9 @@
+.rn_AnswerNotificationIcon {
+  margin-right: 10px; }
+  .rn_AnswerNotificationIcon a:before {
+    font-family: 'FontAwesome';
+    line-height: 1em;
+    margin-right: 6px;
+    content: "\f0a2"; }
+  .rn_AnswerNotificationIcon .rn_AnswerNotificationStatusDialog {
+    width: 300px; }

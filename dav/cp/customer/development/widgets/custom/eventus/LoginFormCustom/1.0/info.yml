@@ -1,0 +1,12 @@
+version: "1.0"
+requires:
+  jsModule:
+  - standard
+  - mobile
+extends:
+  widget: standard/login/LoginForm
+  components:
+  - php
+  - view
+  - js
+  - css

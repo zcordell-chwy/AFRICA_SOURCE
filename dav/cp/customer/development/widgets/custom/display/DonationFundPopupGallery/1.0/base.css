@@ -1,0 +1,135 @@
+/**
+ * base.css: Base CSS for DonationFundPopupGallery
+ */
+.rn_DonationFundPopupGallery.rn_ItemPopupGallery {
+
+}
+
+/* Item Popup Gallery Overrides */
+.rn_DonationFundPopupGallery.rn_ItemPopupGallery
+.rn_ItemGalleryContentContainer .rn_ItemGalleryItemsContainer .rn_ItemGalleryItemRow {
+	margin-bottom: 15px; }
+	.rn_DonationFundPopupGallery.rn_ItemPopupGallery
+	.rn_ItemGalleryContentContainer .rn_ItemGalleryItemsContainer .rn_ItemGalleryItemRow .rn_ItemGalleryItem{
+		vertical-align: top; }
+
+/* Item */
+.rn_DonationFundPopupGallery.rn_ItemPopupGallery
+.rn_DonationFundPopupGalleryItemImageContainer{
+	text-align: center;
+    min-height: 120px; }
+    @media only screen and (max-width: 950px){
+        .rn_DonationFundPopupGallery.rn_ItemPopupGallery
+		.rn_DonationFundPopupGalleryItemImageContainer{
+			min-height: initial;
+		}
+    }
+	.rn_DonationFundPopupGallery.rn_ItemPopupGallery
+	.rn_DonationFundPopupGalleryItemImage{
+		border: 1px solid #ccc;
+		width: 80%; }
+	.rn_DonationFundPopupGallery.rn_ItemPopupGallery
+	.rn_DonationFundPopupGalleryItemNoImagePlaceholder{
+		border: 1px solid #ccc;
+	    width: 80%;
+	    height: 100px;
+	    line-height: 100px;
+	    display: inline-block;
+	}
+	@media only screen and (max-width: 950px){
+        .rn_DonationFundPopupGallery.rn_ItemPopupGallery
+		.rn_DonationFundPopupGalleryItemNoImagePlaceholder{
+			height: initial;
+    		line-height: initial;
+		}
+    }
+.rn_DonationFundPopupGallery.rn_ItemPopupGallery
+.rn_DonationFundPopupGalleryItemTitleContainer{
+	text-align: center; }
+	.rn_DonationFundPopupGallery.rn_ItemPopupGallery
+	.rn_DonationFundPopupGalleryItemTitle{
+		text-align: center;
+	    font-weight: bold;
+	    font-family: Gotham, Arial;
+	    color: #706359; }
+
+/* Item Popup */
+.rn_DonationFundPopupGallery.rn_ItemPopupGallery
+.rn_DonationFundPopupGalleryItemPopupContainer{
+	display: table;
+	width: 600px;
+	overflow: auto;
+	table-layout: fixed; }
+	@media only screen and (max-width: 765px){
+		.rn_DonationFundPopupGallery.rn_ItemPopupGallery
+		.rn_DonationFundPopupGalleryItemPopupContainer{
+			width: 100%; }
+	}
+	.rn_DonationFundPopupGallery.rn_ItemPopupGallery
+	.rn_DonationFundPopupGalleryItemPopupLeftColumn{
+		display: table-cell;
+		width: 35%;
+		vertical-align: middle; }
+		.rn_DonationFundPopupGallery.rn_ItemPopupGallery
+		.rn_DonationFundPopupGalleryItemPopupImageContainer{
+			text-align: center; }
+			.rn_DonationFundPopupGallery.rn_ItemPopupGallery
+			.rn_DonationFundPopupGalleryItemPopupImage{
+				max-width: 90%;
+			}
+	.rn_DonationFundPopupGallery.rn_ItemPopupGallery
+	.rn_DonationFundPopupGalleryItemPopupRightColumn, .rn_DonationFundPopupGalleryItemPopupColumn{
+		display: table-cell;
+		width: 65%;
+		padding: 20px;
+		box-sizing: border-box;
+    	-moz-box-sizing: border-box;
+    	-webkit-box-sizing: border-box;
+    	font-family: Gotham, Arial;
+	    font-size: 14px;
+	    line-height: 21px;
+	    font-weight: 300;
+	    font-style: normal;
+	    color: #706359; }
+    	.rn_DonationFundPopupGallery.rn_ItemPopupGallery
+    	.rn_DonationFundPopupGalleryItemPopupTitle{
+		    font-size: 20px;
+		    line-height: 28px;
+		    font-weight: bold; }
+    	.rn_DonationFundPopupGallery.rn_ItemPopupGallery
+    	.rn_DonationFundPopupGalleryItemPopupDescriptionContainer{
+    		margin: 14px 0; }
+    .rn_DonationFundPopupGallery.rn_ItemPopupGallery
+    .rn_DonationFundPopupGalleryItemPopupColumn{
+    	width: 100%; }
+
+/* Item Popup Form */
+.rn_DonationFundPopupGallery.rn_ItemPopupGallery
+.rn_DonationFundPopupGalleryItemPopupAddToCartForm{
+	}
+	.rn_DonationFundPopupGallery.rn_ItemPopupGallery
+	.rn_DonationFundPopupGalleryItemPopupAddToCartForm input[type="text"]{
+		width: 50px;
+		margin-left: 10px; }
+	.rn_DonationFundPopupGallery.rn_ItemPopupGallery
+	.rn_DonationFundPopupGalleryItemPopupAddToCartForm select{
+		margin-left: 10px;
+		width: 100%; }
+    .rn_DonationFundPopupGallery.rn_ItemPopupGallery
+    .rn_DonationFundPopupGalleryItemPopupInputContainer{
+    	margin: 20px 0; }
+    	.rn_DonationFundPopupGallery.rn_ItemPopupGallery
+    	.rn_DonationFundPopupGalleryItemPopupInputContainer button{
+    		margin: 0 5px 5px 0; }
+    	.rn_DonationFundPopupGallery.rn_ItemPopupGallery
+    	.rn_DonationFundPopupGalleryItemPopupInputContainer button[value="submit"]{
+    		margin-left: 0; }
+    	.rn_DonationFundPopupGallery.rn_ItemPopupGallery
+    	.rn_DonationFundPopupGalleryItemPopupInputContainer .rn_DonationFundPopupGalleryItemPopupInputErrorContainer{
+    		margin-top: 5px;
+    	}
+    .rn_DonationFundPopupGallery.rn_ItemPopupGallery
+	p.rn_DonationFundPopupGalleryItemPopupErrorMsg {
+		color: red;
+		font-size: 12px;
+	}

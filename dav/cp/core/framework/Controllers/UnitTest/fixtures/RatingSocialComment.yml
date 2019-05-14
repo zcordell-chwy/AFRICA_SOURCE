@@ -1,0 +1,6 @@
+type: SocialQuestionCommentContentRating
+object:
+  CreatedBySocialUser:
+    fixture: UserModActive
+  RatingValue: 100
+  RatingWeight: 100

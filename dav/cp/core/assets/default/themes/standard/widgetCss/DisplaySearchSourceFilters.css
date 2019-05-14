@@ -1,0 +1,62 @@
+.rn_DisplaySearchSourceFilters {
+  float: left;
+  display: block;
+  margin-right: 2.35765%;
+  width: 14.70196%; }
+  .rn_DisplaySearchSourceFilters:last-child {
+    margin-right: 0; }
+  @media screen and (max-width: 720px) {
+    .rn_DisplaySearchSourceFilters {
+      *zoom: 1;
+      display: block;
+      margin-left: 17.05961%;
+      float: left;
+      display: block;
+      margin-right: 2.35765%;
+      width: 65.88078%;
+      margin-bottom: 1em; }
+      .rn_DisplaySearchSourceFilters:before, .rn_DisplaySearchSourceFilters:after {
+        content: " ";
+        display: table; }
+      .rn_DisplaySearchSourceFilters:after {
+        clear: both; }
+      .rn_DisplaySearchSourceFilters:last-child {
+        margin-right: 0; } }
+  @media screen and (max-width: 400px) {
+    .rn_DisplaySearchSourceFilters {
+      *zoom: 1;
+      display: block;
+      margin-left: 0%;
+      float: left;
+      display: block;
+      margin-right: 2.35765%;
+      width: 100%; }
+      .rn_DisplaySearchSourceFilters:before, .rn_DisplaySearchSourceFilters:after {
+        content: " ";
+        display: table; }
+      .rn_DisplaySearchSourceFilters:after {
+        clear: both; }
+      .rn_DisplaySearchSourceFilters:last-child {
+        margin-right: 0; } }
+  .rn_DisplaySearchSourceFilters .rn_Filter {
+    overflow: hidden;
+    padding: 10px 0;
+    font-weight: normal; }
+    .rn_DisplaySearchSourceFilters .rn_Filter a {
+      font-weight: normal;
+      color: #fff; }
+    .rn_DisplaySearchSourceFilters .rn_Filter .rn_Remove {
+      padding-left: 0.5em; }
+      .rn_DisplaySearchSourceFilters .rn_Filter .rn_Remove:before {
+        font-family: 'FontAwesome';
+        margin-right: 6px;
+        content: "\f057"; }
+  .rn_DisplaySearchSourceFilters .rn_Label {
+    font-weight: bold;
+    margin-bottom: 2px;
+    line-height: 1.5em; }
+    .rn_DisplaySearchSourceFilters .rn_Label a {
+      text-decoration: none; }
+    .rn_DisplaySearchSourceFilters .rn_Label img {
+      margin-left: 4px;
+      vertical-align: middle; }

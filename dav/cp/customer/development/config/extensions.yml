@@ -1,0 +1,20 @@
+#
+# Model Extensions
+#  
+# Specify the standard models you wish to override here. The key to the array is the name of the standard
+# model to override and the value is the custom model to use as a replacement. The custom model must extend
+# from the standard model or an error will be thrown at runtime.
+# 
+# 
+# Examples:
+# 
+# -Overriding the standard Answer model with a model at development/models/custom/ExtendedSample.php
+#     modelExtensions:
+#         Answer: ExtendedSample
+# 
+#  
+# -Overriding the standard Contact model with a model at development/models/custom/contacts/ContactCreation.php
+#     modelExtensions:
+#         Contact: contacts/ContactCreation
+#
+modelExtensions:

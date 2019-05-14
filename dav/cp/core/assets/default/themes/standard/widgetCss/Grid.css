@@ -1,0 +1,29 @@
+.rn_Grid .yui3-datatable-sort-liner {
+  position: relative; }
+.rn_Grid .yui3-datatable-sort-indicator {
+  padding-left: 8px; }
+  .rn_Grid .yui3-datatable-sort-indicator:before {
+    font-family: 'FontAwesome';
+    margin-right: 6px;
+    content: "\f0dc"; }
+.rn_Grid .yui3-datatable-sorted .yui3-datatable-sort-indicator:before {
+  font-family: 'FontAwesome';
+  margin-right: 6px;
+  content: "\f0de"; }
+.rn_Grid .yui3-datatable-sorted-desc .yui3-datatable-sort-indicator:before {
+  font-family: 'FontAwesome';
+  margin-right: 6px;
+  content: "\f0dd"; }
+.rn_Grid .rn_Highlight {
+  font-style: normal;
+  font-weight: bold; }
+.rn_Grid .yui3-datatable-table {
+  table-layout: auto; }
+.rn_Grid .yui3-datatable-table td span {
+  display: inline-block; }
+.rn_Grid .yui3-datatable-table td, .rn_Grid th {
+  white-space: nowrap; }
+.rn_Grid .yui3-datatable-table th:first-child, .rn_Grid td:first-child {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 350px !important; }

@@ -1,0 +1,17 @@
+version: "1.1.2"
+requires:
+  framework: ["3.3", "3.4", "3.5", "3.6", "3.7"]
+  jsModule: [standard, mobile]
+attributes:
+  label_link:
+    name: rn:msg:LINK_LABEL_CMD
+    type: STRING
+    description: rn:msg:STRING_DISPLAYS_LINK_PAGE_LBL
+    default: rn:msg:PRINT_CMD
+  label_tooltip:
+    name: rn:msg:TOOLTIP_LBL
+    type: STRING
+    description: rn:msg:STRING_DISPLAYS_HOVERS_LINK_LBL
+    default: rn:msg:PRINT_THIS_PAGE_CMD
+info:
+  description: rn:msg:CLICKED_WIDGET_CALLS_BROWSERS_PRINT_MSG

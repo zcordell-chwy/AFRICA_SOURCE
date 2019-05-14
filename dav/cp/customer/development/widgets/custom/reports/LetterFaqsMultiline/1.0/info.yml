@@ -1,0 +1,11 @@
+version: "1.0"
+requires:
+  jsModule:
+  - standard
+  - mobile
+extends:
+  widget: standard/reports/Multiline
+  components:
+  - php
+  - view
+  - js

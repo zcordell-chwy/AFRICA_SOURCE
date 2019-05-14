@@ -1,0 +1,6 @@
+version: "1.0.2"
+requires:
+  framework: ["3.2", "3.3", "3.4", "3.5", "3.6", "3.7"]
+  jsModule: [standard, mobile]
+info:
+  description: rn:msg:WIDGET_DISP_CODE_AGT_AGENT_ABLE_MSG

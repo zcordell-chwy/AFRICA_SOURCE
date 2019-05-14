@@ -1,0 +1,44 @@
+version: "1.0.1"
+requires:
+  framework: ["3.3"]
+  jsModule: [standard]
+attributes:
+  report_id:
+    name: rn:msg:REPORT_ID_LC_LBL
+    type: INT
+    description: rn:msg:ID_RPT_DISP_DATA_SEARCH_RESULTS_MSG
+    default: 15100
+  report_filter_name:
+    name: rn:msg:FLAG_FILTER_NAME_LBL
+    type: STRING
+    description: rn:msg:NAME_FLAG_FILTER_DEFINED_AGENT_CONSOLE_MSG
+    default: question_content_flags.flag
+  object_type:
+    name: rn:msg:OBJECT_TYPE_LBL
+    description: rn:msg:THE_TYPE_OF_THE_OBJECTS_TO_BE_FILTERED_MSG
+    default: SocialQuestion
+    type: OPTION
+    options:
+    - SocialQuestion
+    - SocialComment
+  flag_types:
+    name: rn:msg:FLAG_TYPES_LBL
+    description: rn:msg:L_TYP_DF_FLTR_PTS_DSP_FLTR_FLTR_FLGS_TYP_MSG
+    default: none
+    type: multioption
+    options:
+     - none
+     - spam
+     - miscategorized
+     - inappropriate
+     - redundant
+  label_title:
+    name: rn:msg:TITLE_LABEL_LBL
+    description: rn:msg:LABEL_TO_USE_FOR_FLAG_FILTER_WIDGET_MSG
+    default: rn:msg:FLAG_LBL
+    type: STRING
+info:
+  category:
+    - Community
+    - Moderation
+  description: rn:astr:This widget displays a group of flag checkboxes that allows the user to filter the contents (Social Questions and Social Comments) based on the flags selected.

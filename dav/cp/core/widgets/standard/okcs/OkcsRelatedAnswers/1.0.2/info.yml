@@ -1,0 +1,33 @@
+version: "1.0.2"
+requires:
+  framework: ["3.5", "3.6", "3.7"]
+  jsModule: [standard, mobile]
+attributes:
+  limit:
+    name: rn:msg:NUMBER_LBL
+    description: rn:msg:MAXIMUM_PRMSSBL_VALUES_BETWEEN_1_20_MSG
+    default: 5
+    max: 20
+    type: int
+  label_title:
+    name: rn:msg:LABEL_LBL
+    description: rn:msg:LABEL_TO_USE_FOR_HEADING_LBL
+    default: rn:msg:RELATED_ANS_HDG
+    type: string
+
+extends:
+  widget: standard/knowledgebase/RelatedAnswers
+  versions: ["1.3"]
+  components: [php, view, js]
+
+info:
+  description: rn:msg:END_REL_EDIT_IN_AUTO_REL_DB_ENDUSER_ST_MSG
+  urlParameters:
+    a_id:
+      name: rn:msg:ANS_ID_LBL
+      description: rn:msg:ANSWER_ID_CHECK_RELATED_ANSWERS_LBL
+      example: a_id/3
+    kw:
+      name: rn:msg:KEYWORD_LBL
+      description: rn:msg:HIGHLIGHT_WORDS_ANSWERS_LINKS_MSG
+      example: kw/searchTerm

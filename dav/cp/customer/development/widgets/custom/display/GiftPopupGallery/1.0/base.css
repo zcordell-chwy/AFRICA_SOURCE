@@ -1,0 +1,138 @@
+/**
+ * base.css: Base CSS for GiftPopupGallery
+ */
+.rn_GiftPopupGallery.rn_ItemPopupGallery {
+
+}
+
+/* Item Popup Gallery Overrides */
+.rn_GiftPopupGallery.rn_ItemPopupGallery
+.rn_ItemGalleryContentContainer .rn_ItemGalleryItemsContainer .rn_ItemGalleryItemRow {
+	margin-bottom: 15px; }
+	.rn_GiftPopupGallery.rn_ItemPopupGallery
+	.rn_ItemGalleryContentContainer .rn_ItemGalleryItemsContainer .rn_ItemGalleryItemRow .rn_ItemGalleryItem{
+		vertical-align: top; }
+
+/* Item */
+.rn_GiftPopupGallery.rn_ItemPopupGallery
+.rn_GiftPopupGalleryItemImageContainer{
+	text-align: center;
+	min-height: 180px; }
+	@media only screen and (max-width: 950px){
+        .rn_GiftPopupGallery.rn_ItemPopupGallery
+		.rn_GiftPopupGalleryItemImageContainer{
+			min-height: initial;
+		}
+    }
+	.rn_GiftPopupGallery.rn_ItemPopupGallery
+	.rn_GiftPopupGalleryItemImage{
+		/*border: 1px solid #ccc;*/
+		width: 80%; }
+.rn_GiftPopupGallery.rn_ItemPopupGallery
+.rn_GiftPopupGalleryItemTitleContainer{
+	text-align: center; }
+	.rn_GiftPopupGallery.rn_ItemPopupGallery
+	.rn_GiftPopupGalleryItemTitle{
+		text-align: center;
+	    font-weight: bold;
+	    font-family: Gotham, Arial;
+	    color: #706359; }
+
+/* Item Popup */
+.rn_GiftPopupGallery.rn_ItemPopupGallery
+.rn_GiftPopupGalleryItemPopupContainer{
+	display: table;
+	width: 600px;
+	overflow: auto;
+	table-layout: fixed; }
+	@media only screen and (max-width: 765px){
+		.rn_GiftPopupGallery.rn_ItemPopupGallery
+		.rn_GiftPopupGalleryItemPopupContainer{
+			width: 100%; }
+	}
+	.rn_GiftPopupGallery.rn_ItemPopupGallery
+	.rn_GiftPopupGalleryItemPopupLeftColumn{
+		display: table-cell;
+		width: 30%;
+		vertical-align: middle; }
+		.rn_GiftPopupGallery.rn_ItemPopupGallery
+		.rn_GiftPopupGalleryItemPopupImageContainer{
+			text-align: center; }
+	.rn_GiftPopupGallery.rn_ItemPopupGallery
+	.rn_GiftPopupGalleryItemPopupRightColumn{
+		display: table-cell;
+		width: 70%;
+		padding: 20px;
+		box-sizing: border-box;
+    	-moz-box-sizing: border-box;
+    	-webkit-box-sizing: border-box;
+    	font-family: Gotham, Arial;
+	    font-size: 14px;
+	    line-height: 21px;
+	    font-weight: 300;
+	    font-style: normal;
+	    color: #706359; }
+    	.rn_GiftPopupGallery.rn_ItemPopupGallery
+    	.rn_GiftPopupGalleryItemPopupTitle{
+		    font-size: 20px;
+		    line-height: 28px;
+		    font-weight: bold; }
+		.rn_GiftPopupGallery.rn_ItemPopupGallery
+    	.rn_GiftPopupGalleryItemPopupAmountContainer{
+    		margin: 14px 0; }
+    	.rn_GiftPopupGallery.rn_ItemPopupGallery
+    	.rn_GiftPopupGalleryItemPopupDescriptionContainer{
+    		margin: 14px 0; }
+
+/* Item Popup Form */
+.rn_GiftPopupGallery.rn_ItemPopupGallery
+.rn_GiftPopupGalleryItemPopupAddToCartForm{
+	}
+	.rn_GiftPopupGallery.rn_ItemPopupGallery
+	.rn_GiftPopupGalleryItemPopupAddToCartForm input[type="number"]{
+		width: 50px; }
+	.rn_GiftPopupGallery.rn_ItemPopupGallery
+	fieldset.rn_GiftPopupGalleryItemPopupSponsoredChildFieldset{
+		border: 1px solid #ccc;
+    	padding: 20px; }
+    	.rn_GiftPopupGallery.rn_ItemPopupGallery
+    	fieldset.rn_GiftPopupGalleryItemPopupSponsoredChildFieldset legend{
+    		font-size: 12px;
+    		color: #706359; }
+    	.rn_GiftPopupGallery.rn_ItemPopupGallery
+    	.rn_GiftPopupGalleryItemPopupSponsoredChildFieldsetColumn{
+    		float: left;
+    		width: 50%;
+    		margin-bottom: 10px; }
+	    	.rn_GiftPopupGallery.rn_ItemPopupGallery
+	    	.rn_GiftPopupGalleryItemPopupSponsoredChildFieldsetColumn span{
+	    		margin: 0 8px; }
+	    .rn_GiftPopupGallery.rn_ItemPopupGallery
+	   	.rn_GiftPopupGalleryItemPopupSponsoredChildrenFieldsetErrorContainer{
+	   		clear: both; }
+    .rn_GiftPopupGallery.rn_ItemPopupGallery
+    .rn_GiftPopupGalleryItemPopupInputContainer{
+    	margin: 20px 0; }
+    	.rn_GiftPopupGallery.rn_ItemPopupGallery
+    	.rn_GiftPopupGalleryItemPopupInputContainer button{
+    		margin: 0 5px 5px 0; }
+    	.rn_GiftPopupGallery.rn_ItemPopupGallery
+    	.rn_GiftPopupGalleryItemPopupInputContainer button[value="submit"]{
+    		margin-left: 0; }
+    	.rn_GiftPopupGallery.rn_ItemPopupGallery
+    	.rn_GiftPopupGalleryItemPopupInputContainer .rn_GiftPopupGalleryItemPopupInputErrorContainer{
+    		margin-top: 5px;
+    	}
+    .rn_GiftPopupGallery.rn_ItemPopupGallery
+	p.rn_GiftPopupGalleryItemPopupErrorMsg {
+		color: red;
+		font-size: 12px;
+	}
+	
+
+
+.giftAdditionalInfo p {
+    font-size: .9em;
+    font-weight: bold;
+    margin-top: 8px;
+}

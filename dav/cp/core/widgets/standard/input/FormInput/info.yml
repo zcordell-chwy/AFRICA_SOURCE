@@ -1,0 +1,22 @@
+version: "1.2.1"
+requires:
+  framework: ["3.3", "3.4", "3.5", "3.6", "3.7"]
+  jsModule: [standard, mobile]
+info:
+  description: rn:php:sprintf(\RightNow\Utils\Config::getMessage(T_LLWS_VLS_TTCH_NC_PTS_VW_BS_DDR_VW_FLD_MSG), 'name', 'default_value')
+  urlParameters:
+    i_id:
+      name: rn:msg:INCIDENT_ID_LBL
+      description: rn:msg:INCIDENT_ID_DISPLAY_INFORMATION_LBL
+      example: i_id/7
+contains:
+- widget: standard/input/SelectionInput
+  versions: ["1.5", "1.6", "1.7", "1.8"]
+- widget: standard/input/DateInput
+  versions: ["1.6", "1.7", "1.8"]
+- widget: standard/input/TextInput
+  versions: ["1.5", "1.6", "1.7", "1.8"]
+- widget: standard/input/PasswordInput
+  versions: ["1.5", "1.6"]
+- widget: standard/input/DisplayNameInput
+  versions: ["1.0"]

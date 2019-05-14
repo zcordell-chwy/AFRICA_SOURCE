@@ -1,0 +1,111 @@
+/**
+ * base.css: Base CSS for ShoppingCart
+ */
+.rn_ShoppingCart{
+
+}
+
+/* Header */
+.rn_ShoppingCart
+.rn_ShoppingCartHeaderContainer{
+	padding: 15px 0;
+    background-color: #706359;
+    margin-bottom: 10px; }
+    .rn_ShoppingCart
+    .rn_ShoppingCartHeader{
+    	text-align: center; }
+    	.rn_ShoppingCart
+   		.rn_ShoppingCartHeader span{
+   			font-family: Gotham, Arial;
+		    font-size: 24px;
+		    line-height: 28px;
+		    font-weight: bold;
+		    font-style: normal;
+		    color: white; }
+
+/* Line Items */
+.rn_ShoppingCart
+.rn_ShoppingCartLineItemContainer{
+	padding: 0 38px;
+	font-family: Gotham, Arial;
+    font-size: 12px;
+    min-height: 320px; }
+    /* Loading indicator */
+	.rn_ShoppingCart
+	.rn_ShoppingCartLoadingIndicatorContainer{
+		text-align: center; }
+		.rn_ShoppingCart
+		.rn_ShoppingCartLoadingIndicatorContainer:before{
+			content: ' ';
+		    display: inline-block;
+		    vertical-align: middle;
+		    height: 100%; }
+		.rn_ShoppingCart
+	    .rn_ShoppingCartLoadingIndicator{
+			display: inline-block;
+		    vertical-align: middle; }
+			.rn_ShoppingCart 
+			.rn_ShoppingCartLoadingIndicatorMsgContainer{
+				display: inline-block;
+				height: 66px; 
+				line-height: 66px;
+				padding: 0 10px 0 10px;
+	    		vertical-align: top; }
+	.rn_ShoppingCart
+	.rn_LineItem{
+		position: relative;
+		margin: 10px 0; }
+		.rn_ShoppingCart
+		.rn_LineItemTitleContainer{
+    		width: 85%;
+    		font-weight: bold; }
+    	.rn_ShoppingCart
+		.rn_LineItemPriceContainer{
+			display: inline-block;
+    		margin-right: 5px;
+    		width: 30%; }
+    		.rn_ShoppingCart
+    		span.rn_LineItemPrice{
+    			color: #b12704;
+    			font-weight: bold; }
+    	.rn_ShoppingCart
+		.rn_LineItemQuantityContainer{
+			display: inline-block;
+    		margin-right: 5px; }
+    		.rn_ShoppingCart
+    		input.rn_LineItemQuantity{
+    			width: 35px; }
+    	.rn_ShoppingCart
+		.rn_LineItemRemoveLinkContainer{
+			position: absolute;
+		    top: 0;
+		    right: 0; }
+		    .rn_ShoppingCart
+		    a.rn_LineItemRemoveLink{
+		    	color: black;
+		    	font-size: 1.3em; }
+
+/* Total */
+.rn_ShoppingCart
+.rn_ShoppingCartTotalContainer{
+	padding: 0 38px; 
+	font-family: Gotham, Arial;
+    font-size: 12px;
+    margin: 10px 0; }
+	.rn_ShoppingCart
+	span.rn_TotalAmountLabel{
+		font-weight: bold; }
+	.rn_ShoppingCart
+	span.rn_TotalAmount{
+		color: #b12704;
+		font-weight: bold; }
+
+/* Checkout */
+.rn_ShoppingCart
+.rn_ShoppingCartCheckoutButtonContainer{
+	padding: 0 38px;
+    margin-bottom: 38px; }
+    .rn_ShoppingCart
+    .rn_ShoppingCartCheckoutButton{
+    	margin: 0;
+    	width: 100%; }

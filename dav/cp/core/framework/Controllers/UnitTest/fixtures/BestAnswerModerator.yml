@@ -1,0 +1,7 @@
+type: BestSocialQuestionAnswer
+object:
+  SocialUser:
+    fixture: UserModActive
+  BestAnswerType.LookupName: Moderator Selected
+  SocialQuestionComment:
+    fixture: CommentActiveUserActive

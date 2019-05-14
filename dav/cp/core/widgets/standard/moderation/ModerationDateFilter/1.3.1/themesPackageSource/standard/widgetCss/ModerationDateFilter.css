@@ -1,0 +1,60 @@
+.rn_ModerationDateFilter li {
+  padding-left: 5px; }
+.rn_ModerationDateFilter input {
+  vertical-align: middle; }
+  .rn_ModerationDateFilter input::-webkit-input-placeholder {
+    color: #4c4c4c;
+    opacity: 1; }
+  .rn_ModerationDateFilter input:-moz-placeholder {
+    /* Firefox 18- */
+    color: #4c4c4c;
+    opacity: 1; }
+  .rn_ModerationDateFilter input::-moz-placeholder {
+    /* Firefox 19+ */
+    color: #4c4c4c;
+    opacity: 1; }
+  .rn_ModerationDateFilter input:-ms-input-placeholder {
+    color: #4c4c4c;
+    opacity: 1; }
+.rn_ModerationDateFilter label {
+  display: inline-block;
+  vertical-align: baseline;
+  zoom: 1;
+  *display: inline;
+  *vertical-align: auto;
+  width: 80%;
+  vertical-align: top;
+  font-weight: normal; }
+.rn_ModerationDateFilter button.rn_CalButton {
+  color: #333;
+  background: none;
+  border: 0;
+  box-shadow: none;
+  font-size: large;
+  padding: 0;
+  text-shadow: none; }
+  .rn_ModerationDateFilter button.rn_CalButton:before {
+    font-family: 'FontAwesome';
+    margin-right: 6px;
+    content: "\f073";
+    margin: 3px; }
+  .rn_ModerationDateFilter button.rn_CalButton:hover, .rn_ModerationDateFilter button.rn_CalButton:focus {
+    border: 0;
+    box-shadow: none;
+    background: none; }
+.rn_ModerationDateFilter .rn_DateInput {
+  width: 45%;
+  display: inline-block;
+  clear: both;
+  position: static; }
+.rn_ModerationDateFilter .rn_DateRangeContainer {
+  float: right;
+  display: block;
+  margin-right: -28px;
+  width: 100%; }
+.rn_ModerationDateFilter .rn_DatePopupContainer {
+  overflow: auto;
+  position: absolute;
+  width: 30%; }
+.rn_ModerationDateFilter .rn_Show {
+  display: inline; }

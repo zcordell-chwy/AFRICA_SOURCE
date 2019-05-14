@@ -1,0 +1,30 @@
+type: SocialQuestion
+object:
+  CreatedBySocialUser:
+    fixture: UserModActive
+  Subject: Question with active admin
+  Body: Test question body
+  Attributes.ContentLocked: false
+  StatusWithType.Status.LookupName: Active
+  _comments:
+    - fixture: CommentActiveUserActive
+      parameters:
+        SocialQuestion: this.ID
+    - fixture: CommentPendingModActive
+      parameters:
+        SocialQuestion: this.ID
+    - fixture: CommentDeletedModActive
+      parameters:
+        SocialQuestion: this.ID
+    - fixture: CommentWithSuspendedRepliesUserArchive
+      parameters:
+        SocialQuestion: this.ID
+    - fixture: CommentSuspendedModActive
+      parameters:
+        SocialQuestion: this.ID
+    - fixture: CommentActiveUserArchive
+      parameters:
+        SocialQuestion: this.ID
+    - fixture: CommentPendingUserActive
+      parameters:
+        SocialQuestion: this.ID

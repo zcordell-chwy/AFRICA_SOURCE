@@ -1,0 +1,14 @@
+.rn_ModerationProfile {
+  margin-top: -2em; }
+  .rn_ModerationProfile legend {
+    display: block; }
+  .rn_ModerationProfile fieldset {
+    word-break: break-all; }
+  .rn_ModerationProfile .rn_FieldLabel {
+    display: block;
+    font-size: 0.8em;
+    font-weight: bold; }
+  .rn_ModerationProfile .rn_FieldValue {
+    display: block;
+    padding-left: 1em;
+    font-size: 0.8em; }

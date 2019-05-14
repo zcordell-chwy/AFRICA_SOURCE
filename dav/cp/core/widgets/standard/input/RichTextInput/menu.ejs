@@ -1,0 +1,23 @@
+<rn:block id="preMenu"/>
+<div class="rn_Menu" tabindex="0">
+    <span class="rn_ScreenReaderOnly"><%= RightNow.Interface.getMessage("TOGGLE_FORMATTING_MENU_TAB_KEY_SELECT_MSG") %></span>
+    <rn:block id="topMenu"/>
+    <rn:block id="preRichModeButtons"/>
+    <div class="rn_RichMode">
+        <% if (formatContent) { %>
+        <button class="rn_Bolden rn_FormatAction" type="button"><span class="rn_ScreenReaderOnly"><%= RightNow.Interface.getMessage("BOLD_LBL") %></span></button>
+        <button class="rn_Italicize rn_FormatAction" type="button"><span class="rn_ScreenReaderOnly"><%= RightNow.Interface.getMessage("ITALIC_LBL") %></span></button>
+        <button class="rn_InsertBullet rn_FormatAction" type="button"><span class="rn_ScreenReaderOnly"><%= RightNow.Interface.getMessage("INSERT_BULLET_LIST_LBL") %></span></button>
+        <% } %>
+        <button class="rn_InsertLink rn_InsertAction" type="button"><span class="rn_ScreenReaderOnly"><%= messages.label_insert_link_dialog %></span></button>
+    </div>
+    <rn:block id="postRichModeButtons"/>
+    <rn:block id="preAdvancedModeButtons"/>
+    <div class="rn_AdvancedMode rn_Hidden">
+        <a class="rn_HelpLink rn_Hidden" href="<%= attrs.editor_help_url %>" target="_blank"><%= messages.label_help_link %></a>
+        <button type="button"><%= messages.label_advanced_mode %></button>
+    </div>
+    <rn:block id="postAdvancedModeButtons"/>
+    <rn:block id="bottomMenu"/>
+</div>
+<rn:block id="postMenu"/>

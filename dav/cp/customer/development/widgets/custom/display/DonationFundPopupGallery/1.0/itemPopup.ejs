@@ -1,0 +1,57 @@
+<rn:block id="itemPopupContent">
+	<div class="rn_DonationFundPopupGalleryItemPopupContainer">
+		<% if(data.photoURL !== null){ %>
+		<div class="rn_DonationFundPopupGalleryItemPopupLeftColumn">
+			<div class="rn_DonationFundPopupGalleryItemPopupImageContainer">
+				<img class="rn_DonationFundPopupGalleryItemPopupImage" src="<%= data.photoURL %>" />
+			</div>
+		</div>
+		<% } %>
+		<% if(data.photoURL !== null){ %>
+		<div class="rn_DonationFundPopupGalleryItemPopupRightColumn">
+		<% }else{ %>
+		<div class="rn_DonationFundPopupGalleryItemPopupColumn">
+		<% } %>
+			<div class="rn_DonationFundPopupGalleryItemPopupTitleContainer">
+				<span class="rn_DonationFundPopupGalleryItemPopupTitle"><%= data.title %></span>
+			</div>
+			<div class="rn_DonationFundPopupGalleryItemPopupDescriptionContainer">
+				<span class="rn_DonationFundPopupGalleryItemPopupDescription"><%= data.description %></span>
+			</div>
+			<div class="rn_DonationFundPopupGalleryItemPopupAddToCartForm">
+				<% /* Add missionary selector for missionaryList item. */ %>
+				<% if(data.type === "missionaryList"){ %>
+				<div class="rn_DonationFundPopupGalleryItemPopupInputContainer" data-field="missionaryList">
+					<span class="rn_DonationFundPopupGalleryItemPopupAddToCartFormLabel">Mission Team Member:</span>
+					<select>
+						<% for(var i = 0; i < data.missionaries.length; i++){ %>
+						<option value="<%= i %>"><%= data.missionaries[i].title %></option>
+						<% } %>
+					</select>
+					<div class="rn_DonationFundPopupGalleryItemPopupInputErrorContainer">
+					</div>
+				</div>
+				<% } %>
+				<div class="rn_DonationFundPopupGalleryItemPopupInputContainer" data-field="amountOneTime">
+					<span class="rn_DonationFundPopupGalleryItemPopupAddToCartFormLabel">One Time Donation Amount:</span>
+					<input class="rn_DonationFundPopupGalleryItemPopupInput" type="text" value="0.00" />
+					<div class="rn_DonationFundPopupGalleryItemPopupInputErrorContainer">
+					</div>
+				</div>
+				<% /* Only allow monthly donations for funds, not individual missionaries. */ %>
+				<% if(data.type === "fund"){ %>
+				<div class="rn_DonationFundPopupGalleryItemPopupInputContainer" data-field="amountMonthly">
+					<span class="rn_DonationFundPopupGalleryItemPopupAddToCartFormLabel">Monthly Donation Amount:</span>
+					<input class="rn_DonationFundPopupGalleryItemPopupInput" type="text" value="0.00" />
+					<div class="rn_DonationFundPopupGalleryItemPopupInputErrorContainer">
+					</div>
+				</div>
+				<% } %>
+				<div class="rn_DonationFundPopupGalleryItemPopupInputContainer">
+					<button value="submit">Add Donation to Cart</button>
+					<button value="cancel">Cancel</button>
+				</div>
+			</div>
+		</div>
+	</div>
+</rn:block>

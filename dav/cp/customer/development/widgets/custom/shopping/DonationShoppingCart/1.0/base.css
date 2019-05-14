@@ -1,0 +1,37 @@
+/**
+ * base.css: Base CSS for DonationShoppingCart
+ */
+.rn_DonationShoppingCart.rn_ShoppingCart {
+
+}
+
+/* Line Item */
+.rn_DonationShoppingCart.rn_ShoppingCart
+div.rn_LineItem{
+	border: 1px solid #ccc;
+    padding: 5px;
+    background-color: rgb(252,252,252); }
+	.rn_DonationShoppingCart.rn_ShoppingCart
+	div.rn_LineItemAmountContainer{
+		margin: 5px 0; }
+		.rn_DonationShoppingCart.rn_ShoppingCart
+		input.rn_LineItemAmount{
+			width: 50px; }
+		.rn_DonationShoppingCart.rn_ShoppingCart
+		span.rn_LineItemAmountLabel{
+			display: inline-block;
+		    min-width: 65px; }
+	.rn_DonationShoppingCart.rn_ShoppingCart
+	div.rn_LineItemPriceContainer{
+		display: none; }
+	.rn_DonationShoppingCart.rn_ShoppingCart
+	div.rn_LineItemQuantityContainer{
+		display: none; }
+	.rn_DonationShoppingCart.rn_ShoppingCart
+	div.rn_LineItemRemoveLinkContainer{
+		top: 5px;
+    	right: 5px; }
+    .rn_DonationShoppingCart.rn_ShoppingCart
+    div.rn_HiddenLineItemContainer{
+    	display: none;
+    }

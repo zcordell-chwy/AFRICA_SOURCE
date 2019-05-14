@@ -1,0 +1,13 @@
+version: "1.0"
+requires:
+  jsModule:
+  - standard
+  - mobile
+attributes:
+  inspectlet_snippet:
+    name: inspectlet_snippet
+    type: string
+    description: The js snippet to control the inspectlet tool
+    default: ""
+    required: false
+  

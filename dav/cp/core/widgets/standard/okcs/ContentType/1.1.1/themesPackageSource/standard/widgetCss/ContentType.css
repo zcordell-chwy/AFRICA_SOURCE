@@ -1,0 +1,21 @@
+.rn_ContentType {
+  background: linear, to bottom, #FFF 20%, #F1F1F1 80% repeat scroll 0 0 transparent;
+  margin-left: -16px;
+  padding: 12px 10px 6px;
+  overflow: hidden; }
+  .rn_ContentType li {
+    cursor: pointer;
+    padding: 10px; }
+  .rn_ContentType ul.rn_Horizontal li {
+    border-right: 1px solid #BEBEBE;
+    float: left;
+    display: inline-block;
+    padding: 2px 20px;
+    margin-bottom: 5px; }
+    .rn_ContentType ul.rn_Horizontal li:last-child {
+      border-right: medium none; }
+  .rn_ContentType li a {
+    color: #000;
+    text-decoration: none; }
+  .rn_ContentType .rn_Selected {
+    font-weight: bold; }

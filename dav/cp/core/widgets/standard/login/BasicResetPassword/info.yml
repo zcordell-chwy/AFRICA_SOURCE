@@ -1,0 +1,23 @@
+version: "1.3.1"
+requires:
+  framework: ["3.5", "3.6", "3.7"]
+  jsModule: [none]
+attributes:
+  post_handler:
+    name: rn:msg:POST_HANDLER_LBL
+    type: string
+    description: rn:msg:CLASS_METHOD_PROCESS_POST_DATA_LBL
+    default: postRequest/resetPassword
+  reset_password_ajax: unset
+contains:
+- widget: standard/input/BasicFormInput
+  versions: ["1.1"]
+- widget: standard/input/BasicFormSubmit
+  versions: ["1.0"]
+extends:
+  widget: standard/login/ResetPassword
+  versions: ["1.4"]
+  components: [php]
+  overrideViewAndLogic: "true"
+info:
+  description: rn:msg:WIDGET_EXTENSION_STD_RESETPASSWORD_MSG

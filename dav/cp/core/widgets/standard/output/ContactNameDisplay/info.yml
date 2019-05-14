@@ -1,0 +1,20 @@
+version: "1.0.1"
+requires:
+  framework: ["3.0", "3.1"]
+  jsModule:
+  - standard
+  - mobile
+attributes:
+  short_name:
+    name: rn:msg:SHORT_NAME_LBL
+    description: rn:msg:SET_TRUE_NAMES_DISPLAYED_NAME_NAME_MSG
+    type: BOOL
+  display_labels:
+    name: rn:msg:DISPLAY_LABELS_CMD
+    description: rn:msg:DETERMINES_LABELS_FIELDS_DISPLAY_MSG
+    type: BOOL
+info:
+  description: rn:msg:WIDGET_DISP_VALS_CONTNAME_NAME_MSG
+contains:
+- widget: standard/output/FieldDisplay
+  versions: ["1.0"]

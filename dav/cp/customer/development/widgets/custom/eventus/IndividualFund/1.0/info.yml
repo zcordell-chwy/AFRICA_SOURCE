@@ -1,0 +1,7 @@
+version: "1.0"
+requires:
+  jsModule:
+  - standard
+  - mobile
+info:
+  description: https://eventusg.teamwork.com/tasks/5244214

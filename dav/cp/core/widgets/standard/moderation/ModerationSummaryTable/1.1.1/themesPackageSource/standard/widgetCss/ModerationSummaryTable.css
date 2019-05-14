@@ -1,0 +1,14 @@
+.rn_ModerationSummaryTable table {
+  border: 1px solid #888;
+  border-spacing: 0;
+  border-collapse: separate; }
+  .rn_ModerationSummaryTable table td:first-child, .rn_ModerationSummaryTable table th {
+    font-weight: bold;
+    background-color: #f4f4f4; }
+  .rn_ModerationSummaryTable table th, .rn_ModerationSummaryTable table td {
+    border-right: 1px solid #DDD;
+    padding: 4px 10px 4px 6px; }
+.rn_ModerationSummaryTable .rn_SummaryNote {
+  font-size: 0.8em;
+  margin-top: -10px;
+  float: right; }

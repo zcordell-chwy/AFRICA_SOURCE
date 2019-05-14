@@ -1,0 +1,16 @@
+<% if(recentlyViewedContent.length > 1 || (recentlyViewedContent.length > 0 && recentlyViewedContent[0]['answerId'] != currentAnswerId)){ %>
+    <h2><%=recentLabelHeading %></h2>
+<% } %>
+<ul>
+<% var displayCount = 0; %>
+<% for (var r=0; r < recentlyViewedContent.length; r++) { %>
+    <% if(currentAnswerId != recentlyViewedContent[r]['answerId']){ %>
+        <% displayCount++; %>
+        <% var displayTitle = truncateSize != 0 && recentlyViewedContent[r]['title'].length > truncateSize ? recentlyViewedContent[r]['title'].substring(0, truncateSize - 3) + '...' : recentlyViewedContent[r]['title']; %>
+        <li class="rn_AnswerContentItem">
+            <a title="<%=recentlyViewedContent[r]['title'] %>" href="<%='/app/' + answerViewUrl + '/a_id/' + recentlyViewedContent[r]['answerId'] %>"><%=displayTitle %></a>
+        </li>
+    <% } %>
+    <% if(contentCount != 0 && contentCount == displayCount) break; %>
+<% } %>
+</ul>

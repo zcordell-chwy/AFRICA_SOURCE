@@ -1,0 +1,13 @@
+version: "1.0"
+requires:
+  jsModule:
+  - standard
+  - mobile
+  yui:
+    standard:
+    - overlay
+extends:
+  widget: standard/input/PasswordInput
+  components:
+  - js
+  - css

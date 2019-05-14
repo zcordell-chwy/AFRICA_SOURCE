@@ -1,0 +1,27 @@
+version: "1.0.1"
+requires:
+  framework: ["3.2"]
+  jsModule: [standard, mobile]
+attributes:
+  source_id:
+    name: rn:msg:SOURCE_ID_LBL
+    description: rn:msg:NAME_OFSRCH_SRC_TO_BE_USED_ONLY_1_MSG
+    required: true
+    type: STRING
+    options:
+    - KFSearch
+    - Any additional custom search sources
+  per_page:
+    name: rn:msg:ITEMS_PER_PAGE_LBL
+    type: INT
+    description: rn:msg:INDICATES_HOW_MANY_RES_TO_DISP_PER_LBL
+    default: 10
+  label_screen_reader_description:
+    name: rn:msg:SCREEN_READER_DESCRIPTION_LBL
+    type: STRING
+    description: rn:msg:VISUALLY_HIDDEN_LABEL_THAT_LBL
+    default: rn:msg:RESULT_PAGES_LBL
+info:
+  category:
+    - Source Search
+  description: rn:msg:THIS_WIDGET_DISP_PG_LINKS_THAT_MSG

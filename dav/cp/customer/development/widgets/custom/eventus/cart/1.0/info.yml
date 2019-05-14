@@ -1,0 +1,26 @@
+version: "1.0"
+requires:
+  jsModule:
+  - standard
+  - mobile
+attributes:
+  OneTimeAmt:
+    name: OneTimeAmt
+    type: int
+    description: One Time donation ammout
+    default: 0
+    required: false
+  MonthlyAmt:
+    name: MonthlyAmt
+    type: int
+    description: Monthly Donation Amount
+    default: 0
+    required: false
+  ItemName:
+    name: ItemName
+    type: string
+    description: Item Donation Name
+    default: None
+    required: false
+info:
+  description: 'Cart intended for reuse through out the site. '

@@ -1,0 +1,36 @@
+<rn:block id="preResultList"/>
+    <div class="rn_SearchResultTitle">
+        <div class="rn_SearchResultTitleAnswer"><%= title %></div>
+    </div>
+    <table>
+        <rn:block id="topResultList"/>
+            <% for (var i = 0; i < data.length; i++) { %>
+                <rn:block id="resultListItem">
+                    <tr>
+                        <td class="rn_SearchResultAnswer"><span class="rn_Element1">
+                            <% var typeOfFile = data[i].fileType.toLowerCase().replace('-','_'); %>
+                            <span class="rn_SearchResultIcon rn_File_<%= typeOfFile %>">
+                                <span class="rn_ScreenReaderOnly"><%= fileDescription[typeOfFile] %></span>
+                            </span>
+                                <% var href = (data[i].href.indexOf('okcsFattach') > 0) ? data[i].href : answerPageUrl.concat(data[i].href); %>
+                                <a id="<%= data[i].answerId %>" data-id="<%= data[i].docId %>" href="<%= href %>" data-url="<%= data[i].clickThroughUrl %>">
+                                    <%= data[i].title %>
+                                </a>
+                            </span>
+                            <% if(data[i].textElements && data[i].textElements.length > 0) { %>
+                                <div class="rn_SearchResultExcerpt">
+                                    <% for (var j = 0; j < data[i].textElements.length; j++) { %>
+                                        <% for (var k = 0; k < data[i].textElements[j].snippets.length; k++) {%>
+                                            <% var searchExcerpt = this.yuiObj.Escape.html(data[i].textElements[j].snippets[k].text); %>
+                                            <span class="rn_SnippetLevel<%= data[i].textElements[j].snippets[k].level %>"><%= searchExcerpt %></span>
+                                        <% } %>
+                                    <% } %>
+                                </div>
+                            <% } %>
+                        </td>
+                    </tr>
+                </rn:block>
+            <% } %>
+        <rn:block id="bottomResultList"/>
+    </table>
+<rn:block id="postResultList"/>
