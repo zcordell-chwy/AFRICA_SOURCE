@@ -31,6 +31,7 @@ CONST SPON_UPDATE = 10;
 CONST SPON_EVENT_HOLD = 12;
 CONST SPON_WEB_HOLD = 11;
 CONST NCR_COMMUNITY_ID = 6;
+CONST PLEDGE_SPECIAL_HOLD = 81;
 $check_spon_status_list = array(SPON_UPDATE, SPON_EVENT_HOLD, SPON_WEB_HOLD, SPON_SPONSORED, SPON_CO_SPONSOR_NEEDED, SPON_NCR_CO_SPONSOR_NEEDED, SPON_DROPPED, SPON_REGISTERED);//only checking children of this status
 $active_pledge_status_list = array(1,2,43);//active, manual, on hold pay
 
@@ -112,6 +113,11 @@ $CHANGED = "YES";
 function getStatus($child, $active_pledge_status_list){
 
     $childInfo = getActivePledgeTotal($child->ID, $active_pledge_status_list);
+    if(empty($childInfo)){
+        //return their current sponsorship status and it won't update.
+        //echo "/n returning old sponsorhsip status:".$child->SponsorshipStatus->LookupName."\n";
+        return $child->SponsorshipStatus->ID;
+    }
     $activePledgesTotal = $childInfo['amt'];
     $allPledgeCount = $childInfo['total_pledges'];
     
@@ -155,6 +161,10 @@ function getActivePledgeTotal($childId, $active_pledge_status_list){
     $pledgeObj = RNCPHP\ROQL::query($roql)->next();
     
     while($pledge = $pledgeObj->next()) {
+
+        if(intval($pledge['PledgeStatus']) == PLEDGE_SPECIAL_HOLD){
+            return false;
+        }
 
         if(in_array(intval($pledge['PledgeStatus']), $active_pledge_status_list)){
             

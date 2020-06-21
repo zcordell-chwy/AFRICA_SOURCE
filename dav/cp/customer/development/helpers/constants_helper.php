@@ -73,6 +73,8 @@ define(FS_AUTH_TYPE, "Auth");
 define(CHILD_NO_IMAGE_FILENAME, "NOCHILD.jpg"); 
 define(CHILD_IMAGE_FILESYSTEM_DIR, "/vhosts/africanewlife/euf/assets/childphotos/hashedChildPhotos");
 define(CHILD_IMAGE_URL_DIR, "/euf/assets/childphotos/hashedChildPhotos");
+define(WOMAN_IMAGE_FILESYSTEM_DIR, "/vhosts/africanewlife/euf/assets/womanphotos");
+define(WOMAN_IMAGE_URL_DIR, "/euf/assets/womanphotos");
 
 //sponsorship fields
 define(NEEDY_CHILDREN_ID, "8793");//This is the general Needy Children "child" object.  used on teh /app/give page for a general gift

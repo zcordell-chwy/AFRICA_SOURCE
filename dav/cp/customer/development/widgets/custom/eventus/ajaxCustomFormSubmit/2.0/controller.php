@@ -169,7 +169,7 @@ logMessage($rawFormDataArr);
                     ////$this->logging->logVar('Lock Owner: ', $status->lastOwner);
                     $loggedInContactID = $this -> CI->session->getProfileData('contactID');
                     //$this->logging->logVar('Logged in contact ID: ', $loggedInContactID);
-                    if(!$status->isLocked || $status->lastOwner !== $loggedInContactID){
+                    if(!$item['isWomensScholarship'] && (!$status->isLocked || $status->lastOwner !== $loggedInContactID)){
                         $sanityCheckMsgs[] = "Lock on child record has expired. Please redo transaction.";
                     }
                 }

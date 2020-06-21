@@ -3,6 +3,10 @@
 	<div id="rn_<?=$this -> instanceID; ?>_Loading"></div>
     <div id="rn_<?=$this -> instanceID; ?>_Content" class="rn_Content">
     <!-- Unsponsored Child Image Gallery Filters -->
+	<? 
+		logMessage("Filter Vals:");
+		logMessage($this->data['unsponsoredChildren']['metadata']['filters']);
+	?>
 	<div class="rn_UnsponsoredChildImageGalleryFilters">
 		<? if($this->data['unsponsoredChildren']['metadata']['eventName'] != ""): ?>
 			<div class="rn_UnsponsoredChildFiltersForm rn_UnsponsoredChildFiltersFormEventInfo">
@@ -16,6 +20,7 @@
      	<? endif; ?>
 			<form class="rn_UnsponsoredChildFiltersForm" action="" method="">
 			<? if($this->data['unsponsoredChildren']['metadata']['eventName'] == ""): ?>
+			
 			<label>Priority</label>
             <select class="rn_PriorityFilter">
                 <?php 
@@ -49,21 +54,6 @@
 					<?php endif; ?>
 				<?php endforeach; ?>
 			</select>
-			 
-			<label>Age</label>
-			<select class="rn_AgeFilter">
-				<?php 
-					$selectedValue = isset($this->data['unsponsoredChildren']['metadata']['filters']['age']) ? $this->data['unsponsoredChildren']['metadata']['filters']['age'] : 0;		  
-					$options = array('0' => 'All', '4' => '4-6', '7' => '7-9', '10' => '10-12', '13' => '13-15', '16' => '16+'); 
-					foreach($options as $value => $label): 
-				?>
-					<?php if(intval($value) === $selectedValue): ?>
-						<option value="<?= $value ?>" selected><?= $label ?></option>
-					<?php else: ?>
-						<option value="<?= $value ?>"><?= $label ?></option>
-					<?php endif; ?>
-				<?php endforeach; ?>
-			</select>
 			<label>Gender</label>
 			<select class="rn_GenderFilter">
 				<?php 
@@ -78,6 +68,44 @@
 					<?php endif; ?>
 				<?php endforeach; ?>
 			</select>
+			<label>Age</label>
+			<select class="rn_AgeFilter">
+				<?php 
+					$selectedValue = isset($this->data['unsponsoredChildren']['metadata']['filters']['age']) ? $this->data['unsponsoredChildren']['metadata']['filters']['age'] : 0;		  
+					$options = array('0' => 'All', '4' => '4-6', '7' => '7-9', '10' => '10-12', '13' => '13-15', '16' => '16+'); 
+					foreach($options as $value => $label): 
+				?>
+					<?php if(intval($value) === $selectedValue): ?>
+						<option value="<?= $value ?>" selected><?= $label ?></option>
+					<?php else: ?>
+						<option value="<?= $value ?>"><?= $label ?></option>
+					<?php endif; ?>
+				<?php endforeach; ?>
+			</select>
+			
+			<label>Birthday</label>
+			   <div class='rn_birthdayFilter'>
+				<select class="rn_MonthFilter">
+					<?php 
+						$selectedValue = isset($this->data['unsponsoredChildren']['metadata']['filters']['monthofbirth']) ? $this->data['unsponsoredChildren']['metadata']['filters']['monthofbirth'] : 0;
+						$options = array('0' => '', '1' => 'January', '2' => 'February', '3' => 'March', '4' => 'April', '5' => 'May', '6' => 'June', '7' => 'July', '8' => 'August', '9' => 'Septembver', '10' => 'October', '11' => 'November', '12' => 'December'); 
+						foreach($options as $value => $label): 
+					?>
+						<?php if(intval($value) === $selectedValue): ?>
+							<option value="<?= $value ?>" selected><?= $label ?></option>
+						<?php else: ?>
+							<option value="<?= $value ?>"><?= $label ?></option>
+						<?php endif; ?>
+					<?php endforeach; ?>
+
+					
+				</select>
+				<?php 
+					$selectedValue = isset($this->data['unsponsoredChildren']['metadata']['filters']['yearofbirth']) ? $this->data['unsponsoredChildren']['metadata']['filters']['yearofbirth'] : "";
+						
+				?>
+				<input type='text' name='rn_yearofbirth' id='rn_yearofbirth' value="<?=$selectedValue?>" placeholder="Year i.e. 2008"></input>
+			   </div>
 			<input type="submit" value="Search" onclick="javascript: void(0)"> 
 		</form>
 	</div>

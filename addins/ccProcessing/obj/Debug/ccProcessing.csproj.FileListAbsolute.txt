@@ -1,0 +1,11 @@
+C:\Users\Ben Hussey\Documents\dev\africaNewLife\addins\ccProcessing\bin\Debug\ccProcessing.dll.config
+C:\Users\Ben Hussey\Documents\dev\africaNewLife\addins\ccProcessing\bin\Debug\ccProcessing.dll
+C:\Users\Ben Hussey\Documents\dev\africaNewLife\addins\ccProcessing\bin\Debug\ccProcessing.pdb
+C:\Users\Ben Hussey\Documents\dev\africaNewLife\addins\ccProcessing\bin\Debug\RightNow.AddIns.AddInViews.dll
+C:\Users\Ben Hussey\Documents\dev\africaNewLife\addins\ccProcessing\bin\Debug\RightNow.AddIns.AddInViews.xml
+C:\Users\Ben Hussey\Documents\dev\africaNewLife\addins\ccProcessing\obj\Debug\ccProcessing.ccProcessingControl.resources
+C:\Users\Ben Hussey\Documents\dev\africaNewLife\addins\ccProcessing\obj\Debug\ccProcessing.Properties.Resources.resources
+C:\Users\Ben Hussey\Documents\dev\africaNewLife\addins\ccProcessing\obj\Debug\ccProcessing.csproj.GenerateResource.Cache
+C:\Users\Ben Hussey\Documents\dev\africaNewLife\addins\ccProcessing\obj\Debug\ccProcessing.dll
+C:\Users\Ben Hussey\Documents\dev\africaNewLife\addins\ccProcessing\obj\Debug\ccProcessing.pdb
+C:\Users\Ben Hussey\Documents\dev\africaNewLife\addins\ccProcessing\obj\Debug\ccProcessing.csprojResolveAssemblyReference.cache

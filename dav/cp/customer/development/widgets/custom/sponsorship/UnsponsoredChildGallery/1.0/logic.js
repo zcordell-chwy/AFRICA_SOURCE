@@ -76,7 +76,10 @@ Custom.Widgets.sponsorship.UnsponsoredChildGallery = RightNow.Widgets.extend({
                 {name: "age", value: this.getFilterValue(rs + "rn_AgeFilter")},
                 {name: "gender", value: this.getFilterValue(rs + "rn_GenderFilter")},
                 {name: "page", value: this.data.js.currentPage},
-                {name: "event", value: (this.data.js.eventId) ? this.data.js.eventId : 0}
+                {name: "event", value: (this.data.js.eventId) ? this.data.js.eventId : 0},
+                {name: "monthofbirth", value: this.getFilterValue(rs + "rn_MonthFilter")},
+                {name: "yearofbirth", value: this.getFilterValue("#rn_yearofbirth")}
+
             ];
 
         // Filter out params set to 0 ("All")
@@ -163,9 +166,9 @@ Custom.Widgets.sponsorship.UnsponsoredChildGallery = RightNow.Widgets.extend({
             '<div class="rn_ChildInfoContainer">' +
             '<div class="rn_ChildAttrContainer">' +
             '<p class="rn_ChildNamePara rn_ChildInfoPara">##NAME##</p>' +
+            '<p class="rn_ChildBirthPara rn_ChildInfoPara"><span class="rn_ChildInfoParaLabel">Birthdate:</span>&nbsp;##BIRTH##</p>' +
             '<p class="rn_ChildGenderPara rn_ChildInfoPara"><span class="rn_ChildInfoParaLabel">Gender:</span>&nbsp;##GENDER##</p>' +
             '<p class="rn_ChildAgePara rn_ChildInfoPara"><span class="rn_ChildInfoParaLabel">Age:</span>&nbsp;##AGE##</p>' +
-            '<p class="rn_ChildBirthPara rn_ChildInfoPara"><span class="rn_ChildInfoParaLabel">Birthdate:</span>&nbsp;##BIRTH##</p>' +
             '<p class="rn_ChildRefPara rn_ChildInfoPara"><span class="rn_ChildInfoParaLabel">Reference:</span>&nbsp;##REF##</p>' +
             '<p class="rn_ChildRatePara rn_ChildInfoPara"><span class="rn_ChildInfoParaLabel">Sponsorship Rate:</span>&nbsp;$##RATE##.00/mo</p>' +
             '<p class="rn_ChildSponsorLinkPara rn_ChildInfoPara">' + sponsorLink + '</p>' +

@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|AnyCPU'">
+    <StartAction>Program</StartAction>
+    <StartProgram>C:\Users\zcordell\AppData\Local\Apps\2.0\ONWJPKDZ.N47\9D7J6LZM.4CK\righ..life_671cc33169e294a1_0014.0002_ff6b9e52e04ee0cf\RightNow.CX.exe</StartProgram>
+    <StartArguments>launch=http://africanewlife.custhelp.com/cgi-bin/africanewlife.cfg dbname=africanewlife</StartArguments>
+    <StartURL>https://installer-africanewlife--tst.custhelp.com/RightNow.Installer.application#RightNow.Installer.africanewlife__tst, Culture=neutral, PublicKeyToken=48ad3057c253cb4a, processorArchitecture=msil</StartURL>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|AnyCPU'">
+    <StartAction>Project</StartAction>
+  </PropertyGroup>
+</Project>

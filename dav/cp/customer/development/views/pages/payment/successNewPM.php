@@ -1,10 +1,20 @@
 <rn:meta title="#rn:msg:SHP_TITLE_HDG#" login_required="true" template="responsive.php" login_required="false" clickstream="payment"/>
 <?
+
+function _logToFile($lineNum, $message){
+    $hundredths = ltrim(microtime(), "0");
+    
+    $fp = fopen('/tmp/transactionLogs_'.date("Ymd").'.log', 'a');
+    fwrite($fp,  date('H:i:s.').$hundredths.": successNewPM Controller @ $lineNum : ".$message."\n");
+    fclose($fp);
+    
+}
+
 //have to use this header re write for frontstream redirect in an iframe to work.
 //RNT write the header to Deny all redirects in an iframe for click jack purposes.
 //if this does not conform to security standards we will need to investigate a different method.
 header('X-Frame-Options: PLACEHOLDER');
-logMessage("7");
+_logToFile(7, "Begin New PM");
 
 $baseURL = \RightNow\Utils\Url::getShortEufBaseUrl();
 
@@ -58,11 +68,11 @@ if(is_null($this->CI->session->getSessionData('sessionID'))){
     $sessionID = $this->CI->session->getSessionData('sessionID');
 }
 
-logMessage("56: GET SID = ".$_GET['sid']);
-logMessage("57: cid = $c_id trans=$transId sess=$sessionID");
+_logToFile(61, "Transaction:$transId Session:$sessionID Contact:$c_id");
+
 //this condition is if a customer only enters their card as a payment method on /app/paymentmethods
 if ($cleanGetData['StatusCode'] == 0 && $newpaymeth[0] == "NewPM") {
-
+_logToFile(65, "");
     if ($cleanGetData['CardType'] != "Checking") {
         $newPayment = $this -> model('custom/paymentMethod_model') -> createPaymentMethod($c_id, $cleanGetData['CardType'], $cleanGetData['PNRef'], "Credit Card", $cleanGetData['AccountExpMonth'], $cleanGetData['AccountExpYear'], $cleanGetData['AccountLastFour']);
         $transType = "card";
@@ -70,6 +80,7 @@ if ($cleanGetData['StatusCode'] == 0 && $newpaymeth[0] == "NewPM") {
         $newPayment = $this -> model('custom/paymentMethod_model') -> createPaymentMethod($c_id, $cleanGetData['CardType'], $cleanGetData['PNRef'], "EFT", null, null, $cleanGetData['AccountLastFour']);
         $transType = "check";
     }
+_logToFile(73, "");
     if ($newPayment -> ID < 1) {
         $messagesArr[] = "There was a problem saving your payment information.";
         $status = TRANSACTION_SALE_ERROR_STATUS;
@@ -80,23 +91,30 @@ if ($cleanGetData['StatusCode'] == 0 && $newpaymeth[0] == "NewPM") {
         }
 
     }
+_logToFile(84, "");
 
 } else if (!is_null($transId) && is_numeric($transId) && $transId > 0) {
-logMessage("80");
+
+_logToFile(88, "");
     //CREDIT CARD RESPONSE
     if ($cleanGetData['CardType'] != "Checking") {
+_logToFile(91, "");
         if (isset($cleanGetData['StatusCode']) && $cleanGetData['StatusCode'] == 0) {
-logMessage("84");
+_logToFile(93, "");
             $this -> model('custom/transaction_model') -> addNoteToTrans($transId, "Frontstream raw return data: \n\n" . print_r($cleanGetData, true));
+_logToFile(95, "");
             //create new payment method
             $newPaymentObj -> ID = -1;
             $status = TRANSACTION_SALE_SUCCESS_STATUS;
             $newPaymentObj = $this -> model('custom/paymentMethod_model') -> createPaymentMethod($c_id, $cleanGetData['CardType'], $cleanGetData['PNRef'], "Credit Card", $cleanGetData['AccountExpMonth'], $cleanGetData['AccountExpYear'], $cleanGetData['AccountLastFour']);
+_logToFile(100, "");
             if ($newPaymentObj -> ID < 1) {
+_logToFile(102, "");
                 $messagesArr[] = "There was a problem saving your payment information for future use.";
                 $this -> model('custom/transaction_model') -> addNoteToTrans($transId, "Failed to create payment method.");
                 $status = TRANSACTION_SALE_ERROR_STATUS;
             } else {
+_logToFile(107, "");
                 //can't do this here.  we need the donation on the trans before we update it to complete.
                 //$this -> model('custom/transaction_model') -> update_transaction($transId, $c_id, $cleanGetData['TransactionAmount'], null, null, $status, $newPaymentObj->ID);
             }
@@ -109,18 +127,18 @@ logMessage("84");
             $amt = $this -> session -> getSessionData('total');
             //$items = $this -> session -> getSessionData('items');
             $items = $this -> CI -> model('custom/items') -> getItemsFromCart($sessionID, 'checkout');
-logMessage("107");
-logMessage($items);
+_logToFile(112, print_r($items, true));
             $donationId = $this -> model('custom/donation_model') -> createDonationAfterTransaction($amt, $c_id, $items, $transId, $newPaymentObj);
-logMessage("110");
+_logToFile(114, "DonationId:$donationId ContactId:$c_id TransactionAmount:".$cleanGetData['TransactionAmount']." Status:$status NewPayId:".$newPaymentObj -> ID." PnRef:".$cleanGetData['PNRef']);
             //need to update this here in order to get CPM to fire after donation is added
             $this -> model('custom/transaction_model') -> update_transaction($transId, $c_id, $cleanGetData['TransactionAmount'], null, $donationId, $status, $newPaymentObj -> ID, $cleanGetData['PNRef']);
-        } catch(Exception $e) {
+        } catch(\Exception $e) {
+_logToFile(118, print_r($e->getMessage(), true));
             print("\n<br>" . $e -> getMessage());
             $donationId = -1;
         }
 
-
+_logToFile(131, "");
         $sessionData = array( 
             'total' => null,
             'totalRecurring' => null,
@@ -140,14 +158,16 @@ logMessage("110");
             $messagesArr[] = "There was a problem recording your donation.  Please contact donor services for assistance.";
         }
     } else {
+_logToFile(151, "");
         //ACH RESPONSE
         if (isset($cleanGetData['StatusCode']) && $cleanGetData['StatusCode'] == 0) {
+_logToFile(154, "");
             $this -> model('custom/transaction_model') -> addNoteToTrans($transId, "Frontstream raw return data: \n\n" . print_r($cleanGetData, true));
             //create new payment method
             $newPaymentObj -> ID = -1;
             $status = TRANSACTION_SALE_SUCCESS_STATUS;
             $newPaymentObj = $this -> model('custom/paymentMethod_model') -> createPaymentMethod($c_id, $cleanGetData['CardType'], $cleanGetData['PNRef'], "EFT", null, null, $cleanGetData['AccountLastFour']);
-
+_logToFile(160, "New Payment ID:".$newPaymentObj -> ID);
             if ($newPaymentObj -> ID < 1) {
                 $messagesArr[] = "There was a problem saving your payment information for future use.";
                 $this -> model('custom/transaction_model') -> addNoteToTrans($transId, "Failed to create payment method.");
@@ -164,12 +184,11 @@ logMessage("110");
             $amt = $this -> session -> getSessionData('total');
             //$items = $this -> session -> getSessionData('items');
             $items = $this -> CI -> model('custom/items') -> getItemsFromCart($sessionID, 'checkout');
-logMessage("162");
-logMessage($items);
+_logToFile(175, print_r($items, true));
             $donationId = $this -> model('custom/donation_model') -> createDonationAfterTransaction($amt, $c_id, $items, $transactionId, $newPaymentObj);
-logMessage("165");
             $this -> model('custom/transaction_model') -> update_transaction($transId, $c_id, $cleanGetData['TransactionAmount'], null, $donationId, $status, $newPaymentObj -> ID, $cleanGetData['PNRef']);
-        } catch(Exception $e) {
+        } catch(\Exception $e) {
+_logToFile(181, $e->getMessage());
             print("\n<br>" . $e -> getMessage());
             $donationId = -1;
         }
@@ -182,23 +201,25 @@ logMessage("165");
             'donateValCookieContent' => null,
             'payMethod' => null
         );
-
+_logToFile(194,"");
         $this -> session -> setSessionData($sessionData);
         $sessionData = array('transId' => null);
         $this -> session -> setSessionData($sessionData);
-
+_logToFile(198,"");
 
         /*********************************************************************************************/
         if ($donationId < 1) {
+_logToFile(202,"");
             $messagesArr[] = "There was a problem recording your donation.  Please contact donor services for assistance.";
         }
     }
 
 } else {
+    _logToFile(208,"");
     $messagesArr[] = "There was a problem recording your donation.  Please contact donor services and reference authorization code " . $cleanGetData['AuthCode'] . ' and reference number ' . $cleanGetData['PNRef'] . " regarding this error.";
 }
 
-logMessage("199:".$messagesArr);
+_logToFile(222,print_r($messagesArr, true));
 if (count($messagesArr) > 0) {
     if (!is_null($transId)) {
         print('<div>Thank you, your transaction ID is: ' . $transId . '. Please retain this transaction number for future reference.</div>');
@@ -207,11 +228,16 @@ if (count($messagesArr) > 0) {
     print('<div>The following may be useful to track down any issues: </div><ul><li>' . implode("</li><li>", $messagesArr) . '</li></ul>');
 } else {
     if ($headerRedirect) {
+        _logToFile(231,"Redirecting Base URL:$baseURL /app/payment/  $headerRedirect ");
         echo '<script type="text/javascript">window.top.location.href="' . $baseURL . '/app/payment/' . $headerRedirect . '"</script>';
     } else {
+        _logToFile(234,"Redirecting Base URL:$baseURL /app/payment/successCC/t_id/ $transId /header/$headerRedirect");
         echo '<script type="text/javascript">window.top.location.href="' . $baseURL . '/app/payment/successCC/t_id/' . $transId . '/header/' . $headerRedirect . '"</script>';
     }
 }
 
+_logToFile(239,"");
+
 print('<div>Thank you, your transaction ID is: ' . $transId . '. Please retain this transaction number for future reference.</div>');
+_logToFile(240,"");
 ?>

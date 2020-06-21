@@ -15,6 +15,8 @@
     $item_type = $this -> CI -> session -> getSessionData('item_type');
     logMessage('item_type = ' . var_export($item_type, true));
 
+    $itemsFromCart = $this -> CI -> model('custom/items') -> getItemsFromCart($this -> CI->session->getSessionData('sessionID'), 'checkout');
+
     //echo "item type = ".$item_type." contstant = ".DONATION_TYPE_PLEDGE. " = ".DONATION_TYPE_GIFT." - ".DONATION_TYPE_SPONSOR;
 
           switch ($item_type) {
@@ -28,7 +30,13 @@
                 break;
             case DONATION_TYPE_SPONSOR :
                 logMessage("Sponsor Type Found");
-                ?>#rn:msg:CUSTOM_MSG_SPONSOR_PAGE_CONFIRMATION#<?
+                logMessage($itemsFromCart);
+                if(is_array($itemsFromCart) && $itemsFromCart[0]['isWomensScholarship']):
+                    ?>#rn:msg:CUSTOM_MSG_WOMAN_PAGE_CONFIRMATION#<?
+                else:
+                    ?>#rn:msg:CUSTOM_MSG_SPONSOR_PAGE_CONFIRMATION#<?
+                endif;
+
                 break;      
     		default :
                 logMessage("No Type Found");

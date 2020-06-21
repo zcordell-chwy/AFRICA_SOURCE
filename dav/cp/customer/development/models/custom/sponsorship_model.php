@@ -258,10 +258,10 @@ class sponsorship_model extends \RightNow\Models\Base {
 
     // Gets unsponsored children based on gender, age and community. Supports pagination via $page and $count. 
     // Previous results will be cached in session data to improve pagination performance.
-    public function getUnsponsoredChildren($gender, $age, $community, $page, $count, $event, $priority){
+    public function getUnsponsoredChildren($gender, $age, $community, $page, $count, $event, $priority, $monthofbirth, $yearofbirth){
         logMessage(" Starting: " . __FUNCTION__ . " in " . __CLASS__);
 
-        // Make sure $page and $count are positive
+        // Make sure $page and $count are positive 
         $page = max($page, 1);  
         $count = max($count, 1);
         
@@ -280,6 +280,8 @@ class sponsorship_model extends \RightNow\Models\Base {
                                 'age' => null,
                                 'community' => null,
                                 'priority' => null,
+                                'monthofbirth'=>null,
+                                'yearofbirth'=>null
                             ),
                             'page' => null,
                             'lastPage' => null,
@@ -312,7 +314,7 @@ class sponsorship_model extends \RightNow\Models\Base {
             // Filters have changed, need to query DB to obtain new result
             ////logMessage("Filters have changed, preparing to query DB...");
             try{
-                $roqlString = $this->buildUnsponsoredChildIDRoqlString($gender, $age, $community, $event, $priority);
+                $roqlString = $this->buildUnsponsoredChildIDRoqlString($gender, $age, $community, $event, $priority,$monthofbirth,$yearofbirth);
                 $resultSet = RNCP\ROQL::query($roqlString)->next();
                 $matchingUnsponChildIDs = array();
                 while($res = $resultSet->next()){
@@ -345,6 +347,8 @@ class sponsorship_model extends \RightNow\Models\Base {
                         'age' => $age,
                         'community' => $community,
                         'priority' => $priority,
+                        'monthofbirth'=>$monthofbirth,
+                        'yearofbirth'=>$yearofbirth,
                         'event' => $event
                     )
                 );
@@ -412,6 +416,8 @@ class sponsorship_model extends \RightNow\Models\Base {
                     'age' => $age,
                     'community' => $community,
                     'priority' => $priority,
+                    'monthofbirth'=> $monthofbirth,
+                    'yearofbirth'=> $yearofbirth
                 ),
                 'page' => $page,
                 'lastPage' => intval(ceil($resCnt / $count)),
@@ -425,7 +431,7 @@ class sponsorship_model extends \RightNow\Models\Base {
     }
 
     /* Utility function for building the ROQL queryObject/query string for fetching unsponsored children */
-    private function buildUnsponsoredChildIDRoqlString($gender = null, $age = null, $community = null, $event = null, $priority=null) {
+    private function buildUnsponsoredChildIDRoqlString($gender = null, $age = null, $community = null, $event = null, $priority=null, $monthofbirth=null, $yearofbirth=null) {
         logMessage(" Starting: " . __FUNCTION__ . " in " . __CLASS__);
 
         $whereClauses = array();
@@ -468,6 +474,18 @@ class sponsorship_model extends \RightNow\Models\Base {
         
         if (!is_null($priority) && $priority != 0) {  //0 value is all priorities
             $whereClause = "SPONSORSHIP.Child.Priority = " . $priority;
+            $whereClauses[] = $whereClause;
+            //logMessage("Gender WHERE clause: $whereClause");
+        }
+
+        if (!is_null($monthofbirth) && $monthofbirth != 0) {  //0 value is all priorities
+            $whereClause = "(SPONSORSHIP.Child.MonthOfBirth = '" . $monthofbirth."' OR SPONSORSHIP.Child.MonthOfBirth = '0".$monthofbirth."')";
+            $whereClauses[] = $whereClause;
+            //logMessage("Gender WHERE clause: $whereClause");
+        }
+
+        if (!is_null($yearofbirth) && $yearofbirth != 0) {  //0 value is all priorities
+            $whereClause = "SPONSORSHIP.Child.YearOfBirth = '" . $yearofbirth."'";
             $whereClauses[] = $whereClause;
             //logMessage("Gender WHERE clause: $whereClause");
         }

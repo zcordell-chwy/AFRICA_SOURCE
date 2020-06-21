@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="23ae880a-d020-41a1-b550-4abed2b1a055" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="https://africanewlife.custhelp.com/services/soap/connect/soap?wsdl" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="RightNow1.wsdl" MetadataType="Wsdl" ID="0818a607-9662-4c28-aa1d-dd0fc238fdef" SourceId="1" SourceUrl="https://africanewlife.custhelp.com/services/soap/connect/soap?wsdl" />
+    <MetadataFile FileName="soap7.xsd" MetadataType="Schema" ID="af158e92-e3dc-4dab-8d21-294839833add" SourceId="1" SourceUrl="https://africanewlife.custhelp.com/services/soap/connect/soap?xsd=base" />
+    <MetadataFile FileName="soap71.xsd" MetadataType="Schema" ID="aee8cffa-d747-445b-8a47-b1027e87e6f7" SourceId="1" SourceUrl="https://africanewlife.custhelp.com/services/soap/connect/soap?xsd=generic" />
+    <MetadataFile FileName="soap72.xsd" MetadataType="Schema" ID="2bc640b1-5640-48c7-bcf3-be04e4c09b64" SourceId="1" SourceUrl="https://africanewlife.custhelp.com/services/soap/connect/soap?xsd=faults" />
+    <MetadataFile FileName="soap73.xsd" MetadataType="Schema" ID="365b0c77-606a-4967-963f-7acb5a3000d9" SourceId="1" SourceUrl="https://africanewlife.custhelp.com/services/soap/connect/soap?xsd=messagestyped" />
+    <MetadataFile FileName="soap74.xsd" MetadataType="Schema" ID="167ebd93-f0fc-4ad3-a722-201736f54f15" SourceId="1" SourceUrl="https://africanewlife.custhelp.com/services/soap/connect/soap?xsd=objects" />
+    <MetadataFile FileName="soap75.xsd" MetadataType="Schema" ID="820fdd17-a9ca-42d4-9cf8-8380128b11e8" SourceId="1" SourceUrl="https://africanewlife.custhelp.com/services/soap/connect/soap?xsd=nullfields" />
+    <MetadataFile FileName="soap76.xsd" MetadataType="Schema" ID="a47f4bbb-81e7-4a10-b297-2dfa83c8d522" SourceId="1" SourceUrl="https://africanewlife.custhelp.com/services/soap/connect/soap?xsd=metadata" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

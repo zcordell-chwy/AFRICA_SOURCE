@@ -1,0 +1,49 @@
+C:\Users\Ben Hussey\Documents\dev\africaNewLife\addins\MailMergeAddIn\MailMergeAddIn\bin\Release\MailMergeAddIn.dll.config
+C:\Users\Ben Hussey\Documents\dev\africaNewLife\addins\MailMergeAddIn\MailMergeAddIn\bin\Release\MailMergeAddIn.dll
+C:\Users\Ben Hussey\Documents\dev\africaNewLife\addins\MailMergeAddIn\MailMergeAddIn\bin\Release\MailMergeAddIn.pdb
+C:\Users\Ben Hussey\Documents\dev\africaNewLife\addins\MailMergeAddIn\MailMergeAddIn\bin\Release\DocumentFormat.OpenXml.dll
+C:\Users\Ben Hussey\Documents\dev\africaNewLife\addins\MailMergeAddIn\MailMergeAddIn\bin\Release\RightNow.AddIns.AddInViews.dll
+C:\Users\Ben Hussey\Documents\dev\africaNewLife\addins\MailMergeAddIn\MailMergeAddIn\bin\Release\RightNow.UI.Resources.dll
+C:\Users\Ben Hussey\Documents\dev\africaNewLife\addins\MailMergeAddIn\MailMergeAddIn\bin\Release\RightNowConnect.dll
+C:\Users\Ben Hussey\Documents\dev\africaNewLife\addins\MailMergeAddIn\MailMergeAddIn\bin\Release\RightNow.AddIns.AddInViews.xml
+C:\Users\Ben Hussey\Documents\dev\africaNewLife\addins\MailMergeAddIn\MailMergeAddIn\obj\Release\MailMergeAddIn.csproj.ResolveComReference.cache
+C:\Users\Ben Hussey\Documents\dev\africaNewLife\addins\MailMergeAddIn\MailMergeAddIn\obj\Release\MailMergeAddIn.SingleContactMailMergeControl.resources
+C:\Users\Ben Hussey\Documents\dev\africaNewLife\addins\MailMergeAddIn\MailMergeAddIn\obj\Release\MailMergeAddIn.MailMergeControl.resources
+C:\Users\Ben Hussey\Documents\dev\africaNewLife\addins\MailMergeAddIn\MailMergeAddIn\obj\Release\MailMergeAddIn.MailMergeModalDialog.resources
+C:\Users\Ben Hussey\Documents\dev\africaNewLife\addins\MailMergeAddIn\MailMergeAddIn\obj\Release\MailMergeAddIn.Properties.Resources.resources
+C:\Users\Ben Hussey\Documents\dev\africaNewLife\addins\MailMergeAddIn\MailMergeAddIn\obj\Release\MailMergeAddIn.csproj.GenerateResource.Cache
+C:\Users\Ben Hussey\Documents\dev\africaNewLife\addins\MailMergeAddIn\MailMergeAddIn\obj\Release\MailMergeAddIn.dll
+C:\Users\Ben Hussey\Documents\dev\africaNewLife\addins\MailMergeAddIn\MailMergeAddIn\obj\Release\MailMergeAddIn.pdb
+C:\Users\Ben Hussey\Documents\dev\africaNewLife\addins\MailMergeAddIn\MailMergeAddIn\obj\Release\MailMergeAddIn.csprojResolveAssemblyReference.cache
+C:\Users\Ben Hussey\Documents\dev\africaNewLife\sandbox\africanewlife\addIns\MailMergeAddIn\MailMergeAddIn\bin\Release\MailMergeAddIn.dll.config
+C:\Users\Ben Hussey\Documents\dev\africaNewLife\sandbox\africanewlife\addIns\MailMergeAddIn\MailMergeAddIn\bin\Release\MailMergeAddIn.dll
+C:\Users\Ben Hussey\Documents\dev\africaNewLife\sandbox\africanewlife\addIns\MailMergeAddIn\MailMergeAddIn\bin\Release\MailMergeAddIn.pdb
+C:\Users\Ben Hussey\Documents\dev\africaNewLife\sandbox\africanewlife\addIns\MailMergeAddIn\MailMergeAddIn\bin\Release\RightNow.AddIns.AddInViews.dll
+C:\Users\Ben Hussey\Documents\dev\africaNewLife\sandbox\africanewlife\addIns\MailMergeAddIn\MailMergeAddIn\bin\Release\RightNow.UI.Resources.dll
+C:\Users\Ben Hussey\Documents\dev\africaNewLife\sandbox\africanewlife\addIns\MailMergeAddIn\MailMergeAddIn\bin\Release\RightNow.AddIns.AddInViews.xml
+C:\Users\Ben Hussey\Documents\dev\africaNewLife\sandbox\africanewlife\addIns\MailMergeAddIn\MailMergeAddIn\obj\Release\MailMergeAddIn.csproj.ResolveComReference.cache
+C:\Users\Ben Hussey\Documents\dev\africaNewLife\sandbox\africanewlife\addIns\MailMergeAddIn\MailMergeAddIn\obj\Release\MailMergeAddIn.SingleContactMailMergeControl.resources
+C:\Users\Ben Hussey\Documents\dev\africaNewLife\sandbox\africanewlife\addIns\MailMergeAddIn\MailMergeAddIn\obj\Release\MailMergeAddIn.MailMergeControl.resources
+C:\Users\Ben Hussey\Documents\dev\africaNewLife\sandbox\africanewlife\addIns\MailMergeAddIn\MailMergeAddIn\obj\Release\MailMergeAddIn.MailMergeModalDialog.resources
+C:\Users\Ben Hussey\Documents\dev\africaNewLife\sandbox\africanewlife\addIns\MailMergeAddIn\MailMergeAddIn\obj\Release\MailMergeAddIn.Properties.Resources.resources
+C:\Users\Ben Hussey\Documents\dev\africaNewLife\sandbox\africanewlife\addIns\MailMergeAddIn\MailMergeAddIn\obj\Release\MailMergeAddIn.csproj.GenerateResource.Cache
+C:\Users\Ben Hussey\Documents\dev\africaNewLife\sandbox\africanewlife\addIns\MailMergeAddIn\MailMergeAddIn\obj\Release\MailMergeAddIn.dll
+C:\Users\Ben Hussey\Documents\dev\africaNewLife\sandbox\africanewlife\addIns\MailMergeAddIn\MailMergeAddIn\obj\Release\MailMergeAddIn.pdb
+C:\Users\Ben Hussey\Documents\dev\africaNewLife\sandbox\africanewlife\addIns\MailMergeAddIn\MailMergeAddIn\obj\Release\MailMergeAddIn.csprojResolveAssemblyReference.cache
+C:\Users\zacharycordell\Desktop\AddIns\MailMergeAddIn\MailMergeAddIn\obj\Release\MailMergeAddIn.csproj.ResolveComReference.cache
+C:\Users\zacharycordell\Desktop\AddIns\MailMergeAddIn\MailMergeAddIn\obj\Release\MailMergeAddIn.SingleContactMailMergeControl.resources
+C:\Users\zacharycordell\Desktop\AddIns\MailMergeAddIn\MailMergeAddIn\obj\Release\MailMergeAddIn.MailMergeControl.resources
+C:\Users\zacharycordell\Desktop\AddIns\MailMergeAddIn\MailMergeAddIn\obj\Release\MailMergeAddIn.MailMergeModalDialog.resources
+C:\Users\zacharycordell\Desktop\AddIns\MailMergeAddIn\MailMergeAddIn\obj\Release\MailMergeAddIn.Properties.Resources.resources
+C:\Users\zacharycordell\Desktop\AddIns\MailMergeAddIn\MailMergeAddIn\obj\Release\MailMergeAddIn.csproj.GenerateResource.Cache
+C:\Users\zacharycordell\Desktop\AddIns\MailMergeAddIn\MailMergeAddIn\obj\Release\MailMergeAddIn.pdb
+C:\Users\zacharycordell\Desktop\AddIns\MailMergeAddIn\MailMergeAddIn\bin\Release\MailMergeAddIn.dll.config
+C:\Users\zacharycordell\Desktop\AddIns\MailMergeAddIn\MailMergeAddIn\bin\Release\MailMergeAddIn.dll
+C:\Users\zacharycordell\Desktop\AddIns\MailMergeAddIn\MailMergeAddIn\bin\Release\MailMergeAddIn.pdb
+C:\Users\zacharycordell\Desktop\AddIns\MailMergeAddIn\MailMergeAddIn\bin\Release\RightNow.AddIns.AddInViews.dll
+C:\Users\zacharycordell\Desktop\AddIns\MailMergeAddIn\MailMergeAddIn\bin\Release\RightNow.AddIns.AddInViews.xml
+C:\Users\zacharycordell\Desktop\AddIns\MailMergeAddIn\MailMergeAddIn\obj\Release\MailMergeAddIn.dll
+C:\Users\zacharycordell\Desktop\AddIns\MailMergeAddIn\MailMergeAddIn\bin\Release\Select.HtmlToPdf.dll
+C:\Users\zacharycordell\Desktop\AddIns\MailMergeAddIn\MailMergeAddIn\bin\Release\Select.HtmlToPdf.xml
+C:\Users\zacharycordell\Desktop\AddIns\MailMergeAddIn\MailMergeAddIn\bin\Release\Select.Html.dep
+C:\Users\zacharycordell\Desktop\AddIns\MailMergeAddIn\MailMergeAddIn\obj\Release\MailMergeAddIn.csprojResolveAssemblyReference.cache

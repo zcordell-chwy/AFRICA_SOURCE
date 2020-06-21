@@ -1,0 +1,49 @@
+version: "1.1"
+requires:
+  jsModule:
+  - standard
+  - mobile
+attributes:
+  rows:
+  	name: rows
+  	type: integer
+  	description: The number of rows of children to display
+  	default: 4
+  	required: false
+  columns:
+    name: columns
+    type: integer
+    description: The number of columns of children to display
+    default: 4
+    required: false
+  default_ajax_endpoint:
+    name: default_ajax_endpoint
+    type: ajax
+    description: Default AJAX endpoint
+    default: /ci/ajax/widget
+    required: false
+  advocacy_page:
+    name: advocacy_page
+    type: boolean
+    description: defines if this is a sponsorship or advocacy table 
+    default: false
+    required: false
+  data_source:
+    name: data_source
+    type: string
+    description: determines the data source for the records to populate the gallery. child or woman are acceptable values.
+    default: "child"
+    required: false
+  donation_additional_info:
+    name: donation_additional_info
+    type: string
+    description: text that appears below the donation input
+    default: rn:msg:CUSTOM_MSG_WOMEN_MINISTRY_ADDTL_INFO
+    required: false
+  check_for_lock:
+    name: check_for_lock
+    type: boolean
+    description: tells whether a child lock should be checked or not before moving to checkout page
+    default: true
+    required: false
+    

@@ -213,8 +213,7 @@ class AjaxCustom extends \RightNow\Controllers\Base {
         //AbuseDetection::check($this -> input -> post('f_tok'));
         
         $rawFormDataArr = json_decode($params['formData']);
-logMessage("raw form");
-logMessage($rawFormDataArr);
+
         if (!$rawFormDataArr) {
             header("HTTP/1.1 400 Bad Request");
             // Pad the error message with spaces so IE will actually display it instead of a misleading, but pretty, error message.
@@ -375,35 +374,54 @@ logMessage("sending NOT success response");
     }
 
     function storeCartData() {
-        AbuseDetection::check($this -> input -> post('f_tok'));
-        $rawFormDataArr = json_decode($this -> input -> post('form'));
-        if (!$rawFormDataArr) {
-            header("HTTP/1.1 400 Bad Request");
-            // Pad the error message with spaces so IE will actually display it instead of a misleading, but pretty, error message.
-            Framework::writeContentWithLengthAndExit(json_encode(Config::getMessage(END_REQS_BODY_REQUESTS_FORMATTED_MSG)) . str_repeat("\n", 512));
+
+        try{
+            
+            $rawFormDataArr = json_decode($this -> input -> post('form'));
+            file_put_contents("/tmp/cartStorage_" . date('Y_m_d') . ".log", date('Y/m/d h:i:s').": 380 \n", FILE_APPEND);
+            if (!$rawFormDataArr) {
+                header("HTTP/1.1 400 Bad Request");
+                // Pad the error message with spaces so IE will actually display it instead of a misleading, but pretty, error message.
+                Framework::writeContentWithLengthAndExit(json_encode(Config::getMessage(END_REQS_BODY_REQUESTS_FORMATTED_MSG)) . str_repeat("\n", 512));
+            }
+            file_put_contents("/tmp/cartStorage_" . date('Y_m_d') . ".log", date('Y/m/d h:i:s').": 386 \n", FILE_APPEND);
+
+            $this -> clearCartData();
+            file_put_contents("/tmp/cartStorage_" . date('Y_m_d') . ".log", date('Y/m/d h:i:s').": 389 \n", FILE_APPEND);
+            $sessionData = array(
+                'items' => $rawFormDataArr -> items,
+                'donateValCookieContent' => $rawFormDataArr -> donateValCookieContent
+            );
+            file_put_contents("/tmp/cartStorage_" . date('Y_m_d') . ".log", date('Y/m/d h:i:s').": 394 \n", FILE_APPEND);
+            
+            logMessage("Setting Session Data:");
+            logMessage($rawFormDataArr);
+            file_put_contents("/tmp/cartStorage_" . date('Y_m_d') . ".log", date('Y/m/d h:i:s').":Session Data:".print_r($sessionData, true)." \n", FILE_APPEND);
+
+            $this -> session -> setSessionData($sessionData);
+            file_put_contents("/tmp/cartStorage_" . date('Y_m_d') . ".log", date('Y/m/d h:i:s').": 401 \n", FILE_APPEND);
+            $this -> parseItemTypes();
+            file_put_contents("/tmp/cartStorage_" . date('Y_m_d') . ".log", date('Y/m/d h:i:s').": 403 \n", FILE_APPEND);
+            $this -> parseChildData();  //also woman data if present
+            file_put_contents("/tmp/cartStorage_" . date('Y_m_d') . ".log", date('Y/m/d h:i:s').": 405 \n", FILE_APPEND);
+            $this -> calculateTotal();
+            file_put_contents("/tmp/cartStorage_" . date('Y_m_d') . ".log", date('Y/m/d h:i:s').": 407 \n", FILE_APPEND);
+            // Temporary hack for getting sponsorship items to be stored in the DB. Need to store the items to DB
+            // after parseItemTypes and parseChildData have processed the item data.
+            // They will also still be getting stored in the session for the time being. We shouldn't have to worry about overrunning 
+            // session though since sponsorships are limited to 1 item per transaction.
+            $processedItems = $this->session->getSessionData('items');
+            file_put_contents("/tmp/cartStorage_" . date('Y_m_d') . ".log", date('Y/m/d h:i:s').": 409 \n", FILE_APPEND);
+            $this->model('custom/items')->saveItemsToCart($this -> session -> getSessionData('sessionID'), $processedItems);
+            file_put_contents("/tmp/cartStorage_" . date('Y_m_d') . ".log", date('Y/m/d h:i:s').": 411 \n", FILE_APPEND);
+
+            return $this -> createResponseObject('Session Cart Updatad', array());
+        }catch(Exception $e){
+            file_put_contents("/tmp/cartStorage_" . date('Y_m_d') . ".log", date('Y/m/d h:i:s').":Exception ".print_r($e->getMessage(), true)." \n", FILE_APPEND);
+        }catch (RNCPHP\ConnectAPIError $err) {
+            file_put_contents("/tmp/cartStorage_" . date('Y_m_d') . ".log", date('Y/m/d h:i:s').":Exception ".print_r($err->getMessage(), true)." \n", FILE_APPEND);
         }
-        $this -> clearCartData();
-        $sessionData = array(
-            'items' => $rawFormDataArr -> items,
-            'donateValCookieContent' => $rawFormDataArr -> donateValCookieContent
-        );
         
-        logMessage("Setting Session Data:");
-        logMessage($rawFormDataArr);
-        
-        $this -> session -> setSessionData($sessionData);
-        $this -> parseItemTypes();
-        $this -> parseChildData();
-        $this -> calculateTotal();
-
-        // Temporary hack for getting sponsorship items to be stored in the DB. Need to store the items to DB
-        // after parseItemTypes and parseChildData have processed the item data.
-        // They will also still be getting stored in the session for the time being. We shouldn't have to worry about overrunning 
-        // session though since sponsorships are limited to 1 item per transaction.
-        $processedItems = $this->session->getSessionData('items');
-        $this->model('custom/items')->saveItemsToCart($this -> session -> getSessionData('sessionID'), $processedItems);
-
-        return $this -> createResponseObject('Session Cart Updatad', array());
     }
 
     function getCartData() {
@@ -497,22 +515,47 @@ logMessage("sending NOT success response");
      */
     private function parseChildData() {
         $items = $this -> session -> getSessionData('items');
+        file_put_contents("/tmp/cartStorage_" . date('Y_m_d') . ".log", date('Y/m/d h:i:s').": 518 \n", FILE_APPEND);
         foreach ($items as $index => $item) {
-            if (isset($item -> childId)) {
+            file_put_contents("/tmp/cartStorage_" . date('Y_m_d') . ".log", date('Y/m/d h:i:s').": 520 \n", FILE_APPEND);
+            if (isset($item -> childId) && $item->child_sponsorship) {
                 $childData = $this -> model('custom/sponsorship_model') -> getChild(intval($item -> childId));
+                file_put_contents("/tmp/cartStorage_" . date('Y_m_d') . ".log", date('Y/m/d h:i:s').": 523 \n", FILE_APPEND);
                 if (isset($childData[0])) {
+                    file_put_contents("/tmp/cartStorage_" . date('Y_m_d') . ".log", date('Y/m/d h:i:s').": 525 \n", FILE_APPEND);
                     $item -> childName = $childData[0] -> GivenName;
                     //only set recurring rate if we're starting a sponsorship
                     if ($item -> type === DONATION_TYPE_SPONSOR) {
+                        file_put_contents("/tmp/cartStorage_" . date('Y_m_d') . ".log", date('Y/m/d h:i:s').": 529 \n", FILE_APPEND);
                         $item -> recurring = $childData[0] -> Rate;
-                        $item -> itemName = "Sponsor " . $childData[0] -> GivenName;
+                        $item -> itemName = "Sponsor ". $childData[0] -> ChildRef. " ". $childData[0] -> GivenName;
                     }
                     $items[$index] = $item;
                 }
+            }else if(isset($item -> childId) && $item->isWomensScholarship){
+                file_put_contents("/tmp/cartStorage_" . date('Y_m_d') . ".log", date('Y/m/d h:i:s').": 533 \n", FILE_APPEND);
+                $womanData = $this -> model('custom/woman_model') -> getWoman(intval($item -> childId));
+                file_put_contents("/tmp/cartStorage_" . date('Y_m_d') . ".log", date('Y/m/d h:i:s').": 535 \n", FILE_APPEND);
+                logMessage("getting woman data");
+                if (isset($womanData[0])) {
+                    file_put_contents("/tmp/cartStorage_" . date('Y_m_d') . ".log", date('Y/m/d h:i:s').": 538 \n", FILE_APPEND);
+                    $item -> childName = $womanData[0] -> GivenName;
+                    //only set recurring rate if we're starting a sponsorship
+                    if ($item -> type === DONATION_TYPE_SPONSOR) {
+                        file_put_contents("/tmp/cartStorage_" . date('Y_m_d') . ".log", date('Y/m/d h:i:s').": 542 \n", FILE_APPEND);
+                        //$item -> recurring = $childData[0] -> Rate;
+                        $item -> itemName = "Scholorship ". $childData[0] -> WomanRef. " ". $childData[0] -> GivenName;
+                    }
+                    file_put_contents("/tmp/cartStorage_" . date('Y_m_d') . ".log", date('Y/m/d h:i:s').": 546 \n", FILE_APPEND);
+                    $items[$index] = $item;
+                }
             }
+            file_put_contents("/tmp/cartStorage_" . date('Y_m_d') . ".log", date('Y/m/d h:i:s').": 550 \n", FILE_APPEND);
         }
         $sessionData = array('items' => $items);
+        file_put_contents("/tmp/cartStorage_" . date('Y_m_d') . ".log", date('Y/m/d h:i:s').": 553 \n", FILE_APPEND);
         $this -> session -> setSessionData($sessionData);
+        file_put_contents("/tmp/cartStorage_" . date('Y_m_d') . ".log", date('Y/m/d h:i:s').": 555 \n", FILE_APPEND);
         logMessage('$sessionData[\'items\'] (after setting child data) = ' . var_export($sessionData['items'], true));
     }
 

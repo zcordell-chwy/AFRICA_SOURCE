@@ -54,14 +54,16 @@ class paymentMethod_model extends \RightNow\Models\Base {
      *
      */
     function createPaymentMethod($c_id, $cardType = null, $pn_ref = null, $paymentMethodType = null, $expMonth = null, $expYear = null, $lastFour = null) {
-        logMessage("Starting " . __FUNCTION__ . ' in ' . __CLASS__);
-        logMessage(__FUNCTION__ . "@" . __LINE__ . " args: " . print_r(func_get_args(), true));
+        $this->_logToFile(57, "Begin Paymethod");
+        $this->_logToFile(58, print_r(func_get_args(), true));
+        
         $pId = -1;
 
         if (is_null($c_id) || !is_numeric($c_id) || $c_id < 1) {
             return -1;
         }
         try {
+            $this->_logToFile(66, "");
             $newPM = new RNCPHP\financial\paymentMethod;
             $newPM -> Contact = $c_id;
             if (!is_null($cardType)) {
@@ -82,12 +84,15 @@ class paymentMethod_model extends \RightNow\Models\Base {
             if (!is_null($lastFour)) {
                 $newPM -> lastFour = $lastFour;
             }
+            $this->_logToFile(87, "Saving PM");
             $pId = $newPM -> save();
 
         } catch(Exception $e) {
-            logMessage($e -> getMessage());
+            $this->_logToFile(89, $e -> getMessage());
+            //logMessage($e -> getMessage());
             return -1;
         }
+        $this->_logToFile(93, "New Payment Method created with ID: " . $newPM -> ID);
         logMessage("New Payment Method created with ID: " . $newPM -> ID);
         return $newPM;
     }
@@ -117,4 +122,14 @@ class paymentMethod_model extends \RightNow\Models\Base {
         
         return 'SuccessDelete!';
     }
+
+    private function _logToFile($lineNum, $message){
+        
+        $hundredths = ltrim(microtime(), "0");
+         
+         $fp = fopen('/tmp/transactionLogs_'.date("Ymd").'.log', 'a');
+         fwrite($fp,  date('H:i:s.').$hundredths.": Paymethod Model @ $lineNum : ".$message."\n");
+         fclose($fp);
+         
+     }
 }

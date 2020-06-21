@@ -18,7 +18,7 @@ class items extends  \RightNow\Models\Base {
     public function saveItemsToCart($sessionID, $items){   
         logMessage('saveItemsToCart with $items = ' . var_export($items, true));
         if(!$sessionID){ return "error"; }
-        $itemFieldsToSet = array('itemName', 'qty', 'oneTime', 'recurring', 'fund', 'appeal', 'giftId', 'childId', 'type', 'childName', 'childImgURL', 'pledgeId' );
+        $itemFieldsToSet = array('itemName', 'qty', 'oneTime', 'recurring', 'fund', 'appeal', 'giftId', 'childId', 'type', 'childName', 'childImgURL', 'pledgeId', 'isWomensScholarship' );
         $itemObjs = array();
         foreach($items as $item){
             logMessage('current item = ' . var_export($item, true));
@@ -42,6 +42,7 @@ class items extends  \RightNow\Models\Base {
                                     $item['customData']['donationType'] == "missionary")? DONATION_TYPE_PLEDGE: DONATION_TYPE_GIFT;
                 $cartItem->childName = $item['customData']['childName'];
                 $cartItem->childImgURL = $item['customData']['childImgURL'];
+                $cartItem->isWomensScholarship = ($item['isWomensScholarship']) ? true : false;
             }else{
                 logMessage('Processing item as object');
                 foreach($itemFieldsToSet as $itemField){
@@ -160,6 +161,7 @@ class items extends  \RightNow\Models\Base {
                     $newLineItemObj['childName'] = $cartItem->childName;
                     $newLineItemObj['cartId'] = $cartItem->ID;
                     $newLineItemObj['pledgeId'] = $cartItem->pledgeId;
+                    $newLineItemObj['isWomensScholarship'] = $cartItem->isWomensScholarship;
         
                     $lineItemObjs[] = $newLineItemObj;
                 }else if($format == "cartIds"){//for getting id's only to check if cart items exist
@@ -233,6 +235,29 @@ class items extends  \RightNow\Models\Base {
         }
         
         return $dueNow;   
+    }
+
+    public function updateTransOnItems($sessionId, $transId){
+
+        if(empty($transId) || empty($sessionId)){
+            return;
+        }
+
+        try{
+            $roql = "Select Shopping.Cart from Shopping.Cart where Shopping.Cart.SessionID = '$sessionId'";
+            //logMesage($roql);
+            $res = RNCP\ROQL::queryObject( $roql)->next();
+            
+            $dueNow = 0;
+            while($cartItem = $res->next()){
+                $cartItem->transId = intval($transId);
+                $cartItem->save();
+            }
+        }catch(Exception $e){
+           echo "error - $e </br>";
+        }
+        
+        return true;   
     }
 
     public function getTotalReoccurring($sessionId){

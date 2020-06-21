@@ -46,6 +46,8 @@ if ($items === false){
                 $createTrans = true;
             }else{
                 $createTrans = false;
+                logMessage(__LINE__.":update on trans:".$this->CI->session->getSessionData('sessionID')." transid:".$transId);
+                $this -> CI -> model('custom/items') -> updateTransOnItems($this->CI->session->getSessionData('sessionID'), $transId);
             }
         } else {
             $createTrans = true;
@@ -59,6 +61,9 @@ if ($items === false){
                 logMessage('ERROR creating transaction: transaction error');
             } else {
                 $this -> CI -> session -> setSessionData(array('transId' => $t_id));
+                //add the transaction id to the cart
+                logMessage(__LINE__.":update on trans:".$this->CI->session->getSessionData('sessionID')." transid:".$t_id);
+                $this -> CI -> model('custom/items') -> updateTransOnItems($this->CI->session->getSessionData('sessionID'), $t_id);
             }
         }
     }
@@ -121,6 +126,7 @@ if ($items === false){
                                     <rn:widget path="input/FormInput" name="Contact.Address.Country" label_input="#rn:msg:COUNTRY_LBL#"/>
                                     <rn:widget path="input/FormInput" name="Contact.Address.StateOrProvince" label_input="#rn:msg:STATE_PROV_LBL#"/>
                                     <rn:widget path="input/FormInput" name="Contact.Address.PostalCode" required="true" label_input="#rn:msg:POSTAL_CODE_LBL#" />
+                                    <rn:widget path="input/FormInput" name="Contacts.CustomFields.CO.how_did_you_hear" />
                                     <input type="checkbox" id="subscribeToEmailCheckbox" name="subscribeToEmailCheckbox" value="" checked>
                                     <label id="subscribeToEmailCheckboxLabel" for="subscribeToEmailCheckbox">#rn:msg:CUSTOM_MSG_cp_CheckoutAssistant_email_preferences_checkbox_label#</label>
                                     <div style="display:none;">
