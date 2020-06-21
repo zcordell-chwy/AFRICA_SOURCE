@@ -19,7 +19,6 @@
 	        </div>
      	<? endif; ?>
 			<form class="rn_UnsponsoredChildFiltersForm" action="" method="">
-			<? if($this->data['unsponsoredChildren']['metadata']['eventName'] == ""): ?>
 			
 			<label>Priority</label>
             <select class="rn_PriorityFilter">
@@ -35,7 +34,7 @@
                     <?php endif; ?>
                 <?php endforeach; ?>
             </select>
-            <? endif; ?>
+
 			<label>Community</label>
 			<select class="rn_CommunityFilter">
 				<?php 
@@ -88,7 +87,7 @@
 				<select class="rn_MonthFilter">
 					<?php 
 						$selectedValue = isset($this->data['unsponsoredChildren']['metadata']['filters']['monthofbirth']) ? $this->data['unsponsoredChildren']['metadata']['filters']['monthofbirth'] : 0;
-						$options = array('0' => '', '1' => 'January', '2' => 'February', '3' => 'March', '4' => 'April', '5' => 'May', '6' => 'June', '7' => 'July', '8' => 'August', '9' => 'Septembver', '10' => 'October', '11' => 'November', '12' => 'December'); 
+						$options = array('0' => '', '1' => 'January', '2' => 'February', '3' => 'March', '4' => 'April', '5' => 'May', '6' => 'June', '7' => 'July', '8' => 'August', '9' => 'September', '10' => 'October', '11' => 'November', '12' => 'December'); 
 						foreach($options as $value => $label): 
 					?>
 						<?php if(intval($value) === $selectedValue): ?>

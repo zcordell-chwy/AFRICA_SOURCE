@@ -379,7 +379,7 @@ $this->_logToFile(289, ":transaction status updated:" . $statusString);
         
        $hundredths = ltrim(microtime(), "0");
         
-        $fp = fopen('/tmp/transactionLogs_'.date("Ymd").'.log', 'a');
+        $fp = fopen('/tmp/esgLogPayCron/pledgeLogs_'.date("Ymd").'.log', 'a');
         fwrite($fp,  date('H:i:s.').$hundredths.": Transaction Model @ $lineNum : ".$message."\n");
         fclose($fp);
         

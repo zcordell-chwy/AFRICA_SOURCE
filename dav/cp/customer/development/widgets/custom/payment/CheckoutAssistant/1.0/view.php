@@ -1,21 +1,28 @@
 <?
 
+
+function _logToFile($lineNum, $message){
+    $hundredths = ltrim(microtime(), "0");
+    
+    $fp = fopen('/tmp/esgLogPayCron/checkoutLogs_'.date("Ymd").'.log', 'a');
+    fwrite($fp,  date('H:i:s.').": checkoutAssistant view @ $lineNum : ".$message."\n");
+    fclose($fp);
+    
+}
+
 $CI = get_instance();
 $existingPaymentMethods = $this-> CI -> model('custom/paymentMethod_model') -> getCurrentPaymentMethodsObjs();
 
-logMessage('Began logging of payment/checkout');
+_logToFile(__LINE__, "**********LOAD CHECKOUT SESSION: ".$this->CI->session->getSessionData('sessionID')." TRANSACTION:".$this -> CI -> session -> getSessionData('transId'));
+
+
 $errorCondition = false;
 $this -> CI -> load -> helper('constants');
 $c_id = $this -> CI -> session -> getProfileData('contactID');
-logMessage('contact id = ' . var_export($c_id, true));
 $amt = $this -> CI -> model('custom/items') -> getTotalDueNow($this->CI->session->getSessionData('sessionID'));
-logMessage('total = ' . var_export($amt, true));
 
 //$items = $this -> CI -> session -> getSessionData('items');
 $items = $this -> CI -> model('custom/items') -> getItemsFromCart($this->CI->session->getSessionData('sessionID'), 'checkout');
-// logMessage("VIEW");
-// logMessage($items);
-// logMessage($dbitems);
 
 $transId = $this -> CI -> session -> getSessionData('transId');
 
@@ -25,38 +32,48 @@ $therealcontactID = $this -> CI -> session -> getSessionData('theRealContactID')
 
 $itemDescs = array();
 if ($items === false){
+    _logToFile(__LINE__, "ITEMS FALSE");
     $errorCondition = true;
     logMessage('ERROR on payment page: no items data exists in session');
 }elseif (count($items) < 1) { 
     //print(getConfig(CUSTOM_CFG_general_cc_error_id));
     //echo "items error";
+    _logToFile(__LINE__, "ITEMS LESS THAN 1");
     $errorCondition = true;
     logMessage('ERROR on payment page: Items < 1');
 } else {
     foreach ($items as $item) {
         $itemDescs[] = $item['itemName'];
+        if($item['childId'] > 0){
+            $sponsorshipTransaction = true;
+        }
     }
 
     if($c_id !== false){
+        _logToFile(__LINE__, "CID FALSE");
         $createTrans = true;
         $transId = $this -> CI -> session -> getSessionData('transId');
         logMessage('transId = ' . var_export($transId, true));
         if (!is_null($transId) && is_numeric($transId) && $transId > 0) {
+            _logToFile(__LINE__, "TRANS ID FOUND:".$transId);
             if ($this-> CI -> model('custom/transaction_model') -> update_transaction($transId, $c_id, $amt, implode(',', $itemDescs)) === false) {
+                _logToFile(__LINE__, "Update TRANS FALSE");
                 $createTrans = true;
             }else{
                 $createTrans = false;
-                logMessage(__LINE__.":update on trans:".$this->CI->session->getSessionData('sessionID')." transid:".$transId);
+                _logToFile(__LINE__, ":update on trans:".$this->CI->session->getSessionData('sessionID')." transid:".$transId);
                 $this -> CI -> model('custom/items') -> updateTransOnItems($this->CI->session->getSessionData('sessionID'), $transId);
             }
         } else {
+            _logToFile(__LINE__, "TRANS NOT FOUND:");
             $createTrans = true;
         }
 
         if ($createTrans) {
             $t_id = $this-> CI -> model('custom/transaction_model') -> create_transaction($c_id, $amt, implode(',', $itemDescs));
+            _logToFile(__LINE__, "TRANS ID CREATED:".$t_id);
             if ($t_id === false) {
-                //echo "transaction error";
+                _logToFile(__LINE__, "TRANS ID FAILED:");
                 $errorCondition = true;
                 logMessage('ERROR creating transaction: transaction error');
             } else {
@@ -64,6 +81,7 @@ if ($items === false){
                 //add the transaction id to the cart
                 logMessage(__LINE__.":update on trans:".$this->CI->session->getSessionData('sessionID')." transid:".$t_id);
                 $this -> CI -> model('custom/items') -> updateTransOnItems($this->CI->session->getSessionData('sessionID'), $t_id);
+                _logToFile(__LINE__, "UPDATED ITEMS WITH:".$t_id);
             }
         }
     }
@@ -99,6 +117,11 @@ if ($items === false){
                              <button onclick="window.history.back()" style="display:none;">
                                     Back
                                 </button>
+                            
+                            <?if($sponsorshipTransaction):?>
+                                <rn:widget path="input/FormInput" name="contact.c$sponsor_comm_agree" required='true' default_value='false' display_as_checkbox="true" always_show_hint="true" hint="#rn:msg:CUSTOM_MSG_SPONSOR_COMM_AGREE#"/>
+                            <?endif;?>
+                            
                             <div class="esg_checkoutButton" style="display:none;">        
                                 <rn:widget path="custom/input/DonorBillingInfoFormSubmit" label_button="Continue" on_success_url="/app/payment/checkout" error_location="rn_ErrorLocation"/>
                             </div>
