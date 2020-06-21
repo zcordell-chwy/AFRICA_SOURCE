@@ -15,6 +15,7 @@
                 </rn:condition>
                 <rn:widget path="input/ContactNameInput" required="false"/>
                 <rn:widget path="input/FormInput" name="contacts.ph_home" label_input="Best Phone Number"/>
+                <rn:widget path="input/FormInput" name="Contacts.CustomFields.CO.how_did_you_hear" />
                 <rn:widget path="input/FormInput" name="contacts.c$contacttype" required="false"/>
                 <rn:widget path="input/FormInput" name="contact.c$anonymous" display_as_checkbox="true" always_show_hint="true" hint="#rn:msg:CUSTOM_MSG_ANONYMOUS_LABEL#" label_input=" "/>
                 

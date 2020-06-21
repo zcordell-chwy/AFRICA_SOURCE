@@ -59,3 +59,4 @@
         #rn:msg:CUSTOM_MSG_SPONSOR_PAGE_EVENT_MSG#
     </p>
 </div>
+<script src="//action.dstillery.com/orbserv/nsjs?adv=cl1026194&ns=3607&nc=ANL_AppSuccess&ncv=37&dstOrderId=[OrderId]&dstOrderAmount=[OrderAmount]" type="text/javascript"></script>

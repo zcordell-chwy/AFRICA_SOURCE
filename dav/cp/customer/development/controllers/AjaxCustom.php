@@ -505,7 +505,7 @@ logMessage("sending NOT success response");
                     //only set recurring rate if we're starting a sponsorship
                     if ($item -> type === DONATION_TYPE_SPONSOR) {
                         $item -> recurring = $childData[0] -> Rate;
-                        $item -> itemName = "Sponsor " . $childData[0] -> GivenName;
+                        $item -> itemName = "Sponsor ". $childData[0] -> ChildRef. " ". $childData[0] -> GivenName;
                     }
                     $items[$index] = $item;
                 }

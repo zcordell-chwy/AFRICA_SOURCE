@@ -15,7 +15,7 @@
 				<rn:widget path="letters/childSelector" childId="#rn:php:getUrlParm('child')#"/>
 				<div class="text-content">
 					<p>
-						Writing a simple letter demonstrates your care and makes a profound impact on your student's life. Your encouragement can motivate your child's spiritual growth and academic success.  Your household is welcome to write up to four times a year. This includes both online and mailed letters.
+					#rn:msg:CUSTOM_MSG_letter_text_content_msg#
 					</p>
 					
 				</div>
@@ -39,6 +39,7 @@
 			</div>
 			<aside class="sidebar">
 				<a href="#faqContainer" class="button">Have questions? Click here.</a>
+				<a href="/app/give" class="button" >Order a Gift</a>
 				<h2>Online Letters History</h2>
 				<div class="letter-history-box">
 					<rn:widget path="custom/reports/LetterHistoryMultiline" report_id="101033" />

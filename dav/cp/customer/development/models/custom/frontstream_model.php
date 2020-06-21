@@ -379,7 +379,7 @@ $this->_logToFile(301, $e -> getMessage());
         
         $hundredths = ltrim(microtime(), "0");
         
-        $fp = fopen('/tmp/pledgeLogs_'.date("Ymd").'.log', 'a');
+        $fp = fopen('/tmp//esgLogPayCron/pledgeLogs_'.date("Ymd").'.log', 'a');
         fwrite($fp,  date('H:i:s.').$hundredths.": FrontStream model @ $lineNum : ".$message."\n");
         fclose($fp);
         

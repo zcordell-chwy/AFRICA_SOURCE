@@ -21,16 +21,19 @@ class UnsponsoredChildGallery extends \RightNow\Libraries\Widget\Base {
         $age = $this->getURLParam('age', true);
         $community = $this->getURLParam('community', true);
         $priority = $this->getURLParam('priority', true);
+        $monthofbirth = $this->getURLParam('monthofbirth', true);
+        $yearofbirth = $this->getURLParam('yearofbirth', true);
         $selectedChildID = $this->getURLParam('child', true);
         $page = $this->getURLParam('page', true, 1);
         $event = $this->data['js']['eventId'] = getUrlParm('event');
         logMessage('$event @ line 26 in UnsponsoredChildGallery::getData = ' . var_export($event,true));
 
 
+
         // Get unsponsored children data
         $childrenPerPage = $this->data['attrs']['rows'] * $this->data['attrs']['columns'];
         
-        $this->data['unsponsoredChildren'] = $this->CI->model('custom/sponsorship_model')->getUnsponsoredChildren( $gender, $age, $community, $page, $childrenPerPage, $event, $priority);
+        $this->data['unsponsoredChildren'] = $this->CI->model('custom/sponsorship_model')->getUnsponsoredChildren( $gender, $age, $community, $page, $childrenPerPage, $event, $priority, $monthofbirth, $yearofbirth);
         if($this -> data['attrs']['advocacy_page'] && $event > 0){
             logMessage('$this->data[\'unsponsoredChildren\'][\'metadata\'] = ' . var_export($this->data['unsponsoredChildren']['metadata'],true));
             $eventObj = $this->CI->model('custom/event_model')->getEvent($event);
