@@ -8,9 +8,10 @@
  * 
  * Runs every 15 minutes Friday morning from midnight to 3am.  If letters ever gets bigger than 13*25, extend the number of runs in the schedule.
  * 
+ * Dropbox integration can be managed from https://www.dropbox.com/developers/apps/info/cfxdt08w0fvf5zb
  */
 
- 
+
 define(BASE_OSVC_INTF_URL, 'http://africanewlife.custhelp.com');
 
 ini_set('display_errors', 'On');
@@ -181,7 +182,7 @@ if(!is_dir('/tmp/letterupload/'.date('Y-m-d'))){
         if($inc->StatusWithType){
             $inc->StatusWithType->Status->ID = INC_STATUS_LETTER_PRINTED;
             $inc->save(RNCPHP\RNObject::SuppressAll);
-            //RNCPHP\ConnectAPI::commit();  
+            RNCPHP\ConnectAPI::commit();  
         }
     }
 
