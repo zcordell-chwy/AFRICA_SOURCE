@@ -1,4 +1,16 @@
 <?
+
+/****
+ * 
+ * Developer zach Cordell
+ * 
+ * This script runs from a scheduled report.  101148 in production
+ * 
+ * Runs every 15 minutes Friday morning from midnight to 3am.  If letters ever gets bigger than 13*25, extend the number of runs in the schedule.
+ * 
+ */
+
+ 
 define(BASE_OSVC_INTF_URL, 'http://africanewlife.custhelp.com');
 
 ini_set('display_errors', 'On');
@@ -22,19 +34,23 @@ define(INC_STATUS_LETTER_PRINTED, 105);
 // Incident categories
 define(INC_CAT_ONLINE_LETTER, 10);
 
+
 load_curl();
 
 
 //what to name the file in dropbox and the path to the file (/tmp/2018-01-03/letters-1.pdf)
 function sendToDropbox($dbFileName, $pathToFile){
     
-    
+    $token = RNCPHP\Configuration::fetch('CUSTOM_CFG_DROPBOX_TOKEN')->Value;
+
     $curl = curl_init();
 
     $path = $pathToFile;
     $fp = fopen($path, 'rb');
     $filesize = filesize($path);
     
+    
+
     curl_setopt_array($curl, array(
       CURLOPT_URL => "https://content.dropboxapi.com/2/files/upload",
       CURLOPT_RETURNTRANSFER => true,
@@ -46,7 +62,7 @@ function sendToDropbox($dbFileName, $pathToFile){
       CURLOPT_CUSTOMREQUEST => "POST",
       CURLOPT_POSTFIELDS => fread($fp, $filesize),
       CURLOPT_HTTPHEADER => array(
-        "authorization: Bearer v-gCljcpfVAAAAAAAAAOFiqhEKkOYKlPo82GPxSsf9g_44MZkCMqjSj0_5iHbPeZ",
+        "authorization: Bearer $token",
         "cache-control: no-cache",
         "content-type: application/octet-stream",
         "dropbox-api-arg: {\"path\": \"/LettersUpload/".date('Y-m-d')."/".$dbFileName."\",\"mode\": \"add\",\"autorename\": true,\"mute\": false}"
@@ -58,6 +74,8 @@ function sendToDropbox($dbFileName, $pathToFile){
     
     curl_close($curl);
     
+    print_r($response);
+    print_r($err);
     if ($err) {
       //echo "cURL Error #:" . $err;
     } else {
@@ -96,8 +114,10 @@ if(!is_dir('/tmp/letterupload/'.date('Y-m-d'))){
     
     $pdf = new PDF();
     $pdf->AliasNbPages();
-    
+    $sendFiles = false;
+
     while ($inc = $res -> next()) {
+        $sendFiles = true;
         $child = $inc->CustomFields->CO->ChildRef;
         $pledge = $inc->CustomFields->CO->PledgeRef;
     
@@ -161,13 +181,14 @@ if(!is_dir('/tmp/letterupload/'.date('Y-m-d'))){
         if($inc->StatusWithType){
             $inc->StatusWithType->Status->ID = INC_STATUS_LETTER_PRINTED;
             $inc->save(RNCPHP\RNObject::SuppressAll);
-            RNCPHP\ConnectAPI::commit();  
+            //RNCPHP\ConnectAPI::commit();  
         }
     }
 
-    $dateSuffix = date('Hi');
-    $pdf -> Output('F', '/tmp/letterupload/'.date('Y-m-d').'/letters-'.$dateSuffix.'.pdf');
-    sendToDropbox( 'letters-'.$dateSuffix.'.pdf', '/tmp/letterupload/'.date('Y-m-d').'/letters-'.$dateSuffix.'.pdf' );  
-
-
+    if($sendFiles){
+        $dateSuffix = date('Hi');
+        $pdf -> Output('F', '/tmp/letterupload/'.date('Y-m-d').'/letters-'.$dateSuffix.'.pdf');
+        sendToDropbox( 'letters-'.$dateSuffix.'.pdf', '/tmp/letterupload/'.date('Y-m-d').'/letters-'.$dateSuffix.'.pdf' );  
+    }
+    
 
