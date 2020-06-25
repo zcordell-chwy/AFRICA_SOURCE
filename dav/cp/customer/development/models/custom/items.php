@@ -18,7 +18,7 @@ class items extends  \RightNow\Models\Base {
     public function saveItemsToCart($sessionID, $items){   
         logMessage('saveItemsToCart with $items = ' . var_export($items, true));
         if(!$sessionID){ return "error"; }
-        $itemFieldsToSet = array('itemName', 'qty', 'oneTime', 'recurring', 'fund', 'appeal', 'giftId', 'childId', 'type', 'childName', 'childImgURL', 'pledgeId' );
+        $itemFieldsToSet = array('itemName', 'qty', 'oneTime', 'recurring', 'fund', 'appeal', 'giftId', 'childId', 'type', 'childName', 'childImgURL', 'pledgeId', 'isWomensScholarship' );
         $itemObjs = array();
         foreach($items as $item){
             logMessage('current item = ' . var_export($item, true));
@@ -42,6 +42,7 @@ class items extends  \RightNow\Models\Base {
                                     $item['customData']['donationType'] == "missionary")? DONATION_TYPE_PLEDGE: DONATION_TYPE_GIFT;
                 $cartItem->childName = $item['customData']['childName'];
                 $cartItem->childImgURL = $item['customData']['childImgURL'];
+                $cartItem->isWomensScholarship = ($item['isWomensScholarship']) ? true : false;
             }else{
                 logMessage('Processing item as object');
                 foreach($itemFieldsToSet as $itemField){
@@ -134,18 +135,11 @@ class items extends  \RightNow\Models\Base {
     }
     
     /*$format: different data structures for cart and checkout:  'cart' || 'checkout'*/
-    public function getItemsFromCart($sessionId, $format, $transId = null){
+    public function getItemsFromCart($sessionId, $format){
         
         $roql = "Select Shopping.Cart from Shopping.Cart where Shopping.Cart.SessionID = '$sessionId'";
         logMessage($roql);
         $res = RNCP\ROQL::queryObject( $roql)->next();
-
-        if ($res->count() < 1 && !empty($transId)) {
-            $roql = "Select Shopping.Cart from Shopping.Cart where Shopping.Cart.transId = ".intval($transId);
-            logMessage($roql);
-            $res = RNCP\ROQL::queryObject( $roql)->next();
-        }
-
         try{
             
             $lineItemObjs = array();
@@ -167,6 +161,7 @@ class items extends  \RightNow\Models\Base {
                     $newLineItemObj['childName'] = $cartItem->childName;
                     $newLineItemObj['cartId'] = $cartItem->ID;
                     $newLineItemObj['pledgeId'] = $cartItem->pledgeId;
+                    $newLineItemObj['isWomensScholarship'] = $cartItem->isWomensScholarship;
         
                     $lineItemObjs[] = $newLineItemObj;
                 }else if($format == "cartIds"){//for getting id's only to check if cart items exist
@@ -244,26 +239,22 @@ class items extends  \RightNow\Models\Base {
 
     public function updateTransOnItems($sessionId, $transId){
 
-        $this->_logToFile(__LINE__, "Session:".$sessionId." Transaction:".$transId);
         if(empty($transId) || empty($sessionId)){
-            $this->_logToFile(__LINE__, "empty");
             return;
         }
 
         try{
             $roql = "Select Shopping.Cart from Shopping.Cart where Shopping.Cart.SessionID = '$sessionId'";
-            $this->_logToFile(__LINE__, $roql);
+            //logMesage($roql);
             $res = RNCP\ROQL::queryObject( $roql)->next();
-
+            
+            $dueNow = 0;
             while($cartItem = $res->next()){
                 $cartItem->transId = intval($transId);
-                $this->_logToFile(__LINE__, "Cart item ID:".$cartItem->ID." Added Trans:".$transId);
                 $cartItem->save();
             }
         }catch(Exception $e){
-            $this->_logToFile(__LINE__, "Error:".$e->getMessage());
-        }catch(RNCP\ConnectAPIError $err) {
-            $this->_logToFile(__LINE__, "Error:".$err->getMessage());
+           echo "error - $e </br>";
         }
         
         return true;   
@@ -550,15 +541,6 @@ class items extends  \RightNow\Models\Base {
         }   
         logMessage("items from previous orders = ".$total);
         return $total;
-    }
-
-    public function _logToFile($lineNum, $message){
-        $hundredths = ltrim(microtime(), "0");
-        
-        $fp = fopen('/tmp/esgLogPayCron/checkoutLogs_'.date("Ymd").'.log', 'a');
-        fwrite($fp,  date('H:i:s.').": Items Model @ $lineNum : ".$message."\n");
-        fclose($fp);
-        
     }
     
 }

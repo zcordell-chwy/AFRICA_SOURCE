@@ -106,7 +106,7 @@ $this->_logToFile(86, "No donation created");
                     }
                     break;
                 case DONATION_TYPE_SPONSOR :
-                    $itemId = $this -> addPledgeToDonation($donationId, $item['recurring'], $item['oneTime'], $c_id, $item['fund'], $item['appeal'], $item['childId'], $paymentMethod);
+                    $itemId = $this -> addPledgeToDonation($donationId, $item['recurring'], $item['oneTime'], $c_id, $item['fund'], $item['appeal'], $item['childId'], $paymentMethod, null, $item['isWomensScholarship']);
                     break;
             }
 
@@ -183,7 +183,7 @@ $this->_logToFile(163, "New Donation Created with Contact:".$newDonation->Contac
         return $id;
     }
 
-    public function addPledgeToDonation($donationId, $mon = 0, $one = 0, $c_id, $fund = null, $appeal = null, $childId = null, $paymentMethod, $pledgeId = null) {
+    public function addPledgeToDonation($donationId, $mon = 0, $one = 0, $c_id, $fund = null, $appeal = null, $childId = null, $paymentMethod, $pledgeId = null, $isWomensScholarship = false) {
 $this->_logToFile(187, "Adding pledge to donation");
 $this->_logToFile(188, "Donation: $donationId, PayMethod: $paymentMethod->ID, Monthly: $mon, One Time: $one, Contact: $c_id, Fund: $fund, Appeal: $appeal, ChildId: $childId");
 
@@ -192,7 +192,6 @@ $this->_logToFile(188, "Donation: $donationId, PayMethod: $paymentMethod->ID, Mo
             $pledge = new RNCPHP\donation\pledge();
             $donation = RNCPHP\donation\Donation::fetch($donationId);
             if (!$donation instanceof RNCPHP\donation\Donation) {
-                //logMessage(__FUNCTION__ . "@" . __LINE__ . ": No Donation Found");
                 return false;
             }
             $mon = intval($mon);
@@ -204,30 +203,33 @@ $this->_logToFile(188, "Donation: $donationId, PayMethod: $paymentMethod->ID, Mo
                 $pledge -> NextTransaction = time();
                 $pledge -> Frequency = RNCPHP\donation\DonationPledgeFreq::fetch(5);//monthly
                 $pledge -> Type1 = RNCPHP\donation\Type::fetch(2);
-                //$pledge -> PTD = strtotime("+1 month");
                 $pledge-> Balance = 0;
-//$this->_logToFile("Before Paymethod add");
                 $pledge -> paymentMethod2 = $paymentMethod;
                 $pledge -> PaymentSource = RNCPHP\donation\paymentSourceMenu::fetch(DONATION_PAYMENT_SOURCE);
-
-                
-
                 $pledge -> Contact = intval($c_id);
                 
                 if ($childId != null) {
-                    $pledge -> Child = intval($childId);
-                    $pledge -> ChildSponsorship = true;
-                    //all child sponsorships will have SPON fund WEB appeal
-                    $pledge -> Fund = $this->getSponsorshipFund(intval($childId));
-                    $pledge -> Appeals = intval(WEB_APPEAL_ID);//WEB
-                    
-                    //need to set teh sponsored child as "sponsored"
-                    $cdid = $this -> setChildSponsored($childId);
-                    logMessage("donation model child id = " . $cdid);
+                    //the child id can be for woman or child
+                    if($isWomensScholarship){
+                        logMessage("Applying Woman to scholarship pledge. Woman ID:" . $childId);
+                        $pledge -> Woman = intval($childId);
+                        $pledge -> Fund = $this->getSponsorshipFund(intval($childId), true);
+                        $pledge -> Appeals = intval(WEB_APPEAL_ID);//WEB
+                        $pledge -> pledgefor = RNCPHP\donation\pledgefor::fetch(2);
+                    }else{
+                        $pledge -> Child = intval($childId);
+                        $pledge -> ChildSponsorship = true;
+                        //all child sponsorships will have SPON fund WEB appeal
+                        $pledge -> Fund = $this->getSponsorshipFund(intval($childId));
+                        $pledge -> Appeals = intval(WEB_APPEAL_ID);//WEB
+                        $pledge -> pledgefor = RNCPHP\donation\pledgefor::fetch(1);
+                        
+                        //need to set teh sponsored child as "sponsored"
+                        $cdid = $this -> setChildSponsored($childId);
+                        logMessage("donation model child id = " . $cdid);
+                    }
                 }
-                
-                
-                
+
                 //sponsorships may or may not have a fund.  if there is no child, a fund is required.
                 if (is_null($fund) || $fund < 1) {
                     if (is_null($childId)) {
@@ -244,23 +246,23 @@ $this->_logToFile(188, "Donation: $donationId, PayMethod: $paymentMethod->ID, Mo
                     $pledge -> Appeals = intval($appeal);
                 }
                 
-                
-                
-                
-                if ($fund != "") {
-                    //ASM bug fix on 2016-08-29 to remove leading space from pledge description
-                    //$descr = " " . $pledge->Fund->Descriptions[0]->LabelText;
+                if (!empty($pledge -> Fund)) {
                     $descr = $pledge->Fund->Descriptions[0]->LabelText;
                 }
 
                 if ($childId != "") {
                     logMessage("Adding Child to pledge description = " . $descr);
-                    //ASM bug fix on 2016-08-29 to remove leading space from pledge description
-                    //$descr .=  " " .$pledge -> Child -> ChildRef;
                     $descr .= $pledge -> Child -> ChildRef;
                     logMessage("Adding Child to pledge description = " . $descr);
                 }
 
+                logMessage("iswomanScholarship:".$isWomensScholarship);
+                if($isWomensScholarship){
+                    logMessage("Setting description:".$pledge -> Woman -> WomanRef);
+                    $descr = 'Woman:'.$pledge -> Woman -> WomanRef;
+                }
+                
+                logMessage("desc:".$descr);
                 if ($descr != "") {
                     logMessage("Adding Description to donation = " . $descr);
                     $pledge -> Descr = $descr;
@@ -269,23 +271,16 @@ $this->_logToFile(188, "Donation: $donationId, PayMethod: $paymentMethod->ID, Mo
 
                 $pledge -> save(RNCPHP\RNObject::SuppressAll);
                 RNCPHP\ConnectAPI::commit();
-$this->_logToFile(272, ": pledge object");
 
                 $donation2Pledge = new RNCPHP\donation\donationToPledge();
                 $donation2Pledge -> PledgeRef = $pledge -> ID;
                 $donation2Pledge -> DonationRef = $donation -> ID;
 
-$this->_logToFile(278, ": paymethod ID:" . $paymentMethod -> ID);
-$this->_logToFile(279, ": donation ID:" . $donation -> ID);
-$this->_logToFile(280, ": pledge  ID:" . $pledge -> ID);
-$this->_logToFile(281, ": donation2pledge object");
-$this->_logToFile(282, print_r($donation2Pledge, true));
                 try {
                     $donation2Pledge -> save(RNCPHP\RNObject::SuppressAll);
                     RNCPHP\ConnectAPI::commit();
 
                 } catch(Exception $e) {
-$this->_logToFile(288, $e->getMessage());
                     return false;
                 }
             }
@@ -302,7 +297,7 @@ $this->_logToFile(288, $e->getMessage());
                         $pledge -> Contact = intval($c_id);
                         $pledge -> NextTransaction = time();
                         $pledge-> Balance = 0;
-//$this->_logToFile(__FUNCTION__ . "@" . __LINE__ . ": paymethod ID:" . $paymentMethod -> ID);
+
                         $pledge -> paymentMethod2 = $paymentMethod;
                         
         
@@ -330,10 +325,19 @@ $this->_logToFile(288, $e->getMessage());
                         }
         
                         if ($childId != null) {
-                            $pledge -> Child = intval($childId);
-                            $pledge -> ChildSponsorship = true;
-                            //need to set teh sponsored child as "sponsored"
-                            $cdid = $this -> setChildSponsored($childId);
+                            if($isWomensScholarship){
+                                logMessage("Applying Woman to scholarship pledge. Woman ID:" . $childId);
+                                $pledge -> Woman = intval($childId);
+                                $pledge -> Fund = $this->getSponsorshipFund(intval($childId), true);
+                                $pledge -> Appeals = intval(WEB_APPEAL_ID);//WEB
+                                $pledge -> pledgefor = RNCPHP\donation\pledgefor::fetch(2);
+                                $pledge -> Descr  = 'Woman:'.$pledge -> Woman -> WomanRef;
+                            }else{
+                                $pledge -> Child = intval($childId);
+                                $pledge -> ChildSponsorship = true;
+                                //need to set teh sponsored child as "sponsored"
+                                $cdid = $this -> setChildSponsored($childId);
+                            }
         
                         }
         
@@ -386,16 +390,21 @@ $this->_logToFile(377, "donation item id: $id");
         RNCPHP\ConnectAPI::commit();
     }
 
-    public function getSponsorshipFund($childId){
+    public function getSponsorshipFund($childId, $isWomensScholarship = false){
         
         if ($childId > 0) {
             try {
-                $child = RNCPHP\sponsorship\Child::fetch($childId);
+                $child = ($isWomensScholarship) ?  RNCPHP\sponsorship\Woman::fetch($childId): RNCPHP\sponsorship\Child::fetch($childId);
                 if ($child) {
-                    $fund = ($child->SponsorshipStatus->LookupName == "Co-Sponsor Needed") ? $this->getNewFund($child->Community->Fund->AccountingCode) : $child->Community->Fund;
+                    $fund = (!$isWomensScholarship && $child->SponsorshipStatus->LookupName == "Co-Sponsor Needed") ? $this->getNewFund($child->Community->Fund->AccountingCode) : $child->Community->Fund;
                     if(!$fund)
                         $fund = $child->Community->Fund;
                     logMessage("got a fund for a child fund id: ".$fund->ID);
+
+                    //if we still haven't gotten a fund get the spon fund
+                    if(empty($fund)){
+                        $fund = RNCPHP\donation\fund::fetch(intval(SPON_FUND_ID)); //SPON
+                    }
                 }else{
                     $fund = RNCPHP\donation\fund::fetch(intval(SPON_FUND_ID)); //SPON
                     logMessage("Didn't quite get a child fund");

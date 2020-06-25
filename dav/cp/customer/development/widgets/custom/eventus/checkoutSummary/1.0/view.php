@@ -37,7 +37,7 @@ $availableFields = array(
         'sourceField' => 'recurring'
     ),
     'childName' => array(
-        'label' => 'Child',
+        'label' => 'Sponsoree/Scholarshipee',
         'type' => 'string',
         'sourceField' => 'childName'
     )
@@ -78,6 +78,7 @@ foreach ($items as $item) {
             logMessage("Sponsor Type Found");           
             $fieldsToShow['itemName'] = $availableFields['itemName'];
             $fieldsToShow['recurring'] = $availableFields['recurring'];
+            $fieldsToShow['oneTime'] = $availableFields['oneTime'];
             $fieldsToShow['childName'] = $availableFields['childName'];
             //$_SESSION["PaymentSummaryMsg"] = "DONATION_TYPE_SPONSOR";
             break;

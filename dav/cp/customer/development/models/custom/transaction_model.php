@@ -130,51 +130,66 @@ $this->_logToFile(86, __FUNCTION__.": Returning True");
     public function update_transaction($t_id, $c_id, $amt = -1, $desc = null, $donationId = null, $statusString = null, $paymentMethodId = -1, $PNRef = null) {
         //logMessage("starting " . __FUNCTION__);
         //logMessage(__FUNCTION__ . "@" . __LINE__ . " args: " . print_r(func_get_args(), true));
-
+$this->_logToFile(133, "Begin Update transaction");
+$this->_logToFile(134, "DonationId:$donationId Amt:$amt ContactId:$c_id TransactionAmount:$t_id Status:$statusString NewPayId:$paymentMethodId PnRef:".$PNRef);
         if (strlen($desc) > 254) {
             $desc = substr($desc, 0, 251) . "...";
         }
-
+$this->_logToFile(138, "");
         //logMessgae("in transaction update. payment method =  ".$paymentMethodId);
         try {
             if (!is_null($t_id) && is_numeric($t_id) && $t_id > 0) {
+                $this->_logToFile(142, "TransID:$t_id");
                 $trans = $this -> get_transaction(intval($t_id));
             } else {
+                $this->_logToFile(145, "Returning False");
                 return false;
             }
             if (!$trans instanceof RNCPHP\financial\transactions) {
+                $this->_logToFile(149, "Returning False");
                 //logMessage("Transaction Not found in " . __FUNCTION__);
                 return false;
             }
             $transMeta = RNCPHP\financial\transactions::getMetaData();
+            //$this->_logToFile(154, print_r($transMeta, true));
             $trans -> currentStatus = RNCPHP\financial\transaction_status::fetch(DEFAULT_TRANSACTION_STATUS_ID);
+            $this->_logToFile(156, print_r($trans -> currentStatus, true));
             if ($amt > 0) {
+                $this->_logToFile(158,number_format($amt, 2, '.', ''));
                 $trans -> totalCharge = number_format($amt, 2, '.', '');
+                $this->_logToFile(160, "");
             }
             $trans -> contact = intval($c_id);
+            $this->_logToFile(160, "");
             if (!is_null($desc)) {
                 $trans -> description = $desc;
             }
+            $this->_logToFile(167, "");
             if (!is_null($donationId)) {
                 $trans -> donation = intval($donationId);
             }
+            $this->_logToFile(171, "");
             if (!is_null($statusString) && strlen($statusString) > 0) {
                 $this -> addNoteToTrans($trans, "Changing status from (LookupName unavailable, ID instead)" . $trans -> currentStatus -> ID . " to " . $statusString);
                 $trans -> currentStatus = RNCPHP\financial\transaction_status::fetch($statusString);
             }
+            $this->_logToFile(176, "");
             if (!is_null($paymentMethodId) && $paymentMethodId > 0) {
                 $trans -> paymentMethod = intval($paymentMethodId);
             }
+            $this->_logToFile(180, "");
             
             if(!is_null($PNRef) ){
                 $trans -> refCode = $PNRef;
             }
-
+            $this->_logToFile(185, "");
             logMessage("Updating Transaction: statusstring = $statusString and TRANSACTION_SALE_SUCCESS_STATUS = " . TRANSACTION_SALE_SUCCESS_STATUS);
             if ($statusString == TRANSACTION_SALE_SUCCESS_STATUS) {
+                $this->_logToFile(188, "");
                 $trans -> save();
                 logMessage("not suppressing");
             } else {
+                $this->_logToFile(192, "");
                 $trans -> save(RNCPHP\RNObject::SuppressAll);
                 logMessage("suppressing");
             }
@@ -184,8 +199,10 @@ $this->_logToFile(86, __FUNCTION__.": Returning True");
         } catch(\Exception $e) {
             //logMessage(__FUNCTION__ . "@" . __LINE__ . ": Exception Found");
             //logMessage($e -> getMessage());
+            $this->_logToFile(138, $e->getMessage());
             return false;
         }
+        $this->_logToFile(205, "Returning:".$trans -> ID);
         return $trans -> ID;
 
     }
@@ -362,7 +379,7 @@ $this->_logToFile(289, ":transaction status updated:" . $statusString);
         
        $hundredths = ltrim(microtime(), "0");
         
-        $fp = fopen('/tmp/esgLogPayCron/pledgeLogs_'.date("Ymd").'.log', 'a');
+        $fp = fopen('/tmp/transactionLogs_'.date("Ymd").'.log', 'a');
         fwrite($fp,  date('H:i:s.').$hundredths.": Transaction Model @ $lineNum : ".$message."\n");
         fclose($fp);
         
