@@ -18,11 +18,11 @@
 			<div class="rn_GiftPopupGalleryItemPopupAddToCartForm">
 			    <% if (giftPage && !loggedIn){ %>
 			    	<div class="giftAdditionalInfo">
-					  <p><a href="/app/utils/login_form/redirect/give">Log In</a> to order this item for your sponsored child or a needy child</p>
+					  <p><a href="/app/utils/login_form/redirect/give">Log In</a> to order this item for your sponsored student or a student in need</p>
 					</div>	
 				<% } else { %>
 				<fieldset class="rn_GiftPopupGalleryItemPopupSponsoredChildFieldset">
-					<legend>To which sponsored children would you like to give this gift?</legend>
+					<legend>To which sponsored student would you like to give this gift?</legend>
 					<% if(data.eligibleChildren.length > 1){ %>
 						<% 	var halfIndex = Math.floor(data.eligibleChildren.length/2); %>
 						<div class="rn_GiftPopupGalleryItemPopupSponsoredChildFieldsetColumn">

@@ -27,8 +27,24 @@ class donateIndividual extends \RightNow\Libraries\Widget\Base {
 	        	logMessage("redirecting, no Donation Fund or Donation Appeal field value provided");
 	        	header("Location:" . getConfig(CUSTOM_CFG_DONATE));
 	        }
-		}
-			
+        }
+        
+        logMessage('getting page settings');
+        $pageSettings = json_decode(getConfig(CUSTOM_CFG_SINGLE_DONATION_PAGE_SETTINGS));
+        logMessage($pageSettings);
+
+        if($pageSettings){
+            foreach($pageSettings->funds as $fund){
+                logMessage("Compare:".$fund->id.":".$f_id);
+                if($fund->id == $f_id){
+                    $this -> data['showSingle'] = $fund->showSingle;
+                    $this -> data['defaultAmount'] =  $fund->defaultAmount;
+                }
+            }
+        }
+
+        logMessage($this -> data['showSingle'] );
+                    logMessage($this -> data['defaultAmount']);
 
     }
 

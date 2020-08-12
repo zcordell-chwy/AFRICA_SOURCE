@@ -234,7 +234,7 @@ implements RNCPM\ObjectEventHandler {
     public static function getPledges($donationId = 0) {
         self::logToFile( "Starting " . __FUNCTION__ . " at " . __LINE__);
         //pledge table header
-        static::$totalsTable = "<table style='width:100%'><tbody><tr style='text-align:left'><th>Date</th><th>Child Ref</th><th>Fund</th><th>Amount</th></tr>";
+        static::$totalsTable = "<table style='width:100%'><tbody><tr style='text-align:left'><th>Date</th><th>Reference</th><th>Fund</th><th>Amount</th></tr>";
         self::logToFile("Log", "Starting Get Pledges New");
         
         try {
@@ -276,7 +276,10 @@ implements RNCPM\ObjectEventHandler {
             //pledge table detail
             foreach($pledges as $pl){
                 print_r($transactionDate);
-                $childRef = ($pl->Child) ? $pl->Child->ChildRef:"";
+                $sponReference = ($pl->Child) ? $pl->Child->ChildRef:"";
+                if(empty($sponReference )){
+                    $sponReference = ($pl->Woman) ? $pl->Woman->WomanRef:"";
+                }
                 static::$totalsTable .= "<tr><td>".$transactionDate."</td><td>".$childRef."</td><td>".$pl->Fund->Descriptions[0]->LabelText."</td><td>".number_format($pledgeTotalsList[$pl->ID], 2, ".", "")."</td>";
             }
             

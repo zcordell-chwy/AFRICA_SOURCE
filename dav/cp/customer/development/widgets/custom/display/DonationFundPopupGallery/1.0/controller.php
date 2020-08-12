@@ -72,12 +72,12 @@ class DonationFundPopupGallery extends \Custom\Widgets\display\ItemPopupGallery 
         );
         $this->CI->logging->logVar('$this->data[\'attrs\'][\'mission_members_sort_index\']', 
             $this->data['attrs']['mission_members_sort_index']);
-        if($this->data['attrs']['mission_members_sort_index'] == -1){
-            $items[] = $missionTeamMembersFundItem;
-        }else{
-            $sortIndex = intval($this->data['attrs']['mission_members_sort_index']);
-            array_splice($items, $sortIndex, 0, array($missionTeamMembersFundItem));
-        }
+        // if($this->data['attrs']['mission_members_sort_index'] == -1){
+        //     $items[] = $missionTeamMembersFundItem;
+        // }else{
+        //     $sortIndex = intval($this->data['attrs']['mission_members_sort_index']);
+        //     array_splice($items, $sortIndex, 0, array($missionTeamMembersFundItem));
+        // }
 
         $this->CI->logging->logVar('$items', $items);
         $this->CI->logging->logVar('$this->data[\'attrs\']', $this->data['attrs']);

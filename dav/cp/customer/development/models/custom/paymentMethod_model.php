@@ -89,10 +89,12 @@ class paymentMethod_model extends \RightNow\Models\Base {
 
         } catch(Exception $e) {
             $this->_logToFile(89, $e -> getMessage());
-            //logMessage($e -> getMessage());
+            return -1;
+        }catch(RNCPHP\ConnectAPIError $e) {
+            $this->_logToFile(95, $e -> getMessage());
             return -1;
         }
-        $this->_logToFile(93, "New Payment Method created with ID: " . $newPM -> ID);
+        $this->_logToFile(97, "New Payment Method created with ID: " . $newPM -> ID);
         logMessage("New Payment Method created with ID: " . $newPM -> ID);
         return $newPM;
     }
@@ -127,7 +129,7 @@ class paymentMethod_model extends \RightNow\Models\Base {
         
         $hundredths = ltrim(microtime(), "0");
          
-         $fp = fopen('/tmp/transactionLogs_'.date("Ymd").'.log', 'a');
+         $fp = fopen('/tmp/esgLogPayCron/refundNewPay_'.date("Ymd").'.log', 'a');
          fwrite($fp,  date('H:i:s.').$hundredths.": Paymethod Model @ $lineNum : ".$message."\n");
          fclose($fp);
          

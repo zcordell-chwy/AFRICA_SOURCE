@@ -36,7 +36,7 @@
 					<?php endforeach; ?>
 				</select>
 			<?else:?>
-				
+				<? if($this->data['unsponsoredChildren']['metadata']['eventName'] == ""): ?>
 					<label>Priority</label>
 					<select class="rn_PriorityFilter">
 						<?php 
@@ -51,6 +51,7 @@
 							<?php endif; ?>
 						<?php endforeach; ?>
 					</select>
+				<? endif; ?>
 
 				<label>Community</label>
 				<select class="rn_CommunityFilter">

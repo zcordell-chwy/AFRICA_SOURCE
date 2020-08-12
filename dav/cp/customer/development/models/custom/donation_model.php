@@ -246,9 +246,6 @@ $this->_logToFile(188, "Donation: $donationId, PayMethod: $paymentMethod->ID, Mo
                     $pledge -> Appeals = intval($appeal);
                 }
                 
-                if (!empty($pledge -> Fund)) {
-                    $descr = $pledge->Fund->Descriptions[0]->LabelText;
-                }
 
                 if ($childId != "") {
                     logMessage("Adding Child to pledge description = " . $descr);
@@ -256,10 +253,15 @@ $this->_logToFile(188, "Donation: $donationId, PayMethod: $paymentMethod->ID, Mo
                     logMessage("Adding Child to pledge description = " . $descr);
                 }
 
+                if (!empty($pledge -> Fund)) {
+                    $descr = $pledge->Fund->Descriptions[0]->LabelText;
+                }
+
                 logMessage("iswomanScholarship:".$isWomensScholarship);
                 if($isWomensScholarship){
+                    
                     logMessage("Setting description:".$pledge -> Woman -> WomanRef);
-                    $descr = 'Woman:'.$pledge -> Woman -> WomanRef;
+                    $descr = 'Woman:'.$pledge -> Woman -> WomanRef." ".$pledge->Woman->GivenName;
                 }
                 
                 logMessage("desc:".$descr);
@@ -331,7 +333,7 @@ $this->_logToFile(188, "Donation: $donationId, PayMethod: $paymentMethod->ID, Mo
                                 $pledge -> Fund = $this->getSponsorshipFund(intval($childId), true);
                                 $pledge -> Appeals = intval(WEB_APPEAL_ID);//WEB
                                 $pledge -> pledgefor = RNCPHP\donation\pledgefor::fetch(2);
-                                $pledge -> Descr  = 'Woman:'.$pledge -> Woman -> WomanRef;
+                                $pledge -> Descr  = 'Woman:'.$pledge -> Woman -> WomanRef." ".$pledge->Woman->GivenName;
                             }else{
                                 $pledge -> Child = intval($childId);
                                 $pledge -> ChildSponsorship = true;

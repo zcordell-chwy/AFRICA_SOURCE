@@ -544,7 +544,7 @@ logMessage("sending NOT success response");
                     if ($item -> type === DONATION_TYPE_SPONSOR) {
                         file_put_contents("/tmp/cartStorage_" . date('Y_m_d') . ".log", date('Y/m/d h:i:s').": 542 \n", FILE_APPEND);
                         //$item -> recurring = $childData[0] -> Rate;
-                        $item -> itemName = "Scholorship ". $childData[0] -> WomanRef. " ". $childData[0] -> GivenName;
+                        $item -> itemName = "Scholarship ". $childData[0] -> WomanRef. " ". $childData[0] -> GivenName;
                     }
                     file_put_contents("/tmp/cartStorage_" . date('Y_m_d') . ".log", date('Y/m/d h:i:s').": 546 \n", FILE_APPEND);
                     $items[$index] = $item;

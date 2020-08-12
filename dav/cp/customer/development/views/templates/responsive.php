@@ -193,6 +193,7 @@
             <img height="1" width="1" style="border-style:none;" alt="" src="//www.googleadservices.com/pagead/conversion/826427818/?label=hbtZCIet8X4QqpOJigM&amp;guid=ON&amp;script=0"/>
             </div>
             </noscript>
-        <?php } ?>
+		<?php } ?>
+		
 	</body>
 </html>
