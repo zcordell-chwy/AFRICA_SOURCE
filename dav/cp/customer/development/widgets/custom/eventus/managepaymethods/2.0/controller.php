@@ -45,11 +45,10 @@ class managepaymethods extends \RightNow\Libraries\Widget\Base {
         $postVals["TrackingID"] = "";
         $postVals["StyleSheetURL"] = $baseURL . "/euf/assets/themes/africa/payment2.css";
         $postVals["MerchantToken"] = FS_MERCHANT_TOKEN;
-        $postVals["PostbackURL"] = FS_ADD_PM_POSTBACK_URL."/p_id/".getUrlParm('p_id');
         $postVals["PostBackRedirectURL"] = FS_ADD_PM_POSTBACK_URL."/p_id/".getUrlParm('p_id');
         $postVals["PostBackErrorURL"] = FS_ADD_PM_POSTBACK_URL."/p_id/".getUrlParm('p_id');
         $postVals["SetupMode"] = "Direct";
-        $postVals["InvoiceNumber"] = "NewPM-".time();
+        $postVals["InvoiceNumber"] = "NewPM-".time()."-".$contactObj -> ID;
         $postVals["HeaderImageURL"] = FS_HEADER_URL;
         $postVals["DirectUserName"] = FS_USERNAME;
         $postVals["DirectUserToken"] = FS_USERTOKEN;

@@ -231,6 +231,7 @@ class woman_model extends \RightNow\Models\Base {
             //$whereClauses[] = "SPONSORSHIP.Woman.ChildEventStatus In ( 1 )";//web hold only
         }else{
             $whereClauses[] = "(SPONSORSHIP.Woman.ScholarshipStatus=2 OR SPONSORSHIP.Woman.ScholarshipStatus is null)";
+            $whereClauses[] = "SPONSORSHIP.Woman.ProgramStatus=1";
             //$whereClauses[] = "SPONSORSHIP.Child.ChildEventStatus is null";
         }
 

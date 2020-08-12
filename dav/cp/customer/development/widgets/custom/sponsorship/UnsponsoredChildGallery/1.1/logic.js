@@ -166,13 +166,13 @@ Custom.Widgets.sponsorship.UnsponsoredChildGallery = RightNow.Widgets.extend({
                 '<a class="rn_WomanInfoSponsorLink" ' +
                 'href="javascript: void(0);" ' +
                 'data-childRate="##RATE##" ' +
-                'data-childID="##ID##">Monthly&gt;</a>' + '<p class="amountToFullScholorship">Or</p>' +
+                'data-childID="##ID##">Monthly&gt;</a>' + '<p class="amountToFullScholarship">Or</p>' +
                 '<p >$<input type="number" class="womensScholarshipInput" id="womanSponsorOneTimeRate_##ID##" placeholder="$50 recommended"/>' +
                 '<a class="rn_WomanInfoOneTimeSponsorLink" ' +
                 'href="javascript: void(0);" ' +
                 'data-childRate="##RATE##" ' +
                 'data-childID="##ID##">One Time&gt;</a></p>' +
-                '<p class="amountToFullScholorship">$##REMAINING##/month left until a full scholarship is met.</p>' +
+                '<p class="amountToFullScholarship">$##REMAINING##/month left until a full scholarship is met.</p>' +
                 '<p class="womansSponsorAdditionalInfo">'+this.data.attrs.donation_additional_info+'</p></div>';
         }else{
             var sponsorLink =
@@ -421,14 +421,19 @@ Custom.Widgets.sponsorship.UnsponsoredChildGallery = RightNow.Widgets.extend({
                     thisObj.advocateChildAjax(childID, thisObj.data.js.eventId);
                 }else{
                     if(thisObj.data.attrs.data_source == 'woman'){
-                        var isWomanScholorship = true;
+                        var isWomanScholarship = true;
                     }
-                    thisObj.sponsorChildAjax(childID, childRate, this, isWomanScholorship, false);
+                    thisObj.sponsorChildAjax(childID, childRate, this, isWomanScholarship, false);
                 }
             }else{
 
                 if(thisObj.data.attrs.data_source == 'woman'){
-                    var redirectUrl = "/app/utils/login_form/redirect/womens_ministry" + thisObj.buildSearchFilterURLParamString(true) + "%252Fwoman%252F" + childID  + "%252Frecurring%252F" + childRate;
+                    let rateSuffix = '';
+                    //womanSponsorRate_21
+                    if ($("#womanSponsorRate_"+childID).val() > 0) {
+                            rateSuffix = "%252Frecurring%252F" + $("#womanSponsorRate_"+childID).val();
+                    }
+                    var redirectUrl = "/app/utils/login_form/redirect/womens_ministry" + thisObj.buildSearchFilterURLParamString(true) + "%252Fwoman%252F" + childID  + rateSuffix;
                 }else{
                     var redirectUrl = "/app/utils/login_form/redirect/home" + thisObj.buildSearchFilterURLParamString(true) + "%252Fchild%252F" + childID;
                 }
@@ -443,13 +448,17 @@ Custom.Widgets.sponsorship.UnsponsoredChildGallery = RightNow.Widgets.extend({
 
                 if(RightNow.Profile.isLoggedIn()){
                         if(thisObj.data.attrs.data_source == 'woman'){
-                            var isWomanScholorship = true;
+                            var isWomanScholarship = true;
                         }
-                        thisObj.sponsorChildAjax(childID, childRate, this, isWomanScholorship, true);
+                        thisObj.sponsorChildAjax(childID, childRate, this, isWomanScholarship, true);
                 }else{
 
                     if(thisObj.data.attrs.data_source == 'woman'){
-                        var redirectUrl = "/app/utils/login_form/redirect/womens_ministry" + thisObj.buildSearchFilterURLParamString(true) + "%252Fwoman%252F" + childID  + "%252Fonetime%252F" + childRate;
+                        let rateSuffix = '';
+                        if ($("#womanSponsorOneTimeRate_"+childID).val() > 0) {
+                             rateSuffix = "%252Fonetime%252F" + $("#womanSponsorOneTimeRate_"+childID).val();
+                        }
+                        var redirectUrl = "/app/utils/login_form/redirect/womens_ministry" + thisObj.buildSearchFilterURLParamString(true) + "%252Fwoman%252F" + childID + rateSuffix;
                     }else{
                         var redirectUrl = "/app/utils/login_form/redirect/home" + thisObj.buildSearchFilterURLParamString(true) + "%252Fchild%252F" + childID ;
                     }
@@ -496,7 +505,7 @@ Custom.Widgets.sponsorship.UnsponsoredChildGallery = RightNow.Widgets.extend({
     // Performs the AJAX call to sponsor a child and redirects to the sponsorship page to finalize payment details.
     // But first runs logic to make sure another user has not already begun the process to sponsor this child using a
     // record lock system.
-    sponsorChildAjax: function(childID, childRate, sponsorChildLink, isWomanScholorship = false, isOneTime = false){
+    sponsorChildAjax: function(childID, childRate, sponsorChildLink, isWomanScholarship = false, isOneTime = false){
         var childAlreadySponsoredMsg = 
             "This child has already been sponsored. Please select another child.",
             failedToAcquireLockOnChildMsg = 
