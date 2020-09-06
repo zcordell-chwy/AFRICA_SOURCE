@@ -116,9 +116,17 @@ Custom.Widgets.eventus.ajaxCustomFormSubmit = RightNow.Widgets.extend({
 	            w_id: this.data.info.w_id,
 	            formData: RightNow.JSON.stringify(formData)
 	            // Parameters to send
-	        }});
+			}});
+
+			//set loading
+			$(this.baseSelector + "_LoadingIcon").removeClass( "rn_Hidden");
+
+			//testing timeout link
+			//this.data.attrs.default_ajax_endpoint = "https://africanewlife.custhelp.com/cgi-bin/africanewlife.cfg/php/custom/testpost.php";
 	        RightNow.Ajax.makeRequest(this.data.attrs.default_ajax_endpoint, eventObj.data, {
-	            successHandler: this.default_ajax_endpointCallback,
+				successHandler: this.default_ajax_endpointCallback,
+				failureHandler: this.ajaxFailed,
+				timeout:  10000, //10 seconds
 	            scope:          this,
 	            data:           eventObj,
 	            json:           true
@@ -128,7 +136,31 @@ Custom.Widgets.eventus.ajaxCustomFormSubmit = RightNow.Widgets.extend({
 		
 		
 		
-    },
+	},
+	
+	/**
+     * Handles the AJAX response timeout.
+     * 
+     */
+    ajaxFailed: function(response, originalEventObj) {
+
+		if (response.errors) {
+            // Error message(s) on the response object.
+            var errorMessage = "";
+            this.Y.Array.each(response.errors, function(error) {
+                errorMessage += "<div><b>" + error + "</b></div>";
+            });
+            this._errorMessageDiv.append(errorMessage);
+            this._errorMessageDiv.removeClass("rn_Hidden");
+        }else{
+			//pop error message
+			this._displayErrorDialog(RightNow.Interface.getMessage('CUSTOM_MSG_PAY_SERVICE_ERROR'));
+			this._toggleClickListener(true);
+		}
+
+		$(this.baseSelector + "_LoadingIcon").addClass( "rn_Hidden");
+		
+	},
 
     /**
      * Handles the AJAX response for `default_ajax_endpoint`.

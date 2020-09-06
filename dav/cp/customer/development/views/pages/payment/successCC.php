@@ -14,8 +14,9 @@
     //$items = $this -> CI -> session -> getSessionData('items');
     $item_type = $this -> CI -> session -> getSessionData('item_type');
     logMessage('item_type = ' . var_export($item_type, true));
+    $transactionId = (empty(\RightNow\Utils\Url::getParameter('t_id'))) ? $this -> CI -> session -> getSessionData('transId') : \RightNow\Utils\Url::getParameter('t_id');
 
-    $itemsFromCart = $this -> CI -> model('custom/items') -> getItemsFromCart($this -> CI->session->getSessionData('sessionID'), 'checkout');
+    $itemsFromCart = $this -> CI -> model('custom/items') -> getItemsFromCart($this -> CI->session->getSessionData('sessionID'), 'checkout', $transactionId);
 
     //echo "item type = ".$item_type." contstant = ".DONATION_TYPE_PLEDGE. " = ".DONATION_TYPE_GIFT." - ".DONATION_TYPE_SPONSOR;
 
@@ -54,7 +55,7 @@
 
     $sessionData = array('transId' => null);
     $this -> CI -> session -> setSessionData($sessionData);
-    $this -> CI -> model('custom/items') -> clearItemsFromCart($this -> CI->session->getSessionData('sessionID'));
+    $this -> CI -> model('custom/items') -> clearItemsFromCart($this -> CI->session->getSessionData('sessionID'), null, $transactionId);
        
     ?>
         

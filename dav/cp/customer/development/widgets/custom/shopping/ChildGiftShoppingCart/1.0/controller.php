@@ -12,6 +12,8 @@ class ChildGiftShoppingCart extends \Custom\Widgets\shopping\ShoppingCart {
 
     function getData() {
 
+        $this->CI->model('custom/items')->clearItemsFromCart($this -> CI -> session -> getSessionData('sessionID'), DONATION_TYPE_PLEDGE);
+        $this->CI->model('custom/items')->clearItemsFromCart($this -> CI -> session -> getSessionData('sessionID'), DONATION_TYPE_SPONSOR);
         return parent::getData();
 
     }

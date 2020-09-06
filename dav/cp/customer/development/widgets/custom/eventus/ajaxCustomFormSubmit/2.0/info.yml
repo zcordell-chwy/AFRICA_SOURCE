@@ -28,6 +28,11 @@ attributes:
     description: confirm_message
     default: ""
     required: false
+  loading_icon_path:
+    name: rn:msg:LOADING_ICON_PATH_LBL
+    description: rn:msg:FILE_PATH_IMG_DISP_SUBMITTING_FORM_LBL
+    default: images/indicator.gif
+    type: FILEPATH
   label_button:
     name: label_button
     type: string

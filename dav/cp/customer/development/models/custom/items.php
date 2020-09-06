@@ -112,7 +112,7 @@ class items extends  \RightNow\Models\Base {
     }
     
     //remove all items of a certain type from cart
-    public function clearItemsFromCart($sessionId, $donationType = null){
+    public function clearItemsFromCart($sessionId, $donationType = null, $transId = null){
         try{
             $roql = "Select Shopping.Cart from Shopping.Cart where Shopping.Cart.SessionID = '$sessionId'";
             if($donationType){
@@ -121,6 +121,12 @@ class items extends  \RightNow\Models\Base {
             logMessage($roql);
             $res = RNCP\ROQL::queryObject( $roql)->next();
             
+            if ($res->count() < 1 && !empty($transId)) {
+                $roql = "Select Shopping.Cart from Shopping.Cart where Shopping.Cart.transId = ".intval($transId);
+                logMessage($roql);
+                $res = RNCP\ROQL::queryObject( $roql)->next();
+            }
+
             while($cartItem = $res->next()) {
                 logMessage("Destroying cart item".$cartItem->ID);
                 $cartItem->destroy();

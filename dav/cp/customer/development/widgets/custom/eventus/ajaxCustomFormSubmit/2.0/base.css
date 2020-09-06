@@ -19,3 +19,15 @@
 .esg_checkoutButton {
 	text-align: left;
 }
+
+.loading{
+	background: url(images/loading.gif) no-repeat ;
+	background-position:center center !important;
+    opacity: .5;
+    background-size: 20px 20px;
+	color: #304764 !important;
+}
+
+.rn_Dialog h2{
+	color:white;
+}
