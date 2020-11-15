@@ -1,5 +1,5 @@
 <h2>Write to your sponsored student</h2>
-<h3>Please choose the student you would like to write to:</h3>
+<h3>#rn:msg:CUSTOM_MSG_PLEASE_CHOOSE_STUDENT#</h3>
 <h1><?=$this -> data['pledgeToShow'] -> GivenName ?> 
     <?if($this->data['previousPledge'] > 0){?>
         <a href='/app/account/letters/c_id/<?=getUrlParm('c_id') ?>/pledge/<?=$this -> data['previousPledge'] ?>'>

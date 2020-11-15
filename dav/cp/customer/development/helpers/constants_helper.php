@@ -16,6 +16,7 @@ define(GIFTS_APPEAL_ID, 839);//seem to be unused
 DEFINE(GIFTS_FUND_ID, 292);//seem to be unused
 define(DEFAULT_TRANSACTION_STATUS, 'Pending - Web Initiated');
 define(DEFAULT_TRANSACTION_DESC, "Web Initiated Transaction");
+define(EXPIRED_TRANSACTION_STATUS, 'Expired');
 define(TRANSACTION_PROCESSING_STATUS, "Processing");
 define(TRANSACTION_SALE_SUCCESS_STATUS, 'Completed');
 define(TRANSACTION_SALE_ERROR_STATUS, 'Error');

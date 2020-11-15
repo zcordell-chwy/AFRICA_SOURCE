@@ -258,6 +258,16 @@ class items extends  \RightNow\Models\Base {
             return;
         }
 
+        //if there are cart items with the transaction id and an old session, delete them.  
+        //this can happen if someone's session refreshed but they already created a cart item with the existing transaction id
+        $roql = "Select Shopping.Cart from Shopping.Cart where Shopping.Cart.transId = ".intval($transId)." AND Shopping.Cart.SessionID != '$sessionId'";
+        $res = RNCP\ROQL::queryObject( $roql)->next();
+
+        while($cartItem = $res->next()) {
+            logMessage("Destroying cart item".$cartItem->ID);
+            $cartItem->destroy();
+        }
+
         try{
             $roql = "Select Shopping.Cart from Shopping.Cart where Shopping.Cart.SessionID = '$sessionId'";
             $this->_logToFile(__LINE__, $roql);

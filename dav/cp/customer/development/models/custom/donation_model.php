@@ -247,14 +247,16 @@ $this->_logToFile(188, "Donation: $donationId, PayMethod: $paymentMethod->ID, Mo
                 }
                 
 
-                if ($childId != "") {
-                    logMessage("Adding Child to pledge description = " . $descr);
-                    $descr .= $pledge -> Child -> ChildRef;
-                    logMessage("Adding Child to pledge description = " . $descr);
-                }
+                
 
                 if (!empty($pledge -> Fund)) {
                     $descr = $pledge->Fund->Descriptions[0]->LabelText;
+                }
+
+                if ($childId != "") {
+                    logMessage("Adding Child to pledge description = " . $descr);
+                    $descr = $pledge -> Child -> ChildRef;
+                    logMessage("Adding Child to pledge description = " . $descr);
                 }
 
                 logMessage("iswomanScholarship:".$isWomensScholarship);

@@ -10,9 +10,7 @@ class donateIndividual extends \RightNow\Libraries\Widget\Base {
 
         //return parent::getData();
         $f_id = getUrlParm('f_id');
-        logMessage($f_id);
         $items = $this -> CI -> model('custom/items') -> getSingleDonationItem($f_id);
-        logMessage($items);
         $this -> data['Items'] = $items;
         
         if (empty($items))//if the array is completely empty, then redirect users to home page
@@ -24,27 +22,23 @@ class donateIndividual extends \RightNow\Libraries\Widget\Base {
 		if ($Item -> DonationFund == "" ||  $Item -> DonationAppeal == ""
                     	|| $Item -> ID == "")
 	        {
-	        	logMessage("redirecting, no Donation Fund or Donation Appeal field value provided");
 	        	header("Location:" . getConfig(CUSTOM_CFG_DONATE));
 	        }
         }
         
-        logMessage('getting page settings');
         $pageSettings = json_decode(getConfig(CUSTOM_CFG_SINGLE_DONATION_PAGE_SETTINGS));
-        logMessage($pageSettings);
+        $pageSettings = json_decode('{"funds":[{"id": 54, "onetime":true, "monthly": false, "defaultonetime": 15, "defaultmonthly": 15 }, {"id": 555, "onetime":true, "monthly": false, "defaultonetime": 15, "defaultmonthly": 15 }]}');
 
         if($pageSettings){
             foreach($pageSettings->funds as $fund){
-                logMessage("Compare:".$fund->id.":".$f_id);
                 if($fund->id == $f_id){
-                    $this -> data['showSingle'] = $fund->showSingle;
-                    $this -> data['defaultAmount'] =  $fund->defaultAmount;
+                    $this -> data['showOnetime'] = $fund->onetime;
+                    $this -> data['showMonthly'] = $fund->monthly;
+                    $this -> data['defaultMonthly'] =  ($fund->monthly) ? $fund->defaultmonthly : null;
+                    $this -> data['defaultOnetime'] =  ($fund->onetime) ? $fund->defaultonetime : null;
                 }
             }
         }
-
-        logMessage($this -> data['showSingle'] );
-                    logMessage($this -> data['defaultAmount']);
 
     }
 

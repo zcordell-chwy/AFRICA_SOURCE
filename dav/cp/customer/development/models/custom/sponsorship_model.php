@@ -3,6 +3,7 @@ namespace Custom\Models;
 
 require_once (get_cfg_var('doc_root') . '/ConnectPHP/Connect_init.php');
 use RightNow\Connect\v1_3 as RNCP;
+use RightNow\Utils\Config;
 
 class sponsorship_model extends \RightNow\Models\Base {
     protected static $CLASS_SCOPE = 'Custom/Models/sponsorship_model';
@@ -217,7 +218,7 @@ class sponsorship_model extends \RightNow\Models\Base {
             $desc .= " last year(s) of secondary (high) school to finish well. </p>";
         }
         
-        $desc .= "<p>".$child -> GivenName . " lives in " . $child -> Community -> LookupName . ". ";
+        $desc .= "<p>".$child -> GivenName . " is part of the " . $child -> Community -> LookupName . " community. ";
         if ($child -> Gender -> LookupName == "Male") {
             $desc = $desc . "He " . " is in " . $child -> Grade -> LookupName . " at school, and his favorite subject is " . $child -> FavoriteSubject -> LookupName . ". " . $child -> GivenName . "'s favorite hobby is " . $child -> FavoriteHobby -> LookupName.". ";
         } else if ($child -> Gender -> LookupName == "Female") {
@@ -505,8 +506,12 @@ class sponsorship_model extends \RightNow\Models\Base {
 
     public function getCommunities() {
         logMessage(" Starting: " . __FUNCTION__ . " in " . __CLASS__);
+
+        $excludeList = getConfig(CUSTOM_CFG_EXCLUDE_COMMUNITIES_CSV);
+
         $communities = array();
-        $resultSet = RNCP\ROQL::queryObject("select SPONSORSHIP.Community from SPONSORSHIP.Community  WHERE ID < 25 ORDER BY Name  ") -> next();
+        $excludeQuery = (!empty($excludeList)) ? "WHERE sponsorship.Community.ID NOT IN (".$excludeList.")" : '';
+        $resultSet = RNCP\ROQL::queryObject("select SPONSORSHIP.Community from SPONSORSHIP.Community $excludeQuery ORDER BY Name  ") -> next();
 
         while ($Community = $resultSet -> next()) {
             $thisCommunity = new \stdClass();

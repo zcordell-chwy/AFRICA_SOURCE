@@ -4,7 +4,7 @@ $itnum = 0;
 $IndividualFunds = $this -> data['Items'];
 $i=0; 
  	foreach( $this -> data['Items'] as $Item)	{ 	
- 	$itemObjID = $Item -> ID; 	
+ 		$itemObjID = $Item -> ID; 	
  	
      	$i++; ?>
      		
@@ -20,11 +20,11 @@ $i=0;
 					</div>
 					<p class="txtfield_box">
 					
-					<div class=<?=($this -> data['showSingle'] !== false) ? '':'rn_Hidden';?>><b class="rn_cart_onetime">One Time:</b> <input type="text" size="10" class="txtamt1" id="rn_<?= $this -> instanceID ?>txtOneTime" /></div>
+					<div class=<?=($this -> data['showOnetime'] !== false) ? '':'rn_Hidden';?>><b class="rn_cart_onetime">One Time:</b> <input type="text" value="<?=$this -> data['defaultOnetime']?>" size="10" class="txtamt1" id="rn_<?= $this -> instanceID ?>txtOneTime" /></div>
 					
 					</br>		
 					
-					<div><b class="rn_cart_monthly" >Monthly:</b><input type="text" value="<?=$this -> data['defaultAmount']?>" size="10" class="txtamt2" id="rn_<?= $this -> instanceID ?>txtMonthly" /></div>  
+					<div class=<?=($this -> data['showMonthly'] !== false) ? '':'rn_Hidden';?>><b class="rn_cart_monthly" >Monthly:</b><input type="text" value="<?=$this -> data['defaultMonthly']?>" size="10" class="txtamt2" id="rn_<?= $this -> instanceID ?>txtMonthly" /></div>  
 					      
 					<div  class="rn_cart_don_linkbutton">										
 						<a class="don_linkbutton" id="rn_<?= $this -> instanceID ?>_adddonation" >
