@@ -3,7 +3,21 @@
  Version     :   1.0
  Author      :   Zach Cordell
  Purpose     :   Metrics update for contacts anlm
- */
+
+Should be used with a shell script
+
+linux
+for var in {270..300}; do curl -o "contact_updatelogs_$var.txt" "https://africanewlife.custhelp.com/cgi-bin/africanewlife.cfg/php/custom/contact_metrics_update.php?start=$var"; done
+
+windows
+Create a folder in /users/documents/<username>/ called logs (you just have to do this once)
+Open Windows Command Line.  
+From Command Line Paste in the following command and hit return 
+cd ..\Documents\logs
+From Command Line Paste in the following command and hit return.  Should run for about 2 hours-ish. 
+for /l %x in (0, 1, 670) do curl -o "contact_updatelogs_%x.txt" "https://africanewlife.custhelp.com/cgi-bin/africanewlife.cfg/php/custom/contact_metrics_update.php?start=%x"
+ 
+*/
 error_reporting(E_ALL);
  $ip_dbreq = true;
 
@@ -35,6 +49,9 @@ if($start < 1){
     return ;
 }
 
+//array of funds to disreguard when getting the yearly total donations
+$fundsToIgnore = array('STM');
+
 for($currentRecord = $start; $currentRecord < $end; $currentRecord++){
 
     try{
@@ -51,6 +68,8 @@ for($currentRecord = $start; $currentRecord < $end; $currentRecord++){
 
         $firstIsSet = false;
         $count = 0;
+        $contactObj->CustomFields->Metrics->totalDonationAmtCurrentYear = 0;
+        $contactObj->CustomFields->Metrics->totalDonationAmtLastYear = 0;
         
         while($transaction = $res->next()) {
 
@@ -58,7 +77,7 @@ for($currentRecord = $start; $currentRecord < $end; $currentRecord++){
             if($transaction->donation->Type->LookupName == 'Gift'){
                 $fund = getGiftFund($transaction->donation->ID);
             }else{
-                $fund = getPledgeFund($transaction->donation->ID);
+                list($fund, $child) = getPledgeDetails($transaction->donation->ID);
             }
 
             //first donation
@@ -85,6 +104,20 @@ for($currentRecord = $start; $currentRecord < $end; $currentRecord++){
                 if(!empty($fund))
                     $contactObj->CustomFields->Metrics->largestDonationFund2Years = $fund;
             }
+
+            //set total for donations that are not sponsorship or STM
+            if($transaction->donation->DonationDate > strtotime('Midnight January 1 '.date(Y)) && empty($child) && !in_array($fund->LookupName, $fundsToIgnore)){
+                $contactObj->CustomFields->Metrics->totalDonationAmtCurrentYear += $transaction->totalCharge;
+            }
+
+            //set total for donations last year that are not sponsorship or STM
+            if($transaction->donation->DonationDate < strtotime('Midnight January 1 '.date(Y)) && 
+                $transaction->donation->DonationDate > strtotime('Midnight January 1 '.date("Y",strtotime("-1 year"))) && 
+                empty($child) && !in_array($fund->LookupName, $fundsToIgnore)){
+                $contactObj->CustomFields->Metrics->totalDonationAmtLastYear += $transaction->totalCharge;
+            }
+
+            
 
             //last donation is just the last record we have after the loop.
             $contactObj->CustomFields->Metrics->recentDonationAmt = intval($transaction->totalCharge);
@@ -124,6 +157,8 @@ for($currentRecord = $start; $currentRecord < $end; $currentRecord++){
         $results['largestDonationFund2Yrs'] = $contactObj->CustomFields->Metrics->largestDonationFund2Years->LookupName;
         $results['startDateFirstRecurringPledge'] = (empty($contactObj->CustomFields->Metrics->startDateFirstRecurringPledge)) ? "" : date('Y/m/d', $contactObj->CustomFields->Metrics->startDateFirstRecurringPledge);
         $results['startDateFirstRecurringSponsorship'] = (empty($contactObj->CustomFields->Metrics->startDateFirstSponsorship)) ? "" : date('Y/m/d', $contactObj->CustomFields->Metrics->startDateFirstSponsorship);
+        $results['totalDonationAmtCurrentYear'] = (empty($contactObj->CustomFields->Metrics->totalDonationAmtCurrentYear)) ? "" : $contactObj->CustomFields->Metrics->totalDonationAmtCurrentYear;
+        $results['totalDonationAmtLastYear'] = (empty($contactObj->CustomFields->Metrics->totalDonationAmtLastYear)) ? "" : $contactObj->CustomFields->Metrics->totalDonationAmtLastYear;
 
 
         echo "Results:";
@@ -139,14 +174,15 @@ for($currentRecord = $start; $currentRecord < $end; $currentRecord++){
 
 }
 
-function getPledgeFund($donationId = 0) {
+function getPledgeDetails($donationId = 0) {
     try {
         $roql = sprintf("SELECT don.PledgeRef FROM donation.donationToPledge as don where donation.donationToPledge.DonationRef.ID = %d Limit 1", $donationId);
         $pledges = RNCPHP\ROQL::queryObject($roql) -> next();
         
         while ($pledge = $pledges -> next()) {
-            return $pledge->Fund;
+            return array($pledge->Fund, $pledge->Child);
         }
+
     } catch(\Exception $e) {
         return false;
     }

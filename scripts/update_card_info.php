@@ -48,7 +48,10 @@ function updatePayMethods($cardDetails){
             //paymethods that have a null autoupdate or not updated today.
             $payMethod = RNCPHP\financial\paymentMethod::first("financial.paymentMethod.PN_Ref = '" . $card->PNREF . "' and (financial.paymentMethod.autoUpdatedDate is NULL OR financial.paymentMethod.autoUpdatedDate < '".date('Y-m-d')."' )");
 
-            if($card->UPDATED == 'true' && $payMethod instanceof RNCPHP\financial\paymentMethod && intval($card->PNREF) > 0){
+            if($card->UPDATED == 'true' && 
+                $payMethod instanceof RNCPHP\financial\paymentMethod && 
+                    intval($card->PNREF) > 0 &&
+                        $payMethod->Contact->CustomFields->c->activepledgecount > 0 ){
 
                 if($card->UPDATEDACCOUNTLASTFOUR != $payMethod->lastFour){
                     $updateNotes[] = 'Update Last Four:'.$payMethod->lastFour."->".$card->UPDATEDACCOUNTLASTFOUR;
@@ -75,10 +78,10 @@ function updatePayMethods($cardDetails){
                     $payMethod -> Notes[$notes_count] = new RNCPHP\Note();
                     $payMethod -> Notes[$notes_count] -> Text = print_r($updateNotes,true);
 
-                    $payMethod->save();
+                    //$payMethod->save();
 
                     //serialize in case something goes awry, we can pick up where we left off.
-                    RNCPHP\ConnectAPI::commit();
+                    //RNCPHP\ConnectAPI::commit();
 
                 }
             }
