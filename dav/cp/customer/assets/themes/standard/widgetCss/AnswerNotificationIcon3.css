@@ -1,0 +1,13 @@
+.rn_AnswerNotificationIcon3 {
+    margin-right:10px;
+}
+.rn_AnswerNotificationIcon3 a {
+    color:#222;
+    text-decoration:none;
+}
+.rn_AnswerNotificationIcon3 a:hover {
+    white-space:normal;
+}
+.rn_AnswerNotificationIcon3 a:hover span {
+    text-decoration:underline;
+}

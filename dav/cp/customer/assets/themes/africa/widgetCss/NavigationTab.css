@@ -1,0 +1,15 @@
+.rn_NavigationTab a{
+	height: initial;
+	font-size: 14px;
+	line-height: 14px;
+    font-weight: 300;
+    font-family: Gotham, Arial;
+    color: rgb(61,52,33);
+    text-decoration: none;
+    padding: 0 8px;
+    margin: 0;
+}
+
+.rn_NavigationTab a:hover{
+	text-decoration: underline;
+}

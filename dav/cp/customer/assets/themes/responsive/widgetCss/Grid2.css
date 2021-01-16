@@ -1,0 +1,53 @@
+.rn_Grid2{
+    margin-bottom:8px;
+}
+
+.rn_Grid2 .rn_Loading{
+    background-image:url(../images/loading.gif);
+    background-repeat:no-repeat;
+    background-position:center center;
+    /* hack for ie6 */
+    min-height:66px;
+    height:auto !important;
+    height:66px;
+}
+
+.rn_Grid2 .yui-dt-even{
+    background-color:#FFF;
+}
+
+.rn_Grid2 .yui-dt-odd{
+    background-color:#F7F7F7;
+}
+
+.rn_Grid2 table {
+    border:1px solid #7F7F7F;
+    border-collapse:separate;
+    width:100%;
+}
+
+.rn_Grid2 .yui-dt tr.yui-dt-first td {
+    border-top:1px solid #7F7F7F;
+}
+.rn_Grid2 .yui-dt th,
+.rn_Grid2 .yui-dt td {
+    border-color:#CBCBCB;
+    border-style:none solid none none;
+    border-width:medium 1px medium medium;
+}
+
+.rn_Grid2 .yui-dt th {
+    background:transparent url(../images/gridHeader.png) repeat-x scroll 0 0;
+}
+
+.rn_Grid2 .yui-skin-sam th.yui-dt-asc,
+.rn_Grid2 .yui-skin-sam th.yui-dt-desc {
+    background-position:0 -100px;
+}
+.rn_Grid2 .yui-skin-sam th.yui-dt-asc .yui-dt-liner {
+    background:transparent url(../images/gridHeader.png) no-repeat scroll right -250px;
+}
+.rn_Grid2 .yui-skin-sam th.yui-dt-desc .yui-dt-liner {
+    background:transparent url(../images/gridHeader.png) no-repeat  scroll right -200px;
+}
+

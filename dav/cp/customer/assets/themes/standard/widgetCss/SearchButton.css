@@ -1,0 +1,17 @@
+.rn_SearchButton {
+    display:inline;
+    bottom: 0;
+}
+.rn_SearchButton input {
+    border:none;
+    vertical-align:top;
+}
+.rn_SearchButton .rn_SubmitButton {
+    background-color:#0E53A7;
+    color:#FFF;
+    cursor:pointer;
+    font-weight:bold;
+    /* Fix for IE 7 button text rendering bug */
+    *height:30px;
+    *line-height:21px;
+}

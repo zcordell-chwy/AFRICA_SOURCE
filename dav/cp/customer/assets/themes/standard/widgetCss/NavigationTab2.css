@@ -1,0 +1,52 @@
+.rn_NavigationTab2 a {
+    background:#EEEEEE url(../images/tabBackground.png) repeat-x scroll 0 -22px;
+    border-top:1px solid #FFF;
+    color:#202020;
+    text-decoration:none;
+}
+.rn_NavigationTab2 a:hover,
+.rn_NavigationTab2 a:focus {
+    background-color: #F8F8F8;
+    background-position:0 -18px;
+    color:#000;
+}
+.rn_NavigationTab2 a:focus {
+    outline:thin dotted #FFF;
+}
+/* Sub navigation */
+.rn_NavigationTab2 a.rn_SelectedTab {
+    background:#FFF none repeat scroll 0 0;
+    color:#000;
+}
+.rn_NavigationTab2 a em {
+    background:url(../images/tabBackground.png) no-repeat 0 0;
+    color:#000;
+    font-size:0em;
+}
+.rn_NavigationTab2 a:hover em,
+.rn_NavigationTab2 a:focus em {
+    background-position:-20px 0;
+}
+.rn_NavigationTab2 .rn_SubNavigation {
+    background:#FFF none repeat scroll 0 0;
+    border:1px solid #CCC;
+    padding:10px 0 0;
+    top:100px;
+}
+.rn_NavigationTab2 .rn_SubNavigation a {
+    background:#FFF;
+    border:none;
+    color:#404040;
+    /*IE6 min-height*/
+    height:auto !important;
+    height:23px;
+    margin-bottom:1px;
+    min-height:23px;
+    text-transform: none;
+}
+.rn_NavigationTab2 .rn_SubNavigation a:hover {
+    background:#EEE;
+}
+.rn_NavigationTab2 .rn_SubNavigation a:focus {
+    outline:thin dotted #777;
+}

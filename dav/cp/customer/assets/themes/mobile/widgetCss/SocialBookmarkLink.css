@@ -1,0 +1,48 @@
+.rn_SocialBookmarkLink {
+  margin-top: 1em; }
+  .rn_SocialBookmarkLink > a:before {
+    font-family: 'FontAwesome';
+    line-height: 1em;
+    margin-right: 6px;
+    content: "\f14d"; }
+  .rn_SocialBookmarkLink a:hover {
+    white-space: normal; }
+  .rn_SocialBookmarkLink .rn_Panel {
+    border-radius: 2px;
+    background: #FFF;
+    border: 1px solid #DDD;
+    padding: 6px 9px 10px; }
+    .rn_SocialBookmarkLink .rn_Panel li {
+      height: 16px;
+      line-height: 1.4em;
+      margin: 4px;
+      /* Each link that appears in the overlay has a numerically increasing "rn_Link" class.
+               Links appear in the order specified in the widget's `sites` attribute. */
+      /* Facebook */
+      /* Twitter */
+      /* LinkedIn */
+      /* Reddit */ }
+      .rn_SocialBookmarkLink .rn_Panel li.rn_Link1:before {
+        font-family: 'FontAwesome';
+        line-height: 1em;
+        margin-right: 6px;
+        content: "\f09a";
+        color: #3b5998; }
+      .rn_SocialBookmarkLink .rn_Panel li.rn_Link2:before {
+        font-family: 'FontAwesome';
+        line-height: 1em;
+        margin-right: 6px;
+        content: "\f099";
+        color: #55acee; }
+      .rn_SocialBookmarkLink .rn_Panel li.rn_Link3:before {
+        font-family: 'FontAwesome';
+        line-height: 1em;
+        margin-right: 6px;
+        content: "\f08c";
+        color: #3692c3; }
+      .rn_SocialBookmarkLink .rn_Panel li.rn_Link4:before {
+        font-family: 'FontAwesome';
+        line-height: 1em;
+        margin-right: 6px;
+        content: "\f1a1";
+        color: #336699; }

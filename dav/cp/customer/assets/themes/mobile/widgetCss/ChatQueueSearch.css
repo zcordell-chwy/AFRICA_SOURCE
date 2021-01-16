@@ -1,0 +1,25 @@
+.rn_ChatQueueSearch {
+  background: #EFEFF4;
+  border: 1px solid #BBB;
+  line-height: 1.25em;
+  margin-top: 0.5em;
+  padding: 0.5em;
+  text-align: center; }
+  .rn_ChatQueueSearch .rn_KeywordText {
+    float: left;
+    display: block;
+    margin-right: 2.35765%;
+    width: 65.88078%; }
+    .rn_ChatQueueSearch .rn_KeywordText:last-child {
+      margin-right: 0; }
+    .rn_ChatQueueSearch .rn_KeywordText input {
+      margin-bottom: 0;
+      padding: 0.4em 0.5em; }
+  .rn_ChatQueueSearch .rn_SearchButton {
+    float: left;
+    display: block;
+    margin-right: 2.35765%;
+    width: 31.76157%;
+    margin-right: 0; }
+    .rn_ChatQueueSearch .rn_SearchButton:last-child {
+      margin-right: 0; }

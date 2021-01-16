@@ -1,0 +1,50 @@
+.rn_ProductCategorySearchFilter button.rn_DisplayButton {
+    background:#FFF url(../images/splitButtonArrow.png) no-repeat scroll right center;
+    border:1px solid #B1B1B1;
+    min-height:1.5em;
+    min-width:250px;
+    padding:4px 20px 4px 4px;
+    text-align:left;
+    text-shadow:none;
+}
+.rn_ProductCategorySearchFilter .rn_Panel {
+    background:#FFF;
+    border:1px solid #B1B1B1;
+    max-height:200px;
+    overflow:auto;
+    padding:6px;
+    _height:200px;
+}
+.rn_ProductCategorySearchFilter .rn_PanelContainer .rn_Panel{
+    border: 0;
+}
+.rn_ProductCategorySearchFilter .rn_PanelContainer{
+    border:1px solid #B1B1B1;
+    border-top:0;
+}
+.rn_ProductCategorySearchFilter .rn_SelectionButtons {
+    background:#F8F8F8;
+    border-top: 1px solid #B1B1B1;
+}
+.rn_ProductCategorySearchFilter .rn_SelectionButtons button {
+    font-size: 0.95em;
+    margin: 7px 0 7px 5px;
+    padding: 5px;
+}
+
+.rn_ProductCategorySearchFilter button.rn_DisplayButton:hover,
+.rn_ProductCategorySearchFilter button.rn_DisplayButton:focus {
+    background-color:#F8F8F8;
+}
+.rn_ProductCategorySearchFilter table {
+    border-collapse:collapse;
+}
+.rn_ProductCategorySearchFilter .rn_Label {
+    color:#333333;
+    float:left;
+    font-weight:bold;
+    width:38%;
+}
+.ygtvlabel, .ygtvlabel:link, .ygtvlabel:visited, .ygtvlabel:hover { 
+    color:#111;
+}

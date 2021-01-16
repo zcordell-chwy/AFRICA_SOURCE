@@ -1,0 +1,171 @@
+.rn_QuestionDetail {
+  *zoom: 1;
+  display: block;
+  padding-bottom: 1em;
+  border-bottom: 2px dashed #b7cce7; }
+  .rn_QuestionDetail:before, .rn_QuestionDetail:after {
+    content: " ";
+    display: table; }
+  .rn_QuestionDetail:after {
+    clear: both; }
+  .rn_QuestionDetail .rn_QuestionContent, .rn_QuestionDetail .rn_QuestionActionsBar {
+    *zoom: 1; }
+    .rn_QuestionDetail .rn_QuestionContent:before, .rn_QuestionDetail .rn_QuestionContent:after, .rn_QuestionDetail .rn_QuestionActionsBar:before, .rn_QuestionDetail .rn_QuestionActionsBar:after {
+      content: " ";
+      display: table; }
+    .rn_QuestionDetail .rn_QuestionContent:after, .rn_QuestionDetail .rn_QuestionActionsBar:after {
+      clear: both; }
+  .rn_QuestionDetail .rn_QuestionToolbar {
+    float: right; }
+  .rn_QuestionDetail .rn_QuestionEdit {
+    *zoom: 1;
+    display: block;
+    margin-bottom: 2em; }
+    .rn_QuestionDetail .rn_QuestionEdit:before, .rn_QuestionDetail .rn_QuestionEdit:after {
+      content: " ";
+      display: table; }
+    .rn_QuestionDetail .rn_QuestionEdit:after {
+      clear: both; }
+    .rn_QuestionDetail .rn_QuestionEdit button, .rn_QuestionDetail .rn_QuestionEdit .rn_CancelEdit a, .rn_QuestionDetail .rn_QuestionEdit input[type="submit"] {
+      font-size: smaller; }
+    .rn_QuestionDetail .rn_QuestionEdit .rn_FormSubmit {
+      display: inline; }
+    .rn_QuestionDetail .rn_QuestionEdit .rn_CancelEdit {
+      margin-right: 10px;
+      margin-top: 4px; }
+    .rn_QuestionDetail .rn_QuestionEdit .rn_DeleteQuestion, .rn_QuestionDetail .rn_QuestionEdit .rn_DeletingQuestion {
+      background: none;
+      color: #8B0303;
+      float: left;
+      text-shadow: none;
+      font-weight: normal;
+      box-shadow: none; }
+    .rn_QuestionDetail .rn_QuestionEdit .rn_DeleteQuestion {
+      border: 1px solid #333; }
+      .rn_QuestionDetail .rn_QuestionEdit .rn_DeleteQuestion:before {
+        font-family: 'FontAwesome';
+        line-height: 1em;
+        margin-right: 6px;
+        content: "\f014"; }
+      .rn_QuestionDetail .rn_QuestionEdit .rn_DeleteQuestion:hover, .rn_QuestionDetail .rn_QuestionEdit .rn_DeleteQuestion:active, .rn_QuestionDetail .rn_QuestionEdit .rn_DeleteQuestion:focus {
+        box-shadow: none; }
+    .rn_QuestionDetail .rn_QuestionEdit .rn_DeletingQuestion {
+      border: 1px solid #720202; }
+      .rn_QuestionDetail .rn_QuestionEdit .rn_DeletingQuestion:before {
+        font-family: 'FontAwesome';
+        line-height: 1em;
+        margin-right: 6px;
+        content: "\f110";
+        -webkit-animation: fa-spin 2s infinite linear;
+        -moz-animation: fa-spin 2s infinite linear;
+        animation: fa-spin 2s infinite linear;
+        display: block;
+        font-size: 1em;
+        position: relative;
+        text-align: center; }
+    .rn_QuestionDetail .rn_QuestionEdit .rn_FormControls {
+      *zoom: 1;
+      display: block;
+      margin-top: 2em;
+      text-align: right; }
+      .rn_QuestionDetail .rn_QuestionEdit .rn_FormControls:before, .rn_QuestionDetail .rn_QuestionEdit .rn_FormControls:after {
+        content: " ";
+        display: table; }
+      .rn_QuestionDetail .rn_QuestionEdit .rn_FormControls:after {
+        clear: both; }
+    .rn_QuestionDetail .rn_QuestionEdit .rn_QuestionEditBodyLabel {
+      font-weight: bold; }
+      .rn_QuestionDetail .rn_QuestionEdit .rn_QuestionEditBodyLabel .rn_QuestionEditBodyDescription {
+        font-weight: normal;
+        font-size: 0.8em;
+        font-style: italic; }
+  .rn_QuestionDetail .rn_QuestionHeader {
+    *zoom: 1;
+    display: block;
+    margin: 1em 0; }
+    .rn_QuestionDetail .rn_QuestionHeader:before, .rn_QuestionDetail .rn_QuestionHeader:after {
+      content: " ";
+      display: table; }
+    .rn_QuestionDetail .rn_QuestionHeader:after {
+      clear: both; }
+    .rn_QuestionDetail .rn_QuestionHeader .rn_QuestionAuthor {
+      float: left;
+      display: block;
+      margin-right: 2.35765%;
+      width: 14.70196%; }
+      .rn_QuestionDetail .rn_QuestionHeader .rn_QuestionAuthor:last-child {
+        margin-right: 0; }
+    .rn_QuestionDetail .rn_QuestionHeader .rn_QuestionTitle {
+      float: left;
+      display: block;
+      margin-right: 2.35765%;
+      width: 82.94039%;
+      font-size: 1.5em;
+      font-weight: bold;
+      line-height: 1em;
+      word-wrap: break-word; }
+      .rn_QuestionDetail .rn_QuestionHeader .rn_QuestionTitle:last-child {
+        margin-right: 0; }
+    @media screen and (max-width: 400px) {
+      .rn_QuestionDetail .rn_QuestionHeader .rn_QuestionAuthor {
+        float: left;
+        display: block;
+        margin-right: 2.35765%;
+        width: 14.70196%; }
+        .rn_QuestionDetail .rn_QuestionHeader .rn_QuestionAuthor:last-child {
+          margin-right: 0; }
+      .rn_QuestionDetail .rn_QuestionHeader .rn_QuestionTitle {
+        float: left;
+        display: block;
+        margin-right: 2.35765%;
+        width: 82.94039%; }
+        .rn_QuestionDetail .rn_QuestionHeader .rn_QuestionTitle:last-child {
+          margin-right: 0; } }
+  .rn_QuestionDetail .rn_QuestionBody {
+    margin-bottom: 1em;
+    word-wrap: break-word; }
+  .rn_QuestionDetail .rn_QuestionInfo {
+    *zoom: 1;
+    display: block;
+    color: #5e5e5e;
+    font-size: smaller; }
+    .rn_QuestionDetail .rn_QuestionInfo:before, .rn_QuestionDetail .rn_QuestionInfo:after {
+      content: " ";
+      display: table; }
+    .rn_QuestionDetail .rn_QuestionInfo:after {
+      clear: both; }
+    .rn_QuestionDetail .rn_QuestionInfo .rn_QuestionTimestamps {
+      float: left;
+      display: block;
+      margin-right: 2.35765%;
+      width: 48.82117%; }
+      .rn_QuestionDetail .rn_QuestionInfo .rn_QuestionTimestamps:last-child {
+        margin-right: 0; }
+    .rn_QuestionDetail .rn_QuestionInfo .rn_DetailTimestamp {
+      display: block; }
+    .rn_QuestionDetail .rn_QuestionInfo .rn_QuestionInfoOptions {
+      float: left;
+      display: block;
+      margin-right: 2.35765%;
+      width: 48.82117%;
+      text-align: right;
+      line-height: 2em; }
+      .rn_QuestionDetail .rn_QuestionInfo .rn_QuestionInfoOptions:last-child {
+        margin-right: 0; }
+      .rn_QuestionDetail .rn_QuestionInfo .rn_QuestionInfoOptions .rn_UpvoteButton {
+        font-size: 1.8em; }
+      .rn_QuestionDetail .rn_QuestionInfo .rn_QuestionInfoOptions .rn_StarVoteButton, .rn_QuestionDetail .rn_QuestionInfo .rn_QuestionInfoOptions .rn_StarVotedButton {
+        font-size: 1.1em; }
+      .rn_QuestionDetail .rn_QuestionInfo .rn_QuestionInfoOptions > div {
+        display: inline-block; }
+      .rn_QuestionDetail .rn_QuestionInfo .rn_QuestionInfoOptions .rn_SocialContentRating, .rn_QuestionDetail .rn_QuestionInfo .rn_QuestionInfoOptions .rn_SocialContentFlagging {
+        margin-right: 0.4em; }
+    @media screen and (max-width: 400px) {
+      .rn_QuestionDetail .rn_QuestionInfo .rn_QuestionTimestamps, .rn_QuestionDetail .rn_QuestionInfo .rn_QuestionInfoOptions {
+        float: left;
+        display: block;
+        margin-right: 2.35765%;
+        width: 100%;
+        text-align: left; }
+        .rn_QuestionDetail .rn_QuestionInfo .rn_QuestionTimestamps:last-child, .rn_QuestionDetail .rn_QuestionInfo .rn_QuestionInfoOptions:last-child {
+          margin-right: 0; } }

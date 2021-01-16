@@ -1,0 +1,15 @@
+.rn_TopAnswers .rn_Title{
+    font-size:1.6em;
+    line-height:1.4em;
+}
+.rn_TopAnswers .rn_Excerpt{
+    font-size:1.1em;
+    line-height:1.3em;
+}
+.rn_TopAnswers ul{
+    padding-top:3px;
+}
+.rn_TopAnswers li{
+    border-bottom:1px solid #DFDFDF;
+    padding:15px;
+}

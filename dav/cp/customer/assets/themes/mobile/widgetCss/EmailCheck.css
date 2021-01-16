@@ -1,0 +1,14 @@
+.rn_EmailCheck .rn_Text{
+    height: 1.4em;
+    font-size: 1.333em;
+    margin-bottom: 10px;
+}
+.rn_EmailCheck .rn_Label{
+    font-weight: bold;
+}
+.rn_EmailCheck .rn_EmailCheckSubmit{
+    padding-left: 5px;
+}
+.rn_EmailCheck .rn_EmailCheckField{
+    display: inline;
+}

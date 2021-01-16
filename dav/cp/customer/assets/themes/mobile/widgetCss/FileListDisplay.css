@@ -1,0 +1,13 @@
+.rn_FileListDisplay .rn_DataLabel {
+    display:block;
+    font-weight:bold;
+}
+.rn_FileListDisplay .rn_DataValue li {
+    list-style-type:none;
+    padding:10px 0;
+}
+.rn_FileListDisplay .rn_FileSize {
+    color:#555;
+    font-style:italic;
+    padding-left:4px;
+}

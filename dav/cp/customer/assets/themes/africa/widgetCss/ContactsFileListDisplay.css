@@ -1,0 +1,12 @@
+.rn_ContactsFileListDisplay ul {
+	padding-left: 30px;
+}
+
+.rn_ContactsFileListDisplay li {
+    list-style-type: disc;
+    line-height: 2em;	
+}
+
+.rn_ContactsFileListDisplay a {
+    color: blue;
+}

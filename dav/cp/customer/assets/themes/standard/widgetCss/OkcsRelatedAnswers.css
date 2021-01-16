@@ -1,0 +1,17 @@
+.rn_OkcsRelatedAnswers {
+  padding: 2em 0; }
+  .rn_OkcsRelatedAnswers li:before {
+    font-family: 'FontAwesome';
+    margin-right: 6px;
+    content: "\f0eb";
+    margin-left: 1px;
+    margin-right: 5px;
+    font-size: 1.4em; }
+  .rn_OkcsRelatedAnswers h2 {
+    font-size: 1.286em;
+    font-weight: normal;
+    padding-bottom: 0.25em; }
+
+@media print {
+  .rn_OkcsRelatedAnswers {
+    display: none; } }

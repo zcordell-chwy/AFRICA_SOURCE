@@ -1,0 +1,15 @@
+.rn_IntentGuideDisplay {
+    min-height: 200px;
+}
+.rn_IntentGuideDisplay .rn_IntentQuestion {
+    font-size: 1.75em;
+    line-height: 1.33em;
+    margin-bottom: 6px;
+}
+.rn_IntentGuideDisplay .rn_MetaInfo {
+    color: #777;
+}
+.rn_IntentGuideDisplay .rn_Category {
+    display: inline-block;
+    padding-bottom: 10px;
+}

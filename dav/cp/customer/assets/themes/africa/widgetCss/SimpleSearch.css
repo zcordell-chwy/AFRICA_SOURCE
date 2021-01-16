@@ -1,0 +1,18 @@
+.rn_SimpleSearch {
+    margin:auto;
+    max-width:400px;
+    width:180px;
+}
+.rn_SimpleSearch form {
+    background-color:#FFF;
+    border:1px solid #B1B1B1;
+}
+.rn_SimpleSearch .rn_SearchField {
+    border:0px none;
+    color:#222;
+    font-weight:bold;
+    height:1.8em;
+    max-width:200px;
+    padding:4px 4px 0px;
+    width:85%;
+}

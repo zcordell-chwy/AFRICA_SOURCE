@@ -1,0 +1,73 @@
+@import 'widget-includes';
+
+.rn_AnswerField {
+    display: inline;
+
+    .rn_SchemaAttribute {
+        margin-bottom: 5px;
+        font-weight: bold;
+        clear: both;
+    }
+
+    .rn_SchemaAttributeValue {
+        margin-bottom: 10px;
+        
+        ul {
+            margin-left: 1.5em;
+
+            li {
+                list-style: disc; 
+            }            
+        }
+        
+        ol {
+            margin-left: 1.5em;
+        }
+        
+        th, td {
+            text-align: center;
+        }
+    }
+
+    .rn_SchemaAttribute input {
+        margin-right: 5px;
+        vertical-align: middle;
+    }
+
+    section {
+        display: inline-block;
+        padding: 3px;
+        width: 40%;
+        word-wrap: break-word;
+    }
+}
+
+.rn_SchemaAttributeValue {
+    ul, ol {
+        padding: 5px 0 5px 35px;
+    }
+}
+
+.rn_AnswerField .rn_Info {
+    width: 30%;
+    display: inline-block;
+    margin-top: 10px;
+}
+
+.rn_AnswerView {
+    margin: 0 .2em;
+}
+
+.rn_AnswerHeader h1 {
+    font-size: 1.7em;
+    margin: 15px 0;
+}
+
+.rn_AnswerInfo {
+    color: #666;
+    margin: 6px 0 20px;
+}
+
+.rn_SchemaAttributeValue ol li {
+    list-style: decimal;
+}

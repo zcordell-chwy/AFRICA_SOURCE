@@ -1,0 +1,107 @@
+.rn_GuidedAssistant {
+    position:relative;
+}
+.rn_GuidedAssistant img {
+    display:inline-block;
+    max-width:500px;
+    max-height:500px;
+    padding:6px;
+}
+.rn_GuidedAssistant .rn_PopupLaunchButton,
+.rn_GuidedAssistant .rn_LinkQuestion,
+.rn_GuidedAssistant .rn_Node,
+.rn_GuidedAssistant .rn_Result.rn_Text,
+.rn_GuidedAssistant .rn_Result.rn_Answers{
+    margin:auto;
+    width:90%;
+}
+.rn_GuidedAssistant .rn_QuestionText,
+.rn_GuidedAssistant .rn_Result:first-child{
+    margin:20px 0;
+}
+.rn_GuidedAssistant .rn_ResultLink a{
+    display:block;
+    margin:10px 0;
+}
+.rn_GuidedAssistant .rn_Guide {
+    border-radius:16px;
+    -moz-border-radius:16px;
+    -webkit-border-radius:16px;
+    background:#FFF;
+    border:1px solid #AAA;
+    margin:20px auto 0;
+    min-height:100px;
+    padding:26px 0;
+    width:90%;
+}
+.rn_GuidedAssistant .rn_BackButton,
+.rn_GuidedAssistant .rn_RestartButton {
+    margin:8px auto;
+    overflow:hidden;
+    text-overflow:ellipsis;
+    font-weight:normal;
+    white-space:nowrap;
+    background:none;
+    border-width:0 4px 0 12px;
+    width:90%;
+    -moz-border-image:url("../images/BreadCrumbSprite.png") 0 4 75% 60% stretch stretch;
+    -webkit-border-image:url("../images/BreadCrumbSprite.png") 0 4 75% 60% stretch stretch;
+    -moz-box-shadow:none;
+    -webkit-box-shadow:none;
+}
+.rn_GuidedAssistant button:focus,
+.rn_GuidedAssistant button:hover {
+    -webkit-animation:none;
+}
+.rn_GuidedAssistant .rn_RestartButton {
+    -moz-border-image:url(../images/BreadCrumbSprite.png) 50% 4 25% 60% stretch stretch;
+    -webkit-border-image:url(../images/BreadCrumbSprite.png) 50% 4 25% 60% stretch stretch;
+}
+.rn_GuidedAssistant .rn_ButtonQuestion .rn_HighlightResponse.rn_SelectedButton {
+    background:#555A67;
+    background:-moz-linear-gradient(center top , rgba(172, 177, 190, 0.8), rgba(40, 52, 82, 0.8), rgba(6, 11, 26, 0.8));
+    background:-webkit-gradient(linear, 0% 0%, 0% 100%, color-stop(0, rgba(172, 177, 190, 0.8)), color-stop(.5, rgba(40, 52, 82, 0.8)), color-stop(1, rgba(6, 11, 26, 0.8)));
+}
+.rn_GuidedAssistant .rn_RadioQuestion div {
+    margin:12px auto;
+    position:relative;
+    width:90%;
+}
+.rn_GuidedAssistant .rn_RadioQuestion input {
+    height:auto;
+    left:0;
+    position:absolute;
+    width:auto;
+}
+.rn_GuidedAssistant .rn_RadioQuestion label {
+    padding-left:25px;
+}
+.rn_GuidedAssistant .rn_ImageQuestion input {
+    display:inline;
+    height:auto;
+    width:auto;
+}
+.rn_GuidedAssistant .rn_LinkQuestion label {
+    display:inline;
+    padding:2px;
+    text-decoration:underline;
+}
+.rn_GuidedAssistant .rn_LinkQuestion label.rn_HighlightResponse {
+    color:#FFF;
+    background-color:#0E53A7;
+    text-decoration:none;
+}
+.rn_GuidedAssistant .rn_LinkQuestion div {
+    margin:8px 0;
+}
+.rn_GuidedAssistant .rn_TextQuestion input {
+    margin-bottom:14px;
+    width:96%;
+}
+/*Sub-guides*/
+.rn_GuidedAssistant .rn_Guide.rn_Result {
+    border:none;
+    margin-top:0;
+    padding:0;
+    width:100%;
+}

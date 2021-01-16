@@ -1,0 +1,13 @@
+.rn_ChatQueueWaitTimeContainer{
+    background:#EFEFF4 url(../images/layout/whitePixel.png) repeat-x scroll 0 0;
+    border:1px solid #BBBBBB;
+    border-width:1px;
+    padding:5px;
+    margin:0em 1em 1em 1em;
+    line-height:1.25em;
+    text-align:left;
+}
+
+.rn_ChatQueueWaitTimeContainer .rn_ChatQueuePosition, .rn_ChatQueueWaitTimeContainer .rn_ChatEstimatedWaitTime, .rn_ChatQueueWaitTimeContainer .rn_ChatAverageWaitTime{
+    padding-right:2px;
+}

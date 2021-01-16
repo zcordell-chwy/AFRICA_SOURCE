@@ -1,0 +1,39 @@
+.rn_SearchRating .rn_HiddenMessage {
+    margin-top: 12px;
+}
+.rn_SearchRating .rn_SearchRatingDiv{
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+.rn_SearchRating .rn_SearchCommentDiv{
+    margin-bottom: 10px;
+}
+.rn_SearchRating .rn_SearchTextArea{
+    width: 240px;
+    height: 80px;
+}
+.rn_SearchRating .rn_SubmitButtonDiv{
+    margin-top: 10px;
+}
+.rn_SearchRating .rn_SearchRatingTitle{
+    font-weight: bold;
+    margin-bottom: 3px;
+}
+.rn_SearchRating .rn_Rating, .rn_SearchRating .rn_Selected {
+    width: 24px;
+    margin-right: 1px;
+    padding-left: 0;
+    background: none;
+    border: none;
+    box-shadow: none;
+    font-size: 1.3em;
+    font-family: 'FontAwesome';
+    color: #294F88;
+    float: left;
+}
+.rn_SearchRating .rn_Rating:before{
+    content: "\f006"; /* icon-star-empty */
+}
+.rn_SearchRating .rn_Selected:before{
+    content: "\f005"; /* icon-star */
+}

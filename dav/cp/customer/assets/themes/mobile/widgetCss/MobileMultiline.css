@@ -1,0 +1,42 @@
+.rn_MobileMultiline{
+    overflow:hidden;
+}
+.rn_MobileMultiline .rn_Loading{
+    background: url(../images/loading.gif) no-repeat center center;
+    min-height:66px;
+}
+.rn_MobileMultiline .rn_Element1,
+.rn_MobileMultiline .rn_Element1 a,
+.rn_MobileMultiline .rn_Element2,
+.rn_MobileMultiline .rn_Element3{
+    display:block;
+}
+.rn_MobileMultiline .rn_Element1{
+    font-size:1.6em;
+    line-height:1.4em;
+}
+.rn_MobileMultiline .rn_Element1 img{
+    float:right;
+    position:relative;
+    top:10px;
+}
+.rn_MobileMultiline .rn_Element2,
+.rn_MobileMultiline .rn_Element3{
+    font-size:1.1em;
+    line-height:1.3em;
+}
+.rn_MobileMultiline .rn_ElementsHeader,
+.rn_MobileMultiline .rn_ElementsData{
+    color:#777;
+    font-size:0.8em;
+}
+.rn_MobileMultiline .rn_ElementsData{
+    display:inline-block;
+}
+.rn_MobileMultiline ol, .rn_MobileMultiline ul{
+    padding-top:3px;
+}
+.rn_MobileMultiline li{
+    border-bottom:1px solid #DFDFDF;
+    padding:15px;
+}

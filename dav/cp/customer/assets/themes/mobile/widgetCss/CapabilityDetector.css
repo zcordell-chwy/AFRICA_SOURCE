@@ -1,0 +1,11 @@
+.rn_CapabilityDetector .MessageContainer {
+    font-size: 1.5em;
+    line-height: 1em;
+    padding: 10px;
+    text-align: center;
+    border-style: solid;
+    border-width: 2px;
+}
+.rn_CapabilityDetector .MessageContainer a {
+    text-decoration: underline;
+}

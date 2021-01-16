@@ -1,0 +1,34 @@
+.rn_SourceResultListing li {
+    margin: 10px 0;
+    padding: 6px 0;
+    clear: both;
+    overflow: hidden;
+}
+/*.rn_SourceResultListing .rn_KFSearchTypes {
+    color: #333;
+    font-style: italic;
+}
+*//*.rn_SourceResultListing .rn_KFSearch img {
+    float: left;
+    max-width: 64px;
+}
+*/
+/*.rn_SourceResultListing .rn_KFSearch a,
+.rn_SourceResultListing .rn_KFSearch .rn_Summary,
+.rn_SourceResultListing .rn_SocialSearch a,
+.rn_SourceResultListing .rn_SocialSearch .rn_Summary,
+.rn_SourceResultListing .rn_DDGSearch a {
+    float: right;
+    width: 78%;
+}
+.rn_SourceResultListing .rn_SocialSearchTypes,
+.rn_SourceResultListing .rn_DDGSearch img {
+    float: left;
+    max-width: 200px;
+}*/
+.rn_SourceResultListing .rn_AdditionalResults {
+    text-align: right;
+}
+.rn_SourceResultListing .rn_AdditionalResults a::after {
+    content: "\2192"; /* Right-Arrow */
+}

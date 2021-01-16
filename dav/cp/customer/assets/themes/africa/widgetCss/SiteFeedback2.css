@@ -1,0 +1,19 @@
+.yui-panel.rn_Dialog.rn_FeedbackDialog {
+    width:375px;
+}
+.rn_SiteFeedback2Form label {
+    clear:left;
+    display:block;
+}
+.rn_SiteFeedback2Form .rn_EmailField {
+    clear:left;
+    display:block;
+    margin-bottom:1em;
+    width:200px;
+}
+.rn_SiteFeedback2Form .rn_Textarea {
+    clear:left;
+    display:block;
+    margin-bottom:1em;
+    width:340px;
+}

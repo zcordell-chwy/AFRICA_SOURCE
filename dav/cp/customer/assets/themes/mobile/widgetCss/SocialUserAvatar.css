@@ -1,0 +1,75 @@
+.rn_SocialUserAvatar {
+  *zoom: 1;
+  display: block; }
+  .rn_SocialUserAvatar:before, .rn_SocialUserAvatar:after {
+    content: " ";
+    display: table; }
+  .rn_SocialUserAvatar:after {
+    clear: both; }
+  .rn_SocialUserAvatar h2 {
+    margin-bottom: 20px; }
+  @media screen and (min-width: 53.75em) {
+    .rn_SocialUserAvatar .rn_PreviewImage {
+      margin-left: 8.5298%;
+      float: left;
+      display: block;
+      margin-right: 2.35765%;
+      width: 14.70196%; }
+      .rn_SocialUserAvatar .rn_PreviewImage:last-child {
+        margin-right: 0; } }
+  .rn_SocialUserAvatar .rn_PreviewImage img {
+    height: 64px;
+    width: 64px; }
+  @media screen and (min-width: 53.75em) {
+    .rn_SocialUserAvatar .rn_AvatarOptions {
+      float: left;
+      display: block;
+      margin-right: 2.35765%;
+      width: 74.41059%;
+      margin-right: 0; }
+      .rn_SocialUserAvatar .rn_AvatarOptions:last-child {
+        margin-right: 0; } }
+  .rn_SocialUserAvatar .rn_AvatarOptions .rn_AvatarOption {
+    *zoom: 1;
+    display: block;
+    padding: 1em 0.5em;
+    border-bottom: 1px dotted #999; }
+    .rn_SocialUserAvatar .rn_AvatarOptions .rn_AvatarOption:before, .rn_SocialUserAvatar .rn_AvatarOptions .rn_AvatarOption:after {
+      content: " ";
+      display: table; }
+    .rn_SocialUserAvatar .rn_AvatarOptions .rn_AvatarOption:after {
+      clear: both; }
+    .rn_SocialUserAvatar .rn_AvatarOptions .rn_AvatarOption label {
+      display: block;
+      font-size: larger;
+      margin: 0.4em 0; }
+    .rn_SocialUserAvatar .rn_AvatarOptions .rn_AvatarOption.rn_Gravatar label {
+      background: url('../images/gravatar.png') 0 0 no-repeat no-repeat;
+      padding-left: 28px;
+      min-height: 16px; }
+    .rn_SocialUserAvatar .rn_AvatarOptions .rn_AvatarOption.rn_ChosenAvatar {
+      background: #DDD; }
+    .rn_SocialUserAvatar .rn_AvatarOptions .rn_AvatarOption button {
+      margin: 0.4em 0;
+      display: block; }
+    .rn_SocialUserAvatar .rn_AvatarOptions .rn_AvatarOption .rn_Success {
+      color: #008000; }
+    .rn_SocialUserAvatar .rn_AvatarOptions .rn_AvatarOption .rn_Error {
+      color: #F00; }
+    .rn_SocialUserAvatar .rn_AvatarOptions .rn_AvatarOption .rn_StatusIcon {
+      margin-top: 0.6em;
+      display: inline; }
+      .rn_SocialUserAvatar .rn_AvatarOptions .rn_AvatarOption .rn_StatusIcon.rn_Permanent i {
+        display: none; }
+    .rn_SocialUserAvatar .rn_AvatarOptions .rn_AvatarOption .rn_HintText {
+      color: #333;
+      display: block;
+      font-size: smaller;
+      font-style: normal;
+      font-weight: bold; }
+  .rn_SocialUserAvatar .rn_AvatarOptions .rn_CurrentSocialAvatar {
+    font-style: italic; }
+  .rn_SocialUserAvatar .rn_NoSocialUser {
+    padding: 4px 0 4px 40px;
+    font-size: 1.2em;
+    font-style: italic; }

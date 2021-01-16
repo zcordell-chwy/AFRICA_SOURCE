@@ -1,0 +1,51 @@
+.rn_ChatTranscript
+{
+    background-color: white;
+    border:1px solid #CCC;
+    padding:0.3em;
+    margin:0 1em 1em;
+    overflow:visible;
+    height:auto;
+}
+
+.rn_ChatTranscript .rn_AgentTextPrefix, 
+.rn_ChatTranscript .rn_Action
+{
+    color: #000099;
+}
+
+.rn_ChatTranscript .rn_UserTextPrefix
+{
+    color: #990000;
+}
+
+.rn_ChatTranscript .rn_OffTheRecordMessage
+{
+    color: #009900;
+}
+
+.rn_ChatTranscript blockquote,
+.rn_ChatTranscript ul,
+.rn_ChatTranscript ol,
+.rn_ChatTranscript dl
+{
+    margin:1em;
+}
+
+.rn_ChatTranscript ol,
+.rn_ChatTranscript ul,
+.rn_ChatTranscript dl
+{
+    margin-left:2em;
+}
+
+.rn_ChatTranscript ol li
+{
+    list-style: decimal outside;
+}
+
+.rn_ChatTranscript ul li
+{
+    list-style: disc outside;
+}
+

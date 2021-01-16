@@ -1,0 +1,53 @@
+.rn_Facet .rn_ClearContainer{
+    margin-left: 3px;
+}
+.rn_Facet .rn_ClearFacets:hover{
+    cursor: pointer;
+    text-decoration: underline;
+}
+.rn_Facet .rn_Content ul li {
+    list-style-type: none;
+    padding-left: 13px;
+}
+.rn_Facet .rn_Content table {
+    border-spacing: 0;
+    margin-left: 10px;
+}
+.rn_Facet .rn_FacetsTitle {
+    border-bottom: none;
+    padding: 7px;
+}
+.rn_Facet .rn_FacetsList {
+    padding: 10px;
+    overflow: auto;
+}
+.rn_Facet .rn_ActiveFacet {
+    font-family: 'FontAwesome',Helvetica,Arial,sans-serif;
+    font-size: 1.1em;
+}
+.rn_Facet .rn_ActiveFacet:after{
+    content: "\f057"; /* icon-remove-sign */
+    float: right;
+}
+.rn_Facet .rn_FacetLink {
+    padding: 3px;
+    cursor: pointer;
+    display: block;
+
+    text-decoration: none;
+}
+.rn_CategoryExplorerExpanded:after {
+    content: "\f146"; /* icon-minus-sign-alt */
+    font-family: 'FontAwesome';
+    display: inline-block;
+    margin-right: 3px;
+}
+.rn_CategoryExplorerCollapsed:after {
+    content: "\f0fe"; /* icon-plus-sign-alt */
+    font-family: 'FontAwesome';
+    display: inline-block;
+    margin-right: 3px;
+}
+.rn_FacetTreeIndent{
+    padding-left: 8px;
+}

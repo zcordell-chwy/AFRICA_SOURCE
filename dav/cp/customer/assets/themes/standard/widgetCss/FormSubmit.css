@@ -1,0 +1,17 @@
+.rn_FormSubmit button {
+  position: relative; }
+.rn_FormSubmit .rn_Loading {
+  padding-left: 1.8em; }
+  .rn_FormSubmit .rn_Loading:before {
+    font-family: 'FontAwesome';
+    margin-right: 6px;
+    content: "\f110";
+    -webkit-animation: fa-spin 2s infinite linear;
+    -moz-animation: fa-spin 2s infinite linear;
+    animation: fa-spin 2s infinite linear;
+    display: block;
+    font-size: 1em;
+    position: relative;
+    text-align: center;
+    left: 0.6em;
+    position: absolute; }

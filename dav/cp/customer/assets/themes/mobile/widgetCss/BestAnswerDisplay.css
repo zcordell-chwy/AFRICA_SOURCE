@@ -1,0 +1,279 @@
+.rn_BestAnswerDisplay {
+  *zoom: 1;
+  display: block;
+  position: relative; }
+  .rn_BestAnswerDisplay:before, .rn_BestAnswerDisplay:after {
+    content: " ";
+    display: table; }
+  .rn_BestAnswerDisplay:after {
+    clear: both; }
+  .rn_BestAnswerDisplay h3 {
+    font-size: 1.2em;
+    font-weight: normal;
+    margin-bottom: 0.5em; }
+    .rn_BestAnswerDisplay h3:before {
+      font-family: 'FontAwesome';
+      line-height: 1em;
+      margin-right: 6px;
+      content: "\f05d";
+      color: #008000; }
+  .rn_BestAnswerDisplay .rn_BestAnswerList {
+    padding: 0; }
+  .rn_BestAnswerDisplay .rn_BestAnswerContainer {
+    *zoom: 1;
+    display: block;
+    *zoom: 1; }
+    .rn_BestAnswerDisplay .rn_BestAnswerContainer:before, .rn_BestAnswerDisplay .rn_BestAnswerContainer:after {
+      content: " ";
+      display: table; }
+    .rn_BestAnswerDisplay .rn_BestAnswerContainer:after {
+      clear: both; }
+    .rn_BestAnswerDisplay .rn_BestAnswerContainer:before, .rn_BestAnswerDisplay .rn_BestAnswerContainer:after {
+      content: " ";
+      display: table; }
+    .rn_BestAnswerDisplay .rn_BestAnswerContainer:after {
+      clear: both; }
+    .rn_BestAnswerDisplay .rn_BestAnswerContainer .rn_BestAnswerInfo {
+      float: left;
+      display: block;
+      margin-right: 2.35765%;
+      width: 14.70196%;
+      font-size: 0.7em;
+      line-height: 1.2em;
+      padding-top: 1em; }
+      .rn_BestAnswerDisplay .rn_BestAnswerContainer .rn_BestAnswerInfo:last-child {
+        margin-right: 0; }
+      .rn_BestAnswerDisplay .rn_BestAnswerContainer .rn_BestAnswerInfo .rn_CommentAuthorAvatar {
+        font-size: 1.5em; }
+        @media screen and (max-width: 400px) {
+          .rn_BestAnswerDisplay .rn_BestAnswerContainer .rn_BestAnswerInfo .rn_CommentAuthorAvatar {
+            float: left;
+            display: block;
+            margin-right: 2.35765%;
+            width: 31.76157%; }
+            .rn_BestAnswerDisplay .rn_BestAnswerContainer .rn_BestAnswerInfo .rn_CommentAuthorAvatar:last-child {
+              margin-right: 0; } }
+      .rn_BestAnswerDisplay .rn_BestAnswerContainer .rn_BestAnswerInfo .rn_DisplayName {
+        display: block; }
+      .rn_BestAnswerDisplay .rn_BestAnswerContainer .rn_BestAnswerInfo .rn_CommentTimestamp {
+        display: block;
+        margin-top: 1em; }
+        @media screen and (max-width: 400px) {
+          .rn_BestAnswerDisplay .rn_BestAnswerContainer .rn_BestAnswerInfo .rn_CommentTimestamp {
+            float: left;
+            display: block;
+            margin-right: 2.35765%;
+            width: 65.88078%; }
+            .rn_BestAnswerDisplay .rn_BestAnswerContainer .rn_BestAnswerInfo .rn_CommentTimestamp:last-child {
+              margin-right: 0; } }
+        .rn_BestAnswerDisplay .rn_BestAnswerContainer .rn_BestAnswerInfo .rn_CommentTimestamp time {
+          display: block;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          white-space: nowrap; }
+      @media screen and (max-width: 400px) {
+        .rn_BestAnswerDisplay .rn_BestAnswerContainer .rn_BestAnswerInfo {
+          float: left;
+          display: block;
+          margin-right: 2.35765%;
+          width: 100%;
+          background: #62C2FF;
+          padding: 1em; }
+          .rn_BestAnswerDisplay .rn_BestAnswerContainer .rn_BestAnswerInfo:last-child {
+            margin-right: 0; } }
+    .rn_BestAnswerDisplay .rn_BestAnswerContainer .rn_BestAnswerContent {
+      float: left;
+      display: block;
+      margin-right: 2.35765%;
+      width: 82.94039%;
+      *zoom: 1;
+      margin-right: 0;
+      background: rgba(182, 255, 255, 0.31);
+      border-radius: 2px;
+      position: relative; }
+      .rn_BestAnswerDisplay .rn_BestAnswerContainer .rn_BestAnswerContent:last-child {
+        margin-right: 0; }
+      .rn_BestAnswerDisplay .rn_BestAnswerContainer .rn_BestAnswerContent:before, .rn_BestAnswerDisplay .rn_BestAnswerContainer .rn_BestAnswerContent:after {
+        content: " ";
+        display: table; }
+      .rn_BestAnswerDisplay .rn_BestAnswerContainer .rn_BestAnswerContent:after {
+        clear: both; }
+      .rn_BestAnswerDisplay .rn_BestAnswerContainer .rn_BestAnswerContent:before {
+        font-family: 'FontAwesome';
+        margin-right: 6px; }
+      .rn_BestAnswerDisplay .rn_BestAnswerContainer .rn_BestAnswerContent:before {
+        content: "\f0d9";
+        position: absolute;
+        left: -7px;
+        top: 7px;
+        font-size: 1.5em;
+        color: #62C2FF; }
+      @media screen and (max-width: 400px) {
+        .rn_BestAnswerDisplay .rn_BestAnswerContainer .rn_BestAnswerContent {
+          float: left;
+          display: block;
+          margin-right: 2.35765%;
+          width: 100%; }
+          .rn_BestAnswerDisplay .rn_BestAnswerContainer .rn_BestAnswerContent:last-child {
+            margin-right: 0; }
+          .rn_BestAnswerDisplay .rn_BestAnswerContainer .rn_BestAnswerContent:before {
+            content: none; }
+          .rn_BestAnswerDisplay .rn_BestAnswerContainer .rn_BestAnswerContent .rn_BestAnswerHeader {
+            border-radius: 0; } }
+      .rn_BestAnswerDisplay .rn_BestAnswerContainer .rn_BestAnswerContent .rn_BestAnswerHeader {
+        width: 100%;
+        background-color: #62C2FF;
+        font-size: smaller;
+        padding: 0.4em 1em;
+        color: #333; }
+      .rn_BestAnswerDisplay .rn_BestAnswerContainer .rn_BestAnswerContent .rn_BestAnswerBody {
+        *zoom: 1;
+        position: relative;
+        border: 1px solid rgba(0, 0, 255, 0.1);
+        border-top: 0;
+        border-radius: 2px 2px 0 0; }
+        .rn_BestAnswerDisplay .rn_BestAnswerContainer .rn_BestAnswerContent .rn_BestAnswerBody:before, .rn_BestAnswerDisplay .rn_BestAnswerContainer .rn_BestAnswerContent .rn_BestAnswerBody:after {
+          content: " ";
+          display: table; }
+        .rn_BestAnswerDisplay .rn_BestAnswerContainer .rn_BestAnswerContent .rn_BestAnswerBody:after {
+          clear: both; }
+      .rn_BestAnswerDisplay .rn_BestAnswerContainer .rn_BestAnswerContent .rn_CommentText {
+        width: 100%;
+        position: relative;
+        padding: 0.5em 0.5em 0;
+        overflow: hidden; }
+        .rn_BestAnswerDisplay .rn_BestAnswerContainer .rn_BestAnswerContent .rn_CommentText > p {
+          margin: 0; }
+      .rn_BestAnswerDisplay .rn_BestAnswerContainer .rn_BestAnswerContent .rn_CommentCollapsed .rn_CommentText {
+        max-height: 10em; }
+      .rn_BestAnswerDisplay .rn_BestAnswerContainer .rn_BestAnswerContent .rn_CommentCollapsed .rn_CommentLiner:after {
+        background-color: rgba(241, 255, 255, 0);
+        background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, rgba(241, 255, 255, 0)), color-stop(50%, rgba(241, 255, 255, 0.8)), color-stop(100%, #f1ffff));
+        background-image: -webkit-linear-gradient(top, rgba(241, 255, 255, 0) 0%, rgba(241, 255, 255, 0.8) 50%, #f1ffff 100%);
+        background-image: linear-gradient(to bottom,rgba(241, 255, 255, 0) 0%, rgba(241, 255, 255, 0.8) 50%, #f1ffff 100%);
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        height: 5em;
+        width: 100%;
+        content: ""; }
+      .rn_BestAnswerDisplay .rn_BestAnswerContainer .rn_BestAnswerContent .rn_CommentCollapsed .rn_BestAnswerActions {
+        background: rgba(255, 255, 255, 0.31); }
+      .rn_BestAnswerDisplay .rn_BestAnswerContainer .rn_BestAnswerContent .rn_CommentSelectedBy a {
+        color: rgba(0, 0, 255, 0.6); }
+  .rn_BestAnswerDisplay .rn_BestAnswerActions {
+    *zoom: 1;
+    display: block;
+    padding: 0 1em 1em; }
+    .rn_BestAnswerDisplay .rn_BestAnswerActions:before, .rn_BestAnswerDisplay .rn_BestAnswerActions:after {
+      content: " ";
+      display: table; }
+    .rn_BestAnswerDisplay .rn_BestAnswerActions:after {
+      clear: both; }
+    .rn_BestAnswerDisplay .rn_BestAnswerActions .rn_BestAnswerRemoval {
+      float: left;
+      display: block;
+      margin-right: 2.35765%;
+      width: 65.88078%; }
+      .rn_BestAnswerDisplay .rn_BestAnswerActions .rn_BestAnswerRemoval:last-child {
+        margin-right: 0; }
+      @media screen and (max-width: 960px) {
+        .rn_BestAnswerDisplay .rn_BestAnswerActions .rn_BestAnswerRemoval {
+          width: 100%; } }
+    .rn_BestAnswerDisplay .rn_BestAnswerActions button {
+      background: none;
+      clear: left;
+      color: #3B6DB1;
+      font-size: smaller;
+      font-weight: normal;
+      letter-spacing: normal;
+      line-height: 1.5em;
+      padding: 0;
+      text-align: left;
+      text-shadow: none;
+      white-space: normal; }
+      .rn_BestAnswerDisplay .rn_BestAnswerActions button:before {
+        font-family: 'FontAwesome';
+        line-height: 1em;
+        margin-right: 6px;
+        content: "\f091"; }
+      .rn_BestAnswerDisplay .rn_BestAnswerActions button:hover {
+        color: #2c5999; }
+    .rn_BestAnswerDisplay .rn_BestAnswerActions .rn_BestAnswerCommentActions {
+      float: left;
+      display: block;
+      margin-right: 2.35765%;
+      width: 31.76157%;
+      text-align: right; }
+      .rn_BestAnswerDisplay .rn_BestAnswerActions .rn_BestAnswerCommentActions:last-child {
+        margin-right: 0; }
+      @media screen and (max-width: 960px) {
+        .rn_BestAnswerDisplay .rn_BestAnswerActions .rn_BestAnswerCommentActions {
+          width: 100%; } }
+      .rn_BestAnswerDisplay .rn_BestAnswerActions .rn_BestAnswerCommentActions > a {
+        display: inline-block;
+        font-size: 0.7em;
+        margin-left: 0.5em; }
+    .rn_BestAnswerDisplay .rn_BestAnswerActions .rn_ShowAllCommentText:before {
+      font-family: 'FontAwesome';
+      line-height: 1em;
+      margin-right: 6px;
+      content: "\f055"; }
+    .rn_BestAnswerDisplay .rn_BestAnswerActions .rn_CollapseCommentText:before {
+      font-family: 'FontAwesome';
+      line-height: 1em;
+      margin-right: 6px;
+      content: "\f056"; }
+    .rn_BestAnswerDisplay .rn_BestAnswerActions .rn_ReplyToComment:before {
+      font-family: 'FontAwesome';
+      line-height: 1em;
+      margin-right: 6px;
+      content: "\f08b"; }
+    .rn_BestAnswerDisplay .rn_BestAnswerActions span:last-of-type {
+      margin-bottom: 1em; }
+  .rn_BestAnswerDisplay .rn_Mask {
+    position: absolute;
+    background: rgba(255, 255, 255, 0.9);
+    bottom: 0;
+    left: 0;
+    right: 0;
+    top: 0;
+    z-index: 1;
+    /* Perfect vertical+horizontal centering.
+           Unhip browsers fall back to horiz. centering
+           (via the text-align in the child div) */
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-box-align: center;
+    -moz-box-align: center;
+    -ms-box-align: center;
+    box-align: center;
+    -ms-flex-align: center;
+    -webkit-align-items: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    -moz-box-pack: center;
+    -ms-flex-pack: center;
+    -webkit-justify-content: center;
+    justify-content: center; }
+    .rn_BestAnswerDisplay .rn_Mask > div {
+      font-size: larger;
+      line-height: 1.4em;
+      text-align: center; }
+    .rn_BestAnswerDisplay .rn_Mask a {
+      font-weight: bold;
+      display: block;
+      text-decoration: none; }
+  .rn_BestAnswerDisplay .rn_Refresh:after {
+    font-family: 'FontAwesome';
+    line-height: 1em;
+    margin-left: 6px;
+    content: "\f021"; }
+
+.rn_HighContrastMode .rn_BestAnswerActions button {
+  padding: 2px; }
+.rn_HighContrastMode .rn_BestAnswerHeader {
+  border: 1px outset; }

@@ -1,0 +1,40 @@
+.rn_Facet {
+    font-size: 1.1em;
+}
+.rn_Facet .rn_ClearContainer{
+    margin-left: 3px;
+}
+.rn_Facet .rn_ClearFacets:hover{
+    cursor: pointer;
+    text-decoration: underline;
+}
+.rn_Facet .rn_Content ul li {
+    list-style-type: none;
+    padding-left: 8px;
+}
+.rn_Facet .rn_Content table {
+    border-spacing: 0;
+    margin-left: 10px;
+}
+.rn_Facet .rn_FacetsTitle {
+    border-bottom: none;
+    padding: 12px;
+}
+.rn_Facet .rn_FacetsList {
+    padding: 10px;
+}
+.rn_Facet .rn_ActiveFacet {
+    font-family: 'FontAwesome';
+    font-size: 1.2em;
+}
+.rn_Facet .rn_ActiveFacet:after{
+    content: "\f057"; /* icon-remove-sign */
+    float: right;
+}
+.rn_Facet .rn_FacetLink {
+    padding: 10px;
+    cursor: pointer;
+    display: block;
+    text-decoration: none;
+    word-wrap: break-word;
+}

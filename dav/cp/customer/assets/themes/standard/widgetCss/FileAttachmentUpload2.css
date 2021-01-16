@@ -1,0 +1,12 @@
+.rn_FileAttachmentUpload2 label {
+    display:block;
+    font-weight:bold;
+    margin-bottom:2px;
+}
+.rn_FileAttachmentUpload2 ul {
+    margin:10px 20px;
+}
+.rn_FileAttachmentUpload2 li {
+    list-style-type:disc;
+    margin:6px 0;
+}

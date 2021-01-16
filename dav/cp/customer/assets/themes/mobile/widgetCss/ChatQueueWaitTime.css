@@ -1,0 +1,14 @@
+.rn_ChatQueueWaitTimeContainer{
+    background: -moz-linear-gradient(top, #FEFEFE, #E0E0E0);
+    background:-webkit-gradient(linear, 0% 0%, 0% 100%, from(#FEFEFE), to(#E0E0E0));
+    border:1px solid #BBB;
+    padding:5px;
+    margin:0em 1em 1em;
+    line-height:1.25em;
+}
+
+.rn_ChatQueueWaitTimeContainer .rn_ChatQueuePosition, 
+.rn_ChatQueueWaitTimeContainer .rn_ChatEstimatedWaitTime, 
+.rn_ChatQueueWaitTimeContainer .rn_ChatAverageWaitTime{
+    padding-right:2px;
+}

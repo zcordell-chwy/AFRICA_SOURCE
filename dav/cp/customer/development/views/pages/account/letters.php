@@ -40,7 +40,8 @@
 			<aside class="sidebar">
 				<a href="#faqContainer" class="button">Have questions? Click here.</a>
 				<a href="/app/give" class="button" >Order a Gift</a>
-				<h2>Online Letters History</h2>
+				<h2>Online Letter History </h2>
+				<p><i>#rn:msg:CUSTOM_MSG_click_link_letters#</i></p>
 				<div class="letter-history-box">
 					<rn:widget path="custom/reports/LetterHistoryMultiline" report_id="101033" />
 				</div>

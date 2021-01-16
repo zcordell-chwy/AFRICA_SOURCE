@@ -1,0 +1,15 @@
+.rn_CommunityPostSubmit textarea,
+.rn_CommunityPostSubmit input[type="text"]{
+    clear:both;
+    margin-bottom:8px;
+    resize:none;
+    width: 60%;
+}
+.rn_CommunityPostSubmit input[type="submit"] {
+    display: block;
+}
+.rn_CommunityPostSubmit .rn_Label {
+    display:block;
+    font-weight:bold;
+    margin-bottom:2px;
+}

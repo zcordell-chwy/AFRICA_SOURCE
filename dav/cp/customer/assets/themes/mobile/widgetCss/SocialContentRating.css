@@ -1,0 +1,55 @@
+.rn_SocialContentRating {
+  text-align: right; }
+  .rn_SocialContentRating button.rn_UpvoteButton:before {
+    font-family: 'FontAwesome';
+    line-height: 1em;
+    margin-right: 6px;
+    content: "\f01b";
+    margin-right: 0;
+    vertical-align: text-top; }
+  .rn_SocialContentRating button.rn_UpvoteButton:not([disabled]):hover, .rn_SocialContentRating button.rn_UpvoteButton:not([disabled]):focus, .rn_SocialContentRating button.rn_UpvoteButton:not([disabled]):active {
+    color: #264e85; }
+  .rn_SocialContentRating button.rn_StarVoteButton, .rn_SocialContentRating button.rn_StarVotedButton, .rn_SocialContentRating button.rn_UpvoteButton {
+    margin-right: -0.1em;
+    color: #3770c0;
+    background: none;
+    border: 0;
+    box-shadow: none;
+    font-size: 3.5em;
+    padding: 0;
+    text-shadow: none;
+    font-weight: normal; }
+    .rn_SocialContentRating button.rn_StarVoteButton:hover, .rn_SocialContentRating button.rn_StarVoteButton:focus, .rn_SocialContentRating button.rn_StarVoteButton:active, .rn_SocialContentRating button.rn_StarVoteButton:disabled, .rn_SocialContentRating button.rn_StarVotedButton:hover, .rn_SocialContentRating button.rn_StarVotedButton:focus, .rn_SocialContentRating button.rn_StarVotedButton:active, .rn_SocialContentRating button.rn_StarVotedButton:disabled, .rn_SocialContentRating button.rn_UpvoteButton:hover, .rn_SocialContentRating button.rn_UpvoteButton:focus, .rn_SocialContentRating button.rn_UpvoteButton:active, .rn_SocialContentRating button.rn_UpvoteButton:disabled {
+      border: 0;
+      box-shadow: none;
+      background: none; }
+    .rn_SocialContentRating button.rn_StarVoteButton:disabled, .rn_SocialContentRating button.rn_StarVotedButton:disabled, .rn_SocialContentRating button.rn_UpvoteButton:disabled {
+      color: #3770c0; }
+  .rn_SocialContentRating button.rn_StarVoteButton:before {
+    font-family: 'FontAwesome';
+    line-height: 1em;
+    margin-right: 6px;
+    content: "\f006";
+    margin-right: 0;
+    vertical-align: text-top; }
+  .rn_SocialContentRating button.rn_StarVoteButton:not([disabled]):hover:before, .rn_SocialContentRating button.rn_StarVoteButton:not([disabled]):hover ~ button.rn_StarVoteButton:before, .rn_SocialContentRating button.rn_StarVoteButton:not([disabled]):focus:before, .rn_SocialContentRating button.rn_StarVoteButton:not([disabled]):focus ~ button.rn_StarVoteButton:before, .rn_SocialContentRating button.rn_StarVoteButton:not([disabled]):active:before, .rn_SocialContentRating button.rn_StarVoteButton:not([disabled]):active ~ button.rn_StarVoteButton:before {
+    font-family: 'FontAwesome';
+    line-height: 1em;
+    margin-right: 6px;
+    content: "\f005";
+    margin-right: 0;
+    vertical-align: text-top; }
+  .rn_SocialContentRating button.rn_StarVotedButton:before {
+    font-family: 'FontAwesome';
+    line-height: 1em;
+    margin-right: 6px;
+    content: "\f005";
+    margin-right: 0;
+    vertical-align: text-top; }
+  .rn_SocialContentRating div.rn_StarVoting {
+    direction: rtl;
+    display: inherit; }
+  .rn_SocialContentRating .rn_Separator::before {
+    content: '';
+    border-left: 2px solid;
+    margin: 0.2em; }

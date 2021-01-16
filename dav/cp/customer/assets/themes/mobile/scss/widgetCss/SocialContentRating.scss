@@ -1,0 +1,79 @@
+@import 'widget-includes';
+
+.rn_SocialContentRating {
+    $icon-color: darken($base-accent-color, 5);
+    text-align: right;
+
+    button.rn_UpvoteButton {
+        @include icon($fa-var-arrow-circle-o-up) {
+            margin-right: 0;
+            vertical-align: text-top;
+        }
+
+        &:not([disabled]) {
+            &:hover, &:focus, &:active {
+                color: darken($icon-color, 15);
+            }
+        }
+    }
+
+    button.rn_StarVoteButton,
+    button.rn_StarVotedButton,
+    button.rn_UpvoteButton {
+        margin-right: -.1em;
+        color: $icon-color;
+        background: none;
+        border: 0;
+        box-shadow: none;
+        font-size: 3.5em;
+        padding: 0;
+        text-shadow: none;
+        font-weight: normal;
+
+        &:hover, &:focus, &:active, &:disabled {
+            border: 0;
+            box-shadow: none;
+            background: none;
+        }
+
+        &:disabled {
+            color: $icon-color;
+        }
+    }
+
+    button.rn_StarVoteButton {
+        @include icon($fa-var-star-o) {
+            margin-right: 0;
+            vertical-align: text-top;
+        }
+
+        &:not([disabled]) {
+            &:hover, &:hover ~ button.rn_StarVoteButton,
+            &:focus, &:focus ~ button.rn_StarVoteButton,
+	    &:active, &:active ~ button.rn_StarVoteButton {
+                @include icon($fa-var-star) {
+                    margin-right: 0;
+                    vertical-align: text-top;
+                }
+            }
+        }
+    }
+
+    button.rn_StarVotedButton {
+        @include icon($fa-var-star) {
+            margin-right: 0;
+            vertical-align: text-top;
+        }
+    }
+
+    div.rn_StarVoting {
+        direction: rtl;
+        display: inherit;
+    }
+
+    .rn_Separator::before {
+        content: '';
+        border-left: 2px solid;
+        margin: .2em;
+    }
+}

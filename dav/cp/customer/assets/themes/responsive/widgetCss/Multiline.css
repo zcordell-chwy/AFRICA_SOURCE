@@ -1,0 +1,117 @@
+.rn_Multiline{
+    overflow:hidden;
+}
+.rn_Multiline .rn_Loading{
+    background: url(../images/loading.gif) no-repeat center center;
+    height:auto !important;
+    height:66px;
+    min-height:66px;
+}
+.rn_Multiline .rn_Element1,
+.rn_Multiline .rn_Element2{
+    font-size:1.333em;
+}
+.rn_Multiline .rn_Element3{
+    display:block;
+    font-size:1.1em;
+    line-height:1.3em;
+}
+.rn_Multiline .rn_ElementsHeader,
+.rn_Multiline .rn_ElementsData{
+    color:#6F6F6F;
+    font-size:0.8em;
+}
+.rn_Multiline ol, .rn_Multiline ul{
+    padding-top:3px;
+}
+.rn_Multiline li{
+    margin-bottom:12px;
+}
+/**
+ * Uncomment the following rule to override the 
+ * inherited site.css and enable
+ * row numbering for Multiline reports
+ */
+/*
+.rn_Multiline ol li{
+    list-style: decimal inside none;
+}
+*/
+
+.rn_Overview .announcementSection, .rn_Overview .alertsSection{
+	background-color: #fff;
+    width: 460px;
+    height: 168px;
+    border: 1px solid #d1c9c0;
+	border-radius: 4px 4px 0 0;
+	display: inline-block;
+	overflow:scroll
+}
+
+.rn_Overview .transactionsSection{
+	background-color: #fff;
+    width: 100%;
+    clear:both;
+    border: 1px solid #d1c9c0;
+	border-radius: 4px 4px 0 0;
+	display: inline-block;
+	margin-top: 20px;
+}
+
+.rn_Overview .topContent {
+    display: block;
+    background-color: #f6f6f6!important;
+    float: left;
+    width: 100%;
+    background: url(../images/info.jpg) no-repeat 13px 4px;
+    padding: 14px 50px;
+    font-size: 1.5em;
+    font-weight: bold;
+}
+
+.rn_Overview .alertsSection .topContent{
+	background-color: #f6f6f6;
+	background: url(../images/important.png) no-repeat 13px 8px ;
+}
+.rn_Overview .transactionsSection .topContent{
+	background-color: #f6f6f6;
+	background: url(../images/transactions.png) no-repeat 13px 8px ;
+}
+
+.rn_Overview .topContentLeft {
+    display: block;
+    float: left;
+    width: 55%;
+    padding: 14px;
+}
+
+.rn_Overview .topContentRight {
+    float: right;
+    width: 33%;
+    padding: 14px;
+}
+
+.rn_Overview .detailColumn {
+    float: left;
+    font-size: 11px!important;
+    line-height: 1.465!important
+    color: #555!important;
+    margin-right: 3%;
+}
+
+.rn_Overview .topContentRight .detailColumn{
+	float:right;
+	clear:both;	
+}
+
+.rn_Overview .detailHeader{
+	text-transform: uppercase;
+}
+
+.rn_Overview .bottomContent{
+	float: left;
+    width: 100%;
+    display: inline-table;
+    background-color: #fff;
+    padding: 10px 15px;
+}

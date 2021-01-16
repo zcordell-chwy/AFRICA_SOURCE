@@ -1,0 +1,52 @@
+.rn_LoginDialog {
+    width: 210px;
+}
+.rn_LoginDialog.rn_ContentLoading{
+    background:url(../images/loading.gif) no-repeat center center;
+}
+.rn_LoginDialog input{
+    margin-bottom:5px;
+}
+.rn_LoginDialog input[type="text"],
+.rn_LoginDialog input[type="password"]{
+    width:200px;
+}
+.rn_LoginDialog label{
+    margin-bottom:5px;
+    display:block;
+}
+.rn_LoginDialog div{
+    margin-bottom: 5px;
+}
+
+.rn_LoginDialog.rn_AdditionalOpenLogin {
+    overflow: hidden;
+    position: relative;
+    width: 400px;
+}
+.rn_LoginDialog.rn_AdditionalOpenLogin .rn_LoginDialogContent{
+    border-left: 1px solid #DDD;
+    float: right;
+    margin-bottom: 5px;
+    padding-left:32px;
+    width:209px;
+}
+.rn_LoginDialog div.rn_OpenLoginAlternative{
+    background:url(../images/icons/badges.png) no-repeat;
+    border: 0;
+    float: left;
+    margin:4px;
+    padding: 0;
+    width: 150px;
+}
+.rn_LoginDialog .rn_OpenLoginAlternative a{
+    display: block;
+    padding-top:80px;
+}
+.rn_HighContrastMode .rn_LoginDialog .rn_OpenLoginAlternative a {
+    padding-top: 0;
+}
+.rn_HighContrastMode .rn_LoginDialog .rn_OpenLoginAlternative .rn_ScreenReaderOnly {
+    /* Display the screen reader text in lieu of the bg image badges. */
+    position: static;
+}

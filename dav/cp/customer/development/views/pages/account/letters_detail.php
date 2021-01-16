@@ -13,14 +13,14 @@
                 <rn:widget path="output/DataDisplay" name="incidents.thread" label=""/>
 
 
-            <h2 class="rn_HeadingBar">Attachments and Response</h2>
+            <h2 class="rn_HeadingBar">Response Letter</h2>
             
                 <rn:widget path="output/DataDisplay" name="incidents.fattach" label="#rn:msg:FILE_ATTACHMENTS_LBL#"/>
 
   
-            <div id="rn_DetailTools">
+            <!-- <div id="rn_DetailTools">
                 <rn:widget path="utils/PrintPageLink" />
-            </div>
+            </div> -->
         </div>
     </div>
 </div>

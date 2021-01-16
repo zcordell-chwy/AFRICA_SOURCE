@@ -1,0 +1,12 @@
+.rn_ChatHours2 .rn_HoursBlock {
+    margin: 15px 0 0 0;
+}
+.rn_ChatHours2 .rn_CurrentTime {
+    display:block;
+}
+.rn_ChatHours2 .rn_HoursLabel {
+    color:#404040;
+    font-size:1em;
+    font-weight:bold;
+    line-height:1.3em;
+}

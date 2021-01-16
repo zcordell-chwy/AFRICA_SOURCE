@@ -1,0 +1,126 @@
+.rn_CommunityPostDisplay {
+    background:#fff;
+    position:relative;
+    padding:10px;
+    color: #333;
+    font-size: 1em;
+    line-height: 1.1em;
+}
+
+.rn_CommunityPostDisplay .rn_PostAuthorImage {
+    position:absolute;
+    top:10px;
+    left:10px;
+    width:50px;
+    height:50px;
+}
+.rn_CommunityPostDisplay .rn_PostAuthorImage img {
+    height:100%;
+    width:100%;
+}
+.rn_CommunityPostDisplay .rn_PostAuthor {
+    padding:0 0 0 60px;
+    margin-bottom: 5px;
+    font-weight:bold;
+    color:#666;
+}
+.rn_CommunityPostDisplay .rn_PostTitle {
+    font-size:1.3em;
+    line-height:1.05em;
+    display:block;
+    margin-bottom: 5px;
+    color:#666;
+}
+
+.rn_CommunityPostDisplay .rn_PostBody p {
+    margin:0 0 12px 0;
+}
+.rn_CommunityPostDisplay .rn_PostBody img {
+    max-width:95%;
+    height:auto;
+    margin:0 2%;
+}
+.rn_CommunityPostDisplay .rn_PostBody {
+    overflow:hidden;
+}
+.rn_CommunityPostDisplay .rn_PostDate {
+    display:block;
+    margin:0 0 5px 0;
+    color:#acacac;
+    
+}
+.rn_CommunityPostDisplay .rn_PostTitle {
+    display:block;
+    padding:0 0 0 60px;
+}
+.rn_CommunityPostDisplay .rn_PostBody {
+    display:block;
+    padding:0 0 0 60px;
+}
+.rn_CommunityPostDisplay .rn_PostDate {
+    display:block;
+    padding:0 0 0 60px;
+    color: #666;
+    font-size: 0.8em;
+}
+.rn_CommunityPostDisplay .rn_CommentCount {
+    display:block;
+    padding:5px 0 5px 60px;
+    text-align:right;
+    border-bottom: 1px solid #DDD;
+}
+.rn_CommunityPostDisplay .rn_CommentCount a {
+    line-height: 22px;
+    background:url(../images/searchList-more-arrow.png) right 1px no-repeat;
+    background:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA8AAAAWCAYAAAAfD8YZAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyJpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNSBNYWNpbnRvc2giIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6MDk4RTY1MjM5QjgxMTFFMEJBM0E4MjAwQzUwNTExQ0UiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6MDk4RTY1MjQ5QjgxMTFFMEJBM0E4MjAwQzUwNTExQ0UiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDoyNjE4REM3NDlCN0ExMUUwQkEzQTgyMDBDNTA1MTFDRSIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDowOThFNjUyMjlCODExMUUwQkEzQTgyMDBDNTA1MTFDRSIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/PluDGtwAAAFNSURBVHjalNS7SgNREMbxGO8KCkJ8AIk3XMXOV7BXUbwh9iLYWmynoGBnoZWt4I1oZxMv+AAWFpJChYiLiCKCrf+BCRyWOSdx4AdJJt/umXM2qYvjOONUO3J4ytRQWed1J/Zxieg/4S7sYRZ5HGGwlnAHDjDtfN6PEwxVCzeixegN6AVGQuEPzOHC6PfpCFFo5ncs4dz4Ti+OrRHc3ZYVzHsuICs4xbAvLPWNRRQ8K5A9GPWFpb6wrHdKV15HiHzhygiygkOj14Mz2YNs4Bh/UPL0PmWFvrCc/QbWjd4dJlBuMJpN2MSa0bvBAl7kTTpcjy2seoIzeK184IabsY0VI3iLKSTWObdhxxO81sc3STfkzq3Y1cczXUV96srWrkq4G2NG70pnTEK/qmdM4jF1x2DQnflBN6SkM8pS36r9k7i7fY9x/LrHEao/AQYAT9E+Xxk6CH8AAAAASUVORK5CYII=) right 1px no-repeat;
+    padding-right:20px;
+    height: 22px;
+    font-size: 1.2em;
+    display:inline-block;
+    margin-bottom:10px;
+}
+
+.rn_CommunityPostDisplay .rn_LoadedComments .rn_Comment:nth-child(even) {
+    background:#f6f6f6;
+}
+
+.rn_CommunityPostDisplay .rn_Comment {
+    position:relative;
+    padding-bottom:10px;
+    padding-top:10px;
+    border-bottom:1px solid #DDD;
+}
+.rn_CommunityPostDisplay .rn_Comment .rn_Avatar {
+    position:absolute;
+    top:10px;
+    left:10px;
+    width:40px;
+    height:40px;
+}
+
+.rn_CommunityPostDisplay .rn_Commenter {
+    display:block;
+    padding:0 0 0 60px;
+    font-weight:bold;
+    margin:0 0 5px 0;
+    color:#666;
+}
+.rn_CommunityPostDisplay .rn_CommentText {
+    display:block;
+    padding:0 0 0 60px;
+    margin:0 0 5px 0;
+}
+.rn_CommunityPostDisplay .rn_CommentDate  {
+    display:block;
+    padding:0 0 0 60px;
+    color: #666;
+    font-size: 0.8em;
+}
+.rn_CommunityPostDisplay .rn_CommentRating {
+    display:block;
+    padding:0 0 0 60px;
+}
+.rn_CommunityPostDisplay .rn_PostRate {
+    display:block;
+    padding:0 0 0 60px;
+}

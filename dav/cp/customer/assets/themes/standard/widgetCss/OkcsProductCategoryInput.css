@@ -1,0 +1,130 @@
+.rn_OkcsProductCategoryInput {
+  *zoom: 1;
+  display: block;
+  position: relative;
+  margin-bottom: 8px;
+  padding: 10px 4px 8px; }
+  .rn_OkcsProductCategoryInput:before, .rn_OkcsProductCategoryInput:after {
+    content: " ";
+    display: table; }
+  .rn_OkcsProductCategoryInput:after {
+    clear: both; }
+  .rn_OkcsProductCategoryInput .rn_Label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 2px;
+    width: 36%; }
+  .rn_OkcsProductCategoryInput .rn_ErrorLabel {
+    display: block;
+    font-style: italic;
+    font-weight: normal; }
+  .rn_OkcsProductCategoryInput button.rn_DisplayButton {
+    float: left;
+    display: block;
+    margin-right: 2.35765%;
+    width: 31.76157%;
+    border: 1px solid #999;
+    font-weight: normal;
+    margin-top: auto;
+    min-height: 1.5em;
+    padding: 4px 20px 4px 4px;
+    position: relative;
+    text-align: left;
+    text-shadow: none;
+    margin-right: 0;
+    border-radius: 0;
+    box-shadow: none;
+    background: none;
+    color: #000;
+    width: 100%; }
+    .rn_OkcsProductCategoryInput button.rn_DisplayButton:last-child {
+      margin-right: 0; }
+    .rn_OkcsProductCategoryInput button.rn_DisplayButton:after {
+      font-family: 'FontAwesome';
+      margin-left: 6px; }
+    .rn_OkcsProductCategoryInput button.rn_DisplayButton:after {
+      content: "\f0d7";
+      position: absolute;
+      right: 5px; }
+    .rn_OkcsProductCategoryInput button.rn_DisplayButton:hover, .rn_OkcsProductCategoryInput button.rn_DisplayButton:focus {
+      box-shadow: none;
+      background-color: #DDD; }
+  .rn_OkcsProductCategoryInput .rn_Panel {
+    width: 100%;
+    background: #FFF;
+    border: 1px solid #999;
+    max-height: 200px;
+    overflow: auto;
+    padding: 6px; }
+  .rn_OkcsProductCategoryInput .rn_PanelContainer {
+    width: 300px;
+    border: 1px solid #999; }
+    @media screen and (max-width: 400px) {
+      .rn_OkcsProductCategoryInput .rn_PanelContainer {
+        width: 100%; } }
+    .rn_OkcsProductCategoryInput .rn_PanelContainer .rn_Panel {
+      border: 0; }
+    .rn_OkcsProductCategoryInput .rn_PanelContainer .yui3-widget-hd {
+      display: none; }
+  .rn_OkcsProductCategoryInput .rn_SelectionButtons {
+    background: #DDD;
+    border-top: 1px solid #999; }
+    .rn_OkcsProductCategoryInput .rn_SelectionButtons button {
+      font-size: 0.95em;
+      margin: 7px 0 7px 5px;
+      padding: 5px; }
+  .rn_OkcsProductCategoryInput .ygtvchildren .ygtvfocus .ygtvlabel {
+    outline-color: #C0E0E0;
+    outline-style: solid; }
+  .rn_OkcsProductCategoryInput .rn_HintBox {
+    border: 1px solid #999;
+    margin: 0 0 0 0.3em;
+    max-width: 200px;
+    padding: 4px 16px 2px;
+    word-wrap: break-word;
+    opacity: 0.9; }
+    .rn_OkcsProductCategoryInput .rn_HintBox.rn_AlwaysVisibleHint {
+      max-width: 200px;
+      opacity: 1; }
+    .rn_OkcsProductCategoryInput .rn_HintBox:before {
+      font-family: 'FontAwesome';
+      margin-right: 6px; }
+    .rn_OkcsProductCategoryInput .rn_HintBox:before {
+      content: "\f0d9";
+      position: absolute;
+      font-size: 1em;
+      color: #FFF;
+      left: -1px;
+      top: 2px;
+      z-index: 1; }
+    .rn_OkcsProductCategoryInput .rn_HintBox:after {
+      font-family: 'FontAwesome';
+      margin-left: 6px; }
+    .rn_OkcsProductCategoryInput .rn_HintBox:after {
+      content: "\f0d9";
+      position: absolute;
+      font-size: 1.1em;
+      color: #999;
+      left: -7px;
+      top: 2px; }
+  .rn_OkcsProductCategoryInput .rn_Disabled {
+    color: #808080 !important; }
+  .rn_OkcsProductCategoryInput .rn_Notification {
+    margin: 0 auto; }
+  .rn_OkcsProductCategoryInput .rn_Notification_Info {
+    border-bottom: 1px solid #DDD;
+    color: #6F6F6F;
+    padding: 0 4px 10px 0; }
+  .rn_OkcsProductCategoryInput .rn_Notification_Actions button {
+    float: left;
+    margin-top: 4px;
+    margin-right: 8px; }
+  .rn_OkcsProductCategoryInput .ygtvchildren .ygtvlabel, .rn_OkcsProductCategoryInput .ygtvchildren .ygtvlabel:link, .rn_OkcsProductCategoryInput .ygtvchildren .ygtvlabel:visited, .rn_OkcsProductCategoryInput .ygtvchildren .ygtvlabel:hover {
+    font-size: inherit; }
+  .rn_OkcsProductCategoryInput .rn_moreLink.ygtvloading:before {
+    display: inline-block; }
+  .rn_OkcsProductCategoryInput .ygtvfocus, .rn_OkcsProductCategoryInput .ygtvchildren .ygtvfocus .ygtvlabel {
+    background-color: #536a8b; }
+  .rn_OkcsProductCategoryInput .ygtvchildren .ygtvfocus .ygtvlabel, .rn_OkcsProductCategoryInput .ygtvchildren .ygtvfocus .ygtvlabel:link, .rn_OkcsProductCategoryInput .ygtvchildren .ygtvfocus .ygtvlabel:visited, .rn_OkcsProductCategoryInput .ygtvchildren .ygtvfocus .ygtvlabel:hover {
+    background-color: #536a8b;
+    color: #FFF; }

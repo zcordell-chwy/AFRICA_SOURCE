@@ -1,0 +1,8 @@
+.rn_ChatServerConnect{
+    background:#EFEFF4 url(../images/layout/whitePixel.png) repeat-x scroll 0 0;
+    border:solid #BBB;
+    border-width:1px 0;
+    line-height:1.25em;
+    margin:0 0 1em;
+    padding:5px;
+}

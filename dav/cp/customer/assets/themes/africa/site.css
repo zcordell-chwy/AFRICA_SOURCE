@@ -1,0 +1,1749 @@
+/*********************************
+ Global Style
+
+ Index:
+ 01. Reset
+ 02. Font multiplier table
+ 03. Global Settings for Common
+ HTML elements
+ 04. Template Structure
+ 05. Text Colors
+ 06. Navigation Bar
+ 07. Shared/General Components
+ 08. Answer & Question Detail Pages
+ 09. Home Page
+ 10. Account Pages
+ 11. General Accessiblity
+ 12. Print Style
+ 13. Chat Related
+ **********************************/
+
+/********************
+ 01. Reset
+ ********************/
+body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, code, form, fieldset, legend, input, textarea, p, blockquote, th, td {
+	margin: 0;
+	padding: 0;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+fieldset, img {
+	border: 0;
+}
+address, caption, cite, code, dfn, th, var {
+	font-style: normal;
+	font-weight: normal;
+}
+ul, ol, li, dl, dt, dd {
+	list-style: none;
+}
+caption, th {
+	text-align: left;
+}
+h1, h2, h3, h4, h5, h6 {
+	font-size: 100%;
+	font-weight: normal;
+}
+q:before, q:after {
+	content: '';
+}
+abbr, acronym {
+	border: 0;
+	font-variant: normal;
+}
+/* to preserve line-height and selector appearance */
+sup {
+	vertical-align: text-top;
+}
+sub {
+	vertical-align: text-bottom;
+}
+input, textarea, select {
+	font-family: inherit;
+	font-size: inherit;
+	font-weight: inherit;
+	margin: 0;
+	padding: 0;
+}
+/*because legend doesn't inherit in IE */
+legend {
+	color: #000;
+	padding: 0;
+}
+a img, iframe {
+	border: none;
+}
+
+/*************************************
+ 02. Font multiplier table
+ **************************************
+ Pixels  EMs   Percent    Points
+ 6px   0.500     50.00%     5pt
+ 7px     0.583     58.30%     5pt
+ 8px     0.667     66.70%     6pt
+ 9px     0.750     75.00%     7pt
+ 10px     0.833     83.30%     8pt
+ 11px     0.917     91.70%     8pt
+ (12px is our body default)
+ 12px     1.000     100.0%     9pt
+ 13px     1.083     108.3%     10pt
+ 14px     1.167     116.7%     11pt
+ 15px     1.250     125.0%     11pt
+ 16px     1.333     133.3%     12pt
+ 17px     1.417     141.7%     13pt
+ 18px     1.500     150.0%     14pt
+ 19px     1.583     158.3%     14pt
+ 20px     1.667     166.7%     15pt
+ 21px     1.750     175.0%     16pt
+ 22px     1.833     183.3%     17pt
+ 23px     1.917     191.7%     17pt
+ 24px     2.000     200.0%     18pt
+ ***************************************/
+
+/*************************************
+ 03. Global Settings for Common
+ HTML elements
+ *************************************/
+html {
+	font-family: Helvetica, Arial, sans-serif;
+	min-width: 1040px;
+}
+/*Japanese charset support*/
+html[lang="ja-JP"], html[lang="ja-JP"] input, html[lang="ja-JP"] textarea, html[lang="ja-JP"] select {
+	font-family: "Hiragino Kaku Gothic Pro", "ヒラギノ角ゴ Pro W3", Meiryo, "メイリオ", "MS PGothic", "MS Pゴシック", Helvetica, Arial, sans-serif;
+}
+body {
+	font-size: .75em;
+	line-height: 1.250em;
+	text-align: left;
+	/*background: url(images/anlm-linen-bg.png) repeat;*/
+	background-color: #e9e3dc;
+	margin:0;
+   	padding:0;
+   	height:100%;
+}
+
+h2, h3, h4, h5, h6 {
+	font-family: Arial, sans-serif;
+	font-weight: bold;
+}
+h1 {/* 25px */
+	font-size: 2.083em;
+	font-weight: normal;
+	line-height: 1.8em;
+}
+h2 {/* 21px */
+	font-family: Gotham, Arial;
+    font-size: 28px;
+    line-height: 28px;
+    font-weight: bold;
+    font-style: normal;
+    color: #706359;
+    text-transform: initial;
+}
+span.subtitle {
+	font-family: GothamMedium, sans-serif;
+	color: #3D3421;
+	font-size: 16px;
+	text-transform: capitalize;
+	vertical-align: top;
+}
+h3 {/* 14px */
+	color: #2F2F2F;
+	font-size: 1.167em;
+	line-height: 1.3em;
+}
+h4 {/* 12px */
+	color: #404040;
+	font-size: 1em;
+	line-height: 1.3em;
+}
+h5 {/* 11px */
+	color: #505050;
+	font-size: 0.917em;
+	line-height: 1.0em;
+}
+h6 {/* 10px */
+	color: #505050;
+	font-size: 0.833em;
+	line-height: .8em;
+}
+p {
+	line-height: 1.4em;
+	margin-bottom: 1em;
+	font-size: 15px;
+}
+table {
+	border-collapse: separate;
+	border-spacing: 0.3em;
+}
+hr {
+	margin: 10px 0px;
+}
+strong {
+	font-weight: bolder;
+}
+caption {
+	color: #404040;
+	font-size: 1em;
+	font-weight: bold;
+	line-height: 1.3em;
+}
+blockquote {
+	margin: 10px 30px;
+}
+a:visited {
+	color: #3C0D68;
+}
+input[type="text"], input[type="password"], input[type="email"] {
+	height: 18px;
+}
+input, textarea, select {
+	border: solid 1px rgb(169, 169, 169);
+    font-family: Gotham, Arial;
+    color: rgb(112, 99, 89);
+    font-size: 14px;
+    line-height: normal;
+    padding: 2px;
+}
+input[type="text"]:focus, input[type="password"]:focus, textarea:focus, select:focus {
+	border-color: #AAA;
+	background-color: #F8F8F8;
+}
+input[type="submit"], button {
+	color: #FFF;
+    cursor: pointer;
+    padding: 8.5px 20px;
+    text-decoration: none;
+    background-color: #e44c2e;
+    box-shadow: none;
+    text-shadow: none;
+    border: none;
+    border-radius: initial;
+    font-family: Gotham, Arial;
+    font: small-caption;
+    font-size: 13px;
+    font-style: normal;
+    font-weight: bold;
+    text-transform: uppercase;
+    line-height: 21px;
+    font-stretch: ultra-condensed;
+    margin: 10px;
+	/*Fix for IE6/7 button width bug*/
+	*width: auto;
+	*overflow: visible;
+}
+input[type="submit"]:hover, input[type="submit"]:focus, button:hover, button:focus {
+	background-position: 0px -40px;
+	border-color: #46494D;
+	cursor: pointer;
+}
+input[type="submit"][disabled], button[disabled] {
+	background-color: #304764;
+	background-position: 0px -40px;
+	border-color: #333;
+	color: #DDD;
+}
+
+/********************************
+ 04. Template Structure:
+ rn_Container
+ rn_Header
+ rn_Navigation
+ rn_Body
+ rn_MainColumn
+ rn_SideBar
+ rn_Footer
+ rn_RightNowCredit
+ ********************************/
+#rn_Container {
+	height: 100%;
+	margin: 0px auto;
+	/*padding-top: 20px;*/
+	overflow: visible;
+	text-align: left;
+	width: 942px;
+	/*border-top: 6px solid #566B10;*/
+}
+#rn_Header {
+	color: #000;
+	background: #FFF;
+	height: 72px;
+	min-height: 72px;
+	overflow: visible;
+	padding: 0 10px;
+	width: 100%;
+}
+#rn_Header-Inner {
+	width: 942px;
+	margin: 0 auto;
+	/*overflow: auto;*/
+	position: relative;
+}
+#rn_Header a {
+	color: #7C6955;
+}
+#rn_Logo {
+	cursor: pointer;
+	float: left;
+	font-family: "Lucida Sans Unicode", "Lucida Grande", Garuda, sans-serif;
+	letter-spacing: -0.8px;
+	margin-top: 18px;
+	position: relative;
+}
+#rn_Logo a {
+	bottom: 0;
+	color: #FFF;
+	cursor: pointer;
+	font-size: 2.083em;
+	font-weight: normal;
+	left: 0;
+	line-height: 1em;
+	text-decoration: none;
+}
+#rn_Logo a span.rn_LogoTitle {
+	cursor: pointer;
+	top: 20px;
+	position: relative;
+}
+#rn_Logo a span.rn_LogoTitleMinor {
+	color: #DEDEDE;
+}
+#rn_Logo a img {
+	display: block;
+}
+#rn_LoginStatus {
+	position: absolute;
+    top: 8px;
+    right: 20px;
+    text-align: right;
+    line-height: 10px;
+}
+#rn_LoginStatus a {
+	text-decoration: none;
+    font-family: Gotham, Arial;
+    font-size: 10px;
+    font-style: normal;
+    font-weight: 300;
+    color: rgb(61, 52, 33);
+}
+#rn_Body {
+	background: none;
+	border: none;
+	overflow: hidden;
+	padding: 0 0px 20px 10px;
+	text-align: left;
+	width: 99%;
+}
+#rn_Footer {
+	/*background: #ABA095;*/
+	background: #94ae59;
+	border: none;
+	overflow: hidden;
+	padding: 40px 0px 20px 0px;
+	text-align: left;
+	width: 100%;
+}
+#rn_MainColumn {
+	background: none;
+	float: left;
+	margin-right: 8px;
+	min-height: 650px;
+	height: auto !important;
+	height: 650px;
+	overflow: visible;
+	padding: 0px 0px 10px 6px;
+	width: 99%;
+	position: relative;
+}
+#rn_SideBar {
+	float: right;
+	margin-right: 12px;
+	width: 23%;
+}
+#rn_Footer {
+	border-bottom: 1px solid #E2E2E2;
+}
+#rn_FooterContents {
+	width: 1000px;
+	margin: 0 auto;
+	overflow: auto;
+	text-align: center;
+	font-family: Gotham, Arial;
+}
+#rn_FooterContents h2 {
+	color: white;
+	font-family: Gotham, Arial;
+	font-size: 12px;
+	font-style: normal;
+	font-weight: 300;
+	margin-bottom: 10px;
+}
+#rn_FooterContents h3 {
+	color: rgb(86, 108, 17);
+	font-family: Gotham, Arial;
+	font-size: 16px;
+	font-style: normal;
+	font-weight: bold;
+	margin-bottom: 10px;
+}
+#rn_FooterContents h4 {
+	color: #FFF;
+	font-family: Gotham, Arial;
+	font-size: 16px;
+	font-style: normal;
+	font-weight: bold;
+	margin-bottom: 10px;
+}
+#rn_FooterContents p {
+	color: #FFF;
+	font-size: 11px;
+	font-style: normal;
+	font-weight: 300;
+    line-height: 1.5em;
+}
+.footer-left {
+	width: 50%;
+	float: left;
+	text-align: center;
+	border-right: 1px dashed white;
+}
+.footer-content-left{
+	width: 50%;
+	margin: auto;
+}
+.footer-right {
+	width: 49%;
+	float: left;
+	text-align: center;
+}
+.footer-right ul {
+	margin-bottom: 10px;
+}
+.footer-right li {
+	color: #FFF;
+	font-family: GothamBook, sans-serif;
+}
+.footer-right li b {
+	color: white;
+	font-family: Gotham, Arial;
+	font-size: 11px;
+	font-style: normal;
+	font-weight: bold;
+}
+.footer-right li a {
+	color: #FFF;
+	text-decoration: none;
+	font-family: Gotham, Arial;
+	font-size: 11px;
+	font-style: normal;
+	font-weight: 300;
+}
+.footer-copyright{
+	width: 100%;
+	color: white;
+	text-align: center;
+	font-family: Gotham, Arial;
+	font-size: 10px;
+	font-style: normal;
+	font-weight: 300;
+	height: 14px;
+	line-height: 14.2857px;
+	clear: both;
+    padding-top: 30px;
+}
+#rn_RightNowCredit {
+	border-top: none;
+	clear: both;
+	padding: 10px 0px 10px 0px;
+	text-align: right;
+	margin: auto 20px;
+}
+
+/*************************************
+ 05. Text Colors
+ *************************************/
+body, fieldset legend {
+	color: #000;
+}
+a:link {
+	color: #0000CC;
+}
+
+/*************************************
+ 06. Sidebar Content
+ *************************************/
+#rn_SideBar .rn_Padding {
+	padding: 16px 4px 2px 10px;
+	overflow: auto;
+}
+/**Sprite for help resources**/
+.rn_HelpResources {
+	margin: 0 4px 10px 4px;
+}
+.rn_HelpResources .rn_Questions, .rn_HelpResources .rn_Community, .rn_HelpResources .rn_Contact, .rn_HelpResources .rn_Chat, .rn_HelpResources .rn_Feedback {
+	margin-top: 10px;
+}
+.rn_HelpResources a {
+	background: url(images/layout/contactDiscs.png) no-repeat;
+	color: #464646;
+	display: block;
+	font-size: 1.25em;
+	font-weight: bold;
+	margin: 4px;
+	min-height: 22px;
+	/*min-height for IE6/7*/
+	height: auto !important;
+	height: 22px;
+	padding: 10px 0 0 40px;
+	text-decoration: none;
+}
+.rn_HelpResources a:hover {
+	text-decoration: underline;
+}
+.rn_HelpResources span {
+	display: block;
+	margin: 0 0 0 44px;
+}
+
+/* image is 32 x 220 : icons are 32 x 32 */
+.rn_HelpResources .rn_Questions a {
+	background-position: 0px -4px;
+}
+.rn_HelpResources .rn_Contact a {
+	background-position: 0px -48px;
+}
+.rn_HelpResources .rn_Chat a {
+	background-position: 0px -96px;
+}
+.rn_HelpResources .rn_Feedback a {
+	background-position: 0px -140px;
+}
+.rn_HelpResources .rn_Community a {
+	background-position: 0px -184px;
+}
+
+/***********************************************************
+ 07. Shared / General Styling
+ ***********************************************************/
+/*************
+ Main search form at the top of many pages
+ (answers/list, questions/list, questions/detail, home)
+ *************/
+#rn_SearchControls {
+	background: #EFEFF4 url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAAAAAA6fptVAAAACklEQVQIHWP4DwABAQEANl9ngAAAAABJRU5ErkJggg==) repeat-x scroll 0 0;
+	*background: #EFEFF4; /* IE6/7 don't support data URI */
+	border: 1px solid #BBB;
+	clear: left;
+	float: left;
+	overflow: visible;
+	padding: 8px 0 8px 12px;
+	position: relative;
+	width: 97.4%;
+}
+#rn_SearchControls form {
+	padding: 0 0 6px;
+	_margin-bottom: 20px;
+}
+#rn_SearchControls form input[type="submit"], #rn_SearchControls form input[type="image"] {
+	margin: 1.3em 0 0 1.3em;
+	padding: .4em 1em;
+}
+/**IE6 doesn't use attr selectors*/
+#rn_SearchControls input {
+	_margin: 1.3em 0 0 1.3em;
+	_padding: .4em 1em;
+}
+#rn_SearchControls .rn_SearchInput {
+	float: left;
+	position: relative;
+	width: 50%;
+}
+#rn_SearchControls .rn_SearchInput a {
+	color: #25383C;
+	display: block;
+	float: right;
+	font-size: .917em;
+	margin-right: -8px;
+	/*IE6/7*/
+	*margin-right: 0;
+	*position: absolute;
+	*right: -8px;
+	_right: 0px;
+	text-decoration: none;
+}
+#rn_SearchControls .rn_SearchInput label {
+	bottom: 0px;
+	position: absolute;
+	/*IE6/7*/
+	*bottom: -50px !important;
+	*position: relative !important;
+}
+#rn_SearchControls .rn_SearchInput input {
+	font-weight: bold;
+	height: 1.3em;
+	margin-bottom: 20px;
+	/*IE6*/
+	_margin: 0;
+	padding: 4px 4px 3px;
+	width: 100%;
+}
+/************************
+ PageTitle -
+ Appears at the top of each page
+ ************************/
+#rn_PageTitle {
+	border-bottom: 1px solid #E2E2E0;
+	color: #25383C;
+	overflow: hidden;
+	padding: 16px 0 0;
+}
+#rn_PageTitle.rn_Home, #rn_PageTitle.rn_QuestionList, #rn_PageTitle.rn_AnswerList {
+	border-bottom: 0;
+	overflow: visible;
+}
+#rn_PageTitle.rn_AnswerDetail {
+	padding: 16px 0 5px;
+}
+#rn_PageTitle.rn_Home {
+	margin-bottom: 10px;
+}
+#rn_PageTitle h1, #rn_PageTitle h2, #rn_PageTitle h3, #rn_PageTitle h4, #rn_PageTitle h5, #rn_PageTitle h6 {
+	clear: left;
+	word-wrap: break-word;
+}
+#rn_PageTitle p {
+	clear: both;
+}
+/************************
+ PageContent
+ ************************/
+#rn_PageContent {
+	clear: both;
+	overflow: visible;
+}
+
+/*************************************
+ Forms
+ *************************************/
+#rn_PageContent form h2, .rn_HeadingBar {
+	background: #F9F9F9;
+	border: 1px solid #CCC;
+	clear: both;
+	color: #414142;
+	letter-spacing: -0.03em;
+	padding: 4px;
+	margin: 20px 0 10px;
+}
+/**generic form legend only visible for screen readers (forms mode)*/
+form legend {
+	font-size: 0em;
+	visibility: hidden;
+}
+form fieldset {
+	padding-left: 8px;
+}
+form button {
+	margin-top: 20px;
+}
+form .rn_Column {
+	margin-bottom: 10px;
+}
+.rn_HintBox {
+	background-color: #F2F2F2;
+	border: 1px solid #DBDBDB;
+	color: #222;
+	opacity: .7;
+	padding: 4px 16px 2px;
+	-webkit-border-top-right-radius: 10px;
+	-webkit-border-bottom-right-radius: 10px;
+	-moz-border-radius-bottomright: 10px;
+	-moz-border-radius-topright: 10px;
+	border-top-right-radius: 10px;
+	border-bottom-right-radius: 10px;
+}
+.rn_Required, .rn_ErrorLabel {
+	color: #C10000;
+}
+.rn_ErrorField {
+	background-color: #FEFDA0 !important;
+}
+.rn_MessageBox {
+	background-color: #FFFFE0;
+	border: 1px solid #808080;
+	color: #990000;
+	margin: 10px 0;
+	padding: 6px;
+}
+.rn_ErrorMessage {
+	background: #FFFFE0 url(images/layout/important.png) no-repeat;
+	padding: 8px 6px 8px 40px !important;
+}
+.rn_ErrorMessage a {
+	color: #990000;
+}
+.rn_InfoMessage {
+	background: #FFFFE0 url(images/layout/info.png) no-repeat;
+	padding: 6px 6px 4px 40px !important;
+}
+/***************
+ Dialogs
+ ****************/
+.rn_Dialog {
+	overflow: visible;
+}
+.rn_Dialog ol, .rn_Dialog ul {
+	padding: 0.4em 0 0 1.8em;
+}
+.rn_Dialog ol li {
+	list-style: decimal outside none;
+}
+.rn_Dialog ul li {
+	list-style: disc outside none;
+}
+/**************
+ Module Box
+ **************/
+.rn_Module {
+	background: #F7F7F7;
+	border: 1px solid #CCC;
+	clear: both;
+	margin-bottom: 12px;
+	overflow: hidden;
+	padding-bottom: 8px;
+}
+.rn_Module h3, .rn_Module h2 {
+	background: #EBEFF5 url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAAAAAA6fptVAAAACklEQVQIHWP4DwABAQEANl9ngAAAAABJRU5ErkJggg==) repeat-x scroll 0 0;
+	*background: #EBEFF5; /* IE6/7 don't support data URI */
+	border-bottom: 1px solid #CCC;
+	font-family: "Lucida Sans Unicode", "Lucida Grande", Garuda, sans-serif;
+	font-weight: normal;
+	margin-bottom: 8px;
+	padding: 4px;
+}
+/***********
+ Misc Common rules
+ **********/
+.rn_FloatRight {
+	float: right;
+}
+.rn_FloatLeft {
+	float: left;
+}
+.rn_Padding {
+	padding: 8px 10px 2px 10px;
+}
+.rn_ClearBoth {
+	clear: both;
+}
+.rn_Highlight {
+	font-style: normal;
+	font-weight: bold;
+	text-decoration: inherit;
+}
+/**********
+ Columns
+ **********/
+.rn_ColumnContainer {
+	width: 100%;
+}
+.rn_Column {
+	width: 48%;
+}
+.rn_LeftColumn {
+	float: left;
+	padding: 0 4px 0 0;
+}
+.rn_RightColumn {
+	float: right;
+	padding: 0 0 0 4px;
+}
+.rn_LargeText {
+	font-size: 1.333em;
+	font-weight: bold;
+	line-height: 1.4em;
+}
+
+/*******************************************
+ 08. Answer & Question Detail
+ *******************************************/
+#rn_Summary {
+	padding: 7px 0 0 0;
+	line-height: 1em;
+	letter-spacing: -.01em;
+}
+#rn_AnswerInfo {
+	color: #888;
+	margin: 6px 0 20px;
+}
+#rn_AnswerInfo div {
+	display: inline;
+}
+#rn_AnswerText {
+	clear: both;
+	line-height: 1.4em;
+	padding: 5px 0 15px;
+}
+#rn_FileAttach {
+	padding-bottom: 1em;
+}
+/************
+ List styles for answer content
+ *************/
+.rn_QuestionDetail ol, .rn_QuestionDetail ul, .rn_AnswerDetail ol, .rn_AnswerDetail ul {
+	padding-left: 2em;
+	clear: both;
+}
+.rn_QuestionDetail > ol, .rn_QuestionDetail > ul, .rn_AnswerDetail > ol, .rn_AnswerDetail > ul, #rn_AnswerText > ol, #rn_AnswerText > ul {
+	margin-bottom: 1em;
+}
+.rn_QuestionDetail li, .rn_AnswerDetail li {
+	line-height: 1.4em;
+	margin: 4px 0;
+}
+/* Unordered lists */
+.rn_QuestionDetail ul li, .rn_AnswerDetail ul li {
+	list-style: disc;
+}
+.rn_QuestionDetail li ul li, .rn_AnswerDetail li ul li {
+	list-style: circle;
+}
+.rn_QuestionDetail li li ul li, .rn_AnswerDetail li li ul li {
+	list-style: square;
+}
+/* Ordered lists */
+.rn_QuestionDetail ol li, .rn_QuestionDetail li ol li, .rn_QuestionDetail li li ol li, .rn_AnswerDetail ol li, .rn_AnswerDetail li ol li, .rn_AnswerDetail li li ol li {
+	list-style: decimal;
+}
+
+
+/* Incident thread */
+#rn_UpdateQuestion textarea {
+	width: 98%;
+}
+#rn_QuestionThread {
+	margin: 4px;
+}
+#rn_AdditionalInfo, #rn_DetailTools {
+	background: #EEE url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAAAAAA6fptVAAAACklEQVQIHWP4DwABAQEANl9ngAAAAABJRU5ErkJggg==) repeat-x scroll 0 0;
+	*background: #EEE; /* IE6/7 don't support data URI */
+	border: 1px solid #BBB;
+}
+/** Additional Details box **/
+#rn_AdditionalInfo {
+	margin: 1em;
+	overflow: hidden;
+	padding: 12px;
+	width: 560px;
+}
+/** Print/Email/Notif/Share Container **/
+#rn_DetailTools {
+	line-height: 1em;
+	margin-top: 2em;
+	padding: 8px 0;
+	text-align: right;
+}
+/*************************************
+ 09. Home Page : Top Answers
+ *************************************/
+#rn_PageContent.rn_Home {
+	overflow: hidden;
+}
+#rn_PageContent.rn_Home .rn_Module ul {
+	margin: 12px;
+	overflow: hidden;
+}
+#rn_PageContent.rn_Home .rn_Module ul li {
+	float: left;
+	margin: 0px;
+	padding: 4px;
+	width: 48%;
+}
+#rn_PageContent.rn_Home .rn_Module ul li img {
+	display: none;
+}
+#rn_PageContent.rn_Home .rn_Module ul li a {
+	float: left;
+	font-size: .8em;
+	margin: 4px;
+}
+#rn_PageContent.rn_Home .rn_AnswersLink {
+	display: inline-block;
+	font-size: 120%;
+	font-weight: bold;
+	margin: 10px 0 10px 16px;
+}
+
+/*************************************
+ 10. Account Pages
+ *************************************/
+/*********************
+ Sprite for overview page
+ *********************/
+.rn_Overview {
+}
+.rn_Overview a:focus, .rn_Overview a:hover {
+	text-decoration: underline;
+}
+.rn_Overview h2{
+    margin: 0;
+    padding: 0;
+}
+.rn_Overview h2 a{
+	font-family: Gotham, Arial;
+    font-size: 28px;
+    line-height: 28px;
+    font-weight: bold;
+    font-style: normal;
+    color: #706359;
+    text-transform: initial;
+}
+
+.rn_Overview div.rn_Questions, .rn_Overview div.rn_Notifs, .rn_Overview div.rn_Profile, .rn_Overview div.rn_Contracts {
+	margin: 10px;
+}
+.rn_QuestionList caption {
+	font-size: 1.333em;
+	font-weight: bold;
+	line-height: 1.4em;
+}
+/*********************
+ login page
+ *********************/
+.rn_Account.rn_LoginForm h2 {
+	color: #404040;
+	font-size: 1em;
+	line-height: 1.3em;
+}
+.rn_Account.rn_LoginForm .rn_Column.rn_RightColumn {
+	width: 47%;
+	position: relative;
+	left: 20px;
+}
+.rn_Account.rn_LoginForm .rn_Column.rn_LeftColumn {
+	border-right: 1px solid #CCC;
+	min-height: 350px;
+	*position: relative;
+}
+.rn_Account.rn_LoginForm .rn_MiddleBuffer {
+	background: #FFF;
+	bottom: -80px;
+	left: -9px;
+	padding: 4px 0;
+	position: relative;
+}
+.rn_Account.rn_LoginForm .rn_ThirdPartyLogin {
+	/*To ensure proper IE7 behavior with presentation CSS*/
+	*position: relative;
+}
+/**********************
+ Create account page
+ ***********************/
+.rn_CreateAccount .rn_ThirdPartyLogin {
+	width: 550px;
+	min-height: 115px;
+	padding-left: 5px;
+}
+/********************************
+ 11. General Accessibility
+ *********************************/
+#rn_SkipNav a {
+	left: 0px;
+	height: 1px;
+	overflow: hidden;
+	position: absolute;
+	top: -500px;
+	width: 1px;
+}
+#rn_SkipNav a:active, #rn_SkipNav a:focus {
+	background-color: #FFF;
+	height: auto;
+	left: auto;
+	top: auto;
+	width: auto;
+}
+
+/****************************
+ 12. Print Style
+ (only display content)
+ ****************************/
+@media print {
+	body {
+		font-size: 1em;
+	}
+	#rn_DetailTools, #rn_Header, #rn_Navigation, #rn_SideBar, #rn_Footer {
+		display: none;
+	}
+	#rn_Footer, #rn_Body, #rn_PageContent, #rn_PageTitle, #rn_AdditionalInfo {
+		overflow: visible;
+	}
+	#rn_Body {
+		border: 0;
+		box-shadow: none;
+		-moz-box-shadow: none;
+		-webkit-box-shadow: none;
+	}
+}
+
+/*******************************************
+ 13. Chat Related
+ *******************************************/
+
+#rn_ChatContainer {
+	height: 100%;
+	margin: 0px auto;
+	overflow: hidden;
+	text-align: left;
+}
+
+#rn_ChatDialogContainer {
+	background-color: #EBEFF5;
+	border: 1px solid #555;
+	overflow-x: hidden;
+	overflow-y: auto;
+	position: relative;
+	height: 450px;
+}
+
+#rn_ChatDialogHeaderContainer {
+	height: 30px;
+	overflow: visible;
+	padding: 4px;
+	vertical-align: middle;
+}
+
+#rn_ChatDialogTitle {
+	margin-top: 8px;
+}
+
+#rn_ChatDialogHeaderButtonContainer button {
+	background: none;
+	border-color: transparent;
+	color: #555;
+	margin-right: .25em;
+	-moz-box-shadow: none;
+	-webkit-box-shadow: none;
+	box-shadow: none;
+	padding: 2px;
+}
+
+#rn_ChatDialogHeaderButtonContainer button:hover, #rn_ChatDialogHeaderButtonContainer button:focus {
+	background-color: #F8F8F8;
+	border-color: #CCC #555 #555 #CCC;
+	color: #000;
+}
+
+#rn_InChatButtonContainer {
+	overflow: visible;
+}
+
+#rn_PreChatButtonContainer {
+	overflow: visible;
+}
+
+#rn_ChatQueueSearchContainer {
+	bottom: 0px;
+	position: absolute;
+	width: 100%;
+}
+
+#rn_ChatQueueSearchContainer div.rn_ScreenReaderOnly {
+	display: none;
+}
+
+#rn_ChatFooter {
+	padding: 10px;
+}
+
+#rn_ChatLogo {
+	height: 100px;
+	position: absolute;
+	right: 10px;
+	top: 10px;
+	width: 135px;
+}
+
+/***********
+ Donate Page
+ **********/
+.donate-content {
+	width: 100%;
+}
+.donate-info {
+	background: #FFF;
+	float: left;
+	border: none;
+	padding: 0;
+	overflow: auto;
+	margin-bottom: 20px;
+	width: 60%;
+	/*border-radius: 0 4px 4px 4px;
+	box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.3);*/
+}
+.donate-info .info-left {
+	float: left;
+}
+.donate-info .info-left p {
+	padding: 10px 10px;
+	color: #3D3421;
+	font-family: GothamBold, sans-serif;
+	font-size: 12px;
+}
+.donate-info .info-right {
+	float: right;
+	width: 60%;
+	padding: 15px;
+}
+.donate-info .info-right h3 {
+	font-family: GothamMedium;
+	color: #911A1D;
+	font-size: 16px;
+	margin-bottom: 10px;
+}
+.donate-info .info-right p {
+	color: #3D3421;
+	font-family: GothamBook, sans-serif;
+	line-height: 120%;
+}
+.donate-total {
+	background: #FFF;
+	float: right;
+	border: none;
+	padding: 0 0 10px 0;
+	overflow: auto;
+	margin-bottom: 20px;
+	width: 35%;
+	/*border-radius: 4px;
+	box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.3);*/
+}
+.donate-total h3 {
+	background-color: #70635a;
+	color: #FFF;
+	/*border-radius: 4px 4px 0 0;*/
+	padding: 8px;
+	margin-bottom: 10px;
+	text-align: center;
+	font-size: 19px;
+	font-family: Gotham, Arial;
+	font-weight: normal;
+	text-transform: uppercase;
+}
+.donate-total p {
+	padding: 0 10px;
+	color: #3D3421;
+	font-family: GothamBook, sans-serif;
+	margin: 0;
+	font-size: 12px;
+}
+.donate-total b {
+	display: block;
+	font-family: GothamBold, sans-serif;
+}
+.donate-total a {
+	color: #FFF;
+}
+span.finaltotal {
+	color: #911A1D;
+	font-family: GothamBold, sans-serif;
+	font-size: 16px;
+}
+.donate-carousel {
+	width: 100%;
+}
+.donate-carousel .carousel-content {
+	background: #FFF;
+	float: left;
+	border: none;
+	padding: 4px;
+	border-radius: 4px;
+}
+.donate-carousel .carousel-thumb {
+	float: left;
+	padding: 16px;
+	border-right: 2px solid #eee;
+}
+.donate-carousel .carousel-thumb b {
+	color: #911A1D;
+	font-family: GothamBold, sans-serif;
+	font-size: 162x;
+}
+
+a.don_linkbutton{
+	display: inline-block;
+    height: 22px;
+    color: #FFF;
+    cursor: pointer;
+    padding: 8px;
+    text-decoration: none;
+    background-color: #e44c2e;
+    box-shadow: none;
+    text-shadow: none;
+    border: none;
+    border-radius: initial;
+    font-family: Gotham, Arial;
+    font: small-caption;
+    font-size: 13px;
+    font-style: normal;
+    font-weight: bold;
+    text-transform: uppercase;
+    line-height: 21px;
+    font-stretch: ultra-condensed;
+}
+
+a.sponsor-link{
+	
+}
+
+/***********
+ Give Page
+ **********/
+.give-content {
+	width: 100%;
+	position: absolute;
+}
+.give-boxes {
+	background: #FFF;
+	float: left;
+	border: none;
+	padding: 4px;
+	margin-right: 20px;
+	width: 170px;
+	border-radius: 4px;
+	box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.3);
+}
+.give-boxes p {
+	text-align: center;
+}
+.give-boxes .profile-img img {
+	margin: 0 auto;
+}
+.give-boxes .profile-img {
+	width: 100%;
+}
+.gift-total {
+	background: #FFF;
+	float: right;
+	border: none;
+	padding: 0 0 10px 0;
+	overflow: auto;
+	margin-bottom: 20px;
+	width: 35%;
+	border-radius: 4px;
+	box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.3);
+}
+.gift-total h3 {
+	background-color: #70635a;
+	color: #FFF;
+	border-radius: 4px 4px 0 0;
+	padding: 8px;
+	margin-bottom: 10px;
+	text-align: center;
+	font-size: 19px;
+	font-family: HatCheck, sans-seriff;
+	font-weight: normal;
+	text-transform: uppercase;
+}
+.gift-total p {
+	padding: 0 10px;
+	color: #3D3421;
+	font-family: GothamBook, sans-serif;
+	margin: 0;
+	font-size: 12px;
+}
+.gift-total b {
+	display: block;
+	font-family: GothamBold, sans-serif;
+}
+.gift-total a {
+	color: #FFF;
+}
+span.finaltotal {
+	color: #911A1D;
+	font-family: GothamBold, sans-serif;
+	font-size: 16px;
+}
+.gift-carousel {
+	width: 100%;
+}
+.gift-carousel .carousel-content {
+	background: #FFF;
+	float: left;
+	border: none;
+	padding: 4px;
+	border-radius: 4px;
+	box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.3);
+}
+.gift-carousel .carousel-thumb {
+	float: left;
+	padding: 0 4px;
+}
+.gift-carousel .carousel-thumb b {
+	color: #911A1D;
+	font-family: GothamBold, sans-serif;
+	font-size: 162x;
+}
+
+/***********
+ Sponsor Page
+ **********/
+.sponsor-content {
+	width: 100%;
+	background-color: white;
+}
+.sponsor-info {
+	background: #FFF;
+	clear: both;
+	border: none;
+	padding: 6px;
+	overflow: auto;
+	margin-bottom: 20px;
+	font-family: GothamBook, sans-serif;
+	color: #3D3421;
+	font-size: 11px;
+	/*border-radius: 0 4px 4px 4px;
+	box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.3);
+	width: 722px;
+	margin-right: 93px;
+    margin-left: 93px;*/
+}
+
+.sponsor-info-photo {
+	border:1px; 
+	float:left;
+}
+
+.bio-info{
+	padding: 10px 10px 10px 30px;
+	float:left;
+}
+
+form#pledgeeditform .sponsor-info {
+	width: 75%;
+}
+
+form#pledgeeditform .sponsor-content {
+	display: block;
+	float: left;
+}
+
+.sponsor-info label {
+	font-family: GothamBold;
+}
+.sponsor-info h3 {
+	font-family: GothamMedium, sans-serif;
+	color: #911A1D;
+	font-size: 16px;
+}
+
+.sponsor-text {
+	width: 33%;
+    float: left;
+    border-left: 2px dotted #e2e2e2;
+    padding: 14px 38px;
+    margin: 10px 0 0;
+}
+.sponsor-text p {
+	font-family: GothamBook, sans-serif;
+	color: #3D3421;
+}
+.drop-menus {
+	width: auto;
+}
+.drop-menus p {
+	text-align: center;
+}
+
+.sponsor-carousel {
+	width: 100%;
+	margin-left: 93px;
+}
+.sponsor-carousel .carousel-content {
+	background: #FFF;
+	float: left;
+	border: none;
+	padding: 4px;
+	border-radius: 4px;
+	box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.3);
+}
+.sponsor-carousel .carousel-thumb {
+	float: left;
+	padding: 0 4px;
+}
+.sponsor-carousel .carousel-thumb b {
+	color: #911A1D;
+	font-family: GothamBold, sans-serif;
+	font-size: 162x;
+}
+
+.rn_PasswordInputValidate {
+	margin: 5px 0px;
+}
+
+.sponsor-button{
+	display: inline-block;
+	/*height: 22px;*/
+	color: #FFF;
+	cursor: pointer;
+	padding: 8.5px 8px;
+	text-decoration: none;
+	background-color: #e44c2e;
+	box-shadow: none;
+	text-shadow: none;
+	border: none;
+	border-radius: initial;
+	font-family: Gotham, Arial;
+	font: small-caption;
+	font-size: 10px;
+	font-style: normal;
+	font-weight: bold;
+	text-transform: uppercase;
+	/*line-height: 21px;*/
+	font-stretch: ultra-condensed;
+	margin: 10px 10px 10px 10px;
+	text-align: center;
+}
+
+a.sponsor-button{
+	color: white;
+}
+
+/* Custom Fonts
+ ----------------------------------------------- */
+@font-face {
+	font-family: 'GothamBold';
+	src: url('fonts/gotham-bold-webfont.eot');
+	src: local('☺'), url('fonts/gotham-bold-webfont.eot?#iefix') format('embedded-opentype'), url('fonts/gotham-bold-webfont.woff') format('woff'), url('fonts/gotham-bold-webfont.ttf') format('truetype'), url('fonts/gotham-bold-webfont.svg#GothamBold') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'GothamBook';
+	src: url('fonts/gotham-book-webfont.eot');
+	src: local('☺'), url('fonts/gotham-book-webfont.eot?#iefix') format('embedded-opentype'), url('fonts/gotham-book-webfont.woff') format('woff'), url('fonts/gotham-book-webfont.ttf') format('truetype'), url('fonts/gotham-book-webfont.svg#GothamBook') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'GothamBookItalic';
+	src: url('fonts/gotham-bookitalic-webfont.eot');
+	src: local('☺'), url('fonts/gotham-bookitalic-webfont.eot?#iefix') format('embedded-opentype'), url('fonts/gotham-bookitalic-webfont.woff') format('woff'), url('fonts/gotham-bookitalic-webfont.ttf') format('truetype'), url('fonts/gotham-bookitalic-webfont.svg#GothamBookItalic') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'GothamLight';
+	src: url('fonts/gotham-light-webfont.eot');
+	src: local('☺'), url('fonts/gotham-light-webfont.eot?#iefix') format('embedded-opentype'), url('fonts/gotham-light-webfont.woff') format('woff'), url('fonts/gotham-light-webfont.ttf') format('truetype'), url('fonts/gotham-light-webfont.svg#GothamLight') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'GothamLightItalic';
+	src: url('fonts/gotham-lightitalic-webfont.eot');
+	src: local('☺'), url('fonts/gotham-lightitalic-webfont.eot?#iefix') format('embedded-opentype'), url('fonts/gotham-lightitalic-webfont.woff') format('woff'), url('fonts/gotham-lightitalic-webfont.ttf') format('truetype'), url('fonts/gotham-lightitalic-webfont.svg#GothamLightItalic') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'GothamMedium';
+	src: url('fonts/gotham-medium-webfont.eot');
+	src: local('☺'), url('fonts/gotham-medium-webfont.eot?#iefix') format('embedded-opentype'), url('fonts/gotham-medium-webfont.woff') format('woff'), url('fonts/gotham-medium-webfont.ttf') format('truetype'), url('fonts/gotham-medium-webfont.svg#GothamMedium') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'HatCheck';
+	src: url('fonts/hatcheck-webfont.eot');
+	src: url('fonts/hatcheck-webfont.eot?#iefix') format('embedded-opentype'), url('fonts/hatcheck-webfont.woff') format('woff'), url('fonts/hatcheck-webfont.ttf') format('truetype'), url('fonts/hatcheck-webfont.svg#HatCheck') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
+/* End Custom Fonts
+ ----------------------------------------------- */
+
+@media print {
+	#rn_ChatDialogHeaderContainer, #rn_InChatButtonContainer, #rn_PreChatButtonContainer, #rn_ChatQueueSearchContainer, #rn_ChatLogo {
+		display: none;
+	}
+
+	#rn_ChatContainer {
+		border: 0;
+		overflow: visible;
+		height: auto;
+	}
+
+	#rn_ChatDialogContainer {
+		overflow: visible;
+		height: auto;
+	}
+}
+#tr_topdiv_left {
+	width: 650px;
+	float: left;
+}
+#tr_topdiv_right {
+	width: 250px;
+	float: left;
+}
+
+
+/*************Eventus*****************/
+
+.esg_centerContainer {
+	margin: 0 auto;
+}
+.esg_centerContainer .rn_FormSubmit {
+	text-align: right;
+	display: inline;
+}
+.esg_checkoutButton button, .esg_checkoutButton {
+	margin-right: 0px;
+	margin-top: 10px;
+	text-align: right;
+	display: inline;
+}
+.esg_checkoutSummary{
+	margin: 20px auto;
+}
+.rn_BillingDonorInfoContainer{
+	margin-top: 20px;
+}
+
+.tblDetail .yui3-datatable-table {
+	width: 100%;
+	border: none;
+}
+.tblDetail .label {
+	background: #fff url("images/eventusg_graphics/fade-to-left-bg.jpg") repeat-y right top;
+	text-align: left;
+	text-shadow: 0 1px 1px #ccc;
+	white-space: nowrap;
+	font-size: 18px;
+	padding: 10px 100px 10px 25px;
+	border-bottom: 1px solid #ccc;
+	border-right: 1px solid #ccc;
+}
+.tblDetail .data {
+	font-size: 13px;
+	border-bottom: 1px solid #ccc;
+	padding: 10px 100px 10px 15px;
+}
+
+form#pledgeeditform input[type="submit"] {
+	float: left;
+}
+
+form#pledgeeditform button {
+	/*float: right;*/
+}
+
+form#pledgeeditform .esg_checkoutButton {
+	width: 35%;
+}
+
+form#pledgeeditform .rn_ajaxCustomFormSubmit img, form#pledgeeditform .rn_ajaxCustomFormSubmit span {
+	float: left;
+}
+
+.cancelButton {
+}
+
+.cancelPledge_LoadingIcon, .cancelPledge_StatusMessage {
+	float: left;
+	margin-top: 7px;
+	margin-left: 5px;
+}
+
+input[type="radio"], input[type="radio"] {
+	width: 15px;
+	height: 15px;
+}
+
+form#storedMethodForm td {
+	padding: 8px;
+}
+
+.managepay {
+	font-size: 1em;
+}
+
+form#payMethodsform .tblDetail .label {
+	font-size: 1em;
+	font-weight: normal;
+}
+
+form#payMethodsform .tblDetail tr.disabled td {
+	background-color: lightgray !important;
+}
+
+form#payMethodsform .esg_checkoutButton {
+	float: left;
+	width: 225px;
+}
+form#payMethodsform .esg_checkoutButton .rn_FormSubmit {
+	float: left;
+}
+
+
+a.addLink {
+	float: right;
+	padding-top: 16px;
+	vertical-align: bottom;
+}
+
+.headerContainer {
+	height: 100%;
+	margin: 0 auto;
+	overflow: visible;
+	padding-top: 20px;
+	text-align: left;
+	width: 942px;
+}
+
+#topSection {
+	width: 100%;
+	background-color: #fff;
+}
+.formGroup {
+	margin-left: 20px;
+	width: 50%;
+}
+
+.rn_ajaxCustomFormSubmit.rn_FormSubmit {
+	margin-top: 15px;
+}
+
+/**************************/
+/* 	       Layout         */
+/**************************/
+
+html,
+body{
+   margin:0;
+   padding:0;
+   height:100%;
+   font-family: Gotham, Arial; }
+
+.rn_Container{
+	box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    width: 1000px;
+    margin: 0 auto;
+    padding-left: 20px;
+    padding-right: 20px; }
+
+.rn_SiteContainer{
+	min-height:100%;
+  	position:relative; }
+
+.rn_AfricaNewLifeLayoutLeftColumn{
+	box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+	float: left;
+    width: 70%;
+    overflow: auto;
+    margin: 0 4% 38px 0;
+    padding: 38px; 
+	background-color: white; }
+
+.rn_AfricaNewLifeLayoutRightColumn{
+	box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+	float: left;
+	width: 26%;
+	overflow: auto;
+	margin: 0 0 38px 0;
+	padding: 0;
+	background-color: white;
+	min-height: 500px; }
+
+.rn_AfricaNewLifeLayoutSingleColumn{
+	background-color: white;
+    padding: 38px;
+    margin: 38px 0 38px 0;
+}
+
+.rn_PageContentContainer{
+	padding-bottom: 378px; }
+
+#rn_PageContent{
+    overflow: auto; }
+
+.rn_PageFooter{
+   position: absolute;
+   bottom: 0;
+   width: 100%;
+   height: 317px; }
+
+/* CLEAR-FIX */
+.clearfix:after { 
+    visibility: hidden; display: block; font-size: 0; 
+    content: " "; clear: both; height: 0; 
+}
+*:first-child+html .clearfix { zoom: 1; } /* IE7 */
+
+/**************************/
+/* 	     Site Header      */
+/**************************/
+
+.rn_SiteHeaderContainer{
+	background-color: white; }
+	.rn_SiteHeaderContainer
+    .rn_SiteHeader{
+		padding-top: 18px;
+	    padding-bottom: 18px;
+	    position: relative; }
+	.rn_SiteHeaderContainer
+	.rn_SiteHeader
+	#rn_HeaderLogoLink{
+		float: left;
+	    width: 163px; }
+	.rn_SiteHeaderContainer
+	.rn_SiteHeader
+	#rn_Navigation{
+	    position: relative;
+	    display: block;
+	    margin-top: 30px;
+	    padding-left: 183px; }
+		#rn_Navigation ul{
+			height: 14px;
+			text-align: right;
+			line-height: 1em;
+			margin-right: -8px; }
+			#rn_Navigation ul li{
+				height: 14px;
+				display: inline-block; }
+
+/**************************/
+/* /app/payment/checkout  */
+/**************************/
+.rn_CheckoutPageHeader{
+	font-family: Gotham, Arial;
+    font-size: 28px;
+    line-height: 28px;
+    font-weight: bold;
+    font-style: normal;
+    color: #706359;
+    margin-bottom: 14px;
+}
+
+.rn_CheckoutPageHeaderDescription{
+	margin: 14px 0;
+	font-family: Gotham, Arial;
+    font-size: 14px;
+    line-height: 21px;
+    font-weight: 300;
+    font-style: normal;
+    color: #706359;
+}

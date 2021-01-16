@@ -1,0 +1,13 @@
+@import 'widget-includes';
+
+.rn_RelatedAnswers {
+    li {
+        @include list-kbanswer-icon;
+    }
+}
+
+@media print {
+    .rn_RelatedAnswers {
+        display: none;
+    }
+}

@@ -1,0 +1,9 @@
+.rn_OkcsLoading {
+  background: url("../images/loading.gif") no-repeat scroll center center;
+  clear: both;
+  height: 100%;
+  margin-left: -6px;
+  opacity: 0.6;
+  position: absolute;
+  width: 69em;
+  z-index: 500; }

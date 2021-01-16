@@ -1,0 +1,39 @@
+.rn_Multiline2 {
+    overflow:hidden;
+}
+.rn_Multiline2 .rn_Loading
+{
+    background: url(../images/loading.gif) no-repeat center center;
+    height:auto !important;
+    height:66px;
+    min-height:66px;
+}
+
+.rn_Multiline2 .rn_Element1,
+.rn_Multiline2 .rn_Element2{
+    font-size:1.333em;
+}
+
+.rn_Multiline2 .rn_Element3{
+    font-size:1.1em;
+    line-height:1.3em;
+}
+
+.rn_Multiline2 .rn_ElementsHeader,
+.rn_Multiline2 .rn_ElementsData{
+    color:#777777;
+    font-size:0.8em;
+}
+/**
+ * Uncomment this line to override the standard site.css and enable
+ * row numbering for Multiline reports
+.rn_Multiline2 ol li{
+    list-style: decimal inside none;
+}
+*/
+.rn_Multiline2 ol, .rn_Multiline2 ul{
+    padding-top:3px;
+}
+.rn_Multiline2 li{
+    margin-bottom:12px;
+}

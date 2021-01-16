@@ -1,0 +1,33 @@
+.rn_EmailAnswerLink {
+    display:inline;
+    margin-right:10px;
+}
+.rn_EmailAnswerLink a img {
+    cursor:pointer;
+    vertical-align:middle;
+}
+.rn_EmailAnswerLink a {
+    color:#222222;
+    cursor:pointer;
+    text-decoration:none;
+}
+/**Workaround for IE6's hover buginess:
+      we need essentially a blank a:hover
+      before it'll see an inner span**/
+.rn_EmailAnswerLink a:hover {
+    white-space:normal;
+}
+.rn_EmailAnswerLink a:hover span {
+    cursor:pointer;
+    text-decoration:underline;
+}
+.rn_EmailAnswerLinkForm label {
+    clear:left;
+    display:block;
+}
+.rn_EmailAnswerLinkForm input {
+    clear:left;
+    display:block;
+    margin-bottom:1em;
+    width:200px;
+}

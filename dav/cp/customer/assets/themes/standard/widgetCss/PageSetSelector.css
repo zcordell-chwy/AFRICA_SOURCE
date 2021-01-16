@@ -1,0 +1,8 @@
+.rn_PageSetSelector {
+    display:block;
+    margin-bottom:16px;
+}
+.rn_PageSetSelector small {
+    color:#505050;
+    display:block;
+}

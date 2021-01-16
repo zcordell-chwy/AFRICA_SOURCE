@@ -1,0 +1,8 @@
+.rn_ChatAgentStatus{
+    background:#EFEFF4 url(../images/layout/whitePixel.png) repeat-x scroll 0 0;
+    border:solid #BBB;
+    border-width: 1px 1px 0;
+    padding:5px;
+    line-height:1.25em;
+    margin: 0 1em 0;
+}

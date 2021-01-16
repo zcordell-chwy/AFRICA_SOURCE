@@ -1,0 +1,18 @@
+.rn_DateInput {
+    clear:both;
+    margin-bottom:8px;
+}
+.rn_DateInput .rn_Label {
+    font-size:inherit;
+    font-weight:bold;
+    margin-bottom:2px;
+}
+.rn_DateInput legend {
+    font-size:1em;
+    /*IE6/7 gives legends an offset*/
+    *left: -7px;
+    *position:relative;
+}
+.rn_DateInput fieldset {
+    padding:0;
+}

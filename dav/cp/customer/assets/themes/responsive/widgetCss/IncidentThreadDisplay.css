@@ -1,0 +1,42 @@
+.rn_IncidentThreadDisplay .rn_ThreadHeader  {
+    background-color:#EEE;
+    border: 1px solid #CCC;
+    text-shadow: 0px 1px 1px #FFF;
+    font-size:1.083em;
+    font-weight:bold;
+    padding:0.25em;
+    position:relative;
+}
+.rn_IncidentThreadDisplay .rn_ThreadHeader .rn_ThreadTime  {
+    position:absolute;
+    right:1em;
+}
+.rn_IncidentThreadDisplay .rn_ThreadHeader.rn_Customer  {
+    background-color:#CCC;
+}
+.rn_IncidentThreadDisplay .rn_ThreadContent {
+    background-color:#FFF;
+    border:1px solid #DDD;
+    border-width:0 1px 1px;
+    color:#404040;
+    font-size:1em;
+    margin-bottom:0px;
+    overflow-y:hidden;
+    overflow-x:auto;
+    padding:1em 10px;
+}
+@media print{
+    .rn_IncidentThreadDisplay .rn_ThreadContent{
+        overflow:visible;
+    }
+    .rn_IncidentThreadDisplay .rn_ThreadHeader{
+        *overflow: hidden;
+    }
+    .rn_IncidentThreadDisplay .rn_ThreadTime{
+        *float: right;
+        *position: static;
+    }
+    .rn_IncidentThreadDisplay .rn_ThreadAuthor{
+        *float: left;
+    }
+}

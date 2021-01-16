@@ -1,0 +1,45 @@
+.rn_LoginDialog2 {
+    width: 210px;
+}
+.rn_LoginDialog2.rn_ContentLoading{
+    background:url(../images/loading.gif) no-repeat center center;
+}
+.rn_LoginDialog2 input{
+    margin-bottom:5px;
+}
+.rn_LoginDialog2 input[type="text"],
+.rn_LoginDialog2 input[type="password"]{
+    width:200px;
+}
+.rn_LoginDialog2 label{
+    margin-bottom:5px;
+    display:block;
+}
+.rn_LoginDialog2 div{
+    margin-bottom: 5px;
+}
+
+.rn_LoginDialog2.rn_AdditionalOpenLogin {
+    overflow: hidden;
+    position: relative;
+    width: 400px;
+}
+.rn_LoginDialog2.rn_AdditionalOpenLogin .rn_LoginDialogContent{
+    border-left: 1px solid #DDD;
+    float: right;
+    margin-bottom: 5px;
+    padding-left:32px;
+    width:209px;
+}
+.rn_LoginDialog2 div.rn_OpenLoginAlternative{
+    background:url(../images/icons/badges.png) no-repeat;
+    border: 0;
+    float: left;
+    margin:4px;
+    padding: 0;
+    width: 150px;
+}
+.rn_LoginDialog2 .rn_OpenLoginAlternative a{
+    display: block;
+    padding-top:80px;
+}

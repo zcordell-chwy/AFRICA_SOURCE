@@ -1,0 +1,9 @@
+.rn_VirtualAssistantBanner {
+    float: left;
+}
+
+.rn_VirtualAssistantBanner > div {
+    max-height: 100px;
+    max-width: 250px;
+    overflow: hidden;
+}

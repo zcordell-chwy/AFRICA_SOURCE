@@ -1,0 +1,16 @@
+.rn_Unsubscribe .rn_AnswerSummaryDisplay {
+    border-bottom:1px dotted #CCC;
+    font-style:italic;
+    margin-bottom:30px;
+}
+.rn_Unsubscribe fieldset {
+    border-bottom:1px solid #CCC;
+    margin:20px 0;
+}
+.rn_Unsubscribe legend {
+    font-weight:bold;
+    margin-bottom:10px;
+}
+.rn_Unsubscribe button {
+    margin-top:6px;
+}

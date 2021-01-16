@@ -1,0 +1,88 @@
+.rn_SmartAssistantDialog .rn_Heading {
+    font-size:1.333em;
+    font-weight:bold;
+    line-height:1.4em;
+}
+.rn_SmartAssistantDialog .rn_List {
+    background: #F0F0F0;
+    border: 1px solid #B0B3B8;
+    margin-top: 6px;
+    padding: 4px;
+}
+.rn_SmartAssistantDialog .rn_List > li {
+    list-style:disc outside none;
+    margin: 4px 4px 4px 16px;
+}
+.rn_SmartAssistantDialog .rn_Prompt {
+    color:#000;
+    font-size:1em;
+    font-weight:bold;
+    line-height:1.3em;
+}
+.rn_SmartAssistantDialog .rn_Summary {
+    font-size:1.3em;
+    font-weight:bold;
+    letter-spacing:-0.01em;
+    line-height:1em;
+    padding:7px 0 0;
+}
+.rn_SmartAssistantDialog .rn_Solution {
+    padding:6px 0 10px;
+}
+.rn_SmartAssistantDialog .rn_List.rn_InlineAnswers > li{
+    border-bottom: 1px solid #DDD;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    position: relative;
+    *position:static;
+}
+.rn_SmartAssistantDialog .rn_InlineAnswerLink{
+    color: #000;
+    padding: 9px 4px 9px 21px;
+    text-decoration: none;
+}
+.rn_SmartAssistantDialog .rn_Loading{
+    background: url(../images/indicator.gif) no-repeat;
+    height: 100%;
+    position: absolute;
+    right:2px;
+    *right:16px;
+    width: 16px;
+}
+.rn_SmartAssistantDialog .rn_ExpandAnswer{
+    background: url(../images/layout/arrow.png) no-repeat 5px 12px;
+}
+.rn_SmartAssistantDialog a.rn_ExpandedAnswer{
+    background: #FFF url(../images/layout/arrow.png) no-repeat 4px -42px;
+    border-bottom: 1px solid #DDD;
+}
+.rn_SmartAssistantDialog .rn_ExpandedAnswerContent{
+    background: #FFF;
+    padding: 6px;
+}
+.rn_SmartAssistantDialog .rn_AccesskeyPrompt {
+    font-style:italic;
+    color:#404040;
+    font-size:.96em;
+}
+.rn_SmartAssistantDialog .rn_AnswerSummary {
+    display: block;
+    margin-bottom: 12px;
+}
+/* Override .rn_Dialog ol, ul rule in site.css */
+.rn_SmartAssistantDialog .rn_AnswerSummary ol,
+.rn_SmartAssistantDialog .rn_AnswerSolution ol,
+.rn_SmartAssistantDialog .rn_AnswerSummary ul,
+.rn_SmartAssistantDialog .rn_AnswerSolution ul {
+    padding-top: 0;
+}
+.rn_SmartAssistantDialog .rn_AnswerSummary > ol,
+.rn_SmartAssistantDialog .rn_AnswerSolution > ol,
+.rn_SmartAssistantDialog .rn_AnswerSummary > ul,
+.rn_SmartAssistantDialog .rn_AnswerSolution > ul {
+    margin-bottom: 1em;
+}
+.rn_SmartAssistantDialogContainer .ft a{
+    padding-left: 8px;
+}

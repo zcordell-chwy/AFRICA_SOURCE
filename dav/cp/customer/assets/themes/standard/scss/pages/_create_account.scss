@@ -1,0 +1,17 @@
+.rn_CreateAccount {
+    .rn_ThirdPartyLogin {
+        @include clearfix;
+        font-size: 1.2em;
+        margin: 1em 0;
+
+        .rn_ServicesMessage {
+            font-weight: bold;
+        }
+    }
+
+    .rn_CreateAccountMessage {
+        font-weight: bold;
+        font-size: 1.2em;
+        margin: 1em 0 1.5em;
+    }
+}

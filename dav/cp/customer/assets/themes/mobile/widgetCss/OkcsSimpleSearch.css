@@ -1,0 +1,37 @@
+.rn_OkcsSimpleSearch span.rn_ButtonLabel {
+  height: 1px;
+  left: -10000px;
+  overflow: hidden;
+  position: absolute;
+  top: auto;
+  width: 1px; }
+
+.rn_OkcsSimpleSearch {
+  margin: auto;
+  max-width: 400px;
+  width: 180px; }
+  .rn_OkcsSimpleSearch .rn_SearchField {
+    border: 0;
+    color: #222;
+    font-weight: bold;
+    height: 1.8em;
+    max-width: 200px;
+    padding: 4px 4px 0;
+    width: 85%;
+    font-size: 0.85em; }
+  .rn_OkcsSimpleSearch .rn_SearchImage {
+    border: 0;
+    padding: 0;
+    position: absolute;
+    right: 0.2em;
+    top: 0.46em; }
+  .rn_OkcsSimpleSearch button {
+    padding-left: 0;
+    padding-right: 0;
+    width: 18%; }
+    .rn_OkcsSimpleSearch button:before {
+      font-family: 'FontAwesome';
+      line-height: 1em;
+      margin-right: 6px;
+      content: "\f002";
+      margin: 0; }

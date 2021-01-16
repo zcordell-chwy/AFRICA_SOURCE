@@ -1,0 +1,54 @@
+@import 'widget-includes';
+
+.rn_MobileProductCategoryInput {
+    &.rn_HideEmpty {
+        visibility: hidden;
+    }
+
+    .rn_Label {
+        font-weight: bold;
+        margin-bottom: 2px;
+    }
+
+    /* Dialog styling */
+    &.rn_Input,
+    &.rn_PanelContent {
+        padding: 0;
+    }
+
+    &.rn_Input {
+        margin-bottom: .5em;
+
+        .rn_Selected {
+            background-color: rgba(56, 121, 217, .6);
+        }
+
+        .rn_Parent,
+        .rn_SubItem {
+            border-bottom: 1px solid #DDD;
+        }
+
+        .rn_Parent label,
+        .rn_SubItem label {
+            color: #000;
+            display: block;
+            font-size: 1.5em;
+            font-weight: bold;
+            line-height: 1.2em;
+            padding: 20px 16px;
+            width: auto;
+        }
+
+        label.rn_HasChildren {
+            @include icon($fa-var-angle-right, after);
+        }
+    }
+
+    .rn_LoadingIcon {
+        @include loading-icon(1em) {
+            right: 10px;
+            position: absolute;
+            color: $dark-gray;
+        }
+    }
+}

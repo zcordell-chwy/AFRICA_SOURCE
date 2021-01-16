@@ -1,0 +1,214 @@
+
+/**********************
+  Federated Search Results
+ *********************/
+
+/*
+ * Structure
+ */
+.rn_CombinedSearchResults {
+    background:#FFF;
+    color:#333;
+    font-size:1em;
+    line-height:1.1em;
+}
+.rn_CombinedSearchResults .rn_AnswersList > li {
+    margin:0 0 15px 0;
+}
+
+/*
+ * Social Specific 
+ */
+.rn_CombinedSearchResults .rn_AnswersList > li.rn_Social {
+    margin:0;
+}
+/*
+ * Main Font 
+ */
+.rn_CombinedSearchResults .rn_SocialList ul.rn_Links > li  {
+   min-height: 55px;
+}
+.rn_CombinedSearchResults .rn_SearchList p { 
+    margin:0; 
+    line-height:inherit;
+}
+
+
+
+.rn_CombinedSearchResults .rn_Link {
+    float:left;
+    width:100%;
+    margin:0 0 5px 0;
+}
+.rn_CombinedSearchResults .rn_Link a, .rn_PostTitle a,
+.rn_CombinedSearchResults .rn_IntentGuideList .rn_Links > li > a {
+    color:#006699;
+    font-weight:normal;
+    font-family:inherit;
+    font-size:1.3em;
+    margin:0 0 5px 0;
+    line-height: 1.05em;
+}
+.rn_CombinedSearchResults .rn_IntentGuideList .rn_Links > li > a.rn_Similar {
+    color:#333;
+    font-size:1em;
+    line-height:1.1em;
+    margin:0;
+}
+/*
+ * Generic Combined Search inline block styles
+ */
+.rn_CombinedSearchResults .rn_CombinedSearchResultBlock {
+    border-top:1px solid #ddd;
+    border-bottom:1px solid #ddd;   
+    float:left;
+    width:100%;
+    padding:13px 0 0 0;
+    margin:0 0 10px 0;
+}
+
+.rn_CombinedSearchResults .rn_CommunityPost {
+    min-height:50px;
+}
+
+.rn_CombinedSearchResults .rn_SocialList .rn_Links li { 
+    width:100%;
+    clear:left;
+    position:relative;
+    padding-bottom:15px;
+ }
+
+
+.rn_CombinedSearchResults .rn_PostAuthor {
+    width:60px;
+    margin:0 10px 0 0;
+    min-height: 55px;
+    float:left;
+    position:absolute;
+    top:0;
+    left:0;
+    height:100%;
+}
+.rn_CombinedSearchResults .rn_PostAuthor img {
+    width:50px;
+    height:50px;
+    margin-right:5px;
+    vertical-align:middle;
+    float:left;
+    display:inline;
+}
+
+.rn_CombinedSearchResults .rn_PostSnippet {
+    padding-left:60px;
+    display:block;
+}
+.rn_CombinedSearchResults .rn_PostAuthorName {
+    padding-left:60px;
+}
+
+.rn_CombinedSearchResults .rn_PostTitle {
+    display:block;
+}
+.rn_CombinedSearchResults .rn_PostTitle {
+    padding-left:60px;
+}
+
+
+.rn_CombinedSearchResults .rn_IntentGuide .rn_Link {
+    margin:0;
+}
+.rn_CombinedSearchResults .rn_IntentGuide .rn_Link a {
+    margin:0;
+    display:inline;
+    float:none;
+}
+.rn_CombinedSearchResults .rn_IntentGuide .rn_Similar {
+    display:block;
+    margin:3px 0 0 0;
+    float:left;
+    width:100%;
+}
+.rn_CombinedSearchResults .rn_IntentGuide .rn_MetaInfo {
+    float:left;
+    width:100%;
+}
+.rn_CombinedSearchResults .rn_IntentGuide .rn_Shown,
+.rn_CombinedSearchResults .rn_IntentGuide .rn_Answer,
+.rn_CombinedSearchResults .rn_IntentGuide .rn_Url,
+.rn_CombinedSearchResults .rn_IntentGuide .rn_DropDown {
+    margin:0 0 10px 0;
+    float: left;
+    width: 100%;
+}
+.rn_CombinedSearchResults .rn_IntentGuide .rn_SimilarList {
+    float:left;
+    width:100%;
+    margin:0 0 0 25px;
+    padding:5px 0;
+}
+.rn_CombinedSearchResults .rn_IntentGuide .rn_SimilarList > li {
+    padding:2px 0;
+}
+.rn_CombinedSearchResults .rn_IntentGuide .rn_SimilarList > li a {
+    color:#006699;
+    font-weight:normal;
+    font-family:inherit;
+    font-size:1.15em;
+}
+.rn_CombinedSearchResults .rn_Snippet {
+    display:block;
+}
+
+.rn_CombinedSearchResults .rn_MetaLabel,
+.rn_CombinedSearchResults .rn_Data,
+.rn_CombinedSearchResults .rn_PostAuthorName,
+.rn_CombinedSearchResults .rn_PostDate,
+.rn_CombinedSearchResults .rn_Category,
+.rn_CombinedSearchResults .rn_Host {
+    font-size:.8em;
+    line-height:1.3em;
+    color:#666;
+    padding-top:3px;
+    line-height:inherit;
+}
+.rn_CombinedSearchResults .rn_Host {
+    padding-right:5px;    
+}
+
+.rn_CombinedSearchResults .rn_CombinedSearchResultBlock  .rn_HeadingBlock {
+    text-transform:uppercase;
+    font-size: 1.1em;
+    display:block;
+    padding-left:0;
+    margin:0 0 15px 0;
+}
+
+.rn_CombinedSearchResults .rn_MultiAnswer .rn_MultiAnswerQuestion {
+    font-family: inherit;
+    font-size: 1.3em;
+    font-weight: normal;
+    line-height: 1.05em;
+    margin: 0 0 5px;
+    display:block;
+}
+.rn_CombinedSearchResults .rn_MultiAnswer .rn_MoreAnswers li > a {
+    color: #006699;
+    display: inline-block;
+    font-size: 1.1em;
+    line-height: 1.05em;
+    padding: 4px 0;
+    margin:1px 0;
+}
+/*
+ * More Links
+ */
+ .rn_CombinedSearchResults .rn_More {
+    line-height:22px;
+    background:url(../images/searchList-more-arrow.png) right 1px no-repeat;
+    background:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA8AAAAWCAYAAAAfD8YZAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyJpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNSBNYWNpbnRvc2giIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6MDk4RTY1MjM5QjgxMTFFMEJBM0E4MjAwQzUwNTExQ0UiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6MDk4RTY1MjQ5QjgxMTFFMEJBM0E4MjAwQzUwNTExQ0UiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDoyNjE4REM3NDlCN0ExMUUwQkEzQTgyMDBDNTA1MTFDRSIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDowOThFNjUyMjlCODExMUUwQkEzQTgyMDBDNTA1MTFDRSIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/PluDGtwAAAFNSURBVHjalNS7SgNREMbxGO8KCkJ8AIk3XMXOV7BXUbwh9iLYWmynoGBnoZWt4I1oZxMv+AAWFpJChYiLiCKCrf+BCRyWOSdx4AdJJt/umXM2qYvjOONUO3J4ytRQWed1J/Zxieg/4S7sYRZ5HGGwlnAHDjDtfN6PEwxVCzeixegN6AVGQuEPzOHC6PfpCFFo5ncs4dz4Ti+OrRHc3ZYVzHsuICs4xbAvLPWNRRQ8K5A9GPWFpb6wrHdKV15HiHzhygiygkOj14Mz2YNs4Bh/UPL0PmWFvrCc/QbWjd4dJlBuMJpN2MSa0bvBAl7kTTpcjy2seoIzeK184IabsY0VI3iLKSTWObdhxxO81sc3STfkzq3Y1cczXUV96srWrkq4G2NG70pnTEK/qmdM4jF1x2DQnflBN6SkM8pS36r9k7i7fY9x/LrHEao/AQYAT9E+Xxk6CH8AAAAASUVORK5CYII=) right 1px no-repeat;
+    padding-right:20px;
+    height: 22px;
+    font-size: 1.2em;
+    float:right;
+    margin-bottom:10px;
+}

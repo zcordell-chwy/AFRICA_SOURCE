@@ -1,0 +1,9 @@
+.rn_ProductCategoryImageDisplay {
+  *zoom: 1; }
+  .rn_ProductCategoryImageDisplay:before, .rn_ProductCategoryImageDisplay:after {
+    content: " ";
+    display: table; }
+  .rn_ProductCategoryImageDisplay:after {
+    clear: both; }
+  .rn_ProductCategoryImageDisplay img {
+    max-height: 150px; }

@@ -1,0 +1,27 @@
+.rn_MobileEmailAnswerLink{
+    padding:10px 0 0;
+}
+.rn_MobileEmailAnswerLink img{
+    vertical-align:text-top;
+}
+.rn_MobileEmailAnswerLink a{
+    background:#E1E1E1;
+    background: -moz-linear-gradient(top, #FEFEFE, #E0E0E0);
+    background:-webkit-gradient(linear, 0% 0%, 0% 100%, from(#FEFEFE), to(#E0E0E0));
+    border-top:1px solid #BBB;
+    border-bottom:1px solid #555;
+    color:#2F2F2F;
+    display:block;
+    font-size:1.167em;
+    font-weight:bold;
+    line-height:1.3em;
+    padding:10px 20px 13px 10px;
+    text-shadow:1px 2px 1px #FFF;
+}
+.rn_EmailAnswerLinkForm{
+    margin-bottom:30px;
+    width:auto;
+}
+.rn_EmailAnswerLinkForm input{
+    margin-bottom:16px;
+}

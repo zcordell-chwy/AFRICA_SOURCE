@@ -1,0 +1,45 @@
+.rn_AdvancedSearchDialog {
+    overflow:visible;
+}
+.rn_AdvancedSearchDialog .rn_DialogContent {
+    overflow:visible;
+    padding-top:16px;
+    position:relative;
+}
+.rn_AdvancedSearchDialog .rn_DialogContent .rn_SearchTips {
+    color:#333;
+    position:absolute;
+    right:0px;
+    /*IE6*/
+    _right:10px;
+    top:0px;
+}
+.rn_AdvancedSearchDialog .rn_DialogContent .rn_AdvancedSubWidget {
+    clear:right;
+    overflow:hidden;
+    padding:16px 8px;
+}
+.rn_AdvancedSearchDialog .rn_DialogContent .rn_AdvancedSubWidget:empty {
+    display:none;
+}
+.rn_AdvancedSearchDialog .rn_DialogContent .rn_AdvancedFilter,
+.rn_AdvancedSearchDialog .rn_DialogContent .rn_AdvancedSort {
+    border-top:1px solid #FFF;
+}
+.rn_AdvancedSearchDialog .rn_DialogContent .rn_AdvancedFilter button {
+    /*max-width for all browsers*/
+    width:auto !important;
+    width:60%;
+    max-width:60%;
+}
+.rn_AdvancedSearchDialog .rn_DialogContent label {
+    color:#333;
+    float:left;
+    font-weight:bold;
+    width:38%;
+}
+.rn_AdvancedSearchDialog .rn_DialogContent select {
+    display:inline-block;
+    *display:block;
+    min-width:160px;
+}

@@ -1,0 +1,10 @@
+.rn_LoginForm.rn_ContentLoading{
+    background:url(../images/loading.gif) no-repeat center center;
+}
+.rn_LoginForm input{
+    margin-bottom:5px;
+}
+.rn_LoginForm label{
+    margin-bottom:5px;
+    display:block;
+}

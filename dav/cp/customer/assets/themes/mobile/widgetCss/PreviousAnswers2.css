@@ -1,0 +1,21 @@
+.rn_PreviousAnswers2 {
+    padding:10px 0;
+}
+.rn_PreviousAnswers2 h2{
+    background:#E1E1E1;
+    background: -moz-linear-gradient(top, #FEFEFE, #E0E0E0);
+    background:-webkit-gradient(linear, 0% 0%, 0% 100%, from(#FEFEFE), to(#E0E0E0));
+    border-top:1px solid #BBB;
+    border-bottom:1px solid #555;
+    color:#2F2F2F;
+    font-size:1.167em;
+    font-weight:bold;
+    line-height:1.3em;
+    margin-bottom:20px;
+    padding:10px 20px 13px 10px;
+    text-shadow:1px 2px 1px #FFF;
+}
+.rn_PreviousAnswers2 ul li {
+    font-size:medium;
+    list-style-type:none;
+}

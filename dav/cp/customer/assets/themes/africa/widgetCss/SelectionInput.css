@@ -1,0 +1,27 @@
+.rn_SelectionInput {
+    clear:both;
+    margin-bottom:8px;
+}
+.rn_SelectionInput legend {
+    font-size:1em;
+    /**IE6/7 gives legends an offset*/
+    *left: -7px;
+    *position:relative;
+}
+.rn_SelectionInput legend,
+.rn_SelectionInput label {
+    display:block;
+    font-weight:bold;
+    margin-bottom:2px;
+}
+.rn_SelectionInput fieldset {
+    padding:0;
+}
+.rn_SelectionInput fieldset label {
+    display:inline;
+    margin:0 4px;
+}
+.rn_SelectionInput input[type="radio"] {
+    border:none;
+    margin-top:2px;
+}

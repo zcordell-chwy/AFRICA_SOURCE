@@ -1,0 +1,14 @@
+.rn_SearchButton2 {
+    display:inline;
+    bottom: 0px;
+}
+.rn_SearchButton2 input {
+    border:none;
+    vertical-align:top;
+}
+.rn_SearchButton2 .rn_SubmitButton {
+    background-color:#0E53A7;
+    color:#FFF;
+    cursor:pointer;
+    font-weight:bold;
+}

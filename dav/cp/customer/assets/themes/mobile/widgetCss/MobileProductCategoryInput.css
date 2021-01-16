@@ -1,0 +1,41 @@
+.rn_MobileProductCategoryInput.rn_HideEmpty {
+    visibility:hidden;
+}
+.rn_MobileProductCategoryInput button {
+    background:url("../images/layout/listArrow.png") no-repeat scroll right center, -moz-linear-gradient(center top , #FFF, rgba(250, 250, 250, 0.5), rgba(130, 130, 130, 0.8));
+    background: url(../images/layout/listArrow.png) no-repeat right, -webkit-gradient(linear, 0% 0%, 0% 100%, color-stop(0.0, #FFF), color-stop(0.5, rgba(250, 250, 250, 0.5)), color-stop(1.0, rgba(130, 130, 130, 0.8)));
+    border-top:1px solid #AAA;
+    margin-bottom:8px;
+    color:#101010;
+    text-shadow:0 1px 1px #FFF;
+    -moz-box-shadow:none;
+    -webkit-box-shadow:none;
+}
+.rn_MobileProductCategoryInput .rn_Label {
+    font-weight:bold;
+    margin-bottom:2px;
+}
+/* Dialog styling */
+.rn_MobileProductCategoryInput.rn_Input,
+.rn_MobileProductCategoryInput.rn_PanelContent {
+    padding:0;
+}
+.rn_MobileProductCategoryInput.rn_Input .rn_Selected{
+    background-color:rgba(56, 121, 217, 0.6);
+}
+.rn_MobileProductCategoryInput.rn_Input .rn_Parent,
+.rn_MobileProductCategoryInput.rn_Input .rn_SubItem {
+    border-bottom:1px solid #DDD;
+}
+.rn_MobileProductCategoryInput.rn_Input label {
+    color:#FFF;
+    display:block;
+    font-size:1.5em;
+    font-weight:bold;
+    line-height:1.2em;
+    padding:20px 16px;
+    width:auto;
+}
+.rn_MobileProductCategoryInput.rn_Input label.rn_HasChildren {
+    background:transparent url(../images/layout/whiteListArrow.png) no-repeat right;
+}

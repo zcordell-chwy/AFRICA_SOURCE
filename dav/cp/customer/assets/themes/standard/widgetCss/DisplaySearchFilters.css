@@ -1,0 +1,55 @@
+.rn_DisplaySearchFilters {
+    padding:16px 6px 0;
+}
+.rn_DisplaySearchFilters .rn_Heading {
+    color:#404040;
+    font-size:1em;
+    font-weight:bold;
+}
+.rn_DisplaySearchFilters .rn_Filter {
+    overflow:hidden;
+    padding:6px 0;
+}
+.rn_DisplaySearchFilters .rn_Label {
+    color:#505050;
+    font-size:0.917em;
+    font-weight:bold;
+    margin-bottom:4px;
+}
+.rn_DisplaySearchFilters .rn_Label a {
+    text-decoration:none;
+}
+.rn_DisplaySearchFilters .rn_Label img {
+    margin-left:4px;
+    vertical-align:middle;
+}
+.rn_DisplaySearchFilters .rn_FilterItem {
+    background-color:#FFF;
+    border-color:#D2D2D2;
+    border-style:solid;
+    border-width:1px 0;
+    color:#333;
+    float:left;
+    margin-left:-6px;
+    padding:6px 4px 6px 10px;
+    text-decoration:none;
+}
+.rn_DisplaySearchFilters .rn_Selected {
+    background-color:#F0F0F0;
+    color:#000;
+    cursor:default;
+    font-weight:bold;
+}
+.rn_DisplaySearchFilters .rn_Separator {
+    background:transparent url(../images/breadCrumb.png) no-repeat scroll 0px center;
+    float:left;
+    height:0;
+    padding-top:29px;
+    /*IE6*/
+    _padding-top:15px;
+    position:relative;
+    width:8px;
+}
+.rn_DisplaySearchFilters .rn_Separator.rn_Selected {
+    background-position:right center !important;
+}

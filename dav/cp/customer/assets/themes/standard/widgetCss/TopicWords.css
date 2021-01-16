@@ -1,0 +1,23 @@
+.rn_TopicWords{
+    background-color: #FAFAFA;
+    border: 1px solid #DEDEDE;
+    margin: 8px 0 20px;
+    padding: 6px;
+}
+.rn_TopicWords dl{
+    padding-left: 12px;
+}
+.rn_TopicWords dd{
+    padding-bottom: 10px;
+}
+.rn_TopicWords img {
+    margin-right: 6px;
+    vertical-align: middle;
+}
+.rn_TopicWords .rn_Title {
+    color:#2F2F2F;
+    font-size:1.167em;
+    line-height:1.3em;
+    font-weight:bold;
+    font-family:arial,sans-serif;
+}

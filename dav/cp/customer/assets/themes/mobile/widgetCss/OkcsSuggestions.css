@@ -1,0 +1,14 @@
+.rn_OkcsSuggestions.rn_SearchInput.yui3-aclist {
+  z-index: 1; }
+.rn_OkcsSuggestions.rn_SearchInput .rn_KASuggestTitle {
+  font-weight: bold; }
+.rn_OkcsSuggestions.rn_SearchInput ul.rn_Answer .yui3-aclist-item::before {
+  font-family: 'FontAwesome';
+  content: "\f15c"; }
+.rn_OkcsSuggestions.rn_SearchInput .rn_SuggestionItem {
+  display: inline; }
+.rn_OkcsSuggestions.rn_SearchInput .yui3-aclist-item:hover {
+  background: none; }
+.rn_OkcsSuggestions.rn_SearchInput .yui3-aclist-item:hover.yui3-aclist-item-active {
+  background: #ebeff5 none repeat scroll 0 0;
+  outline: 0; }

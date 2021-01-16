@@ -1,0 +1,10 @@
+.rn_PrintPageLink a {
+    color:#222;
+    text-decoration:none;
+}
+.rn_PrintPageLink a:hover {
+    white-space:normal;
+}
+.rn_PrintPageLink a:hover span {
+    text-decoration:underline;
+}

@@ -1,0 +1,88 @@
+.rn_ProductCatalogInput {
+    clear:both;
+    margin-bottom:8px;
+}
+.rn_ProductCatalogInput .rn_Label {
+    display:block;
+    font-weight:bold;
+    margin-bottom:2px;
+    width:36%;
+}
+.rn_ProductCatalogInput .rn_RequiredLabel {
+    display:block;
+    font-style:italic;
+    font-weight:normal;
+}
+.rn_ProductCatalogInput button.rn_DisplayButton {
+    background:#FFF url(../images/splitButtonArrow.png) no-repeat scroll right center;
+    border:1px solid #B1B1B1;
+    font-weight:normal;
+    margin-top:auto;
+    min-height:1.5em;
+    min-width:300px;
+    padding:4px 20px 4px 4px;
+    position: relative;
+    text-align:left;
+    text-shadow:none;
+    margin-right:0;
+    border-radius:0;
+    box-shadow:none;
+}
+.rn_HighContrastMode .rn_ProductCatalogInput button.rn_DisplayButton {
+    border: 1px inset;
+}
+.rn_HighContrastMode .rn_ProductCatalogInput button.rn_DisplayButton:after {
+    content:"\25BC";
+    position: absolute;
+    right: 4px;
+}
+
+.rn_ProductCatalogInput .rn_Panel {
+    background:#FFF;
+    border:1px solid #B1B1B1;
+    max-height:200px;
+    overflow:auto;
+    padding:6px;
+}
+
+.rn_ProductCatalogInput .rn_PanelContainer .rn_Panel{
+    border: 0;
+}
+.rn_ProductCatalogInput .rn_PanelContainer{
+    border:1px solid #B1B1B1;
+    border-top:0;
+}
+.rn_ProductCatalogInput .rn_SelectionButtons {
+    background:#F8F8F8;
+    border-top: 1px solid #B1B1B1;
+}
+.rn_ProductCatalogInput .rn_SelectionButtons button {
+    font-size: 0.95em;
+    margin: 7px 0 7px 5px;
+    padding: 5px;
+}
+.rn_ProductCatalogInput .rn_HintBox {
+    border: 1px solid #DBDBDB;
+    max-width: 200px;
+    padding: 4px 16px 2px;
+    word-wrap: break-word;
+    opacity:0.9;
+}
+.rn_ProductCatalogInput .rn_HintBox.rn_AlwaysVisibleHint {
+    max-width:200px;
+    opacity:1;
+}
+
+.rn_ProductCatalogInput button.rn_DisplayButton:hover,
+.rn_ProductCatalogInput button.rn_DisplayButton:focus {
+    background-color:#F8F8F8;
+}
+.rn_ProductCatalogInput table {
+    border-collapse:collapse;
+}
+.ygtvlabel, .ygtvlabel:link, .ygtvlabel:visited, .ygtvlabel:hover {
+    color:#111;
+}
+.rn_ProductCatalogLinks {
+    width: 400px;
+}

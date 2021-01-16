@@ -1,0 +1,187 @@
+@import 'widget-includes';
+
+.rn_RichTextInput {
+    min-width: 200px;
+    $button-background: lighten($light-gray, 7%);
+
+    .rn_InputArea {
+        background-color: #FFF;
+        border: 1px solid $base-border-color;
+        border-radius: $base-border-radius;
+        box-shadow: $form-box-shadow;
+        font-family: $form-font-family;
+        font-size: $form-font-size;
+        height: 100px;
+        margin-bottom: $base-line-height / 2;
+        max-height: 500px;
+        min-height: 100px;
+        padding: $base-line-height / 3;
+        width: 100%;
+    }
+
+    button {
+        background: $button-background;
+        border: 1px solid darken($light-gray, 10%);
+        color: $base-font-color;
+        text-shadow: none;
+        font-size: .8em;
+
+        &:hover,
+        &:hover:not(:disabled),
+        &:focus,
+        &:focus:not(:disabled) {
+            background: darken($button-background, 2%);
+            box-shadow: none;
+        }
+
+        &.rn_Selected,
+        &:focus.rn_Selected,
+        &:hover.rn_Selected {
+            background: darken($button-background, 6%);
+        }
+    }
+
+    .rn_MenuButton {
+        @include icon($fa-var-navicon) {
+            margin: 0;
+        }
+    }
+
+    .rn_Menu {
+        border-radius: $form-border-radius;
+        background: darken($light-gray, 5%);
+
+        button {
+            border-radius: 0;
+            margin: 0;
+        }
+
+        &.rn_PopupMenu {
+            border-radius: $form-border-radius;
+            padding: 4px;
+        }
+
+        .rn_RichMode {
+            button {
+                border-width: 1px 0 1px 1px;
+
+                &:before {
+                    // Center font icons
+                    margin: 0 6px;
+                }
+
+                &:first-child {
+                    border-top-left-radius: $form-border-radius;
+                }
+
+                &:last-child {
+                    border-top-right-radius: $form-border-radius;
+                }
+            }
+        }
+
+        .rn_AdvancedMode {
+            margin-left: 1px;
+
+            button {
+                @include icon($fa-var-wrench);
+
+                border-top-right-radius: $form-border-radius;
+                border-top-left-radius: $form-border-radius;
+            }
+        }
+
+        .rn_Bolden {
+            @include icon($fa-var-bold);
+        }
+
+        .rn_Italicize {
+            @include icon($fa-var-italic);
+        }
+
+        .rn_InsertBullet {
+            @include icon($fa-var-list-ul);
+        }
+
+        .rn_InsertLink {
+            @include icon($fa-var-chain);
+        }
+
+        .rn_HelpLink {
+            @include icon($fa-var-question);
+
+            color: $base-font-color;
+            float: left;
+            font-size: small;
+            padding: 2px 10px 0;
+        }
+    }
+
+    // Insert link dialog
+    .rn_InsertForm {
+        padding: 10px;
+
+        label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 1em;
+        }
+
+        .rn_InsertLinkForm div {
+            margin-bottom: 16px;
+        }
+
+        input {
+            display: block;
+            font-size: 1.1em;
+            padding: 2px;
+            width: 300px;
+
+            &[type="file"] {
+                width: auto;
+            }
+        }
+
+        .rn_AlternatePrompt {
+            position: relative;
+            top: -23px;
+            display: inline-block;
+            padding: 5px;
+        }
+
+        .rn_InsertLink {
+            font-weight: normal;
+        }
+    }
+
+    .rn_HelpText {
+        @include icon($fa-var-exclamation);
+    }
+
+    .rn_RichToolTip {
+        background: #fff;
+        border: 1px solid #c4c4c4;
+        border-radius: .1875em;
+
+        .rn_ToolTipContent {
+            padding: 1em;
+        }
+
+        .rn_InsertLink {
+            @include icon($fa-var-pencil-square-o);
+            padding: 1em;
+        }
+
+        .rn_RemoveLink {
+            @include icon($fa-var-times);
+            padding: 1em;
+        }
+    }
+}
+
+.rn_RichTextInputHint.rn_HintBox {
+    border: 1px solid #DBDBDB;
+    max-width: 200px;
+    padding: 4px 16px 2px;
+    word-wrap: break-word;
+}

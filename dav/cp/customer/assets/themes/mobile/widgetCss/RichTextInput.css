@@ -1,0 +1,30 @@
+.rn_RichTextInput {
+  min-width: 200px; }
+  .rn_RichTextInput .cke_reset {
+    border-radius: 0.1875em; }
+  .rn_RichTextInput .cke_top {
+    border-radius: 0.1875em 0.1875em 0 0; }
+  .rn_RichTextInput .cke_bottom {
+    border-radius: 0 0 0.1875em 0.1875em; }
+  .rn_RichTextInput .cke_reset body {
+    background-color: #efefef; }
+  .rn_RichTextInput .rn_Loading:before {
+    font-family: 'FontAwesome';
+    line-height: 1em;
+    margin-right: 6px;
+    content: "\f110";
+    -webkit-animation: fa-spin 2s infinite linear;
+    -moz-animation: fa-spin 2s infinite linear;
+    animation: fa-spin 2s infinite linear;
+    display: block;
+    font-size: 1.4em;
+    position: relative;
+    text-align: center; }
+  .rn_RichTextInput .rn_HelpText:before {
+    font-family: 'FontAwesome';
+    line-height: 1em;
+    margin-right: 6px;
+    content: "\f12a"; }
+
+.rn_CkeDialogInputError {
+  color: #c31c24 !important; }

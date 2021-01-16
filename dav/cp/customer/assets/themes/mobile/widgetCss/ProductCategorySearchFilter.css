@@ -1,0 +1,66 @@
+.rn_ProductCategorySearchFilter button.rn_DisplayButton {
+  width: 100%;
+  background: #FFF;
+  border: 1px solid #999;
+  font-weight: normal;
+  margin-top: auto;
+  min-height: 1.5em;
+  padding: 4px 20px 4px 4px;
+  position: relative;
+  text-align: left;
+  text-shadow: none;
+  margin-right: 0;
+  border-radius: 0;
+  box-shadow: none; }
+  .rn_ProductCategorySearchFilter button.rn_DisplayButton:after {
+    font-family: 'FontAwesome';
+    margin-left: 6px; }
+  .rn_ProductCategorySearchFilter button.rn_DisplayButton:after {
+    content: "\f0d7";
+    position: absolute;
+    right: 5px;
+    font-size: 1em; }
+  .rn_ProductCategorySearchFilter button.rn_DisplayButton:hover, .rn_ProductCategorySearchFilter button.rn_DisplayButton:focus {
+    box-shadow: none;
+    background-color: #DDD; }
+.rn_ProductCategorySearchFilter .rn_Panel {
+  width: 100%;
+  background: #FFF;
+  border: 1px solid #999;
+  max-height: 200px;
+  overflow: auto;
+  padding: 6px; }
+.rn_ProductCategorySearchFilter .rn_PanelContainer {
+  border: 1px solid #999;
+  border-top: 0;
+  width: 350px; }
+  @media screen and (max-width: 960px) {
+    .rn_ProductCategorySearchFilter .rn_PanelContainer {
+      width: 300px; } }
+  @media screen and (max-width: 400px) {
+    .rn_ProductCategorySearchFilter .rn_PanelContainer {
+      width: 100%; } }
+  .rn_ProductCategorySearchFilter .rn_PanelContainer .rn_Panel {
+    border: 0; }
+.rn_ProductCategorySearchFilter .rn_SelectionButtons {
+  background: #DDD;
+  border-top: 1px solid #999; }
+  .rn_ProductCategorySearchFilter .rn_SelectionButtons button {
+    font-size: 0.95em;
+    margin: 7px 0 7px 5px;
+    padding: 5px; }
+.rn_ProductCategorySearchFilter table {
+  border-collapse: collapse; }
+  .rn_ProductCategorySearchFilter table td {
+    padding: 0;
+    border: 0; }
+    .rn_ProductCategorySearchFilter table td a {
+      text-shadow: none; }
+.rn_ProductCategorySearchFilter .rn_Label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 2px;
+  width: 36%; }
+
+.rn_Dialog .rn_ProductCategoryLinks ol {
+  padding-left: 1em; }

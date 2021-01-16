@@ -1,0 +1,57 @@
+.rn_SourceProductCategorySearchFilter {
+  float: left;
+  display: block;
+  margin-right: 2.35765%;
+  width: 31.76157%;
+  text-shadow: none; }
+  .rn_SourceProductCategorySearchFilter:last-child {
+    margin-right: 0; }
+  @media screen and (max-width: 720px) {
+    .rn_SourceProductCategorySearchFilter {
+      *zoom: 1;
+      display: block;
+      margin-left: 17.05961%;
+      float: left;
+      display: block;
+      margin-right: 2.35765%;
+      width: 65.88078%;
+      margin-bottom: 1em; }
+      .rn_SourceProductCategorySearchFilter:before, .rn_SourceProductCategorySearchFilter:after {
+        content: " ";
+        display: table; }
+      .rn_SourceProductCategorySearchFilter:after {
+        clear: both; }
+      .rn_SourceProductCategorySearchFilter:last-child {
+        margin-right: 0; } }
+  @media screen and (max-width: 400px) {
+    .rn_SourceProductCategorySearchFilter {
+      *zoom: 1;
+      display: block;
+      margin-left: 0%;
+      float: left;
+      display: block;
+      margin-right: 2.35765%;
+      width: 100%; }
+      .rn_SourceProductCategorySearchFilter:before, .rn_SourceProductCategorySearchFilter:after {
+        content: " ";
+        display: table; }
+      .rn_SourceProductCategorySearchFilter:after {
+        clear: both; }
+      .rn_SourceProductCategorySearchFilter:last-child {
+        margin-right: 0; } }
+  .rn_SourceProductCategorySearchFilter .rn_SelectionButtons {
+    background: #DDD;
+    border-top: 1px solid #999; }
+    .rn_SourceProductCategorySearchFilter .rn_SelectionButtons button {
+      font-size: 0.95em;
+      margin: 7px 0 7px 5px;
+      padding: 5px;
+      transition: none; }
+  .rn_SourceProductCategorySearchFilter .rn_Label {
+    display: block;
+    font-weight: normal;
+    margin-bottom: 2px;
+    width: 100%; }
+
+.rn_Dialog .rn_ProductCategoryLinks ol {
+  padding-left: 1em; }

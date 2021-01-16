@@ -1,0 +1,20 @@
+/* File list label to the left, file list column on the right. */
+.rn_FileListDisplay .rn_DataLabel  {
+     float:left;
+     font-weight:bold;
+}
+.rn_FileListDisplay .rn_DataValue  {
+     margin-left:180px;
+}
+.rn_FileListDisplay .rn_DataValue ul {
+     clear:none;
+}
+.rn_FileListDisplay .rn_DataValue.rn_LeftJustify {
+     clear:left;
+     margin-left:0;
+     padding-bottom:.5em;
+}
+.rn_FileListDisplay .rn_FileSize {
+    font-style:italic;
+    padding-left:4px;
+}

@@ -1,0 +1,42 @@
+.rn_SocialBookmarkLink a {
+    color:#222;
+    text-decoration:none;
+}
+.rn_SocialBookmarkLink a:hover {
+    white-space:normal;
+}
+.rn_SocialBookmarkLink a:hover span {
+    text-decoration:underline;
+}
+.rn_SocialBookmarkLink .rn_Panel {
+    background-color:#FFF;
+    padding:6px;
+}
+.rn_SocialBookmarkLink .rn_Panel .hd {
+    border:none !important;
+}
+.rn_SocialBookmarkLink .rn_Panel li {
+    background:url(../images/icons/socialBookmark.png) no-repeat;
+    height:16px;
+    line-height:1.4em;
+    margin:4px;
+    padding-left:20px;
+}
+.rn_SocialBookmarkLink li.rn_Link1 {
+    background-position:0 0;
+}
+.rn_SocialBookmarkLink li.rn_Link2 {
+    background-position:0 -16px;
+}
+.rn_SocialBookmarkLink li.rn_Link3 {
+    background-position:0 -32px;
+}
+.rn_SocialBookmarkLink li.rn_Link4 {
+    background-position:0 -48px;
+}
+.rn_SocialBookmarkLink li.rn_Link5 {
+    background-position:0 -64px;
+}
+.rn_SocialBookmarkLink li.rn_Link6 {
+    background-position:0 -80px;
+}

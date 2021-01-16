@@ -1,0 +1,30 @@
+.rn_ProductCategoryList {
+    margin:20px 0;
+}
+.rn_ProductCategoryList h2 {
+    color:#111;
+    font-size:1.333em;
+    font-weight:bold;
+    line-height:1.4em;
+}
+.rn_ProductCategoryList .rn_HierList h3 {
+    border-bottom:1px solid #E3E3E3;
+    color:#111;
+    font-size:1.1em;
+    margin:4px 0;
+}
+.rn_ProductCategoryList .rn_HierList h3 a {
+    color:#333;
+    text-decoration:none;
+}
+.rn_ProductCategoryList .rn_HierList li {
+    margin:4px 0 0 10px;
+}
+.rn_ProductCategoryList .rn_HierList li a {
+    color:#07538D;
+    text-decoration:none;
+}
+.rn_ProductCategoryList .rn_HierList li a:hover,
+.rn_ProductCategoryList .rn_HierList li a:focus {
+    text-decoration:underline;
+}

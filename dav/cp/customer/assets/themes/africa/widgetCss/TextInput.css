@@ -1,0 +1,40 @@
+.rn_TextInput {
+    clear:both;
+    margin-bottom:8px;
+}
+.rn_TextInput .rn_Label,
+.rn_PasswordInput .rn_Label {
+    display:block;
+    font-weight:bold;
+    margin-bottom:2px;
+}
+.rn_TextInput .rn_Text,
+.rn_TextInput .rn_Password,
+.rn_TextInput .rn_Email,
+.rn_TextInput .rn_TextArea,
+.rn_Password {
+    width:60%;
+}
+.rn_TextInput .rn_Mask {
+    color:#555;
+    font-style:italic;
+    margin:4px 12px;
+}
+.rn_TextInput .rn_MaskOverlay {
+    background-color:#EEE;
+    border:1px solid #CCC;
+    color:#222;
+    margin-top:20px;
+    opacity:.9;
+    padding:11px;
+    position:absolute;
+    -moz-border-radius:11px;
+    -webkit-border-radius:11px;
+    border-radius:11px;
+    -moz-box-shadow:2px 2px 2px #888;
+    -webkit-box-shadow:2px 2px 2px #888;
+    box-shadow:2px 2px 2px #888;
+}
+.rn_TextInput .rn_TextInputValidate {
+    margin-top: 8px;
+}

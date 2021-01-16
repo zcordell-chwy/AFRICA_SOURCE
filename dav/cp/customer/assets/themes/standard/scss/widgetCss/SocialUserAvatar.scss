@@ -1,0 +1,90 @@
+@import 'widget-includes';
+
+.rn_SocialUserAvatar {
+    @include row;
+
+    h2 {
+        margin-bottom: 20px;
+    }
+
+    .rn_PreviewImage {
+        @include media ($large-screen) {
+            @include shift(1);
+            @include span-columns(2);
+
+        }
+
+        img {
+            height: 64px;
+            width: 64px;
+        }
+    }
+
+    .rn_AvatarOptions {
+        @include media ($large-screen) {
+            @include span-columns(9);
+            @include omega;
+        }
+
+        .rn_AvatarOption {
+            @include row;
+            padding: 1em .5em;
+            border-bottom: 1px dotted $medium-gray;
+
+            label {
+                display: block;
+                font-size: larger;
+                margin: .4em 0;
+            }
+
+            &.rn_Gravatar label {
+                background: url('#{$theme-images}/gravatar.png') 0 0 no-repeat no-repeat;
+                padding-left: 28px;
+                min-height: 16px;
+            }
+
+            &.rn_ChosenAvatar {
+                background: $light-gray;
+            }
+
+            button {
+                margin: .4em 0;
+            }
+
+            .rn_Success {
+                color: #008000;
+            }
+
+            .rn_Error {
+                color: #F00;
+            }
+
+            .rn_StatusIcon {
+                margin-top: .6em;
+                display: inline;
+
+                &.rn_Permanent i {
+                    display: none;
+                }
+            }
+
+            .rn_HintText {
+                color: $dark-gray;
+                display: block;
+                font-size: smaller;
+                font-style: normal;
+                font-weight: bold;
+            }
+        }
+
+        .rn_CurrentSocialAvatar {
+            font-style: italic;
+        }
+    }
+
+    .rn_NoSocialUser {
+        padding: 4px 0 4px 40px;
+        font-size: 1.2em;
+        font-style: italic;
+    }
+}

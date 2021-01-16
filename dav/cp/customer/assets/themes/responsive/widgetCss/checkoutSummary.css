@@ -1,0 +1,18 @@
+.esg_checkoutSummary table {
+	border: 1px solid gray;
+	width: 100%; 
+	border-collapse: collapse;
+}
+.esg_totalCharge {
+	margin-top: 10px;
+	width: 100%;
+	text-align: right;
+}
+.esg_checkoutSummary th {
+	font-weight: bold;
+	padding: 5px;
+}
+.esg_checkoutSummary td {
+	border-top: 1px solid gray;
+	padding: 5px;
+}

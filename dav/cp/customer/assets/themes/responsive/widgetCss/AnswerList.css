@@ -1,0 +1,98 @@
+.rn_AnswerList .yui3-datatable-table{
+    width: 100%;
+    border:1px solid #cbcbcb;
+}
+
+.rn_AnswerList .rn_Content{
+    overflow: auto;
+}
+
+.rn_AnswerList .yui3-datatable-caption{
+    text-align:center;
+    border:1px solid #cbcbcb;
+    line-height:1.4em;
+    padding:4px;
+}
+
+.rn_AnswerList .yui3-datatable-caption h2 {
+    padding: 4px;
+}
+
+.rn_AnswerList .yui3-datatable-cell,
+.rn_AnswerList .yui3-datatable-header{
+    border-left:1px solid #cbcbcb;
+    border-width:0 0 0 1px;
+    font-size:inherit;
+    margin:0;
+    overflow:visible;
+    padding:7px;
+}
+
+.rn_AnswerList .yui3-datatable-cell:first-child,
+.rn_AnswerList .yui3-datatable-first-header{
+    border-left-width:0;
+}
+
+.rn_AnswerList .yui3-datatable-header{
+    border-bottom: 1px solid #CCC;
+    padding: 7px !important;
+    line-height: 1.4em;
+    cursor: pointer;
+}
+
+.rn_AnswerList .yui3-datatable-sort-liner{
+    display:block;
+    height:100%;
+    position:relative;
+    padding-right:15px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    user-select: none;
+}
+
+.rn_AnswerList .yui3-datatable-sort-indicator{
+    position:absolute;
+    right:0;
+    bottom:4px;
+    width:8px;
+    height:10px;
+    background:url(../images/tableHeader.png) no-repeat scroll right -88px;
+    overflow:hidden;
+}
+
+.rn_AnswerList .yui3-datatable-sorted .yui3-datatable-sort-indicator{
+    background:transparent url(../images/tableHeader.png) no-repeat scroll right -98px;
+}
+
+.rn_AnswerList .yui3-datatable-sorted-desc .yui3-datatable-sort-indicator{
+    background:transparent url(../images/tableHeader.png) no-repeat  scroll right -108px;
+}
+
+.rn_AnswerList .yui3-datatable-message-content {
+    border: 0 none;
+    border-bottom: 1px solid #cbcbcb;
+    padding: 4px 10px;
+}
+
+.rn_AnswerList .rn_Loading{
+    background-image:url(../images/loading.gif);
+    background-repeat:no-repeat;
+    background-position:center center;
+}
+
+.rn_AnswerList .rn_List li {
+    width: 95%;
+    padding: 10px;
+}
+
+.rn_ArticlesSortAsc:after {
+    content: '\f0d8';/*FontAwesome icon fa-caret-up*/
+    padding: 4px;
+    font-family: 'FontAwesome';
+}
+
+.rn_ArticlesSortDesc:after {
+    content: '\f0d7';/*FontAwesome icon fa-caret-down*/
+    padding: 4px;
+    font-family: 'FontAwesome';
+}

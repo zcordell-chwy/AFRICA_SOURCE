@@ -1,0 +1,32 @@
+.rn_MobileProductCategoryList .rn_Title {
+    display:block;
+    background:#E1E1E1;
+    background: -moz-linear-gradient(top, #FEFEFE, #E0E0E0);
+    background:-webkit-gradient(linear, 0% 0%, 0% 100%, from(#FEFEFE), to(#E0E0E0));
+    font-family:"Lucida Sans Unicode","Lucida Grande",Garuda,sans-serif;
+    font-size:1.143em;
+    line-height:1.4em;
+    padding:10px 6px 13px;
+    text-shadow:1px 2px 1px rgba(255, 255, 255, 1);
+    -moz-box-shadow:0 1px 3px rgba(0, 0, 0, 0.7);
+    -webkit-box-shadow:0 1px 3px rgba(0, 0, 0, 0.7);
+}
+.rn_MobileProductCategoryList .rn_HierList a {
+    background:transparent url(../images/layout/listArrow.png) no-repeat scroll right;
+    border-bottom:1px solid #DFDFDF;
+    color:#111;
+    display:block;
+    font-size:1.3em;
+    line-height:1.4em;
+    margin:0;
+    outline:none;
+    padding:10px 30px 10px 8px;
+    text-decoration:none;
+}
+.rn_MobileProductCategoryList .rn_HierList li {
+    margin:4px 0 0 10px;
+}
+.rn_MobileProductCategoryList .rn_HierList li a {
+    color:#07538D;
+    text-decoration:none;
+}
