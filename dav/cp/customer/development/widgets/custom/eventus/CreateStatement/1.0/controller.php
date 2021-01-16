@@ -71,7 +71,7 @@ class CreateStatement extends \RightNow\Libraries\Widget\Base {
             $date1 = strtotime('+1 MONTH', $date1);
         }
 
-        echo $months. ' month, '. ($date2 - $date1) / (60*60*24). ' days <br/>'; // 120 month, 26 days
+        //echo $months. ' month, '. ($date2 - $date1) / (60*60*24). ' days <br/>'; // 120 month, 26 days
         return $months;
         
     }

@@ -122,7 +122,7 @@ Custom.Widgets.eventus.ajaxCustomFormSubmit = RightNow.Widgets.extend({
 			$(this.baseSelector + "_LoadingIcon").removeClass( "rn_Hidden");
 
 			//testing timeout link
-				this.data.attrs.default_ajax_endpoint = "https://africanewlife.custhelp.com/cgi-bin/africanewlife.cfg/php/custom/testpost.php";
+			//this.data.attrs.default_ajax_endpoint = "https://africanewlife.custhelp.com/cgi-bin/africanewlife.cfg/php/custom/testpost.php";
 	        RightNow.Ajax.makeRequest(this.data.attrs.default_ajax_endpoint, eventObj.data, {
 				successHandler: this.default_ajax_endpointCallback,
 				failureHandler: this.ajaxFailed,
@@ -154,15 +154,8 @@ Custom.Widgets.eventus.ajaxCustomFormSubmit = RightNow.Widgets.extend({
             this._errorMessageDiv.removeClass("rn_Hidden");
         }else{
 			//pop error message
-			//this._displayErrorDialog(RightNow.Interface.getMessage('CUSTOM_MSG_PAY_SERVICE_ERROR'));
-			//this._toggleClickListener(true);
-
-			//redirect to success page and let donor know their payment has been queued and they should get
-			//an email receipt in 1-2 hours.
-			//app/payment/successCC/t_id/0/authCode/0/
-			let url = '/app/payment/successCC/t_id/0/authCode/0/'
-			RightNow.Url.navigate(url);
-
+			this._displayErrorDialog(RightNow.Interface.getMessage('CUSTOM_MSG_PAY_SERVICE_ERROR'));
+			this._toggleClickListener(true);
 		}
 
 		$(this.baseSelector + "_LoadingIcon").addClass( "rn_Hidden");

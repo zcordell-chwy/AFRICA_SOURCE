@@ -1,16 +1,18 @@
 <?php
+
 namespace Custom\Models;
 
 use RightNow\Connect\v1_3 as RNCPHP;
 use RightNow\Utils\Framework;
 
-require_once (get_cfg_var('doc_root') . '/include/ConnectPHP/Connect_init.phph');
+require_once(get_cfg_var('doc_root') . '/include/ConnectPHP/Connect_init.phph');
 initConnectAPI('api_access', 'Password1');
 
 /**
  * This model would be loaded by using $this->load->model('custom/transaction_model');
  */
-class transaction_model extends \RightNow\Models\Base {
+class transaction_model extends \RightNow\Models\Base
+{
 
     private $allowedRefundStatus = array("Completed");
     private $allowedChargeStatus = array(
@@ -20,73 +22,76 @@ class transaction_model extends \RightNow\Models\Base {
     );
     private $allowedReversalStatus = array(TRANSACTION_PROCESSING_STATUS_ID);
 
-    function __construct() {
+    function __construct()
+    {
         parent::__construct();
-        $this -> CI -> load -> helper('constants');
+        $this->CI->load->helper('constants');
         //logMessage(__FUNCTION__ . "@" . __LINE__ . ": TR MOD started transaction model");
     }
 
     /**
      * acts as a lock against multiple charge attempts.  If the transaction processing is set to true, no attempts to access it will succeed.
      */
-    public function startProcessingTransaction($t_id, $transactionType = NULL) {
+    public function startProcessingTransaction($t_id, $transactionType = NULL)
+    {
 
-$this->_logToFile(34, __FUNCTION__.": Looking for transaction:".$t_id." with transaction type".$transactionType);
-        $trans = $this -> get_transaction($t_id);
+        $this->CI->model('custom/log_model')->log(__FILE__, __FUNCTION__, 0, 0, __LINE__, "Looking for transaction:" . $t_id . " with transaction type" . $transactionType, "Transaction");
+
+        $trans = $this->get_transaction($t_id);
 
         if (!$trans instanceof RNCPHP\financial\transactions) {
-$this->_logToFile(38, __FUNCTION__.": No Transaction found");
+            $this->CI->model('custom/log_model')->log(__FILE__, __FUNCTION__, 0, 0, __LINE__, ": No Transaction found", "Transaction");
             return false;
         }
 
-        $status = $trans -> currentStatus -> ID;
+        $status = $trans->currentStatus->ID;
 
         if (is_null($status) || $status < 1) {
-$this->_logToFile(45, __FUNCTION__." Could not determin status" );
+            $this->CI->model('custom/log_model')->log(__FILE__, __FUNCTION__, 0, 0, __LINE__, " Could not determin status", "Transaction");
             return false;
         }
 
 
         switch ($transactionType) {
-            case FS_SALE_TYPE :
-                if (!$this -> isAllowedStatus($status, $this -> allowedChargeStatus)) {
-$this->_logToFile(53,__FUNCTION__ .": Invalid transaction status: " . $status);
+            case FS_SALE_TYPE:
+                if (!$this->isAllowedStatus($status, $this->allowedChargeStatus)) {
+                    $this->CI->model('custom/log_model')->log(__FILE__, __FUNCTION__, 0, 0, __LINE__, "Invalid transaction status: " . $status, "Transaction");
                     return false;
                 }
                 break;
-            case FS_REFUND_TYPE :
-                if (!$this -> isAllowedStatus($status, $this -> allowedRefundStatus)) {
-$this->_logToFile(59,__FUNCTION__ .": Invalid transaction status: " . $status);
+            case FS_REFUND_TYPE:
+                if (!$this->isAllowedStatus($status, $this->allowedRefundStatus)) {
+                    $this->CI->model('custom/log_model')->log(__FILE__, __FUNCTION__, 0, 0, __LINE__, "Invalid transaction status: " . $status, "Transaction");
                     return false;
                 }
                 break;
-            case FS_REVERSAL_TYPE :
-                if (!$this -> isAllowedStatus($status, $this -> allowedReversalStatus)) {
-$this->_logToFile(65,__FUNCTION__ .": Invalid transaction status: " . $status);
+            case FS_REVERSAL_TYPE:
+                if (!$this->isAllowedStatus($status, $this->allowedReversalStatus)) {
+                    $this->CI->model('custom/log_model')->log(__FILE__, __FUNCTION__, 0, 0, __LINE__, "Invalid transaction status: " . $status, "Transaction");
                     return false;
                 }
                 break;
-            default :
+            default:
                 $statusIdx = false;
                 break;
         }
 
 
         try {
-$this->_logToFile(76, __FUNCTION__.": Setting Transaction status to ".TRANSACTION_PROCESSING_STATUS_ID);
-            $trans -> currentStatus = RNCPHP\financial\transaction_status::fetch(TRANSACTION_PROCESSING_STATUS_ID);
-            $trans -> save(RNCPHP\RNObject::SuppressAll);
+            $this->CI->model('custom/log_model')->log(__FILE__, __FUNCTION__, 0, 0, __LINE__, ": Setting Transaction status to " . TRANSACTION_PROCESSING_STATUS_ID, "Transaction");
+            $trans->currentStatus = RNCPHP\financial\transaction_status::fetch(TRANSACTION_PROCESSING_STATUS_ID);
+            $trans->save(RNCPHP\RNObject::SuppressAll);
             RNCPHP\ConnectAPI::commit();
-
-        } catch(\Exception $e) {
-$this->_logToFile(83,__FUNCTION__ . ": " . $e -> getMessage());
+        } catch (\Exception $e) {
+            $this->CI->model('custom/log_model')->log(__FILE__, __FUNCTION__, 0, 0, __LINE__, $e->getMessage(), "Transaction");
             return false;
         }
-$this->_logToFile(86, __FUNCTION__.": Returning True");
+        $this->CI->model('custom/log_model')->log(__FILE__, __FUNCTION__, 0, 0, __LINE__, "Returning True", "Transaction");
         return true;
     }
 
-    private function isAllowedStatus($status, $statusArr) {
+    private function isAllowedStatus($status, $statusArr)
+    {
         $statusIdx = array_search($status, $statusArr);
         if ($statusIdx === false || $statusIdx < 1) {
             return false;
@@ -94,134 +99,123 @@ $this->_logToFile(86, __FUNCTION__.": Returning True");
         return true;
     }
 
-    public function create_transaction($c_id, $amt, $desc = null, $donationId = null) {
+    public function create_transaction($c_id, $amt, $desc = null, $donationId = null)
+    {
         //logMessage("starting " . __FUNCTION__);
         //logMessage(__FUNCTION__ . "@" . __LINE__ . " args: " . print_r(func_get_args(), true));
-        $this -> CI -> load -> helper('constants');
+        $this->CI->load->helper('constants');
         $desc = addslashes($desc);
         if (strlen($desc) > 254) {
             $desc = substr($desc, 0, 251) . "...";
         }
         try {
-            $trans = new RNCPHP\financial\transactions; 
+            $trans = new RNCPHP\financial\transactions;
             $transMeta = RNCPHP\financial\transactions::getMetaData();
-            $trans -> currentStatus = RNCPHP\financial\transaction_status::fetch(DEFAULT_TRANSACTION_STATUS);
+            $trans->currentStatus = RNCPHP\financial\transaction_status::fetch(DEFAULT_TRANSACTION_STATUS);
 
-            $trans -> totalCharge = number_format($amt, 2, '.', '');
-            $trans -> contact = intval($c_id);
-            $trans -> description = is_null($desc) ? DEFAULT_TRANSACTION_DESC : $desc;
+            $trans->totalCharge = number_format($amt, 2, '.', '');
+            $trans->contact = intval($c_id);
+            $trans->description = is_null($desc) ? DEFAULT_TRANSACTION_DESC : $desc;
             if (!is_null($donationId)) {
-                $trans -> donation = intval($donationId);
+                $trans->donation = intval($donationId);
             }
-            $trans -> save(RNCPHP\RNObject::SuppressAll);
+            $trans->save(RNCPHP\RNObject::SuppressAll);
             RNCPHP\ConnectAPI::commit();
-        } catch(\Exception $e) {
+        } catch (\Exception $e) {
             //logMessage(__FUNCTION__ . "@" . __LINE__ . ": Exception Found");
             //logMessage(__FUNCTION__ . "@" . __LINE__ . ": " . $e -> getMessage());
             return false;
         }
-        return $trans -> ID;
-
+        return $trans->ID;
     }
 
     /**
      *
      */
-    public function update_transaction($t_id, $c_id, $amt = -1, $desc = null, $donationId = null, $statusString = null, $paymentMethodId = -1, $PNRef = null) {
+    public function update_transaction($t_id, $c_id, $amt = -1, $desc = null, $donationId = null, $statusString = null, $paymentMethodId = -1, $PNRef = null)
+    {
         //logMessage("starting " . __FUNCTION__);
         //logMessage(__FUNCTION__ . "@" . __LINE__ . " args: " . print_r(func_get_args(), true));
-$this->_logToFile(133, "Begin Update transaction");
-$this->_logToFile(134, "DonationId:$donationId Amt:$amt ContactId:$c_id TransactionAmount:$t_id Status:$statusString NewPayId:$paymentMethodId PnRef:".$PNRef);
+        $this->CI->model('custom/log_model')->log(__FILE__, __FUNCTION__, 0, 0, __LINE__, "DonationId:$donationId Amt:$amt ContactId:$c_id TransactionAmount:$t_id Status:$statusString NewPayId:$paymentMethodId PnRef:" . $PNRef, "Transaction");
         if (strlen($desc) > 254) {
             $desc = substr($desc, 0, 251) . "...";
         }
-$this->_logToFile(138, "");
         //logMessgae("in transaction update. payment method =  ".$paymentMethodId);
         try {
             if (!is_null($t_id) && is_numeric($t_id) && $t_id > 0) {
-                $this->_logToFile(142, "TransID:$t_id");
-                $trans = $this -> get_transaction(intval($t_id));
+                $this->CI->model('custom/log_model')->log(__FILE__, __FUNCTION__, 0, 0, __LINE__, "TransID:$t_id", "Transaction");
+                $trans = $this->get_transaction(intval($t_id));
             } else {
-                $this->_logToFile(145, "Returning False");
+                $this->CI->model('custom/log_model')->log(__FILE__, __FUNCTION__, 0, 0, __LINE__, "Returning False", "Transaction");
                 return false;
             }
             if (!$trans instanceof RNCPHP\financial\transactions) {
-                $this->_logToFile(149, "Returning False");
+                $this->CI->model('custom/log_model')->log(__FILE__, __FUNCTION__, 0, 0, __LINE__, "Returning False", "Transaction");
                 //logMessage("Transaction Not found in " . __FUNCTION__);
                 return false;
             }
             $transMeta = RNCPHP\financial\transactions::getMetaData();
-            //$this->_logToFile(154, print_r($transMeta, true));
-            $trans -> currentStatus = RNCPHP\financial\transaction_status::fetch(DEFAULT_TRANSACTION_STATUS_ID);
-            $this->_logToFile(156, print_r($trans -> currentStatus, true));
+            $trans->currentStatus = RNCPHP\financial\transaction_status::fetch(DEFAULT_TRANSACTION_STATUS_ID);
+            $this->CI->model('custom/log_model')->log(__FILE__, __FUNCTION__, 0, 0, __LINE__, print_r($trans->currentStatus, true), "Transaction");
             if ($amt > 0) {
-                $this->_logToFile(158,number_format($amt, 2, '.', ''));
-                $trans -> totalCharge = number_format($amt, 2, '.', '');
-                $this->_logToFile(160, "");
+                $this->CI->model('custom/log_model')->log(__FILE__, __FUNCTION__, 0, 0, __LINE__, number_format($amt, 2, '.', ''), "Transaction");
+                $trans->totalCharge = number_format($amt, 2, '.', '');
             }
-            $trans -> contact = intval($c_id);
-            $this->_logToFile(160, "");
+            $trans->contact = intval($c_id);
             if (!is_null($desc)) {
-                $trans -> description = $desc;
+                $trans->description = $desc;
             }
-            $this->_logToFile(167, "");
             if (!is_null($donationId)) {
-                $trans -> donation = intval($donationId);
+                $trans->donation = intval($donationId);
             }
-            $this->_logToFile(171, "");
             if (!is_null($statusString) && strlen($statusString) > 0) {
-                $this -> addNoteToTrans($trans, "Changing status from (LookupName unavailable, ID instead)" . $trans -> currentStatus -> ID . " to " . $statusString);
-                $trans -> currentStatus = RNCPHP\financial\transaction_status::fetch($statusString);
+                $this->addNoteToTrans($trans, "Changing status from (LookupName unavailable, ID instead)" . $trans->currentStatus->ID . " to " . $statusString);
+                $trans->currentStatus = RNCPHP\financial\transaction_status::fetch($statusString);
             }
-            $this->_logToFile(176, "");
             if (!is_null($paymentMethodId) && $paymentMethodId > 0) {
-                $trans -> paymentMethod = intval($paymentMethodId);
+                $trans->paymentMethod = intval($paymentMethodId);
             }
-            $this->_logToFile(180, "");
-            
-            if(!is_null($PNRef) ){
-                $trans -> refCode = $PNRef;
+
+            if (!is_null($PNRef)) {
+                $trans->refCode = $PNRef;
             }
-            $this->_logToFile(185, "");
             logMessage("Updating Transaction: statusstring = $statusString and TRANSACTION_SALE_SUCCESS_STATUS = " . TRANSACTION_SALE_SUCCESS_STATUS);
             if ($statusString == TRANSACTION_SALE_SUCCESS_STATUS) {
-                $this->_logToFile(188, "");
-                $trans -> save();
+                $trans->save();
                 logMessage("not suppressing");
             } else {
-                $this->_logToFile(192, "");
-                $trans -> save(RNCPHP\RNObject::SuppressAll);
+                $trans->save(RNCPHP\RNObject::SuppressAll);
                 logMessage("suppressing");
             }
             RNCPHP\ConnectAPI::commit();
             //logMessage($trans);
 
-        } catch(\Exception $e) {
+        } catch (\Exception $e) {
             //logMessage(__FUNCTION__ . "@" . __LINE__ . ": Exception Found");
             //logMessage($e -> getMessage());
-            $this->_logToFile(138, $e->getMessage());
+            $this->CI->model('custom/log_model')->log(__FILE__, __FUNCTION__, 0, 0, __LINE__, $e->getMessage(), "Transaction");
             return false;
         }
-        $this->_logToFile(205, "Returning:".$trans -> ID);
-        return $trans -> ID;
-
+        $this->CI->model('custom/log_model')->log(__FILE__, __FUNCTION__, 0, 0, __LINE__, "Returning:" . $trans->ID, "Transaction");
+        return $trans->ID;
     }
 
-    public function addDonationToTransaction($trans_id, $donation_id) {
+    public function addDonationToTransaction($trans_id, $donation_id)
+    {
 
         //logMessage(__FUNCTION__ . "@" . __LINE__ . ": Starting " . __FUNCTION__);
         //logMessage(__FUNCTION__ . "@" . __LINE__ . " args: " . print_r(func_get_args(), true));
-        $trans = $this -> get_transaction($trans_id);
+        $trans = $this->get_transaction($trans_id);
         if ($trans == false) {
             //logMessage(__FUNCTION__ . "@" . __LINE__ . ": No valid transaction");
             return false;
         }
         try {
-            $trans -> donation = intval($donation_id);
-            $trans -> save(RNCPHP\RNObject::SuppressAll);
+            $trans->donation = intval($donation_id);
+            $trans->save(RNCPHP\RNObject::SuppressAll);
             RNCPHP\ConnectAPI::commit();
-        } catch(Exception $e) {
-$this->_logToFile(207, $e -> getMessage());
+        } catch (Exception $e) {
+            $this->CI->model('custom/log_model')->log(__FILE__, __FUNCTION__, 0, 0, __LINE__, $e->getMessage(), "Transaction");
             return false;
         }
         return true;
@@ -230,16 +224,17 @@ $this->_logToFile(207, $e -> getMessage());
     /**
      *
      */
-    public function get_transaction($t_id) {
+    public function get_transaction($t_id)
+    {
 
         //logMessage(__FUNCTION__ . "@" . __LINE__ . ": Starting get transaction");
         //logMessage(__FUNCTION__ . "@" . __LINE__ . " args: " . print_r(func_get_args(), true));
         try {
             $roql = sprintf("SELECT financial.transactions FROM financial.transactions where ID = %s", $t_id);
             //logMessage(__FUNCTION__ . "@" . __LINE__ . ": " . $roql);
-            $qo = RNCPHP\ROQL::queryObject($roql) -> next();
-            $tr = $qo -> next();
-        } catch(Exception $e) {
+            $qo = RNCPHP\ROQL::queryObject($roql)->next();
+            $tr = $qo->next();
+        } catch (Exception $e) {
             //logMessage(__FUNCTION__ . "@" . __LINE__ . ": " . $e -> getMessage());
             return false;
         }
@@ -247,8 +242,8 @@ $this->_logToFile(207, $e -> getMessage());
             return false;
         }
 
-        if (isset($tr -> contact)) {
-            if ($this -> isContactAllowedToReadTransaction($tr) !== true) {
+        if (isset($tr->contact)) {
+            if ($this->isContactAllowedToReadTransaction($tr) !== true) {
                 //logMessage(__FUNCTION__ . "@" . __LINE__ . ": Contact not allowed access to transaction: " . $tr -> ID);
                 return false;
             }
@@ -260,86 +255,88 @@ $this->_logToFile(207, $e -> getMessage());
         return $tr;
     }
 
-    public function updateTransStatus($tran_id, $statusID = null, $paymentMethodId = null, $PNRef = null) {
+    public function updateTransStatus($tran_id, $statusID = null, $paymentMethodId = null, $PNRef = null)
+    {
 
         //logMessage(__FUNCTION__ . "@" . __LINE__ . ": TR MOD starting updateTransStatus function");
         //logMessage(__FUNCTION__ . "@" . __LINE__ . " args: " . print_r(func_get_args(), true));
-        $trans = $this -> get_transaction($tran_id);
+        $trans = $this->get_transaction($tran_id);
         if (!$trans instanceof RNCPHP\financial\transactions) {
-$this->_logToFile(252, " invalid type");
+            $this->CI->model('custom/log_model')->log(__FILE__, __FUNCTION__, 0, 0, __LINE__, " invalid type", "Transaction");
             return false;
         }
         if (!is_null($paymentMethodId) && $paymentMethodId > 0) {
-$this->_logToFile(256, "valid paymethod id = $paymentMethodId");
-            $trans -> paymentMethod = $paymentMethodId;
+            $this->CI->model('custom/log_model')->log(__FILE__, __FUNCTION__, 0, 0, __LINE__, "valid paymethod id = $paymentMethodId", "Transaction");
+            $trans->paymentMethod = $paymentMethodId;
         }
 
-        if ($trans -> currentStatus -> ID == $statusID) {
-$this->_logToFile(261, "returning true");
+        if ($trans->currentStatus->ID == $statusID) {
+            $this->CI->model('custom/log_model')->log(__FILE__, __FUNCTION__, 0, 0, __LINE__, "returning true", "Transaction");
             return true;
         }
 
-        if(!is_null($PNRef) ){
-            $trans -> refCode = $PNRef;
+        if (!is_null($PNRef)) {
+            $trans->refCode = $PNRef;
         }
-        
+
         try {
             if (!is_null($statusID) && $statusID > 0) {
-                $this -> addNoteToTrans($trans, "Changing status from (LookupName unavailable, ID instead) " . $trans -> currentStatus -> ID . " to " . $statusID);
-                $trans -> currentStatus = RNCPHP\financial\transaction_status::fetch($statusID);
+                $this->addNoteToTrans($trans, "Changing status from (LookupName unavailable, ID instead) " . $trans->currentStatus->ID . " to " . $statusID);
+                $trans->currentStatus = RNCPHP\financial\transaction_status::fetch($statusID);
             }
 
-$this->_logToFile(275, "Updating Transaction: statusID = $statusID and TRANSACTION_SALE_SUCCESS_STATUS_ID = " . TRANSACTION_SALE_SUCCESS_STATUS_ID);
+            $this->CI->model('custom/log_model')->log(__FILE__, __FUNCTION__, 0, 0, __LINE__, "Updating Transaction: statusID = $statusID and TRANSACTION_SALE_SUCCESS_STATUS_ID = " . TRANSACTION_SALE_SUCCESS_STATUS_ID, "Transaction");
             if ($statusID == TRANSACTION_SALE_SUCCESS_STATUS_ID) {
-                $trans -> save();
+                $trans->save();
             } else {
-                $trans -> save(RNCPHP\RNObject::SuppressAll);
+                $trans->save(RNCPHP\RNObject::SuppressAll);
             }
 
             RNCPHP\ConnectAPI::commit();
-        } catch(\Exception $e) {
-$this->_logToFile(284, ": " . $e -> getMessage());
+        } catch (\Exception $e) {
+            $this->CI->model('custom/log_model')->log(__FILE__, __FUNCTION__, 0, 0, __LINE__, $e->getMessage(), "Transaction");
             return false;
-        }catch(RNCPHP\ConnectAPIError $e) {
-$this->_logToFile(287,$e->getMessage());
+        } catch (RNCPHP\ConnectAPIError $e) {
+            $this->CI->model('custom/log_model')->log(__FILE__, __FUNCTION__, 0, 0, __LINE__, $e->getMessage(), "Transaction");
         }
-$this->_logToFile(289, ":transaction status updated:" . $statusString);
+        $this->CI->model('custom/log_model')->log(__FILE__, __FUNCTION__, 0, 0, __LINE__, ":transaction status updated:" . $statusString, "Transaction");
         return true;
     }
 
     /**
      * Adds a new note to the passed transaction
      */
-    public function addNoteToTrans($trans, $noteContent) {
+    public function addNoteToTrans($trans, $noteContent)
+    {
         logMessage(__FUNCTION__ . "@" . __LINE__ . " args: " . print_r(func_get_args(), true));
-        logMessage("note = ".$noteContent);
-        try{
+        logMessage("note = " . $noteContent);
+        try {
             if (!$trans instanceof RNCPHP\financial\transactions) {
-                $trans = $this -> get_transaction($trans);
+                $trans = $this->get_transaction($trans);
             }
             if (!$trans instanceof RNCPHP\financial\transactions) {
-                logMessage(__FUNCTION__ . "@" . __LINE__."  303" );
+                logMessage(__FUNCTION__ . "@" . __LINE__ . "  303");
                 return;
             }
-    
+
             if (is_null($noteContent) || strlen($noteContent) < 1) {
-                logMessage(__FUNCTION__ . "@" . __LINE__."  308" );
+                logMessage(__FUNCTION__ . "@" . __LINE__ . "  308");
                 return;
             }
-            $f_count = count($trans -> Notes);
-            logMessage(__FUNCTION__ . "@" . __LINE__."  312" );
+            $f_count = count($trans->Notes);
+            logMessage(__FUNCTION__ . "@" . __LINE__ . "  312");
             if ($f_count == 0) {
                 //$trans -> Notes = new RNCPHP\NoteArray();
-                logMessage(__FUNCTION__ . "@" . __LINE__."  315" );
+                logMessage(__FUNCTION__ . "@" . __LINE__ . "  315");
             }
             //$trans -> Notes[$f_count] = new RNCPHP\Note();
-            logMessage(__FUNCTION__ . "@" . __LINE__."  318" );
+            logMessage(__FUNCTION__ . "@" . __LINE__ . "  318");
             //$trans -> Notes[$f_count] -> Text = $noteContent;
-            logMessage(__FUNCTION__ . "@" . __LINE__."  320" );
-        }catch(Exception $e){
-            logMessage(__FUNCTION__ . "@" . __LINE__.$e->getMessage());
-        }catch(RNCPHP\ConnectAPIError $e) {
-            logMessage("RNCPHP Exception: ".$e->getMessage());
+            logMessage(__FUNCTION__ . "@" . __LINE__ . "  320");
+        } catch (Exception $e) {
+            logMessage(__FUNCTION__ . "@" . __LINE__ . $e->getMessage());
+        } catch (RNCPHP\ConnectAPIError $e) {
+            logMessage("RNCPHP Exception: " . $e->getMessage());
         }
         //$trans->save();
         return $trans;
@@ -350,12 +347,13 @@ $this->_logToFile(289, ":transaction status updated:" . $statusString);
      * @param  $trans A Connect transaction object.
      * @return bool True if contact is allowed to read the transaction, false otherwise
      */
-    protected function isContactAllowedToReadTransaction(RNCPHP\financial\transactions $trans) {
+    protected function isContactAllowedToReadTransaction(RNCPHP\financial\transactions $trans)
+    {
         return true;
         //logMessage(__FUNCTION__ . "@" . __LINE__ . " args: " . print_r(func_get_args(), true));
-        $contactID = $this -> CI -> session -> getSessionData('theRealContactID');
+        $contactID = $this->CI->session->getSessionData('theRealContactID');
         if (is_null($contactID) || !is_numeric($contactID) || $contactID < 1) {
-            $contactID = $this -> CI -> session -> getProfileData('contactID');
+            $contactID = $this->CI->session->getProfileData('contactID');
         }
         //logMessage(__FUNCTION__ . "@" . __LINE__ . ": TR MOD Session Contact ID: " . $contactID);
         if (!Framework::isValidID($contactID)) {
@@ -367,7 +365,7 @@ $this->_logToFile(289, ":transaction status updated:" . $statusString);
             return false;
         }
         //logMessage(__FUNCTION__ . "@" . __LINE__ . ": TR MOD Trans C_id: " . $trans -> contact -> ID);
-        if ($trans -> contact -> ID === $contactID) {
+        if ($trans->contact->ID === $contactID) {
             //logMessage(__FUNCTION__ . "@" . __LINE__ . ": TR MOD Contact allowed access");
             return true;
         }
@@ -375,14 +373,14 @@ $this->_logToFile(289, ":transaction status updated:" . $statusString);
         return false;
     }
 
-    private function _logToFile($lineNum, $message){
-        
-       $hundredths = ltrim(microtime(), "0");
-        
-        $fp = fopen('/tmp/transactionLogs_'.date("Ymd").'.log', 'a');
-        fwrite($fp,  date('H:i:s.').$hundredths.": Transaction Model @ $lineNum : ".$message."\n");
-        fclose($fp);
-        
-    }
+    private function _logToFile($lineNum, $message)
+    {
 
+        //    $hundredths = ltrim(microtime(), "0");
+
+        //     $fp = fopen('/tmp/transactionLogs_'.date("Ymd").'.log', 'a');
+        //     fwrite($fp,  date('H:i:s.').$hundredths.": Transaction Model @ $lineNum : ".$message."\n");
+        //     fclose($fp);
+
+    }
 }
