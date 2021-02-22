@@ -1,4 +1,19 @@
 <!DOCTYPE html>
+<?php
+
+$downForMaint = false;
+
+// echo time();
+// echo "<br/>";
+//1607212829
+//if(time() > 1607213760 && time() < 1607213840){
+// if(time() > 1607235300 && time() < 1607274900){
+// 	$downForMaint = true;
+// }else{
+// 	$downForMaint = false;
+// }
+
+?>
 <html lang="#rn:language_code#">
 	<head>
 		<meta charset="utf-8"/>
@@ -38,7 +53,7 @@
 		<![endif]-->
 	</head>
 	<body class="yui-skin-sam yui3-skin-sam">
-	    
+		
 	    <rn:condition show_on_pages="payment/checkout">
             <rn:condition config_check="CUSTOM_CFG_inspectlet_enabled == true">
                <rn:widget path="custom/eventus/inspectlet" transaction="" />
@@ -140,7 +155,12 @@
             <!-- End mobile nav menu -->
 			<!-- End rn_SiteHeader -->
 			<div class="rn_PageContentContainer rn_Container ResponsiveContainer">
+			<?if ($downForMaint) : ?>
+				<br/><br/><br/><br/><br/><p>#rn:msg:CUSTOM_MSG_DOWN_FOR_MAINTENANCE#</p><br/><br/><br/><br/><br/>
+			<?else:?>
 				<rn:page_content/>
+			<?endif;?>
+				
 			</div>
 			<!-- End rn_Container -->
 			<div id="rn_Footer" class="rn_PageFooter ResponsiveContainer" role="contentinfo">

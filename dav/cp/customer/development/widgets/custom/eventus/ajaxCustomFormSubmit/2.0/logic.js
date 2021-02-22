@@ -122,7 +122,7 @@ Custom.Widgets.eventus.ajaxCustomFormSubmit = RightNow.Widgets.extend({
 			$(this.baseSelector + "_LoadingIcon").removeClass( "rn_Hidden");
 
 			//testing timeout link
-				this.data.attrs.default_ajax_endpoint = "https://africanewlife.custhelp.com/cgi-bin/africanewlife.cfg/php/custom/testpost.php";
+				//this.data.attrs.default_ajax_endpoint = "https://africanewlife.custhelp.com/cgi-bin/africanewlife.cfg/php/custom/testpost.php";
 	        RightNow.Ajax.makeRequest(this.data.attrs.default_ajax_endpoint, eventObj.data, {
 				successHandler: this.default_ajax_endpointCallback,
 				failureHandler: this.ajaxFailed,

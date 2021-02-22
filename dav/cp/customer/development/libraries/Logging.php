@@ -105,9 +105,9 @@ class Logging
         $logThreshold = is_null($logThreshold) ? self::$LOG_LEVEL_DEBUG_FULL : $logThreshold;
         if($logLevel >= $logThreshold){
             if($toFile){
-                // $fp = fopen("/tmp/$fileName", 'a');
-                // fwrite($fp, $msg . "\n");
-                // fclose($fp);
+                $fp = fopen("/tmp/$fileName", 'a');
+                fwrite($fp, $msg . "\n");
+                fclose($fp);
             }else{
                 logMessage($msg);
             }

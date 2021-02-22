@@ -1,0 +1,12 @@
+<?php /* Originating Release: February 2019 */?>
+<rn:block id="top"/>
+<?if(\RightNow\Utils\Connect::isFileAttachmentType($this->data['value'])):?>
+    <rn:widget path="custom/letters/CustomFileListDisplay" sub_id="file"/>
+<?elseif(\RightNow\Utils\Connect::getProductCategoryType($this->data['value'])):?>
+    <rn:widget path="output/ProductCategoryDisplay" sub_id="prodCat"/>
+<?elseif(\RightNow\Utils\Connect::isIncidentThreadType($this->data['value'])):?>
+    <rn:widget path="custom/letters/CustomIncidentThreadDisplay" sub_id="incident"/>
+<?else:?>
+    <rn:widget path="output/FieldDisplay" sub_id="genericField"/>
+<?endif;?>
+<rn:block id="bottom"/>

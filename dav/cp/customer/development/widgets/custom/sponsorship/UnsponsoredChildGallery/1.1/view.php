@@ -252,8 +252,12 @@
 				<?php endif; ?>
 				<!-- End Next Page Link -->
 			</div>
+			<? if ($this->data['js']['showDisclaimer']):?>
+				<div class='event-disclaimer'>#rn:msg:CUSTOM_MSG_EVENT_DISCLAIMER#</div>
+			<?endif;?>
+			<!-- End Unsponsored Child Image Gallery Paginator -->
 		</div>
-		<!-- End Unsponsored Child Image Gallery Paginator -->
+		
 	</div>
 	<!-- Unsponsored Child Image Gallery Container -->
 	</div> <!--End Content -->

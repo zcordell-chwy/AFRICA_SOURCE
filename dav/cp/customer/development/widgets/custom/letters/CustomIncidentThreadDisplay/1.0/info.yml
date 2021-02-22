@@ -1,0 +1,16 @@
+version: "1.0"
+requires:
+  jsModule:
+  - standard
+  - mobile
+attributes:
+  hide_agent_responses:
+    name: hide_agent_responses
+    type: boolean
+    description: Hides non customer entries into the thread
+    default: true
+    required: false
+extends:
+  widget: standard/output/IncidentThreadDisplay
+  components: []
+  overrideViewAndLogic: "true"

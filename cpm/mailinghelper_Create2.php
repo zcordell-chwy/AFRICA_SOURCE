@@ -376,7 +376,14 @@ implements RNCPM\ObjectEventHandler {
     public static function logToFile($action, $message = null){
 
         if(isset($message)){
-            $logFile = fopen("/tmp/mailingHelperLog_".date("Y_m_d").".log", "a");
+
+            if (!is_dir('/tmp/mailingLogs')){
+                $oldumask = umask(0);
+                mkdir('/tmp/mailingLogs', 0775, true);
+                umask($oldumask);
+            }
+
+            $logFile = fopen("/tmp/mailingLogs/mailingHelperLog_".date("Y_m_d").".log", "a");
             fwrite($logFile, date("Y-m-d H:i:s  "). $message."\n");
             fwrite($logFile, "Memory Usage:".memory_get_usage()."  Peak Memory Usage: ".memory_get_peak_usage()." \n\n");
             fclose($logFile);
