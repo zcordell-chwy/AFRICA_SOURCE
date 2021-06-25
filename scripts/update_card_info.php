@@ -54,36 +54,39 @@ function updatePayMethods($cardDetails){
                         $payMethod->Contact->CustomFields->c->activepledgecount > 0 ){
 
                 if($card->UPDATEDACCOUNTLASTFOUR != $payMethod->lastFour){
-                    $updateNotes[] = 'Update Last Four:'.$payMethod->lastFour."->".$card->UPDATEDACCOUNTLASTFOUR;
-                    $payMethod->lastFour = $card->UPDATEDACCOUNTLASTFOUR;
-                }
-
-                if(substr($card->UPDATEDEXPDATE, 0, 2) != $payMethod->expMonth){
-                    $updateNotes[] = 'Update Exp Month:'.$payMethod->expMonth."->".substr($card->UPDATEDEXPDATE, 0, 2);
-                    $payMethod->expMonth = substr($card->UPDATEDEXPDATE, 0, 2);
-                }
-                
-                if( "20".substr($card->UPDATEDEXPDATE, 2, 2) != $payMethod->expYear ){
-                    $updateNotes[] = 'Update Exp Year:'.$payMethod->expYear."->20".substr($card->UPDATEDEXPDATE, 2, 2);
-                    $payMethod->expYear = "20".substr($card->UPDATEDEXPDATE, 2, 2);
-                }
-
-                if(count($updateNotes) > 0){
-                    $payMethod->autoUpdatedDate = time();
-                    
-                    $notes_count = count($payMethod -> Notes);
-                    if ($notes_count == 0) {
-                        $payMethod -> Notes = new RNCPHP\NoteArray();
+                    //do nothing for now
+                    // $updateNotes[] = 'Update Last Four:'.$payMethod->lastFour."->".$card->UPDATEDACCOUNTLASTFOUR;
+                    // $payMethod->lastFour = $card->UPDATEDACCOUNTLASTFOUR;
+                }else{
+                    if(substr($card->UPDATEDEXPDATE, 0, 2) != $payMethod->expMonth){
+                        $updateNotes[] = 'Update Exp Month:'.$payMethod->expMonth."->".substr($card->UPDATEDEXPDATE, 0, 2);
+                        $payMethod->expMonth = substr($card->UPDATEDEXPDATE, 0, 2);
                     }
-                    $payMethod -> Notes[$notes_count] = new RNCPHP\Note();
-                    $payMethod -> Notes[$notes_count] -> Text = print_r($updateNotes,true);
-
-                    //$payMethod->save();
-
-                    //serialize in case something goes awry, we can pick up where we left off.
-                    //RNCPHP\ConnectAPI::commit();
-
+                    
+                    if( "20".substr($card->UPDATEDEXPDATE, 2, 2) != $payMethod->expYear ){
+                        $updateNotes[] = 'Update Exp Year:'.$payMethod->expYear."->20".substr($card->UPDATEDEXPDATE, 2, 2);
+                        $payMethod->expYear = "20".substr($card->UPDATEDEXPDATE, 2, 2);
+                    }
+    
+                    if(count($updateNotes) > 0){
+                        $payMethod->autoUpdatedDate = time();
+                        
+                        $notes_count = count($payMethod -> Notes);
+                        if ($notes_count == 0) {
+                            $payMethod -> Notes = new RNCPHP\NoteArray();
+                        }
+                        $payMethod -> Notes[$notes_count] = new RNCPHP\Note();
+                        $payMethod -> Notes[$notes_count] -> Text = print_r($updateNotes,true);
+    
+                        $payMethod->save();
+    
+                        //serialize in case something goes awry, we can pick up where we left off.
+                        RNCPHP\ConnectAPI::commit();
+    
+                    }
                 }
+
+                
             }
         }catch(Exception $e){
             print_r($e->getMessage());
