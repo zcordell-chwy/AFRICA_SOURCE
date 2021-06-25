@@ -27,8 +27,7 @@ class donateIndividual extends \RightNow\Libraries\Widget\Base {
         }
         
         $pageSettings = json_decode(getConfig(CUSTOM_CFG_SINGLE_DONATION_PAGE_SETTINGS));
-        $pageSettings = json_decode('{"funds":[{"id": 54, "onetime":true, "monthly": false, "defaultonetime": 15, "defaultmonthly": 15 }, {"id": 555, "onetime":true, "monthly": false, "defaultonetime": 15, "defaultmonthly": 15 }]}');
-
+        
         if($pageSettings){
             foreach($pageSettings->funds as $fund){
                 if($fund->id == $f_id){

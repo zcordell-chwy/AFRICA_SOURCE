@@ -12,6 +12,7 @@ class items extends  \RightNow\Models\Base {
     function __construct() {
         parent::__construct();
         //This model would be loaded by using $this->load->model('custom/Sample_model');
+        $this->CI->load->helper('log');
         $this->CI->load->helper('constants');
     }
     
@@ -214,8 +215,7 @@ class items extends  \RightNow\Models\Base {
                     
                      $lineItemObjs[] = $newLineItem;   
                 }
-                
-                
+                       
                 
                 
             }
@@ -251,10 +251,11 @@ class items extends  \RightNow\Models\Base {
     }
 
     public function updateTransOnItems($sessionId, $transId){
-
-        $this->_logToFile(__LINE__, "Session:".$sessionId." Transaction:".$transId);
+        
+        // $this->_logToFile(__LINE__, "Session:".$sessionId." Transaction:".$transId);
+        helplog(__FILE__, __FUNCTION__.__LINE__,$sessionId." Transaction:".$transId, "");
         if(empty($transId) || empty($sessionId)){
-            $this->_logToFile(__LINE__, "empty");
+            // $this->_logToFile(__LINE__, "empty");
             return;
         }
 
@@ -270,18 +271,18 @@ class items extends  \RightNow\Models\Base {
 
         try{
             $roql = "Select Shopping.Cart from Shopping.Cart where Shopping.Cart.SessionID = '$sessionId'";
-            $this->_logToFile(__LINE__, $roql);
+            helplog(__FILE__, __FUNCTION__.__LINE__, $roql, "");
             $res = RNCP\ROQL::queryObject( $roql)->next();
 
             while($cartItem = $res->next()){
                 $cartItem->transId = intval($transId);
-                $this->_logToFile(__LINE__, "Cart item ID:".$cartItem->ID." Added Trans:".$transId);
+                helplog(__FILE__, __FUNCTION__.__LINE__,"Cart item ID:".$cartItem->ID." Added Trans:".$transId,"");
                 $cartItem->save();
             }
         }catch(Exception $e){
-            $this->_logToFile(__LINE__, "Error:".$e->getMessage());
+            helplog(__FILE__, __FUNCTION__.__LINE__,"", "Error:".$e->getMessage());
         }catch(RNCP\ConnectAPIError $err) {
-            $this->_logToFile(__LINE__, "Error:".$err->getMessage());
+            helplog(__FILE__, __FUNCTION__.__LINE__,"", "Error:".$err->getMessage());
         }
         
         return true;   
@@ -306,10 +307,26 @@ class items extends  \RightNow\Models\Base {
         return $reoccurring;   
     }
 
-    public function getGiftItems() {
+    public function getGiftItems($itemId = null, $ignoreGift = false) {
         $items = array();
-        $sql = "Select ONLINE.Items from ONLINE.Items Where ONLINE.Items.Gift = 1 ORDER BY ONLINE.Items.WebDisplayOrder ";
+        $conditions = array();
+        $sql = "Select ONLINE.Items from ONLINE.Items ";
 
+        if(!$ignoreGift){
+            $conditions[] = "ONLINE.Items.Gift = 1 ";
+        }
+
+        if($itemId){
+            $conditions[] = " Online.Items.ID = ".intval($itemId);
+        }
+
+        if(count($conditions) > 0){
+            $sql .= "WHERE ".implode(" AND ", $conditions);
+        }
+
+        $sql .= " ORDER BY ONLINE.Items.WebDisplayOrder ";
+
+        logMessage($sql);
 
         $resultSet = RNCP\ROQL::queryObject($sql) -> next();
 
@@ -570,13 +587,14 @@ class items extends  \RightNow\Models\Base {
         return $total;
     }
 
-    public function _logToFile($lineNum, $message){
-        $hundredths = ltrim(microtime(), "0");
+    // public function helplog($lineNum, $message){
+    //    helplog(__FILE__, __FUNCTION__.__LINE__,$lineNum, $message, "");
+        // $hundredths = ltrim(microtime(), "0");
         
-        $fp = fopen('/tmp/esgLogPayCron/checkoutLogs_'.date("Ymd").'.log', 'a');
-        fwrite($fp,  date('H:i:s.').": Items Model @ $lineNum : ".$message."\n");
-        fclose($fp);
+        // $fp = fopen('/tmp/esgLogPayCron/checkoutLogs_'.date("Ymd").'.log', 'a');
+        // fwrite($fp,  date('H:i:s.').": Items Model @ $lineNum : ".$message."\n");
+        // fclose($fp);
         
-    }
+    
     
 }

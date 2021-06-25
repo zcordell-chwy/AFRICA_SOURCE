@@ -22,7 +22,7 @@
             <div class="sponsor-content">
                 <?if(!$child->WebHold){?>
                 <h3 style='color:#911A1D; margin-bottom:15px;'>
-                    <div class="bio-info">We're sorry, this child is no longer available for sponsorship.  Please visit our <a href='/app/home'>home page</a> for more children needing sponsorship.</div>
+                    <div class="bio-info">We’re sorry, this student no longer needs a sponsor. Please visit <a href="/app/home">this page</a> to sponsor a different student.</div>
                 </h3>
                 <?}?>            
                 <div class="sponsor-info">
@@ -47,7 +47,7 @@
                             <?
                                 }else{
                             ?>
-                                    <a class="sponsor-button" href="/app/home" >Sponsor Another Child</a>
+                                    <a class="sponsor-button" href="/app/home" >Sponsor Another Student</a>
                             <?
                                 }
                             ?>
@@ -79,7 +79,7 @@
     }else{ ?>
         <div class="sponsor-content">
             <h3 style='color:#911A1D; margin-bottom:15px;'>
-                <div class="bio-info" style="float: initial;">The specified Child ID is invalid. Please visit our <a href='/app/home'>home page</a> for more children needing sponsorship.</div>
+                <div class="bio-info" style="float: initial;">The specified Student ID is invalid. Please visit our <a href='/app/home'>home page</a> for more students needing sponsorship.</div>
             </h3>
         </div>
     <?php

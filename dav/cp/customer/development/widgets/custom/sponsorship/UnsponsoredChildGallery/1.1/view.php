@@ -36,22 +36,22 @@
 					<?php endforeach; ?>
 				</select>
 			<?else:?>
-				<? if($this->data['unsponsoredChildren']['metadata']['eventName'] == ""): ?>
-					<label>Priority</label>
-					<select class="rn_PriorityFilter">
-						<?php 
-							$selectedValue = isset($this->data['unsponsoredChildren']['metadata']['filters']['priority']) ? $this->data['unsponsoredChildren']['metadata']['filters']['priority'] : 0;
-							$options = array('1' => 'High', '2' => 'Medium', '0' => 'All'); 
-							foreach($options as $value => $label): 
-						?>
-							<?php if(intval($value) === $selectedValue): ?>
-								<option value="<?= $value ?>" selected><?= $label ?></option>
-							<?php else: ?>
-								<option value="<?= $value ?>"><?= $label ?></option>
-							<?php endif; ?>
-						<?php endforeach; ?>
-					</select>
-				<? endif; ?>
+				
+				<label>Priority</label>
+				<select class="rn_PriorityFilter">
+					<?php 
+						$selectedValue = isset($this->data['unsponsoredChildren']['metadata']['filters']['priority']) ? $this->data['unsponsoredChildren']['metadata']['filters']['priority'] : 0;
+						$options = array('1' => 'High', '2' => 'Medium', '0' => 'All'); 
+						foreach($options as $value => $label): 
+					?>
+						<?php if(intval($value) === $selectedValue): ?>
+							<option value="<?= $value ?>" selected><?= $label ?></option>
+						<?php else: ?>
+							<option value="<?= $value ?>"><?= $label ?></option>
+						<?php endif; ?>
+					<?php endforeach; ?>
+				</select>
+				
 
 				<label>Community</label>
 				<select class="rn_CommunityFilter">

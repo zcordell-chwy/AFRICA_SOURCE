@@ -78,6 +78,7 @@ function outputResponse($data = null, $errors = null, $httpCode = 200)
     header('Content-Type: application/vnd.api+json');
 
     echo json_encode($return);
+
     return;
 }
 
