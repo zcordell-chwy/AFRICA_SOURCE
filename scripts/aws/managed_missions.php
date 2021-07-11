@@ -16,6 +16,8 @@
  * 
  * Reports: put in filter for "reciepts" to not send receipts.
  * 
+ * Files: network_utilities, managed_missions
+ * 
  */
 
 use RightNow\Connect\v1_3 as RNCPHP;
@@ -38,7 +40,7 @@ define('ALLOW_PATCH', false);
 
 /*Application Constants*/
 define('STM_FUND_ID', 89);
-define('PAY_SOURCE', 83);
+define('PAY_SOURCE', 89);
 define('PLEDGE_DESC', "Manged Missions payment for");
 define('TRANSACTION_SALE_SUCCESS_STATUS_ID', 3);
 define('STM_APPEAL_ID', 2223);
@@ -146,7 +148,7 @@ class managedMissions
         //trip member info
         $tripMemberResponse = network_utilities\runCurl( str_replace('{ID}', $mmDonation->PersonId, $this->getTripMemberEndpoint), "GET", null, array());
         if(!$tripMemberResponse){
-            outputResponse($this->executionSummary, 'Failed to get response from MM Person Api', '500');
+            outputResponse($this->executionSummary, 'Failed to get response from MM Person Api url:'.str_replace('{ID}', $mmDonation->PersonId, $this->getTripMemberEndpoint), '500');
         }else{
             $tripMemberResults = json_decode($tripMemberResponse);
         }
@@ -155,7 +157,7 @@ class managedMissions
         // //find/create Trip 
         $tripResponse = network_utilities\runCurl( str_replace('{ID}', $mmDonation->MissionTripId, $this->getTripEndpoint), "GET", null, array());
         if(!$tripResponse){
-            outputResponse($this->executionSummary, 'Failed to get response from MM Person Api', '500');
+            outputResponse($this->executionSummary, 'Failed to get response from MM Trip Api url:'.str_replace('{ID}', $mmDonation->MissionTripId, $this->getTripEndpoint), '500');
         }else{
             $tripResults = json_decode($tripResponse);
         }
