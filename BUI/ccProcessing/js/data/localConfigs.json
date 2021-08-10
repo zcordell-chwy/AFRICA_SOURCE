@@ -1,0 +1,62 @@
+{
+    "parentAppName": "ccProcessing",
+    "paymentFormAppName": "paymentForm",
+    "appVersion": "1.0",
+    "listOfFieldsToFetch": {
+        "ContactID": "Contact.CId",
+        "ContactEmail": "Contact.Email.Addr",
+        "ContactFirstName": "Contact.Name.First",
+        "ContactLastName": "Contact.Name.Last",
+        "ContactPhHome": "Contact.ph_home",
+        "ContactPhOffice": "Contact.ph_office",
+        "ContactPhMobile": "Contact.ph_mobile",
+        "ContactPhAsst": "Contact.ph_asst",
+        "ContactPhFax": "Contact.ph_fax",
+        "ContactLogin": "Contact.Login",
+        "ContactCountry": "Contact.Addr.CountryId",
+        "ContactState": "Contact.Addr.ProvId",
+        "ContactPostalCode": "Contact.Addr.PostalCode",
+        "ContactCity": "Contact.Addr.City",
+        "ContactStreet": "Contact.Addr.Street",
+        "ContactTypeID": "Contact.ctype_id",
+        "DonationID": "donation$Donation.ID",
+        "DonationIsCheck": "donation$Donation.isCheck",
+        "DonationAmount": "donation$Donation.Amount"
+    },
+    "configsToLoad": [],
+    "unknownError": "An unknown error occurred. Please contact system administrator.",
+    "allowedRefundStatus": [
+        "Completed"
+    ],
+    "allowedChargeStatus": [
+        "",
+        "Declined"
+    ],
+    "allowedReversalStatus": [
+        "Pending - Agent Initiated"
+    ],
+    "transType": {
+        "FS_SALE_TYPE": "Sale",
+        "FS_EFT_SALE_TYPE": "RepeatSale",
+        "FS_REFUND_TYPE": "Return",
+        "FS_REVERSAL_TYPE": "Reversal",
+        "FS_EFT_REVERSAL_TYPE": "Void",
+        "FS_AUTH_TYPE": "Auth"
+    },
+    "transStatus": {
+        "Completed": "Completed",
+        "Declined": "Declined",
+        "Refunded": "Refunded",
+        "Reversed": "Reversed"
+    },
+    "addPaymentTrackingId": "addPayment",
+    "makeChargeTrackingId": "makeCharge",
+    "paymentPage": "ccProcessing.html",
+    "popupWidth": "650",
+    "popupHeight": "500",
+    "payMethodReport": 101800,
+    "closeTitle": "Create Transaction?",
+    "closeMessage": "No completed transaction is associated with this donation.  If this donation is complete, it will not be reported properly.  Would you like to add a completed transaction to this donation before closing the workspace?",
+    "paymentConfirmTitle": "Make Payment?",
+    "paymentConfirmMessage": "Charge $%s to payment method with PN Ref No. %s?"
+}

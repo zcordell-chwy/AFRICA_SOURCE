@@ -1,0 +1,117 @@
+html {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+    font-size: 12px;
+}
+
+body {
+    margin: 0 !important;
+    padding: 0 !important;
+    height: 100%;
+    width: 100%;
+}
+
+.extension-hidden {
+    display: none;
+}
+
+.extension-header {
+    padding: 20px;
+    font-size: 1.5em;
+    font-weight: 500;
+}
+
+.extension-container {
+    padding: 0 20px;
+}
+
+fieldset {
+    padding: 8px;
+    border-radius: 4px;
+}
+
+/************************
+Button Stlying
+*************************/
+
+button {
+    cursor: pointer;
+    background-color: white;
+    background-image: none;
+    border-color: #cbcccd;
+    box-shadow: none;
+    color: black;
+    font-weight: 400;
+    justify-content: center;
+    min-width: 0;
+    align-items: center;
+    padding: 0 10px;
+    border: 1px solid;
+    border-radius: 4px;
+    white-space: nowrap;
+    overflow: hidden;
+    box-sizing: border-box;
+    font-family: inherit;
+    -webkit-tap-highlight-color: transparent;
+    height: 2.75rem;
+    margin-bottom: 0;
+    display: inline-flex;
+    vertical-align: top;
+    /* width: 100px; */
+    margin-left: 3px;
+}
+
+button:hover {
+    background-color: rgba(22, 21, 19, 0.04);
+}
+
+button:disabled, button[disabled] {
+    background: #ccc;
+    color: #666;
+    cursor: default;
+}
+
+/************************
+message notifications style
+*************************/
+
+.notify-info i:before {
+    content: "\f05a";
+}
+
+.notify-success i:before {
+    content: "\f058";
+}
+
+.notify-warning i:before {
+    content: "\f06a";
+}
+
+.notify-error i:before {
+    content: "\f057";
+}
+
+.notify-info {
+    color: #00529B;
+    /*background-color: #BDE5F8;*/
+}
+
+.notify-success {
+    color: #4F8A10;
+    /*background-color: #DFF2BF;*/
+}
+
+.notify-warning {
+    color: #9F6000;
+    /*background-color: #FEEFB3;*/
+}
+
+.notify-error {
+    color: #D8000C;
+    /*background-color: #FFD2D2;*/
+}
+
+/* ----------------------- jquery dialog close button ----------------------- */
+
+.no-close .ui-dialog-titlebar-close {
+    display: none;
+}

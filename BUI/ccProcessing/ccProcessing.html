@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <!-- <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script> -->
+    <script src="https://kit.fontawesome.com/a9c52dc34b.js" crossorigin="anonymous"></script>
+
+    <!-- Logic file -->
+    <script type="text/javascript" src="js/Utilities.js"></script>
+    <script type="text/javascript" src="js/ServiceController.js"></script>
+    <script type="text/javascript" src="js/ServiceModel.js"></script>
+    <script type="text/javascript" src="js/ccProcessing.js"></script>
+
+    <!-- Card Master form -->
+    <!-- <script type="text/javascript" src="/euf/assets/js/card-master/jquery.card.js" async></script> -->
+    <script type="text/javascript" src="js/card-master/jquery.card.js" defer></script>
+    <!-- <script type="text/javascript" src="http://localhost:8000/ccProcessing/js/card-master/jquery.card.js"
+        defer></script> -->
+
+    <!-- Extension styling -->
+    <link rel="stylesheet" type="text/css" href="css/Common.css">
+    <link rel="stylesheet" type="text/css" href="css/ccProcessing.css">
+    <link rel="stylesheet" type="text/css" href="css/paymentForm.css">
+
+    <!-- Debug references -->
+    <!-- <script type="text/javascript" src="http://localhost:8000/ccProcessing/js/Utilities.js"></script>
+    <script type="text/javascript" src="http://localhost:8000/ccProcessing/js/ServiceController.js"></script>
+    <script type="text/javascript" src="http://localhost:8000/ccProcessing/js/ServiceModel.js"></script>
+    <script type="text/javascript" src="http://localhost:8000/ccProcessing/js/ccProcessing.js"></script>
+    <link rel="stylesheet" type="text/css" href="http://localhost:8000/ccProcessing/css/Common.css">
+    <link rel="stylesheet" type="text/css" href="http://localhost:8000/ccProcessing/css/ccProcessing.css">
+    <link rel="stylesheet" type="text/css" href="http://localhost:8000/ccProcessing/css/paymentForm.css"> -->
+</head>
+
+<body>
+    <div id="notification-bar" style="display: none;">
+        <i class="fas fa-info-circle"></i>
+        <span id="notification-bar-close-btn" title="Close">&times;</span>
+        <span id="notification-bar-message"></span>
+    </div>
+    <div class="extension-container" id="payment-container">
+        <div class="extension-header">
+            Please Select a payment method type and add details
+        </div>
+        <div class="extension-content">
+            <form>
+                <div class="form-container tabs extension-flex">
+
+                    <input type="radio" id="tab-card" name="tab-control" value="Credit Card" checked>
+                    <input type="radio" id="tab-eft" name="tab-control" value="EFT">
+                    <div class="tabset-header extension-flex-item">
+                        <ul>
+                            <li title="Credit Card"><label for="tab-card"><span>Credit Card</span></label></li>
+                            <li title="EFT"><label for="tab-eft"><span>EFT</span></label></li>
+                        </ul>
+                        <div class="slider">
+                            <div class="indicator"></div>
+                        </div>
+                    </div>
+
+                    <div class="section-header extension-flex-item">
+                        <h1>Payment Information</h1>
+                    </div>
+
+                    <div class="extension-flex-item extension-form-control flex-col-6">
+                        <input class="extension-input" id="first-name" type="text" name="first-name"
+                            placeholder="First Name" />
+                    </div>
+                    <div class="extension-flex-item extension-form-control flex-col-6">
+                        <input class="extension-input" id="last-name" type="text" name="last-name"
+                            placeholder="Last Name" />
+                    </div>
+                    <div class="content extension-flex-item">
+                        <section id="section-card" class="extension-flex">
+                            <div class="extension-flex-item extension-form-control">
+                                <input class="extension-input" id="ccnumber" type="text" name="ccnumber"
+                                    placeholder="Card Number" />
+                            </div>
+                            <div class="extension-flex-item extension-form-control flex-col-6">
+                                <input class="extension-input" id="expiry" type="text" name="expiry"
+                                    placeholder="MM / YYYY" />
+                            </div>
+                            <div class="extension-flex-item extension-form-control flex-col-6">
+                                <input class="extension-input" id="cvc" type="text" name="cvc" placeholder="CVC" />
+                            </div>
+
+                            <div class="card-wrapper extension-flex-item"></div>
+                        </section>
+
+                        <section id="section-eft" class="extension-flex">
+                            <div class="extension-flex-item extension-form-control">
+                                <select class="extension-input" id="eft-type" type="text" name="eft-type"
+                                    placeholder="EFT Type">
+                                    <option value="Checkings">Checkings</option>
+                                    <option value="Savings">Savings</option>
+                                </select>
+                            </div>
+                            <div class="extension-flex-item extension-form-control flex-col-6">
+                                <input class="extension-input" id="routing" type="text" name="routing"
+                                    placeholder="Routing #" />
+                            </div>
+                            <div class="extension-flex-item extension-form-control flex-col-6">
+                                <input class="extension-input" id="account" type="text" name="account"
+                                    placeholder="Account #" />
+                            </div>
+                        </section>
+                    </div>
+
+                    <div class="section-header extension-flex-item">
+                        <h1>Personal Information</h1>
+                    </div>
+                    <div class="extension-flex-item extension-form-control">
+                        <input class="extension-input" id="streetaddress" type="text" name="streetaddress"
+                            autocomplete="on" maxlength="45" placeholder="Street Address" />
+                    </div>
+                    <div class="extension-flex-item extension-form-control flex-col-6">
+                        <input class="extension-input" id="city" type="text" name="city" autocomplete="on"
+                            maxlength="20" placeholder="City" />
+                    </div>
+                    <div class="extension-flex-item extension-form-control flex-col-6">
+                        <input class="extension-input" id="state" type="text" name="state" autocomplete="on"
+                            maxlength="20" placeholder="State" />
+                    </div>
+                    <div class="extension-flex-item extension-form-control flex-col-6">
+                        <input class="extension-input" id="country" type="text" name="country" autocomplete="on"
+                            maxlength="20" placeholder="Country" />
+                    </div>
+                    <div class="extension-flex-item extension-form-control flex-col-6">
+                        <input class="extension-input" id="zipcode" type="text" name="zipcode" autocomplete="on"
+                            pattern="^[0-9]{5}(?:-[0-9]{4})?$" maxlength="10" placeholder="Postal code" />
+                    </div>
+                    <div class="extension-flex-item extension-form-control">
+                        <input class="extension-input" id="email" type="email" name="email" autocomplete="on"
+                            maxlength="40" placeholder="Email" />
+                    </div>
+                    <div class="extension-flex-item extension-form-control flex-col-6">
+                        <button class="extension-button" id="button-cancel" type="button">Cancel</button>
+                    </div>
+                    <div class="extension-flex-item extension-form-control flex-col-6">
+                        <button class="extension-button anlm" id="button-submit" type="submit">Submit</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="extension-footer">
+
+    </div>
+    </div>
+    <div class="extension-loading" style="display: none;"> </div>
+</body>
+
+</html>

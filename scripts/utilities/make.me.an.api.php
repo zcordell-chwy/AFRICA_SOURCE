@@ -12,11 +12,10 @@ if (!defined('ALLOW_POST') && !defined('ALLOW_GET') && !defined('ALLOW_PUT') && 
     die('DEFINES NOT PRESENT: ALLOW_POST, ALLOW_GET, ALLOW_PUT, ALLOW_PATCH');
 }
 
-
 switch ($_SERVER['REQUEST_METHOD']) {
     case 'POST':
-        if (!ALLOW_POST) {
-            header('HTTP/1.0 405 Method Not Allowed');
+        if (!defined('ALLOW_POST') || !ALLOW_POST) {
+            header('HTTP/1.1 405 Method Not Allowed');
             exit();
         }
         if (empty($_POST)) {
@@ -24,20 +23,20 @@ switch ($_SERVER['REQUEST_METHOD']) {
         }
         break;
     case 'GET':
-        if (!ALLOW_GET) {
-            header('HTTP/1.0 405 Method Not Allowed');
+        if (!defined('ALLOW_GET') || !ALLOW_GET) {
+            header('HTTP/1.1 405 Method Not Allowed');
             exit();
         }
         break;
     case 'PUT':
-        if (!ALLOW_PUT) {
-            header('HTTP/1.0 405 Method Not Allowed');
+        if (!defined('ALLOW_PUT') || !ALLOW_PUT) {
+            header('HTTP/1.1 405 Method Not Allowed');
             exit();
         }
         break;
     case 'PATCH':
-        if (!ALLOW_PATCH) {
-            header('HTTP/1.0 405 Method Not Allowed');
+        if (!defined('ALLOW_PATCH') || !ALLOW_PATCH) {
+            header('HTTP/1.1 405 Method Not Allowed');
             exit();
         }
         if (empty($_PATCH)) {
@@ -47,7 +46,7 @@ switch ($_SERVER['REQUEST_METHOD']) {
         break;
 
     default:
-        header('HTTP/1.0 405 Method Not Allowed');
+        header('HTTP/1.1 405 Method Not Allowed');
         exit();
         break;
 }
@@ -74,11 +73,10 @@ function outputResponse($data = null, $errors = null, $httpCode = 200)
         );
     }
 
-    header('HTTP/1.0 ' . $httpCode);
+    header('HTTP/1.1 ' . $httpCode);
     header('Content-Type: application/vnd.api+json');
 
     echo json_encode($return);
-
     return;
 }
 

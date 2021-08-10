@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://kit.fontawesome.com/a9c52dc34b.js" crossorigin="anonymous"></script>
+
+    <!-- Datatable library -->
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.25/css/jquery.dataTables.min.css">
+    <script type="text/javascript" charset="utf8"
+        src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.min.js"></script>
+
+    <!-- Logic file -->
+    <script type="text/javascript" src="js/Utilities.js"></script>
+    <script type="text/javascript" src="js/ServiceController.js"></script>
+    <script type="text/javascript" src="js/ServiceModel.js"></script>
+    <script type="text/javascript" src="js/index.js"></script>
+
+    <!--Extension styling-->
+    <link rel="stylesheet" type="text/css" href="css/Common.css">
+    <link rel="stylesheet" type="text/css" href="css/ccProcessing.css">
+
+    <!-- Debug references -->
+    <!-- <script type="text/javascript" src="http://localhost:8000/ccProcessing/js/Utilities.js"></script>
+    <script type="text/javascript" src="http://localhost:8000/ccProcessing/js/ServiceController.js"></script>
+    <script type="text/javascript" src="http://localhost:8000/ccProcessing/js/ServiceModel.js"></script>
+    <script type="text/javascript" src="http://localhost:8000/ccProcessing/js/index.js"></script>
+    <link rel="stylesheet" type="text/css" href="http://localhost:8000/ccProcessing/css/Common.css">
+    <link rel="stylesheet" type="text/css" href="http://localhost:8000/ccProcessing/css/ccProcessing.css"> -->
+
+</head>
+
+<body>
+    <div id="notification-bar" style="display: none;">
+        <i class="fas fa-info-circle"></i>
+        <span id="notification-bar-close-btn" title="Close">&times;</span>
+        <span id="notification-bar-message"></span>
+    </div>
+    <div class="extension-container" id="ccProcessing-container">
+        <div class="extension-header">
+            <fieldset>
+                <legend>Workspace must be saved prior to payment</legend>
+                <div class="extension-flex">
+                    <div id="add-button-container" class="extension-flex-item extension-button extension-form-control">
+                        <button id="add-button" disabled>Add New Payment Method</button>
+                    </div>
+                    <div id="refund-button-container"
+                        class="extension-flex-item extension-button extension-form-control">
+                        <button id="refund-button" disabled>Refund Donation</button>
+                    </div>
+                    <div id="charge-button-container"
+                        class="extension-flex-item extension-button extension-form-control">
+                        <button id="charge-button" disabled>Charge New Payment Method</button>
+                    </div>
+                </div>
+            </fieldset>
+        </div>
+        <div class="extension-content">
+            <div id="pay-method-container">
+                <fieldset>
+                    <legend>Payment Methods</legend>
+                    <div id="pay-method-datatable-container" class="datatable-container">
+                        <table id="pay-method-table" class="display">
+                            <!-- Data will go here -->
+                            <thead>
+                                <tr>
+                                    <th></th>
+                                    <th>Last Four</th>
+                                    <th>Exp. Month</th>
+                                    <th>Exp. Year</th>
+                                    <th>Card Type</th>
+                                    <th>PN Ref</th>
+                                    <th>ID</th>
+                                    <th>Charge Card</th>
+                                    <th>PM Type</th>
+                                    <th>Info Key</th>
+                                </tr>
+                            </thead>
+                            <tfoot>
+                                <tr>
+                                    <th></th>
+                                    <th>Last Four</th>
+                                    <th>Exp. Month</th>
+                                    <th>Exp. Year</th>
+                                    <th>Card Type</th>
+                                    <th>PN Ref</th>
+                                    <th>ID</th>
+                                    <th>Charge Card</th>
+                                    <th>PM Type</th>
+                                    <th>Info Key</th>
+                                </tr>
+                            </tfoot>
+                        </table>
+                    </div>
+                </fieldset>
+            </div>
+        </div>
+        <div class="extension-footer">
+
+        </div>
+    </div>
+    <div class="extension-loading" style="display: none;"> </div>
+</body>
+
+</html>
