@@ -82,6 +82,52 @@ class managedMissions
 
 
         $response = network_utilities\runCurl($this->getTransactionsEndpoint, "GET", null, array());
+
+        //TESTING SPECIAL DONATION
+        // $response = '{
+        //     "status": 0,
+        //     "statusMessage": "Success",
+        //     "data": [
+        //         {
+        //             "MissionTripId": 54449,
+        //             "PersonId": 479212,
+        //             "IsGeneralContribution": false,
+        //             "MissionTripImportExportKey": "54449",
+        //             "PersonImportExportKey": "479212",
+        //             "Anonymous": false,
+        //             "ConfirmationCode": null,
+        //             "ContributionAmount": 1.00,
+        //             "GrossAmount": 1.00,
+        //             "NetAmount": null,
+        //             "FeeAmount": null,
+        //             "DepositDate": "/Date(1626393600000)/",
+        //             "DonorId": 3002228,
+        //             "DonorName": "Scott Stuart",
+        //             "DonorOrganization": null,
+        //             "DonorSuffix": null,
+        //             "DonorTitle": null,
+        //             "ImportExportKey": null,
+        //             "Notes": null,
+        //             "ReferenceNumber": "REFUNDCHECK",
+        //             "RegularAttender": false,
+        //             "TaxDeductible": true,
+        //             "TransactionType": null,
+        //             "Address1": null,
+        //             "Address2": null,
+        //             "City": null,
+        //             "State": null,
+        //             "PostalCode": null,
+        //             "PhoneNumber": null,
+        //             "EmailAddress": "sfstuart1952@yahoo.com",
+        //             "Id": 989815,
+        //             "MissionTripName": "08-2021 Pastor Trip with Jordan",
+        //             "PersonName": "Scott Stuart",
+        //             "CreatedDate": "/Date(1626465516987)/",
+        //             "ModifiedDate": null,
+        //             "Deleted": false
+        //         }
+        //     ]
+        // }';
     
         if(!$response){
             outputResponse($this->executionSummary, 'Failed to get response from MM Api', '500');
@@ -129,6 +175,15 @@ class managedMissions
             $errors[] = "PersonId not set";
         }
 
+        if($mmDonation->GrossAmount <= 0){
+            $errors[] = "Donation not a positive amount";
+        }
+
+        if($mmDonation->ReferenceNumber == "Refund"){
+            $errors[] = "Refund expected";
+        }
+
+
         return $errors;
 
     }
@@ -139,42 +194,97 @@ class managedMissions
      */
     private function processDonation($mmDonation){
 
+        $fundId = null;
         $names = explode(" ", $mmDonation->DonorName);
         $tripMemberNames = explode(" ", $mmDonation->PersonName);
 
-        //donor info
-        $donor = $this->getContact($mmDonation->DonorId, null, $names[0], $names[1], $mmDonation->Address1, $mmDonation->City, $mmDonation->State, $mmDonation->PostalCode, $mmDonation->PhoneNumber, $mmDonation->EmailAddress);
-
-        //trip member info
-        $tripMemberResponse = network_utilities\runCurl( str_replace('{ID}', $mmDonation->PersonId, $this->getTripMemberEndpoint), "GET", null, array());
-        if(!$tripMemberResponse){
-            outputResponse($this->executionSummary, 'Failed to get response from MM Person Api url:'.str_replace('{ID}', $mmDonation->PersonId, $this->getTripMemberEndpoint), '500');
-        }else{
-            $tripMemberResults = json_decode($tripMemberResponse);
-        }
-        $tripContact = $this->getContact(null, $mmDonation->PersonId, $tripMemberResults->data->FirstName, $tripMemberResults->data->LastName, $tripMemberResults->data->Address1, $tripMemberResults->data->City, $tripMemberResults->data->State, $tripMemberResults->data->PostalCode, $tripMemberResults->data->PhoneNumber, $tripMemberResults->data->EmailAddress);
-
-        // //find/create Trip 
+        //Doing this first to determine if its a custom fund
         $tripResponse = network_utilities\runCurl( str_replace('{ID}', $mmDonation->MissionTripId, $this->getTripEndpoint), "GET", null, array());
+        // $tripResponse = '{
+        //     "status": 0,
+        //     "statusMessage": "Success",
+        //     "data": {
+        //         "HideContributionAmountFromParticipants": false,
+        //         "PartneringOrganization": "None",
+        //         "TripDescription": "Get to know Africa New Life Ministrys work in Rwanda first-hand. Visit and participate with the Africa College of Theology. See Sponsorship in action and meet sponsored students.  ",
+        //         "TripDestination": "Kigali",
+        //         "TripName": "test payment due auto pull",
+        //         "PublicTripName": "test payment due auto pull",
+        //         "DepartureDate": "/Date(1621468800000)/",
+        //         "ReturnDate": "/Date(1621641600000)/",
+        //         "Id": 54471,
+        //         "TripMemberGoal": 5.00,
+        //         "EnableBudget": true,
+        //         "EnableExpense": true,
+        //         "EnableContribution": true,
+        //         "ContributionExtendedDetails": false,
+        //         "AccountNumberIncome": "202108PSTRMIX01",
+        //         "AccountNumberExpense": "202108PSTRMIX01",
+        //         "UseBudgetAsTotalGoal": true,
+        //         "PurposeCode": "321234234",
+        //         "ImportExportKey": "54471",
+        //         "DisablePublicProfiles": true,
+        //         "PublicProfilesRequireApproval": false,
+        //         "Country": "Rwanda",
+        //         "Qualifications": null,
+        //         "GroupId": null,
+        //         "GroupName": null,
+        //         "Deleted": false,
+        //         "Cancelled": null,
+        //         "Postponed": null,
+        //         "DonationsPaused": null,
+        //         "ApplicationsPaused": null,
+        //         "MissionApplications": [],
+        //         "Contributions": [],
+        //         "TripMembers": []
+        //     }
+        // }';
+
+        //find trip
         if(!$tripResponse){
             outputResponse($this->executionSummary, 'Failed to get response from MM Trip Api url:'.str_replace('{ID}', $mmDonation->MissionTripId, $this->getTripEndpoint), '500');
         }else{
             $tripResults = json_decode($tripResponse);
         }
-        $trip = $this->getTrip($mmDonation->MissionTripId, $mmDonation->MissionTripName, $this->cleanDate($tripResults->data->DepartureDate), $this->cleanDate($tripResults->data->ReturnDate));
 
-        // //find/create TripMember
-        $tripMember = $this->getTripMember($mmDonation->PersonId, $tripContact, $trip);
+        $this->executionSummary[] = "Purpose code: ".$tripResults->data->PurposeCode;
+        if(strpos($tripResults->data->PurposeCode, 'CustomFund-') !== false){
+            $this->executionSummary[] = "Creating a custom Fund Donation";
+            $stringArr = explode('-', $tripResults->data->PurposeCode);
+            $fundId = $stringArr[1];
+            $this->executionSummary[] = "Creating a custom Fund Donation for fund ".$fundId;
+            $customFundDonation = true;
+        }
 
+        //donor info
+        $donor = $this->getContact($mmDonation->DonorId, null, $names[0], $names[1], $mmDonation->Address1, $mmDonation->City, $mmDonation->State, $mmDonation->PostalCode, $mmDonation->PhoneNumber, $mmDonation->EmailAddress);
+
+        if(!$customFundDonation){
+            //trip member info
+            $tripMemberResponse = network_utilities\runCurl( str_replace('{ID}', $mmDonation->PersonId, $this->getTripMemberEndpoint), "GET", null, array());
+            if(!$tripMemberResponse){
+                outputResponse($this->executionSummary, 'Failed to get response from MM Person Api url:'.str_replace('{ID}', $mmDonation->PersonId, $this->getTripMemberEndpoint), '500');
+            }else{
+                $tripMemberResults = json_decode($tripMemberResponse);
+            }
+            $tripContact = $this->getContact(null, $mmDonation->PersonId, $tripMemberResults->data->FirstName, $tripMemberResults->data->LastName, $tripMemberResults->data->Address1, $tripMemberResults->data->City, $tripMemberResults->data->State, $tripMemberResults->data->PostalCode, $tripMemberResults->data->PhoneNumber, $tripMemberResults->data->EmailAddress);
+
+            //create trip
+            $trip = $this->getTrip($mmDonation->MissionTripId, $mmDonation->MissionTripName, $this->cleanDate($tripResults->data->DepartureDate), $this->cleanDate($tripResults->data->ReturnDate));
+
+            // //find/create TripMember
+            $tripMember = $this->getTripMember($mmDonation->PersonId, $tripContact, $trip);
+        }
+        
         // //create Donation
-        $donation = $this->createDonation($mmDonation->Id, $mmDonation->ContributionAmount, $donor, $tripMember);
+        $donation = $this->createDonation($mmDonation->Id, $mmDonation->GrossAmount, $donor, $tripMember, $mmDonation->TaxDeductible);
 
         // //create one time pledge
-        $pledge = $this->createPledge($donation, $mmDonation->ContributionAmount, $donor, $mmDonation->PersonName);
+        $pledge = $this->createPledge($donation, $mmDonation->GrossAmount, $donor, $fundId);
 
         // //created completed transaction
         //todo make sure this doesn't send a receipt
-        $transaction = $this->createTransaction($donor, $mmDonation->ContributionAmount, null, $donation );
+        $transaction = $this->createTransaction($donor, $mmDonation->GrossAmount, null, $donation );
 
         return true;
 
@@ -185,10 +295,11 @@ class managedMissions
      * 
      * 
      */
-    private function createPledge($donation, $amt, $contact, $tripMember){
+    private function createPledge($donation, $amt, $contact, $fund = null){
         
         $this->executionSummary[] = "Beginning create pledge";
         try {
+            $fundId = ($fund) ? intval($fund) : STM_FUND_ID;
             $pledge = new RNCPHP\donation\pledge();
             
             if (!$donation instanceof RNCPHP\donation\Donation) {
@@ -203,7 +314,7 @@ class managedMissions
             $pledge->Contact = $contact;
             $pledge->NextTransaction = time();
             $pledge->Balance = 0;
-            $pledge->Fund = RNCPHP\donation\fund::fetch(STM_FUND_ID);
+            $pledge->Fund = RNCPHP\donation\fund::fetch($fundId);
             $pledge->Appeal = RNCPHP\donation\Appeal::fetch(STM_APPEAL_ID);
             $pledge->Descr = PLEDGE_DESC." ".$contact->Name->First." ".$contact->Name->Last;
             $pledge->save();
@@ -229,8 +340,10 @@ class managedMissions
 
     }
 
-    private function createDonation($mmId, $amt, $contact, $tripMember){
+    private function createDonation($mmId, $amt, $contact, $tripMember, $non_charitable = true){
         
+        //its the opposite in oracle vs mm
+        $non_charitable_val = ($non_charitable) ? false : true;
         try {
 
             $donation = new RNCPHP\donation\Donation();
@@ -241,6 +354,7 @@ class managedMissions
             $donation->managedMissionsId = $mmId; 
             $donation->TripMember = $tripMember;
             $donation->Type = RNCPHP\donation\Type::fetch(1);//always a pledge
+            $donation->Non_Charitable = $non_charitable_val;
 
             $donation->save();
             $this->executionSummary[] = "Created Donation ".$donation->ID;

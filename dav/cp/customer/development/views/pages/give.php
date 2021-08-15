@@ -1,4 +1,4 @@
-<rn:meta title="Gift for Child"  template="responsive.php" login_required="false" clickstream="give_gift"/>
+<rn:meta title="Gift for Student"  template="responsive.php" login_required="false" clickstream="give_gift"/>
 
 <div id="rn_PageContent" class="rn_GiveGiftPage">
 	<rn:widget path="custom/aesthetic/ImageBannerTitle" banner_title="#rn:msg:CUSTOM_MSG_cp_standard_template_gift_for_child_nav_link_label#" banner_img_path="/euf/assets/images/banners/gift.jpg" />

@@ -59,7 +59,7 @@
 							</rn:condition>
 						</rn:condition>
 					</div>
-					<a id="rn_HeaderLogoLink" href="http://www.africanewlife.org">
+					<a id="rn_HeaderLogoLink" href="https://www.africanewlife.org">
 						<img src="/euf/assets/images/afnl-header-logo.png" height="38" width="163" title="Africa New Life" alt="Africa New Life" />
 					</a>
 					<?

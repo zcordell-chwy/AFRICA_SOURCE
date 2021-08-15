@@ -1,0 +1,30 @@
+version: "3.0"
+requires:
+  jsModule:
+  - standard
+  - mobile
+attributes:
+  save_card_payment_method:
+    name: save_card_payment_method
+    type: ajax
+    description: Save Card Payment Method AJAX Endpoint
+    default: /ci/ajax/widget
+    required: false
+  save_check_payment_method:
+    name: save_check_payment_method
+    type: ajax
+    description: Save Check Payment Method AJAX Endpoint
+    default: /ci/ajax/widget
+    required: false
+  success_callback:
+    name: success_callback
+    type: string
+    description: success_callback
+    default: "location.reload();"
+    required: false
+  title:
+    name: title
+    type: string
+    description: title
+    default: "Add Payment Method"
+    required: false

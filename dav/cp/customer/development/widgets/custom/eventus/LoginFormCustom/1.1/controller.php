@@ -31,6 +31,14 @@ class LoginFormCustom extends \RightNow\Widgets\LoginForm {
             if(\RightNow\Utils\Url::getParameter('event') != "" ){
                 $this->data['js']['redirectOverride']  .= "/event/".\RightNow\Utils\Url::getParameter('event');
             }
+
+            if(\RightNow\Utils\Url::getParameter('Item') != "" ){
+                $this->data['js']['redirectOverride']  .= "/Item/".\RightNow\Utils\Url::getParameter('Item');
+            }
+
+            if(\RightNow\Utils\Url::getParameter('cospon') != "" ){
+                $this->data['js']['redirectOverride']  .= "/cospon/".\RightNow\Utils\Url::getParameter('cospon');
+            }
         }
 
         //honor: (1) attribute's value (2) config

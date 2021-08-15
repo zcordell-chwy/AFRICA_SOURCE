@@ -10,12 +10,12 @@
 
             <h2 class="rn_HeadingBar">Letter Contents</h2>
             
-                <rn:widget path="output/DataDisplay" name="incidents.thread" label=""/>
+                <rn:widget path="custom/letters/CustomDataDisplay" name="incidents.thread" label=""/>
 
 
             <h2 class="rn_HeadingBar">Response Letter</h2>
             
-                <rn:widget path="output/DataDisplay" name="incidents.fattach" label="#rn:msg:FILE_ATTACHMENTS_LBL#"/>
+                <rn:widget path="custom/letters/CustomDataDisplay" name="incidents.fattach" label="#rn:msg:FILE_ATTACHMENTS_LBL#" regex_files_to_ignore='/^[0-9]{6}-[0-9]{6}/i||/^((?!.pdf).)*$/i'/>
 
   
             <!-- <div id="rn_DetailTools">

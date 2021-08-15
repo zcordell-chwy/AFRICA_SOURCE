@@ -2,20 +2,20 @@
 
 <? foreach ($this->data['reportData']['data'] as $value): 
 
-    switch($value[2]){
-        case "AMEX":
+    switch(strtolower($value[2])){
+        case "amex":
             $payClass = "cc-amex";   
             break;
-        case "Visa":
+        case "visa":
             $payClass = "cc-visa";
             break;
-        case "MasterCard":
+        case "mastercard":
             $payClass = "cc-mastercard";
             break;
-        case "Discover":
+        case "discover":
             $payClass = "cc-discover";
             break;
-        case "Checking":
+        case "checking":
             $payClass = "bank-account"; 
             break;
       }

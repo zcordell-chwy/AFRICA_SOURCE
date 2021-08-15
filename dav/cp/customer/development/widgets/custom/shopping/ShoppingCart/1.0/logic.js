@@ -86,6 +86,7 @@ Custom.Widgets.shopping.ShoppingCart = RightNow.Widgets.extend({
      * @params {object} lineItem the line item to render
      */
     renderLineItem: function(lineItem){
+        
         var lineItemHTML = new EJS({text: this.getStatic().templates.lineItem}).render({
                 id: lineItem.id,
                 merch: lineItem.merch,
@@ -109,21 +110,26 @@ Custom.Widgets.shopping.ShoppingCart = RightNow.Widgets.extend({
         lineItemNode.one("input.rn_LineItemQuantity").setAttribute("data-prev", lineItem.quantity);
 
         // Register change event handler for quantity input
-        lineItemNode.one("input.rn_LineItemQuantity").on("change", function(evt){
-            var quantityInput = evt.currentTarget,
-                oldQty = parseInt(quantityInput.getAttribute("data-prev")),
-                newQty = parseInt(quantityInput.get("value")),
-                lineItemNode = quantityInput.ancestor(".rn_LineItem"),
-                lineItemID = parseInt(lineItemNode.getAttribute("data-id"));
-            if(!isNaN(newQty) && newQty >= 1){
-                this.updateLineItemQty(lineItemID, newQty - oldQty);
-                quantityInput.setAttribute("data-prev", newQty);
-            }else{
-                // Quantity must a number and must be 1 or greater, reset to old value
-                quantityInput.set("value", oldQty);
-            }
-        }, this);
-
+        cospon = false;
+        if(this.data.js && this.data.js.cospon){
+            lineItemNode.one("input.rn_LineItemQuantityContainer").hide(); 
+        }else{
+            lineItemNode.one("input.rn_LineItemQuantity").on("change", function(evt){
+                var quantityInput = evt.currentTarget,
+                    oldQty = parseInt(quantityInput.getAttribute("data-prev")),
+                    newQty = parseInt(quantityInput.get("value")),
+                    lineItemNode = quantityInput.ancestor(".rn_LineItem"),
+                    lineItemID = parseInt(lineItemNode.getAttribute("data-id"));
+                if(!isNaN(newQty) && newQty >= 1){
+                    this.updateLineItemQty(lineItemID, newQty - oldQty);
+                    quantityInput.setAttribute("data-prev", newQty);
+                }else{
+                    // Quantity must a number and must be 1 or greater, reset to old value
+                    quantityInput.set("value", oldQty);
+                }
+            }, this);
+        }
+        
         shoppingCartLineItemContainer.append(lineItemNode);
 
         return lineItemNode;

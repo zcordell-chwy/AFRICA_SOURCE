@@ -87,6 +87,11 @@ Custom.Widgets.shopping.ChildGiftShoppingCart = Custom.Widgets.shopping.Shopping
                 "data-line-item-count", 
                 parseInt(childGroupContainer.getAttribute("data-line-item-count")) + 1
             );
+
+            cospon = false;
+            if(this.data.js && this.data.js.cospon){
+                this.Y.all("div.rn_LineItemQuantityContainer").hide();  
+            }
         },
 
         /**

@@ -318,3 +318,7 @@ input#rn_yearofbirth {
 	  font-size:1.1em;
   }
 
+.event-disclaimer{
+  	background: #fff;
+	padding: 12px;
+}

@@ -1,0 +1,13 @@
+/* Core css for widget functionality goes here. */ 
+@media only screen and (max-width: 510px){
+	div.esg_PaymentSummary{font-size:.7em;}
+}
+@media only screen and (max-width: 410px){
+	div.esg_PaymentSummary{font-size:.6em;}
+}
+@media only screen and (max-width: 380px){
+	div.esg_PaymentSummary{font-size:.5em;}
+}
+@media only screen and (max-width: 340px){
+	div.esg_PaymentSummary{font-size:.4em;}
+}

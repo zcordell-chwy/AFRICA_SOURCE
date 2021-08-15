@@ -1,0 +1,17 @@
+version: "1.0"
+requires:
+  jsModule:
+  - standard
+  - mobile
+attributes:
+  regex_files_to_ignore:
+    name: regex_files_to_ignore
+    type: string
+    description: '|| (2x pipe) separated list of regexes where the file will be ignored
+      if regex matches the file name.'
+    default: ""
+    required: false
+extends:
+  widget: standard/output/FileListDisplay
+  components:
+  - php

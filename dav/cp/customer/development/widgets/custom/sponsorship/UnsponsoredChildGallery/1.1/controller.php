@@ -93,7 +93,13 @@ class UnsponsoredChildGallery extends \RightNow\Libraries\Widget\Base {
         if($this -> data['attrs']['advocacy_page'] && $this->getURLParam('success', true) > 0){
             $this->data['js']['confirmationMessage'] = $this->CI->model('custom/sponsorship_model')->getAdvocateConfirmation($this->getURLParam('success', true)); 
         }
-        
+
+        //to show/hide disclaimer for events.
+        if($event > 0){
+            $disclaimerEventObj = ($eventObj instanceof RNCPHP\sponsorship\Event) ?  $eventObj : $this->CI->model('custom/event_model')->getEvent($event);
+            $this->data['js']['showDisclaimer'] = $disclaimerEventObj->showDisclaimer;
+        }
+
         // Get community data
         $this->data['communities'] = $this->CI->model('custom/sponsorship_model')->getCommunities();
 

@@ -68,10 +68,10 @@
                         <label>Gender: </label><br />
                         <label>Age: </label><br />
                         <label>Birthdate: </label><br />
-                        <label>Child ID: </label><br />
+                        <label>Student ID: </label><br />
                         
                         <br />
-                        <a class="sponsor-button" href="/app/home" >Sponsor Another Child</a>
+                        <a class="sponsor-button" href="/app/home" >Sponsor Another Student</a>
                         </span>
                     </div>                    
                     <div style="width:50%; border:1px; float:left;">
