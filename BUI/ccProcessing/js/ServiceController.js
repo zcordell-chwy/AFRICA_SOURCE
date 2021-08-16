@@ -406,9 +406,9 @@ async function createOrUpdateTransactionObj(donationID, newNote, contactID, amou
     }
 
     //update payment Method
-    if (payMethod) {
+    if (+payMethod) {
         trans.paymentMethod = {
-            "lookupName": payMethod
+            "id": +payMethod
         };
     }
 
@@ -442,9 +442,10 @@ async function processPayment(paymentMethod = null, contact = null, amount = 0, 
 
         return await sendPayment(postData);
     } catch (e) {
-        showNotification(e.message, Severity.WARNING);
+        let message = (e.statusCode ? e.statusCode + ': ' : '') + e.message;
+        showNotification(message, Severity.WARNING);
         return {
-            message: e.message,
+            message: message,
             rawXml: 'XML not found'
         };
     }

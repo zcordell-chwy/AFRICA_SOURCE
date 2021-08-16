@@ -58,7 +58,7 @@ class PaymentEngine
     public static function logMessage($msg, $more = null)
     {
         // Put into unique file per day
-        $fileName = self::LOG_DIR . self::LOG_FILE_BASE_NAME . date('Y-m-d') . '.txt';
+        $fileName = self::LOG_DIR . self::LOG_FILE_BASE_NAME . date('Y-m-d') . '.log';
         $timestamp = date('H:i:s') . ': ';
         if (!empty($more)) {
             $msg .= print_r($more, true);
@@ -73,25 +73,22 @@ class PaymentEngine
     public function parseAndPassMessage($postData)
     {
         self::logMessage(' Starting ' . __FUNCTION__ . '@' . __CLASS__ . '(Line: ' . __LINE__ . ')');
-        self::logMessage('Raw PSOT: ', $postData);
+        self::logMessage('Raw POST: ', $postData);
 
         $inputData = json_decode($postData);
-        if ((!isset($inputData->data)) || (strlen($inputData->data) < 1)) {
+        self::logMessage('Dec POST: ', $inputData);
+        self::logMessage('Data: ', $inputData->data);
+        if ((!isset($inputData->data)) || (strlen($inputData->data) < 1 && count($inputData->data) < 1)) {
             return outputResponse(null, 'Missing required field: data', 404);
         }
 
         $action = $inputData->action;
+        self::logMessage('action: ', $action);
         if (empty($reqJson)) {
             $reqJson = $inputData->data ? $inputData->data : null;
         }
 
-        $headers = $inputData->headers ? json_decode(json_encode($inputData->headers), true) : null;
-        if ($headers == null) {
-            $headers = [];
-        }
-        if (empty($headers['Authorization'])) {
-            $headers['Authorization'] = 'Basic ' . RNCPHP\Configuration::fetch('CUSTOM_CFG_KBIU_WEBDAV_USER')->Value;
-        }
+        self::logMessage('reqJson: ', $reqJson);
 
         switch ($action) {
             case 'PAYMENT':
@@ -127,7 +124,9 @@ class PaymentEngine
         }
 
         $transType = $reqJson->transType;
+        self::logMessage('transType: ', $transType);
         $fsReqData = $this->getFSPostArray($pmType);
+        self::logMessage('fsReqData: ', $fsReqData);
         if ($pmType == 'EFT') {
 
             switch ($transType) {
@@ -140,7 +139,7 @@ class PaymentEngine
                     $fsReqData['Zip'] = $contact->zip;
                     $fsReqData['Street'] = $contact->street;
                     $fsReqData['TransitNum'] = $paymentMethod->routingNum;
-                    $fsReqData['AccountNum'] = $paymentMethod->acctNum;
+                    $fsReqData['AccountNum'] = base64_decode($paymentMethod->acctNum);
                     $fsReqData['CheckType'] = $reqJson->cardType;
                     break;
 
@@ -153,7 +152,7 @@ class PaymentEngine
 
                 case FS_EFT_REVERSAL_TYPE:
                     $fsReqData['InvNum'] = $reqJson->transID;
-                    $fsReqData['PNRef'] = $paymentMethod->pnRef;
+                    $fsReqData['ExtData'] = '<PNRef>' . $paymentMethod->pnRef . '</PNRef>';
                     break;
 
                 default:
@@ -171,30 +170,30 @@ class PaymentEngine
                     $fsReqData['Amount'] = $reqJson->amount;
                     $fsReqData['InvNum'] = $reqJson->transID;
 
-                    if (empty($paymentMethod->ccNum)) {
+                    if (!empty($paymentMethod->ccNum)) {
                         // * it's a new Sale
                         $contact = $reqJson->contact;
                         $fsReqData['NameOnCard'] = $contact->firstName . ' ' . $contact->lastName;
                         $fsReqData['Zip'] = $contact->zip;
                         $fsReqData['Street'] = $contact->street;
-                        $fsReqData['CardNum'] = $paymentMethod->ccNum;
-                        $fsReqData['ExpDate'] = $paymentMethod->expMonth . substr($paymentMethod->expYear, 0, 2);
+                        $fsReqData['CardNum'] = base64_decode($paymentMethod->ccNum);
+                        $fsReqData['ExpDate'] = $paymentMethod->expMonth . substr($paymentMethod->expYear, 2, 2);
                         $fsReqData['CVNum'] = $paymentMethod->cvc;
                     } else {
                         // * it's a repeat sale
-                        $fsReqData['PNRef'] = $transType;
+                        $fsReqData['PNRef'] = $paymentMethod->pnRef;
                     }
                     break;
 
                 case FS_REVERSAL_TYPE:
                     $fsReqData['InvNum'] = $reqJson->transID;
-                    $fsReqData['PNRef'] = $transType;
+                    $fsReqData['PNRef'] = $paymentMethod->pnRef;
                     break;
 
                 case FS_REFUND_TYPE:
                     $fsReqData['Amount'] = $reqJson->amount;
                     $fsReqData['InvNum'] = $reqJson->transID;
-                    $fsReqData['PNRef'] = $transType;
+                    $fsReqData['PNRef'] = $paymentMethod->pnRef;
                     break;
 
                 default:
@@ -212,6 +211,7 @@ class PaymentEngine
         if (empty($fsReqData)) {
             return outputResponse(null, 'Something went wrong while making the payment request', 405);
         }
+        self::logMessage('fsReqData: ', $fsReqData);
 
         return $this->runTransaction($fsReqData);
     }
@@ -293,6 +293,9 @@ class PaymentEngine
 
     function runTransaction(array $postVals)
     {
+        self::logMessage(' Starting ' . __FUNCTION__ . '@' . __CLASS__ . '(Line: ' . __LINE__ . ')');
+        self::logMessage('Trans PostVals: ', $postVals);
+
         $url = RNCPHP\Configuration::fetch('CUSTOM_CFG_frontstream_endpoint')->Value . $postVals['op'];
         $postVals['UserName'] = RNCPHP\Configuration::fetch('CUSTOM_CFG_frontstream_user')->Value;
         $postVals['Password'] = RNCPHP\Configuration::fetch('CUSTOM_CFG_frontstream_pass')->Value;
@@ -301,15 +304,20 @@ class PaymentEngine
         foreach ($postVals as $key => $value) {
             $postData[] = $key . '=' . $value;
         }
+        self::logMessage('postData: ', $postData);
 
         $postStr = implode("&", $postData);
+        self::logMessage('postStr: ', $postStr);
 
         $response = network_utilities\runCurl($url, 'POST', $postStr);
+        self::logMessage('response: ', $response);
 
         if (!empty($response)) {
 
             if ($response['success']) {
                 $returnArr = $this->parseFrontStreamRespOneTime($response['body']);
+                self::logMessage('returnArr: ', $returnArr);
+
                 return outputResponse($returnArr, null, $response['status']);
             } else {
                 return outputResponse(null, $response['error'], $response['status']);

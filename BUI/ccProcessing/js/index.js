@@ -151,7 +151,7 @@ function savingHandler(params) {
 
 function closingHandler(parameter) {
 
-    loaderfadein()
+    return loaderfadein()
         .then(x => getFieldValuesFromEvent(parameter))
         .then(workspaceFields => {
 
@@ -203,6 +203,8 @@ async function updateAllowedOperations() {
 function populatePaymentMethods(paymentMethods) {
 
     if (elements.pmDataTable && paymentMethods.length) {
+
+        elements.pmDataTable.clear();   // clear existing rows
 
         var actionButton = '<button class="action-button">' + 'Make Payment' + '</button>';
         for (var i = 0; i < paymentMethods.length; i++) {
@@ -329,6 +331,8 @@ async function addClicked() {
 
 async function makePaymentClicked(rowData) {
 
+    loaderfadein();
+    
     let payMethodID = rowData[6];
     if (!payMethodID) {
         throw new Error('Invalid Payment Method ID found on the selected payment method. Please try again.')
@@ -350,7 +354,7 @@ async function makePaymentClicked(rowData) {
     }
 
     let message = sprintf(localConfigs.paymentConfirmMessage, (+amount).toFixed(2), selectedPayMethod.pnRef);
-    let result = await confirmation(message, localConfigs.paymentConfirmTitle);
+    let result = await confirmation(message, localConfigs.paymentConfirmTitle, ['Yes', 'No']);
     if (result < 0) {
         // silently exit
         return Promise.resolve(true);
@@ -378,7 +382,7 @@ async function makePaymentClicked(rowData) {
 
         let errorMsg = fsReturn.message || fsReturn.responseMsg;
         let message = 'There was a problem with the transaction.  Message: ' + errorMsg + '. Check the transaction notes for further detail';
-        return await completePaymentTransaction(message, fsReturn.rawXml, localConfigs.transStatus.Declined, pnRef);
+        return await completePaymentTransaction(message, fsReturn.rawXml, localConfigs.transStatus.Declined, selectedPayMethod.pnRef);
     }
 }
 
@@ -407,8 +411,10 @@ async function displayMakePayment(trackingID = localConfigs.makeChargeTrackingId
     let amount = -1;
     if (trackingID == localConfigs.makeChargeTrackingId) {
         amount = getPaymentAmount();
-        // return await paymentError('Payment value less than $1');
-        throw new Error('Payment value less than $1');
+        if (amount < 1) {
+            // return await paymentError('Payment value less than $1');
+            throw new Error('Payment value less than $1');
+        }
     } else {
         amount = 1.00;
     }
@@ -470,12 +476,13 @@ async function displayMakePayment(trackingID = localConfigs.makeChargeTrackingId
         let errorMsg = fsReturn.message || fsReturn.responseMsg;
         const donationID = workspace.fields[localConfigs.listOfFieldsToFetch.DonationID].label;
         let message = 'There was an issue adding this payment, check the transaction for further detail. ERROR: ' + errorMsg;
-        return await createOrUpdateTransactionObj(donationID, message);
+        await createOrUpdateTransactionObj(donationID, message);
+        throw new Error(message);
     }
 
     // get pnRef
     if (fsReturn.pnRef) {
-        paymentResponse.pmDetails.pnRef = fsReturn.receiptPNRef;
+        paymentResponse.pmDetails.pnRef = fsReturn.pnRef;
     }
 
     // get infokey
@@ -490,7 +497,8 @@ async function displayMakePayment(trackingID = localConfigs.makeChargeTrackingId
     let payMethodID = await createOrUpdatePaymentMethod(paymentResponse.pmDetails, contactID);
     updatePaymentMethodGrid();  // no need to wait on this, can update in background
 
-    await createOrUpdateTransactionObj(donationID, 'Added payment method: ' + payMethodID.ToString() + ' to transaction', contactID, 0, null, payMethodID);
+    const donationID = workspace.fields[localConfigs.listOfFieldsToFetch.DonationID].label;
+    await createOrUpdateTransactionObj(donationID, 'Added payment method: ' + payMethodID.toString() + ' to transaction', contactID, 0, null, payMethodID, paymentResponse.pmDetails.pnRef);
 
     if (payMethodID < 1) {
         showNotification('The transaction was successful, but unable to store payment information for recurring use.', Severity.WARNING);
@@ -507,7 +515,7 @@ async function displayMakePayment(trackingID = localConfigs.makeChargeTrackingId
             throw new Error('There may have been an issue adding this payment method. Check the transaction for details and verify no charge has occured with merchant. ERROR: ' + reversed.error);
         }
     } else {
-        return await completePaymentTransaction('Payment Completed', fsReturn.rawXml, localConfigs.transStatus.Completed, fsReturn.pnRef);
+        return await completePaymentTransaction('Payment Completed', fsReturn.rawXml, localConfigs.transStatus.Completed, fsReturn.pnRef, Severity.SUCCESS);
     }
 
     return Promise.resolve(true);
@@ -547,25 +555,25 @@ function preparePayFormData(data = {}) {
 function getContactDetails(fName = null, lName = null, street = null, zip = null) {
 
     let contact = {};
-    if (fName === null) {
+    if (fName !== null) {
         contact.firstName = fName;
     } else {
         contact.firstName = workspace.fields[localConfigs.listOfFieldsToFetch.ContactFirstName].label;
     }
 
-    if (lName === null) {
+    if (lName !== null) {
         contact.lastName = lName;
     } else {
         contact.lastName = workspace.fields[localConfigs.listOfFieldsToFetch.ContactLastName].label;
     }
 
-    if (street === null) {
+    if (street !== null) {
         contact.street = street;
     } else {
         contact.street = workspace.fields[localConfigs.listOfFieldsToFetch.ContactStreet].label;
     }
 
-    if (zip === null) {
+    if (zip !== null) {
         contact.postalCode = zip;
     } else {
         contact.postalCode = workspace.fields[localConfigs.listOfFieldsToFetch.ContactPostalCode].label;

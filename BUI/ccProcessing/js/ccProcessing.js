@@ -124,12 +124,14 @@ async function submitClicked() {
 
             formResponse.pmDetails.cardType = elements.iEFTType.val();
             formResponse.pmDetails.routingNum = elements.iRouting.val();
-            formResponse.pmDetails.acctNum = elements.iAccount.val();
-            formResponse.pmDetails.lastFour = elements.iAccount.val().slice(elements.iAccount.val().length - 5);
+            let acctNum = elements.iAccount.val().match(/\d/g).join('');    // extract numbers
+            formResponse.pmDetails.acctNum = btoa(acctNum);     // base64 encode
+            formResponse.pmDetails.lastFour = acctNum.slice(acctNum.length - 4);
         } else {
 
-            formResponse.pmDetails.ccNum = elements.iCCNum.val();
-            formResponse.pmDetails.lastFour = elements.iCCNum.val().slice(elements.iCCNum.val().length - 5);
+            let ccNum = elements.iCCNum.val().match(/\d/g).join('');    // extract numbers
+            formResponse.pmDetails.ccNum = btoa(ccNum);     // base64 encode
+            formResponse.pmDetails.lastFour = ccNum.slice(ccNum.length - 4);
             let exp = $.map(elements.iExpiry.val().split('/'), $.trim);
             formResponse.pmDetails.expMonth = exp[0];
             formResponse.pmDetails.expYear = exp[1];
