@@ -147,12 +147,12 @@ class PaymentEngine
                 case FS_REFUND_TYPE:
                     $fsReqData['Amount'] = $reqJson->amount;
                     $fsReqData['InvNum'] = $reqJson->transID;
-                    $fsReqData['ExtData'] = '<PNRef>' . $paymentMethod->pnRef . '</PNRef>';
+                    $fsReqData['ExtData'] = (!empty($paymentMethod->infoKey)) ? '<Check_Info_Key>' . $paymentMethod->infoKey . '</Check_Info_Key>' : '<PNRef>' . $paymentMethod->pnRef . '</PNRef>';
                     break;
 
                 case FS_EFT_REVERSAL_TYPE:
                     $fsReqData['InvNum'] = $reqJson->transID;
-                    $fsReqData['ExtData'] = '<PNRef>' . $paymentMethod->pnRef . '</PNRef>';
+                    $fsReqData['ExtData'] = (!empty($paymentMethod->infoKey)) ? '<Check_Info_Key>' . $paymentMethod->infoKey . '</Check_Info_Key>' : '<PNRef>' . $paymentMethod->pnRef . '</PNRef>';
                     break;
 
                 default:
@@ -181,19 +181,31 @@ class PaymentEngine
                         $fsReqData['CVNum'] = $paymentMethod->cvc;
                     } else {
                         // * it's a repeat sale
-                        $fsReqData['PNRef'] = $paymentMethod->pnRef;
+                        if (!empty($paymentMethod->infoKey)) {
+                            $fsReqData['ExtData'] = '<CC_Info_Key>' . $paymentMethod->infoKey . '</CC_Info_Key>';
+                        } else {
+                            $fsReqData['PNRef'] = $paymentMethod->pnRef;
+                        }
                     }
                     break;
 
                 case FS_REVERSAL_TYPE:
                     $fsReqData['InvNum'] = $reqJson->transID;
-                    $fsReqData['PNRef'] = $paymentMethod->pnRef;
+                    if (!empty($paymentMethod->infoKey)) {
+                        $fsReqData['ExtData'] = '<CC_Info_Key>' . $paymentMethod->infoKey . '</CC_Info_Key>';
+                    } else {
+                        $fsReqData['PNRef'] = $paymentMethod->pnRef;
+                    }
                     break;
 
                 case FS_REFUND_TYPE:
                     $fsReqData['Amount'] = $reqJson->amount;
                     $fsReqData['InvNum'] = $reqJson->transID;
-                    $fsReqData['PNRef'] = $paymentMethod->pnRef;
+                    if (!empty($paymentMethod->infoKey)) {
+                        $fsReqData['ExtData'] = '<CC_Info_Key>' . $paymentMethod->infoKey . '</CC_Info_Key>';
+                    } else {
+                        $fsReqData['PNRef'] = $paymentMethod->pnRef;
+                    }
                     break;
 
                 default:

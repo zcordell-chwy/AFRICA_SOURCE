@@ -194,7 +194,7 @@ async function updateAllowedOperations() {
     elements.btnCharge.prop('disabled', !allowChargeForTrans);
     elements.btnAdd.prop('disabled', !allowChargeForTrans);
     if (elements.pmDataTable) {
-        elements.pmDataTable.column(7).visible(allowChargeForTrans);
+        elements.pmDataTable.column(8).visible(allowChargeForTrans);
     }
 
     return Promise.resolve(true);
@@ -218,10 +218,10 @@ function populatePaymentMethods(paymentMethods) {
                 payMethod.expYear,
                 (payMethod.pmType == 'EFT') ? payMethod.cardType + ' (' + payMethod.pmType + ')' : payMethod.cardType,
                 payMethod.pnRef,
+                payMethod.infoKey,
                 payMethod.id,
                 actionButton,
-                payMethod.pmType,
-                payMethod.infoKey
+                payMethod.pmType
             ]);
         }
         elements.pmDataTable.draw(true);
@@ -332,8 +332,8 @@ async function addClicked() {
 async function makePaymentClicked(rowData) {
 
     loaderfadein();
-    
-    let payMethodID = rowData[6];
+
+    let payMethodID = rowData[7];
     if (!payMethodID) {
         throw new Error('Invalid Payment Method ID found on the selected payment method. Please try again.')
     }
@@ -353,7 +353,12 @@ async function makePaymentClicked(rowData) {
         throw new Error('Payment value less than $1');
     }
 
-    let message = sprintf(localConfigs.paymentConfirmMessage, (+amount).toFixed(2), selectedPayMethod.pnRef);
+    let message = '';
+    if (selectedPayMethod.infoKey) {
+        message = sprintf(localConfigs.paymentKeyConfirmMessage, (+amount).toFixed(2), selectedPayMethod.infoKey);
+    } else {
+        message = sprintf(localConfigs.paymentRefConfirmMessage, (+amount).toFixed(2), selectedPayMethod.pnRef);
+    }
     let result = await confirmation(message, localConfigs.paymentConfirmTitle, ['Yes', 'No']);
     if (result < 0) {
         // silently exit
@@ -884,11 +889,11 @@ $(document).ready(function () {
         ],
         "columnDefs": [
             {
-                "targets": [0, 7],
+                "targets": [0, 8],
                 "searchable": false
             },
             {
-                "targets": [8, 9],
+                "targets": [9],
                 "visible": false,
                 "searchable": false
             }

@@ -17,28 +17,28 @@ function initialize() {
     DEVMODE = isDevMode();
     debuglog('initializing');
 
-    new Promise(async (resolve, reject) => {
+    // new Promise(async (resolve, reject) => {
 
-        loaderfadein(false);
+    //     loaderfadein(false);
 
-        localConfigs = await readLabelConstants();
-        if (!localConfigs) {
-            throw new Error('Failed to initialize local configurations for the extension. Please contact your administrator.');
-        }
+    //     localConfigs = await readLabelConstants();
+    //     if (!localConfigs) {
+    //         throw new Error('Failed to initialize local configurations for the extension. Please contact your administrator.');
+    //     }
 
-        // set vars for global utilities usage
-        appName = localConfigs.paymentFormAppName;
-        appVersion = localConfigs.appVersion;
+    //     // set vars for global utilities usage
+    //     appName = localConfigs.paymentFormAppName;
+    //     appVersion = localConfigs.appVersion;
 
-        // register workspace extension and add event handlers
-        // subscribeEvent(appName, subscriptionHandler);
-    })
-        // .then(async (x) => {
+    //     // register workspace extension and add event handlers
+    //     // subscribeEvent(appName, subscriptionHandler);
+    // })
+    //     // .then(async (x) => {
 
-        //     await loadConfigs(localConfigs.configsToLoad);
-        // })
-        .catch(handleError)
-        .finally(loaderfadeout);
+    //     //     await loadConfigs(localConfigs.configsToLoad);
+    //     // })
+    //     .catch(handleError)
+    //     .finally(loaderfadeout);
 }
 
 /* -------------------------- Main Logic Functions -------------------------- */
@@ -362,9 +362,27 @@ $(document).ready(function () {
         }
     });
 
-    /* Notify the parent extension that the popup is ready to 
-     * accept the data */
-    loadForm()
+    new Promise(async (resolve, reject) => {
+
+        loaderfadein(false);
+
+        localConfigs = await readLabelConstants();
+        if (!localConfigs) {
+            throw new Error('Failed to initialize local configurations for the extension. Please contact your administrator.');
+        }
+
+        // set vars for global utilities usage
+        appName = localConfigs.paymentFormAppName;
+        appVersion = localConfigs.appVersion;
+
+        // register workspace extension and add event handlers
+        // subscribeEvent(appName, subscriptionHandler);
+
+        resolve(true);
+    })
+        /* Notify the parent extension that the popup is ready to 
+         * accept the data */
+        .then(loadForm)
         .catch(handleError)
         .finally(loaderfadeout);
 

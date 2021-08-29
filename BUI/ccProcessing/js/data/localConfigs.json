@@ -58,5 +58,6 @@
     "closeTitle": "Create Transaction?",
     "closeMessage": "No completed transaction is associated with this donation.  If this donation is complete, it will not be reported properly.  Would you like to add a completed transaction to this donation before closing the workspace?",
     "paymentConfirmTitle": "Make Payment?",
-    "paymentConfirmMessage": "Charge $%s to payment method with PN Ref No. %s?"
+    "paymentRefConfirmMessage": "Charge $%s to payment method with PN Ref No. %s?",
+    "paymentKeyConfirmMessage": "Charge $%s to payment method with Info Key No. %s?"
 }
