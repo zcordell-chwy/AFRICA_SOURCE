@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 
 use RightNow\Connect\v1_3 as RNCPHP;
 

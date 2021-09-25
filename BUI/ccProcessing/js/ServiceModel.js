@@ -28,6 +28,15 @@ async function callPaymentEngine(action = 'PAYMENT', postData = null, dataType =
     return await callCustomScript('payment_engine.php', reqData, dataType, options);
 }
 
+/**
+ * 
+ * @returns 
+ */
+async function getCountries() {
+
+    return await callOSCRestAPI('countries?fields=name');
+}
+
 async function getReportResults(reportID, filters = null) {
 
     let postData = {

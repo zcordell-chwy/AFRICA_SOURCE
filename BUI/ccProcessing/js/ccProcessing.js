@@ -4,6 +4,7 @@ var elements = {};
 var dialog = {};
 var preFormData = {};
 var cardType = '';
+var countries = {};
 
 // var formLoadedPromise = {};
 
@@ -45,7 +46,52 @@ function initialize() {
 async function loadForm() {
 
     loaderfadein();
+    await populateCountries();
     return await getPreFormData(populateForm);
+}
+
+function populateCountries() {
+
+    return getCountryList()
+        .then(fillCountryDropdown);
+}
+
+function fillCountryDropdown(countryList = {}) {
+
+    countries = countryList;
+
+    elements.iCountry.empty();
+    elements.iCountry.append(new Option('---Select Country---', ''));
+
+    if (!$.isEmptyObject(countryList)) {
+        if (!elements.iCountry) {
+            elements.iCountry = $('#country');
+        }
+
+        for (const key in countryList) {
+            elements.iCountry.append(new Option(countryList[key][1], countryList[key][0]));
+        }
+    }
+
+    return Promise.resolve(true);
+}
+
+function fillProvinceDropdown(provinceList) {
+
+    elements.iState.empty();
+    elements.iState.append(new Option('---Select Province---', ''));
+
+    if (!$.isEmptyObject(provinceList)) {
+        if (!elements.iState) {
+            elements.iState = $('#state');
+        }
+
+        for (const key in provinceList) {
+            elements.iState.append(new Option(provinceList[key], key));
+        }
+    }
+
+    return Promise.resolve(true);
 }
 
 function getPreFormData(callback) {
@@ -57,11 +103,15 @@ function getPreFormData(callback) {
     return fireEvent(localConfigs.parentAppName, evtObj, callback);
 }
 
-function populateForm(response) {
+async function populateForm(response) {
 
     if (response && response.result && response.result[0]) {
 
         let formData = response.result[0];
+        if (formData.amount && elements.lAmount) {
+            elements.lAmount.html('$' + (+(formData.amount)).toFixed(2));
+        }
+
         if (formData.contact) {
             if (formData.contact.firstName && elements.iFName) {
                 elements.iFName.val(formData.contact.firstName);
@@ -78,14 +128,22 @@ function populateForm(response) {
             if (formData.contact.city && elements.iCity) {
                 elements.iCity.val(formData.contact.city);
             }
-            if (formData.contact.state && elements.iState) {
-                elements.iState.val(formData.contact.state);
-            }
             if (formData.contact.postalCode && elements.iZipCode) {
                 elements.iZipCode.val(formData.contact.postalCode);
             }
-            if (formData.contact.country && elements.iCountry) {
-                elements.iCountry.val(formData.contact.country);
+
+            let country = 'US';
+            if (formData.contact.country && countries.hasOwnProperty(formData.contact.country)) {
+                country = countries[formData.contact.country][0];
+            }
+            if (elements.iCountry) {
+                elements.iCountry.val(country);
+            }
+            await countryChanged(country);
+
+            if (formData.contact.state && elements.iState) {
+                // elements.iState.find('option[text=' + formData.contact.state + ']').prop('selected', true);
+                elements.iState.val(formData.contact.state);
             }
 
             // Trigger the "change" event manually, jquery trigger does not work with card library
@@ -97,6 +155,13 @@ function populateForm(response) {
     }
 
     return Promise.resolve(true);
+}
+
+async function countryChanged(newCountry) {
+
+    loaderfadein();
+    let provinceList = await getProvinceList(newCountry);
+    return await fillProvinceDropdown(provinceList);
 }
 
 async function cancelClicked() {
@@ -146,7 +211,7 @@ async function submitClicked() {
         formResponse.contact.lastName = elements.iLName.val();
         formResponse.contact.street = elements.iStreet.val();
         formResponse.contact.city = elements.iCity.val();
-        formResponse.contact.state = elements.iState.val();
+        formResponse.contact.state = $('option:selected', elements.iState).text();    // elements.iState.val();
         formResponse.contact.country = elements.iCountry.val();
         formResponse.contact.zip = elements.iZipCode.val();
 
@@ -327,6 +392,8 @@ $(document).ready(function () {
     dialog.id = dialog.parent + '_dialog';
 
     /* ------------------------------ init elements ----------------------------- */
+    elements.lAmount = $('#label-amount');
+
     elements.iFName = $('#first-name');
     elements.iLName = $('#last-name');
     elements.iCCNum = $('#ccnumber');
@@ -380,6 +447,11 @@ $(document).ready(function () {
 
         resolve(true);
     })
+        .then(async (x) => {
+
+            await getSessionToken();
+            return loadConfigs(localConfigs.configsToLoad);
+        })
         /* Notify the parent extension that the popup is ready to 
          * accept the data */
         .then(loadForm)
@@ -387,6 +459,12 @@ $(document).ready(function () {
         .finally(loaderfadeout);
 
     /* -------------------------------- listeners ------------------------------- */
+    elements.iCountry.on('change', function () {
+
+        countryChanged(this.value)
+            .catch(handleError)
+            .finally(loaderfadeout);
+    })
     elements.btnCancel.on('click', function () {
 
         cancelClicked()

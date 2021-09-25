@@ -51,6 +51,19 @@
     padding: 8px 0;
 }
 
+.extension-content .amount-container {
+    font-size: 14px;
+    align-items: baseline;
+    text-align: right;
+    margin-right: 30px;
+}
+
+.extension-content .amount-container #label-amount {
+    font-weight: 700;
+    font-size: 1.2em;
+    color: green;
+}
+
 .extension-label.extension-label-nowrap {
     padding-right: 0.5em;
     white-space: nowrap;

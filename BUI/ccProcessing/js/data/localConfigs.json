@@ -23,7 +23,10 @@
         "DonationIsCheck": "donation$Donation.isCheck",
         "DonationAmount": "donation$Donation.Amount"
     },
-    "configsToLoad": [],
+    "configsToLoad": [
+        "CUSTOM_CFG_ACTIVE_PAY_METHOD_REPORT_ID",
+        "CUSTOM_CFG_PROV_BY_COUNTRY_REPORT_ID"
+    ],
     "unknownError": "An unknown error occurred. Please contact system administrator.",
     "allowedRefundStatus": [
         "Completed"
@@ -54,7 +57,6 @@
     "paymentPage": "ccProcessing.html",
     "popupWidth": "650",
     "popupHeight": "500",
-    "payMethodReport": 101800,
     "closeTitle": "Create Transaction?",
     "closeMessage": "No completed transaction is associated with this donation.  If this donation is complete, it will not be reported properly.  Would you like to add a completed transaction to this donation before closing the workspace?",
     "paymentConfirmTitle": "Make Payment?",

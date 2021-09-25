@@ -62,8 +62,8 @@ function initialize() {
     })
         .then(async (x) => {
 
-            // await loadConfigs(localConfigs.configsToLoad);
             await getSessionToken();
+            await loadConfigs(localConfigs.configsToLoad);
             paymentWindow = await getPaymentWindow();
         })
         .catch(handleError);
@@ -138,7 +138,7 @@ function loadAndRefreshHandler(parameter) {
             }
         })
         .then(getSessionToken)
-        // .then(x => loadConfigs(localConfigs.configsToLoad))
+        .then(x => loadConfigs(localConfigs.configsToLoad))
         .then(updatePaymentMethodGrid)
         .then(updateAllowedOperations)
         .catch(error => handleError(error))
@@ -220,6 +220,7 @@ function populatePaymentMethods(paymentMethods) {
                 payMethod.pnRef,
                 payMethod.infoKey,
                 payMethod.id,
+                payMethod.created.slice(1).slice(0, -1),
                 actionButton,
                 payMethod.pmType
             ]);
@@ -386,7 +387,7 @@ async function makePaymentClicked(rowData) {
     } else {
 
         let errorMsg = fsReturn.message || fsReturn.responseMsg;
-        let message = 'There was a problem with the transaction.  Message: ' + errorMsg + '. Check the transaction notes for further detail';
+        let message = 'There was a problem with the transaction.  Message: ' + FfsReturn.resultCode + '::' + errorMsg + '. Check the transaction notes for further detail';
         return await completePaymentTransaction(message, fsReturn.rawXml, localConfigs.transStatus.Declined, selectedPayMethod.pnRef);
     }
 }
@@ -480,7 +481,7 @@ async function displayMakePayment(trackingID = localConfigs.makeChargeTrackingId
 
         let errorMsg = fsReturn.message || fsReturn.responseMsg;
         const donationID = workspace.fields[localConfigs.listOfFieldsToFetch.DonationID].label;
-        let message = 'There was an issue adding this payment, check the transaction for further detail. ERROR: ' + errorMsg;
+        let message = 'There was an issue adding this payment, check the transaction for further detail. ERROR: ' + fsReturn.resultCode + '::' + errorMsg;
         await createOrUpdateTransactionObj(donationID, message);
         throw new Error(message);
     }
@@ -551,9 +552,9 @@ function preparePayFormData(data = {}) {
         email: workspace.fields[localConfigs.listOfFieldsToFetch.ContactEmail].label,
         street: workspace.fields[localConfigs.listOfFieldsToFetch.ContactStreet].label,
         city: workspace.fields[localConfigs.listOfFieldsToFetch.ContactCity].label,
-        state: workspace.fields[localConfigs.listOfFieldsToFetch.ContactState].label,
+        state: workspace.fields[localConfigs.listOfFieldsToFetch.ContactState].value,
         postalCode: workspace.fields[localConfigs.listOfFieldsToFetch.ContactPostalCode].label,
-        country: workspace.fields[localConfigs.listOfFieldsToFetch.ContactCountry].label
+        country: workspace.fields[localConfigs.listOfFieldsToFetch.ContactCountry].value
     }
 }
 
@@ -619,7 +620,7 @@ async function displayMakeRefund() {
     }
     else {
         let errorMsg = fsReturn.message || fsReturn.responseMsg;
-        return await paymentError('There was a problem with the transaction.  Message: ' + errorMsg + '. Check the transaction notes for further detail', fsReturn.rawXml);
+        return await paymentError('There was a problem with the transaction.  Message: ' + fsReturn.resultCode + '::' + errorMsg + '. Check the transaction notes for further detail', fsReturn.rawXml);
     }
 }
 
@@ -689,7 +690,7 @@ async function initiateChargeReversal(paymentMethod) {
     }
     else {
         let errorMsg = fsReturn.message || fsReturn.responseMsg;
-        return await paymentError('There was a problem with the transaction.  Message: ' + errorMsg + '. Check the transaction notes for further detail', fsReturn.rawXml);
+        return await paymentError('There was a problem with the transaction.  Message: ' + fsReturn.resultCode + '::' + errorMsg + '. Check the transaction notes for further detail', fsReturn.rawXml);
     }
 }
 
@@ -889,18 +890,19 @@ $(document).ready(function () {
         ],
         "columnDefs": [
             {
-                "targets": [0, 8],
+                "targets": [0, 9],
                 "searchable": false
             },
             {
-                "targets": [9],
+                "targets": [10],
                 "visible": false,
                 "searchable": false
             }
         ],
         "createdRow": function (row, data, dataIndex) {
             $(row).attr('id', 'row_' + dataIndex);
-        }
+        },
+        "order": [[8, 'desc']]
     });
 
     /* -------------------------------- listeners ------------------------------- */
