@@ -62,8 +62,8 @@ function initialize() {
     })
         .then(async (x) => {
 
-            // await loadConfigs(localConfigs.configsToLoad);
             await getSessionToken();
+            await loadConfigs(localConfigs.configsToLoad);
             paymentWindow = await getPaymentWindow();
         })
         .catch(handleError);
@@ -138,7 +138,7 @@ function loadAndRefreshHandler(parameter) {
             }
         })
         .then(getSessionToken)
-        // .then(x => loadConfigs(localConfigs.configsToLoad))
+        .then(x => loadConfigs(localConfigs.configsToLoad))
         .then(updatePaymentMethodGrid)
         .then(updateAllowedOperations)
         .catch(error => handleError(error))
@@ -151,7 +151,7 @@ function savingHandler(params) {
 
 function closingHandler(parameter) {
 
-    loaderfadein()
+    return loaderfadein()
         .then(x => getFieldValuesFromEvent(parameter))
         .then(workspaceFields => {
 
@@ -194,7 +194,7 @@ async function updateAllowedOperations() {
     elements.btnCharge.prop('disabled', !allowChargeForTrans);
     elements.btnAdd.prop('disabled', !allowChargeForTrans);
     if (elements.pmDataTable) {
-        elements.pmDataTable.column(7).visible(allowChargeForTrans);
+        elements.pmDataTable.column(8).visible(allowChargeForTrans);
     }
 
     return Promise.resolve(true);
@@ -203,6 +203,8 @@ async function updateAllowedOperations() {
 function populatePaymentMethods(paymentMethods) {
 
     if (elements.pmDataTable && paymentMethods.length) {
+
+        elements.pmDataTable.clear();   // clear existing rows
 
         var actionButton = '<button class="action-button">' + 'Make Payment' + '</button>';
         for (var i = 0; i < paymentMethods.length; i++) {
@@ -216,10 +218,11 @@ function populatePaymentMethods(paymentMethods) {
                 payMethod.expYear,
                 (payMethod.pmType == 'EFT') ? payMethod.cardType + ' (' + payMethod.pmType + ')' : payMethod.cardType,
                 payMethod.pnRef,
+                payMethod.infoKey,
                 payMethod.id,
+                payMethod.created.slice(1).slice(0, -1),
                 actionButton,
-                payMethod.pmType,
-                payMethod.infoKey
+                payMethod.pmType
             ]);
         }
         elements.pmDataTable.draw(true);
@@ -329,7 +332,9 @@ async function addClicked() {
 
 async function makePaymentClicked(rowData) {
 
-    let payMethodID = rowData[6];
+    loaderfadein();
+
+    let payMethodID = rowData[7];
     if (!payMethodID) {
         throw new Error('Invalid Payment Method ID found on the selected payment method. Please try again.')
     }
@@ -349,8 +354,13 @@ async function makePaymentClicked(rowData) {
         throw new Error('Payment value less than $1');
     }
 
-    let message = sprintf(localConfigs.paymentConfirmMessage, (+amount).toFixed(2), selectedPayMethod.pnRef);
-    let result = await confirmation(message, localConfigs.paymentConfirmTitle);
+    let message = '';
+    if (selectedPayMethod.infoKey) {
+        message = sprintf(localConfigs.paymentKeyConfirmMessage, (+amount).toFixed(2), selectedPayMethod.infoKey);
+    } else {
+        message = sprintf(localConfigs.paymentRefConfirmMessage, (+amount).toFixed(2), selectedPayMethod.pnRef);
+    }
+    let result = await confirmation(message, localConfigs.paymentConfirmTitle, ['Yes', 'No']);
     if (result < 0) {
         // silently exit
         return Promise.resolve(true);
@@ -377,8 +387,8 @@ async function makePaymentClicked(rowData) {
     } else {
 
         let errorMsg = fsReturn.message || fsReturn.responseMsg;
-        let message = 'There was a problem with the transaction.  Message: ' + errorMsg + '. Check the transaction notes for further detail';
-        return await completePaymentTransaction(message, fsReturn.rawXml, localConfigs.transStatus.Declined, pnRef);
+        let message = 'There was a problem with the transaction.  Message: ' + FfsReturn.resultCode + '::' + errorMsg + '. Check the transaction notes for further detail';
+        return await completePaymentTransaction(message, fsReturn.rawXml, localConfigs.transStatus.Declined, selectedPayMethod.pnRef);
     }
 }
 
@@ -407,8 +417,10 @@ async function displayMakePayment(trackingID = localConfigs.makeChargeTrackingId
     let amount = -1;
     if (trackingID == localConfigs.makeChargeTrackingId) {
         amount = getPaymentAmount();
-        // return await paymentError('Payment value less than $1');
-        throw new Error('Payment value less than $1');
+        if (amount < 1) {
+            // return await paymentError('Payment value less than $1');
+            throw new Error('Payment value less than $1');
+        }
     } else {
         amount = 1.00;
     }
@@ -469,13 +481,14 @@ async function displayMakePayment(trackingID = localConfigs.makeChargeTrackingId
 
         let errorMsg = fsReturn.message || fsReturn.responseMsg;
         const donationID = workspace.fields[localConfigs.listOfFieldsToFetch.DonationID].label;
-        let message = 'There was an issue adding this payment, check the transaction for further detail. ERROR: ' + errorMsg;
-        return await createOrUpdateTransactionObj(donationID, message);
+        let message = 'There was an issue adding this payment, check the transaction for further detail. ERROR: ' + fsReturn.resultCode + '::' + errorMsg;
+        await createOrUpdateTransactionObj(donationID, message);
+        throw new Error(message);
     }
 
     // get pnRef
     if (fsReturn.pnRef) {
-        paymentResponse.pmDetails.pnRef = fsReturn.receiptPNRef;
+        paymentResponse.pmDetails.pnRef = fsReturn.pnRef;
     }
 
     // get infokey
@@ -490,7 +503,8 @@ async function displayMakePayment(trackingID = localConfigs.makeChargeTrackingId
     let payMethodID = await createOrUpdatePaymentMethod(paymentResponse.pmDetails, contactID);
     updatePaymentMethodGrid();  // no need to wait on this, can update in background
 
-    await createOrUpdateTransactionObj(donationID, 'Added payment method: ' + payMethodID.ToString() + ' to transaction', contactID, 0, null, payMethodID);
+    const donationID = workspace.fields[localConfigs.listOfFieldsToFetch.DonationID].label;
+    await createOrUpdateTransactionObj(donationID, 'Added payment method: ' + payMethodID.toString() + ' to transaction', contactID, 0, null, payMethodID, paymentResponse.pmDetails.pnRef);
 
     if (payMethodID < 1) {
         showNotification('The transaction was successful, but unable to store payment information for recurring use.', Severity.WARNING);
@@ -507,7 +521,7 @@ async function displayMakePayment(trackingID = localConfigs.makeChargeTrackingId
             throw new Error('There may have been an issue adding this payment method. Check the transaction for details and verify no charge has occured with merchant. ERROR: ' + reversed.error);
         }
     } else {
-        return await completePaymentTransaction('Payment Completed', fsReturn.rawXml, localConfigs.transStatus.Completed, fsReturn.pnRef);
+        return await completePaymentTransaction('Payment Completed', fsReturn.rawXml, localConfigs.transStatus.Completed, fsReturn.pnRef, Severity.SUCCESS);
     }
 
     return Promise.resolve(true);
@@ -538,34 +552,34 @@ function preparePayFormData(data = {}) {
         email: workspace.fields[localConfigs.listOfFieldsToFetch.ContactEmail].label,
         street: workspace.fields[localConfigs.listOfFieldsToFetch.ContactStreet].label,
         city: workspace.fields[localConfigs.listOfFieldsToFetch.ContactCity].label,
-        state: workspace.fields[localConfigs.listOfFieldsToFetch.ContactState].label,
+        state: workspace.fields[localConfigs.listOfFieldsToFetch.ContactState].value,
         postalCode: workspace.fields[localConfigs.listOfFieldsToFetch.ContactPostalCode].label,
-        country: workspace.fields[localConfigs.listOfFieldsToFetch.ContactCountry].label
+        country: workspace.fields[localConfigs.listOfFieldsToFetch.ContactCountry].value
     }
 }
 
 function getContactDetails(fName = null, lName = null, street = null, zip = null) {
 
     let contact = {};
-    if (fName === null) {
+    if (fName !== null) {
         contact.firstName = fName;
     } else {
         contact.firstName = workspace.fields[localConfigs.listOfFieldsToFetch.ContactFirstName].label;
     }
 
-    if (lName === null) {
+    if (lName !== null) {
         contact.lastName = lName;
     } else {
         contact.lastName = workspace.fields[localConfigs.listOfFieldsToFetch.ContactLastName].label;
     }
 
-    if (street === null) {
+    if (street !== null) {
         contact.street = street;
     } else {
         contact.street = workspace.fields[localConfigs.listOfFieldsToFetch.ContactStreet].label;
     }
 
-    if (zip === null) {
+    if (zip !== null) {
         contact.postalCode = zip;
     } else {
         contact.postalCode = workspace.fields[localConfigs.listOfFieldsToFetch.ContactPostalCode].label;
@@ -606,7 +620,7 @@ async function displayMakeRefund() {
     }
     else {
         let errorMsg = fsReturn.message || fsReturn.responseMsg;
-        return await paymentError('There was a problem with the transaction.  Message: ' + errorMsg + '. Check the transaction notes for further detail', fsReturn.rawXml);
+        return await paymentError('There was a problem with the transaction.  Message: ' + fsReturn.resultCode + '::' + errorMsg + '. Check the transaction notes for further detail', fsReturn.rawXml);
     }
 }
 
@@ -676,7 +690,7 @@ async function initiateChargeReversal(paymentMethod) {
     }
     else {
         let errorMsg = fsReturn.message || fsReturn.responseMsg;
-        return await paymentError('There was a problem with the transaction.  Message: ' + errorMsg + '. Check the transaction notes for further detail', fsReturn.rawXml);
+        return await paymentError('There was a problem with the transaction.  Message: ' + fsReturn.resultCode + '::' + errorMsg + '. Check the transaction notes for further detail', fsReturn.rawXml);
     }
 }
 
@@ -876,18 +890,19 @@ $(document).ready(function () {
         ],
         "columnDefs": [
             {
-                "targets": [0, 7],
+                "targets": [0, 9],
                 "searchable": false
             },
             {
-                "targets": [8, 9],
+                "targets": [10],
                 "visible": false,
                 "searchable": false
             }
         ],
         "createdRow": function (row, data, dataIndex) {
             $(row).attr('id', 'row_' + dataIndex);
-        }
+        },
+        "order": [[8, 'desc']]
     });
 
     /* -------------------------------- listeners ------------------------------- */

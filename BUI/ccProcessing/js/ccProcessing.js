@@ -4,6 +4,7 @@ var elements = {};
 var dialog = {};
 var preFormData = {};
 var cardType = '';
+var countries = {};
 
 // var formLoadedPromise = {};
 
@@ -17,35 +18,80 @@ function initialize() {
     DEVMODE = isDevMode();
     debuglog('initializing');
 
-    new Promise(async (resolve, reject) => {
+    // new Promise(async (resolve, reject) => {
 
-        loaderfadein(false);
+    //     loaderfadein(false);
 
-        localConfigs = await readLabelConstants();
-        if (!localConfigs) {
-            throw new Error('Failed to initialize local configurations for the extension. Please contact your administrator.');
-        }
+    //     localConfigs = await readLabelConstants();
+    //     if (!localConfigs) {
+    //         throw new Error('Failed to initialize local configurations for the extension. Please contact your administrator.');
+    //     }
 
-        // set vars for global utilities usage
-        appName = localConfigs.paymentFormAppName;
-        appVersion = localConfigs.appVersion;
+    //     // set vars for global utilities usage
+    //     appName = localConfigs.paymentFormAppName;
+    //     appVersion = localConfigs.appVersion;
 
-        // register workspace extension and add event handlers
-        // subscribeEvent(appName, subscriptionHandler);
-    })
-        // .then(async (x) => {
+    //     // register workspace extension and add event handlers
+    //     // subscribeEvent(appName, subscriptionHandler);
+    // })
+    //     // .then(async (x) => {
 
-        //     await loadConfigs(localConfigs.configsToLoad);
-        // })
-        .catch(handleError)
-        .finally(loaderfadeout);
+    //     //     await loadConfigs(localConfigs.configsToLoad);
+    //     // })
+    //     .catch(handleError)
+    //     .finally(loaderfadeout);
 }
 
 /* -------------------------- Main Logic Functions -------------------------- */
 async function loadForm() {
 
     loaderfadein();
+    await populateCountries();
     return await getPreFormData(populateForm);
+}
+
+function populateCountries() {
+
+    return getCountryList()
+        .then(fillCountryDropdown);
+}
+
+function fillCountryDropdown(countryList = {}) {
+
+    countries = countryList;
+
+    elements.iCountry.empty();
+    elements.iCountry.append(new Option('---Select Country---', ''));
+
+    if (!$.isEmptyObject(countryList)) {
+        if (!elements.iCountry) {
+            elements.iCountry = $('#country');
+        }
+
+        for (const key in countryList) {
+            elements.iCountry.append(new Option(countryList[key][1], countryList[key][0]));
+        }
+    }
+
+    return Promise.resolve(true);
+}
+
+function fillProvinceDropdown(provinceList) {
+
+    elements.iState.empty();
+    elements.iState.append(new Option('---Select Province---', ''));
+
+    if (!$.isEmptyObject(provinceList)) {
+        if (!elements.iState) {
+            elements.iState = $('#state');
+        }
+
+        for (const key in provinceList) {
+            elements.iState.append(new Option(provinceList[key], key));
+        }
+    }
+
+    return Promise.resolve(true);
 }
 
 function getPreFormData(callback) {
@@ -57,11 +103,15 @@ function getPreFormData(callback) {
     return fireEvent(localConfigs.parentAppName, evtObj, callback);
 }
 
-function populateForm(response) {
+async function populateForm(response) {
 
     if (response && response.result && response.result[0]) {
 
         let formData = response.result[0];
+        if (formData.amount && elements.lAmount) {
+            elements.lAmount.html('$' + (+(formData.amount)).toFixed(2));
+        }
+
         if (formData.contact) {
             if (formData.contact.firstName && elements.iFName) {
                 elements.iFName.val(formData.contact.firstName);
@@ -78,14 +128,22 @@ function populateForm(response) {
             if (formData.contact.city && elements.iCity) {
                 elements.iCity.val(formData.contact.city);
             }
-            if (formData.contact.state && elements.iState) {
-                elements.iState.val(formData.contact.state);
-            }
             if (formData.contact.postalCode && elements.iZipCode) {
                 elements.iZipCode.val(formData.contact.postalCode);
             }
-            if (formData.contact.country && elements.iCountry) {
-                elements.iCountry.val(formData.contact.country);
+
+            let country = 'US';
+            if (formData.contact.country && countries.hasOwnProperty(formData.contact.country)) {
+                country = countries[formData.contact.country][0];
+            }
+            if (elements.iCountry) {
+                elements.iCountry.val(country);
+            }
+            await countryChanged(country);
+
+            if (formData.contact.state && elements.iState) {
+                // elements.iState.find('option[text=' + formData.contact.state + ']').prop('selected', true);
+                elements.iState.val(formData.contact.state);
             }
 
             // Trigger the "change" event manually, jquery trigger does not work with card library
@@ -97,6 +155,13 @@ function populateForm(response) {
     }
 
     return Promise.resolve(true);
+}
+
+async function countryChanged(newCountry) {
+
+    loaderfadein();
+    let provinceList = await getProvinceList(newCountry);
+    return await fillProvinceDropdown(provinceList);
 }
 
 async function cancelClicked() {
@@ -124,12 +189,14 @@ async function submitClicked() {
 
             formResponse.pmDetails.cardType = elements.iEFTType.val();
             formResponse.pmDetails.routingNum = elements.iRouting.val();
-            formResponse.pmDetails.acctNum = elements.iAccount.val();
-            formResponse.pmDetails.lastFour = elements.iAccount.val().slice(elements.iAccount.val().length - 5);
+            let acctNum = elements.iAccount.val().match(/\d/g).join('');    // extract numbers
+            formResponse.pmDetails.acctNum = btoa(acctNum);     // base64 encode
+            formResponse.pmDetails.lastFour = acctNum.slice(acctNum.length - 4);
         } else {
 
-            formResponse.pmDetails.ccNum = elements.iCCNum.val();
-            formResponse.pmDetails.lastFour = elements.iCCNum.val().slice(elements.iCCNum.val().length - 5);
+            let ccNum = elements.iCCNum.val().match(/\d/g).join('');    // extract numbers
+            formResponse.pmDetails.ccNum = btoa(ccNum);     // base64 encode
+            formResponse.pmDetails.lastFour = ccNum.slice(ccNum.length - 4);
             let exp = $.map(elements.iExpiry.val().split('/'), $.trim);
             formResponse.pmDetails.expMonth = exp[0];
             formResponse.pmDetails.expYear = exp[1];
@@ -144,7 +211,7 @@ async function submitClicked() {
         formResponse.contact.lastName = elements.iLName.val();
         formResponse.contact.street = elements.iStreet.val();
         formResponse.contact.city = elements.iCity.val();
-        formResponse.contact.state = elements.iState.val();
+        formResponse.contact.state = $('option:selected', elements.iState).text();    // elements.iState.val();
         formResponse.contact.country = elements.iCountry.val();
         formResponse.contact.zip = elements.iZipCode.val();
 
@@ -325,6 +392,8 @@ $(document).ready(function () {
     dialog.id = dialog.parent + '_dialog';
 
     /* ------------------------------ init elements ----------------------------- */
+    elements.lAmount = $('#label-amount');
+
     elements.iFName = $('#first-name');
     elements.iLName = $('#last-name');
     elements.iCCNum = $('#ccnumber');
@@ -360,13 +429,42 @@ $(document).ready(function () {
         }
     });
 
-    /* Notify the parent extension that the popup is ready to 
-     * accept the data */
-    loadForm()
+    new Promise(async (resolve, reject) => {
+
+        loaderfadein(false);
+
+        localConfigs = await readLabelConstants();
+        if (!localConfigs) {
+            throw new Error('Failed to initialize local configurations for the extension. Please contact your administrator.');
+        }
+
+        // set vars for global utilities usage
+        appName = localConfigs.paymentFormAppName;
+        appVersion = localConfigs.appVersion;
+
+        // register workspace extension and add event handlers
+        // subscribeEvent(appName, subscriptionHandler);
+
+        resolve(true);
+    })
+        .then(async (x) => {
+
+            await getSessionToken();
+            return loadConfigs(localConfigs.configsToLoad);
+        })
+        /* Notify the parent extension that the popup is ready to 
+         * accept the data */
+        .then(loadForm)
         .catch(handleError)
         .finally(loaderfadeout);
 
     /* -------------------------------- listeners ------------------------------- */
+    elements.iCountry.on('change', function () {
+
+        countryChanged(this.value)
+            .catch(handleError)
+            .finally(loaderfadeout);
+    })
     elements.btnCancel.on('click', function () {
 
         cancelClicked()

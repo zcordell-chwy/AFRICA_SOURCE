@@ -28,6 +28,15 @@ async function callPaymentEngine(action = 'PAYMENT', postData = null, dataType =
     return await callCustomScript('payment_engine.php', reqData, dataType, options);
 }
 
+/**
+ * 
+ * @returns 
+ */
+async function getCountries() {
+
+    return await callOSCRestAPI('countries?fields=name');
+}
+
 async function getReportResults(reportID, filters = null) {
 
     let postData = {
@@ -104,7 +113,7 @@ async function callCustomScript(scriptPath, postData, dataType = null, additiona
         'X_AGENT_SESSION_TOKEN': tokenObj.sessionToken
     };
 
-    let result = await makeAjaxRequest(url, 'POST', postData, headers, dataType, additionalOptions);
+    let result = await makeAjaxRequest(url, 'POST', postData, headers, dataType, additionalOptions, true);
     if (result.errors) {
         throw new Error(errors);
     } else if (result.data) {
@@ -131,7 +140,7 @@ function getJSON(url) {
  * @param {*} additionalOptions 
  * @returns 
  */
-function makeAjaxRequest(url, method = 'GET', postData = null, headers = null, dataType = null, additionalOptions = null) {
+function makeAjaxRequest(url, method = 'GET', postData = null, headers = null, dataType = null, additionalOptions = null, jApi = false) {
 
     let ajaxObj = {};
     if (!url) {
@@ -158,20 +167,28 @@ function makeAjaxRequest(url, method = 'GET', postData = null, headers = null, d
 
     return Promise.resolve(
         $.ajax(ajaxObj)
-            .catch(jqXHR => handleAjaxError(jqXHR)));
+            .catch(jqXHR => handleAjaxError(jqXHR, jApi)));
 }
 
-function handleAjaxError(jqXHR) {
+function handleAjaxError(jqXHR, jApi = false) {
 
     // show error
     let err = new Error();
-    if (jqXHR.responseJSON) {
-        err.statusCode = jqXHR.responseJSON.status;
-        err.message += jqXHR.responseJSON.status + ': ' + jqXHR.responseJSON.detail + ' (' + jqXHR.responseJSON["o:errorCode"] + ')';
-    }
-    else {
+    if (jApi) {
+
+        // JSON API spec response, like from our custom scripts
         err.statusCode = jqXHR.status;
-        err.message += jqXHR.status + ": " + jqXHR.statusText;
+        err.message = (jqXHR.responseJSON && jqXHR.responseJSON.errors) ? jqXHR.responseJSON.errors : (jqXHR.statusText ? jqXHR.statusText : 'Unknown Error');
+    } else {
+
+        if (jqXHR.responseJSON) {
+            err.statusCode = jqXHR.responseJSON.status;
+            err.message += jqXHR.responseJSON.status + ': ' + jqXHR.responseJSON.detail + ' (' + jqXHR.responseJSON["o:errorCode"] + ')';
+        }
+        else {
+            err.statusCode = jqXHR.status;
+            err.message += jqXHR.status + ": " + jqXHR.statusText;
+        }
     }
-    throw err;
+    throw new AjaxError(err.message, err.statusCode);
 }

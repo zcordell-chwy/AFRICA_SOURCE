@@ -16,8 +16,8 @@
     <script type="text/javascript" src="js/ccProcessing.js"></script>
 
     <!-- Card Master form -->
-    <!-- <script type="text/javascript" src="/euf/assets/js/card-master/jquery.card.js" async></script> -->
-    <script type="text/javascript" src="js/card-master/jquery.card.js" defer></script>
+    <script type="text/javascript" src="/euf/assets/javascript/card-master/jquery.card.js" defer></script>
+    <!-- <script type="text/javascript" src="js/card-master/jquery.card.js" defer></script> -->
     <!-- <script type="text/javascript" src="http://localhost:8000/ccProcessing/js/card-master/jquery.card.js"
         defer></script> -->
 
@@ -47,6 +47,10 @@
             Please Select a payment method type and add details
         </div>
         <div class="extension-content">
+            <div class="amount-container extension-flex">
+                <div class="extension-flex-item flex-col-6">Amount to be charged:</div>
+                <div class="extension-flex-item flex-col-6" id="label-amount">$0.00</div>
+            </div>
             <form>
                 <div class="form-container tabs extension-flex">
 
@@ -95,7 +99,7 @@
                             <div class="extension-flex-item extension-form-control">
                                 <select class="extension-input" id="eft-type" type="text" name="eft-type"
                                     placeholder="EFT Type">
-                                    <option value="Checkings">Checkings</option>
+                                    <option value="Checking">Checking</option>
                                     <option value="Savings">Savings</option>
                                 </select>
                             </div>
@@ -122,12 +126,12 @@
                             maxlength="20" placeholder="City" />
                     </div>
                     <div class="extension-flex-item extension-form-control flex-col-6">
-                        <input class="extension-input" id="state" type="text" name="state" autocomplete="on"
-                            maxlength="20" placeholder="State" />
+                        <select class="extension-input" id="country" name="country" placeholder="Country">
+                        </select>
                     </div>
                     <div class="extension-flex-item extension-form-control flex-col-6">
-                        <input class="extension-input" id="country" type="text" name="country" autocomplete="on"
-                            maxlength="20" placeholder="Country" />
+                        <select class="extension-input" id="state" name="state" placeholder="State">
+                        </select>
                     </div>
                     <div class="extension-flex-item extension-form-control flex-col-6">
                         <input class="extension-input" id="zipcode" type="text" name="zipcode" autocomplete="on"

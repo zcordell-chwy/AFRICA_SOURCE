@@ -29,7 +29,10 @@ async function readLabelConstants(file = 'localConfigs.json', path = 'js/data/')
                 "DonationIsCheck": "donation$Donation.isCheck",
                 "DonationAmount": "donation$Donation.Amount"
             },
-            "configsToLoad": [],
+            "configsToLoad": [
+                "CUSTOM_CFG_ACTIVE_PAY_METHOD_REPORT_ID",
+                "CUSTOM_CFG_PROV_BY_COUNTRY_REPORT_ID"
+            ],
             "unknownError": "An unknown error occurred. Please contact system administrator.",
             "allowedRefundStatus": [
                 "Completed"
@@ -60,11 +63,11 @@ async function readLabelConstants(file = 'localConfigs.json', path = 'js/data/')
             "paymentPage": "ccProcessing.html",
             "popupWidth": "650",
             "popupHeight": "500",
-            "payMethodReport": 101800,
             "closeTitle": "Create Transaction?",
             "closeMessage": "No completed transaction is associated with this donation.  If this donation is complete, it will not be reported properly.  Would you like to add a completed transaction to this donation before closing the workspace?",
             "paymentConfirmTitle": "Make Payment?",
-            "paymentConfirmMessage": "Charge $%s to payment method with PN Ref No. %s?"
+            "paymentRefConfirmMessage": "Charge $%s to payment method with PN Ref No. %s?",
+            "paymentKeyConfirmMessage": "Charge $%s to payment method with Info Key No. %s?"
         };
     }
 
@@ -182,6 +185,59 @@ function getOSCQueryResultsByKeys(query, keyArr) {
     }
 }
 
+/**
+ * 
+ * @returns 
+ */
+async function getCountryList() {
+
+    let response = await getCountries();
+    let countryList = {};
+
+    if (response && response.items) {
+        response.items.forEach(element => {
+            countryList[element.id] = [element.lookupName, element.name];
+        });
+    }
+
+    return countryList;
+}
+
+async function getProvinceList(newCountry) {
+
+    if (!newCountry) {
+        return {};
+    }
+    if (!+customConfigs.CUSTOM_CFG_PROV_BY_COUNTRY_REPORT_ID) {
+        showNotification('Provinces could not be fetched. Report not found', Severity.ERROR);
+        return {};
+    }
+
+    let filters = [
+        {
+            name: 'country',
+            operator: {
+                lookupName: '='
+            },
+            values: [newCountry]
+        }
+    ];
+
+    let provinceList = {};
+    let results = await getReportResults(+customConfigs.CUSTOM_CFG_PROV_BY_COUNTRY_REPORT_ID, filters);
+
+    if (results && results.count) {
+
+        for (var i = 0; i < results.rows.length; i++) {
+
+            const row = results.rows[i];
+            provinceList[row[0]] = row[1];
+        }
+    }
+
+    return provinceList;
+}
+
 /* -------------------------------------------------------------------------- */
 /*                         OSC payment related methods                        */
 /* -------------------------------------------------------------------------- */
@@ -190,7 +246,7 @@ async function getPayMethodsByContact(contactID = null) {
     if (!contactID) {
         throw new Error('Contact ID not found');
     }
-    if (!localConfigs.payMethodReport) {
+    if (!+customConfigs.CUSTOM_CFG_ACTIVE_PAY_METHOD_REPORT_ID) {
         throw new Error('Payment Methods could not be fetched. Report not found');
     }
 
@@ -205,7 +261,7 @@ async function getPayMethodsByContact(contactID = null) {
     ];
 
     let paymentMethods = [];
-    let results = await getReportResults(localConfigs.payMethodReport, filters);
+    let results = await getReportResults(+customConfigs.CUSTOM_CFG_ACTIVE_PAY_METHOD_REPORT_ID, filters);
 
     const currYear = new Date().getFullYear();
     const currMonth = new Date().getMonth();
@@ -228,7 +284,8 @@ async function getPayMethodsByContact(contactID = null) {
                     "lastFour": row[4],
                     "pnRef": row[6],
                     "pmType": pmType,
-                    "infoKey": row[7]
+                    "infoKey": row[7],
+                    "created": row[8]
                 }
 
                 paymentMethods.push(payMethod);
@@ -406,9 +463,9 @@ async function createOrUpdateTransactionObj(donationID, newNote, contactID, amou
     }
 
     //update payment Method
-    if (payMethod) {
+    if (+payMethod) {
         trans.paymentMethod = {
-            "lookupName": payMethod
+            "id": +payMethod
         };
     }
 
@@ -442,9 +499,10 @@ async function processPayment(paymentMethod = null, contact = null, amount = 0, 
 
         return await sendPayment(postData);
     } catch (e) {
-        showNotification(e.message, Severity.WARNING);
+        let message = (e.statusCode ? e.statusCode + ': ' : '') + e.message;
+        showNotification(message, Severity.WARNING);
         return {
-            message: e.message,
+            message: message,
             rawXml: 'XML not found'
         };
     }

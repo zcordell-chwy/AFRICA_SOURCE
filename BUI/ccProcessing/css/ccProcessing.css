@@ -51,6 +51,19 @@
     padding: 8px 0;
 }
 
+.extension-content .amount-container {
+    font-size: 14px;
+    align-items: baseline;
+    text-align: right;
+    margin-right: 30px;
+}
+
+.extension-content .amount-container #label-amount {
+    font-weight: 700;
+    font-size: 1.2em;
+    color: green;
+}
+
 .extension-label.extension-label-nowrap {
     padding-right: 0.5em;
     white-space: nowrap;
@@ -241,9 +254,9 @@ Loading Overlay Styling - START
 
 .extension-loading {
     position: fixed;
-    z-index: 999;
-    height: 2em;
-    width: 2em;
+    z-index: 99;
+    height: 5em;
+    width: 5em;
     overflow: show;
     margin: auto;
     top: 0;
