@@ -23,8 +23,8 @@ class SingleGiftItem extends \RightNow\Libraries\Widget\Base {
             $this->data['gifts'] = $this->data['js']['gifts'] = $this->CI->items->getGiftItems($item_id, true);
     
             $this->CI->load->model('custom/sponsor_model');
-            //$children = $this->CI->sponsor_model->getSponsoredChildren($profile->c_id->value);
-            $children = $this->CI->sponsor_model->getSponsoredChildren(27951);
+            $children = $this->CI->sponsor_model->getSponsoredChildren($profile->c_id->value);
+            //$children = $this->CI->sponsor_model->getSponsoredChildren(27951);
             //27951
             $this->data['eligibleChildren'] =  $this->data['js']['eligibleChildren']= $this->getChildrenEligibleForGift($children, $this->data['gifts'][0]);
 

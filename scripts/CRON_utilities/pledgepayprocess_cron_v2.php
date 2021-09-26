@@ -173,62 +173,73 @@ function Initialize($pledgeID, $pledgeAmt, $payMeth, $balance, $firstTimeDonatio
   //  if not successfult 3 times in a row,  put in 'pledge on hold' status set next payment date to null.
 
 function processCCpayment(RNCPHP\donation\pledge $pledge, $totalToCharge) {
-
+        esgLogger::log("processCCpayment  176", logWorker::Debug);
     
-        //create transaction and pass in id.  then set all the values before save in the createTransaction
-        $trans = new RNCPHP\financial\transactions();
-        $trans -> currentStatus = RNCPHP\financial\transaction_status::fetch(4);//processing then we'll update
-        $trans->save(RNCPHP\RNObject::SuppressAll);
+        try{
+            //create transaction and pass in id.  then set all the values before save in the createTransaction
+            $trans = new RNCPHP\financial\transactions();
+            $trans -> currentStatus = RNCPHP\financial\transaction_status::fetch(4);//processing then we'll update
+            $trans->save(RNCPHP\RNObject::SuppressAll);
 
+            esgLogger::log("processCCpayment  176", logWorker::Debug);
+
+            if (strlen($pledge->paymentMethod2->PN_Ref) > 1) {
+                esgLogger::log("processCCpayment  187", logWorker::Debug);
+                $mytx = array(
+                    'MagData' => '',
+                    'PNRef' => $pledge->paymentMethod2->PN_Ref,
+                    'ExtData' => '',
+                    'TransType' => "Sale",
+                    'CardNum' => "",
+                    'ExpDate' => "",
+                    'CVNum' => "",
+                    'amount' => $totalToCharge,
+                    'InvNum' => $trans->ID,
+                    'NameOnCard' => "",
+                    'Zip' => "",
+                    'Street' => "",
+                    'op' => "ArgoFire/transact.asmx/ProcessCreditCard"
+                );
+            } else if (strlen($pledge->paymentMethod2->InfoKey) > 1) {
+                esgLogger::log("processCCpayment  204", logWorker::Debug);
+                $mytx = array(
+                    'Amount' => $totalToCharge,
+                    // 'Password' => cfg_get(CUSTOM_CFG_frontstream_pass_id),
+                    // 'UserName' => cfg_get(CUSTOM_CFG_frontstream_user),
+                    'CcInfoKey' => $pledge->paymentMethod2->InfoKey,
+                    'op' => "admin/ws/recurring.asmx/ProcessCreditCard",
+                    'Vendor' => cfg_get(CUSTOM_CFG_frontstream_vendor),
+                    'ExtData' => '',
+                    'InvNum' => $trans->ID
+                );
+            }
+            
+            esgLogger::log("processCCpayment  214", logWorker::Debug);
+            esgLogger::log("processCCpayment  215", logWorker::Debug);
+            esgLogger::log("processCCpayment  216", logWorker::Debug, $mytx);
+            $returnValues = runTransaction($mytx);
     
-        if (strlen($pledge->paymentMethod2->PN_Ref) > 1 && strlen($pledge->paymentMethod2->InfoKey) < 1) {
-            $mytx = array(
-                'MagData' => '',
-                'PNRef' => $pledge->paymentMethod2->PN_Ref,
-                'ExtData' => '',
-                'TransType' => "Sale",
-                'CardNum' => "",
-                'ExpDate' => "",
-                'CVNum' => "",
-                'amount' => $totalToCharge,
-                'InvNum' => $trans->ID,
-                'NameOnCard' => "",
-                'Zip' => "",
-                'Street' => "",
-                'op' => "ArgoFire/transact.asmx/ProcessCreditCard"
-            );
-        } else if (strlen($pledge->paymentMethod2->InfoKey) > 1 && strlen($pledge->paymentMethod2->PN_Ref) < 1) {
-            $mytx = array(
-                'Amount' => $totalToCharge,
-                // 'Password' => cfg_get(CUSTOM_CFG_frontstream_pass_id),
-                // 'UserName' => cfg_get(CUSTOM_CFG_frontstream_user),
-                'CcInfoKey' => $pledge->paymentMethod2->InfoKey,
-                'op' => "admin/ws/recurring.asmx/ProcessCreditCard",
-                'Vendor' => cfg_get(CUSTOM_CFG_frontstream_vendor),
-                'ExtData' => '',
-                'InvNum' => $trans->ID
-            );
+            $notes = print_r($returnValues, true);
+            
+            esgLogger::log("processCCpayment  219", logWorker::Debug);
+            if (!$returnValues || $returnValues['code'] != 0){
+                esgLogger::log("87 - frontstream failure ", logWorker::Debug, $returnValues);
+                //dont need to create donation or d2p if declined
+                createTransaction($pledge->paymentMethod2, null, $totalToCharge, createDonation($pledge, $totalToCharge), "Declined", $pledge->Contact, $notes, $trans);
+                $transID = -99;//set to negative so we know to not to reset the next pledge date to tomorrow instead of calculating based on frequency
+            }else{
+                esgLogger::log("84 - frontstream success ", logWorker::Debug, $returnValues);
+                //create donation and associate it to existing pledge
+                //then create transaction and associate it to existing donation
+                $transID = createTransaction($pledge->paymentMethod2, $returnValues['auth'], $totalToCharge, createDonation($pledge, $totalToCharge), "Completed", $pledge->Contact, $notes, $trans);
+            }
+            
+            
+            return $transID;
+        }catch(Exception $e){
+            esgLogger::log("Error:".$e->getMessage(), logWorker::Debug, $e);
         }
         
-        $returnValues = runTransaction($mytx);
-   
-        $notes = print_r($returnValues, true);
-        
-        
-        if (!$returnValues || $returnValues['code'] != 0){
-            esgLogger::log("87 - frontstream failure ", logWorker::Debug, $returnValues);
-            //dont need to create donation or d2p if declined
-            createTransaction($pledge->paymentMethod2, null, $totalToCharge, createDonation($pledge, $totalToCharge), "Declined", $pledge->Contact, $notes, $trans);
-            $transID = -99;//set to negative so we know to not to reset the next pledge date to tomorrow instead of calculating based on frequency
-        }else{
-            esgLogger::log("84 - frontstream success ", logWorker::Debug, $returnValues);
-            //create donation and associate it to existing pledge
-            //then create transaction and associate it to existing donation
-            $transID = createTransaction($pledge->paymentMethod2, $returnValues['auth'], $totalToCharge, createDonation($pledge, $totalToCharge), "Completed", $pledge->Contact, $notes, $trans);
-        }
-        
-        
-        return $transID;
 
  }
  
@@ -345,10 +356,13 @@ function resetNextPayment($pledge, $goodTrans){
 */
 function runTransaction(array $postVals) {
    //using id's due to http://communities.rightnow.com/posts/3a27a1b48d?commentId=33912#33912
+   esgLogger::log("runTransaction  350", logWorker::Debug);
    $host = cfg_get(CUSTOM_CFG_frontstream_endpoint);
    $pass = cfg_get(CUSTOM_CFG_frontstream_pass_id);
    $user = cfg_get(CUSTOM_CFG_frontstream_user_id);
    
+   esgLogger::log("processCCpayment  354", logWorker::Debug);
+
    if (!verifyMinTransReqs($postVals, $host, $user, $pass)) {
        //esgLogger::log("103 - could not verify min trans request", logWorker::Debug, $postVals);
        return false;
@@ -365,7 +379,8 @@ function runTransaction(array $postVals) {
    $mybuilder[] = 'password=' . $pass;
    
    esgLogger::log("my params", logWorker::Debug, $mybuilder);
-    
+   esgLogger::log("processCCpayment  370", logWorker::Debug);
+
    $result = runCurl($host, $mybuilder);
    
    esgLogger::log("returned result ", logWorker::Debug, $result);
@@ -387,6 +402,7 @@ function runTransaction(array $postVals) {
 
    
    return parseFrontStreamRespOneTime($result, $transType);
+ //return false;
 
 
 }

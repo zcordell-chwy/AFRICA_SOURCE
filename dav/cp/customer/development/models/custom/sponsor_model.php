@@ -57,7 +57,7 @@ class sponsor_model extends  \RightNow\Models\Base {
         $thischild -> ID = NEEDY_CHILDREN_ID;
         $thischild -> Gender = '';
         $thischild -> ChildRef = 'NeedyChild';
-        $thischild -> GivenName = "Any Student in Need";
+        $thischild -> GivenName = "A Student in Need";
         $thischild -> Age = 1;
         $thischild -> Balance = "";
         $thischild -> RecurringPaymentAmount = "";

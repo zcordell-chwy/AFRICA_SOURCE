@@ -38,13 +38,21 @@ define('ALLOW_GET', false);
 define('ALLOW_PUT', false);
 define('ALLOW_PATCH', false);
 
-/*Application Constants*/
-define('STM_FUND_ID', 89);
-define('PAY_SOURCE', 89);
-define('PLEDGE_DESC', "Manged Missions payment for");
-define('TRANSACTION_SALE_SUCCESS_STATUS_ID', 3);
-define('STM_APPEAL_ID', 2223);
+/*Application Constants TST3*/
+// define('STM_FUND_ID', 89);
+// define('PAY_SOURCE', 89);
+// define('PLEDGE_DESC', "Managed Missions payment for");
+// define('TRANSACTION_SALE_SUCCESS_STATUS_ID', 3);
+// define('STM_APPEAL_ID', 2223);
+// define('MANUAL_PAY_STATUS', 43);
 
+/*Application Constants Prod*/
+define('STM_FUND_ID', 89);
+define('PAY_SOURCE', 93);
+define('PLEDGE_DESC', "Managed Missions payment for");
+define('TRANSACTION_SALE_SUCCESS_STATUS_ID', 3);
+define('STM_APPEAL_ID', 4580);
+define('MANUAL_PAY_STATUS', 43);
 
 require_once SCRIPT_PATH . '/utilities/make.me.an.api.php';
 require_once SCRIPT_PATH . '/utilities/network_utilities.php';
@@ -70,8 +78,8 @@ class managedMissions
     public function __construct()
     {
         $this->executionSummary[] = "Begin Managed Missions Script ".date('Y-m-d');
-        //$this->getTransactionsEndpoint = str_replace('{DATE}', '2021-05-10', RNCPHP\Configuration::fetch('CUSTOM_CFG_MANAGED_MISSIONS_API_ENDPOINT')->Value);
-        $this->getTransactionsEndpoint = str_replace('{DATE}', date('Y-m-d', strtotime('Midnight today')), RNCPHP\Configuration::fetch('CUSTOM_CFG_MANAGED_MISSIONS_API_ENDPOINT')->Value);
+        //$this->getTransactionsEndpoint = str_replace('{DATE}', '2021-08-01', RNCPHP\Configuration::fetch('CUSTOM_CFG_MANAGED_MISSIONS_API_ENDPOINT')->Value);
+        $this->getTransactionsEndpoint = str_replace('{DATE}', date('Y-m-d', strtotime('Midnight yesterday')), RNCPHP\Configuration::fetch('CUSTOM_CFG_MANAGED_MISSIONS_API_ENDPOINT')->Value);
         $this->getTripMemberEndpoint = RNCPHP\Configuration::fetch('CUSTOM_CFG_MANAGED_MISSIONS_PERSON_API_ENDPOINT')->Value;
         $this->getTripEndpoint = RNCPHP\Configuration::fetch('CUSTOM_CFG_MANAGED_MISSIONS_TRIP_API_ENDPOINT')->Value;
         $this->executionSummary[] = $this->getTransactionsEndpoint;
@@ -183,6 +191,10 @@ class managedMissions
             $errors[] = "Refund expected";
         }
 
+        if($mmDonation->ReferenceNumber == "EXCEPTION"){
+            $errors[] = "Exception: Skipping";
+        }
+
 
         return $errors;
 
@@ -196,6 +208,10 @@ class managedMissions
 
         $fundId = null;
         $names = explode(" ", $mmDonation->DonorName);
+        $count = count($names) - 1;//don't include the last name
+        $donorFirstName = implode(" ",array_slice($names,0,$count));
+        $donorLastNme = $names[count($names) - 1];
+
         $tripMemberNames = explode(" ", $mmDonation->PersonName);
 
         //Doing this first to determine if its a custom fund
@@ -257,16 +273,18 @@ class managedMissions
         }
 
         //donor info
-        $donor = $this->getContact($mmDonation->DonorId, null, $names[0], $names[1], $mmDonation->Address1, $mmDonation->City, $mmDonation->State, $mmDonation->PostalCode, $mmDonation->PhoneNumber, $mmDonation->EmailAddress);
+        $donor = $this->getContact($mmDonation->DonorId, null, $donorFirstName, $donorLastNme, $mmDonation->Address1, $mmDonation->City, $mmDonation->State, $mmDonation->PostalCode, $mmDonation->PhoneNumber, $mmDonation->EmailAddress);
+
+        
+        //trip member info
+        $tripMemberResponse = network_utilities\runCurl( str_replace('{ID}', $mmDonation->PersonId, $this->getTripMemberEndpoint), "GET", null, array());
+        if(!$tripMemberResponse){
+            outputResponse($this->executionSummary, 'Failed to get response from MM Person Api url:'.str_replace('{ID}', $mmDonation->PersonId, $this->getTripMemberEndpoint), '500');
+        }else{
+            $tripMemberResults = json_decode($tripMemberResponse);
+        }
 
         if(!$customFundDonation){
-            //trip member info
-            $tripMemberResponse = network_utilities\runCurl( str_replace('{ID}', $mmDonation->PersonId, $this->getTripMemberEndpoint), "GET", null, array());
-            if(!$tripMemberResponse){
-                outputResponse($this->executionSummary, 'Failed to get response from MM Person Api url:'.str_replace('{ID}', $mmDonation->PersonId, $this->getTripMemberEndpoint), '500');
-            }else{
-                $tripMemberResults = json_decode($tripMemberResponse);
-            }
             $tripContact = $this->getContact(null, $mmDonation->PersonId, $tripMemberResults->data->FirstName, $tripMemberResults->data->LastName, $tripMemberResults->data->Address1, $tripMemberResults->data->City, $tripMemberResults->data->State, $tripMemberResults->data->PostalCode, $tripMemberResults->data->PhoneNumber, $tripMemberResults->data->EmailAddress);
 
             //create trip
@@ -280,7 +298,7 @@ class managedMissions
         $donation = $this->createDonation($mmDonation->Id, $mmDonation->GrossAmount, $donor, $tripMember, $mmDonation->TaxDeductible);
 
         // //create one time pledge
-        $pledge = $this->createPledge($donation, $mmDonation->GrossAmount, $donor, $fundId);
+        $pledge = $this->createPledge($donation, $mmDonation->GrossAmount, $donor, $fundId, $tripMemberResults->data->FirstName." ".$tripMemberResults->data->LastName);
 
         // //created completed transaction
         //todo make sure this doesn't send a receipt
@@ -295,7 +313,7 @@ class managedMissions
      * 
      * 
      */
-    private function createPledge($donation, $amt, $contact, $fund = null){
+    private function createPledge($donation, $amt, $contact, $fund = null, $traveler = null){
         
         $this->executionSummary[] = "Beginning create pledge";
         try {
@@ -310,14 +328,19 @@ class managedMissions
             $pledge = new RNCPHP\donation\pledge();
             $pledge->PledgeAmount = number_format(intval($amt), 2, '.', '');
             $pledge->Frequency = RNCPHP\donation\DonationPledgeFreq::fetch(9);
-            $pledge->Type1 = RNCPHP\donation\Type::fetch(3);
+            $pledge->Type1 = RNCPHP\donation\Type::fetch(3);//One time
             $pledge->Contact = $contact;
             $pledge->NextTransaction = time();
             $pledge->Balance = 0;
             $pledge->Fund = RNCPHP\donation\fund::fetch($fundId);
-            $pledge->Appeal = RNCPHP\donation\Appeal::fetch(STM_APPEAL_ID);
-            $pledge->Descr = PLEDGE_DESC." ".$contact->Name->First." ".$contact->Name->Last;
+            $pledge->Appeals = RNCPHP\donation\Appeal::fetch(STM_APPEAL_ID);
+
+            //for special purpose donations the traveller won't be available
+            $desc = PLEDGE_DESC." ".$traveler;
+            $pledge->Descr = $desc;
+            $pledge->PledgeStatus = RNCPHP\donation\PledgeStatus::fetch(MANUAL_PAY_STATUS);//Manual Pay
             $pledge->save();
+
             $this->executionSummary[] = "Created Pledge ".$pledge->ID;
             
             $donation2Pledge = new RNCPHP\donation\donationToPledge();
@@ -405,11 +428,15 @@ class managedMissions
      * Creates/Updates Contacts
      * 
      * @param $mmId: id of the donor record in MM
-     * @param @mmPersonId: id of the person record in MM
+     * @param @mmPersonId: id of the person record in MM (trip goer)
      * 
      */
     private function getContact($mmId = null, $mmPersonId = null, $firstName, $lastName, $street, $city, $state, $zip, $phone, $email){
         $currentContact = null;
+
+        //we don't want to update contact if traveller exists, we do if donor exists. 
+        $contactType = (!is_null($mmPersonId)) ? 'traveller' : 'donor';
+        $newContact = false;
 
         //lookup email first
         if (!empty($email)) {
@@ -451,16 +478,30 @@ class managedMissions
             //need to set these so they don't get the new contact email message template.
             if(!empty($email)){
                 $currentContact->Login = $email;
-            }else{
-                $currentContact->Login = time();
             }
-            $currentContact->NewPassword = time();
-
+            
+            $newContact = true;
         }
 
+        //if its an existing traveller, just update the mmperson id and return
+        if($contactType == 'traveller' && $newContact == false){
+
+            if(!empty($mmPersonId))
+                $currentContact->CustomFields->CO->managedMissionsPersonId = strval($mmPersonId);
+            
+            try {
+                $currentContact->save();
+            } catch (\Exception $e) {
+                $this->executionSummary[] = "Error Creating/Updating Contact:".$currentContact->ID." ".$e->getMessage();
+            }
+
+            return $currentContact;
+        }
 
         //email address
-        if (!empty($email)) {
+        //if MM has an email and The contact in oracle does not
+        if (!empty($email) && $currentContact->Emails[0]->Address == null){
+
             $emailArrIdx = count($currentContact->Emails);
             if ($emailArrIdx == 0) {
                 $currentContact->Emails = new RNCPHP\EmailArray();
@@ -469,6 +510,7 @@ class managedMissions
             $currentContact->Emails[$emailArrIdx]->AddressType = new RNCPHP\NamedIDOptList();
             $currentContact->Emails[$emailArrIdx]->AddressType->ID = 0;
             $currentContact->Emails[$emailArrIdx]->Address =  $email;
+
         }
 
         //name

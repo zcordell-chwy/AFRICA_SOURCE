@@ -321,8 +321,13 @@ implements RNCPM\ObjectEventHandler {
                 while ($gift = $giftReturn -> next()) {
                     $gifts[] = $gift;
                     $giftDate = date("m/d/Y", $gift->CreatedTime);
-                    static::$giftsTotalTable .= "<tr><td>".$giftDate."</td><td>".$gift->Item->LookupName."</td><td>".$gift->Quantity."</td><td>".$gift->Child->FullName."</td><td>$".  number_format(($gift->Quantity * $gift->Item->Amount), 2, ".", "")."</td>";
-                    $giftsTotal += ($gift->Quantity * $gift->Item->Amount);
+                    // altered this for the computer single item page where there is a variable amount gift.
+                    // static::$giftsTotalTable .= "<tr><td>".$giftDate."</td><td>".$gift->Item->LookupName."</td><td>".$gift->Quantity."</td><td>".$gift->Child->FullName."</td><td>$".  number_format(($gift->Quantity * $gift->Item->Amount), 2, ".", "")."</td>";
+                    // $giftsTotal += ($gift->Quantity * $gift->Item->Amount);
+                    
+                    static::$giftsTotalTable .= "<tr><td>".$giftDate."</td><td>".$gift->Item->LookupName."</td><td>".$gift->Quantity."</td><td>".$gift->Child->FullName."</td><td>$".  number_format(($gift->Total), 2, ".", "")."</td>";
+                    $giftsTotal += $gift->Total;
+                    
                 }
             }catch(RNCPHP\ConnectAPIError $e){
                 self::logToFile("Log", "API Exception: ".$e->getMessage());
