@@ -4,6 +4,8 @@
  * Inbound wrapper API for fs payment
  * @version 1.0
  */
+define('DEBUG_MODE', false);
+
 define('FS_SALE_TYPE', 'Sale');
 define('FS_EFT_SALE_TYPE', 'RepeatSale');
 define('FS_REFUND_TYPE', 'Return');
@@ -57,6 +59,10 @@ class PaymentEngine
 
     public static function logMessage($msg, $more = null)
     {
+        if (!DEBUG_MODE) {
+            return;
+        }
+
         // Put into unique file per day
         $fileName = self::LOG_DIR . self::LOG_FILE_BASE_NAME . date('Y-m-d') . '.log';
         $timestamp = date('H:i:s') . ': ';
@@ -77,7 +83,6 @@ class PaymentEngine
 
         $inputData = json_decode($postData);
         self::logMessage('Dec POST: ', $inputData);
-        self::logMessage('Data: ', $inputData->data);
         if ((!isset($inputData->data)) || (strlen($inputData->data) < 1 && count($inputData->data) < 1)) {
             return outputResponse(null, 'Missing required field: data', 404);
         }
@@ -87,8 +92,6 @@ class PaymentEngine
         if (empty($reqJson)) {
             $reqJson = $inputData->data ? $inputData->data : null;
         }
-
-        self::logMessage('reqJson: ', $reqJson);
 
         switch ($action) {
             case 'PAYMENT':
@@ -109,7 +112,6 @@ class PaymentEngine
     public function processPayment($reqJson)
     {
         self::logMessage(' Starting ' . __FUNCTION__ . '@' . __CLASS__ . '(Line: ' . __LINE__ . ')');
-        self::logMessage('Raw req: ', $reqJson);
 
         $paymentMethod = $reqJson->paymentMethod;
         if (empty($paymentMethod)) {
@@ -126,7 +128,6 @@ class PaymentEngine
         $transType = $reqJson->transType;
         self::logMessage('transType: ', $transType);
         $fsReqData = $this->getFSPostArray($pmType);
-        self::logMessage('fsReqData: ', $fsReqData);
         if ($pmType == 'EFT') {
 
             switch ($transType) {
@@ -144,15 +145,22 @@ class PaymentEngine
                     break;
 
                 case FS_EFT_SALE_TYPE:
-                case FS_REFUND_TYPE:
                     $fsReqData['Amount'] = $reqJson->amount;
                     $fsReqData['InvNum'] = $reqJson->transID;
                     $fsReqData['ExtData'] = (!empty($paymentMethod->infoKey)) ? '<Check_Info_Key>' . $paymentMethod->infoKey . '</Check_Info_Key>' : '<PNRef>' . $paymentMethod->pnRef . '</PNRef>';
                     break;
 
+                case FS_REFUND_TYPE:
+                    $fsReqData['Amount'] = $reqJson->amount;
+                    $fsReqData['InvNum'] = $reqJson->transID;
+                    // No Infokey on Refund/Reversal
+                    $fsReqData['ExtData'] = '<PNRef>' . $paymentMethod->pnRef . '</PNRef>';
+                    break;
+
                 case FS_EFT_REVERSAL_TYPE:
                     $fsReqData['InvNum'] = $reqJson->transID;
-                    $fsReqData['ExtData'] = (!empty($paymentMethod->infoKey)) ? '<Check_Info_Key>' . $paymentMethod->infoKey . '</Check_Info_Key>' : '<PNRef>' . $paymentMethod->pnRef . '</PNRef>';
+                    // No Infokey on Refund/Reversal
+                    $fsReqData['ExtData'] = '<PNRef>' . $paymentMethod->pnRef . '</PNRef>';
                     break;
 
                 default:
@@ -191,21 +199,23 @@ class PaymentEngine
 
                 case FS_REVERSAL_TYPE:
                     $fsReqData['InvNum'] = $reqJson->transID;
-                    if (!empty($paymentMethod->infoKey)) {
-                        $fsReqData['ExtData'] = '<CC_Info_Key>' . $paymentMethod->infoKey . '</CC_Info_Key>';
-                    } else {
-                        $fsReqData['PNRef'] = $paymentMethod->pnRef;
-                    }
+                    // No Infokey on Refund/Reversal
+                    // if (!empty($paymentMethod->infoKey)) {
+                    //     $fsReqData['ExtData'] = '<CC_Info_Key>' . $paymentMethod->infoKey . '</CC_Info_Key>';
+                    // } else {
+                    $fsReqData['PNRef'] = $paymentMethod->pnRef;
+                    // }
                     break;
 
                 case FS_REFUND_TYPE:
                     $fsReqData['Amount'] = $reqJson->amount;
                     $fsReqData['InvNum'] = $reqJson->transID;
-                    if (!empty($paymentMethod->infoKey)) {
-                        $fsReqData['ExtData'] = '<CC_Info_Key>' . $paymentMethod->infoKey . '</CC_Info_Key>';
-                    } else {
-                        $fsReqData['PNRef'] = $paymentMethod->pnRef;
-                    }
+                    // No Infokey on Refund/Reversal
+                    // if (!empty($paymentMethod->infoKey)) {
+                    //     $fsReqData['ExtData'] = '<CC_Info_Key>' . $paymentMethod->infoKey . '</CC_Info_Key>';
+                    // } else {
+                    $fsReqData['PNRef'] = $paymentMethod->pnRef;
+                    // }
                     break;
 
                 default:
@@ -231,7 +241,6 @@ class PaymentEngine
     public function generateInfoKey($reqJson)
     {
         self::logMessage(' Starting ' . __FUNCTION__ . '@' . __CLASS__ . '(Line: ' . __LINE__ . ')');
-        self::logMessage('Raw req: ', $reqJson);
 
         $paymentMethod = $reqJson->paymentMethod;
         if (empty($paymentMethod)) {
@@ -306,7 +315,6 @@ class PaymentEngine
     function runTransaction(array $postVals)
     {
         self::logMessage(' Starting ' . __FUNCTION__ . '@' . __CLASS__ . '(Line: ' . __LINE__ . ')');
-        self::logMessage('Trans PostVals: ', $postVals);
 
         $url = RNCPHP\Configuration::fetch('CUSTOM_CFG_frontstream_endpoint')->Value . $postVals['op'];
         $postVals['UserName'] = RNCPHP\Configuration::fetch('CUSTOM_CFG_frontstream_user')->Value;

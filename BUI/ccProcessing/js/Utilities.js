@@ -271,7 +271,7 @@ function createWorkspaceRecord(recordType, callbackFunction) {
  * @param {*} closable 
  * @returns 
  */
-function getModalWindow(windowID, width = 300, height = 500, closable = true) {
+function getModalWindow(windowID, width = 300, height = 500, closable = false) {
 
     if (!windowID) {
         throw new Error('Ivalid value for modal window ID passed');

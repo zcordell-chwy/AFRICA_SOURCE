@@ -591,7 +591,7 @@ function getContactDetails(fName = null, lName = null, street = null, zip = null
 
 async function displayMakeRefund() {
 
-    let transID = initiateRefundOnTransaction();
+    let transID = await initiateRefundOnTransaction();
     if (!transID) {
         return Promise.resolve(true);
     }
@@ -656,7 +656,7 @@ async function initiateChargeReversal(paymentMethod) {
         return response;
     }
 
-    let transID = initiateReversalOnTransaction();
+    let transID = await initiateReversalOnTransaction();
     if (!transID) {
         response.error = 'Transaction could not be reversed';
         return response;
