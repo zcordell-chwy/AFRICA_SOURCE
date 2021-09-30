@@ -382,7 +382,12 @@ async function makePaymentClicked(rowData) {
     // complete transaction
     if (fsReturn && fsReturn.isSuccess) {
 
-        let message = 'Charged $' + (+amount).toFixed(2) + ' with PN Ref. No. ' + selectedPayMethod.pnRef;
+        let message = '';
+        if (selectedPayMethod.infoKey) {
+            let message = 'Charged $' + (+amount).toFixed(2) + ' with Info Key: ' + selectedPayMethod.infoKey;
+        } else {
+            let message = 'Charged $' + (+amount).toFixed(2) + ' with PN Ref. No. ' + selectedPayMethod.pnRef;
+        }
         return await completePaymentTransaction(message, fsReturn.rawXml, localConfigs.transStatus.Completed, fsReturn.pnRef, Severity.SUCCESS);
     } else {
 
