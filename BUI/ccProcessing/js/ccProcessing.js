@@ -222,6 +222,7 @@ async function submitClicked() {
         return await fireEvent(localConfigs.parentAppName, evtObj);
     } else {
 
+        form.reportValidity();
         throw new Warning('Please fix form errors');
     }
 }
@@ -372,7 +373,7 @@ function showNotification(msg, type) {
         elements.notificationBar.removeClass().addClass(msgClass).slideDown();
         setTimeout(() => {
             hideNotification();
-        }, 5000);
+        }, 10000);
     }
 }
 
@@ -419,7 +420,7 @@ $(document).ready(function () {
     elements.notificationBarMsg = $('#notification-bar-message');
 
     /* ------------------------------ load card ui ------------------------------ */
-    $('form').card({
+    elements.card = $('form').card({
         container: '.card-wrapper',
         width: 280,
 
@@ -459,6 +460,14 @@ $(document).ready(function () {
         .finally(loaderfadeout);
 
     /* -------------------------------- listeners ------------------------------- */
+    elements.iCCNum.on('input', function () {
+        if (elements.iCCNum.hasClass('jp-card-invalid')) {
+            this.setCustomValidity('Please enter a valid credit card number!');
+        } else {
+            this.setCustomValidity('');
+        }
+    });
+
     elements.iCountry.on('change', function () {
 
         countryChanged(this.value)

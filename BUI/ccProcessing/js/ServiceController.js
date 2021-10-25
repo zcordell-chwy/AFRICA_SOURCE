@@ -340,6 +340,19 @@ async function getLastTransactionDetails(donationID, contactID) {
     return { 'transaction': trans, 'paymentMethod': transPayMethod };
 }
 
+async function getPledgeIDByDonation(donationID) {
+
+    let pledge = false;
+    let query = 'SELECT PledgeRef FROM donation.donationToPledge WHERE DonationRef.ID = ' + donationID + ' ORDER BY ID DESC LIMIT 1';
+    let results = await getOSVCQueryResults(query);
+
+    if (results && results.items && results.items[0].count) {
+        pledge = results.items[0].rows[0][0];
+    }
+
+    return pledge;
+}
+
 async function createOrUpdatePaymentMethod(paymentMethod, contactID, suppress = false) {
 
     try {
@@ -475,6 +488,36 @@ async function createOrUpdateTransactionObj(donationID, newNote, contactID, amou
         return returnVal.id;
     } else {
         return recID;
+    }
+}
+
+async function createOrUpdatePledgeObj(donationID, payMethod = null, suppress = false) {
+
+    let isCreate = true;
+    if (donationID < 1) {
+        return false;
+    }
+
+    // figure out if we're create or update
+    let pledgeID = await getPledgeIDByDonation(donationID);
+    let pledge = {};
+    if (pledgeID) {
+        isCreate = false;
+    }
+
+    //update payment Method
+    if (+payMethod) {
+        pledge.paymentMethod2 = {
+            "id": +payMethod
+        };
+    }
+
+    let returnVal = await createOrUpdateOSVCObject('donation.pledge', pledge, pledgeID, suppress);
+
+    if (isCreate) {
+        return returnVal.id;
+    } else {
+        return pledgeID;
     }
 }
 

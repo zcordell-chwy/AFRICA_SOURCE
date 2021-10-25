@@ -194,7 +194,7 @@ async function updateAllowedOperations() {
     elements.btnCharge.prop('disabled', !allowChargeForTrans);
     elements.btnAdd.prop('disabled', !allowChargeForTrans);
     if (elements.pmDataTable) {
-        elements.pmDataTable.column(8).visible(allowChargeForTrans);
+        elements.pmDataTable.column(9).visible(allowChargeForTrans);
     }
 
     return Promise.resolve(true);
@@ -392,7 +392,7 @@ async function makePaymentClicked(rowData) {
     } else {
 
         let errorMsg = fsReturn.message || fsReturn.responseMsg;
-        let message = 'There was a problem with the transaction.  Message: ' + FfsReturn.resultCode + '::' + errorMsg + '. Check the transaction notes for further detail';
+        let message = 'There was a problem with the transaction.  Message: ' + fsReturn.resultCode + '::' + errorMsg + '. Check the transaction notes for further detail';
         return await completePaymentTransaction(message, fsReturn.rawXml, localConfigs.transStatus.Declined, selectedPayMethod.pnRef);
     }
 }
@@ -517,6 +517,9 @@ async function displayMakePayment(trackingID = localConfigs.makeChargeTrackingId
 
     // if only adding payment, refund transaction
     if (trackingID == localConfigs.addPaymentTrackingId) {
+
+        // * add paymentMethod to Pledge
+        await createOrUpdatePledgeObj(donationID, payMethodID);
 
         // * reverse the payment
         let reversed = await initiateChargeReversal(paymentResponse.pmDetails);
@@ -847,7 +850,7 @@ function showNotification(msg, type) {
         elements.notificationBar.removeClass().addClass(msgClass).slideDown();
         setTimeout(() => {
             hideNotification();
-        }, 5000);
+        }, 20000);
     }
 }
 
@@ -882,6 +885,7 @@ $(document).ready(function () {
     elements.pmDataTable = $('#pay-method-table').DataTable({
         "processing": true,
         "columns": [
+            null,
             null,
             null,
             null,
