@@ -179,11 +179,19 @@ async function submitClicked() {
     loaderfadein();
 
     let form = $('form')[0];
-    if (form.checkValidity()) {
 
-        let formResponse = {};
-        formResponse.pmDetails = {};
-        formResponse.pmDetails.pmType = elements.tabs.filter(':checked').val();
+    let formResponse = {};
+    formResponse.pmDetails = {};
+    formResponse.pmDetails.pmType = elements.tabs.filter(':checked').val();
+
+    // validate card number
+    if (formResponse.pmDetails.pmType != 'EFT' && elements.iCCNum.hasClass('jp-card-invalid')) {
+        elements.iCCNum[0].setCustomValidity('Please enter a valid credit card number!');
+    } else {
+        elements.iCCNum[0].setCustomValidity('');
+    }
+
+    if (form.checkValidity()) {
 
         if (formResponse.pmDetails.pmType == 'EFT') {
 
@@ -460,14 +468,6 @@ $(document).ready(function () {
         .finally(loaderfadeout);
 
     /* -------------------------------- listeners ------------------------------- */
-    elements.iCCNum.on('input', function () {
-        if (elements.iCCNum.hasClass('jp-card-invalid')) {
-            this.setCustomValidity('Please enter a valid credit card number!');
-        } else {
-            this.setCustomValidity('');
-        }
-    });
-
     elements.iCountry.on('change', function () {
 
         countryChanged(this.value)
