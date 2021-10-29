@@ -491,9 +491,8 @@ async function createOrUpdateTransactionObj(donationID, newNote, contactID, amou
     }
 }
 
-async function createOrUpdatePledgeObj(donationID, payMethod = null, suppress = false) {
+async function createOrUpdatePledgeObj(donationID, payMethod = null, suppress = false, isCreate = false) {
 
-    let isCreate = true;
     if (donationID < 1) {
         return false;
     }
@@ -539,6 +538,10 @@ async function processPayment(paymentMethod = null, contact = null, amount = 0, 
             transID: transID,
             transType: transType
         };
+
+        if (DEVMODE) {
+            postData.DEVMODE = true;
+        }
 
         return await sendPayment(postData);
     } catch (e) {

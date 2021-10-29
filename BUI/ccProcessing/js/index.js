@@ -382,11 +382,15 @@ async function makePaymentClicked(rowData) {
     // complete transaction
     if (fsReturn && fsReturn.isSuccess) {
 
+        const donationID = workspace.fields[localConfigs.listOfFieldsToFetch.DonationID].label;
+        // * add paymentMethod to Pledge
+        await createOrUpdatePledgeObj(donationID, payMethodID);
+
         let message = '';
         if (selectedPayMethod.infoKey) {
-            let message = 'Charged $' + (+amount).toFixed(2) + ' with Info Key: ' + selectedPayMethod.infoKey;
+            message = 'Charged $' + (+amount).toFixed(2) + ' with Info Key: ' + selectedPayMethod.infoKey;
         } else {
-            let message = 'Charged $' + (+amount).toFixed(2) + ' with PN Ref. No. ' + selectedPayMethod.pnRef;
+            message = 'Charged $' + (+amount).toFixed(2) + ' with PN Ref. No. ' + selectedPayMethod.pnRef;
         }
         return await completePaymentTransaction(message, fsReturn.rawXml, localConfigs.transStatus.Completed, fsReturn.pnRef, Severity.SUCCESS);
     } else {
@@ -518,9 +522,6 @@ async function displayMakePayment(trackingID = localConfigs.makeChargeTrackingId
     // if only adding payment, refund transaction
     if (trackingID == localConfigs.addPaymentTrackingId) {
 
-        // * add paymentMethod to Pledge
-        await createOrUpdatePledgeObj(donationID, payMethodID);
-
         // * reverse the payment
         let reversed = await initiateChargeReversal(paymentResponse.pmDetails);
         if (reversed.success) {
@@ -529,6 +530,10 @@ async function displayMakePayment(trackingID = localConfigs.makeChargeTrackingId
             throw new Error('There may have been an issue adding this payment method. Check the transaction for details and verify no charge has occured with merchant. ERROR: ' + reversed.error);
         }
     } else {
+
+        // * add paymentMethod to Pledge
+        await createOrUpdatePledgeObj(donationID, payMethodID);
+
         return await completePaymentTransaction('Payment Completed', fsReturn.rawXml, localConfigs.transStatus.Completed, fsReturn.pnRef, Severity.SUCCESS);
     }
 

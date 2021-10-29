@@ -4,7 +4,7 @@
  * Inbound wrapper API for fs payment
  * @version 1.0
  */
-define('DEBUG_MODE', false);
+define('DEBUG_MODE', true);
 
 define('FS_SALE_TYPE', 'Sale');
 define('FS_EFT_SALE_TYPE', 'RepeatSale');
@@ -15,6 +15,8 @@ define('FS_AUTH_TYPE', 'Auth');
 
 define('CUSTOM_CFG_frontstream_cc_url', '/smartpayments/transact.asmx/ProcessCreditCard');
 define('CUSTOM_CFG_frontstream_check_url', '/smartpayments/transact.asmx/ProcessCheck');
+
+$DEVMODE = false;
 
 use RightNow\Connect\v1_3 as RNCPHP;
 
@@ -113,6 +115,10 @@ class PaymentEngine
     {
         self::logMessage(' Starting ' . __FUNCTION__ . '@' . __CLASS__ . '(Line: ' . __LINE__ . ')');
 
+        if (!empty($reqJson->DEVMODE)) {
+            $DEVMODE = $reqJson->DEVMODE;
+        }
+
         $paymentMethod = $reqJson->paymentMethod;
         if (empty($paymentMethod)) {
             self::logMessage('Payment method not found');
@@ -186,7 +192,7 @@ class PaymentEngine
                         $fsReqData['Street'] = $contact->street;
                         $fsReqData['CardNum'] = base64_decode($paymentMethod->ccNum);
                         $fsReqData['ExpDate'] = $paymentMethod->expMonth . substr($paymentMethod->expYear, 2, 2);
-                        $fsReqData['CVNum'] = $paymentMethod->cvc;
+                        $fsReqData['CVNum'] = $DEVMODE ? '' : $paymentMethod->cvc;
                     } else {
                         // * it's a repeat sale
                         if (!empty($paymentMethod->infoKey)) {
