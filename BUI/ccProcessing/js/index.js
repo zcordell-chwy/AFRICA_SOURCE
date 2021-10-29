@@ -382,10 +382,6 @@ async function makePaymentClicked(rowData) {
     // complete transaction
     if (fsReturn && fsReturn.isSuccess) {
 
-        const donationID = workspace.fields[localConfigs.listOfFieldsToFetch.DonationID].label;
-        // * add paymentMethod to Pledge
-        await createOrUpdatePledgeObj(donationID, payMethodID);
-
         let message = '';
         if (selectedPayMethod.infoKey) {
             message = 'Charged $' + (+amount).toFixed(2) + ' with Info Key: ' + selectedPayMethod.infoKey;
@@ -519,6 +515,9 @@ async function displayMakePayment(trackingID = localConfigs.makeChargeTrackingId
         showNotification('The transaction was successful, but unable to store payment information for recurring use.', Severity.WARNING);
     }
 
+    // * add paymentMethod to Pledge
+    await createOrUpdatePledgeObj(donationID, payMethodID);
+
     // if only adding payment, refund transaction
     if (trackingID == localConfigs.addPaymentTrackingId) {
 
@@ -530,9 +529,6 @@ async function displayMakePayment(trackingID = localConfigs.makeChargeTrackingId
             throw new Error('There may have been an issue adding this payment method. Check the transaction for details and verify no charge has occured with merchant. ERROR: ' + reversed.error);
         }
     } else {
-
-        // * add paymentMethod to Pledge
-        await createOrUpdatePledgeObj(donationID, payMethodID);
 
         return await completePaymentTransaction('Payment Completed', fsReturn.rawXml, localConfigs.transStatus.Completed, fsReturn.pnRef, Severity.SUCCESS);
     }
