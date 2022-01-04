@@ -554,6 +554,8 @@ function preparePayFormData(data = {}) {
     preFormData = {}; // reset
     Object.assign(preFormData, data);
 
+    preFormData.source = workspace.id;
+
     // set contact details
     preFormData.contact = {
         firstName: workspace.fields[localConfigs.listOfFieldsToFetch.ContactFirstName].label,
