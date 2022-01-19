@@ -382,6 +382,10 @@ async function makePaymentClicked(rowData) {
     // complete transaction
     if (fsReturn && fsReturn.isSuccess) {
 
+        const donationID = workspace.fields[localConfigs.listOfFieldsToFetch.DonationID].label;
+        // * add paymentMethod to Pledge
+        await createOrUpdatePledgeObj(donationID, payMethodID);
+
         let message = '';
         if (selectedPayMethod.infoKey) {
             message = 'Charged $' + (+amount).toFixed(2) + ' with Info Key: ' + selectedPayMethod.infoKey;

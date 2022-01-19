@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 
 /**
  * Inbound wrapper API for fs payment
@@ -49,7 +49,7 @@ try {
 
 class PaymentEngine
 {
-    const LOG_DIR = '/tmp/';
+    const LOG_DIR = '/tmp/paymentapi/';
     const LOG_FILE_BASE_NAME = 'PaymentAPI_';
 
     /**
@@ -65,14 +65,29 @@ class PaymentEngine
             return;
         }
 
-        // Put into unique file per day
-        $fileName = self::LOG_DIR . self::LOG_FILE_BASE_NAME . date('Y-m-d') . '.log';
-        $timestamp = date('H:i:s') . ': ';
-        if (!empty($more)) {
-            $msg .= print_r($more, true);
+        try {
+            // Put into unique file per day
+            $fileName = self::LOG_DIR . self::LOG_FILE_BASE_NAME . date('Y-m-d') . '.log';
+            $timestamp = date('H:i:s') . ': ';
+            if (!empty($more)) {
+                $msg .= print_r($more, true);
+            }
+
+            if (!is_dir(self::LOG_DIR)) {
+                $oldumask = umask(0);
+                mkdir(self::LOG_DIR, 0775, true);
+                umask($oldumask);
+            }
+
+
+            $result = file_put_contents($fileName, $timestamp . $msg . "\n\n", FILE_APPEND);
+
+
+            if ($result === false) throw new \Exception("Failed to write to log file. File name = $fileName. Timestamp = $timestamp. Msg = $msg.");
+        } catch (\Exception $ex) {
+
+            throw new \Exception("Failed to write to log file. File name = $fileName. Timestamp = $timestamp. Msg = $msg.");
         }
-        $result = file_put_contents($fileName, $timestamp . $msg . "\n\n", FILE_APPEND);
-        if ($result === false) throw new \Exception("Failed to write to log file. File name = $fileName. Timestamp = $timestamp. Msg = $msg.");
     }
 
     /**
@@ -143,7 +158,7 @@ class PaymentEngine
                     $fsReqData['Amount'] = $reqJson->amount;
                     $fsReqData['NameOnCheck'] = $contact->firstName . ' ' . $contact->lastName;
                     $fsReqData['InvNum'] = $reqJson->transID;
-                    $fsReqData['Zip'] = $contact->zip;
+                    $fsReqData['Zip'] = $contact->postalCode;
                     $fsReqData['Street'] = $contact->street;
                     $fsReqData['TransitNum'] = $paymentMethod->routingNum;
                     $fsReqData['AccountNum'] = base64_decode($paymentMethod->acctNum);
@@ -188,7 +203,7 @@ class PaymentEngine
                         // * it's a new Sale
                         $contact = $reqJson->contact;
                         $fsReqData['NameOnCard'] = $contact->firstName . ' ' . $contact->lastName;
-                        $fsReqData['Zip'] = $contact->zip;
+                        $fsReqData['Zip'] = $contact->postalCode;
                         $fsReqData['Street'] = $contact->street;
                         $fsReqData['CardNum'] = base64_decode($paymentMethod->ccNum);
                         $fsReqData['ExpDate'] = $paymentMethod->expMonth . substr($paymentMethod->expYear, 2, 2);
