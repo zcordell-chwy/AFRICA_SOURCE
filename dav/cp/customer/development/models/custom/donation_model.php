@@ -102,9 +102,11 @@ class donation_model  extends \RightNow\Models\Base
             logMessage($item);
             switch ($item['type']) {
                 case DONATION_TYPE_PLEDGE:
+                    logMessage("Donation Model > DONATION_TYPE_PLEDGE");
                     $itemId = $this->addPledgeToDonation($donationId, $item['recurring'], $item['oneTime'], $c_id, $item['fund'], $item['appeal'], $item['childId'], $paymentMethod, $item['pledgeId']);
                     break;
                 case DONATION_TYPE_GIFT:
+                    logMessage("Donation Model > DONATION_TYPE_GIFT");
                     $itemId = $this->addGiftToDonation($donationId, $item['oneTime'], $item['giftId'], $item['qty'], $item['childId']);
                     try {
                         //development never got deployed
@@ -115,6 +117,7 @@ class donation_model  extends \RightNow\Models\Base
                     }
                     break;
                 case DONATION_TYPE_SPONSOR:
+                    logMessage("Donation Model > DONATION_TYPE_SPONSOR");
                     $itemId = $this->addPledgeToDonation($donationId, $item['recurring'], $item['oneTime'], $c_id, $item['fund'], $item['appeal'], $item['childId'], $paymentMethod, null, $item['isWomensScholarship']);
                     break;
             }
@@ -128,6 +131,111 @@ class donation_model  extends \RightNow\Models\Base
         //add donation to transaction
         $this->CI->model('custom/transaction_model')->addDonationToTransaction($trans_id, $donationId);
         return $donationId;
+    }
+
+    public function createDonationAfterTransaction_1($amt, $c_id, array $items, $trans_id, $paymentMethod)
+    {
+
+        $donationId = $this->savedonation_1($amt, $c_id);
+        helplog(__FILE__, __FUNCTION__ . __LINE__, "Saved Donation:" . $donationId, "");
+        if ($donationId < 1) {
+            helplog(__FILE__, __FUNCTION__ . __LINE__, "", "No donation created");
+            return false;
+        }
+
+        // $itemId = $this->addPledgeToDonation($donationId, $item['recurring'], $this->CI->session->getSessionData('TOTAL'), $c_id, null, null, $this->CI->session->getSessionData('child_id'), $paymentMethod, null, 0);  
+            logMessage("Donation Model > DONATION_TYPE_SPONSOR");
+            $itemId = $this->addPledgeToDonation($donationId, !empty($this->CI->session->getSessionData('TOTAL')) ? $this->CI->session->getSessionData('TOTAL') : '', "", $c_id, "", "515", !empty($this->CI->session->getSessionData('child_id')) ? $this->CI->session->getSessionData('child_id') : '', $paymentMethod, null, "0");   
+            // $itemId = $this->addPledgeToDonation($donationId, !empty($this->CI->session->getSessionData('TOTAL')) ? $this->CI->session->getSessionData('TOTAL') : '', "", $c_id, "", "515", '', $paymentMethod, null, "0");              
+
+            if ($itemId == false || $itemId < 1) {
+                //logMessage("Unable to add pledge or gift to donation");
+                return false;
+            }
+
+        //add donation to transaction
+        $this->CI->model('custom/transaction_model')->addDonationToTransaction($trans_id, $donationId);
+        return $donationId;
+    }
+
+    public function createDonationAfterTransaction_2($amt, $c_id, array $items, $trans_id, $paymentMethod,$f_id)
+    {
+
+        $donationId = $this->savedonation_2($amt, $c_id);
+        helplog(__FILE__, __FUNCTION__ . __LINE__, "Saved Donation:" . $donationId, "");
+        if ($donationId < 1) {
+            helplog(__FILE__, __FUNCTION__ . __LINE__, "", "No donation created");
+            return false;
+        }
+
+        // $donationId = $this->savedonation($amt, $c_id, $items);
+        // $itemId = $this->addPledgeToDonation($donationId, $item['recurring'], $this->CI->session->getSessionData('TOTAL'), $c_id, null, null, $this->CI->session->getSessionData('child_id'), $paymentMethod, null, 0);  
+        logMessage("Donation Model > DONATION_TYPE_SPONSOR");
+        logMessage($donationId, !empty($this->CI->session->getSessionData('monthly_amt')) ? $this->CI->session->getSessionData('monthly_amt') : '', !empty($this->CI->session->getSessionData('oneTime_amt')) ? $this->CI->session->getSessionData('oneTime_amt') : '', $c_id, !empty($this->CI->session->getSessionData('fund_id')) ? $this->CI->session->getSessionData('fund_id') : '', "515", "", $paymentMethod, null, "0");
+        $itemId = $this->addPledgeToDonation($donationId, !empty($this->CI->session->getSessionData('monthly_amt')) ? $this->CI->session->getSessionData('monthly_amt') : '', !empty($this->CI->session->getSessionData('oneTime_amt')) ? $this->CI->session->getSessionData('oneTime_amt') : '', $c_id, $f_id, !empty($this->CI->session->getSessionData('appeal')) ? $this->CI->session->getSessionData('appeal') : '', "", $paymentMethod, null, "0");   
+        // $itemId = $this->addPledgeToDonation($donationId, !empty($this->CI->session->getSessionData('TOTAL')) ? $this->CI->session->getSessionData('TOTAL') : '', "", $c_id, "", "515", '', $paymentMethod, null, "0");              
+
+        if ($itemId == false || $itemId < 1) {
+            //logMessage("Unable to add pledge or gift to donation");
+            return false;
+        }
+        //add donation to transaction
+        $this->CI->model('custom/transaction_model')->addDonationToTransaction($trans_id, $donationId);
+        return $donationId;
+    }
+
+    /**
+     * Creates a donation object
+     */
+    public function savedonation_2($amt, $c_id)
+    {
+        try {
+            $newDonation = new RNCPHP\donation\Donation;
+            $newDonation->Contact = intval($c_id);
+            $newDonation->DonationDate = time();
+            $newDonation->Amount = number_format($amt, 2, '.', '');
+            $newDonation->Appeal = !empty($this->CI->session->getSessionData('appeal')) ? $this->CI->session->getSessionData('appeal') : '';
+            $newDonation->Fund = !empty($this->CI->session->getSessionData('donation_fund')) ? $this->CI->session->getSessionData('donation_fund') : '';
+            //Set the donation.Donation.PaymentSource = "EndUser", which is the third menu sel
+            $newDonation->PaymentSource = RNCPHP\donation\paymentSourceMenu::fetch(DONATION_PAYMENT_SOURCE);
+            $newDonation->Type = RNCPHP\donation\Type::fetch(1);     
+
+            $newDonation->save(RNCPHP\RNObject::SuppressAll);
+            RNCPHP\ConnectAPI::commit();
+            $id = $newDonation->ID;
+        } catch (Exception $e) {
+            helplog(__FILE__, __FUNCTION__ . __LINE__, "", $e->getMessage());
+            return 0;
+        }
+
+        helplog(__FILE__, __FUNCTION__ . __LINE__, "New Donation Created with Contact:" . $newDonation->Contact->ID . " DonationDate:" . $newDonation->DonationDate . " Amount:" . $newDonation->Amount . " Type:" . $newDonation->Type->LookupName,"");
+        return $id;
+    }
+
+    /**
+     * Creates a donation object
+     */
+    public function savedonation_1($amt, $c_id)
+    {
+        try {
+            $newDonation = new RNCPHP\donation\Donation;
+            $newDonation->Contact = intval($c_id);
+            $newDonation->DonationDate = time();
+            $newDonation->Amount = number_format($amt, 2, '.', '');
+            //Set the donation.Donation.PaymentSource = "EndUser", which is the third menu sel
+            $newDonation->PaymentSource = RNCPHP\donation\paymentSourceMenu::fetch(DONATION_PAYMENT_SOURCE);
+            $newDonation->Type = RNCPHP\donation\Type::fetch(39);     
+
+            $newDonation->save(RNCPHP\RNObject::SuppressAll);
+            RNCPHP\ConnectAPI::commit();
+            $id = $newDonation->ID;
+        } catch (Exception $e) {
+            helplog(__FILE__, __FUNCTION__ . __LINE__, "", $e->getMessage());
+            return 0;
+        }
+
+        helplog(__FILE__, __FUNCTION__ . __LINE__, "New Donation Created with Contact:" . $newDonation->Contact->ID . " DonationDate:" . $newDonation->DonationDate . " Amount:" . $newDonation->Amount . " Type:" . $newDonation->Type->LookupName,"");
+        return $id;
     }
 
     /**
@@ -166,7 +274,6 @@ class donation_model  extends \RightNow\Models\Base
             helplog(__FILE__, __FUNCTION__ . __LINE__, "", $e->getMessage());
             return 0;
         }
-
         helplog(__FILE__, __FUNCTION__ . __LINE__, "New Donation Created with Contact:" . $newDonation->Contact->ID . " DonationDate:" . $newDonation->DonationDate . " Amount:" . $newDonation->Amount . " Type:" . $newDonation->Type->LookupName,"");
         return $id;
     }
@@ -198,6 +305,7 @@ class donation_model  extends \RightNow\Models\Base
     {
         helplog(__FILE__, __FUNCTION__ . __LINE__, "Adding pledge to donation", "");
         helplog(__FILE__, __FUNCTION__ . __LINE__, "Donation: $donationId, PayMethod: $paymentMethod->ID, Monthly: $mon, One Time: $one, Contact: $c_id, Fund: $fund, Appeal: $appeal, ChildId: $childId", "");
+        logMessage("Donation: $donationId, PayMethod: $paymentMethod->ID, Monthly: $mon, One Time: $one, Contact: $c_id, Fund: $fund, Appeal: $appeal, ChildId: $childId");
 
         try {
 
@@ -275,8 +383,8 @@ class donation_model  extends \RightNow\Models\Base
                 logMessage("iswomanScholarship:" . $isWomensScholarship);
                 if ($isWomensScholarship) {
 
-                    logMessage("Setting description:" . $pledge->Woman->WomanRef);
-                    $descr = $pledge->Woman->WomanRef;
+                    logMessage("Setting description:" . $pledge->Woman->WomanRef." ".$pledge->Woman->FullName);
+                    $descr = $pledge->Woman->WomanRef." ".$pledge->Woman->FullName;
                 }
 
                 logMessage("desc:" . $descr);

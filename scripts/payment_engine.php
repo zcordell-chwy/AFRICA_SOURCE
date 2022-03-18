@@ -49,7 +49,7 @@ try {
 
 class PaymentEngine
 {
-    const LOG_DIR = '/tmp/';
+    const LOG_DIR = '/tmp/paymentapi/';
     const LOG_FILE_BASE_NAME = 'PaymentAPI_';
 
     /**
@@ -65,14 +65,28 @@ class PaymentEngine
             return;
         }
 
-        // Put into unique file per day
-        $fileName = self::LOG_DIR . self::LOG_FILE_BASE_NAME . date('Y-m-d') . '.log';
-        $timestamp = date('H:i:s') . ': ';
-        if (!empty($more)) {
-            $msg .= print_r($more, true);
+        try{
+            // Put into unique file per day
+            $fileName = self::LOG_DIR . self::LOG_FILE_BASE_NAME . date('Y-m-d') . '.log';
+            $timestamp = date('H:i:s') . ': ';
+            if (!empty($more)) {
+                $msg .= print_r($more, true);
+            }
+
+            if (!is_dir(self::LOG_DIR)){
+                $oldumask = umask(0);
+                mkdir(self::LOG_DIR, 0775, true);
+                umask($oldumask);
+            }
+            
+            $result = file_put_contents($fileName, $timestamp . $msg . "\n\n", FILE_APPEND);
+            
+            if ($result === false) throw new \Exception("Failed to write to log file. File name = $fileName. Timestamp = $timestamp. Msg = $msg.");
+        }catch (\Exception $ex) {
+
+            throw new \Exception("Failed to write to log file. File name = $fileName. Timestamp = $timestamp. Msg = $msg.");
         }
-        $result = file_put_contents($fileName, $timestamp . $msg . "\n\n", FILE_APPEND);
-        if ($result === false) throw new \Exception("Failed to write to log file. File name = $fileName. Timestamp = $timestamp. Msg = $msg.");
+        
     }
 
     /**

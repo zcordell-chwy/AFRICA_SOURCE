@@ -25,7 +25,7 @@ class sponsorship_model extends \RightNow\Models\Base
         initConnectAPI('api_access', 'Password1');
         $this->CI->load->helper('constants');
         $this->CI->load->library('logging');
-        $this->CHILD_RECORD_LOCK_DUR = new \DateInterval('PT30M'); // 30 Minutes
+        $this->CHILD_RECORD_LOCK_DUR = new \DateInterval('PT15M'); // 30 Minutes
         //This model would be loaded by using $this->load->model('custom/Sample_model');
 
         $this->CLASS_LOG_LEVEL = $this->CI->Logging->LOG_LEVEL_DEBUG_FULL;

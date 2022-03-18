@@ -232,6 +232,7 @@ class woman_model extends \RightNow\Models\Base {
         }else{
             $whereClauses[] = "(SPONSORSHIP.Woman.ScholarshipStatus=2 OR SPONSORSHIP.Woman.ScholarshipStatus is null)";
             $whereClauses[] = "SPONSORSHIP.Woman.ProgramStatus=1";
+            $whereClauses[] = "(SPONSORSHIP.Woman.Event is NULL OR SPONSORSHIP.Woman.Event.Status.LookupName != 'Active')";
             //$whereClauses[] = "SPONSORSHIP.Child.ChildEventStatus is null";
         }
 
@@ -247,7 +248,7 @@ class woman_model extends \RightNow\Models\Base {
             $roql .= " WHERE " . implode(" AND ", $whereClauses);
         }
 
-        //logMessage("Returned ROQL: " . $roql);
+        logMessage("Returned ROQL: " . $roql);
         return $roql;
     }
 

@@ -28,7 +28,7 @@
 					    </div>
 						<rn:widget path="input/FormInput" name="incidents.thread" required="true" label_input="Please write your letter below:"/>
 						<div class="form-footer">
-							<rn:widget path="input/FileAttachmentUpload2" valid_file_extensions="jpg" label_input="Attach Photos" max_attachments="3" />
+							<rn:widget path="input/FileAttachmentUpload2" valid_file_extensions="jpg,jpeg" label_input="Attach Photos" max_attachments="3" />
 							<rn:widget path="input/FormSubmit" label_button="Send" on_success_url="/app/letters_confirm" error_location="rn_ErrorLocation" />
 						</div>  
 					</form>

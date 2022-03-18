@@ -43,7 +43,7 @@ class ChildGiftShoppingCart extends \Custom\Widgets\shopping\ShoppingCart {
 
         if($holidayResult->okToAdd == "false"){
             
-            $msg = getMessage(CUSTOM_MSG_HOLIDAY_GIFT_MESSAGE)."<br/><br/>Previous Orders and Items in cart total:</br></br>";
+            $msg = getMessage(CUSTOM_MSG_HOLIDAY_GIFT_POLICY_MESSAGE_POP)."<br/><br/>Previous Orders and Items in cart total:</br></br>";
             foreach($holidayResult->Child as $child){
                 if($child->Over == true){
                     $msg .= $child->Name. ": ".$child->HolidayGiftsTotal." gifts<br/>";
