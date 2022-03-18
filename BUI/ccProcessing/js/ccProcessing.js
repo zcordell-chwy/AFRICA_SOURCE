@@ -105,52 +105,59 @@ function getPreFormData(callback) {
 
 async function populateForm(response) {
 
-    if (response && response.result && response.result[0]) {
+    if (response && response.result && response.result.length) {
 
-        let formData = response.result[0];
-        if (formData.amount && elements.lAmount) {
-            elements.lAmount.html('$' + (+(formData.amount)).toFixed(2));
-        }
+        for (const formData of response.result) {
 
-        if (formData.contact) {
-            if (formData.contact.firstName && elements.iFName) {
-                elements.iFName.val(formData.contact.firstName);
-            }
-            if (formData.contact.lastName && elements.iLName) {
-                elements.iLName.val(formData.contact.lastName);
-            }
-            if (formData.contact.email && elements.iEmail) {
-                elements.iEmail.val(formData.contact.email);
-            }
-            if (formData.contact.street && elements.iStreet) {
-                elements.iStreet.val(formData.contact.street);
-            }
-            if (formData.contact.city && elements.iCity) {
-                elements.iCity.val(formData.contact.city);
-            }
-            if (formData.contact.postalCode && elements.iZipCode) {
-                elements.iZipCode.val(formData.contact.postalCode);
+            if (!formData || formData.source != dialog.parent) {
+                continue; // exit this iteration
             }
 
-            let country = 'US';
-            if (formData.contact.country && countries.hasOwnProperty(formData.contact.country)) {
-                country = countries[formData.contact.country][0];
-            }
-            if (elements.iCountry) {
-                elements.iCountry.val(country);
-            }
-            await countryChanged(country);
-
-            if (formData.contact.state && elements.iState) {
-                // elements.iState.find('option[text=' + formData.contact.state + ']').prop('selected', true);
-                elements.iState.val(formData.contact.state);
+            // let formData = response.result[0];
+            if (formData.amount && elements.lAmount) {
+                elements.lAmount.html('$' + (+(formData.amount)).toFixed(2));
             }
 
-            // Trigger the "change" event manually, jquery trigger does not work with card library
-            // thsi will refill the values for all fields
-            var evt = document.createEvent('HTMLEvents');
-            evt.initEvent('keyup', false, true);
-            document.getElementById('first-name').dispatchEvent(evt);
+            if (formData.contact) {
+                if (formData.contact.firstName && elements.iFName) {
+                    elements.iFName.val(formData.contact.firstName);
+                }
+                if (formData.contact.lastName && elements.iLName) {
+                    elements.iLName.val(formData.contact.lastName);
+                }
+                if (formData.contact.email && elements.iEmail) {
+                    elements.iEmail.val(formData.contact.email);
+                }
+                if (formData.contact.street && elements.iStreet) {
+                    elements.iStreet.val(formData.contact.street);
+                }
+                if (formData.contact.city && elements.iCity) {
+                    elements.iCity.val(formData.contact.city);
+                }
+                if (formData.contact.postalCode && elements.iZipCode) {
+                    elements.iZipCode.val(formData.contact.postalCode);
+                }
+
+                let country = 'US';
+                if (formData.contact.country && countries.hasOwnProperty(formData.contact.country)) {
+                    country = countries[formData.contact.country][0];
+                }
+                if (elements.iCountry) {
+                    elements.iCountry.val(country);
+                }
+                await countryChanged(country);
+
+                if (formData.contact.state && elements.iState) {
+                    // elements.iState.find('option[text=' + formData.contact.state + ']').prop('selected', true);
+                    elements.iState.val(formData.contact.state);
+                }
+
+                // Trigger the "change" event manually, jquery trigger does not work with card library
+                // thsi will refill the values for all fields
+                var evt = document.createEvent('HTMLEvents');
+                evt.initEvent('keyup', false, true);
+                document.getElementById('first-name').dispatchEvent(evt);
+            }
         }
     }
 

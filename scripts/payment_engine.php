@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 
 /**
  * Inbound wrapper API for fs payment
@@ -157,7 +157,7 @@ class PaymentEngine
                     $fsReqData['Amount'] = $reqJson->amount;
                     $fsReqData['NameOnCheck'] = $contact->firstName . ' ' . $contact->lastName;
                     $fsReqData['InvNum'] = $reqJson->transID;
-                    $fsReqData['Zip'] = $contact->zip;
+                    $fsReqData['Zip'] = $contact->postalCode;
                     $fsReqData['Street'] = $contact->street;
                     $fsReqData['TransitNum'] = $paymentMethod->routingNum;
                     $fsReqData['AccountNum'] = base64_decode($paymentMethod->acctNum);
@@ -202,7 +202,7 @@ class PaymentEngine
                         // * it's a new Sale
                         $contact = $reqJson->contact;
                         $fsReqData['NameOnCard'] = $contact->firstName . ' ' . $contact->lastName;
-                        $fsReqData['Zip'] = $contact->zip;
+                        $fsReqData['Zip'] = $contact->postalCode;
                         $fsReqData['Street'] = $contact->street;
                         $fsReqData['CardNum'] = base64_decode($paymentMethod->ccNum);
                         $fsReqData['ExpDate'] = $paymentMethod->expMonth . substr($paymentMethod->expYear, 2, 2);
