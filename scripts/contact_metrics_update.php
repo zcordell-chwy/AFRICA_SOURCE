@@ -7,7 +7,7 @@
 Should be used with a shell script
 
 linux
-for var in {436..436}; do curl -o "contact_updatelogs_$var.txt" -H "HTTP_X_CUSTOM_AUTHORIZATION: emNvcmRlbGw6UGFzc3dvcmQx" "https://africanewlife.custhelp.com/cgi-bin/africanewlife.cfg/php/custom/contact_metrics_update.php?start=$var"; done
+for var in {436..436}; do curl -o "contact_updatelogs_$var.txt" -H "HTTP_X_CUSTOM_AUTHORIZATION: emNvcmRlbGw6UGFzc3dvcmQx" "https://africanewlife.custhelp.com/cgi-bin/africanewlife.cfg/php/custom/aws/contact_metrics_update.php?start=$var"; done
 
 windows
 Create a folder in /users/documents/<username>/ called logs (you just have to do this once)
@@ -15,7 +15,7 @@ Open Windows Command Line.
 From Command Line Paste in the following command and hit return 
 cd ..\Documents\logs
 From Command Line Paste in the following command and hit return.  Should run for about 2 hours-ish. 
-for /l %x in (0, 1, 670) do curl -o "contact_updatelogs_%x.txt" "https://africanewlife.custhelp.com/cgi-bin/africanewlife.cfg/php/custom/contact_metrics_update.php?start=%x"
+for /l %x in (0, 1, 670) do curl -o "contact_updatelogs_%x.txt" "https://africanewlife.custhelp.com/cgi-bin/africanewlife.cfg/php/custom/aws/contact_metrics_update.php?start=%x"
  
 AWS:
 
