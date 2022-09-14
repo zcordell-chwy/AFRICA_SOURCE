@@ -1,0 +1,34 @@
+<li>
+    <figure class="childInfo">
+        <img src="<%= data['image']%>">
+        <figcaption class="preview">
+            <span>
+                Please Meet, <%= data['Full Name'].toUpperCase().replace(/ .*/,'') %>
+            </span>
+            <span>
+                <%= data['Birthday'] %>
+            </span>
+            <span>
+                <%= data['Gender'] %>
+            </span>
+        </figcaption>
+        <div class="hover">
+            <span>
+                <%= data['Birthday'] %>, <%= data['Age'] %> year(s) old
+            </span>
+            <span>
+                <%= data['Gender'] %>
+            </span>
+            <span>
+                Lives in: <%= data['Coummunity'] %>
+            </span>
+            <span>
+                Sponsorship Priority: <%= data['Priority'] %>
+            </span>
+            <span>
+                Grade: <%= data['Grade'] %>
+            </span>
+        </div>
+    </figure>
+    <button class="sponsorshipButton" data-childID="<%= data['ID'] %>" data-childRate="<%= data['Rate'] %> ">Sponsor Me!</button>
+</li>

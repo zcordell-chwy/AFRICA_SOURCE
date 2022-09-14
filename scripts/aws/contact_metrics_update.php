@@ -351,7 +351,7 @@ function executeUpdatesForRecords($startVal){
             //Most Recent Donation Fund
             //$results['recentDonationFund'] = $contactObj->CustomFields->Metrics->recentDonationFund->LookupName;
             if($recentDonationFund->LookupName != $contactObj->CustomFields->Metrics->recentDonationFund->LookupName){
-                $contactObj->CustomFields->Metrics->recentDonationFund->LookupName = $recentDonationFund;
+                $contactObj->CustomFields->Metrics->recentDonationFund = $recentDonationFund;
                 $results['recentDonationFund'] = $recentDonationFund->LookupName;
                 $saveNeeded = true;
             }

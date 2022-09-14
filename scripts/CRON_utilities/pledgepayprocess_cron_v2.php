@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 
 //Author: Zach Cordell
 //Date: 5/1/15

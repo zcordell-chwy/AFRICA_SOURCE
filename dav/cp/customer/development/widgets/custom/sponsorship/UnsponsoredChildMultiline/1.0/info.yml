@@ -1,0 +1,55 @@
+version: "1.0"
+requires:
+  jsModule:
+    - standard
+info:
+  urlParameters:
+    kw:
+      name: Keyword
+      description: The current search term
+      example: kw/search
+    r_id:
+      name: Report ID
+      description: The report ID to apply filters to
+      example: r_id/176
+    st:
+      name: Search Type
+      description: Sets the search type to the URL parameter value
+      example: st/6
+    org:
+      name: Organization Type
+      description: Sets the organization type to the URL parameter value
+      example: org/2
+    page:
+      name: Page
+      description: Sets the select to the page number in the URL parameter
+      example: page/2
+    search:
+      name: Search
+      description: Key denoting if search should be performed
+      example: search/0
+    sort:
+      name: Sort By
+      description:
+        Sets the sort column to value and direction. Use column number
+        and 1 for ascending, 2 for descending
+      example: sort/3,1
+attributes:
+  fix_data:
+    name: fix_data
+    type: ajax
+    description: Default AJAX endpoint
+    default: /ci/ajax/widget
+    required: false
+  check_for_lock:
+    name: check_for_lock
+    type: boolean
+    description: tells whether a child lock should be checked or not before moving to checkout page
+    default: true
+    required: false
+extends:
+  widget: standard/reports/Multiline
+  components:
+    - php
+    - view
+    - js

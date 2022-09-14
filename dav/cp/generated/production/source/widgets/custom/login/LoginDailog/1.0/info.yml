@@ -1,0 +1,11 @@
+version: "1.0"
+requires:
+  jsModule:
+  - standard
+  - mobile
+extends:
+  widget: standard/login/LoginDialog
+  components:
+  - php
+  - css
+  overrideViewAndLogic: "true"

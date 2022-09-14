@@ -1,0 +1,2277 @@
+Approving Trans:1373967** with PnRef:78664956** on Pledge:1043** for Contact:50536** Amount: 39.00 from correction script
+
+Reversing Trans:1375154** with PnRef:78695123** on Pledge:1043** for Contact:50536** Amount: 39.00 from correction script
+
+Reversing Trans:1376253** with PnRef:78699262** on Pledge:1043** for Contact:50536** Amount: 39.00 from correction script
+--------
+
+Approving Trans:1373968** with PnRef:78664957** on Pledge:1079** for Contact:38259** Amount: 39.00 from correction script
+
+Reversing Trans:1375155** with PnRef:78695124** on Pledge:1079** for Contact:38259** Amount: 39.00 from correction script
+
+Reversing Trans:1376254** with PnRef:78699263** on Pledge:1079** for Contact:38259** Amount: 39.00 from correction script
+--------
+
+Approving Trans:1373969** with PnRef:78664958** on Pledge:1175** for Contact:29825** Amount: 60.00 from correction script
+
+Reversing Trans:1375156** with PnRef:78695125** on Pledge:1175** for Contact:29825** Amount: 60.00 from correction script
+
+Reversing Trans:1376255** with PnRef:78699264** on Pledge:1175** for Contact:29825** Amount: 60.00 from correction script
+--------
+
+Approving Trans:1373977** with PnRef:78664968** on Pledge:1304** for Contact:33731** Amount: 39.00 from correction script
+
+Reversing Trans:1375160** with PnRef:78695129** on Pledge:1304** for Contact:33731** Amount: 39.00 from correction script
+
+Reversing Trans:1376259** with PnRef:78699268** on Pledge:1304** for Contact:33731** Amount: 39.00 from correction script
+--------
+
+Approving Trans:1373991** with PnRef:78664998** on Pledge:1901** for Contact:48930** Amount: 1.00 from correction script
+
+Reversing Trans:1375174** with PnRef:78695143** on Pledge:1901** for Contact:48930** Amount: 1.00 from correction script
+
+Reversing Trans:1376273** with PnRef:78699282** on Pledge:1901** for Contact:48930** Amount: 1.00 from correction script
+--------
+
+Approving Trans:1373995** with PnRef:78665004** on Pledge:1938** for Contact:48021** Amount: 39.00 from correction script
+
+Reversing Trans:1375177** with PnRef:78695146** on Pledge:1938** for Contact:48021** Amount: 39.00 from correction script
+
+Reversing Trans:1376276** with PnRef:78699285** on Pledge:1938** for Contact:48021** Amount: 39.00 from correction script
+--------
+
+Approving Trans:1373981** with PnRef:78664978** on Pledge:2100** for Contact:47919** Amount: 39.00 from correction script
+
+Reversing Trans:1375164** with PnRef:78695133** on Pledge:2100** for Contact:47919** Amount: 39.00 from correction script
+
+Reversing Trans:1376263** with PnRef:78699272** on Pledge:2100** for Contact:47919** Amount: 39.00 from correction script
+--------
+
+Approving Trans:1374025** with PnRef:78665055** on Pledge:2794** for Contact:44958** Amount: 39.00 from correction script
+
+Reversing Trans:1375197** with PnRef:78695166** on Pledge:2794** for Contact:44958** Amount: 39.00 from correction script
+
+Reversing Trans:1376296** with PnRef:78699305** on Pledge:2794** for Contact:44958** Amount: 39.00 from correction script
+--------
+
+Approving Trans:1374049** with PnRef:78665092** on Pledge:3037** for Contact:42607** Amount: 39.00 from correction script
+
+Reversing Trans:1375210** with PnRef:78695179** on Pledge:3037** for Contact:42607** Amount: 39.00 from correction script
+
+Reversing Trans:1376309** with PnRef:78699318** on Pledge:3037** for Contact:42607** Amount: 39.00 from correction script
+--------
+
+Approving Trans:1374044** with PnRef:78665084** on Pledge:3237** for Contact:45618** Amount: 39.00 from correction script
+
+Reversing Trans:1375205** with PnRef:78695174** on Pledge:3237** for Contact:45618** Amount: 39.00 from correction script
+
+Reversing Trans:1376304** with PnRef:78699313** on Pledge:3237** for Contact:45618** Amount: 39.00 from correction script
+--------
+
+Approving Trans:1374046** with PnRef:78665087** on Pledge:3244** for Contact:49811** Amount: 50.00 from correction script
+
+Reversing Trans:1375207** with PnRef:78695176** on Pledge:3244** for Contact:49811** Amount: 50.00 from correction script
+
+Reversing Trans:1376306** with PnRef:78699315** on Pledge:3244** for Contact:49811** Amount: 50.00 from correction script
+--------
+
+Approving Trans:1374033** with PnRef:78665068** on Pledge:3651** for Contact:44910** Amount: 39.00 from correction script
+--------
+
+Approving Trans:1374059** with PnRef:78665117** on Pledge:4134** for Contact:42247** Amount: 39.00 from correction script
+
+Reversing Trans:1375214** with PnRef:78695183** on Pledge:4134** for Contact:42247** Amount: 39.00 from correction script
+
+Reversing Trans:1376313** with PnRef:78699322** on Pledge:4134** for Contact:42247** Amount: 39.00 from correction script
+--------
+
+Approving Trans:1374060** with PnRef:78665118** on Pledge:4135** for Contact:42247** Amount: 39.00 from correction script
+
+Reversing Trans:1375215** with PnRef:78695184** on Pledge:4135** for Contact:42247** Amount: 39.00 from correction script
+
+Reversing Trans:1376314** with PnRef:78699323** on Pledge:4135** for Contact:42247** Amount: 39.00 from correction script
+--------
+
+Approving Trans:1374066** with PnRef:78665129** on Pledge:4182** for Contact:44867** Amount: 39.00 from correction script
+
+Reversing Trans:1375220** with PnRef:78695189** on Pledge:4182** for Contact:44867** Amount: 39.00 from correction script
+
+Reversing Trans:1376319** with PnRef:78699328** on Pledge:4182** for Contact:44867** Amount: 39.00 from correction script
+--------
+
+Approving Trans:1377264** with PnRef:78700287** on Pledge:4450** for Contact:39681** Amount: 39.00 from correction script
+
+Reversing Trans:1377769** with PnRef:78702949** on Pledge:4450** for Contact:39681** Amount: 39.00 from correction script
+
+Reversing Trans:1378261** with PnRef:78706754** on Pledge:4450** for Contact:39681** Amount: 39.00 from correction script
+--------
+
+Approving Trans:1374068** with PnRef:78665132** on Pledge:4763** for Contact:36962** Amount: 39.00 from correction script
+
+Reversing Trans:1375222** with PnRef:78695191** on Pledge:4763** for Contact:36962** Amount: 39.00 from correction script
+
+Reversing Trans:1376321** with PnRef:78699330** on Pledge:4763** for Contact:36962** Amount: 39.00 from correction script
+--------
+
+Approving Trans:1377951** with PnRef:78703132** on Pledge:5185** for Contact:42806** Amount: 39.00 from correction script
+
+Reversing Trans:1378442** with PnRef:78706939** on Pledge:5185** for Contact:42806** Amount: 39.00 from correction script
+--------
+
+Approving Trans:1374084** with PnRef:78665168** on Pledge:5198** for Contact:41625** Amount: 39.00 from correction script
+
+Reversing Trans:1375231** with PnRef:78695200** on Pledge:5198** for Contact:41625** Amount: 39.00 from correction script
+
+Reversing Trans:1376330** with PnRef:78699339** on Pledge:5198** for Contact:41625** Amount: 39.00 from correction script
+--------
+
+Approving Trans:1374085** with PnRef:78665170** on Pledge:5210** for Contact:35357** Amount: 39.00 from correction script
+
+Reversing Trans:1375232** with PnRef:78695201** on Pledge:5210** for Contact:35357** Amount: 39.00 from correction script
+
+Reversing Trans:1376331** with PnRef:78699340** on Pledge:5210** for Contact:35357** Amount: 39.00 from correction script
+--------
+
+Approving Trans:1374097** with PnRef:78665195** on Pledge:5316** for Contact:39447** Amount: 39.00 from correction script
+
+Reversing Trans:1375239** with PnRef:78695208** on Pledge:5316** for Contact:39447** Amount: 39.00 from correction script
+
+Reversing Trans:1376338** with PnRef:78699347** on Pledge:5316** for Contact:39447** Amount: 39.00 from correction script
+--------
+
+Approving Trans:1374099** with PnRef:78665201** on Pledge:5325** for Contact:44572** Amount: 39.00 from correction script
+
+Reversing Trans:1375241** with PnRef:78695210** on Pledge:5325** for Contact:44572** Amount: 39.00 from correction script
+
+Reversing Trans:1376340** with PnRef:78699349** on Pledge:5325** for Contact:44572** Amount: 39.00 from correction script
+--------
+
+Approving Trans:1374086** with PnRef:78665172** on Pledge:5466** for Contact:36559** Amount: 39.00 from correction script
+
+Reversing Trans:1375233** with PnRef:78695202** on Pledge:5466** for Contact:36559** Amount: 39.00 from correction script
+
+Reversing Trans:1376332** with PnRef:78699341** on Pledge:5466** for Contact:36559** Amount: 39.00 from correction script
+--------
+
+Approving Trans:1374114** with PnRef:78665232** on Pledge:5675** for Contact:35351** Amount: 39.00 from correction script
+
+Reversing Trans:1375251** with PnRef:78695220** on Pledge:5675** for Contact:35351** Amount: 39.00 from correction script
+
+Reversing Trans:1376350** with PnRef:78699359** on Pledge:5675** for Contact:35351** Amount: 39.00 from correction script
+--------
+
+Approving Trans:1374112** with PnRef:78665230** on Pledge:5924** for Contact:43413** Amount: 39.00 from correction script
+
+Reversing Trans:1375249** with PnRef:78695218** on Pledge:5924** for Contact:43413** Amount: 39.00 from correction script
+
+Reversing Trans:1376348** with PnRef:78699357** on Pledge:5924** for Contact:43413** Amount: 39.00 from correction script
+--------
+
+Approving Trans:1374122** with PnRef:78665243** on Pledge:5988** for Contact:44910** Amount: 39.00 from correction script
+--------
+
+Approving Trans:1374129** with PnRef:78665259** on Pledge:6068** for Contact:35518** Amount: 35.00 from correction script
+
+Reversing Trans:1375262** with PnRef:78695231** on Pledge:6068** for Contact:35518** Amount: 35.00 from correction script
+
+Reversing Trans:1376361** with PnRef:78699371** on Pledge:6068** for Contact:35518** Amount: 35.00 from correction script
+--------
+
+Approving Trans:1374116** with PnRef:78665234** on Pledge:6445** for Contact:47098** Amount: 60.00 from correction script
+
+Reversing Trans:1375253** with PnRef:78695222** on Pledge:6445** for Contact:47098** Amount: 60.00 from correction script
+
+Reversing Trans:1376352** with PnRef:78699361** on Pledge:6445** for Contact:47098** Amount: 60.00 from correction script
+--------
+
+Approving Trans:1374164** with PnRef:78665340** on Pledge:6594** for Contact:38501** Amount: 39.00 from correction script
+
+Reversing Trans:1375281** with PnRef:78695250** on Pledge:6594** for Contact:38501** Amount: 39.00 from correction script
+
+Reversing Trans:1376380** with PnRef:78699390** on Pledge:6594** for Contact:38501** Amount: 39.00 from correction script
+--------
+
+Approving Trans:1374142** with PnRef:78665291** on Pledge:6668** for Contact:41969** Amount: 39.00 from correction script
+
+Reversing Trans:1375270** with PnRef:78695239** on Pledge:6668** for Contact:41969** Amount: 39.00 from correction script
+
+Reversing Trans:1376369** with PnRef:78699379** on Pledge:6668** for Contact:41969** Amount: 39.00 from correction script
+--------
+
+Approving Trans:1374143** with PnRef:78665295** on Pledge:6670** for Contact:39358** Amount: 39.00 from correction script
+
+Reversing Trans:1375271** with PnRef:78695240** on Pledge:6670** for Contact:39358** Amount: 39.00 from correction script
+
+Reversing Trans:1376370** with PnRef:78699380** on Pledge:6670** for Contact:39358** Amount: 39.00 from correction script
+--------
+
+Approving Trans:1374202** with PnRef:78665407** on Pledge:7615** for Contact:38863** Amount: 39.00 from correction script
+
+Reversing Trans:1375302** with PnRef:78695271** on Pledge:7615** for Contact:38863** Amount: 39.00 from correction script
+
+Reversing Trans:1376402** with PnRef:78699411** on Pledge:7615** for Contact:38863** Amount: 39.00 from correction script
+--------
+
+Approving Trans:1377954** with PnRef:78703135** on Pledge:7631** for Contact:45318** Amount: 6.00 from correction script
+
+Reversing Trans:1378444** with PnRef:78706941** on Pledge:7631** for Contact:45318** Amount: 6.00 from correction script
+--------
+
+Approving Trans:1377274** with PnRef:78700297** on Pledge:7655** for Contact:49068** Amount: 6.00 from correction script
+
+Reversing Trans:1377775** with PnRef:78702955** on Pledge:7655** for Contact:49068** Amount: 6.00 from correction script
+
+Reversing Trans:1378267** with PnRef:78706760** on Pledge:7655** for Contact:49068** Amount: 6.00 from correction script
+--------
+
+Approving Trans:1374205** with PnRef:78665412** on Pledge:7668** for Contact:45500** Amount: 39.00 from correction script
+
+Reversing Trans:1375303** with PnRef:78695272** on Pledge:7668** for Contact:45500** Amount: 39.00 from correction script
+
+Reversing Trans:1376403** with PnRef:78699412** on Pledge:7668** for Contact:45500** Amount: 39.00 from correction script
+--------
+
+Approving Trans:1374177** with PnRef:78665363** on Pledge:7689** for Contact:49162** Amount: 39.00 from correction script
+
+Reversing Trans:1375289** with PnRef:78695258** on Pledge:7689** for Contact:49162** Amount: 39.00 from correction script
+
+Reversing Trans:1376388** with PnRef:78699398** on Pledge:7689** for Contact:49162** Amount: 39.00 from correction script
+--------
+
+Approving Trans:1374179** with PnRef:78665368** on Pledge:7950** for Contact:42253** Amount: 39.00 from correction script
+
+Reversing Trans:1375291** with PnRef:78695260** on Pledge:7950** for Contact:42253** Amount: 39.00 from correction script
+
+Reversing Trans:1376390** with PnRef:78699400** on Pledge:7950** for Contact:42253** Amount: 39.00 from correction script
+--------
+
+Approving Trans:1374227** with PnRef:78665448** on Pledge:8425** for Contact:42064** Amount: 60.00 from correction script
+
+Reversing Trans:1375318** with PnRef:78695287** on Pledge:8425** for Contact:42064** Amount: 60.00 from correction script
+
+Reversing Trans:1376418** with PnRef:78699428** on Pledge:8425** for Contact:42064** Amount: 60.00 from correction script
+--------
+
+Approving Trans:1374211** with PnRef:78665421** on Pledge:8531** for Contact:46078** Amount: 39.00 from correction script
+
+Reversing Trans:1375306** with PnRef:78695275** on Pledge:8531** for Contact:46078** Amount: 39.00 from correction script
+
+Reversing Trans:1376406** with PnRef:78699415** on Pledge:8531** for Contact:46078** Amount: 39.00 from correction script
+--------
+
+Approving Trans:1374221** with PnRef:78665436** on Pledge:8629** for Contact:46078** Amount: 39.00 from correction script
+
+Reversing Trans:1375315** with PnRef:78695284** on Pledge:8629** for Contact:46078** Amount: 39.00 from correction script
+
+Reversing Trans:1376415** with PnRef:78699425** on Pledge:8629** for Contact:46078** Amount: 39.00 from correction script
+--------
+
+Approving Trans:1374254** with PnRef:78665504** on Pledge:9189** for Contact:33134** Amount: 6.00 from correction script
+
+Reversing Trans:1375334** with PnRef:78695303** on Pledge:9189** for Contact:33134** Amount: 6.00 from correction script
+
+Reversing Trans:1376434** with PnRef:78699444** on Pledge:9189** for Contact:33134** Amount: 6.00 from correction script
+--------
+
+Approving Trans:1374255** with PnRef:78665505** on Pledge:9211** for Contact:33134** Amount: 39.00 from correction script
+
+Reversing Trans:1375335** with PnRef:78695304** on Pledge:9211** for Contact:33134** Amount: 39.00 from correction script
+
+Reversing Trans:1376435** with PnRef:78699445** on Pledge:9211** for Contact:33134** Amount: 39.00 from correction script
+--------
+
+Approving Trans:1374244** with PnRef:78665488** on Pledge:9325** for Contact:36959** Amount: 6.00 from correction script
+
+Reversing Trans:1375327** with PnRef:78695296** on Pledge:9325** for Contact:36959** Amount: 6.00 from correction script
+
+Reversing Trans:1376427** with PnRef:78699437** on Pledge:9325** for Contact:36959** Amount: 6.00 from correction script
+--------
+
+Approving Trans:1374245** with PnRef:78665489** on Pledge:9326** for Contact:38279** Amount: 6.00 from correction script
+
+Reversing Trans:1375328** with PnRef:78695297** on Pledge:9326** for Contact:38279** Amount: 6.00 from correction script
+
+Reversing Trans:1376428** with PnRef:78699438** on Pledge:9326** for Contact:38279** Amount: 6.00 from correction script
+--------
+
+Approving Trans:1374248** with PnRef:78665494** on Pledge:9348** for Contact:38380** Amount: 39.00 from correction script
+
+Reversing Trans:1375330** with PnRef:78695299** on Pledge:9348** for Contact:38380** Amount: 39.00 from correction script
+
+Reversing Trans:1376430** with PnRef:78699440** on Pledge:9348** for Contact:38380** Amount: 39.00 from correction script
+--------
+
+Approving Trans:1374251** with PnRef:78665498** on Pledge:9399** for Contact:42253** Amount: 39.00 from correction script
+
+Reversing Trans:1375332** with PnRef:78695301** on Pledge:9399** for Contact:42253** Amount: 39.00 from correction script
+
+Reversing Trans:1376432** with PnRef:78699442** on Pledge:9399** for Contact:42253** Amount: 39.00 from correction script
+--------
+
+Approving Trans:1374252** with PnRef:78665500** on Pledge:9405** for Contact:38387** Amount: 39.00 from correction script
+
+Reversing Trans:1375333** with PnRef:78695302** on Pledge:9405** for Contact:38387** Amount: 39.00 from correction script
+
+Reversing Trans:1376433** with PnRef:78699443** on Pledge:9405** for Contact:38387** Amount: 39.00 from correction script
+--------
+
+Approving Trans:1374234** with PnRef:78665468** on Pledge:9774** for Contact:40499** Amount: 6.00 from correction script
+
+Reversing Trans:1375320** with PnRef:78695289** on Pledge:9774** for Contact:40499** Amount: 6.00 from correction script
+
+Reversing Trans:1376420** with PnRef:78699430** on Pledge:9774** for Contact:40499** Amount: 6.00 from correction script
+--------
+
+Approving Trans:1378710** with PnRef:78707213** on Pledge:10001** for Contact:50384** Amount: 6.00 from correction script
+--------
+
+Approving Trans:1374258** with PnRef:78665509** on Pledge:10252** for Contact:38863** Amount: 39.00 from correction script
+
+Reversing Trans:1375337** with PnRef:78695306** on Pledge:10252** for Contact:38863** Amount: 39.00 from correction script
+
+Reversing Trans:1376437** with PnRef:78699447** on Pledge:10252** for Contact:38863** Amount: 39.00 from correction script
+--------
+
+Approving Trans:1374259** with PnRef:78665511** on Pledge:10266** for Contact:36559** Amount: 39.00 from correction script
+
+Reversing Trans:1375338** with PnRef:78695307** on Pledge:10266** for Contact:36559** Amount: 39.00 from correction script
+
+Reversing Trans:1376438** with PnRef:78699448** on Pledge:10266** for Contact:36559** Amount: 39.00 from correction script
+--------
+
+Approving Trans:1374280** with PnRef:78665548** on Pledge:10485** for Contact:37002** Amount: 39.00 from correction script
+
+Reversing Trans:1375352** with PnRef:78695326** on Pledge:10485** for Contact:37002** Amount: 39.00 from correction script
+
+Reversing Trans:1376452** with PnRef:78699462** on Pledge:10485** for Contact:37002** Amount: 39.00 from correction script
+--------
+
+Approving Trans:1375913** with PnRef:78695893** on Pledge:10514** for Contact:34165** Amount: 39.00 from correction script
+
+Reversing Trans:1376996** with PnRef:78700016** on Pledge:10514** for Contact:34165** Amount: 39.00 from correction script
+
+Reversing Trans:1377505** with PnRef:78702680** on Pledge:10514** for Contact:34165** Amount: 39.00 from correction script
+--------
+
+Approving Trans:1374269** with PnRef:78665528** on Pledge:10670** for Contact:45621** Amount: 39.00 from correction script
+
+Reversing Trans:1375344** with PnRef:78695313** on Pledge:10670** for Contact:45621** Amount: 39.00 from correction script
+
+Reversing Trans:1376444** with PnRef:78699454** on Pledge:10670** for Contact:45621** Amount: 39.00 from correction script
+--------
+
+Approving Trans:1374306** with PnRef:78665596** on Pledge:11220** for Contact:45409** Amount: 39.00 from correction script
+
+Reversing Trans:1375366** with PnRef:78695340** on Pledge:11220** for Contact:45409** Amount: 39.00 from correction script
+
+Reversing Trans:1376466** with PnRef:78699476** on Pledge:11220** for Contact:45409** Amount: 39.00 from correction script
+--------
+
+Approving Trans:1374283** with PnRef:78665555** on Pledge:11264** for Contact:38279** Amount: 39.00 from correction script
+
+Reversing Trans:1375354** with PnRef:78695328** on Pledge:11264** for Contact:38279** Amount: 39.00 from correction script
+
+Reversing Trans:1376454** with PnRef:78699464** on Pledge:11264** for Contact:38279** Amount: 39.00 from correction script
+--------
+
+Approving Trans:1374293** with PnRef:78665574** on Pledge:11354** for Contact:40506** Amount: 39.00 from correction script
+
+Reversing Trans:1375359** with PnRef:78695333** on Pledge:11354** for Contact:40506** Amount: 39.00 from correction script
+
+Reversing Trans:1376459** with PnRef:78699469** on Pledge:11354** for Contact:40506** Amount: 39.00 from correction script
+--------
+
+Approving Trans:1374342** with PnRef:78665651** on Pledge:11745** for Contact:39342** Amount: 39.00 from correction script
+
+Reversing Trans:1375393** with PnRef:78695367** on Pledge:11745** for Contact:39342** Amount: 39.00 from correction script
+
+Reversing Trans:1376493** with PnRef:78699503** on Pledge:11745** for Contact:39342** Amount: 39.00 from correction script
+--------
+
+Approving Trans:1374327** with PnRef:78665626** on Pledge:11929** for Contact:49939** Amount: 39.00 from correction script
+
+Reversing Trans:1375383** with PnRef:78695357** on Pledge:11929** for Contact:49939** Amount: 39.00 from correction script
+
+Reversing Trans:1376483** with PnRef:78699493** on Pledge:11929** for Contact:49939** Amount: 39.00 from correction script
+--------
+
+Approving Trans:1374318** with PnRef:78665613** on Pledge:12132** for Contact:29246** Amount: 39.00 from correction script
+
+Reversing Trans:1375375** with PnRef:78695349** on Pledge:12132** for Contact:29246** Amount: 39.00 from correction script
+
+Reversing Trans:1376475** with PnRef:78699485** on Pledge:12132** for Contact:29246** Amount: 39.00 from correction script
+--------
+
+Approving Trans:1374316** with PnRef:78665611** on Pledge:12376** for Contact:38735** Amount: 39.00 from correction script
+
+Reversing Trans:1375373** with PnRef:78695347** on Pledge:12376** for Contact:38735** Amount: 39.00 from correction script
+
+Reversing Trans:1376473** with PnRef:78699483** on Pledge:12376** for Contact:38735** Amount: 39.00 from correction script
+--------
+
+Approving Trans:1378717** with PnRef:78707220** on Pledge:12620** for Contact:49740** Amount: 25.00 from correction script
+--------
+
+Approving Trans:1374331** with PnRef:78665632** on Pledge:12709** for Contact:31184** Amount: 39.00 from correction script
+
+Reversing Trans:1375387** with PnRef:78695361** on Pledge:12709** for Contact:31184** Amount: 39.00 from correction script
+
+Reversing Trans:1376487** with PnRef:78699497** on Pledge:12709** for Contact:31184** Amount: 39.00 from correction script
+--------
+
+Approving Trans:1374364** with PnRef:78665682** on Pledge:12730** for Contact:34831** Amount: 39.00 from correction script
+
+Reversing Trans:1375408** with PnRef:78695382** on Pledge:12730** for Contact:34831** Amount: 39.00 from correction script
+
+Reversing Trans:1376508** with PnRef:78699518** on Pledge:12730** for Contact:34831** Amount: 39.00 from correction script
+--------
+
+Approving Trans:1374354** with PnRef:78665667** on Pledge:12875** for Contact:36882** Amount: 39.00 from correction script
+
+Reversing Trans:1375402** with PnRef:78695376** on Pledge:12875** for Contact:36882** Amount: 39.00 from correction script
+
+Reversing Trans:1376502** with PnRef:78699512** on Pledge:12875** for Contact:36882** Amount: 39.00 from correction script
+--------
+
+Approving Trans:1374355** with PnRef:78665668** on Pledge:12877** for Contact:33509** Amount: 39.00 from correction script
+
+Reversing Trans:1375403** with PnRef:78695377** on Pledge:12877** for Contact:33509** Amount: 39.00 from correction script
+
+Reversing Trans:1376503** with PnRef:78699513** on Pledge:12877** for Contact:33509** Amount: 39.00 from correction script
+--------
+
+Approving Trans:1375927** with PnRef:78695907** on Pledge:13279** for Contact:46017** Amount: 39.00 from correction script
+
+Reversing Trans:1377007** with PnRef:78700027** on Pledge:13279** for Contact:46017** Amount: 39.00 from correction script
+
+Reversing Trans:1377516** with PnRef:78702691** on Pledge:13279** for Contact:46017** Amount: 39.00 from correction script
+--------
+
+Approving Trans:1374345** with PnRef:78665654** on Pledge:13341** for Contact:48930** Amount: 39.00 from correction script
+
+Reversing Trans:1375396** with PnRef:78695370** on Pledge:13341** for Contact:48930** Amount: 39.00 from correction script
+
+Reversing Trans:1376496** with PnRef:78699506** on Pledge:13341** for Contact:48930** Amount: 39.00 from correction script
+--------
+
+Approving Trans:1374346** with PnRef:78665655** on Pledge:13342** for Contact:48971** Amount: 60.00 from correction script
+
+Reversing Trans:1375397** with PnRef:78695371** on Pledge:13342** for Contact:48971** Amount: 60.00 from correction script
+
+Reversing Trans:1376497** with PnRef:78699507** on Pledge:13342** for Contact:48971** Amount: 60.00 from correction script
+--------
+
+Approving Trans:1377960** with PnRef:78703141** on Pledge:13375** for Contact:45325** Amount: 39.00 from correction script
+
+Reversing Trans:1378447** with PnRef:78706944** on Pledge:13375** for Contact:45325** Amount: 39.00 from correction script
+--------
+
+Approving Trans:1374358** with PnRef:78665674** on Pledge:13421** for Contact:48934** Amount: 60.00 from correction script
+--------
+
+Approving Trans:1377965** with PnRef:78703146** on Pledge:13531** for Contact:42806** Amount: 39.00 from correction script
+
+Reversing Trans:1378452** with PnRef:78706949** on Pledge:13531** for Contact:42806** Amount: 39.00 from correction script
+--------
+
+Approving Trans:1374372** with PnRef:78665694** on Pledge:13533** for Contact:38735** Amount: 39.00 from correction script
+
+Reversing Trans:1375414** with PnRef:78695388** on Pledge:13533** for Contact:38735** Amount: 39.00 from correction script
+
+Reversing Trans:1376514** with PnRef:78699524** on Pledge:13533** for Contact:38735** Amount: 39.00 from correction script
+--------
+
+Approving Trans:1374344** with PnRef:78665653** on Pledge:13586** for Contact:38735** Amount: 39.00 from correction script
+
+Reversing Trans:1375395** with PnRef:78695369** on Pledge:13586** for Contact:38735** Amount: 39.00 from correction script
+
+Reversing Trans:1376495** with PnRef:78699505** on Pledge:13586** for Contact:38735** Amount: 39.00 from correction script
+--------
+
+Approving Trans:1374357** with PnRef:78665672** on Pledge:13666** for Contact:49058** Amount: 39.00 from correction script
+
+Reversing Trans:1375404** with PnRef:78695378** on Pledge:13666** for Contact:49058** Amount: 39.00 from correction script
+
+Reversing Trans:1376504** with PnRef:78699514** on Pledge:13666** for Contact:49058** Amount: 39.00 from correction script
+--------
+
+Approving Trans:1374391** with PnRef:78665720** on Pledge:13703** for Contact:36959** Amount: 39.00 from correction script
+
+Reversing Trans:1375425** with PnRef:78695399** on Pledge:13703** for Contact:36959** Amount: 39.00 from correction script
+
+Reversing Trans:1376525** with PnRef:78699535** on Pledge:13703** for Contact:36959** Amount: 39.00 from correction script
+--------
+
+Approving Trans:1374395** with PnRef:78665725** on Pledge:14035** for Contact:42253** Amount: 39.00 from correction script
+
+Reversing Trans:1375429** with PnRef:78695403** on Pledge:14035** for Contact:42253** Amount: 39.00 from correction script
+
+Reversing Trans:1376529** with PnRef:78699539** on Pledge:14035** for Contact:42253** Amount: 39.00 from correction script
+--------
+
+Approving Trans:1377280** with PnRef:78700303** on Pledge:14111** for Contact:50821** Amount: 39.00 from correction script
+
+Reversing Trans:1377780** with PnRef:78702960** on Pledge:14111** for Contact:50821** Amount: 39.00 from correction script
+
+Reversing Trans:1378272** with PnRef:78706765** on Pledge:14111** for Contact:50821** Amount: 39.00 from correction script
+--------
+
+Approving Trans:1374383** with PnRef:78665708** on Pledge:14150** for Contact:45631** Amount: 39.00 from correction script
+
+Reversing Trans:1375420** with PnRef:78695394** on Pledge:14150** for Contact:45631** Amount: 39.00 from correction script
+
+Reversing Trans:1376520** with PnRef:78699530** on Pledge:14150** for Contact:45631** Amount: 39.00 from correction script
+--------
+
+Approving Trans:1374382** with PnRef:78665707** on Pledge:14390** for Contact:35147** Amount: 39.00 from correction script
+--------
+
+Approving Trans:1374423** with PnRef:78665763** on Pledge:14552** for Contact:35147** Amount: 25.00 from correction script
+--------
+
+Approving Trans:1374410** with PnRef:78665748** on Pledge:14698** for Contact:28176** Amount: 39.00 from correction script
+
+Reversing Trans:1375437** with PnRef:78695411** on Pledge:14698** for Contact:28176** Amount: 39.00 from correction script
+
+Reversing Trans:1376537** with PnRef:78699547** on Pledge:14698** for Contact:28176** Amount: 39.00 from correction script
+--------
+
+Approving Trans:1374408** with PnRef:78665744** on Pledge:14936** for Contact:33213** Amount: 39.00 from correction script
+
+Reversing Trans:1375436** with PnRef:78695410** on Pledge:14936** for Contact:33213** Amount: 39.00 from correction script
+
+Reversing Trans:1376536** with PnRef:78699546** on Pledge:14936** for Contact:33213** Amount: 39.00 from correction script
+--------
+
+Approving Trans:1374419** with PnRef:78665758** on Pledge:15021** for Contact:38501** Amount: 39.00 from correction script
+
+Reversing Trans:1375443** with PnRef:78695417** on Pledge:15021** for Contact:38501** Amount: 39.00 from correction script
+
+Reversing Trans:1376543** with PnRef:78699553** on Pledge:15021** for Contact:38501** Amount: 39.00 from correction script
+--------
+
+Approving Trans:1375933** with PnRef:78695913** on Pledge:15233** for Contact:43425** Amount: 39.00 from correction script
+
+Reversing Trans:1377012** with PnRef:78700032** on Pledge:15233** for Contact:43425** Amount: 39.00 from correction script
+
+Reversing Trans:1377521** with PnRef:78702696** on Pledge:15233** for Contact:43425** Amount: 39.00 from correction script
+--------
+
+Approving Trans:1374405** with PnRef:78665741** on Pledge:15425** for Contact:42750** Amount: 39.00 from correction script
+
+Reversing Trans:1375435** with PnRef:78695409** on Pledge:15425** for Contact:42750** Amount: 39.00 from correction script
+
+Reversing Trans:1376535** with PnRef:78699545** on Pledge:15425** for Contact:42750** Amount: 39.00 from correction script
+--------
+
+Approving Trans:1374440** with PnRef:78665786** on Pledge:15486** for Contact:37718** Amount: 39.00 from correction script
+
+Reversing Trans:1375454** with PnRef:78695428** on Pledge:15486** for Contact:37718** Amount: 39.00 from correction script
+
+Reversing Trans:1376554** with PnRef:78699564** on Pledge:15486** for Contact:37718** Amount: 39.00 from correction script
+--------
+
+Approving Trans:1374450** with PnRef:78665807** on Pledge:15545** for Contact:50015** Amount: 39.00 from correction script
+
+Reversing Trans:1375460** with PnRef:78695434** on Pledge:15545** for Contact:50015** Amount: 39.00 from correction script
+
+Reversing Trans:1376560** with PnRef:78699570** on Pledge:15545** for Contact:50015** Amount: 39.00 from correction script
+--------
+
+Approving Trans:1374445** with PnRef:78665793** on Pledge:15768** for Contact:41294** Amount: 39.00 from correction script
+
+Reversing Trans:1375456** with PnRef:78695430** on Pledge:15768** for Contact:41294** Amount: 39.00 from correction script
+
+Reversing Trans:1376556** with PnRef:78699566** on Pledge:15768** for Contact:41294** Amount: 39.00 from correction script
+--------
+
+Approving Trans:1374427** with PnRef:78665767** on Pledge:16141** for Contact:40460** Amount: 39.00 from correction script
+
+Reversing Trans:1375447** with PnRef:78695421** on Pledge:16141** for Contact:40460** Amount: 39.00 from correction script
+
+Reversing Trans:1376547** with PnRef:78699557** on Pledge:16141** for Contact:40460** Amount: 39.00 from correction script
+--------
+
+Approving Trans:1374454** with PnRef:78665813** on Pledge:85760** for Contact:51167** Amount: 39.00 from correction script
+
+Reversing Trans:1375464** with PnRef:78695438** on Pledge:85760** for Contact:51167** Amount: 39.00 from correction script
+
+Reversing Trans:1376564** with PnRef:78699574** on Pledge:85760** for Contact:51167** Amount: 39.00 from correction script
+--------
+
+Approving Trans:1374455** with PnRef:78665815** on Pledge:85763** for Contact:51168** Amount: 39.00 from correction script
+
+Reversing Trans:1375465** with PnRef:78695439** on Pledge:85763** for Contact:51168** Amount: 39.00 from correction script
+
+Reversing Trans:1376565** with PnRef:78699575** on Pledge:85763** for Contact:51168** Amount: 39.00 from correction script
+--------
+
+Approving Trans:1374479** with PnRef:78665847** on Pledge:85770** for Contact:51174** Amount: 39.00 from correction script
+
+Reversing Trans:1375481** with PnRef:78695455** on Pledge:85770** for Contact:51174** Amount: 39.00 from correction script
+
+Reversing Trans:1376581** with PnRef:78699592** on Pledge:85770** for Contact:51174** Amount: 39.00 from correction script
+--------
+
+Approving Trans:1374480** with PnRef:78665848** on Pledge:85771** for Contact:51174** Amount: 39.00 from correction script
+
+Reversing Trans:1375482** with PnRef:78695456** on Pledge:85771** for Contact:51174** Amount: 39.00 from correction script
+
+Reversing Trans:1376582** with PnRef:78699593** on Pledge:85771** for Contact:51174** Amount: 39.00 from correction script
+--------
+
+Approving Trans:1378727** with PnRef:78707230** on Pledge:85860** for Contact:51214** Amount: 39.00 from correction script
+--------
+
+Approving Trans:1378728** with PnRef:78707231** on Pledge:85861** for Contact:51214** Amount: 39.00 from correction script
+--------
+
+Approving Trans:1374501** with PnRef:78665878** on Pledge:86520** for Contact:51850** Amount: 39.00 from correction script
+
+Reversing Trans:1375501** with PnRef:78695475** on Pledge:86520** for Contact:51850** Amount: 39.00 from correction script
+
+Reversing Trans:1376601** with PnRef:78699612** on Pledge:86520** for Contact:51850** Amount: 39.00 from correction script
+--------
+
+Approving Trans:1374497** with PnRef:78665873** on Pledge:86744** for Contact:51941** Amount: 39.00 from correction script
+
+Reversing Trans:1375497** with PnRef:78695471** on Pledge:86744** for Contact:51941** Amount: 39.00 from correction script
+
+Reversing Trans:1376597** with PnRef:78699608** on Pledge:86744** for Contact:51941** Amount: 39.00 from correction script
+--------
+
+Approving Trans:1374491** with PnRef:78665864** on Pledge:86936** for Contact:52008** Amount: 39.00 from correction script
+
+Reversing Trans:1375491** with PnRef:78695465** on Pledge:86936** for Contact:52008** Amount: 39.00 from correction script
+
+Reversing Trans:1376591** with PnRef:78699602** on Pledge:86936** for Contact:52008** Amount: 39.00 from correction script
+--------
+
+Approving Trans:1374517** with PnRef:78665898** on Pledge:87473** for Contact:52292** Amount: 39.00 from correction script
+
+Reversing Trans:1375514** with PnRef:78695488** on Pledge:87473** for Contact:52292** Amount: 39.00 from correction script
+
+Reversing Trans:1376614** with PnRef:78699625** on Pledge:87473** for Contact:52292** Amount: 39.00 from correction script
+--------
+
+Approving Trans:1378734** with PnRef:78707237** on Pledge:87514** for Contact:41714** Amount: 39.00 from correction script
+--------
+
+Approving Trans:1374518** with PnRef:78665899** on Pledge:87524** for Contact:31184** Amount: 39.00 from correction script
+
+Reversing Trans:1375515** with PnRef:78695489** on Pledge:87524** for Contact:31184** Amount: 39.00 from correction script
+
+Reversing Trans:1376615** with PnRef:78699626** on Pledge:87524** for Contact:31184** Amount: 39.00 from correction script
+--------
+
+Approving Trans:1374504** with PnRef:78665881** on Pledge:87573** for Contact:40506** Amount: 39.00 from correction script
+
+Reversing Trans:1375503** with PnRef:78695477** on Pledge:87573** for Contact:40506** Amount: 39.00 from correction script
+
+Reversing Trans:1376603** with PnRef:78699614** on Pledge:87573** for Contact:40506** Amount: 39.00 from correction script
+--------
+
+Approving Trans:1375941** with PnRef:78695921** on Pledge:87708** for Contact:52418** Amount: 117.00 from correction script
+
+Reversing Trans:1377018** with PnRef:78700038** on Pledge:87708** for Contact:52418** Amount: 117.00 from correction script
+
+Reversing Trans:1377527** with PnRef:78702702** on Pledge:87708** for Contact:52418** Amount: 117.00 from correction script
+--------
+
+Approving Trans:1377290** with PnRef:78700313** on Pledge:87758** for Contact:52449** Amount: 39.00 from correction script
+
+Reversing Trans:1377787** with PnRef:78702967** on Pledge:87758** for Contact:52449** Amount: 39.00 from correction script
+
+Reversing Trans:1378279** with PnRef:78706772** on Pledge:87758** for Contact:52449** Amount: 39.00 from correction script
+--------
+
+Approving Trans:1374523** with PnRef:78665907** on Pledge:88517** for Contact:52854** Amount: 39.00 from correction script
+
+Reversing Trans:1375517** with PnRef:78695491** on Pledge:88517** for Contact:52854** Amount: 39.00 from correction script
+
+Reversing Trans:1376617** with PnRef:78699628** on Pledge:88517** for Contact:52854** Amount: 39.00 from correction script
+--------
+
+Approving Trans:1377970** with PnRef:78703151** on Pledge:88546** for Contact:52869** Amount: 39.00 from correction script
+
+Reversing Trans:1378456** with PnRef:78706953** on Pledge:88546** for Contact:52869** Amount: 39.00 from correction script
+--------
+
+Approving Trans:1374544** with PnRef:78665935** on Pledge:90876** for Contact:54124** Amount: 39.00 from correction script
+
+Reversing Trans:1375535** with PnRef:78695509** on Pledge:90876** for Contact:54124** Amount: 39.00 from correction script
+
+Reversing Trans:1376635** with PnRef:78699646** on Pledge:90876** for Contact:54124** Amount: 39.00 from correction script
+--------
+
+Approving Trans:1378738** with PnRef:78707241** on Pledge:90882** for Contact:54130** Amount: 39.00 from correction script
+--------
+
+Approving Trans:1375954** with PnRef:78695939** on Pledge:90997** for Contact:54189** Amount: 6.00 from correction script
+
+Reversing Trans:1377026** with PnRef:78700046** on Pledge:90997** for Contact:54189** Amount: 6.00 from correction script
+
+Reversing Trans:1377535** with PnRef:78702710** on Pledge:90997** for Contact:54189** Amount: 6.00 from correction script
+--------
+
+Approving Trans:1375951** with PnRef:78695931** on Pledge:91998** for Contact:52314** Amount: 39.00 from correction script
+
+Reversing Trans:1377024** with PnRef:78700044** on Pledge:91998** for Contact:52314** Amount: 39.00 from correction script
+
+Reversing Trans:1377533** with PnRef:78702708** on Pledge:91998** for Contact:52314** Amount: 39.00 from correction script
+--------
+
+Approving Trans:1375955** with PnRef:78695940** on Pledge:93113** for Contact:54553** Amount: 39.00 from correction script
+
+Reversing Trans:1377027** with PnRef:78700047** on Pledge:93113** for Contact:54553** Amount: 39.00 from correction script
+
+Reversing Trans:1377536** with PnRef:78702711** on Pledge:93113** for Contact:54553** Amount: 39.00 from correction script
+--------
+
+Approving Trans:1377299** with PnRef:78700322** on Pledge:93118** for Contact:52253** Amount: 39.00 from correction script
+
+Reversing Trans:1377795** with PnRef:78702975** on Pledge:93118** for Contact:52253** Amount: 39.00 from correction script
+
+Reversing Trans:1378287** with PnRef:78706780** on Pledge:93118** for Contact:52253** Amount: 39.00 from correction script
+--------
+
+Approving Trans:1377973** with PnRef:78703154** on Pledge:93126** for Contact:55573** Amount: 39.00 from correction script
+
+Reversing Trans:1378459** with PnRef:78706956** on Pledge:93126** for Contact:55573** Amount: 39.00 from correction script
+--------
+
+Approving Trans:1378742** with PnRef:78707245** on Pledge:93134** for Contact:55578** Amount: 39.00 from correction script
+--------
+
+Approving Trans:1374553** with PnRef:78665947** on Pledge:94062** for Contact:56253** Amount: 39.00 from correction script
+
+Reversing Trans:1375542** with PnRef:78695516** on Pledge:94062** for Contact:56253** Amount: 39.00 from correction script
+
+Reversing Trans:1376642** with PnRef:78699653** on Pledge:94062** for Contact:56253** Amount: 39.00 from correction script
+--------
+
+Approving Trans:1377309** with PnRef:78700332** on Pledge:94204** for Contact:56301** Amount: 39.00 from correction script
+
+Reversing Trans:1377805** with PnRef:78702985** on Pledge:94204** for Contact:56301** Amount: 39.00 from correction script
+
+Reversing Trans:1378297** with PnRef:78706790** on Pledge:94204** for Contact:56301** Amount: 39.00 from correction script
+--------
+
+Approving Trans:1377304** with PnRef:78700327** on Pledge:94214** for Contact:56308** Amount: 39.00 from correction script
+
+Reversing Trans:1377800** with PnRef:78702980** on Pledge:94214** for Contact:56308** Amount: 39.00 from correction script
+
+Reversing Trans:1378292** with PnRef:78706785** on Pledge:94214** for Contact:56308** Amount: 39.00 from correction script
+--------
+
+Approving Trans:1377305** with PnRef:78700328** on Pledge:94215** for Contact:56308** Amount: 6.00 from correction script
+
+Reversing Trans:1377801** with PnRef:78702981** on Pledge:94215** for Contact:56308** Amount: 6.00 from correction script
+
+Reversing Trans:1378293** with PnRef:78706786** on Pledge:94215** for Contact:56308** Amount: 6.00 from correction script
+--------
+
+Approving Trans:1374550** with PnRef:78665943** on Pledge:94748** for Contact:56502** Amount: 39.00 from correction script
+
+Reversing Trans:1375539** with PnRef:78695513** on Pledge:94748** for Contact:56502** Amount: 39.00 from correction script
+
+Reversing Trans:1376639** with PnRef:78699650** on Pledge:94748** for Contact:56502** Amount: 39.00 from correction script
+--------
+
+Approving Trans:1375958** with PnRef:78695943** on Pledge:95279** for Contact:56770** Amount: 39.00 from correction script
+
+Reversing Trans:1377030** with PnRef:78700050** on Pledge:95279** for Contact:56770** Amount: 39.00 from correction script
+
+Reversing Trans:1377539** with PnRef:78702714** on Pledge:95279** for Contact:56770** Amount: 39.00 from correction script
+--------
+
+Approving Trans:1377312** with PnRef:78700335** on Pledge:95853** for Contact:36940** Amount: 39.00 from correction script
+
+Reversing Trans:1377808** with PnRef:78702988** on Pledge:95853** for Contact:36940** Amount: 39.00 from correction script
+
+Reversing Trans:1378300** with PnRef:78706793** on Pledge:95853** for Contact:36940** Amount: 39.00 from correction script
+--------
+
+Approving Trans:1378770** with PnRef:78707273** on Pledge:95985** for Contact:52616** Amount: 25.00 from correction script
+--------
+
+Approving Trans:1378757** with PnRef:78707260** on Pledge:96527** for Contact:57453** Amount: 39.00 from correction script
+--------
+
+Approving Trans:1378764** with PnRef:78707267** on Pledge:96541** for Contact:57461** Amount: 39.00 from correction script
+--------
+
+Approving Trans:1374561** with PnRef:78665958** on Pledge:96710** for Contact:38279** Amount: 39.00 from correction script
+
+Reversing Trans:1375549** with PnRef:78695523** on Pledge:96710** for Contact:38279** Amount: 39.00 from correction script
+
+Reversing Trans:1376649** with PnRef:78699660** on Pledge:96710** for Contact:38279** Amount: 39.00 from correction script
+--------
+
+Approving Trans:1377978** with PnRef:78703159** on Pledge:97091** for Contact:57730** Amount: 39.00 from correction script
+
+Reversing Trans:1378464** with PnRef:78706961** on Pledge:97091** for Contact:57730** Amount: 39.00 from correction script
+--------
+
+Approving Trans:1378774** with PnRef:78707277** on Pledge:97185** for Contact:52616** Amount: 39.00 from correction script
+--------
+
+Approving Trans:1377325** with PnRef:78700348** on Pledge:97505** for Contact:54023** Amount: 39.00 from correction script
+
+Reversing Trans:1377820** with PnRef:78703000** on Pledge:97505** for Contact:54023** Amount: 39.00 from correction script
+
+Reversing Trans:1378312** with PnRef:78706805** on Pledge:97505** for Contact:54023** Amount: 39.00 from correction script
+--------
+
+Approving Trans:1377983** with PnRef:78703164** on Pledge:97525** for Contact:45318** Amount: 39.00 from correction script
+
+Reversing Trans:1378468** with PnRef:78706965** on Pledge:97525** for Contact:45318** Amount: 39.00 from correction script
+--------
+
+Approving Trans:1377980** with PnRef:78703161** on Pledge:97590** for Contact:57993** Amount: 39.00 from correction script
+
+Reversing Trans:1378466** with PnRef:78706963** on Pledge:97590** for Contact:57993** Amount: 39.00 from correction script
+--------
+
+Approving Trans:1378773** with PnRef:78707276** on Pledge:97607** for Contact:57997** Amount: 39.00 from correction script
+--------
+
+Approving Trans:1375967** with PnRef:78695952** on Pledge:97984** for Contact:58300** Amount: 39.00 from correction script
+
+Reversing Trans:1377038** with PnRef:78700058** on Pledge:97984** for Contact:58300** Amount: 39.00 from correction script
+
+Reversing Trans:1377547** with PnRef:78702722** on Pledge:97984** for Contact:58300** Amount: 39.00 from correction script
+--------
+
+Approving Trans:1375977** with PnRef:78695962** on Pledge:98363** for Contact:58536** Amount: 39.00 from correction script
+
+Reversing Trans:1377046** with PnRef:78700066** on Pledge:98363** for Contact:58536** Amount: 39.00 from correction script
+
+Reversing Trans:1377555** with PnRef:78702730** on Pledge:98363** for Contact:58536** Amount: 39.00 from correction script
+--------
+
+Approving Trans:1375978** with PnRef:78695963** on Pledge:98365** for Contact:58536** Amount: 6.00 from correction script
+
+Reversing Trans:1377047** with PnRef:78700067** on Pledge:98365** for Contact:58536** Amount: 6.00 from correction script
+
+Reversing Trans:1377556** with PnRef:78702731** on Pledge:98365** for Contact:58536** Amount: 6.00 from correction script
+--------
+
+Approving Trans:1377986** with PnRef:78703167** on Pledge:98423** for Contact:56502** Amount: 39.00 from correction script
+
+Reversing Trans:1378471** with PnRef:78706968** on Pledge:98423** for Contact:56502** Amount: 39.00 from correction script
+--------
+
+Approving Trans:1377989** with PnRef:78703170** on Pledge:98430** for Contact:58571** Amount: 39.00 from correction script
+
+Reversing Trans:1378473** with PnRef:78706970** on Pledge:98430** for Contact:58571** Amount: 39.00 from correction script
+--------
+
+Approving Trans:1374595** with PnRef:78666003** on Pledge:100565** for Contact:33731** Amount: 39.00 from correction script
+
+Reversing Trans:1375568** with PnRef:78695543** on Pledge:100565** for Contact:33731** Amount: 39.00 from correction script
+
+Reversing Trans:1376668** with PnRef:78699679** on Pledge:100565** for Contact:33731** Amount: 39.00 from correction script
+--------
+
+Approving Trans:1377339** with PnRef:78700362** on Pledge:100886** for Contact:58442** Amount: 39.00 from correction script
+--------
+
+Approving Trans:1377340** with PnRef:78700363** on Pledge:100888** for Contact:59763** Amount: 39.00 from correction script
+
+Reversing Trans:1377833** with PnRef:78703013** on Pledge:100888** for Contact:59763** Amount: 39.00 from correction script
+
+Reversing Trans:1378325** with PnRef:78706818** on Pledge:100888** for Contact:59763** Amount: 39.00 from correction script
+--------
+
+Approving Trans:1374599** with PnRef:78666009** on Pledge:101125** for Contact:29645** Amount: 39.00 from correction script
+
+Reversing Trans:1375571** with PnRef:78695547** on Pledge:101125** for Contact:29645** Amount: 39.00 from correction script
+
+Reversing Trans:1376671** with PnRef:78699682** on Pledge:101125** for Contact:29645** Amount: 39.00 from correction script
+--------
+
+Approving Trans:1374600** with PnRef:78666010** on Pledge:101405** for Contact:42247** Amount: 39.00 from correction script
+
+Reversing Trans:1375572** with PnRef:78695548** on Pledge:101405** for Contact:42247** Amount: 39.00 from correction script
+
+Reversing Trans:1376672** with PnRef:78699683** on Pledge:101405** for Contact:42247** Amount: 39.00 from correction script
+--------
+
+Approving Trans:1374610** with PnRef:78666026** on Pledge:101423** for Contact:60046** Amount: 39.00 from correction script
+
+Reversing Trans:1375579** with PnRef:78695555** on Pledge:101423** for Contact:60046** Amount: 39.00 from correction script
+
+Reversing Trans:1376679** with PnRef:78699690** on Pledge:101423** for Contact:60046** Amount: 39.00 from correction script
+--------
+
+Approving Trans:1377996** with PnRef:78703177** on Pledge:102023** for Contact:44867** Amount: 39.00 from correction script
+
+Reversing Trans:1378478** with PnRef:78706975** on Pledge:102023** for Contact:44867** Amount: 39.00 from correction script
+--------
+
+Approving Trans:1378788** with PnRef:78707291** on Pledge:102048** for Contact:59714** Amount: 39.00 from correction script
+--------
+
+Approving Trans:1378790** with PnRef:78707293** on Pledge:102056** for Contact:60375** Amount: 39.00 from correction script
+--------
+
+Approving Trans:1378791** with PnRef:78707294** on Pledge:102059** for Contact:60377** Amount: 39.00 from correction script
+--------
+
+Approving Trans:1376026** with PnRef:78696011** on Pledge:103145** for Contact:60828** Amount: 39.00 from correction script
+
+Reversing Trans:1377082** with PnRef:78700102** on Pledge:103145** for Contact:60828** Amount: 39.00 from correction script
+
+Reversing Trans:1377591** with PnRef:78702766** on Pledge:103145** for Contact:60828** Amount: 39.00 from correction script
+--------
+
+Approving Trans:1376045** with PnRef:78696030** on Pledge:103148** for Contact:60835** Amount: 39.00 from correction script
+
+Reversing Trans:1377099** with PnRef:78700119** on Pledge:103148** for Contact:60835** Amount: 39.00 from correction script
+
+Reversing Trans:1377608** with PnRef:78702783** on Pledge:103148** for Contact:60835** Amount: 39.00 from correction script
+--------
+
+Approving Trans:1376050** with PnRef:78696035** on Pledge:103155** for Contact:60842** Amount: 39.00 from correction script
+
+Reversing Trans:1377104** with PnRef:78700124** on Pledge:103155** for Contact:60842** Amount: 39.00 from correction script
+
+Reversing Trans:1377613** with PnRef:78702788** on Pledge:103155** for Contact:60842** Amount: 39.00 from correction script
+--------
+
+Approving Trans:1376029** with PnRef:78696014** on Pledge:103170** for Contact:60855** Amount: 39.00 from correction script
+
+Reversing Trans:1377085** with PnRef:78700105** on Pledge:103170** for Contact:60855** Amount: 39.00 from correction script
+
+Reversing Trans:1377594** with PnRef:78702769** on Pledge:103170** for Contact:60855** Amount: 39.00 from correction script
+--------
+
+Approving Trans:1376035** with PnRef:78696020** on Pledge:103189** for Contact:60879** Amount: 39.00 from correction script
+
+Reversing Trans:1377091** with PnRef:78700111** on Pledge:103189** for Contact:60879** Amount: 39.00 from correction script
+
+Reversing Trans:1377600** with PnRef:78702775** on Pledge:103189** for Contact:60879** Amount: 39.00 from correction script
+--------
+
+Approving Trans:1376039** with PnRef:78696024** on Pledge:103201** for Contact:60885** Amount: 39.00 from correction script
+
+Reversing Trans:1377095** with PnRef:78700115** on Pledge:103201** for Contact:60885** Amount: 39.00 from correction script
+
+Reversing Trans:1377604** with PnRef:78702779** on Pledge:103201** for Contact:60885** Amount: 39.00 from correction script
+--------
+
+Approving Trans:1377356** with PnRef:78700379** on Pledge:103244** for Contact:60904** Amount: 39.00 from correction script
+
+Reversing Trans:1377846** with PnRef:78703026** on Pledge:103244** for Contact:60904** Amount: 39.00 from correction script
+
+Reversing Trans:1378338** with PnRef:78706831** on Pledge:103244** for Contact:60904** Amount: 39.00 from correction script
+--------
+
+Approving Trans:1377358** with PnRef:78700381** on Pledge:103254** for Contact:60912** Amount: 39.00 from correction script
+
+Reversing Trans:1377848** with PnRef:78703028** on Pledge:103254** for Contact:60912** Amount: 39.00 from correction script
+
+Reversing Trans:1378340** with PnRef:78706833** on Pledge:103254** for Contact:60912** Amount: 39.00 from correction script
+--------
+
+Approving Trans:1377359** with PnRef:78700382** on Pledge:103255** for Contact:41744** Amount: 39.00 from correction script
+
+Reversing Trans:1377849** with PnRef:78703029** on Pledge:103255** for Contact:41744** Amount: 39.00 from correction script
+
+Reversing Trans:1378341** with PnRef:78706834** on Pledge:103255** for Contact:41744** Amount: 39.00 from correction script
+--------
+
+Approving Trans:1378000** with PnRef:78703181** on Pledge:103280** for Contact:60931** Amount: 39.00 from correction script
+
+Reversing Trans:1378481** with PnRef:78706978** on Pledge:103280** for Contact:60931** Amount: 39.00 from correction script
+--------
+
+Approving Trans:1378004** with PnRef:78703185** on Pledge:103292** for Contact:60936** Amount: 39.00 from correction script
+
+Reversing Trans:1378484** with PnRef:78706981** on Pledge:103292** for Contact:60936** Amount: 39.00 from correction script
+--------
+
+Approving Trans:1378005** with PnRef:78703186** on Pledge:103294** for Contact:60938** Amount: 39.00 from correction script
+
+Reversing Trans:1378485** with PnRef:78706982** on Pledge:103294** for Contact:60938** Amount: 39.00 from correction script
+--------
+
+Approving Trans:1378008** with PnRef:78703189** on Pledge:103305** for Contact:60946** Amount: 39.00 from correction script
+
+Reversing Trans:1378488** with PnRef:78706985** on Pledge:103305** for Contact:60946** Amount: 39.00 from correction script
+--------
+
+Approving Trans:1378010** with PnRef:78703191** on Pledge:103311** for Contact:60949** Amount: 39.00 from correction script
+
+Reversing Trans:1378490** with PnRef:78706987** on Pledge:103311** for Contact:60949** Amount: 39.00 from correction script
+--------
+
+Approving Trans:1378803** with PnRef:78707306** on Pledge:103705** for Contact:52616** Amount: 39.00 from correction script
+--------
+
+Approving Trans:1374628** with PnRef:78666054** on Pledge:103925** for Contact:30982** Amount: 78.00 from correction script
+
+Reversing Trans:1375592** with PnRef:78695568** on Pledge:103925** for Contact:30982** Amount: 78.00 from correction script
+
+Reversing Trans:1376692** with PnRef:78699703** on Pledge:103925** for Contact:30982** Amount: 78.00 from correction script
+--------
+
+Approving Trans:1376061** with PnRef:78696046** on Pledge:104157** for Contact:61169** Amount: 39.00 from correction script
+
+Reversing Trans:1377113** with PnRef:78700133** on Pledge:104157** for Contact:61169** Amount: 39.00 from correction script
+
+Reversing Trans:1377622** with PnRef:78702797** on Pledge:104157** for Contact:61169** Amount: 39.00 from correction script
+--------
+
+Approving Trans:1376063** with PnRef:78696048** on Pledge:104159** for Contact:61172** Amount: 39.00 from correction script
+
+Reversing Trans:1377115** with PnRef:78700135** on Pledge:104159** for Contact:61172** Amount: 39.00 from correction script
+
+Reversing Trans:1377624** with PnRef:78702799** on Pledge:104159** for Contact:61172** Amount: 39.00 from correction script
+--------
+
+Approving Trans:1376067** with PnRef:78696052** on Pledge:104165** for Contact:61176** Amount: 39.00 from correction script
+
+Reversing Trans:1377118** with PnRef:78700138** on Pledge:104165** for Contact:61176** Amount: 39.00 from correction script
+
+Reversing Trans:1377627** with PnRef:78702802** on Pledge:104165** for Contact:61176** Amount: 39.00 from correction script
+--------
+
+Approving Trans:1378013** with PnRef:78703194** on Pledge:104194** for Contact:61200** Amount: 39.00 from correction script
+
+Reversing Trans:1378493** with PnRef:78706990** on Pledge:104194** for Contact:61200** Amount: 39.00 from correction script
+--------
+
+Approving Trans:1378801** with PnRef:78707304** on Pledge:104723** for Contact:61296** Amount: 39.00 from correction script
+--------
+
+Approving Trans:1377370** with PnRef:78700393** on Pledge:105454** for Contact:51231** Amount: 39.00 from correction script
+
+Reversing Trans:1377859** with PnRef:78703039** on Pledge:105454** for Contact:51231** Amount: 39.00 from correction script
+
+Reversing Trans:1378351** with PnRef:78706844** on Pledge:105454** for Contact:51231** Amount: 39.00 from correction script
+--------
+
+Approving Trans:1377371** with PnRef:78700394** on Pledge:105462** for Contact:51231** Amount: 39.00 from correction script
+
+Reversing Trans:1377860** with PnRef:78703040** on Pledge:105462** for Contact:51231** Amount: 39.00 from correction script
+
+Reversing Trans:1378352** with PnRef:78706845** on Pledge:105462** for Contact:51231** Amount: 39.00 from correction script
+--------
+
+Approving Trans:1378807** with PnRef:78707310** on Pledge:105497** for Contact:60969** Amount: 39.00 from correction script
+--------
+
+Approving Trans:1378024** with PnRef:78703205** on Pledge:106097** for Contact:62179** Amount: 39.00 from correction script
+
+Reversing Trans:1378504** with PnRef:78707001** on Pledge:106097** for Contact:62179** Amount: 39.00 from correction script
+--------
+
+Approving Trans:1378025** with PnRef:78703206** on Pledge:106099** for Contact:62179** Amount: 6.00 from correction script
+
+Reversing Trans:1378505** with PnRef:78707002** on Pledge:106099** for Contact:62179** Amount: 6.00 from correction script
+--------
+
+Approving Trans:1378026** with PnRef:78703207** on Pledge:106104** for Contact:62182** Amount: 39.00 from correction script
+
+Reversing Trans:1378506** with PnRef:78707003** on Pledge:106104** for Contact:62182** Amount: 39.00 from correction script
+--------
+
+Approving Trans:1378028** with PnRef:78703209** on Pledge:106107** for Contact:62184** Amount: 39.00 from correction script
+
+Reversing Trans:1378508** with PnRef:78707005** on Pledge:106107** for Contact:62184** Amount: 39.00 from correction script
+--------
+
+Approving Trans:1378029** with PnRef:78703210** on Pledge:106108** for Contact:61044** Amount: 39.00 from correction script
+
+Reversing Trans:1378509** with PnRef:78707006** on Pledge:106108** for Contact:61044** Amount: 39.00 from correction script
+--------
+
+Approving Trans:1378030** with PnRef:78703211** on Pledge:106109** for Contact:62185** Amount: 39.00 from correction script
+
+Reversing Trans:1378510** with PnRef:78707007** on Pledge:106109** for Contact:62185** Amount: 39.00 from correction script
+--------
+
+Approving Trans:1374630** with PnRef:78666056** on Pledge:106569** for Contact:51174** Amount: 39.00 from correction script
+
+Reversing Trans:1375594** with PnRef:78695570** on Pledge:106569** for Contact:51174** Amount: 39.00 from correction script
+
+Reversing Trans:1376694** with PnRef:78699705** on Pledge:106569** for Contact:51174** Amount: 39.00 from correction script
+--------
+
+Approving Trans:1378019** with PnRef:78703200** on Pledge:106792** for Contact:62476** Amount: 39.00 from correction script
+
+Reversing Trans:1378499** with PnRef:78706996** on Pledge:106792** for Contact:62476** Amount: 39.00 from correction script
+--------
+
+Approving Trans:1378020** with PnRef:78703201** on Pledge:106796** for Contact:62489** Amount: 39.00 from correction script
+
+Reversing Trans:1378500** with PnRef:78706997** on Pledge:106796** for Contact:62489** Amount: 39.00 from correction script
+--------
+
+Approving Trans:1378038** with PnRef:78703219** on Pledge:107247** for Contact:62654** Amount: 39.00 from correction script
+
+Reversing Trans:1378518** with PnRef:78707015** on Pledge:107247** for Contact:62654** Amount: 39.00 from correction script
+--------
+
+Approving Trans:1378034** with PnRef:78703215** on Pledge:107753** for Contact:62984** Amount: 39.00 from correction script
+
+Reversing Trans:1378514** with PnRef:78707011** on Pledge:107753** for Contact:62984** Amount: 39.00 from correction script
+--------
+
+Approving Trans:1378035** with PnRef:78703216** on Pledge:107754** for Contact:62984** Amount: 6.00 from correction script
+
+Reversing Trans:1378515** with PnRef:78707012** on Pledge:107754** for Contact:62984** Amount: 6.00 from correction script
+--------
+
+Approving Trans:1376093** with PnRef:78696079** on Pledge:108805** for Contact:58300** Amount: 39.00 from correction script
+
+Reversing Trans:1377137** with PnRef:78700157** on Pledge:108805** for Contact:58300** Amount: 39.00 from correction script
+
+Reversing Trans:1377646** with PnRef:78702821** on Pledge:108805** for Contact:58300** Amount: 39.00 from correction script
+--------
+
+Approving Trans:1374644** with PnRef:78666073** on Pledge:109111** for Contact:63696** Amount: 39.00 from correction script
+
+Reversing Trans:1375606** with PnRef:78695582** on Pledge:109111** for Contact:63696** Amount: 39.00 from correction script
+
+Reversing Trans:1376706** with PnRef:78699718** on Pledge:109111** for Contact:63696** Amount: 39.00 from correction script
+--------
+
+Approving Trans:1374645** with PnRef:78666075** on Pledge:109113** for Contact:63696** Amount: 39.00 from correction script
+
+Reversing Trans:1375607** with PnRef:78695583** on Pledge:109113** for Contact:63696** Amount: 39.00 from correction script
+
+Reversing Trans:1376707** with PnRef:78699719** on Pledge:109113** for Contact:63696** Amount: 39.00 from correction script
+--------
+
+Approving Trans:1374646** with PnRef:78666077** on Pledge:109115** for Contact:63696** Amount: 39.00 from correction script
+
+Reversing Trans:1375608** with PnRef:78695584** on Pledge:109115** for Contact:63696** Amount: 39.00 from correction script
+
+Reversing Trans:1376708** with PnRef:78699720** on Pledge:109115** for Contact:63696** Amount: 39.00 from correction script
+--------
+
+Approving Trans:1374647** with PnRef:78666079** on Pledge:109116** for Contact:63696** Amount: 39.00 from correction script
+
+Reversing Trans:1375609** with PnRef:78695585** on Pledge:109116** for Contact:63696** Amount: 39.00 from correction script
+
+Reversing Trans:1376709** with PnRef:78699721** on Pledge:109116** for Contact:63696** Amount: 39.00 from correction script
+--------
+
+Approving Trans:1377138** with PnRef:78700158** on Pledge:109229** for Contact:63688** Amount: 39.00 from correction script
+
+Reversing Trans:1377647** with PnRef:78702822** on Pledge:109229** for Contact:63688** Amount: 39.00 from correction script
+--------
+
+Approving Trans:1378039** with PnRef:78703220** on Pledge:109235** for Contact:45106** Amount: 39.00 from correction script
+
+Reversing Trans:1378519** with PnRef:78707016** on Pledge:109235** for Contact:45106** Amount: 39.00 from correction script
+--------
+
+Approving Trans:1378041** with PnRef:78703222** on Pledge:109237** for Contact:63752** Amount: 39.00 from correction script
+
+Reversing Trans:1378521** with PnRef:78707018** on Pledge:109237** for Contact:63752** Amount: 39.00 from correction script
+--------
+
+Approving Trans:1378819** with PnRef:78707323** on Pledge:109239** for Contact:56365** Amount: 39.00 from correction script
+--------
+
+Approving Trans:1374650** with PnRef:78666083** on Pledge:109303** for Contact:63776** Amount: 39.00 from correction script
+
+Reversing Trans:1375612** with PnRef:78695588** on Pledge:109303** for Contact:63776** Amount: 39.00 from correction script
+
+Reversing Trans:1376712** with PnRef:78699724** on Pledge:109303** for Contact:63776** Amount: 39.00 from correction script
+--------
+
+Approving Trans:1369121** with PnRef:78534239** on Pledge:109501** for Contact:63915** Amount: 39.00 from correction script
+--------
+
+Approving Trans:1378825** with PnRef:78707335** on Pledge:110910** for Contact:49939** Amount: 39.00 from correction script
+--------
+
+Approving Trans:1374659** with PnRef:78666094** on Pledge:111307** for Contact:50536** Amount: 78.00 from correction script
+
+Reversing Trans:1375618** with PnRef:78695594** on Pledge:111307** for Contact:50536** Amount: 78.00 from correction script
+
+Reversing Trans:1376718** with PnRef:78699730** on Pledge:111307** for Contact:50536** Amount: 78.00 from correction script
+--------
+
+Approving Trans:1374666** with PnRef:78666103** on Pledge:111336** for Contact:37706** Amount: 78.00 from correction script
+
+Reversing Trans:1375622** with PnRef:78695598** on Pledge:111336** for Contact:37706** Amount: 78.00 from correction script
+
+Reversing Trans:1376722** with PnRef:78699734** on Pledge:111336** for Contact:37706** Amount: 78.00 from correction script
+--------
+
+Approving Trans:1374674** with PnRef:78666111** on Pledge:111385** for Contact:38735** Amount: 78.00 from correction script
+
+Reversing Trans:1375625** with PnRef:78695601** on Pledge:111385** for Contact:38735** Amount: 78.00 from correction script
+
+Reversing Trans:1376725** with PnRef:78699737** on Pledge:111385** for Contact:38735** Amount: 78.00 from correction script
+--------
+
+Approving Trans:1377385** with PnRef:78700408** on Pledge:111437** for Contact:52449** Amount: 78.00 from correction script
+
+Reversing Trans:1377871** with PnRef:78703051** on Pledge:111437** for Contact:52449** Amount: 78.00 from correction script
+
+Reversing Trans:1378363** with PnRef:78706856** on Pledge:111437** for Contact:52449** Amount: 78.00 from correction script
+--------
+
+Approving Trans:1377386** with PnRef:78700409** on Pledge:111454** for Contact:36559** Amount: 78.00 from correction script
+
+Reversing Trans:1377872** with PnRef:78703052** on Pledge:111454** for Contact:36559** Amount: 78.00 from correction script
+
+Reversing Trans:1378364** with PnRef:78706857** on Pledge:111454** for Contact:36559** Amount: 78.00 from correction script
+--------
+
+Approving Trans:1374691** with PnRef:78666139** on Pledge:111478** for Contact:33065** Amount: 78.00 from correction script
+
+Reversing Trans:1375636** with PnRef:78695612** on Pledge:111478** for Contact:33065** Amount: 78.00 from correction script
+
+Reversing Trans:1376736** with PnRef:78699748** on Pledge:111478** for Contact:33065** Amount: 78.00 from correction script
+--------
+
+Approving Trans:1377388** with PnRef:78700411** on Pledge:111485** for Contact:62419** Amount: 78.00 from correction script
+
+Reversing Trans:1377873** with PnRef:78703053** on Pledge:111485** for Contact:62419** Amount: 78.00 from correction script
+
+Reversing Trans:1378365** with PnRef:78706858** on Pledge:111485** for Contact:62419** Amount: 78.00 from correction script
+--------
+
+Approving Trans:1378050** with PnRef:78703231** on Pledge:111536** for Contact:64396** Amount: 39.00 from correction script
+
+Reversing Trans:1378529** with PnRef:78707026** on Pledge:111536** for Contact:64396** Amount: 39.00 from correction script
+--------
+
+Approving Trans:1378051** with PnRef:78703232** on Pledge:111537** for Contact:64452** Amount: 39.00 from correction script
+
+Reversing Trans:1378530** with PnRef:78707027** on Pledge:111537** for Contact:64452** Amount: 39.00 from correction script
+--------
+
+Approving Trans:1374700** with PnRef:78666153** on Pledge:111938** for Contact:62640** Amount: 60.00 from correction script
+
+Reversing Trans:1375640** with PnRef:78695616** on Pledge:111938** for Contact:62640** Amount: 60.00 from correction script
+
+Reversing Trans:1376740** with PnRef:78699752** on Pledge:111938** for Contact:62640** Amount: 60.00 from correction script
+--------
+
+Approving Trans:1378831** with PnRef:78707341** on Pledge:111972** for Contact:44472** Amount: 78.00 from correction script
+--------
+
+Approving Trans:1378835** with PnRef:78707345** on Pledge:113579** for Contact:64821** Amount: 39.00 from correction script
+--------
+
+Approving Trans:1374710** with PnRef:78666170** on Pledge:113990** for Contact:37701** Amount: 175.00 from correction script
+
+Reversing Trans:1375643** with PnRef:78695619** on Pledge:113990** for Contact:37701** Amount: 175.00 from correction script
+
+Reversing Trans:1376743** with PnRef:78699755** on Pledge:113990** for Contact:37701** Amount: 175.00 from correction script
+--------
+
+Approving Trans:1374712** with PnRef:78666173** on Pledge:114009** for Contact:29732** Amount: 300.00 from correction script
+
+Reversing Trans:1375645** with PnRef:78695621** on Pledge:114009** for Contact:29732** Amount: 300.00 from correction script
+
+Reversing Trans:1376745** with PnRef:78699757** on Pledge:114009** for Contact:29732** Amount: 300.00 from correction script
+--------
+
+Approving Trans:1376113** with PnRef:78696099** on Pledge:114037** for Contact:65849** Amount: 39.00 from correction script
+
+Reversing Trans:1377155** with PnRef:78700175** on Pledge:114037** for Contact:65849** Amount: 39.00 from correction script
+
+Reversing Trans:1377664** with PnRef:78702839** on Pledge:114037** for Contact:65849** Amount: 39.00 from correction script
+--------
+
+Approving Trans:1376114** with PnRef:78696100** on Pledge:114053** for Contact:65852** Amount: 39.00 from correction script
+
+Reversing Trans:1377156** with PnRef:78700176** on Pledge:114053** for Contact:65852** Amount: 39.00 from correction script
+
+Reversing Trans:1377665** with PnRef:78702840** on Pledge:114053** for Contact:65852** Amount: 39.00 from correction script
+--------
+
+Approving Trans:1374726** with PnRef:78666192** on Pledge:114585** for Contact:66226** Amount: 39.00 from correction script
+
+Reversing Trans:1375653** with PnRef:78695629** on Pledge:114585** for Contact:66226** Amount: 39.00 from correction script
+
+Reversing Trans:1376753** with PnRef:78699765** on Pledge:114585** for Contact:66226** Amount: 39.00 from correction script
+--------
+
+Approving Trans:1377395** with PnRef:78700423** on Pledge:115377** for Contact:65604** Amount: 39.00 from correction script
+
+Reversing Trans:1377879** with PnRef:78703059** on Pledge:115377** for Contact:65604** Amount: 39.00 from correction script
+
+Reversing Trans:1378371** with PnRef:78706865** on Pledge:115377** for Contact:65604** Amount: 39.00 from correction script
+--------
+
+Approving Trans:1377393** with PnRef:78700421** on Pledge:115458** for Contact:41357** Amount: 39.00 from correction script
+
+Reversing Trans:1377877** with PnRef:78703057** on Pledge:115458** for Contact:41357** Amount: 39.00 from correction script
+
+Reversing Trans:1378369** with PnRef:78706863** on Pledge:115458** for Contact:41357** Amount: 39.00 from correction script
+--------
+
+Approving Trans:1378097** with PnRef:78703279** on Pledge:115859** for Contact:56301** Amount: 39.00 from correction script
+
+Reversing Trans:1378572** with PnRef:78707069** on Pledge:115859** for Contact:56301** Amount: 39.00 from correction script
+--------
+
+Approving Trans:1378064** with PnRef:78703245** on Pledge:115990** for Contact:66940** Amount: 39.00 from correction script
+
+Reversing Trans:1378542** with PnRef:78707039** on Pledge:115990** for Contact:66940** Amount: 39.00 from correction script
+--------
+
+Approving Trans:1378066** with PnRef:78703247** on Pledge:115996** for Contact:66943** Amount: 39.00 from correction script
+
+Reversing Trans:1378544** with PnRef:78707041** on Pledge:115996** for Contact:66943** Amount: 39.00 from correction script
+--------
+
+Approving Trans:1378089** with PnRef:78703271** on Pledge:116033** for Contact:66960** Amount: 39.00 from correction script
+
+Reversing Trans:1378564** with PnRef:78707061** on Pledge:116033** for Contact:66960** Amount: 39.00 from correction script
+--------
+
+Approving Trans:1378846** with PnRef:78707356** on Pledge:116055** for Contact:66969** Amount: 39.00 from correction script
+--------
+
+Approving Trans:1378848** with PnRef:78707358** on Pledge:116057** for Contact:66971** Amount: 39.00 from correction script
+--------
+
+Approving Trans:1377396** with PnRef:78700424** on Pledge:116241** for Contact:60901** Amount: 39.00 from correction script
+
+Reversing Trans:1377880** with PnRef:78703060** on Pledge:116241** for Contact:60901** Amount: 39.00 from correction script
+
+Reversing Trans:1378372** with PnRef:78706866** on Pledge:116241** for Contact:60901** Amount: 39.00 from correction script
+--------
+
+Approving Trans:1374739** with PnRef:78666217** on Pledge:116255** for Contact:35351** Amount: 39.00 from correction script
+
+Reversing Trans:1375660** with PnRef:78695636** on Pledge:116255** for Contact:35351** Amount: 39.00 from correction script
+
+Reversing Trans:1376760** with PnRef:78699772** on Pledge:116255** for Contact:35351** Amount: 39.00 from correction script
+--------
+
+Approving Trans:1376134** with PnRef:78696120** on Pledge:116362** for Contact:60878** Amount: 39.00 from correction script
+
+Reversing Trans:1377171** with PnRef:78700192** on Pledge:116362** for Contact:60878** Amount: 39.00 from correction script
+
+Reversing Trans:1377680** with PnRef:78702855** on Pledge:116362** for Contact:60878** Amount: 39.00 from correction script
+--------
+
+Approving Trans:1376131** with PnRef:78696117** on Pledge:116519** for Contact:66303** Amount: 39.00 from correction script
+--------
+
+Approving Trans:1377400** with PnRef:78700428** on Pledge:116521** for Contact:65475** Amount: 39.00 from correction script
+
+Reversing Trans:1377884** with PnRef:78703064** on Pledge:116521** for Contact:65475** Amount: 39.00 from correction script
+
+Reversing Trans:1378376** with PnRef:78706871** on Pledge:116521** for Contact:65475** Amount: 39.00 from correction script
+--------
+
+Approving Trans:1377401** with PnRef:78700429** on Pledge:116522** for Contact:64172** Amount: 39.00 from correction script
+
+Reversing Trans:1377885** with PnRef:78703065** on Pledge:116522** for Contact:64172** Amount: 39.00 from correction script
+
+Reversing Trans:1378377** with PnRef:78706872** on Pledge:116522** for Contact:64172** Amount: 39.00 from correction script
+--------
+
+Approving Trans:1374751** with PnRef:78666239** on Pledge:117363** for Contact:48701** Amount: 39.00 from correction script
+
+Reversing Trans:1375667** with PnRef:78695643** on Pledge:117363** for Contact:48701** Amount: 39.00 from correction script
+
+Reversing Trans:1376767** with PnRef:78699779** on Pledge:117363** for Contact:48701** Amount: 39.00 from correction script
+--------
+
+Approving Trans:1374753** with PnRef:78666241** on Pledge:117372** for Contact:51884** Amount: 700.00 from correction script
+
+Reversing Trans:1375669** with PnRef:78695645** on Pledge:117372** for Contact:51884** Amount: 700.00 from correction script
+
+Reversing Trans:1376769** with PnRef:78699781** on Pledge:117372** for Contact:51884** Amount: 700.00 from correction script
+--------
+
+Approving Trans:1376135** with PnRef:78696121** on Pledge:117373** for Contact:67262** Amount: 39.00 from correction script
+
+Reversing Trans:1377172** with PnRef:78700193** on Pledge:117373** for Contact:67262** Amount: 39.00 from correction script
+
+Reversing Trans:1377681** with PnRef:78702856** on Pledge:117373** for Contact:67262** Amount: 39.00 from correction script
+--------
+
+Approving Trans:1374777** with PnRef:78666280** on Pledge:119218** for Contact:45154** Amount: 78.00 from correction script
+
+Reversing Trans:1375679** with PnRef:78695655** on Pledge:119218** for Contact:45154** Amount: 78.00 from correction script
+
+Reversing Trans:1376779** with PnRef:78699796** on Pledge:119218** for Contact:45154** Amount: 78.00 from correction script
+--------
+
+Approving Trans:1374781** with PnRef:78666284** on Pledge:119224** for Contact:35357** Amount: 78.00 from correction script
+
+Reversing Trans:1375681** with PnRef:78695657** on Pledge:119224** for Contact:35357** Amount: 78.00 from correction script
+
+Reversing Trans:1376781** with PnRef:78699798** on Pledge:119224** for Contact:35357** Amount: 78.00 from correction script
+--------
+
+Approving Trans:1374795** with PnRef:78666305** on Pledge:119235** for Contact:48797** Amount: 78.00 from correction script
+
+Reversing Trans:1375690** with PnRef:78695666** on Pledge:119235** for Contact:48797** Amount: 78.00 from correction script
+
+Reversing Trans:1376790** with PnRef:78699807** on Pledge:119235** for Contact:48797** Amount: 78.00 from correction script
+--------
+
+Approving Trans:1374796** with PnRef:78666306** on Pledge:119247** for Contact:45773** Amount: 78.00 from correction script
+
+Reversing Trans:1375691** with PnRef:78695667** on Pledge:119247** for Contact:45773** Amount: 78.00 from correction script
+
+Reversing Trans:1376791** with PnRef:78699808** on Pledge:119247** for Contact:45773** Amount: 78.00 from correction script
+--------
+
+Approving Trans:1374799** with PnRef:78666311** on Pledge:119262** for Contact:28860** Amount: 78.00 from correction script
+
+Reversing Trans:1375692** with PnRef:78695668** on Pledge:119262** for Contact:28860** Amount: 78.00 from correction script
+
+Reversing Trans:1376792** with PnRef:78699809** on Pledge:119262** for Contact:28860** Amount: 78.00 from correction script
+--------
+
+Approving Trans:1374805** with PnRef:78666319** on Pledge:119275** for Contact:29645** Amount: 78.00 from correction script
+
+Reversing Trans:1375697** with PnRef:78695673** on Pledge:119275** for Contact:29645** Amount: 78.00 from correction script
+
+Reversing Trans:1376797** with PnRef:78699814** on Pledge:119275** for Contact:29645** Amount: 78.00 from correction script
+--------
+
+Approving Trans:1376144** with PnRef:78696131** on Pledge:119330** for Contact:54189** Amount: 78.00 from correction script
+
+Reversing Trans:1377178** with PnRef:78700199** on Pledge:119330** for Contact:54189** Amount: 78.00 from correction script
+
+Reversing Trans:1377687** with PnRef:78702862** on Pledge:119330** for Contact:54189** Amount: 78.00 from correction script
+--------
+
+Approving Trans:1374786** with PnRef:78666292** on Pledge:119353** for Contact:29645** Amount: 78.00 from correction script
+
+Reversing Trans:1375685** with PnRef:78695661** on Pledge:119353** for Contact:29645** Amount: 78.00 from correction script
+
+Reversing Trans:1376785** with PnRef:78699802** on Pledge:119353** for Contact:29645** Amount: 78.00 from correction script
+--------
+
+Approving Trans:1378114** with PnRef:78703297** on Pledge:119357** for Contact:58447** Amount: 78.00 from correction script
+
+Reversing Trans:1378587** with PnRef:78707085** on Pledge:119357** for Contact:58447** Amount: 78.00 from correction script
+--------
+
+Approving Trans:1374791** with PnRef:78666300** on Pledge:119416** for Contact:31279** Amount: 39.00 from correction script
+
+Reversing Trans:1375687** with PnRef:78695663** on Pledge:119416** for Contact:31279** Amount: 39.00 from correction script
+
+Reversing Trans:1376787** with PnRef:78699804** on Pledge:119416** for Contact:31279** Amount: 39.00 from correction script
+--------
+
+Approving Trans:1376146** with PnRef:78696133** on Pledge:119424** for Contact:31279** Amount: 39.00 from correction script
+
+Reversing Trans:1377180** with PnRef:78700201** on Pledge:119424** for Contact:31279** Amount: 39.00 from correction script
+
+Reversing Trans:1377689** with PnRef:78702864** on Pledge:119424** for Contact:31279** Amount: 39.00 from correction script
+--------
+
+Approving Trans:1378119** with PnRef:78703302** on Pledge:119482** for Contact:66238** Amount: 300.00 from correction script
+
+Reversing Trans:1378590** with PnRef:78707088** on Pledge:119482** for Contact:66238** Amount: 300.00 from correction script
+--------
+
+Approving Trans:1374811** with PnRef:78666328** on Pledge:119854** for Contact:29600** Amount: 78.00 from correction script
+
+Reversing Trans:1375701** with PnRef:78695677** on Pledge:119854** for Contact:29600** Amount: 78.00 from correction script
+
+Reversing Trans:1376801** with PnRef:78699818** on Pledge:119854** for Contact:29600** Amount: 78.00 from correction script
+--------
+
+Approving Trans:1374823** with PnRef:78666345** on Pledge:121349** for Contact:31991** Amount: 300.00 from correction script
+
+Reversing Trans:1375709** with PnRef:78695685** on Pledge:121349** for Contact:31991** Amount: 300.00 from correction script
+
+Reversing Trans:1376809** with PnRef:78699826** on Pledge:121349** for Contact:31991** Amount: 300.00 from correction script
+--------
+
+Approving Trans:1374832** with PnRef:78666359** on Pledge:121471** for Contact:60104** Amount: 20.00 from correction script
+
+Reversing Trans:1375712** with PnRef:78695688** on Pledge:121471** for Contact:60104** Amount: 20.00 from correction script
+
+Reversing Trans:1376812** with PnRef:78699829** on Pledge:121471** for Contact:60104** Amount: 20.00 from correction script
+--------
+
+Approving Trans:1373917** with PnRef:78650245** on Pledge:121474** for Contact:61880** Amount: 39.00 from correction script
+
+Reversing Trans:1373957** with PnRef:78664943** on Pledge:121474** for Contact:61880** Amount: 39.00 from correction script
+
+Reversing Trans:1375147** with PnRef:78695116** on Pledge:121474** for Contact:61880** Amount: 39.00 from correction script
+--------
+
+Approving Trans:1377417** with PnRef:78700445** on Pledge:121490** for Contact:69228** Amount: 50.00 from correction script
+
+Reversing Trans:1377896** with PnRef:78703076** on Pledge:121490** for Contact:69228** Amount: 50.00 from correction script
+
+Reversing Trans:1378388** with PnRef:78706883** on Pledge:121490** for Contact:69228** Amount: 50.00 from correction script
+--------
+
+Approving Trans:1374824** with PnRef:78666347** on Pledge:121605** for Contact:41159** Amount: 78.00 from correction script
+
+Reversing Trans:1375710** with PnRef:78695686** on Pledge:121605** for Contact:41159** Amount: 78.00 from correction script
+
+Reversing Trans:1376810** with PnRef:78699827** on Pledge:121605** for Contact:41159** Amount: 78.00 from correction script
+--------
+
+Approving Trans:1376155** with PnRef:78696143** on Pledge:122229** for Contact:54812** Amount: 39.00 from correction script
+
+Reversing Trans:1377186** with PnRef:78700207** on Pledge:122229** for Contact:54812** Amount: 39.00 from correction script
+
+Reversing Trans:1377695** with PnRef:78702870** on Pledge:122229** for Contact:54812** Amount: 39.00 from correction script
+--------
+
+Approving Trans:1376151** with PnRef:78696139** on Pledge:122387** for Contact:31986** Amount: 39.00 from correction script
+
+Reversing Trans:1377183** with PnRef:78700204** on Pledge:122387** for Contact:31986** Amount: 39.00 from correction script
+
+Reversing Trans:1377692** with PnRef:78702867** on Pledge:122387** for Contact:31986** Amount: 39.00 from correction script
+--------
+
+Approving Trans:1376158** with PnRef:78696146** on Pledge:122560** for Contact:31986** Amount: 39.00 from correction script
+
+Reversing Trans:1377188** with PnRef:78700209** on Pledge:122560** for Contact:31986** Amount: 39.00 from correction script
+
+Reversing Trans:1377697** with PnRef:78702872** on Pledge:122560** for Contact:31986** Amount: 39.00 from correction script
+--------
+
+Approving Trans:1374855** with PnRef:78666397** on Pledge:122829** for Contact:43176** Amount: 39.00 from correction script
+
+Reversing Trans:1375722** with PnRef:78695698** on Pledge:122829** for Contact:43176** Amount: 39.00 from correction script
+
+Reversing Trans:1376822** with PnRef:78699839** on Pledge:122829** for Contact:43176** Amount: 39.00 from correction script
+--------
+
+Approving Trans:1376161** with PnRef:78696149** on Pledge:123212** for Contact:52574** Amount: 39.00 from correction script
+
+Reversing Trans:1377191** with PnRef:78700212** on Pledge:123212** for Contact:52574** Amount: 39.00 from correction script
+
+Reversing Trans:1377700** with PnRef:78702875** on Pledge:123212** for Contact:52574** Amount: 39.00 from correction script
+--------
+
+Approving Trans:1374864** with PnRef:78666409** on Pledge:123817** for Contact:49169** Amount: 39.00 from correction script
+
+Reversing Trans:1375728** with PnRef:78695704** on Pledge:123817** for Contact:49169** Amount: 39.00 from correction script
+
+Reversing Trans:1376828** with PnRef:78699845** on Pledge:123817** for Contact:49169** Amount: 39.00 from correction script
+--------
+
+Approving Trans:1377423** with PnRef:78700451** on Pledge:123827** for Contact:65847** Amount: 39.00 from correction script
+
+Reversing Trans:1377902** with PnRef:78703082** on Pledge:123827** for Contact:65847** Amount: 39.00 from correction script
+
+Reversing Trans:1378394** with PnRef:78706889** on Pledge:123827** for Contact:65847** Amount: 39.00 from correction script
+--------
+
+Approving Trans:1374865** with PnRef:78666411** on Pledge:124091** for Contact:62405** Amount: 39.00 from correction script
+
+Reversing Trans:1375729** with PnRef:78695705** on Pledge:124091** for Contact:62405** Amount: 39.00 from correction script
+
+Reversing Trans:1376829** with PnRef:78699846** on Pledge:124091** for Contact:62405** Amount: 39.00 from correction script
+--------
+
+Approving Trans:1374866** with PnRef:78666413** on Pledge:124092** for Contact:62405** Amount: 39.00 from correction script
+
+Reversing Trans:1375730** with PnRef:78695706** on Pledge:124092** for Contact:62405** Amount: 39.00 from correction script
+
+Reversing Trans:1376830** with PnRef:78699847** on Pledge:124092** for Contact:62405** Amount: 39.00 from correction script
+--------
+
+Approving Trans:1376177** with PnRef:78696165** on Pledge:124152** for Contact:49169** Amount: 39.00 from correction script
+
+Reversing Trans:1377206** with PnRef:78700228** on Pledge:124152** for Contact:49169** Amount: 39.00 from correction script
+
+Reversing Trans:1377715** with PnRef:78702892** on Pledge:124152** for Contact:49169** Amount: 39.00 from correction script
+--------
+
+Approving Trans:1376178** with PnRef:78696166** on Pledge:124154** for Contact:49169** Amount: 39.00 from correction script
+
+Reversing Trans:1377207** with PnRef:78700229** on Pledge:124154** for Contact:49169** Amount: 39.00 from correction script
+
+Reversing Trans:1377716** with PnRef:78702896** on Pledge:124154** for Contact:49169** Amount: 39.00 from correction script
+--------
+
+Approving Trans:1376179** with PnRef:78696167** on Pledge:124156** for Contact:49169** Amount: 39.00 from correction script
+
+Reversing Trans:1377208** with PnRef:78700230** on Pledge:124156** for Contact:49169** Amount: 39.00 from correction script
+
+Reversing Trans:1377717** with PnRef:78702897** on Pledge:124156** for Contact:49169** Amount: 39.00 from correction script
+--------
+
+Approving Trans:1376180** with PnRef:78696168** on Pledge:124157** for Contact:49169** Amount: 39.00 from correction script
+
+Reversing Trans:1377209** with PnRef:78700231** on Pledge:124157** for Contact:49169** Amount: 39.00 from correction script
+
+Reversing Trans:1377718** with PnRef:78702898** on Pledge:124157** for Contact:49169** Amount: 39.00 from correction script
+--------
+
+Approving Trans:1378880** with PnRef:78707390** on Pledge:124273** for Contact:63759** Amount: 39.00 from correction script
+--------
+
+Approving Trans:1378133** with PnRef:78703316** on Pledge:124447** for Contact:70103** Amount: 39.00 from correction script
+
+Reversing Trans:1378597** with PnRef:78707095** on Pledge:124447** for Contact:70103** Amount: 39.00 from correction script
+--------
+
+Approving Trans:1374882** with PnRef:78666454** on Pledge:124589** for Contact:33065** Amount: 395.00 from correction script
+
+Reversing Trans:1375744** with PnRef:78695720** on Pledge:124589** for Contact:33065** Amount: 395.00 from correction script
+
+Reversing Trans:1376844** with PnRef:78699862** on Pledge:124589** for Contact:33065** Amount: 395.00 from correction script
+--------
+
+Approving Trans:1374872** with PnRef:78666426** on Pledge:124683** for Contact:31184** Amount: 175.00 from correction script
+
+Reversing Trans:1375736** with PnRef:78695712** on Pledge:124683** for Contact:31184** Amount: 175.00 from correction script
+
+Reversing Trans:1376836** with PnRef:78699853** on Pledge:124683** for Contact:31184** Amount: 175.00 from correction script
+--------
+
+Approving Trans:1374877** with PnRef:78666441** on Pledge:124785** for Contact:70254** Amount: 25.00 from correction script
+
+Reversing Trans:1375739** with PnRef:78695715** on Pledge:124785** for Contact:70254** Amount: 25.00 from correction script
+
+Reversing Trans:1376839** with PnRef:78699856** on Pledge:124785** for Contact:70254** Amount: 25.00 from correction script
+--------
+
+Approving Trans:1376174** with PnRef:78696162** on Pledge:124827** for Contact:70292** Amount: 25.00 from correction script
+
+Reversing Trans:1377203** with PnRef:78700225** on Pledge:124827** for Contact:70292** Amount: 25.00 from correction script
+
+Reversing Trans:1377712** with PnRef:78702887** on Pledge:124827** for Contact:70292** Amount: 25.00 from correction script
+--------
+
+Approving Trans:1378888** with PnRef:78707398** on Pledge:125174** for Contact:31539** Amount: 175.00 from correction script
+--------
+
+Approving Trans:1374899** with PnRef:78666504** on Pledge:125694** for Contact:29644** Amount: 78.00 from correction script
+
+Reversing Trans:1375757** with PnRef:78695733** on Pledge:125694** for Contact:29644** Amount: 78.00 from correction script
+
+Reversing Trans:1376857** with PnRef:78699875** on Pledge:125694** for Contact:29644** Amount: 78.00 from correction script
+--------
+
+Approving Trans:1377428** with PnRef:78700456** on Pledge:125701** for Contact:38643** Amount: 78.00 from correction script
+
+Reversing Trans:1377907** with PnRef:78703087** on Pledge:125701** for Contact:38643** Amount: 78.00 from correction script
+
+Reversing Trans:1378399** with PnRef:78706894** on Pledge:125701** for Contact:38643** Amount: 78.00 from correction script
+--------
+
+Approving Trans:1374901** with PnRef:78666510** on Pledge:125710** for Contact:49378** Amount: 78.00 from correction script
+
+Reversing Trans:1375758** with PnRef:78695734** on Pledge:125710** for Contact:49378** Amount: 78.00 from correction script
+
+Reversing Trans:1376858** with PnRef:78699876** on Pledge:125710** for Contact:49378** Amount: 78.00 from correction script
+--------
+
+Approving Trans:1374902** with PnRef:78666513** on Pledge:125716** for Contact:38282** Amount: 78.00 from correction script
+
+Reversing Trans:1375759** with PnRef:78695735** on Pledge:125716** for Contact:38282** Amount: 78.00 from correction script
+
+Reversing Trans:1376859** with PnRef:78699877** on Pledge:125716** for Contact:38282** Amount: 78.00 from correction script
+--------
+
+Approving Trans:1374903** with PnRef:78666517** on Pledge:125718** for Contact:38863** Amount: 78.00 from correction script
+
+Reversing Trans:1375760** with PnRef:78695736** on Pledge:125718** for Contact:38863** Amount: 78.00 from correction script
+
+Reversing Trans:1376860** with PnRef:78699878** on Pledge:125718** for Contact:38863** Amount: 78.00 from correction script
+--------
+
+Approving Trans:1374907** with PnRef:78666529** on Pledge:125729** for Contact:38381** Amount: 78.00 from correction script
+
+Reversing Trans:1375763** with PnRef:78695739** on Pledge:125729** for Contact:38381** Amount: 78.00 from correction script
+
+Reversing Trans:1376863** with PnRef:78699881** on Pledge:125729** for Contact:38381** Amount: 78.00 from correction script
+--------
+
+Approving Trans:1374909** with PnRef:78666534** on Pledge:125733** for Contact:36016** Amount: 78.00 from correction script
+
+Reversing Trans:1375765** with PnRef:78695741** on Pledge:125733** for Contact:36016** Amount: 78.00 from correction script
+
+Reversing Trans:1376865** with PnRef:78699883** on Pledge:125733** for Contact:36016** Amount: 78.00 from correction script
+--------
+
+Approving Trans:1374913** with PnRef:78666548** on Pledge:125755** for Contact:36234** Amount: 78.00 from correction script
+
+Reversing Trans:1375766** with PnRef:78695743** on Pledge:125755** for Contact:36234** Amount: 78.00 from correction script
+
+Reversing Trans:1376866** with PnRef:78699884** on Pledge:125755** for Contact:36234** Amount: 78.00 from correction script
+--------
+
+Approving Trans:1378142** with PnRef:78703325** on Pledge:125756** for Contact:42806** Amount: 78.00 from correction script
+
+Reversing Trans:1378604** with PnRef:78707103** on Pledge:125756** for Contact:42806** Amount: 78.00 from correction script
+--------
+
+Approving Trans:1374914** with PnRef:78666551** on Pledge:125758** for Contact:44219** Amount: 78.00 from correction script
+
+Reversing Trans:1375767** with PnRef:78695744** on Pledge:125758** for Contact:44219** Amount: 78.00 from correction script
+
+Reversing Trans:1376867** with PnRef:78699885** on Pledge:125758** for Contact:44219** Amount: 78.00 from correction script
+--------
+
+Approving Trans:1377429** with PnRef:78700457** on Pledge:125785** for Contact:38643** Amount: 78.00 from correction script
+
+Reversing Trans:1377908** with PnRef:78703088** on Pledge:125785** for Contact:38643** Amount: 78.00 from correction script
+
+Reversing Trans:1378400** with PnRef:78706895** on Pledge:125785** for Contact:38643** Amount: 78.00 from correction script
+--------
+
+Approving Trans:1374922** with PnRef:78666573** on Pledge:125790** for Contact:40928** Amount: 78.00 from correction script
+
+Reversing Trans:1375771** with PnRef:78695748** on Pledge:125790** for Contact:40928** Amount: 78.00 from correction script
+
+Reversing Trans:1376871** with PnRef:78699889** on Pledge:125790** for Contact:40928** Amount: 78.00 from correction script
+--------
+
+Approving Trans:1374924** with PnRef:78666579** on Pledge:125795** for Contact:43552** Amount: 78.00 from correction script
+
+Reversing Trans:1375773** with PnRef:78695750** on Pledge:125795** for Contact:43552** Amount: 78.00 from correction script
+
+Reversing Trans:1376873** with PnRef:78699891** on Pledge:125795** for Contact:43552** Amount: 78.00 from correction script
+--------
+
+Approving Trans:1374925** with PnRef:78666583** on Pledge:125798** for Contact:39514** Amount: 78.00 from correction script
+
+Reversing Trans:1375774** with PnRef:78695751** on Pledge:125798** for Contact:39514** Amount: 78.00 from correction script
+
+Reversing Trans:1376874** with PnRef:78699892** on Pledge:125798** for Contact:39514** Amount: 78.00 from correction script
+--------
+
+Approving Trans:1374927** with PnRef:78666589** on Pledge:125810** for Contact:41357** Amount: 78.00 from correction script
+
+Reversing Trans:1375776** with PnRef:78695753** on Pledge:125810** for Contact:41357** Amount: 78.00 from correction script
+
+Reversing Trans:1376876** with PnRef:78699894** on Pledge:125810** for Contact:41357** Amount: 78.00 from correction script
+--------
+
+Approving Trans:1374928** with PnRef:78666591** on Pledge:125811** for Contact:49372** Amount: 78.00 from correction script
+
+Reversing Trans:1375777** with PnRef:78695754** on Pledge:125811** for Contact:49372** Amount: 78.00 from correction script
+
+Reversing Trans:1376877** with PnRef:78699895** on Pledge:125811** for Contact:49372** Amount: 78.00 from correction script
+--------
+
+Approving Trans:1378147** with PnRef:78703330** on Pledge:125879** for Contact:60938** Amount: 78.00 from correction script
+
+Reversing Trans:1378608** with PnRef:78707107** on Pledge:125879** for Contact:60938** Amount: 78.00 from correction script
+--------
+
+Approving Trans:1374937** with PnRef:78666618** on Pledge:125934** for Contact:56595** Amount: 936.00 from correction script
+
+Reversing Trans:1375781** with PnRef:78695758** on Pledge:125934** for Contact:56595** Amount: 936.00 from correction script
+
+Reversing Trans:1376881** with PnRef:78699899** on Pledge:125934** for Contact:56595** Amount: 936.00 from correction script
+--------
+
+Approving Trans:1377430** with PnRef:78700458** on Pledge:126094** for Contact:70498** Amount: 39.00 from correction script
+
+Reversing Trans:1377909** with PnRef:78703089** on Pledge:126094** for Contact:70498** Amount: 39.00 from correction script
+
+Reversing Trans:1378401** with PnRef:78706896** on Pledge:126094** for Contact:70498** Amount: 39.00 from correction script
+--------
+
+Approving Trans:1378149** with PnRef:78703332** on Pledge:126455** for Contact:69533** Amount: 39.00 from correction script
+
+Reversing Trans:1378610** with PnRef:78707109** on Pledge:126455** for Contact:69533** Amount: 39.00 from correction script
+--------
+
+Approving Trans:1374942** with PnRef:78666635** on Pledge:126490** for Contact:40460** Amount: 39.00 from correction script
+
+Reversing Trans:1375782** with PnRef:78695759** on Pledge:126490** for Contact:40460** Amount: 39.00 from correction script
+
+Reversing Trans:1376882** with PnRef:78699900** on Pledge:126490** for Contact:40460** Amount: 39.00 from correction script
+--------
+
+Approving Trans:1374944** with PnRef:78666639** on Pledge:127026** for Contact:34170** Amount: 39.00 from correction script
+
+Reversing Trans:1375784** with PnRef:78695761** on Pledge:127026** for Contact:34170** Amount: 39.00 from correction script
+
+Reversing Trans:1376884** with PnRef:78699902** on Pledge:127026** for Contact:34170** Amount: 39.00 from correction script
+--------
+
+Approving Trans:1374947** with PnRef:78666647** on Pledge:127060** for Contact:35844** Amount: 39.00 from correction script
+
+Reversing Trans:1375786** with PnRef:78695763** on Pledge:127060** for Contact:35844** Amount: 39.00 from correction script
+
+Reversing Trans:1376886** with PnRef:78699904** on Pledge:127060** for Contact:35844** Amount: 39.00 from correction script
+--------
+
+Approving Trans:1377437** with PnRef:78700465** on Pledge:127117** for Contact:56502** Amount: 45.00 from correction script
+
+Reversing Trans:1377915** with PnRef:78703095** on Pledge:127117** for Contact:56502** Amount: 45.00 from correction script
+
+Reversing Trans:1378407** with PnRef:78706902** on Pledge:127117** for Contact:56502** Amount: 45.00 from correction script
+--------
+
+Approving Trans:1378160** with PnRef:78703343** on Pledge:127149** for Contact:70627** Amount: 39.00 from correction script
+
+Reversing Trans:1378616** with PnRef:78707115** on Pledge:127149** for Contact:70627** Amount: 39.00 from correction script
+--------
+
+Approving Trans:1378161** with PnRef:78703344** on Pledge:127152** for Contact:70484** Amount: 39.00 from correction script
+
+Reversing Trans:1378617** with PnRef:78707116** on Pledge:127152** for Contact:70484** Amount: 39.00 from correction script
+--------
+
+Approving Trans:1378895** with PnRef:78707405** on Pledge:127164** for Contact:70629** Amount: 39.00 from correction script
+--------
+
+Approving Trans:1378896** with PnRef:78707406** on Pledge:127168** for Contact:70630** Amount: 39.00 from correction script
+--------
+
+Approving Trans:1378150** with PnRef:78703333** on Pledge:127277** for Contact:66937** Amount: 39.00 from correction script
+
+Reversing Trans:1378611** with PnRef:78707110** on Pledge:127277** for Contact:66937** Amount: 39.00 from correction script
+--------
+
+Approving Trans:1374969** with PnRef:78666706** on Pledge:127347** for Contact:52556** Amount: 39.00 from correction script
+
+Reversing Trans:1375800** with PnRef:78695777** on Pledge:127347** for Contact:52556** Amount: 39.00 from correction script
+
+Reversing Trans:1376900** with PnRef:78699918** on Pledge:127347** for Contact:52556** Amount: 39.00 from correction script
+--------
+
+Approving Trans:1374970** with PnRef:78666709** on Pledge:127350** for Contact:43176** Amount: 39.00 from correction script
+
+Reversing Trans:1375801** with PnRef:78695778** on Pledge:127350** for Contact:43176** Amount: 39.00 from correction script
+
+Reversing Trans:1376901** with PnRef:78699919** on Pledge:127350** for Contact:43176** Amount: 39.00 from correction script
+--------
+
+Approving Trans:1374977** with PnRef:78666731** on Pledge:127364** for Contact:41291** Amount: 39.00 from correction script
+
+Reversing Trans:1375806** with PnRef:78695783** on Pledge:127364** for Contact:41291** Amount: 39.00 from correction script
+
+Reversing Trans:1376906** with PnRef:78699925** on Pledge:127364** for Contact:41291** Amount: 39.00 from correction script
+--------
+
+Approving Trans:1374979** with PnRef:78666735** on Pledge:127370** for Contact:52908** Amount: 39.00 from correction script
+
+Reversing Trans:1375808** with PnRef:78695785** on Pledge:127370** for Contact:52908** Amount: 39.00 from correction script
+
+Reversing Trans:1376908** with PnRef:78699927** on Pledge:127370** for Contact:52908** Amount: 39.00 from correction script
+--------
+
+Approving Trans:1374980** with PnRef:78666737** on Pledge:127371** for Contact:62978** Amount: 39.00 from correction script
+
+Reversing Trans:1375809** with PnRef:78695786** on Pledge:127371** for Contact:62978** Amount: 39.00 from correction script
+
+Reversing Trans:1376909** with PnRef:78699928** on Pledge:127371** for Contact:62978** Amount: 39.00 from correction script
+--------
+
+Approving Trans:1374981** with PnRef:78666741** on Pledge:127372** for Contact:62978** Amount: 39.00 from correction script
+
+Reversing Trans:1375810** with PnRef:78695787** on Pledge:127372** for Contact:62978** Amount: 39.00 from correction script
+
+Reversing Trans:1376910** with PnRef:78699929** on Pledge:127372** for Contact:62978** Amount: 39.00 from correction script
+--------
+
+Approving Trans:1374982** with PnRef:78666744** on Pledge:127373** for Contact:32484** Amount: 39.00 from correction script
+
+Reversing Trans:1375811** with PnRef:78695788** on Pledge:127373** for Contact:32484** Amount: 39.00 from correction script
+
+Reversing Trans:1376911** with PnRef:78699930** on Pledge:127373** for Contact:32484** Amount: 39.00 from correction script
+--------
+
+Approving Trans:1376193** with PnRef:78696182** on Pledge:127385** for Contact:70680** Amount: 39.00 from correction script
+
+Reversing Trans:1377220** with PnRef:78700242** on Pledge:127385** for Contact:70680** Amount: 39.00 from correction script
+
+Reversing Trans:1377729** with PnRef:78702909** on Pledge:127385** for Contact:70680** Amount: 39.00 from correction script
+--------
+
+Approving Trans:1377442** with PnRef:78700470** on Pledge:127667** for Contact:65853** Amount: 39.00 from correction script
+
+Reversing Trans:1377919** with PnRef:78703099** on Pledge:127667** for Contact:65853** Amount: 39.00 from correction script
+
+Reversing Trans:1378411** with PnRef:78706906** on Pledge:127667** for Contact:65853** Amount: 39.00 from correction script
+--------
+
+Approving Trans:1374991** with PnRef:78666771** on Pledge:127760** for Contact:60793** Amount: 39.00 from correction script
+
+Reversing Trans:1375813** with PnRef:78695790** on Pledge:127760** for Contact:60793** Amount: 39.00 from correction script
+
+Reversing Trans:1376913** with PnRef:78699932** on Pledge:127760** for Contact:60793** Amount: 39.00 from correction script
+--------
+
+Approving Trans:1374992** with PnRef:78666773** on Pledge:127789** for Contact:70795** Amount: 39.00 from correction script
+
+Reversing Trans:1375814** with PnRef:78695791** on Pledge:127789** for Contact:70795** Amount: 39.00 from correction script
+
+Reversing Trans:1376914** with PnRef:78699933** on Pledge:127789** for Contact:70795** Amount: 39.00 from correction script
+--------
+
+Approving Trans:1374999** with PnRef:78666796** on Pledge:127838** for Contact:70835** Amount: 39.00 from correction script
+
+Reversing Trans:1375817** with PnRef:78695794** on Pledge:127838** for Contact:70835** Amount: 39.00 from correction script
+
+Reversing Trans:1376917** with PnRef:78699936** on Pledge:127838** for Contact:70835** Amount: 39.00 from correction script
+--------
+
+Approving Trans:1377445** with PnRef:78700473** on Pledge:127846** for Contact:70840** Amount: 39.00 from correction script
+
+Reversing Trans:1377922** with PnRef:78703102** on Pledge:127846** for Contact:70840** Amount: 39.00 from correction script
+
+Reversing Trans:1378414** with PnRef:78706909** on Pledge:127846** for Contact:70840** Amount: 39.00 from correction script
+--------
+
+Approving Trans:1377446** with PnRef:78700474** on Pledge:127847** for Contact:55790** Amount: 10.00 from correction script
+
+Reversing Trans:1377923** with PnRef:78703103** on Pledge:127847** for Contact:55790** Amount: 10.00 from correction script
+
+Reversing Trans:1378415** with PnRef:78706910** on Pledge:127847** for Contact:55790** Amount: 10.00 from correction script
+--------
+
+Approving Trans:1377447** with PnRef:78700475** on Pledge:127848** for Contact:70842** Amount: 39.00 from correction script
+
+Reversing Trans:1377924** with PnRef:78703104** on Pledge:127848** for Contact:70842** Amount: 39.00 from correction script
+
+Reversing Trans:1378416** with PnRef:78706911** on Pledge:127848** for Contact:70842** Amount: 39.00 from correction script
+--------
+
+Approving Trans:1377448** with PnRef:78700476** on Pledge:127849** for Contact:70844** Amount: 39.00 from correction script
+
+Reversing Trans:1377925** with PnRef:78703105** on Pledge:127849** for Contact:70844** Amount: 39.00 from correction script
+
+Reversing Trans:1378417** with PnRef:78706912** on Pledge:127849** for Contact:70844** Amount: 39.00 from correction script
+--------
+
+Approving Trans:1377449** with PnRef:78700477** on Pledge:127850** for Contact:70845** Amount: 39.00 from correction script
+
+Reversing Trans:1377926** with PnRef:78703106** on Pledge:127850** for Contact:70845** Amount: 39.00 from correction script
+
+Reversing Trans:1378418** with PnRef:78706913** on Pledge:127850** for Contact:70845** Amount: 39.00 from correction script
+--------
+
+Approving Trans:1377450** with PnRef:78700478** on Pledge:127851** for Contact:70845** Amount: 39.00 from correction script
+
+Reversing Trans:1377927** with PnRef:78703108** on Pledge:127851** for Contact:70845** Amount: 39.00 from correction script
+
+Reversing Trans:1378419** with PnRef:78706914** on Pledge:127851** for Contact:70845** Amount: 39.00 from correction script
+--------
+
+Approving Trans:1375002** with PnRef:78666805** on Pledge:128810** for Contact:71463** Amount: 39.00 from correction script
+
+Reversing Trans:1375820** with PnRef:78695797** on Pledge:128810** for Contact:71463** Amount: 39.00 from correction script
+
+Reversing Trans:1376920** with PnRef:78699939** on Pledge:128810** for Contact:71463** Amount: 39.00 from correction script
+--------
+
+Approving Trans:1375003** with PnRef:78666808** on Pledge:128813** for Contact:71464** Amount: 39.00 from correction script
+
+Reversing Trans:1375821** with PnRef:78695798** on Pledge:128813** for Contact:71464** Amount: 39.00 from correction script
+
+Reversing Trans:1376921** with PnRef:78699940** on Pledge:128813** for Contact:71464** Amount: 39.00 from correction script
+--------
+
+Approving Trans:1375005** with PnRef:78666813** on Pledge:128825** for Contact:71468** Amount: 39.00 from correction script
+
+Reversing Trans:1375823** with PnRef:78695800** on Pledge:128825** for Contact:71468** Amount: 39.00 from correction script
+
+Reversing Trans:1376923** with PnRef:78699942** on Pledge:128825** for Contact:71468** Amount: 39.00 from correction script
+--------
+
+Approving Trans:1377454** with PnRef:78700482** on Pledge:128849** for Contact:71479** Amount: 39.00 from correction script
+
+Reversing Trans:1377929** with PnRef:78703110** on Pledge:128849** for Contact:71479** Amount: 39.00 from correction script
+
+Reversing Trans:1378421** with PnRef:78706916** on Pledge:128849** for Contact:71479** Amount: 39.00 from correction script
+--------
+
+Approving Trans:1378169** with PnRef:78703352** on Pledge:128869** for Contact:71482** Amount: 39.00 from correction script
+
+Reversing Trans:1378622** with PnRef:78707121** on Pledge:128869** for Contact:71482** Amount: 39.00 from correction script
+--------
+
+Approving Trans:1378191** with PnRef:78703375** on Pledge:128900** for Contact:71506** Amount: 39.00 from correction script
+
+Reversing Trans:1378640** with PnRef:78707140** on Pledge:128900** for Contact:71506** Amount: 39.00 from correction script
+--------
+
+Approving Trans:1378205** with PnRef:78703389** on Pledge:128920** for Contact:71513** Amount: 39.00 from correction script
+
+Reversing Trans:1378654** with PnRef:78707155** on Pledge:128920** for Contact:71513** Amount: 39.00 from correction script
+--------
+
+Approving Trans:1375010** with PnRef:78666831** on Pledge:129178** for Contact:54120** Amount: 39.00 from correction script
+
+Reversing Trans:1375826** with PnRef:78695803** on Pledge:129178** for Contact:54120** Amount: 39.00 from correction script
+
+Reversing Trans:1376926** with PnRef:78699945** on Pledge:129178** for Contact:54120** Amount: 39.00 from correction script
+--------
+
+Approving Trans:1375013** with PnRef:78666837** on Pledge:129483** for Contact:28350** Amount: 39.00 from correction script
+
+Reversing Trans:1375828** with PnRef:78695805** on Pledge:129483** for Contact:28350** Amount: 39.00 from correction script
+
+Reversing Trans:1376928** with PnRef:78699947** on Pledge:129483** for Contact:28350** Amount: 39.00 from correction script
+--------
+
+Approving Trans:1375014** with PnRef:78666839** on Pledge:129484** for Contact:28350** Amount: 39.00 from correction script
+
+Reversing Trans:1375829** with PnRef:78695806** on Pledge:129484** for Contact:28350** Amount: 39.00 from correction script
+
+Reversing Trans:1376929** with PnRef:78699948** on Pledge:129484** for Contact:28350** Amount: 39.00 from correction script
+--------
+
+Approving Trans:1375015** with PnRef:78666841** on Pledge:129488** for Contact:71791** Amount: 39.00 from correction script
+
+Reversing Trans:1375830** with PnRef:78695807** on Pledge:129488** for Contact:71791** Amount: 39.00 from correction script
+
+Reversing Trans:1376930** with PnRef:78699949** on Pledge:129488** for Contact:71791** Amount: 39.00 from correction script
+--------
+
+Approving Trans:1376209** with PnRef:78696198** on Pledge:129567** for Contact:71801** Amount: 39.00 from correction script
+
+Reversing Trans:1377232** with PnRef:78700254** on Pledge:129567** for Contact:71801** Amount: 39.00 from correction script
+
+Reversing Trans:1377741** with PnRef:78702921** on Pledge:129567** for Contact:71801** Amount: 39.00 from correction script
+--------
+
+Approving Trans:1376210** with PnRef:78696199** on Pledge:129569** for Contact:71802** Amount: 39.00 from correction script
+
+Reversing Trans:1377233** with PnRef:78700255** on Pledge:129569** for Contact:71802** Amount: 39.00 from correction script
+
+Reversing Trans:1377742** with PnRef:78702922** on Pledge:129569** for Contact:71802** Amount: 39.00 from correction script
+--------
+
+Approving Trans:1378905** with PnRef:78707415** on Pledge:129589** for Contact:71809** Amount: 39.00 from correction script
+--------
+
+Approving Trans:1378907** with PnRef:78707417** on Pledge:129592** for Contact:71811** Amount: 39.00 from correction script
+--------
+
+Approving Trans:1378908** with PnRef:78707418** on Pledge:129593** for Contact:71812** Amount: 39.00 from correction script
+--------
+
+Approving Trans:1375012** with PnRef:78666836** on Pledge:129659** for Contact:42247** Amount: 300.00 from correction script
+
+Reversing Trans:1375827** with PnRef:78695804** on Pledge:129659** for Contact:42247** Amount: 300.00 from correction script
+
+Reversing Trans:1376927** with PnRef:78699946** on Pledge:129659** for Contact:42247** Amount: 300.00 from correction script
+--------
+
+Approving Trans:1375027** with PnRef:78666885** on Pledge:129930** for Contact:59737** Amount: 25.00 from correction script
+
+Reversing Trans:1375833** with PnRef:78695810** on Pledge:129930** for Contact:59737** Amount: 25.00 from correction script
+
+Reversing Trans:1376933** with PnRef:78699952** on Pledge:129930** for Contact:59737** Amount: 25.00 from correction script
+--------
+
+Approving Trans:1375019** with PnRef:78666855** on Pledge:130081** for Contact:28860** Amount: 15.00 from correction script
+
+Reversing Trans:1375832** with PnRef:78695809** on Pledge:130081** for Contact:28860** Amount: 15.00 from correction script
+
+Reversing Trans:1376932** with PnRef:78699951** on Pledge:130081** for Contact:28860** Amount: 15.00 from correction script
+--------
+
+Approving Trans:1375037** with PnRef:78666916** on Pledge:130323** for Contact:31455** Amount: 325.00 from correction script
+
+Reversing Trans:1375839** with PnRef:78695816** on Pledge:130323** for Contact:31455** Amount: 325.00 from correction script
+
+Reversing Trans:1376939** with PnRef:78699958** on Pledge:130323** for Contact:31455** Amount: 325.00 from correction script
+--------
+
+Approving Trans:1376216** with PnRef:78696205** on Pledge:130365** for Contact:48793** Amount: 100.00 from correction script
+
+Reversing Trans:1377237** with PnRef:78700259** on Pledge:130365** for Contact:48793** Amount: 100.00 from correction script
+
+Reversing Trans:1377746** with PnRef:78702926** on Pledge:130365** for Contact:48793** Amount: 100.00 from correction script
+--------
+
+Approving Trans:1376218** with PnRef:78696207** on Pledge:130497** for Contact:71925** Amount: 39.00 from correction script
+
+Reversing Trans:1377239** with PnRef:78700261** on Pledge:130497** for Contact:71925** Amount: 39.00 from correction script
+
+Reversing Trans:1377748** with PnRef:78702928** on Pledge:130497** for Contact:71925** Amount: 39.00 from correction script
+--------
+
+Approving Trans:1376219** with PnRef:78696208** on Pledge:130498** for Contact:71926** Amount: 39.00 from correction script
+
+Reversing Trans:1377240** with PnRef:78700262** on Pledge:130498** for Contact:71926** Amount: 39.00 from correction script
+
+Reversing Trans:1377749** with PnRef:78702929** on Pledge:130498** for Contact:71926** Amount: 39.00 from correction script
+--------
+
+Approving Trans:1376220** with PnRef:78696209** on Pledge:130500** for Contact:71918** Amount: 39.00 from correction script
+
+Reversing Trans:1377241** with PnRef:78700263** on Pledge:130500** for Contact:71918** Amount: 39.00 from correction script
+
+Reversing Trans:1377750** with PnRef:78702930** on Pledge:130500** for Contact:71918** Amount: 39.00 from correction script
+--------
+
+Approving Trans:1378233** with PnRef:78703417** on Pledge:130522** for Contact:71940** Amount: 39.00 from correction script
+
+Reversing Trans:1378677** with PnRef:78707179** on Pledge:130522** for Contact:71940** Amount: 39.00 from correction script
+--------
+
+Approving Trans:1378913** with PnRef:78707423** on Pledge:130545** for Contact:35430** Amount: 39.00 from correction script
+--------
+
+Approving Trans:1378915** with PnRef:78707425** on Pledge:130596** for Contact:30030** Amount: 39.00 from correction script
+--------
+
+Approving Trans:1378916** with PnRef:78707426** on Pledge:130597** for Contact:30030** Amount: 39.00 from correction script
+--------
+
+Approving Trans:1375060** with PnRef:78667020** on Pledge:130861** for Contact:29600** Amount: 78.00 from correction script
+
+Reversing Trans:1375846** with PnRef:78695823** on Pledge:130861** for Contact:29600** Amount: 78.00 from correction script
+
+Reversing Trans:1376946** with PnRef:78699965** on Pledge:130861** for Contact:29600** Amount: 78.00 from correction script
+--------
+
+Approving Trans:1378918** with PnRef:78707428** on Pledge:130993** for Contact:57445** Amount: 39.00 from correction script
+--------
+
+Approving Trans:1378923** with PnRef:78707433** on Pledge:131179** for Contact:52616** Amount: 25.00 from correction script
+--------
+
+Approving Trans:1378237** with PnRef:78703421** on Pledge:131286** for Contact:70849** Amount: 39.00 from correction script
+
+Reversing Trans:1378680** with PnRef:78707182** on Pledge:131286** for Contact:70849** Amount: 39.00 from correction script
+--------
+
+Approving Trans:1376225** with PnRef:78696214** on Pledge:131307** for Contact:39660** Amount: 150.00 from correction script
+
+Reversing Trans:1377245** with PnRef:78700267** on Pledge:131307** for Contact:39660** Amount: 150.00 from correction script
+
+Reversing Trans:1377754** with PnRef:78702934** on Pledge:131307** for Contact:39660** Amount: 150.00 from correction script
+--------
+
+Approving Trans:1376228** with PnRef:78696217** on Pledge:131322** for Contact:69004** Amount: 39.00 from correction script
+
+Reversing Trans:1377248** with PnRef:78700270** on Pledge:131322** for Contact:69004** Amount: 39.00 from correction script
+
+Reversing Trans:1377757** with PnRef:78702937** on Pledge:131322** for Contact:69004** Amount: 39.00 from correction script
+--------
+
+Approving Trans:1377462** with PnRef:78700490** on Pledge:131329** for Contact:70203** Amount: 39.00 from correction script
+
+Reversing Trans:1377936** with PnRef:78703117** on Pledge:131329** for Contact:70203** Amount: 39.00 from correction script
+
+Reversing Trans:1378428** with PnRef:78706923** on Pledge:131329** for Contact:70203** Amount: 39.00 from correction script
+--------
+
+Approving Trans:1377463** with PnRef:78700491** on Pledge:131336** for Contact:72090** Amount: 39.00 from correction script
+
+Reversing Trans:1377937** with PnRef:78703118** on Pledge:131336** for Contact:72090** Amount: 39.00 from correction script
+
+Reversing Trans:1378429** with PnRef:78706924** on Pledge:131336** for Contact:72090** Amount: 39.00 from correction script
+--------
+
+Approving Trans:1378236** with PnRef:78703420** on Pledge:131350** for Contact:72093** Amount: 39.00 from correction script
+
+Reversing Trans:1378679** with PnRef:78707181** on Pledge:131350** for Contact:72093** Amount: 39.00 from correction script
+--------
+
+Approving Trans:1378920** with PnRef:78707430** on Pledge:131355** for Contact:72096** Amount: 39.00 from correction script
+--------
+
+Approving Trans:1378921** with PnRef:78707431** on Pledge:131356** for Contact:72097** Amount: 39.00 from correction script
+--------
+
+Approving Trans:1373921** with PnRef:78650249** on Pledge:131714** for Contact:61880** Amount: 39.00 from correction script
+
+Reversing Trans:1373961** with PnRef:78664948** on Pledge:131714** for Contact:61880** Amount: 39.00 from correction script
+
+Reversing Trans:1375148** with PnRef:78695117** on Pledge:131714** for Contact:61880** Amount: 39.00 from correction script
+--------
+
+Approving Trans:1373922** with PnRef:78650250** on Pledge:131728** for Contact:72211** Amount: 39.00 from correction script
+
+Reversing Trans:1373962** with PnRef:78664949** on Pledge:131728** for Contact:72211** Amount: 39.00 from correction script
+
+Reversing Trans:1375149** with PnRef:78695118** on Pledge:131728** for Contact:72211** Amount: 39.00 from correction script
+--------
+
+Approving Trans:1373923** with PnRef:78650251** on Pledge:131729** for Contact:72211** Amount: 39.00 from correction script
+
+Reversing Trans:1373963** with PnRef:78664951** on Pledge:131729** for Contact:72211** Amount: 39.00 from correction script
+
+Reversing Trans:1375150** with PnRef:78695119** on Pledge:131729** for Contact:72211** Amount: 39.00 from correction script
+--------
+
+Approving Trans:1373924** with PnRef:78650252** on Pledge:131731** for Contact:61880** Amount: 39.00 from correction script
+
+Reversing Trans:1373964** with PnRef:78664952** on Pledge:131731** for Contact:61880** Amount: 39.00 from correction script
+
+Reversing Trans:1375151** with PnRef:78695120** on Pledge:131731** for Contact:61880** Amount: 39.00 from correction script
+--------
+
+Approving Trans:1376229** with PnRef:78696218** on Pledge:131757** for Contact:72240** Amount: 39.00 from correction script
+
+Reversing Trans:1377249** with PnRef:78700271** on Pledge:131757** for Contact:72240** Amount: 39.00 from correction script
+--------
+
+Approving Trans:1373926** with PnRef:78664955** on Pledge:132305** for Contact:61880** Amount: 39.00 from correction script
+
+Reversing Trans:1373966** with PnRef:78695122** on Pledge:132305** for Contact:61880** Amount: 39.00 from correction script
+
+Reversing Trans:1375153** with PnRef:78650254** on Pledge:132305** for Contact:61880** Amount: 39.00 from correction script
+--------
+
+Approving Trans:1373920** with PnRef:78650248** on Pledge:132406** for Contact:71366** Amount: 39.00 from correction script
+
+Reversing Trans:1373960** with PnRef:78664947** on Pledge:132406** for Contact:71366** Amount: 39.00 from correction script
+
+Reversing Trans:1375882** with PnRef:78695860** on Pledge:132406** for Contact:71366** Amount: 39.00 from correction script
+--------
+
+Approving Trans:1377469** with PnRef:78700497** on Pledge:132437** for Contact:53789** Amount: 50.00 from correction script
+
+Reversing Trans:1377942** with PnRef:78703123** on Pledge:132437** for Contact:53789** Amount: 50.00 from correction script
+
+Reversing Trans:1378434** with PnRef:78706929** on Pledge:132437** for Contact:53789** Amount: 50.00 from correction script
+--------
+
+Approving Trans:1375098** with PnRef:78667203** on Pledge:132934** for Contact:31184** Amount: 78.00 from correction script
+
+Reversing Trans:1375855** with PnRef:78695833** on Pledge:132934** for Contact:31184** Amount: 78.00 from correction script
+
+Reversing Trans:1376955** with PnRef:78699974** on Pledge:132934** for Contact:31184** Amount: 78.00 from correction script
+--------
+
+Approving Trans:1375099** with PnRef:78667208** on Pledge:132935** for Contact:31184** Amount: 78.00 from correction script
+
+Reversing Trans:1375856** with PnRef:78695834** on Pledge:132935** for Contact:31184** Amount: 78.00 from correction script
+
+Reversing Trans:1376956** with PnRef:78699975** on Pledge:132935** for Contact:31184** Amount: 78.00 from correction script
+--------
+
+Approving Trans:1375101** with PnRef:78667223** on Pledge:132941** for Contact:31991** Amount: 78.00 from correction script
+
+Reversing Trans:1375857** with PnRef:78695835** on Pledge:132941** for Contact:31991** Amount: 78.00 from correction script
+
+Reversing Trans:1376957** with PnRef:78699976** on Pledge:132941** for Contact:31991** Amount: 78.00 from correction script
+--------
+
+Approving Trans:1375103** with PnRef:78667243** on Pledge:132946** for Contact:49373** Amount: 78.00 from correction script
+
+Reversing Trans:1375858** with PnRef:78695836** on Pledge:132946** for Contact:49373** Amount: 78.00 from correction script
+
+Reversing Trans:1376958** with PnRef:78699977** on Pledge:132946** for Contact:49373** Amount: 78.00 from correction script
+--------
+
+Approving Trans:1377477** with PnRef:78700505** on Pledge:133026** for Contact:59763** Amount: 78.00 from correction script
+
+Reversing Trans:1377946** with PnRef:78703127** on Pledge:133026** for Contact:59763** Amount: 78.00 from correction script
+
+Reversing Trans:1378438** with PnRef:78706935** on Pledge:133026** for Contact:59763** Amount: 78.00 from correction script
+--------
+
+Approving Trans:1375128** with PnRef:78667390** on Pledge:133097** for Contact:71466** Amount: 78.00 from correction script
+
+Reversing Trans:1375877** with PnRef:78695855** on Pledge:133097** for Contact:71466** Amount: 78.00 from correction script
+
+Reversing Trans:1376977** with PnRef:78699996** on Pledge:133097** for Contact:71466** Amount: 78.00 from correction script
+--------
+

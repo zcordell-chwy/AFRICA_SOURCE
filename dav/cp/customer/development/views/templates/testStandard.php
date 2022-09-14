@@ -31,7 +31,7 @@
 					<h1>#rn:msg:SCRIPTING_ENABLED_SITE_MSG#</h1>
 				</noscript>
 				<div id="rn_Logo">
-					<a href="http://www.africanewlife.org"><img src="/euf/assets/themes/africa/images/anlm-header-logo.png" height="60" width="180" title="Africa New Life" alt="Africa New Life" /></a>
+					<a href="https://www.africanewlife.org"><img src="/euf/assets/themes/africa/images/anlm-header-logo.png" height="60" width="180" title="Africa New Life" alt="Africa New Life" /></a>
 				</div>
 
 				<div id="Site-title" style="position: absolute; top:30px; left:370px;">
@@ -121,7 +121,7 @@
 						Africa New Life is accredited by the ECFA, and is committed to financial transparency, integrity in fundraising, and the proper use of charity resources.
 					</p>
 					<p>
-						<a href="http://www.africanewlife.org/about-us/financial-accountability/"> <img src="/euf/assets/themes/africa/images/ECFA-logo.jpg" /> </a>
+						<a href="https://www.africanewlife.org/about-us/financial-accountability/"> <img src="/euf/assets/themes/africa/images/ECFA-logo.jpg" /> </a>
 					</p>
 
 				</div>
@@ -143,7 +143,7 @@
 							<b>Find us on Facebook</b>
 						</li>
 						<li>
-							<a href="http://facebook.com/africanewlife">facebook.com/africanewlife</a>
+							<a href="https://facebook.com/africanewlife">facebook.com/africanewlife</a>
 						</li>
 					</ul>
 					<ul>

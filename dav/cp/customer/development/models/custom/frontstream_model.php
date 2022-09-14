@@ -22,7 +22,10 @@ class frontstream_model  extends \RightNow\Models\Base
     {
         parent::__construct();
         initConnectAPI();
-        load_curl();
+        if (!extension_loaded('curl')) {
+            load_curl();
+        }
+        // load_curl();
         $this->CI->load->helper('constants');
         $this->CI->load->helper('log');
         //This model would be loaded by using $this->load->model('custom/frontstream_model');
@@ -35,6 +38,53 @@ class frontstream_model  extends \RightNow\Models\Base
         return $this->endUserError;
     }
 
+    public function GuestPaymentProcess($data = "", $host = "")
+    {
+        try {
+            logMessage(__FUNCTION__ . "@" . __LINE__ . " args: " . print_r(func_get_args(), true));
+
+            logMessage("GuestPaymentProcess Front Stream Request : " . print_r($data, true));
+            logMessage("GuestPaymentProcess Front Stream Host URL : " . print_r($host, true));
+            // Initialize Curl and send the request
+            $ch = curl_init();
+            curl_setopt($ch, CURLOPT_URL, $host);
+            curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+            curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, false);
+            curl_setopt($ch, CURLOPT_POST, 1);
+            curl_setopt($ch, CURLOPT_POSTFIELDS, $data);
+            $result = curl_exec($ch);
+            helplog(__FILE__, __FUNCTION__ . __LINE__,  "runCurl - result:", "");
+            helplog(__FILE__, __FUNCTION__ . __LINE__, $result, "");
+
+            if (curl_errno($ch)) {
+                helplog(__FILE__, __FUNCTION__ . __LINE__, "", "runCurl - Curl Error");
+                helplog(__FILE__, __FUNCTION__ . __LINE__, "", curl_error($ch));
+                logMessage("GuestPaymentProcess Front Stream Host URL : " . print_r(curl_error($ch), true));
+                $this->errorMessage[] = curl_error($ch);
+                $this->endUserError[] = getConfig(CUSTOM_CFG_general_cc_error_id);
+                curl_close($ch);
+                return false;
+            } else if (strpos($result, "HTTP Error") !== false) {
+                helplog(__FILE__, __FUNCTION__ . __LINE__, "", "runCurl - http error");
+                logMessage("GuestPaymentProcess Front Stream Host URL : " . print_r('runCurl - http error', true));
+                curl_close($ch);
+                $this->endUserError[] = getConfig(CUSTOM_CFG_general_cc_error_id);
+                return false;
+            }
+        } catch (\Exception $e) {
+            curl_close($ch);
+            helplog(__FILE__, __FUNCTION__ . __LINE__, "", $e->getMessage());
+            $this->errorMessage[] = $e->getMessage();
+            $this->endUserError[] = getConfig(CUSTOM_CFG_general_cc_error_id);
+            return false;
+        }
+
+        logMessage("GuestPaymentProcess Front Stream Response : " . print_r($result, true));
+
+        curl_close($ch);
+        return $result;
+    }
+
     public function ProcessPayment($transactionId, RNCPHP\financial\paymentMethod $paymentMethod, $amount = "0", $transType = "")
     {
         logMessage(__FUNCTION__ . "@" . __LINE__ . " args: " . print_r(func_get_args(), true));
@@ -42,62 +92,62 @@ class frontstream_model  extends \RightNow\Models\Base
 
 
             if (!$this->verifyPositiveInt($transactionId)) {
-                // $this->_logToFile(39, __FUNCTION__ . " Failed");
                 helplog(__FILE__, __FUNCTION__ . __LINE__, "", "Failed");
                 $this->endUserError[] = getConfig(CUSTOM_CFG_general_cc_error_id);
+                logMessage("ProcessPayment 1 =>: " . print_r(getConfig(CUSTOM_CFG_general_cc_error_id, true)));
                 return false;
             }
             if (!$this->verifyPositiveInt($amount)) {
-                // $this->_logToFile(44, __FUNCTION__ . " -- could not verify positive amount. amount = " . $amount);
                 helplog(__FILE__, __FUNCTION__ . __LINE__, "", " -- could not verify positive amount. amount = " . $amount);
                 $this->endUserError[] = getConfig(CUSTOM_CFG_general_cc_error_id);
+                logMessage("ProcessPayment 2 =>: " . print_r(" -- could not verify positive amount. amount = " . $amount, true));
                 return false;
             }
             if (strlen($paymentMethod->PN_Ref) < 1 && strlen($paymentMethod->InfoKey) < 1) {
-                // $this->_logToFile(49, __FUNCTION__ . "Failed");
                 helplog(__FILE__, __FUNCTION__ . __LINE__, "", "Failed");
                 $this->endUserError[] = getConfig(CUSTOM_CFG_general_cc_error_id);
+                logMessage("ProcessPayment 3 =>: " . print_r(getConfig(CUSTOM_CFG_general_cc_error_id, true)));
                 return FALSE;
             }
-            // $this->_logToFile(53, __FUNCTION__ . "Passed Sanity Checks Continuing to process transaction for:" . $transactionId);
             helplog(__FILE__, __FUNCTION__ . __LINE__, "Passed Sanity Checks Continuing to process transaction for:" . $transactionId, "");
             if ($transactionId)
                 if ($this->CI->model('custom/transaction_model')->startProcessingTransaction($transactionId, $transType) !== true) {
-                    // $this->_logToFile(57, __FUNCTION__ . ": Did not pass processing");
                     helplog(__FILE__, __FUNCTION__ . __LINE__, "", ": Did not pass processing");
                     $this->endUserError[] = "Transaction already in progress.";
+                    logMessage("ProcessPayment 4 =>: " . print_r(": Did not pass processing", true));
                     return false;
                 }
-            // $this->_logToFile(61, __FUNCTION__ . ": Getting Transaction" . $transactionId);
             helplog(__FILE__, __FUNCTION__ . __LINE__, ": Getting Transaction" . $transactionId, "");
             $trans = $this->CI->model('custom/transaction_model')->get_transaction($transactionId);
             if (!$trans instanceof RNCPHP\financial\transactions) {
-                // $this->_logToFile(64, "Non-valid transaction");
                 helplog(__FILE__, __FUNCTION__ . __LINE__, "Non-valid transaction", "");
-                // $this->_logToFile(65, print_r($trans, true));
                 helplog(__FILE__, __FUNCTION__ . __LINE__, print_r($trans, true), "");
+                logMessage("ProcessPayment 5 =>: " . print_r("Non-valid transaction", true));
                 return false;
             }
-            // $this->_logToFile(68, __FUNCTION__ . ": Getting Contact");
             helplog(__FILE__, __FUNCTION__ . __LINE__, ": Getting Contact", "");
             $contact = $this->CI->model('contact')->get()->result;
-
-            if (!$contact instanceof RNCPHP\Contact) {
-                // $this->_logToFile(72, __FUNCTION__ . ": Failed to get contact");
+            if (is_null($contact) && !is_null($this->CI->session->getSessionData('contact_id'))) {
+                $contact = RNCPHP\Contact::fetch(intval($this->CI->session->getSessionData('contact_id')));
+            }
+            if (!$contact->ID || $contact->ID < 1) {
                 helplog(__FILE__, __FUNCTION__ . __LINE__, ": Failed to get contact", "");
                 $this->endUserError[] = "Unable to access donor information.";
+                logMessage("ProcessPayment 5 =>: " . print_r("Failed to get contact", true));
                 return false;
             }
-            // $this->_logToFile(76, __FUNCTION__ . " :Retreived Contact " . $contact->ID);
+
             helplog(__FILE__, __FUNCTION__ . __LINE__, " :Retreived Contact " . $contact->ID, "");
             logMessage("Transaction Type : " . $transType);
+
+            helplog(__FILE__, __FUNCTION__ . __LINE__, print_r($paymentMethod->PaymentMethodType->ID, true), "");
             //need to choose submission values based on type of payment method.  2=EFT 1=CC
             if ($paymentMethod->PaymentMethodType->ID == 1) {
                 if (strlen($paymentMethod->PN_Ref) > 1 && strlen($paymentMethod->InfoKey) < 1) {
                     $submissionVals = array(
                         'Amount' => $amount,
-                        'Password' => getConfig(CUSTOM_CFG_frontstream_pass_id),
-                        'UserName' => getConfig(CUSTOM_CFG_frontstream_user_id),
+                        'Password' => getConfig(CUSTOM_CFG_FS_PW_CP),
+                        'UserName' => getConfig(CUSTOM_CFG_FS_UN_CP),
                         'TransType' => $transType,
                         'PNRef' => $paymentMethod->PN_Ref,
                         'op' => "ArgoFire/transact.asmx/ProcessCreditCard",
@@ -114,8 +164,8 @@ class frontstream_model  extends \RightNow\Models\Base
                 } else if (strlen($paymentMethod->InfoKey) > 1 && strlen($paymentMethod->PN_Ref) < 1) {
                     $submissionVals = array(
                         'Amount' => $amount,
-                        'Password' => getConfig(CUSTOM_CFG_frontstream_pass_id),
-                        'UserName' => getConfig(CUSTOM_CFG_frontstream_user_id),
+                        'Password' => getConfig(CUSTOM_CFG_FS_PW_CP),
+                        'UserName' => getConfig(CUSTOM_CFG_FS_UN_CP),
                         'CcInfoKey' => $paymentMethod->InfoKey,
                         'op' => "admin/ws/recurring.asmx/ProcessCreditCard",
                         'Vendor' => getConfig(CUSTOM_CFG_frontstream_vendor),
@@ -123,12 +173,13 @@ class frontstream_model  extends \RightNow\Models\Base
                         'InvNum' => $transactionId
                     );
                 }
+                helplog(__FILE__, __FUNCTION__ . __LINE__, print_r($paymentMethod, true), "");
             } else {
                 if (strlen($paymentMethod->InfoKey) < 1 && strlen($paymentMethod->PN_Ref) > 1) {
                     $submissionVals = array(
                         'Amount' => $amount,
-                        'Password' => getConfig(CUSTOM_CFG_frontstream_pass_id),
-                        'UserName' => getConfig(CUSTOM_CFG_frontstream_user_id),
+                        'Password' => getConfig(CUSTOM_CFG_FS_PW_CP),
+                        'UserName' => getConfig(CUSTOM_CFG_FS_UN_CP),
                         'TransType' => 'RepeatSale',
                         'op' => "ArgoFire/transact.asmx/ProcessCheck",
                         'CheckNum' => '',
@@ -146,8 +197,8 @@ class frontstream_model  extends \RightNow\Models\Base
                 } else if (strlen($paymentMethod->InfoKey) > 1 && strlen($paymentMethod->PN_Ref) < 1) {
                     $submissionVals = array(
                         'Amount' => $amount,
-                        'Password' => getConfig(CUSTOM_CFG_frontstream_pass_id),
-                        'UserName' => getConfig(CUSTOM_CFG_frontstream_user_id),
+                        'Password' => getConfig(CUSTOM_CFG_FS_PW_CP),
+                        'UserName' => getConfig(CUSTOM_CFG_FS_UN_CP),
                         'op' => "admin/ws/recurring.asmx/ProcessCheck",
                         'Vendor' => getConfig(CUSTOM_CFG_frontstream_vendor),
                         'CheckInfoKey' => $paymentMethod->InfoKey,
@@ -156,15 +207,10 @@ class frontstream_model  extends \RightNow\Models\Base
                     );
                 }
             }
-            // $this->_logToFile(116, "FS Post Vals");
-            helplog(__FILE__, __FUNCTION__ . __LINE__, "FS Post Vals", "");
-            // $this->_logToFile(117, print_r($submissionVals, true));
-            helplog(__FILE__, __FUNCTION__ . __LINE__, print_r($submissionVals, true), "");
-
+            helplog(__FILE__, __FUNCTION__ . __LINE__, "FS Post Vals" . print_r($submissionVals, true), "");
 
             $returnVal = $this->runTransaction($submissionVals, $trans);
             if (count($this->errorMessage) > 0) {
-                // $this->_logToFile(112, print_r($this->errorMessage, true));
                 helplog(__FILE__, __FUNCTION__ . __LINE__, print_r($this->errorMessage, true), "");
             }
 
@@ -173,14 +219,13 @@ class frontstream_model  extends \RightNow\Models\Base
 
             if ($returnVal['isSuccess'] === true) {
                 //$this -> CI -> model('custom/transaction_model') -> updateTransStatus($transactionId, TRANSACTION_SALE_SUCCESS_STATUS_ID, $paymentMethod -> ID);
-
+                helplog(__FILE__, __FUNCTION__ . __LINE__, print_r($returnVal, true), "");
                 return $returnVal;
             } else {
                 $this->CI->model('custom/transaction_model')->updateTransStatus($transactionId, DEFAULT_TRANSACTION_STATUS_ID);
                 return false;
             }
-        } catch (Exception $ex) {
-            // $this->_logToFile(139, $ex->getMessage());
+        } catch (\Exception $ex) {
             helplog(__FILE__, __FUNCTION__ . __LINE__, "", $ex->getMessage());
             return false;
         }
@@ -197,8 +242,8 @@ class frontstream_model  extends \RightNow\Models\Base
                 if ($transType == 'card') {
                     $submissionVals = array(
                         'Amount' => '',
-                        'Password' => getConfig(CUSTOM_CFG_frontstream_pass_id),
-                        'UserName' => getConfig(CUSTOM_CFG_frontstream_user_id),
+                        'Password' => getConfig(CUSTOM_CFG_FS_PW_CP),
+                        'UserName' => getConfig(CUSTOM_CFG_FS_UN_CP),
                         'TransType' => 'Reversal',
                         'PNRef' => $pnref,
                         'op' => "ArgoFire/transact.asmx/ProcessCreditCard",
@@ -215,8 +260,8 @@ class frontstream_model  extends \RightNow\Models\Base
                 } else {
                     $submissionVals = array(
                         'Amount' => '',
-                        'Password' => getConfig(CUSTOM_CFG_frontstream_pass_id),
-                        'UserName' => getConfig(CUSTOM_CFG_frontstream_user_id),
+                        'Password' => getConfig(CUSTOM_CFG_FS_PW_CP),
+                        'UserName' => getConfig(CUSTOM_CFG_FS_UN_CP),
                         'TransType' => 'Void',
                         'op' => "ArgoFire/transact.asmx/ProcessCheck",
                         'CheckNum' => '',
@@ -253,7 +298,8 @@ class frontstream_model  extends \RightNow\Models\Base
             } else {
                 return false;
             }
-        } catch (Exception $e) {
+        } catch (\Exception $e) {
+            helplog(__FILE__, __FUNCTION__ . __LINE__, "", $e->getMessage());
         }
     }
 
@@ -278,9 +324,8 @@ class frontstream_model  extends \RightNow\Models\Base
      */
     private function runTransaction(array $postVals, RNCPHP\financial\transactions $trans)
     {
-        // logMessage(__FUNCTION__ . "@" . __LINE__ . " args: " . print_r(func_get_args(), true));
-        //using id's due to http://communities.rightnow.com/posts/3a27a1b48d?commentId=33912#33912
-        $host = getConfig(CUSTOM_CFG_frontstream_endpoint_id);
+        //using id's due to https://communities.rightnow.com/posts/3a27a1b48d?commentId=33912#33912
+        $host = getConfig(CUSTOM_CFG_frontstream_endpoint);
         logMessage("Front Stream Request Endpoint: " . $host);
         if (!$this->verifyMinTransReqs($postVals, $host, $user, $pass)) {
             $this->endUserError[] = "Unable to run payment";
@@ -294,27 +339,21 @@ class frontstream_model  extends \RightNow\Models\Base
         foreach ($postVals as $key => $value) {
             $mybuilder[] = $key . '=' . $value;
         }
-        // $this->_logToFile(251, "Endpoint: " . $host);
         helplog(__FILE__, __FUNCTION__ . __LINE__, "Endpoint: " . $host, "");
-        // $this->_logToFile(252, "Post Data:" . print_r($mybuilder, true));
-        // helplog(__FILE__, __FUNCTION__ . __LINE__, "Post Data:" . print_r($mybuilder, true), "");
-        logMessage("Front Stream Request : " . print_r($mybuilder, true));
+        helplog(__FILE__, __FUNCTION__ . __LINE__, "Front Stream Request : " . print_r($mybuilder, true), "");
         $result = $this->runCurl($host, $mybuilder);
         if ($result == false) {
-            // $this->_logToFile(255, "Unable to run payment");
             helplog(__FILE__, __FUNCTION__ . __LINE__, "Unable to run payment", "");
             $this->endUserError[] = "Unable to run payment";
             return false;
         }
 
         $parsedResponse = $this->parseFrontstreamResp($result, $trans);
-        // $this->_logToFile(261, "Parsed Response");
-        helplog(__FILE__, __FUNCTION__ . __LINE__, "Parsed Response", "");
-        // $this->_logToFile(262, print_r($parsedResponse, true));
-        // helplog(__FILE__, __FUNCTION__ . __LINE__, print_r($parsedResponse, true), "");
         if ($parsedResponse['isSuccess']) {
+            helplog(__FILE__, __FUNCTION__ . __LINE__, "Parsed Response" . print_r($parsedResponse, true), "");
             return $parsedResponse;
         } else {
+            helplog(__FILE__, __FUNCTION__ . __LINE__, "Parsed Response" . print_r($parsedResponse, true), "");
             $this->endUserError[] = "The payment was declined: ";
             $this->endUserError[] = $parsedResponse['message'] . "  " . $parsedResponse['responseMsg'];
         }
@@ -336,31 +375,25 @@ class frontstream_model  extends \RightNow\Models\Base
             curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
             $result = curl_exec($ch);
             logMessage("Front Stream Curl Response : " . print_r($result, true));
-            // $this->_logToFile(282, "runCurl - result:");
             helplog(__FILE__, __FUNCTION__ . __LINE__,  "runCurl - result:", "");
-            // $this->_logToFile(283, $result);
             helplog(__FILE__, __FUNCTION__ . __LINE__, $result, "");
 
 
             if (curl_errno($ch) > 0) {
-                // $this->_logToFile(287, "runCurl - Curl Error");
                 helplog(__FILE__, __FUNCTION__ . __LINE__, "", "runCurl - Curl Error");
-                // $this->_logToFile(288, curl_error($ch));
                 helplog(__FILE__, __FUNCTION__ . __LINE__, "", curl_error($ch));
                 $this->errorMessage[] = curl_error($ch);
                 $this->endUserError[] = getConfig(CUSTOM_CFG_general_cc_error_id);
                 curl_close($ch);
                 return false;
             } else if (strpos($result, "HTTP Error") !== false) {
-                // $this->_logToFile(294, "runCurl - http error");
                 helplog(__FILE__, __FUNCTION__ . __LINE__, "", "runCurl - http error");
                 curl_close($ch);
                 $this->endUserError[] = getConfig(CUSTOM_CFG_general_cc_error_id);
                 return false;
             }
-        } catch (Exception $e) {
+        } catch (\Exception $e) {
             curl_close($ch);
-            // $this->_logToFile(301, $e->getMessage());
             helplog(__FILE__, __FUNCTION__ . __LINE__, "", $e->getMessage());
             $this->errorMessage[] = $e->getMessage();
             $this->endUserError[] = getConfig(CUSTOM_CFG_general_cc_error_id);
@@ -375,8 +408,7 @@ class frontstream_model  extends \RightNow\Models\Base
      */
     private function verifyMinTransReqs($postVals, $host)
     {
-        //$this->_logToFile(__LINE__, __FUNCTION__ . "@" . __LINE__ . " args: " . print_r(func_get_args(), true));
-        //using id's due to http://communities.rightnow.com/posts/3a27a1b48d?commentId=33912#33912
+        //using id's due to https://communities.rightnow.com/posts/3a27a1b48d?commentId=33912#33912
 
         if (is_null($host) || strlen($host) < 1) {
             $this->errorMessage[] = "Invalid host passed to runTransaction";
@@ -407,7 +439,6 @@ class frontstream_model  extends \RightNow\Models\Base
     {
         logMessage(__FUNCTION__ . "@" . __LINE__ . " args: " . print_r(func_get_args(), true));
         logMessage("parse Results");
-        //$this->_logToFile(__LINE__, $result);
         $xmlparser = xml_parser_create();
         xml_parse_into_struct($xmlparser, $result, $values, $indices);
         xml_parser_free($xmlparser);
@@ -417,23 +448,31 @@ class frontstream_model  extends \RightNow\Models\Base
         $frontStreamResponse['responseMsg'] = $values[$indices['RESPMSG'][0]]['value'];
         $frontStreamResponse['message'] = $values[$indices['MESSAGE'][0]]['value'];
         $frontStreamResponse['pnRef'] = $values[$indices['PNREF'][0]]['value'];
+        $frontStreamResponse['code'] = $values[$indices['CODE'][0]]['value'];
+        $frontStreamResponse['error'] = $values[$indices['ERROR'][0]]['value'];
 
-        $frontStreamResponse['rawXml'] = $result;
-        $frontStreamResponse['parsedXml'] = $values;
 
-        if ($frontStreamResponse['resultCode'] == 0) {
+        if ($frontStreamResponse['resultCode'] == 0 && $frontStreamResponse['error'] == "APPROVED") { //cc - with ccinfokey
+            $frontStreamResponse['isSuccess'] = true;
+        } else if ($frontStreamResponse['resultCode'] == 0 && $frontStreamResponse['message'] == "Pending") { // Added this check for by passing the Check transactions with Pending status
+            logMessage("Pending Transaction >> Success");
+            $frontStreamResponse['isSuccess'] = true;
+        } else if ($frontStreamResponse['resultCode'] == 0 && $frontStreamResponse['responseMsg'] == "Approved") { //exception with pnref
+            $frontStreamResponse['isSuccess'] = true;
+        } else if ($frontStreamResponse['resultCode'] == 0) { //assuming all is well here
             $frontStreamResponse['isSuccess'] = true;
         } else {
             $frontStreamResponse['isSuccess'] = false;
         }
 
+        helplog(__FILE__, __FUNCTION__ . __LINE__, print_r($frontStreamResponse, true), "");
+
         if ($trans->ID > 0)
             $this->CI->model('custom/transaction_model')->addNoteToTrans($trans, print_r($result, TRUE));
-
+        $frontStreamResponse['rawXml'] = $result;
+        $frontStreamResponse['parsedXml'] = $values;
         $this->parsedFrontstreamResp = $frontStreamResponse;
 
-        //$this->_logToFile(__LINE__, "front stream response");
-        //$this->_logToFile(__LINE__, print_r($frontStreamResponse, true));
         return $frontStreamResponse;
     }
 

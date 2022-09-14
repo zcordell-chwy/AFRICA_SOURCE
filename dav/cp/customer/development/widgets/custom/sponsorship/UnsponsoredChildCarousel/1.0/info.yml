@@ -1,0 +1,12 @@
+version: "1.0"
+requires:
+  jsModule:
+  - standard
+  - mobile
+attributes:
+  refresh_data:
+    name: refresh_data
+    type: ajax
+    description: Call to get new filtered data.
+    default: /ci/ajax/widget
+    required: false

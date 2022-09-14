@@ -79,7 +79,7 @@ class managedMissions
     {
         $this->executionSummary[] = "Begin Managed Missions Script ".date('Y-m-d');
         //$this->getTransactionsEndpoint = str_replace('{DATE}', '2021-08-01', RNCPHP\Configuration::fetch('CUSTOM_CFG_MANAGED_MISSIONS_API_ENDPOINT')->Value);
-        $this->getTransactionsEndpoint = str_replace('{DATE}', date('Y-m-d', strtotime('Midnight yesterday')), RNCPHP\Configuration::fetch('CUSTOM_CFG_MANAGED_MISSIONS_API_ENDPOINT')->Value);
+        $this->getTransactionsEndpoint = str_replace('{DATE}', date('Y-m-d', strtotime('August 1, 2022')), RNCPHP\Configuration::fetch('CUSTOM_CFG_MANAGED_MISSIONS_API_ENDPOINT')->Value);
         $this->getTripMemberEndpoint = RNCPHP\Configuration::fetch('CUSTOM_CFG_MANAGED_MISSIONS_PERSON_API_ENDPOINT')->Value;
         $this->getTripEndpoint = RNCPHP\Configuration::fetch('CUSTOM_CFG_MANAGED_MISSIONS_TRIP_API_ENDPOINT')->Value;
         $this->executionSummary[] = $this->getTransactionsEndpoint;
@@ -295,7 +295,7 @@ class managedMissions
         }
         
         // //create Donation
-        $donation = $this->createDonation($mmDonation->Id, $mmDonation->GrossAmount, $donor, $tripMember, $mmDonation->TaxDeductible);
+        $donation = $this->createDonation($mmDonation->Id, $mmDonation->GrossAmount, $donor, $tripMember, $mmDonation->TaxDeductible, $mmDonation->ReferenceNumber, $mmDonation->CreatedDate);
 
         // //create one time pledge
         $pledge = $this->createPledge($donation, $mmDonation->GrossAmount, $donor, $fundId, $tripMemberResults->data->FirstName." ".$tripMemberResults->data->LastName);
@@ -363,7 +363,7 @@ class managedMissions
 
     }
 
-    private function createDonation($mmId, $amt, $contact, $tripMember, $non_charitable = true){
+    private function createDonation($mmId, $amt, $contact, $tripMember, $non_charitable = true, $referenceNumber = null, $createdDate = null){
         
         //its the opposite in oracle vs mm
         $non_charitable_val = ($non_charitable) ? false : true;
@@ -371,13 +371,20 @@ class managedMissions
 
             $donation = new RNCPHP\donation\Donation();
             $donation->Contact = $contact;
-            $donation->DonationDate = time();
+            $donation->DonationDate = ($createdDate) ? $this->cleanDate($createdDate) : time();
             $donation->Amount = number_format($amt, 2, '.', '');
             $donation->PaymentSource = RNCPHP\donation\paymentSourceMenu::fetch(PAY_SOURCE);
             $donation->managedMissionsId = $mmId; 
             $donation->TripMember = $tripMember;
             $donation->Type = RNCPHP\donation\Type::fetch(1);//always a pledge
             $donation->Non_Charitable = $non_charitable_val;
+            if(strpos($referenceNumber, 'Check-') === 0){
+                $donation->isCheck = true;
+                $donation->checkNumberTXT = str_replace('Check-', '', $referenceNumber);
+            }else{
+                $donation->isCheck = false;
+            }
+            
 
             $donation->save();
             $this->executionSummary[] = "Created Donation ".$donation->ID;

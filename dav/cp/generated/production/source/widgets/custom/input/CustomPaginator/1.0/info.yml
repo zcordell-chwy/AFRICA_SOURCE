@@ -1,0 +1,12 @@
+version: "1.0"
+requires:
+  jsModule:
+  - standard
+  - mobile
+extends:
+  widget: standard/reports/Paginator
+  components:
+  - php
+  - view
+  - js
+  - css

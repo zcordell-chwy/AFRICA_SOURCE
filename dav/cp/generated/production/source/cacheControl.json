@@ -1,0 +1,1 @@
+{"EnableCache": "1", "PrivateMaxAge": "180", "MemCacheTTL": "60", "PageRegex": ["#^(?:/|/app|/app/home)$#", "#^/app/answers#"]}

@@ -81,7 +81,7 @@
                 <rn:widget path="utils/PageSetSelector"/>
             </rn:condition>
             <div class="rn_FloatLeft"><a href="javascript:window.scrollTo(0, 0);">#rn:msg:ARR_BACK_TO_TOP_LBL#</a></div>
-            <div class="rn_FloatRight">Powered by <a href="http://www.rightnow.com">RightNow</a></div>
+            <!-- <div class="rn_FloatRight">Powered by <a href="https://www.rightnow.com">RightNow</a></div> -->
             <br/><br/>
         </footer>
     </body>

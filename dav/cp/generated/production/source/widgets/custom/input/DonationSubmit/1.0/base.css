@@ -1,0 +1,10 @@
+/**
+ * base.css: Base CSS for SponsorshipSubmit
+ */
+.rn_SponsorshipSubmit.rn_FormSubmit {
+}
+
+#rn_ErrorLocation {
+  /*border: red 1px solid;*/
+  color: red;
+}

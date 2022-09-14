@@ -1,0 +1,69 @@
+/**
+ * base.css: Base CSS for ChildInfo
+ */
+.rn_ChildInfo {
+    /* border: 1px dotted lightgray; */
+}
+
+.rn_ChildInfo span, .rn_ChildInfo div
+{
+    display: block;
+    padding: 5px;
+}
+/* .rn_ChildInfo .grid {
+    display: grid;
+    grid-template-columns: 1fr 2fr 2fr;
+    grid-gap: 3em;
+    grid-template-rows: auto;
+    grid-template-areas:
+        "btnBack . ."
+        "childImg midContent sponsorship"
+        ". midContent sponsorship";
+}
+
+.rn_ChildInfo .btnBack {
+    grid-area: btnBack;
+    width: 100%;
+    box-sizing: border-box;
+    margin: 0;
+}
+
+.rn_ChildInfo .mid {
+    grid-area: midContent;
+}
+
+.rn_ChildInfo .sponsorship {
+    grid-area: sponsorship;
+}
+
+.rn_ChildInfo aside.childImgContainer {
+    display: inline-block;
+    width: 100%;
+    height: fit-content;
+    grid-area: childImg;
+}
+
+.rn_ChildInfo aside.childImgContainer figure.childImg {
+    position: relative;
+}
+
+.rn_ChildInfo aside.childImgContainer * {
+    box-sizing: border-box;
+    display: block;
+    width: 100%;
+    margin: 0;
+} */
+
+/* .rn_ChildInfo aside.childImgContainer figure.childImg .preview {
+    position: absolute;
+    bottom: 25%;
+    left: 0;
+    background-color: #ffffff;
+    opacity: 0.8;
+    padding: 2ch;
+} */
+/* 
+.rn_ChildInfo aside.childImgContainer figure.childImg .preview span {
+    word-break: normal;
+    white-space: normal;
+} */

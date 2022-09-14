@@ -1,0 +1,74 @@
+/**
+ * base.css: Base CSS for UnsponsoredChildMultiline
+ */
+.rn_UnsponsoredChildMultiline.rn_Multiline {}
+
+.rn_UnsponsoredChildMultiline.rn_Multiline ul {
+    margin: 0;
+    padding: 0;
+    white-space: nowrap;
+    width: 100%;
+    overflow-x: auto;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-between;
+}
+
+.rn_UnsponsoredChildMultiline.rn_Multiline ul li {
+    box-sizing: border-box;
+    display: inline-block;
+    width: 225px;
+    margin: 12.5px;
+    height: fit-content;
+}
+
+.rn_UnsponsoredChildMultiline.rn_Multiline ul li a {
+    color: inherit;
+    text-decoration: inherit;
+}
+
+.rn_UnsponsoredChildMultiline.rn_Multiline ul li a figure.childInfo {
+    position: relative;
+}
+
+.rn_UnsponsoredChildMultiline.rn_Multiline ul li a * {
+    box-sizing: border-box;
+    display: block;
+    width: 100%;
+    margin: 0;
+}
+
+.rn_UnsponsoredChildMultiline.rn_Multiline ul li a figure.childInfo .preview {
+    position: absolute;
+    bottom: 25%;
+    left: 0;
+    background-color: #ffffff;
+    opacity: 0.8;
+    padding: 2ch;
+}
+
+.rn_UnsponsoredChildMultiline.rn_Multiline ul li a figure.childInfo .preview span,
+.rn_UnsponsoredChildMultiline.rn_Multiline ul li a figure.childInfo .hover span {
+    word-break: normal;
+    white-space: normal;
+}
+
+.rn_UnsponsoredChildMultiline.rn_Multiline ul li a figure.childInfo:hover .preview {
+    display: none;
+}
+
+.rn_UnsponsoredChildMultiline.rn_Multiline ul li a figure.childInfo .hover {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #ffffff;
+    opacity: 0.8;
+    display: none;
+    padding: 2ch;
+}
+
+.rn_UnsponsoredChildMultiline.rn_Multiline ul li a figure.childInfo:hover .hover {
+    display: block;
+}

@@ -1,0 +1,58 @@
+<rn:block id="preResultList" />
+<<%=r ow_num ? 'ol start="' + start_num + '"' : 'ul' %>>
+    <rn:block id="topResultList" />
+    <% for (var i=0; i < data.length; i++) { %>
+        <rn:block id="resultListItem">
+            <li>
+                <a href="/app/child/detail/id/<%= data[i]['ID'] %>">
+                    <figure class="childInfo">
+                        <div class="image-container">
+                            <% if (data[i]['image']){ %>
+                                <img src="<%= data[i]['image'] %>" loading="lazy">
+                                <% } else { %>
+                                    <div class="no-image"></div>
+                                    <% } %>
+                                        <div class="hover">
+                                            <span class="summary">
+                <%= data[i]['Favorite Subject'] %><br>
+                <%= data[i]['Hobby'] %><br>
+                <%= data[i]['Grade'] %>
+              </span>
+                                        </div>
+                        </div>
+                        <figcaption class="description">
+                            <span class="name">
+              <span class="label">
+                Please Meet
+              </span>
+                            <span class="value">
+                <%= data[i]['Full Name'] %>
+              </span>
+                            </span>
+                            <span class="summary">
+              <span class="age">
+                <%= data[i]['Age'] %>
+              </span>, <span class="gender">
+                <%= data[i]['Gender'] %>
+              </span>
+                            </span>
+                            <span class="birthday">
+              <span class="label">Born</span>
+                            <span class="value">
+                <%= data[i]['Birthday'] %>
+              </span>
+                            </span>
+                        </figcaption>
+                    </figure>
+                </a>
+                <div class="footer">
+                    <button id="sponsorshipButton" class="sponsorshipButton" data-childID="<%= data[i]['ID'] %>" data-childRate="<%= data[i]['Rate'] %> " >Sponsor Me!</button>
+                    <button class="more-info" data-childID="<%= data[i]['ID'] %>" zdata-childRate="<%= data[i]['Rate'] %> " onclick="javascript:location.href='/app/child/detail/id/<%= data[i]['ID'] %>'">More Info <i class="fa fa-arrow-right"></i>
+        </button>
+                </div>
+            </li>
+        </rn:block>
+        <% } %>
+            <rn:block id="bottomResultList" />
+</<%=r ow_num ? 'ol' : 'ul' %>>
+<rn:block id="postResultList" />

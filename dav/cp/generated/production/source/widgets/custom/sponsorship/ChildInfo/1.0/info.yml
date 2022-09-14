@@ -1,0 +1,24 @@
+version: "1.0"
+attributes:
+  community:
+    name: community
+    type: BOOLEAN
+    description: indicates if community info should be displayed or not
+    required: false
+    default: false
+  sponsorship:
+    name: sponsorship
+    type: BOOLEAN
+    description: indicates if sponsorship info should be displayed or not
+    required: false
+    default: false
+  check_for_lock:
+    name: check_for_lock
+    type: boolean
+    description: tells whether a child lock should be checked or not before moving to checkout page
+    default: true
+    required: false
+requires:
+  jsModule:
+    - standard
+    - mobile

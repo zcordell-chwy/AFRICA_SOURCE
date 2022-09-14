@@ -155,19 +155,27 @@ Custom.Widgets.sponsorship.UnsponsoredChildGallery = RightNow.Widgets.extend({
             imgLink.attr("href", imgLink.attr("data-imgSrc"));
         });
         // Setup magnific pop-up jQuery plugin
-        // magnific pop-up webpage/documentation: http://dimsemenov.com/plugins/magnific-popup/documentation.html
+        // magnific pop-up webpage/documentation: https://dimsemenov.com/plugins/magnific-popup/documentation.html
         // magnific pop-up .js and .css included in templates/standard.php
         var thisObj = this;
 
         // Note: sponsorLink text is set later when the popup is opened based on login status
         if(this.data.attrs.data_source == 'woman'){
             var sponsorLink = '<div class="rn_WomanSponsorInput">' +
-                '$<input type="number" class="womensScholarshipInput" id="womanSponsorRate_##ID##" placeholder="$25 Recommended" />' +
+                '$<input type="number" class="womensScholarshipInput" id="womanSponsorRate_##ID##" placeholder="$25 Recommended"         min="0"' +
+                'step="1"' + 
+                'onfocus="this.previousValue = this.value"' +
+                'onkeydown="this.previousValue = this.value"' +
+                'oninput="validity.valid || (value = this.previousValue)"/>' +
                 '<a class="rn_WomanInfoSponsorLink" ' +
                 'href="javascript: void(0);" ' +
                 'data-childRate="##RATE##" ' +
                 'data-childID="##ID##">Monthly&gt;</a>' + '<p class="amountToFullScholarship">Or</p>' +
-                '<p >$<input type="number" class="womensScholarshipInput" id="womanSponsorOneTimeRate_##ID##" placeholder="$50 recommended"/>' +
+                '<p >$<input type="number" class="womensScholarshipInput" id="womanSponsorOneTimeRate_##ID##" placeholder="$50 recommended" min="0"' +
+                'step="1"' + 
+                'onfocus="this.previousValue = this.value"' +
+                'onkeydown="this.previousValue = this.value"' +
+                'oninput="validity.valid || (value = this.previousValue)"/>' +
                 '<a class="rn_WomanInfoOneTimeSponsorLink" ' +
                 'href="javascript: void(0);" ' +
                 'data-childRate="##RATE##" ' +

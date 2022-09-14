@@ -1,0 +1,170 @@
+/**
+ * base.css: Base CSS for PaymentProcess
+ */
+
+.rn_DonatePaymentProcess {
+    display: block;
+    max-width: 640px;
+    
+}
+
+#storedMethodForm{
+    background: white !important;
+}
+
+/* Style the tab */
+
+.tabs {
+    height: fit-content;
+    width: 100%;
+    text-align: center;
+}
+
+.tabs .tab_content {
+    margin: 0 !important;
+}
+
+.tabs label.radio {
+    background: #eee;
+    margin: 0 auto;
+    padding: 10px;
+    border: 1px solid #ccc;
+    display: inline-block !important;
+    z-index: 1;
+}
+
+.tabs [type=radio] {
+    display: none;
+}
+
+.tab_content {
+    display: none !important;
+}
+
+[type=radio].cardpay:checked~label.cardpay {
+    background: white;
+    border-bottom: 1px solid white;
+}
+
+[type=radio].cardpay:checked~.cardpay.tab_content {
+    display: block !important;
+}
+
+[type=radio].checkpay:checked~label.checkpay {
+    background: white;
+    border-bottom: 1px solid white;
+}
+
+[type=radio].checkpay:checked~.checkpay.tab_content {
+    display: block !important;
+}
+
+#newPaymentForm {
+    height: fit-content;
+    width: 100%;
+}
+
+#newPaymentForm .row {
+    display: -ms-flexbox;
+    /* IE10 */
+    display: flex;
+    -ms-flex-wrap: nowrap;
+    /* IE10 */
+    flex-wrap: nowrap;
+    margin: 0 -16px;
+}
+
+#newPaymentForm .col-25 {
+    -ms-flex: 25%;
+    /* IE10 */
+    flex: 25%;
+}
+
+#newPaymentForm .col-50 {
+    -ms-flex: 50%;
+    /* IE10 */
+    flex: 50%;
+}
+
+#newPaymentForm .col-75 {
+    -ms-flex: 75%;
+    /* IE10 */
+    flex: 75%;
+}
+
+#newPaymentForm .col-25,
+#newPaymentForm .col-50,
+#newPaymentForm .col-75 {
+    padding: 0 16px;
+}
+
+#newPaymentForm input[type=text] {
+    width: 100%;
+    margin-bottom: 20px;
+    padding: 0.75em;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    height: fit-content;
+    width: 100%;
+}
+
+#newPaymentForm select {
+    width: 100%;
+    margin-bottom: 10px;
+    padding: 0.75em;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    width: 100%;
+}
+
+#newPaymentForm label {
+    margin-bottom: 0;
+    display: block;
+}
+
+#newPaymentForm .icon-container {
+    margin-bottom: 10px;
+    padding: 7px 0;
+    font-size: 24px;
+}
+
+#newPaymentForm .required {
+    color: red;
+    font-weight: bold;
+}
+
+#paymentMethodError {
+    padding-top: 0.5em;
+    font-family: GothamBook, Arial;
+    color: red;
+}
+
+#newPaymentLink {
+    font-size: 1.4em;
+}
+
+#newPaymentLink img {
+    height: 30px;
+}
+
+#newPaymentLink span {
+    vertical-align: super;
+}
+
+
+/* Responsive layout - when the screen is less than 800px wide, make the two columns stack on top of each other instead of next to each other (and change the direction - make the "cart" column go on top) */
+
+@media (max-width: 800px) {
+    #newPaymentForm {
+        width: 100%;
+    }
+    #newPaymentForm * {
+        width: 100%;
+    }
+    #newPaymentForm .row {
+        flex-direction: column-reverse;
+    }
+    #newPaymentForm .col-25 {
+        margin-bottom: 20px;
+    }
+}
