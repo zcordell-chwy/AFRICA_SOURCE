@@ -16,9 +16,7 @@ class childSelector extends \RightNow\Libraries\Widget\Base {
     function getData() {
         
         
-        // $this->data['children'] = $this->CI->model('custom/sponsor_model')->getSponsoredChildren(getUrlParm('c_id'));
-        $CI = & get_instance(); 
-        $this->data['children'] = $this->CI->model('custom/sponsor_model')->getSponsoredChildren($CI->session->getProfileData('contactID'));
+        $this->data['children'] = $this->CI->model('custom/sponsor_model')->getSponsoredChildren(getUrlParm('c_id'));
         //remove needy child //it'll always be last
         array_pop($this->data['children']);
         logMessage($this->data['children']);

@@ -1,6 +1,8 @@
 <rn:meta title="#rn:msg:ACCOUNT_OVERVIEW_LBL#" template="standard.php" login_required="true" />
-<? $CI = & get_instance(); 
-   // print_r($CI->session->getProfileData('contactID')); ?>
+<? 
+   $CI = & get_instance(); 
+   $profile = $this -> CI -> session -> getProfile(); 
+?>
 
 
 <div id="rn_PageContent" class="rn_AccountOverviewPage">
@@ -9,15 +11,7 @@
 
 	<div class="rn_Overview rn_AfricaNewLifeLayoutSingleColumn ">
 		<!-- && getUrlParm('c_id') == $CI->session->getProfileData('contactID') -->
-		<?if ($CI->session->getProfileData('contactID') > 0 ){ 
-			
-			$this->data['children'] = $CI->model('custom/sponsor_model')->getSponsoredChildren($CI->session->getProfileData('contactID'));
-			logMessage("Count: ".count($this->data['children']));
-			logMessage($this->data['children']);
-            if (count($this->data['children']) <= 1){
-				header('Location: /app/account/overview');
-			}
-		?>
+		<?if (getUrlParm('c_id') > 0 && getUrlParm('c_id') == $profile->c_id->value){?>
 		<div class="page-content cf">
 			<div class="content-container">
 			    <p>
@@ -65,15 +59,12 @@
 		</div>
 
 		<?}else{
-			if($CI->session->getProfileData('contactID')){
-            $this->data['children'] = $CI->model('custom/sponsor_model')->getSponsoredChildren($CI->session->getProfileData('contactID'));
-            logMessage("2Count: ".count($this->data['children']));
-			if (count($this->data['children']) > 1)
-            	header('Location: /app/account/letters/c_id/pledge/'.$this->data['children'][0]->PledgeId);
-				// header('Location: /app/account/letters/c_id/'.$CI->session->getProfileData('contactID')."/pledge/".$this->data['children'][0]->PledgeId);
-			}else{
-				header('Location: /app/account/overview');
-			}
+            $this->data['children'] = $this->CI->model('custom/sponsor_model')->getSponsoredChildren($profile->c_id->value);
+            if (count($this->data['children']) > 0){
+            ?>
+                
+            <?}
+            header('Location: /app/account/letters/c_id/'.$profile->c_id->value."/pledge/".$this->data['children'][0]->PledgeId);
          }
          ?>
 
