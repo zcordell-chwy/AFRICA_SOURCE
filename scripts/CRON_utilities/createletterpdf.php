@@ -1,5 +1,5 @@
 ﻿<?
-define(BASE_OSVC_INTF_URL, 'http://africanewlife--tst.custhelp.com');
+define(BASE_OSVC_INTF_URL, 'https://africanewlife.custhelp.com');
 
 ini_set('display_errors', 'On');
 error_reporting(E_ERROR);
@@ -12,8 +12,21 @@ list($common_mbid, $rnw_mbid) = msg_init($p_cfgdir, 'msgbase', array('common', '
 
 
 require_once (get_cfg_var("doc_root") . "/include/ConnectPHP/Connect_init.phph");
+
 use RightNow\Connect\v1_2 as RNCPHP;
-initConnectAPI('api_access', 'Password1');
+initConnectAPI('cron_042022_user', 'x&w4iA712');
+
+
+if (!defined('DOCROOT')) {
+    $docroot = get_cfg_var('doc_root');
+    define('DOCROOT', $docroot);
+}
+
+if (!defined('SCRIPT_PATH')) {
+    $scriptPath  = ($debug) ? DOCROOT . '/custom/src' : DOCROOT . '/custom';
+    define('SCRIPT_PATH', $scriptPath);
+}
+require_once SCRIPT_PATH . '/utilities/network_utilities.php';
 
 
 try{
@@ -51,20 +64,37 @@ function createPDF($incID){
     _logToFile("\n_____________Begin create letter:".$incID."______________", 51);
 
     $inc = RNCPHP\Incident::fetch(intval($incID));
-    
+    //_logToFile("\n Line", 54);
+
     if(checkforpdf($inc)){
         _logToFile("PDF Exists for :".$incID, 56);
         return;
     }
+    //_logToFile("\n Line", 60);
     try{
         $child = $inc->CustomFields->CO->ChildRef;
         $pledge = $inc->CustomFields->CO->PledgeRef;
         
+        // //_logToFile("\n Before if", 63);
+        if(!file_exists('/tmp/ANLM_Logo_Black.jpg')){
+            //_logToFile("\n Inside file not exists", 64);
+            //$fileContents = file_get_contents('http://africanewlife.custhelp.com/euf/assets/images/ANLM_Logo_Black.jpg');
+            $fileContents = network_utilities\runCurl('https://africanewlife.custhelp.com/euf/assets/images/ANLM_Logo_Black.jpg', "GET", null, array());
+            //_logToFile("\n file contents", 83);
+            //_logToFile($fileContents, 84);
+            //_logToFile("\n Past get contents", 66);
+            file_put_contents('/tmp/ANLM_Logo_Black.jpg', $fileContents);
+            //_logToFile("\n Past put contents", 68);
+        }else{
+            //_logToFile("\n else", 70);
+        }
+        
+
         $pdf = new PDF();
         $pdf->AliasNbPages();
         $pdf->StartPageGroup();
         $pdf -> AddPage();
-        $pdf -> Image('http://africanewlife.custhelp.com/euf/assets/images/ANLM_Logo_Black.jpg', 10, 6, 75, 25);
+        $pdf -> Image('/tmp/ANLM_Logo_Black.jpg', 10, 6, 75, 25);
         $pdf->Ln(30);
         $pdf -> SetFont('Arial', 'I', 10);
         $pdf-> setRef($inc->ReferenceNumber);
@@ -97,9 +127,10 @@ function createPDF($incID){
         foreach ($inc->FileAttachments as $fattach) {
             $timeExt = time();
             $imgURL = $fattach -> getAdminURL();
-            $imgURL = str_replace("https://", "http://", $imgURL);
+            //$imgURL = str_replace("https://", "http://", $imgURL);
             $tmpFileName = preg_replace('/[^a-z0-9\.]/', '', strtolower($timeExt . $fattach -> FileName));
-            file_put_contents('/tmp/' . $tmpFileName, file_get_contents($imgURL));
+            $fileContents = network_utilities\runCurl($imgURL, "GET", null, array());
+            file_put_contents('/tmp/' . $tmpFileName, $fileContents);
                 
                 
             try{

@@ -35,7 +35,12 @@
     <link rel="stylesheet" href="/euf/assets/css/font-awesome/css/font-awesome.min.css">    
 </head>
 
-<body class="yui-skin-sam yui3-skin-sam page-id-<?php echo $this->page; ?>" itemscope itemtype="http://schema.org/WebPage">
+<body class="yui-skin-sam yui3-skin-sam page-id-<?php echo $this->page; ?>" itemscope itemtype="https://schema.org/WebPage">
+       <rn:condition show_on_pages="account/letters, account/overview">
+            <rn:condition config_check="CUSTOM_CFG_inspectlet_enabled == true">
+               <rn:widget path="custom/eventus/inspectlet" transaction="" />
+            </rn:condition>
+        </rn:condition>
     <a href="#rn_MainContent" class="rn_SkipNav rn_ScreenReaderOnly">#rn:msg:SKIP_NAVIGATION_CMD#</a>
 
     <header>

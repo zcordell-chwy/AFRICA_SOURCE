@@ -17,7 +17,7 @@ class woman_model extends \RightNow\Models\Base {
 
     function __construct() {
         parent::__construct();
-        initConnectAPI('api_access', 'Password1');
+        initConnectAPI('cp_082022_user', '$qQJ616xWWJ9lXzb$');
         $this -> CI -> load -> helper('constants');
         $this->CI->load->library('logging');
         $this->CLASS_LOG_LEVEL = $this->CI->Logging->LOG_LEVEL_DEBUG_FULL;

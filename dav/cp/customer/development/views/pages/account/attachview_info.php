@@ -8,7 +8,7 @@
     if (getUrlParm('c_id') > 0 && getUrlParm('c_id') == $profile->c_id->value) { ?>
 
         <?
-        initConnectAPI('api_access', 'Password1');
+        initConnectAPI('cp_082022_user', '$qQJ616xWWJ9lXzb$');
         $attach_id = getUrlParm('attach_id');
         $contactObj = $this->CI->model('Contact')->get()->result;
         $attachments = $contactObj->FileAttachments;
@@ -20,6 +20,7 @@
                 logMessage($item->ContentType);
 
                 $filePath = $item->getAdminUrl();
+                $filePath = str_replace("https://", "http://", $filePath);
                 $fileContents = file_get_contents($filePath);
 
                 if ($item->ContentType == 'application/pdf') {

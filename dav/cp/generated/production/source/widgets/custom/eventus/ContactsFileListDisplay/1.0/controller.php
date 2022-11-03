@@ -10,6 +10,8 @@ class ContactsFileListDisplay extends \RightNow\Libraries\Widget\Base {
 
     function getData() {
 
+        initConnectAPI('cp_082022_user', '$qQJ616xWWJ9lXzb$');
+        
         if(parent::getData() === false)  
             return false;
         
@@ -45,10 +47,13 @@ class ContactsFileListDisplay extends \RightNow\Libraries\Widget\Base {
             if(in_array(trim($item->FileName), $allowedFileNames) || (empty($allowedFileNames[0]) && empty($allowedMimeTypes[0]))  ){ //exact name
                 // $item->AttachmentUrl = "/app/account/attachview/c_id/".$contactObj->ID."/attach_id/".$item->ID;
                 $item->AttachmentUrl = "/app/account/attachview/attach_id/".$item->ID;
+                $item->AttachmentUrl = $item->getAdminUrl();
+                
                 $item->Target = '_blank';
             }else if( in_array(trim($item->ContentType), $allowedMimeTypes) ){
                 // $item->AttachmentUrl = "/app/account/attachview/c_id/".$contactObj->ID."/attach_id/".$item->ID;
-                $item->AttachmentUrl = "/app/account/attachview/attach_id/".$item->ID;
+                //$item->AttachmentUrl = "/app/account/attachview/attach_id/".$item->ID;
+                $item->AttachmentUrl = $item->getAdminUrl();
                 $item->Target = '_blank';
             }
         }

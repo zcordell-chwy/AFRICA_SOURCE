@@ -12,7 +12,7 @@
  */
 
 
-define(BASE_OSVC_INTF_URL, 'http://africanewlife.custhelp.com');
+define(BASE_OSVC_INTF_URL, 'https://africanewlife.custhelp.com');
 
 ini_set('display_errors', 'On');
 error_reporting(E_ERROR);
@@ -28,6 +28,19 @@ use RightNow\Connect\v1_2 as RNCPHP;
 initConnectAPI('cron_042022_user', 'x&w4iA712');
 
 require_once ('fpdf_pagegroups.php');
+
+
+if (!defined('DOCROOT')) {
+    $docroot = get_cfg_var('doc_root');
+    define('DOCROOT', $docroot);
+}
+
+if (!defined('SCRIPT_PATH')) {
+    $scriptPath  = ($debug) ? DOCROOT . '/custom/src' : DOCROOT . '/custom';
+    define('SCRIPT_PATH', $scriptPath);
+}
+require_once SCRIPT_PATH . '/utilities/network_utilities.php';
+
 
 // Incident statuses
 define(INC_STATUS_NEW, 1);
@@ -120,11 +133,16 @@ if(!is_dir('/tmp/letterupload/'.date('Y-m-d'))){
         $sendFiles = true;
         $child = $inc->CustomFields->CO->ChildRef;
         $pledge = $inc->CustomFields->CO->PledgeRef;
+
+        if(!file_exists('/tmp/ANLM_Logo_Black.jpg')){
+            $fileContents = network_utilities\runCurl('https://africanewlife.custhelp.com/euf/assets/images/ANLM_Logo_Black.jpg', "GET", null, array());
+            file_put_contents('/tmp/ANLM_Logo_Black.jpg', $fileContents);
+        }
     
         $pdf->StartPageGroup();
         $pdf -> AddPage();
         $pdf-> setRef($inc->ReferenceNumber);
-        $pdf -> Image(BASE_OSVC_INTF_URL.'/euf/assets/images/ANLM_Logo_Black.jpg', 10, 6, 75, 25);
+        $pdf -> Image('/tmp/ANLM_Logo_Black.jpg', 10, 6, 75, 25);
         $pdf->Ln(30);
         $pdf -> SetFont('Arial', 'I', 10);
         if(!empty($pledge->CorrespondenceContact)){
@@ -159,9 +177,10 @@ if(!is_dir('/tmp/letterupload/'.date('Y-m-d'))){
             }
             $timeExt = time();
             $imgURL = $fattach -> getAdminURL();
-            $imgURL = str_replace("https://", "http://", $imgURL);
+            //$imgURL = str_replace("https://", "http://", $imgURL);
             $tmpFileName = preg_replace('/[^a-z0-9\.]/', '', strtolower($timeExt . $fattach -> FileName));
-            file_put_contents('/tmp/' . $tmpFileName, file_get_contents($imgURL));
+            $fileContents = network_utilities\runCurl($imgURL, "GET", null, array());
+            file_put_contents('/tmp/' . $tmpFileName, $fileContents);
             
             
             try{

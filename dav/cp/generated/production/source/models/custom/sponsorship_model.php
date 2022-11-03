@@ -22,7 +22,7 @@ class sponsorship_model extends \RightNow\Models\Base
     function __construct()
     {
         parent::__construct();
-        initConnectAPI('api_access', 'Password1');
+        initConnectAPI('cp_082022_user', '$qQJ616xWWJ9lXzb$');
         $this->CI->load->helper('constants');
         $this->CI->load->helper('log');
         $this->CI->load->library('logging');

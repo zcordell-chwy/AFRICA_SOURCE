@@ -10,12 +10,13 @@ class ContactsFileListDisplay extends \RightNow\Libraries\Widget\Base {
 
     function getData() {
 
+        initConnectAPI('cp_082022_user', '$qQJ616xWWJ9lXzb$');
+        
         if(parent::getData() === false)  
             return false;
         
         $contactObj = $this -> CI -> model('Contact') -> get() -> result;
         
-        $this->_getValues($contactObj);
         $attachments = $contactObj->FileAttachments;
         if(is_null($attachments)){
             $attachments = array();
@@ -29,13 +30,8 @@ class ContactsFileListDisplay extends \RightNow\Libraries\Widget\Base {
             $attachments = $attachmentsNativePHPArray;
         } 
         
-        $CI = get_instance();
-        $sessionstring = $CI->session->getSessionData('sessionString');
-        
         $allowedFileNames = $result = array_map('trim', explode(',' ,$this->data['attrs']['include_only']));
         $allowedMimeTypes = $result = array_map('trim', explode(',' ,$this->data['attrs']['content_type_allowed']));
-
-        $attachmentUrl = "/ci/fattach/get/%s/%s" . $sessionstring . "/filename/%s";
         
         
         foreach ($attachments as $item){
@@ -43,18 +39,17 @@ class ContactsFileListDisplay extends \RightNow\Libraries\Widget\Base {
             //redone 7/13/18 as the ci/fattach link stopped working.
             //added account/attachview page to display single files
             if(in_array(trim($item->FileName), $allowedFileNames) || (empty($allowedFileNames[0]) && empty($allowedMimeTypes[0]))  ){ //exact name
-                // $item->AttachmentUrl = "/app/account/attachview/c_id/".$contactObj->ID."/attach_id/".$item->ID;
-                $item->AttachmentUrl = "/app/account/attachview/attach_id/".$item->ID;
+                $type = ($item->ContentType == 'application/pdf') ? "p" : "h";
+                $item->AttachmentUrl = "/app/account/attachview/attach_id/".$item->ID."/ct/$type";
                 $item->Target = '_blank';
             }else if( in_array(trim($item->ContentType), $allowedMimeTypes) ){
-                // $item->AttachmentUrl = "/app/account/attachview/c_id/".$contactObj->ID."/attach_id/".$item->ID;
-                $item->AttachmentUrl = "/app/account/attachview/attach_id/".$item->ID;
+                $type = ($item->ContentType == 'application/pdf') ? "p" : "h";
+                $item->AttachmentUrl = "/app/account/attachview/attach_id/".$item->ID."/ct/$type";
                 $item->Target = '_blank';
             }
         }
         
         usort($attachments, array($this, 'sortDescByDateCreated'));
-
         $this->data['value'] = $attachments;
         
         logMessage($attachments);
@@ -66,31 +61,4 @@ class ContactsFileListDisplay extends \RightNow\Libraries\Widget\Base {
         return $attach2->CreatedTime - $attach1->CreatedTime;
     }
     
-    //force lazy loading for debug purposes        
-    function _getValues($parent) {
-        try {
-            // $parent is a non-associative (numerically-indexed) array
-            if (is_array($parent)) {
-
-                foreach ($parent as $val) {
-                    $this -> _getValues($val);
-                }
-            }
-
-            // $parent is an associative array or an object
-            elseif (is_object($parent)) {
-
-                while (list($key, $val) = each($parent)) {
-
-                    $tmp = $parent -> $key;
-
-                    if ((is_object($parent -> $key)) || (is_array($parent -> $key))) {
-                        $this -> _getValues($parent -> $key);
-                    }
-                }
-            }
-        } catch (exception $err) {
-            // error but continue
-        }
-    }
 }

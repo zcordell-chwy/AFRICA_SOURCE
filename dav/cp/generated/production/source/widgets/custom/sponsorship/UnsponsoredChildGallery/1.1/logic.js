@@ -155,7 +155,7 @@ Custom.Widgets.sponsorship.UnsponsoredChildGallery = RightNow.Widgets.extend({
             imgLink.attr("href", imgLink.attr("data-imgSrc"));
         });
         // Setup magnific pop-up jQuery plugin
-        // magnific pop-up webpage/documentation: http://dimsemenov.com/plugins/magnific-popup/documentation.html
+        // magnific pop-up webpage/documentation: https://dimsemenov.com/plugins/magnific-popup/documentation.html
         // magnific pop-up .js and .css included in templates/standard.php
         var thisObj = this;
 

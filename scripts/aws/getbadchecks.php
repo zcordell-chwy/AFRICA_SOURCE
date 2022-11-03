@@ -47,6 +47,8 @@ $merchKey = cfg_get(CUSTOM_CFG_frontstream_vendor);
          'MerchantKey' => $merchKey,
          'BeginDt' => date("m/d/Y", strtotime("-1 days")),
          'EndDt' => date("m/d/Y", time()),
+        //  'BeginDt' => date("m/d/Y", strtotime("Sept 14, 2022")),
+        //  'EndDt' => date("m/d/Y", strtotime("Sept 15, 2022")),
          'ExtData' => "",
          'op' => "admin/ws/trxdetail.asmx/GetReturnedCheckReport"
      );
@@ -84,16 +86,16 @@ function processBadCheck($transArray){
                 
                 //check to make sure the dates are the same on teh transaction.  Sometimes the test site will use teh 
                 //frontstream account and duplicate the trans id's
-                if ( date("Ymd", $trans -> CreatedTime) == date("Ymd", strtotime($transArray['AUTHDATE']))){
+                //if ( date("Ymd", $trans -> CreatedTime) == date("Ymd", strtotime($transArray['AUTHDATE']))){
                     
                     $trans -> currentStatus = RNCPHP\financial\transaction_status::fetch(8);//reversed.
                     $trans->save();
                     esgLogger::log("Resetting transaction ".$trans->ID." to reversed", logWorker::Debug);
                     _resetPledges($trans->donation->ID);
                     
-                }else{
-                    esgLogger::log("Trans ID's matched but dates did not", logWorker::Debug);
-                }
+                // }else{
+                //     esgLogger::log("Trans ID's matched but dates did not", logWorker::Debug);
+                // }
                 
             }else{
                 esgLogger::log("Didn't find transaction". $transArray['INVOICE_ID'], logWorker::Debug);
@@ -164,6 +166,10 @@ function runCurl($host, array $postData) {
        //_output($postData);
        //_output($host);
        // Initialize Curl and send the request
+
+       esgLogger::log(implode("&", $postData), logWorker::Debug);
+       esgLogger::log($host, logWorker::Debug);
+
        $ch = curl_init();
        curl_setopt($ch, CURLOPT_URL, $host);
        curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);

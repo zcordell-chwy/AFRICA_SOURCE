@@ -324,7 +324,7 @@ class frontstream_model  extends \RightNow\Models\Base
      */
     private function runTransaction(array $postVals, RNCPHP\financial\transactions $trans)
     {
-        //using id's due to http://communities.rightnow.com/posts/3a27a1b48d?commentId=33912#33912
+        //using id's due to https://communities.rightnow.com/posts/3a27a1b48d?commentId=33912#33912
         $host = getConfig(CUSTOM_CFG_frontstream_endpoint);
         logMessage("Front Stream Request Endpoint: " . $host);
         if (!$this->verifyMinTransReqs($postVals, $host, $user, $pass)) {
@@ -408,7 +408,7 @@ class frontstream_model  extends \RightNow\Models\Base
      */
     private function verifyMinTransReqs($postVals, $host)
     {
-        //using id's due to http://communities.rightnow.com/posts/3a27a1b48d?commentId=33912#33912
+        //using id's due to https://communities.rightnow.com/posts/3a27a1b48d?commentId=33912#33912
 
         if (is_null($host) || strlen($host) < 1) {
             $this->errorMessage[] = "Invalid host passed to runTransaction";

@@ -1,4 +1,4 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML Basic 1.1//EN" "http://www.w3.org/TR/xhtml-basic/xhtml-basic11.dtd">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML Basic 1.1//EN" "https://www.w3.org/TR/xhtml-basic/xhtml-basic11.dtd">
 <html lang="#rn:language_code#">
     <head>
         <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>  
@@ -69,7 +69,7 @@
     <body>
         <div class="ResponsiveRow">
             <div class="ResponsiveCol-12 no-padding">
-                <a id="rn_HeaderLogoLink" href="http://www.africanewlife.org">
+                <a id="rn_HeaderLogoLink" href="https://www.africanewlife.org">
                     <img src="/euf/assets/images/afnl-header-logo.png" height="38" width="163" title="Africa New Life" alt="Africa New Life">
                 </a>
             </div>

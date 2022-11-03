@@ -92,7 +92,7 @@ $downForMaint = false;
 					</div>
 					<div class="ResponsiveRow">
 						<div class="ResponsiveCol-12 no-padding">
-							<a id="rn_HeaderLogoLink" href="http://www.africanewlife.org">
+							<a id="rn_HeaderLogoLink" href="https://www.africanewlife.org">
 								<img src="/euf/assets/images/afnl-header-logo.png" height="38" width="163" title="Africa New Life" alt="Africa New Life" />
 							</a>
 						</div>
