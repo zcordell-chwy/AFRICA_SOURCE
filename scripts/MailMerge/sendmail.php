@@ -18,8 +18,19 @@ list ($common_cfgid, $rnw_common_cfgid, $rnw_ui_cfgid, $ma_cfgid) = msg_init($p_
 list ($common_mbid, $rnw_mbid) = msg_init($p_cfgdir, 'msgbase', array('common', 'rnw'));
 
 require_once(get_cfg_var("doc_root") . "/include/ConnectPHP/Connect_init.phph");
+
+if (!defined('DOCROOT')) {
+    $docroot = get_cfg_var('doc_root');
+    define('DOCROOT', $docroot);
+}
+if (!defined('SCRIPT_PATH')) {
+    $scriptPath  = ($debug) ? DOCROOT . '/custom/src' : DOCROOT . '/custom';
+    define('SCRIPT_PATH', $scriptPath);
+}
+require_once SCRIPT_PATH . '/utilities/network_utilities.php';
+
 use RightNow\Connect\v1_2 as RNCPHP;
-initConnectAPI('api_access', 'Password1');
+initConnectAPI('cron_042022_user', 'x&w4iA712');
 ini_set('auto_detect_line_endings',TRUE);
 
 
@@ -36,7 +47,7 @@ if ($_POST['contactId']){
     
     $childImage = $_POST['childImage'];
     
-    $fp = fopen('/tmp/mailmerge.txt', 'a');
+    $fp = fopen('/tmp/mailingLogs/mailmerge.txt', 'a');
     fwrite($fp, date("H:i:s   -").$childImage."\n");
     
     //checking if a child image exists.  don't send an email if it doesn't
@@ -53,20 +64,26 @@ if ($_POST['contactId']){
 
         $addtlChildImage = str_replace($suffix, "_".$_POST['contactId'].$suffix, $childImage);
         
-        
-        if(getimagesize($addtlChildImage)){
+
+        $addtlChildImage_fileContents = network_utilities\runCurl($addtlChildImage, "GET", null, array());
+        $childImage_fileContents = network_utilities\runCurl($childImage, "GET", null, array());
+
+        if($addtlChildImage_fileContents){
             _logToFile(56, "Found additional child photo:".$addtlChildImage);
             //found adn additional image, now replace that url with the one that is created in teh add in
             $_POST['emailBody'] = str_replace($childImage, $addtlChildImage, $_POST['emailBody']);
             
-        }else if(getimagesize($childImage)){
-            //image exists!
+        }else if($childImage_fileContents){
+            _logToFile(63, "child image size");
         }else{
+            _logToFile(65, "returning");
             return;
         }
      }
         
+     _logToFile(70, "before email contact");
         if($_POST['emailContact'] == "True"){
+            _logToFile(70, "after email contact");
             fwrite($fp, date("H:i:s   -")."Sending Email\n");
             
             try{

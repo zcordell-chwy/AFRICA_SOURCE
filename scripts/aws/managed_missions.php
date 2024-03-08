@@ -34,7 +34,7 @@ if (!defined('SCRIPT_PATH')) {
 
 /*Api Constants*/
 define('ALLOW_POST', true);
-define('ALLOW_GET', false);
+define('ALLOW_GET', true);
 define('ALLOW_PUT', false);
 define('ALLOW_PATCH', false);
 
@@ -73,13 +73,13 @@ try {
 class managedMissions
 {
 
-    private $executionSummary;
+    private $executionSummary, $getTransactionsEndpoint, $getTripMemberEndpoint, $getTripEndpoint;
 
     public function __construct()
     {
         $this->executionSummary[] = "Begin Managed Missions Script ".date('Y-m-d');
         //$this->getTransactionsEndpoint = str_replace('{DATE}', '2021-08-01', RNCPHP\Configuration::fetch('CUSTOM_CFG_MANAGED_MISSIONS_API_ENDPOINT')->Value);
-        $this->getTransactionsEndpoint = str_replace('{DATE}', date('Y-m-d', strtotime('August 1, 2022')), RNCPHP\Configuration::fetch('CUSTOM_CFG_MANAGED_MISSIONS_API_ENDPOINT')->Value);
+        $this->getTransactionsEndpoint = str_replace('{DATE}', date('Y-m-d', strtotime('-2 weeks')), RNCPHP\Configuration::fetch('CUSTOM_CFG_MANAGED_MISSIONS_API_ENDPOINT')->Value);
         $this->getTripMemberEndpoint = RNCPHP\Configuration::fetch('CUSTOM_CFG_MANAGED_MISSIONS_PERSON_API_ENDPOINT')->Value;
         $this->getTripEndpoint = RNCPHP\Configuration::fetch('CUSTOM_CFG_MANAGED_MISSIONS_TRIP_API_ENDPOINT')->Value;
         $this->executionSummary[] = $this->getTransactionsEndpoint;
@@ -179,9 +179,10 @@ class managedMissions
     private function validatePayload($mmDonation){
         $errors = array();
 
-        if(!isset($mmDonation->PersonId)){
-            $errors[] = "PersonId not set";
-        }
+        /*Supports donor for general donations not associated with a person*/
+        // if(!isset($mmDonation->PersonId)){
+        //     $errors[] = "PersonId not set";
+        // }
 
         if($mmDonation->GrossAmount <= 0){
             $errors[] = "Donation not a positive amount";
@@ -191,7 +192,7 @@ class managedMissions
             $errors[] = "Refund expected";
         }
 
-        if($mmDonation->ReferenceNumber == "EXCEPTION"){
+        if(strtoupper($mmDonation->ReferenceNumber) == "EXCEPTION"){
             $errors[] = "Exception: Skipping";
         }
 
@@ -277,21 +278,30 @@ class managedMissions
 
         
         //trip member info
-        $tripMemberResponse = network_utilities\runCurl( str_replace('{ID}', $mmDonation->PersonId, $this->getTripMemberEndpoint), "GET", null, array());
-        if(!$tripMemberResponse){
-            outputResponse($this->executionSummary, 'Failed to get response from MM Person Api url:'.str_replace('{ID}', $mmDonation->PersonId, $this->getTripMemberEndpoint), '500');
-        }else{
-            $tripMemberResults = json_decode($tripMemberResponse);
+
+        if($mmDonation->PersonId){//general donation may not have a personId
+            $tripMemberResponse = network_utilities\runCurl( str_replace('{ID}', $mmDonation->PersonId, $this->getTripMemberEndpoint), "GET", null, array());
+            if(!$tripMemberResponse){
+                outputResponse($this->executionSummary, 'Failed to get response from MM Person Api url:'.str_replace('{ID}', $mmDonation->PersonId, $this->getTripMemberEndpoint), '500');
+            }else{
+                $tripMemberResults = json_decode($tripMemberResponse);
+            }
         }
+        
 
         if(!$customFundDonation){
-            $tripContact = $this->getContact(null, $mmDonation->PersonId, $tripMemberResults->data->FirstName, $tripMemberResults->data->LastName, $tripMemberResults->data->Address1, $tripMemberResults->data->City, $tripMemberResults->data->State, $tripMemberResults->data->PostalCode, $tripMemberResults->data->PhoneNumber, $tripMemberResults->data->EmailAddress);
+
+            if($mmDonation->PersonId){//general donation may not have a personId
+                $tripContact = $this->getContact(null, $mmDonation->PersonId, $tripMemberResults->data->FirstName, $tripMemberResults->data->LastName, $tripMemberResults->data->Address1, $tripMemberResults->data->City, $tripMemberResults->data->State, $tripMemberResults->data->PostalCode, $tripMemberResults->data->PhoneNumber, $tripMemberResults->data->EmailAddress);
+            }
 
             //create trip
             $trip = $this->getTrip($mmDonation->MissionTripId, $mmDonation->MissionTripName, $this->cleanDate($tripResults->data->DepartureDate), $this->cleanDate($tripResults->data->ReturnDate));
 
             // //find/create TripMember
-            $tripMember = $this->getTripMember($mmDonation->PersonId, $tripContact, $trip);
+            if($mmDonation->PersonId){//general donation may not have a personId
+                $tripMember = $this->getTripMember($mmDonation->PersonId, $tripContact, $trip);
+            }
         }
         
         // //create Donation
@@ -336,6 +346,9 @@ class managedMissions
             $pledge->Appeals = RNCPHP\donation\Appeal::fetch(STM_APPEAL_ID);
 
             //for special purpose donations the traveller won't be available
+            if(trim($traveler) == ""){
+                $traveler = "General Donation";
+            }
             $desc = PLEDGE_DESC." ".$traveler;
             $pledge->Descr = $desc;
             $pledge->PledgeStatus = RNCPHP\donation\PledgeStatus::fetch(MANUAL_PAY_STATUS);//Manual Pay
@@ -375,7 +388,9 @@ class managedMissions
             $donation->Amount = number_format($amt, 2, '.', '');
             $donation->PaymentSource = RNCPHP\donation\paymentSourceMenu::fetch(PAY_SOURCE);
             $donation->managedMissionsId = $mmId; 
-            $donation->TripMember = $tripMember;
+            if($tripMember){//may not have a trip member if general donation
+                $donation->TripMember = $tripMember;
+            }
             $donation->Type = RNCPHP\donation\Type::fetch(1);//always a pledge
             $donation->Non_Charitable = $non_charitable_val;
             if(strpos($referenceNumber, 'Check-') === 0){

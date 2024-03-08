@@ -118,7 +118,8 @@ function executeUpdatesForRecords($startVal){
     $returnVal = array();
     //array of funds to disreguard when getting the yearly total donations
     $fundsToIgnore = array('STM');
-
+    $nonSponFundArray = array("ACT","ACT Dorm","ACT Endow","ACT Mobile","ADMIN","AfricRadio","AGIFT","ANLM","Austin","BBAN","BEN","BFBLK","BIBLE","BNF","BNQT","BRICKS","BRKMCH","Bugesera","BUILD","CAMP","Chicago","Comm. Devp","COMP","CONTF","CONTI","CROSS","DAY","DBA","DCBAN","DCTR","DHF","DMC","DORM","DRIGG College","DRM Tutoring","DVPT","Estate & Planned Giving","Executive","FAC","Gallery","Gashora Community","GEAR","GENFND","GIFT","GIFTCH","GIFTCO","Halo Endowment","HINDDVLP","HINDURWA","HINDURWACD","HINDURWAED","HINDURWATO","Huye Community","INTM","INTMO","Karangazi Community","KATAF","Kayonza C","KBASK","KCL","Keyhole Gardens","KGB Comm","KGIFT","Kigali Community","Kilimanjaro","KNBB","KRC","kyz","LEADE","Life Skills","LittleRock","LIVE","MedSchol","Multnomah","NATM","NATMC","NLBC","NLBRENT","NOK","Nurse","Nyagatare Community","Nyamagabe Community","Nyamirama Community","Nyanza Community","NYC","OPER","PDX Banque","PPR","PUBHLTH","RADIO","Refugee","REST","RSSF","RSV","RTK","Rubavu","RUGAE","SA Fundraiser","Scholastic","Sewing Machines","SLK","SPCPJT","STKids","STS","SysDVLP","TEACH","TTM","UK","Unallocated","US Program Management","USOPR","VANMANT","VSP","WMN","Women's Development Programs","ZOPHFM");
+            
     for($currentRecord = $start; $currentRecord < $end; $currentRecord++){
 
         try{
@@ -151,6 +152,7 @@ function executeUpdatesForRecords($startVal){
             }
 
             $firstIsSet = false;
+            $firstNonSponSet = false;
             $saveNeeded = false;
             
 
@@ -175,6 +177,16 @@ function executeUpdatesForRecords($startVal){
             $largestDonationFund = null;
             $recentSponsorshipDonation = null;
             $uniqueFundArray = array();
+            $largestNonSponAmt = 0;
+            $largestNonSponDate = null;
+            $largestNonSponSoft = false;
+            $largestNonSponFund = null;
+            $firstNonSponAmt = 0;
+            $firstNonSponDate = null;
+            $firstNonSponSoft = false;
+            $firstNonSponFund = null;
+            $totalNonSponAmt = 0;
+
             
 
             while($transaction = $transactionList->next()) {
@@ -253,7 +265,29 @@ function executeUpdatesForRecords($startVal){
                         $uniqueFundArray[$fund->LookupName] = $uniqueFundArray[$fund->LookupName] + 1;
                     }
                 }
-                
+
+
+                //total lifetime non spon donations
+                if(in_array($fund->LookupName, $nonSponFundArray)){
+                    $totalNonSponAmt += $transaction['Total Charge'];
+                }
+
+                //First Non Spon Donations (can include gift)
+                if(in_array($fund->LookupName, $nonSponFundArray) && $firstNonSponSet == false){
+                    $firstNonSponAmt = $transaction['Total Charge'];
+                    $firstNonSponDate = $transaction['Donation Date'];
+                    $firstNonSponSoft = ($transaction['Pledge Contact'] != $transaction['Donation Contact']) ? true : false;
+                    $firstNonSponFund = $fund;
+                    $firstNonSponSet = true;
+                }
+
+                //largest Non Spon Donations (can include gift)
+                if( in_array($fund->LookupName, $nonSponFundArray) && intval($transaction['Total Charge']) >= $largestNonSponAmt){
+                    $largestNonSponAmt = $transaction['Total Charge'];
+                    $largestNonSponDate = $transaction['Donation Date'];
+                    $largestNonSponSoft = ($transaction['Pledge Contact'] != $transaction['Donation Contact']) ? true : false;
+                    $largestNonSponFund = $fund;
+                }
 
                 
             }
@@ -445,6 +479,68 @@ function executeUpdatesForRecords($startVal){
             if($recentSponsorshipDonation != $contactObj->CustomFields->Metrics->recentSponsorshipDonation){
                 $contactObj->CustomFields->Metrics->recentSponsorshipDonation = $recentSponsorshipDonation;
                 $results['recentSponsorshipDonation'] = $recentSponsorshipDonation;
+                $saveNeeded = true;
+            }
+
+            //Date of first nonspon
+            if($firstNonSponDate != $contactObj->CustomFields->Metrics->firstNonSponDate){
+                $contactObj->CustomFields->Metrics->firstNonSponDate = $firstNonSponDate;
+                $results['firstNonSponDate'] = date('Y/m/d', $firstNonSponDate);
+                $saveNeeded = true;
+            }
+
+            //Date of largest nonspon
+            if($largestNonSponDate != $contactObj->CustomFields->Metrics->largestNonSponLifetimeDate){
+                $contactObj->CustomFields->Metrics->largestNonSponLifetimeDate = $largestNonSponDate;
+                $results['largestNonSponLifetimeDate'] = date('Y/m/d', $largestNonSponDate);
+                $saveNeeded = true;
+            }
+
+            //Amt of largest nonspon
+            if($largestNonSponAmt &&$largestNonSponAmt != $contactObj->CustomFields->Metrics->largestNonSponLifetimeAmt){
+                $contactObj->CustomFields->Metrics->largestNonSponLifetimeAmt = $largestNonSponAmt;
+                $results['largestNonSponAmt'] = $largestNonSponAmt;
+                $saveNeeded = true;
+            }
+
+            //Amt of first nonspon
+            if($firstNonSponAmt != $contactObj->CustomFields->Metrics->firstNonSponAmt){
+                $contactObj->CustomFields->Metrics->firstNonSponAmt = $firstNonSponAmt;
+                $results['firstNonSponAmt'] = $firstNonSponAmt;
+                $saveNeeded = true;
+            }
+
+            //largest non spon soft?
+            if($largestNonSponSoft != $contactObj->CustomFields->Metrics->largestNonSponLifetimeSoft){
+                $contactObj->CustomFields->Metrics->largestNonSponLifetimeSoft = $largestNonSponSoft;
+                $results['largestNonSponSoft'] = ($largestNonSponSoft) ? 'true':'false';
+                $saveNeeded = true;
+            }
+
+            //first non spon soft?
+            if($firstNonSponSoft != $contactObj->CustomFields->Metrics->firstNonSponSoft){
+                $contactObj->CustomFields->Metrics->firstNonSponSoft = $firstNonSponSoft;
+                $results['largestNonSponSoft'] = ($largestNonSponSoft) ? 'true':'false';
+                $saveNeeded = true;
+            }
+            //first non spon fund
+            if($firstNonSponFund != $contactObj->CustomFields->Metrics->firstNonSponFund){
+                $contactObj->CustomFields->Metrics->firstNonSponFund = $firstNonSponFund;
+                $results['firstNonSponFund'] = $firstNonSponFund->LookupName;
+                $saveNeeded = true;
+            }
+
+            //largest non spon fund
+            if($largestNonSponFund != $contactObj->CustomFields->Metrics->largestNonSponFund){
+                $contactObj->CustomFields->Metrics->largestNonSponFund = $largestNonSponFund;
+                $results['largestNonSponFund'] = $largestNonSponFund->LookupName;
+                $saveNeeded = true;
+            }
+
+            //Amt of total nonspon
+            if($totalNonSponAmt != $contactObj->CustomFields->Metrics->totalNonSponDonationAmt){
+                $contactObj->CustomFields->Metrics->totalNonSponDonationAmt = $totalNonSponAmt;
+                $results['totalNonSponAmt'] = $totalNonSponAmt;
                 $saveNeeded = true;
             }
 

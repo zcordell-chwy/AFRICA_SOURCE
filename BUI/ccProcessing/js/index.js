@@ -276,7 +276,7 @@ async function completePaymentTransaction(message, longMessage, status, PNRef, s
         await createOrUpdateTransactionObj(donationID, longMessage, contactID, -1, status, null, PNRef);
     }
     else {
-        await createOrUpdateTransactionObj(donationID, message + '\n\n' + longMessage, contactID, -1, status, null, PNRef);
+        await createOrUpdateTransactionObj(donationID, message + '\n\n' + longMessage, contactID, -1, status, null, PNRef, false, JSON.stringify(longMessage));
     }
 
     if (severity == Severity.ERROR) {

@@ -3,17 +3,24 @@
 //Author: Zach Cordell
 //Date: 04/25/16
 
+use RightNow\Connect\v1_3 as RNCPHP;
 
+if (!defined('DOCROOT')) {
+    $docroot = get_cfg_var('doc_root');
+    define('DOCROOT', $docroot);
+}
 
-ini_set('display_errors', 'On');
-error_reporting(E_ERROR);
+if (!defined('SCRIPT_PATH')) {
+    $scriptPath  = ($debug) ? DOCROOT . '/custom/src' : DOCROOT . '/custom';
+    define('SCRIPT_PATH', $scriptPath);
+}
 
-$ip_dbreq = true;
-require_once('include/init.phph');
-
-require_once(get_cfg_var("doc_root") . "/include/ConnectPHP/Connect_init.phph");
-use RightNow\Connect\v1_2 as RNCPHP;
-initConnectAPI('cron_042022_user', 'x&w4iA712');
+define('ALLOW_POST', false);
+define('ALLOW_GET', true);
+define('ALLOW_PUT', false);
+define('ALLOW_PATCH', false);
+require_once SCRIPT_PATH . '/utilities/make.me.an.api.php';
+$returnArray =  array();
 
 load_curl();
 
@@ -35,7 +42,7 @@ $mytx = array(
     'Password' => PASS,
     'RPNum' => MERCH_KEY,
     'BeginDt' => date('Y-m-d\T08:00:00', FROM_DATE),
-    'EndDt' => date('Y-m-d\T08:00:00', TO_DATE),
+    'EndDt' =>  date('Y-m-d\T08:00:00', TO_DATE),
     'ExtData' => "",
     'PNRef' => "",
     'PaymentType' => "",
@@ -106,8 +113,8 @@ $mytx2 = array(
 
 );
 
-_output($mytx);
-_output($mytx2);
+// _output($mytx);
+// _output($mytx2);
 
 
 $FSCardArray =  runTransaction($mytx);
@@ -115,14 +122,16 @@ $FSCheckArray = runTransaction($mytx2);
 $OCSTransArray = getTransArray();
 
 
-_output($FSCardArray);
-_output($FSCheckArray);
-_output($OCSTransArray);
+// _output($FSCardArray);
+// _output($FSCheckArray);
+// _output($OCSTransArray);
 
 //checking for same status, same amount, existence, all NewPM transactions in FS have a corresponding reversal.
 
 _checkNewPMTransactions($FSCardArray['RICHDBDS'], $FSCheckArray['RICHDBDS']);
 _checkTransactionStatus($OCSTransArray, $FSCardArray['RICHDBDS'], $FSCheckArray['RICHDBDS']);
+
+return outputResponse($returnArray, null);
 
 function _checkNewPMTransactions($FSCardArray, $FSCheckArray){
 
@@ -186,14 +195,16 @@ function _checkTransactionStatus($OCSTransArray, $FSCardArray, $FSCheckArray){
                         echo "We passed! <br/>";
                     }
                  }
+                 
                  //completed
-                 if(trim($FSTransaction['TRANS_TYPE_ID']) == "Sale" && trim($FSTransaction['RESULT_CH']) == 0 && $OCSTransArray[$key]["LookupName"] == "Completed"){
+                 if((trim($FSTransaction['TRANS_TYPE_ID']) == "Sale" || trim($FSTransaction['TRANS_TYPE_ID']) == "RepeatSale") && trim($FSTransaction['RESULT_CH']) == 0 && $OCSTransArray[$key]["LookupName"] == "Completed"){
                      //echo "completed trans match<br/>"; //SUCCESS
-                 }elseif((trim($FSTransaction['TRANS_TYPE_ID']) != "Sale" || trim($FSTransaction['RESULT_CH']) != 0) && $OCSTransArray[$key]["LookupName"] == "Completed"){
+                 }elseif(((trim($FSTransaction['TRANS_TYPE_ID']) != "Sale" && trim($FSTransaction['TRANS_TYPE_ID']) != "RepeatSale" ) || trim($FSTransaction['RESULT_CH']) != 0) && $OCSTransArray[$key]["LookupName"] == "Completed"){
+                    _output("TransType:".trim($FSTransaction['TRANS_TYPE_ID']).":ResultCH:".trim($FSTransaction['RESULT_CH']).":OCSTransKey:".$OCSTransArray[$key]["LookupName"]);
                    _writeError("Could not match Completed OSC status with Frontstream ID  ".$FSTransaction['INVOICE_ID'], $FSTransaction['TRX_HD_KEY'], $FSTransaction['DATE_DT']);
-                 }elseif(trim($FSTransaction['TRANS_TYPE_ID']) == "Sale" && trim($FSTransaction['RESULT_CH']) != 0 && $OCSTransArray[$key]["LookupName"] == "Declined"){
+                 }elseif((trim($FSTransaction['TRANS_TYPE_ID']) == "Sale" || trim($FSTransaction['TRANS_TYPE_ID']) == "RepeatSale") && trim($FSTransaction['RESULT_CH']) != 0 && $OCSTransArray[$key]["LookupName"] == "Declined"){
                    //SUCCESS
-                 }elseif((trim($FSTransaction['TRANS_TYPE_ID']) != "Sale" || trim($FSTransaction['RESULT_CH']) == 0) && $OCSTransArray[$key]["LookupName"] == "Declined"){
+                 }elseif(((trim($FSTransaction['TRANS_TYPE_ID']) != "Sale" && trim($FSTransaction['TRANS_TYPE_ID']) != "RepeatSale" ) || trim($FSTransaction['RESULT_CH']) == 0) && $OCSTransArray[$key]["LookupName"] == "Declined"){
                    _writeError("Could not match Declined OSC status with Frontstream ID  ".$FSTransaction['INVOICE_ID'], $FSTransaction['TRX_HD_KEY'], $FSTransaction['DATE_DT']);
                  }elseif(trim($FSTransaction['TRANS_TYPE_ID']) == "Reversal" && trim($FSTransaction['RESULT_CH']) == 0 && $OCSTransArray[$key]["LookupName"] == "Reversed"){
                     $refundedkey = searcharray($FSTransaction['ORIG_TRX_HD_KEY'], 'TRX_HD_KEY', $FSCardArray);
@@ -207,12 +218,12 @@ function _checkTransactionStatus($OCSTransArray, $FSCardArray, $FSCheckArray){
                  //refunded
                  }elseif(trim($FSTransaction['TRANS_TYPE_ID']) == "Credit" && trim($FSTransaction['RESULT_CH']) == 0 && $OCSTransArray[$key]["LookupName"] == "Refunded"){
                  //refunded in Oracle but the original sale transaction comes up in teh card array
-                 }elseif(trim($FSTransaction['TRANS_TYPE_ID']) == "Sale" && trim($FSTransaction['RESULT_CH']) == 0 && $OCSTransArray[$key]["LookupName"] == "Refunded"){
+                 }elseif((trim($FSTransaction['TRANS_TYPE_ID']) == "Sale" || trim($FSTransaction['TRANS_TYPE_ID']) == "RepeatSale") && trim($FSTransaction['RESULT_CH']) == 0 && $OCSTransArray[$key]["LookupName"] == "Refunded"){
                  //we'll just ignore it.  we'll verify when the refunded transaction comes up
                  //pending agent or web because of decline
-                 }elseif(trim($FSTransaction['TRANS_TYPE_ID']) == "Sale" && trim($FSTransaction['RESULT_CH']) != 0 && ( $OCSTransArray[$key]["LookupName"] == "Pending - Agent Initiated" || $OCSTransArray[$key]["LookupName"] == "Pending - Web Initiated") ){
+                 }elseif((trim($FSTransaction['TRANS_TYPE_ID']) == "Sale" || trim($FSTransaction['TRANS_TYPE_ID']) == "RepeatSale") && trim($FSTransaction['RESULT_CH']) != 0 && ( $OCSTransArray[$key]["LookupName"] == "Pending - Agent Initiated" || $OCSTransArray[$key]["LookupName"] == "Pending - Web Initiated") ){
                     //echo "refunded trans match<br/>";
-                 }elseif(trim($FSTransaction['TRANS_TYPE_ID']) != "Sale" || trim($FSTransaction['RESULT_CH']) != 0 && ( $OCSTransArray[$key]["LookupName"] == "Pending - Agent Initiated" || $OCSTransArray[$key]["LookupName"] == "Pending - Web Initiated") ){
+                 }elseif((trim($FSTransaction['TRANS_TYPE_ID']) != "Sale" && trim($FSTransaction['TRANS_TYPE_ID']) != "RepeatSale" ) || trim($FSTransaction['RESULT_CH']) != 0 && ( $OCSTransArray[$key]["LookupName"] == "Pending - Agent Initiated" || $OCSTransArray[$key]["LookupName"] == "Pending - Web Initiated") ){
                      _writeError("Could not match Pending OSC status with Frontstream ID ".$FSTransaction['INVOICE_ID'], $FSTransaction['TRX_HD_KEY'], $FSTransaction['DATE_DT']);
                  }else{
                      _writeError("Could not match status for ".$OCSTransArray[$key]['LookupName'] ."".$FSTransaction['INVOICE_ID'], $FSTransaction['TRX_HD_KEY'], $FSTransaction['DATE_DT']);
@@ -242,7 +253,7 @@ function _checkTransactionStatus($OCSTransArray, $FSCardArray, $FSCheckArray){
 
                  if(trim($FSTransaction['TRANS_TYPE_ID']) == "Sale" && (strpos($FSTransaction['RESULT_TXT_VC'], "APPROVED:") !== false) && $OCSTransArray[$key]["LookupName"] == "Completed"){
                      //echo "completed trans match<br/>"; //SUCCESS
-                 }elseif(trim($FSTransaction['TRANS_TYPE_ID']) != "Sale" || (strpos($FSTransaction['RESULT_TXT_VC'], "APPROVED:") !== false)  && $OCSTransArray[$key]["LookupName"] == "Completed"){
+                 }elseif( (trim($FSTransaction['TRANS_TYPE_ID']) != "Sale" && trim($FSTransaction['TRANS_TYPE_ID']) != "RepeatSale") || (strpos($FSTransaction['RESULT_TXT_VC'], "APPROVED:") !== false)  && $OCSTransArray[$key]["LookupName"] == "Completed"){
                    _writeError("Could not match Completed OSC status with Frontstream Invoice ID  ".$FSTransaction['INVOICE_ID'], $FSTransaction['TRX_HD_KEY'], $FSTransaction['DATE_DT']);
                  }elseif(trim($FSTransaction['TRANS_TYPE_ID']) == "Sale" && $FSTransaction['RESULT_TXT_VC'] == "DECLINED" && $OCSTransArray[$key]["LookupName"] == "Declined"){
                    //SUCCESS
@@ -309,10 +320,10 @@ function getTransArray(){
 
     try{
         
-        $roql = "select t.ID, t.currentStatus.LookupName, t.totalCharge, t.CreatedTime from financial.transactions t where t.CreatedTime >= '".date('Y-m-d 08:00:00', strtotime('midnight', FROM_DATE))."' AND t.CreatedTime < '".date('Y-m-d 08:00:00',strtotime("midnight", TO_DATE))."'";
+        $roql = "select t.ID, t.currentStatus.LookupName, t.totalCharge, t.CreatedTime from financial.transactions t where t.CreatedTime >= '".date('Y-m-d 08:00:00', strtotime('midnight', FROM_DATE))."' AND t.CreatedTime < '".date('Y-m-d 08:00:00',strtotime("midnight", TO_DATE))."' AND t.CreatedByAccount.ID != 42893";
         $res = RNCPHP\ROQL::query( $roql )->next();
     
-        //echo $roql;
+        echo $roql;
         if(count($res) > 0){
     
             $transArray = array();
@@ -379,18 +390,18 @@ function runCurl($host, array $postData) {
 
        if (curl_errno($ch) > 0) {
        
-           _output(curl_error($ch));
+           $returnArray[] = curl_error($ch);
            curl_close($ch);
            return false;
        } else if (strpos($result, "HTTP Error") !== false) {
            
-           _output(curl_error($ch));
+           $returnArray[] = curl_error($ch);
            curl_close($ch);
            return false;
        }
    } catch(Exception $e) {
        curl_close($ch);
-       _output(curl_error($ch));
+       $returnArray[] = curl_error($ch);
        return false;
    }
    curl_close($ch);

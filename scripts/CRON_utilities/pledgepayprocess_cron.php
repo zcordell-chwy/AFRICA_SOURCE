@@ -177,7 +177,7 @@ function processCCpayment(RNCPHP\donation\pledge $pledge, $totalToCharge)
         $mytx = array(
             'MagData' => '',
             'PNRef' => $pledge->paymentMethod2->PN_Ref,
-            'ExtData' => '',
+            'ExtData' => '<InvNum>' . $trans->ID . '</InvNum>',
             'TransType' => "Sale",
             'CardNum' => "",
             'ExpDate' => "",
@@ -196,7 +196,7 @@ function processCCpayment(RNCPHP\donation\pledge $pledge, $totalToCharge)
             'CcInfoKey' => $pledge->paymentMethod2->InfoKey,
             'op' => "admin/ws/recurring.asmx/ProcessCreditCard",
             'Vendor' => cfg_get(CUSTOM_CFG_frontstream_vendor),
-            'ExtData' => '',
+            'ExtData' => '<InvNum>' . $trans->ID . '</InvNum>',
             'InvNum' => $trans->ID
         );
     }
@@ -205,8 +205,8 @@ function processCCpayment(RNCPHP\donation\pledge $pledge, $totalToCharge)
 
     $notes = print_r($returnValues, true);
 
-
-    if (!$returnValues || $returnValues['code'] != 0) {
+    //strlen condition put in to interpret whitespace as a decline
+    if (!$returnValues || $returnValues['code'] != 0 || strlen(trim($returnValues['code'])) == 0) {
         esgLogger::log("87 - frontstream failure ", logWorker::Debug, $returnValues);
         //dont need to create donation or d2p if declined
         createTransaction($pledge->paymentMethod2, null, $totalToCharge, createDonation($pledge, $totalToCharge), "Declined", $pledge->Contact, $notes, $trans);
@@ -256,14 +256,14 @@ function processEFTpayment(RNCPHP\donation\pledge $pledge, $totalToCharge)
             'Vendor' => cfg_get(CUSTOM_CFG_frontstream_vendor),
             'CheckInfoKey' => $pledge->paymentMethod2->InfoKey,
             'InvNum' => $trans->ID,
-            'ExtData' => ''
+            'ExtData' => '<InvNum>' . $trans->ID . '</InvNum>'
         );
     }
 
     $returnValues = runTransaction($mytx);
     $notes = print_r($returnValues, true);
 
-    if (!$returnValues || $returnValues['code'] != 0) {
+    if (!$returnValues || $returnValues['code'] != 0 || strlen(trim($returnValues['code'])) == 0) {
         esgLogger::log("87 - frontstream failure ", logWorker::Debug, $returnValues);
         createTransaction($pledge->paymentMethod2, null, $totalToCharge, createDonation($pledge, $totalToCharge), "Declined", $pledge->Contact, $notes, $trans);
         $transID = -99; //set to negative so we know to not to reset the next pledge date to tomorrow instead of calculating based on frequency
@@ -417,6 +417,7 @@ function parseFrontStreamRespOneTime($result, $transType)
         $response['code'] = $values[$indices['RESULT'][0]]['value'];
         $response['auth'] = $values[$indices['PNREF'][0]]['value'];
         $response['error'] = $values[$indices['RESPMSG'][0]]['value'];
+        $response['msg'] = $values[$indices['MESSAGE'][0]]['value'];
         //esgLogger::log("284 -  values ", logWorker::Debug, $values);
         //_output($response);
     } else if ($transType == "check") {

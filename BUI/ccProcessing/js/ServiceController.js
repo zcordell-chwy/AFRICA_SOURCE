@@ -426,7 +426,7 @@ async function createOrUpdatePaymentMethod(paymentMethod, contactID, suppress = 
     }
 }
 
-async function createOrUpdateTransactionObj(donationID, newNote, contactID, amount = 0, status = null, payMethod = null, pnRef = null, suppress = false) {
+async function createOrUpdateTransactionObj(donationID, newNote, contactID, amount = 0, status = null, payMethod = null, pnRef = null, suppress = false, description=null) {
 
     let isCreate = true;
     if (donationID < 1) {
@@ -449,6 +449,11 @@ async function createOrUpdateTransactionObj(donationID, newNote, contactID, amou
         trans.donation = {
             id: donationID
         };
+    }
+
+    //only do this on create
+    if(!transaction && description){
+        trans.description = description;
     }
 
     if (pnRef && pnRef.length > 0) {

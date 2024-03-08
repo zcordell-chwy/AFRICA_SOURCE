@@ -41,6 +41,7 @@ $pass = cfg_get(CUSTOM_CFG_FS_PW_CRON);
 $user = cfg_get(CUSTOM_CFG_FS_UN_CRON);
 $merchKey = cfg_get(CUSTOM_CFG_frontstream_vendor);
 
+
  $mytx = array(
          'UserName' => $user,
          'Password' => $pass,
@@ -111,6 +112,8 @@ function processBadCheck($transArray){
 }
 
 function _resetPledges($donationID){
+    $numAttempts = cfg_get(CUSTOM_CFG_Auto_ReProcess_Frontstream_NumAttempts);
+
     $roql = "SELECT donation.donationToPledge FROM donation.donationToPledge WHERE donation.donationToPledge.DonationRef = $donationID ";
     
     $res = RNCPHP\ROQL::queryObject( $roql )->next();
@@ -120,6 +123,7 @@ function _resetPledges($donationID){
         if($pledge){
             esgLogger::log("Resetting Pledge ".$pledge->ID." to On Hold Non Payment", logWorker::Debug);
             $pledge->PledgeStatus = RNCPHP\donation\PledgeStatus::fetch(2);//on hold non payment.
+            $pledge->numProcessingAttempts = $numAttempts; //set this to trigger the bad pay method email
             $pledge->save();
         }
         

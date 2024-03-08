@@ -65,7 +65,7 @@ class PaymentEngine
             return;
         }
 
-        try{
+        try {
             // Put into unique file per day
             $fileName = self::LOG_DIR . self::LOG_FILE_BASE_NAME . date('Y-m-d') . '.log';
             $timestamp = date('H:i:s') . ': ';
@@ -73,20 +73,21 @@ class PaymentEngine
                 $msg .= print_r($more, true);
             }
 
-            if (!is_dir(self::LOG_DIR)){
+            if (!is_dir(self::LOG_DIR)) {
                 $oldumask = umask(0);
                 mkdir(self::LOG_DIR, 0775, true);
                 umask($oldumask);
             }
-            
+
+
             $result = file_put_contents($fileName, $timestamp . $msg . "\n\n", FILE_APPEND);
-            
+
+
             if ($result === false) throw new \Exception("Failed to write to log file. File name = $fileName. Timestamp = $timestamp. Msg = $msg.");
-        }catch (\Exception $ex) {
+        } catch (\Exception $ex) {
 
             throw new \Exception("Failed to write to log file. File name = $fileName. Timestamp = $timestamp. Msg = $msg.");
         }
-        
     }
 
     /**
@@ -167,7 +168,7 @@ class PaymentEngine
                 case FS_EFT_SALE_TYPE:
                     $fsReqData['Amount'] = $reqJson->amount;
                     $fsReqData['InvNum'] = $reqJson->transID;
-                    $fsReqData['ExtData'] = (!empty($paymentMethod->infoKey)) ? '<Check_Info_Key>' . $paymentMethod->infoKey . '</Check_Info_Key>' : '<PNRef>' . $paymentMethod->pnRef . '</PNRef>';
+                    $fsReqData['ExtData'] = (!empty($paymentMethod->infoKey)) ? '<Check_Info_Key>' . $paymentMethod->infoKey . '</Check_Info_Key><InvNum>'.$reqJson->transID.'</InvNum>' : '<PNRef>' . $paymentMethod->pnRef . '</PNRef><InvNum>'.$reqJson->transID.'</InvNum>';
                     break;
 
                 case FS_REFUND_TYPE:
@@ -207,12 +208,14 @@ class PaymentEngine
                         $fsReqData['CardNum'] = base64_decode($paymentMethod->ccNum);
                         $fsReqData['ExpDate'] = $paymentMethod->expMonth . substr($paymentMethod->expYear, 2, 2);
                         $fsReqData['CVNum'] = $DEVMODE ? '' : $paymentMethod->cvc;
+                        $fsReqData['ExtData'] = '<InvNum>'.$reqJson->transID.'</InvNum>';
                     } else {
                         // * it's a repeat sale
                         if (!empty($paymentMethod->infoKey)) {
-                            $fsReqData['ExtData'] = '<CC_Info_Key>' . $paymentMethod->infoKey . '</CC_Info_Key>';
+                            $fsReqData['ExtData'] = '<CC_Info_Key>' . $paymentMethod->infoKey . '</CC_Info_Key><InvNum>'.$reqJson->transID.'</InvNum>';
                         } else {
                             $fsReqData['PNRef'] = $paymentMethod->pnRef;
+                            $fsReqData['ExtData'] = '<InvNum>'.$reqJson->transID.'</InvNum>';
                         }
                     }
                     break;
@@ -337,8 +340,8 @@ class PaymentEngine
         self::logMessage(' Starting ' . __FUNCTION__ . '@' . __CLASS__ . '(Line: ' . __LINE__ . ')');
 
         $url = RNCPHP\Configuration::fetch('CUSTOM_CFG_frontstream_endpoint')->Value . $postVals['op'];
-        $postVals['UserName'] = RNCPHP\Configuration::fetch('CUSTOM_CFG_frontstream_user')->Value;
-        $postVals['Password'] = RNCPHP\Configuration::fetch('CUSTOM_CFG_frontstream_pass')->Value;
+        $postVals['UserName'] = RNCPHP\Configuration::fetch('CUSTOM_CFG_FS_UN_BUI')->Value;
+        $postVals['Password'] = RNCPHP\Configuration::fetch('CUSTOM_CFG_FS_PW_BUI')->Value;
 
         $postData = array();
         foreach ($postVals as $key => $value) {

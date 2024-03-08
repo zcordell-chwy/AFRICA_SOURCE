@@ -20,11 +20,16 @@ define('ALLOW_POST', false);
 define('ALLOW_GET', true);
 define('ALLOW_PUT', false);
 define('ALLOW_PATCH', false);
+define('BUCKET_CHUNK_SIZE', 15);  //How many pledges are put into a single bucket for synchronous processing.
+$response = null;
+
 require_once SCRIPT_PATH . '/utilities/make.me.an.api.php';
+
 $returnArray = array();
 
+if (!function_exists("\curl_init"))
+    \load_curl();
 
-load_curl();
 require_once("/cgi-bin/africanewlife.cfg/scripts/custom/Log/esglogpaycron-v2.0.php");
 
 $fileLogger = new fileLogger(true, fileLogger::All);  //file logger is a log worker
@@ -32,21 +37,54 @@ $logger = esgLogger::getInstance();
 $logger->registerLogWorker($fileLogger);  //register the log worker with the esgLogger event bus singleton
 esgLogger::log("Begin Pledge Processing...", logWorker::Debug);
 
+// /********CONSTANTS*********/
+
+switch(intval($_GET['pledge'])){
+
+    case intval($_GET['pledge']) < 0:
+        returnPledgeIdChunks();
+        break;
+    default:
+        //executeUpdatesForRecords($_GET['start']);
+        $pledge = RNCPHP\donation\pledge::fetch(intval($_GET['pledge']));
+        $payMeth = ($pledge->paymentMethod2->PaymentMethodType->LookupName == "Credit Card") ? 1 : 2;
+        $runResult = Initialize($pledge->ID, $pledge->PledgeAmount, $payMeth, $pledge->Balance, $pledge->firstTimeDonationCredit);
+        return outputResponse($response, null);
+        break;
+
+}
+
+
+function returnPledgeIdChunks(){
+    try {
+        $ar = RNCPHP\AnalyticsReport::fetch(100228);
+        $arr = $ar->run();
+
+        $bucketCounter = 0;
+
+        for ($ii = $arr->count(); $ii--;) {
+            $row = $arr->next();
+            $response['chunks'][$bucketCounter]['pledges'][] = $row['Pledge ID'];
+
+            if(count($response['chunks'][$bucketCounter]['pledges']) > BUCKET_CHUNK_SIZE){
+                $bucketCounter++;
+            }
+        }
+
+        $response['getChunks'] = true;
+
+        return outputResponse($response, null);
+    } catch (\Exception $ex) {
+        return outputResponse(null, $ex->getMessage());
+    } catch (RNCPHP\ConnectAPIError $ex) {
+        return outputResponse(null, $ex->getMessage());
+    }
+
+
+}
 
 //run analytics report and process payments.
-$ar = RNCPHP\AnalyticsReport::fetch(100228);
-$arr = $ar->run();
-for ($ii = $arr->count(); $ii--;) {
-    $row = $arr->next();
 
-    $pledgeID = $row['Pledge ID'];
-    $pledgeAmt = $row['Pledge Amount'];
-    $payMeth = ($row['Payment Method Type'] == "Credit Card") ? 1 : 2;
-    $balance = $row['Balance'];
-    $firstTimeDonationCredit = $row['firstTimeDonationCredit'];
-    esgLogger::log("Memory Usage:" . memory_get_usage() . "  Peak Memory Usage: " . memory_get_peak_usage(), logWorker::Debug);
-    Initialize($pledgeID, $pledgeAmt, $payMeth, $balance, $firstTimeDonationCredit);
-}
 
 function Initialize($pledgeID, $pledgeAmt, $payMeth, $balance, $firstTimeDonationCredit)
 {
@@ -160,10 +198,8 @@ function Initialize($pledgeID, $pledgeAmt, $payMeth, $balance, $firstTimeDonatio
     RNCPHP\ConnectAPI::commit();
 }
 
-return outputResponse($returnArray, null);
-
-//update payment result, if successful update next payment due date and create transaction.
-//if not sucessful, try again tomorrow
+// update payment result, if successful update next payment due date and create transaction.
+// if not sucessful, try again tomorrow
 //  if not successfult 3 times in a row,  put in 'pledge on hold' status set next payment date to null.
 
 function processCCpayment(RNCPHP\donation\pledge $pledge, $totalToCharge)
@@ -179,7 +215,7 @@ function processCCpayment(RNCPHP\donation\pledge $pledge, $totalToCharge)
         $mytx = array(
             'MagData' => '',
             'PNRef' => $pledge->paymentMethod2->PN_Ref,
-            'ExtData' => '',
+            'ExtData' => '<InvNum>' . $trans->ID . '</InvNum>',
             'TransType' => "Sale",
             'CardNum' => "",
             'ExpDate' => "",
@@ -198,7 +234,7 @@ function processCCpayment(RNCPHP\donation\pledge $pledge, $totalToCharge)
             'CcInfoKey' => $pledge->paymentMethod2->InfoKey,
             'op' => "admin/ws/recurring.asmx/ProcessCreditCard",
             'Vendor' => cfg_get(CUSTOM_CFG_frontstream_vendor),
-            'ExtData' => '',
+            'ExtData' => '<InvNum>' . $trans->ID . '</InvNum>',
             'InvNum' => $trans->ID
         );
     }
@@ -207,8 +243,8 @@ function processCCpayment(RNCPHP\donation\pledge $pledge, $totalToCharge)
 
     $notes = print_r($returnValues, true);
 
-
-    if (!$returnValues || $returnValues['code'] != 0) {
+    //strlen condition put in to interpret whitespace as a decline
+    if (!$returnValues || $returnValues['code'] != 0 || strlen(trim($returnValues['code'])) == 0) {
         esgLogger::log("87 - frontstream failure ", logWorker::Debug, $returnValues);
         //dont need to create donation or d2p if declined
         createTransaction($pledge->paymentMethod2, null, $totalToCharge, createDonation($pledge, $totalToCharge), "Declined", $pledge->Contact, $notes, $trans);
@@ -258,14 +294,14 @@ function processEFTpayment(RNCPHP\donation\pledge $pledge, $totalToCharge)
             'Vendor' => cfg_get(CUSTOM_CFG_frontstream_vendor),
             'CheckInfoKey' => $pledge->paymentMethod2->InfoKey,
             'InvNum' => $trans->ID,
-            'ExtData' => ''
+            'ExtData' => '<InvNum>' . $trans->ID . '</InvNum>'
         );
     }
 
     $returnValues = runTransaction($mytx);
     $notes = print_r($returnValues, true);
 
-    if (!$returnValues || $returnValues['code'] != 0) {
+    if (!$returnValues || $returnValues['code'] != 0  || strlen(trim($returnValues['code'])) == 0) {
         esgLogger::log("87 - frontstream failure ", logWorker::Debug, $returnValues);
         createTransaction($pledge->paymentMethod2, null, $totalToCharge, createDonation($pledge, $totalToCharge), "Declined", $pledge->Contact, $notes, $trans);
         $transID = -99; //set to negative so we know to not to reset the next pledge date to tomorrow instead of calculating based on frequency
@@ -419,6 +455,7 @@ function parseFrontStreamRespOneTime($result, $transType)
         $response['code'] = $values[$indices['RESULT'][0]]['value'];
         $response['auth'] = $values[$indices['PNREF'][0]]['value'];
         $response['error'] = $values[$indices['RESPMSG'][0]]['value'];
+        $response['msg'] = $values[$indices['MESSAGE'][0]]['value'];
         //esgLogger::log("284 -  values ", logWorker::Debug, $values);
         //_output($response);
     } else if ($transType == "check") {
@@ -445,19 +482,23 @@ function verifyMinTransReqs($postVals, $host, $user, $pass)
     }
     if (is_null($user) || strlen($user) < 1) {
         esgLogger::log("186 - Invalid user passed to runTransaction", logWorker::Debug, $postVals);
+        echo "";
         return false;
     }
 
     if (is_null($pass) || strlen($pass) < 1) {
         esgLogger::log("192 - Invalid password passed to runTransaction", logWorker::Debug, $postVals);
+        echo "";
         return false;
     }
     if (is_null($postVals) || count($postVals) < 1) {
         esgLogger::log("197 - Invalid post values passed to runTransaction", logWorker::Debug, $postVals);
+        echo "";
         return false;
     }
     if (is_null($postVals['op'])) {
         esgLogger::log("203 - Invalid operation.", logWorker::Debug, $postVals);
+        echo "";
         return false;
     }
     return true;
@@ -523,7 +564,7 @@ function createDonation($pledge, $totalToCharge)
         //logMessage($donation2Pledge);
 
     } catch (Exception $e) {
-        logMessage($e->getMessage());
+        log_message($e->getMessage());
         return false;
     } catch (RNCPHP\ConnectAPIError $e) {
         esgLogger::log("API Error " . $e->getMessage(), logWorker::Debug);
@@ -579,8 +620,11 @@ function _getValues($parent)
 
 function _output($value)
 {
-    _getValues($value);
-    $returnArray[] = $value;
+    log_message($value);
+    // _getValues($value);
+    // echo "<pre>";
+    // print_r($value);
+    // echo "</pre><br/>";
 }
 
 

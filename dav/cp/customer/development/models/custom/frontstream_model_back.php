@@ -115,7 +115,7 @@ class frontstream_model  extends \RightNow\Models\Base
                     'Password' => getConfig(CUSTOM_CFG_frontstream_pass_id),
                     'UserName' => getConfig(CUSTOM_CFG_frontstream_user),
                     'TransType' => 'RepeatSale',
-                    'op' => "ArgoFire/transact.asmx/ProcessCheck",
+                    'op' => "ArgoFire/ProcessCheck",
                     'CheckNum' => '',
                     'TransitNum' => '',
                     'AccountNum' => '',

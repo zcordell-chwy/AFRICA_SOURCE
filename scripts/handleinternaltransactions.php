@@ -105,7 +105,7 @@ class handleInternalTransactions {
             $this -> handleLogging("Calling refunded");
             //to test returns, first must call completed trans.  Comment for production.
             //  $this->handleCompletedTransaction($obj);
-            $this -> handleRefundedTransaction($obj);
+            $this -> handleRefundedTransaction($obj, true);
         }
 
         return $this -> cleanup($obj);
@@ -132,6 +132,14 @@ class handleInternalTransactions {
             $obj -> save(RNCPHP\RNObject::SuppressAll);
             //            RNCPHP\ConnectAPI::commit();
         }
+
+        //last thing is update our decimal field
+        //$trans -> totalCharge
+        if(number_format($obj->totalCharge, 2) != $obj->totalCharge_n){
+            $obj->totalCharge_n = number_format($obj->totalCharge, 2);
+            $obj -> save(RNCPHP\RNObject::SuppressAll);
+        }
+        
     }
 
     private function handleLogging($logText, $severity = null, $object = null) {
@@ -174,7 +182,7 @@ class handleInternalTransactions {
      * creates new internal transactions that are negations of the existing.
      *
      */
-    private function handleRefundedTransaction($trans) {
+    private function handleRefundedTransaction($trans, $reversed = false) {
         $this -> handleLogging("Starting " . __FUNCTION__ . " at " . __LINE__);
         $amountRemainingOnDonation = $trans -> totalCharge;
         $internalTransactions = $this -> getInternalTransactions($trans -> ID);
@@ -227,9 +235,13 @@ $this -> handleLogging("Negative balance calculation:".$pledgeArr['pledge'] -> B
 
          //instead save a mailing helper object which will fire an asynch CPM for mailings
         try {
-            $mailinghelper = new RNCPHP\helpers\mailinghelper;
-            $mailinghelper -> transaction = $trans;
-            $mailinghelper -> save();
+
+            //for reversed, we let the daily bad pay method mailing handle it
+            if(!$reversed){
+              $mailinghelper = new RNCPHP\helpers\mailinghelper;
+              $mailinghelper -> transaction = $trans;
+              $mailinghelper -> save();
+            }
         } catch (Exception $ex) {
             $this -> handleLogging("Exception on " . __LINE__ . ": " . $ex -> getMessage(), logWorker::Notice);
         } catch(RNCPHP\ConnectAPIError $e) {
