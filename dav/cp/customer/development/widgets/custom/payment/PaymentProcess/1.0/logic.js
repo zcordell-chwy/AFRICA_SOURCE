@@ -36,6 +36,8 @@ Custom.Widgets.payment.PaymentProcess = RightNow.Widgets.extend({
             }
         }
         document.getElementById("newPaymentForm").classList.remove("rn_Hidden");
+        document.getElementById("cardpay2").classList.add("rn_Hidden"); 
+        document.getElementById("cvnum2").required = false;
     },
     /**
      * Sample widget method.
@@ -43,3 +45,20 @@ Custom.Widgets.payment.PaymentProcess = RightNow.Widgets.extend({
     methodName: function () {
     }
 });
+
+function callme(e)
+{
+  var tds=e.getElementsByTagName('td');
+  var cardtype= tds[0].innerHTML.trim();
+if(document.getElementById("newPaymentForm"))
+     document.getElementById("newPaymentForm").classList.add("rn_Hidden");
+e.getElementsByTagName('td')[3].querySelector('input[name="paymentMethodId"]').checked=true;  
+
+if(cardtype!=='Checking' && cardtype!=='Savings'){
+  document.getElementById("cardpay2").classList.remove("rn_Hidden");
+  document.getElementById("cvnum2").required = true;
+}else{
+  document.getElementById("cardpay2").classList.add("rn_Hidden");
+  document.getElementById("cvnum2").required = false;
+}
+}

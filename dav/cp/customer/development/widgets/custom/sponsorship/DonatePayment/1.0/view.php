@@ -16,8 +16,8 @@
                                     #rn:msg:CONTACT_INFO_LBL#
                                 </legend>
                                 <rn:widget path="input/ContactNameInput" required="true" />
-                                <rn:widget path="input/FormInput" name="Contact.Address.Street" required="false" label_input="#rn:msg:CUSTOM_MSG_STREET_LBL#" />
-                                <rn:widget path="input/FormInput" name="Contact.Address.City" required="false" />
+                                <rn:widget path="input/FormInput" name="Contact.Address.Street" label_input="#rn:msg:CUSTOM_MSG_STREET_LBL#" />
+                                <rn:widget path="input/FormInput" name="Contact.Address.City"  />
                                 <rn:widget path="input/FormInput" name="Contact.Address.Country" />
                                 <rn:widget path="input/FormInput" name="Contact.Address.PostalCode" required="true" label_input="Postal Code" />
                                 <rn:widget path="input/FormInput" name="Contact.Phones.HOME.Number" label_input="Phone Number" />
@@ -49,8 +49,8 @@
                                     <rn:widget path="input/FormInput" name="Contact.Name.Last" label_input="#rn:msg:LAST_NAME_LBL#" required="true" />
                                 </rn:condition>
 
-                                <rn:widget path="input/FormInput" name="Contact.Address.Street" label_input="#rn:msg:CUSTOM_MSG_STREET_LBL#" />
-                                <rn:widget path="input/FormInput" name="Contact.Address.City" label_input="#rn:msg:CITY_LBL#" />
+                                <rn:widget path="input/FormInput" name="Contact.Address.Street" required="true" label_input="#rn:msg:CUSTOM_MSG_STREET_LBL#" />
+                                <rn:widget path="input/FormInput" name="Contact.Address.City" required="true" label_input="#rn:msg:CITY_LBL#" />
                                 <rn:widget path="input/FormInput" name="Contact.Address.Country" label_input="#rn:msg:COUNTRY_LBL#" default_value="1" required="true" />
                                 <rn:widget path="input/FormInput" name="Contact.Address.StateOrProvince" label_input="#rn:msg:STATE_PROV_LBL#" />
                                 <rn:widget path="input/FormInput" name="Contact.Address.PostalCode" required="true" label_input="#rn:msg:POSTAL_CODE_LBL#" />
@@ -60,9 +60,13 @@
                                 <rn:widget path="input/FormInput" required="false" name="Contact.CustomFields.CO.how_did_you_hear" label_input="How did you hear about us?"/>                                
 
                                 <!-- <rn:widget path="input/FormInput" name="Contacts.CustomFields.CO.how_did_you_hear" /> -->
-                                <input type="checkbox" id="subscribeToEmailCheckbox" name="subscribeToEmailCheckbox" value="" checked>
+                                <input type="checkbox" id="subscribeToEmailCheckbox" name="subscribeToEmailCheckbox" onclick="checkFluency()" value="" checked>
                                 <label id="subscribeToEmailCheckboxLabel" for="subscribeToEmailCheckbox">#rn:msg:CUSTOM_MSG_cp_CheckoutAssistant_email_preferences_checkbox_label#</label>
-                               
+                                <div style="display:none;">
+                                <rn:widget path="input/SelectionInput" required="false" name="Contact.MarketingSettings.MarketingOptIn" default_value="1" label_input="" display_as_checkbox="true"/>    
+                                 <rn:widget path="input/EmailPrefSelectionInput" name="Contact.CustomFields.c.preferences" default_value="14" label_input="Email Prefs" />
+
+                                </div>
                                 <!-- <div style="display:none;">
                                     <rn:widget path="custom/input/AutoDefaultingLoginInput" name="Contact.Login" required="false" validate_on_blur="true" label_input="#rn:msg:USERNAME_LBL#" />
                                     <rn:condition config_check="EU_CUST_PASSWD_ENABLED == true">

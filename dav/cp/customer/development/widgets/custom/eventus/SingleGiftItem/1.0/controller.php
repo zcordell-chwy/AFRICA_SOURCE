@@ -20,7 +20,7 @@ class SingleGiftItem extends \RightNow\Libraries\Widget\Base {
 
         if(!empty($item_id)){
             $this->CI->load->model('custom/items');
-            $this->data['gifts'] = $this->data['js']['gifts'] = $this->CI->items->getGiftItems($item_id, true);
+            $this->data['gifts'] = $this->data['js']['gifts'] = $this->CI->items->getsingleGiftItems($item_id, true);
     
             $this->CI->load->model('custom/sponsor_model');
             $children = $this->CI->sponsor_model->getSponsoredChildren($profile->c_id->value);

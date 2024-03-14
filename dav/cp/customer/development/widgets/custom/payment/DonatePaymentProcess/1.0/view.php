@@ -16,25 +16,30 @@
 
                if (count($this->data['paymentMethodsArr']) > 1) :
             ?>
-                  <tr>
-                     <td><?= $pm->CardType ?> </td>
+                  <tr onclick="callme(this)">
+                     <td><?= $pm->CardType ?> </td>                     
                      <td><?= $pm->lastFour ?> </td>
                      <td><?= $expDate ?> </td>
                      <td><input type="radio" value="<?= $pm->ID ?> " name="paymentMethodId" id="paymentMethodId"/></td>
                   </tr>
                <? else : ?>
-                  <tr>
+                  <tr onclick="callme(this)">
                      <td><?= $pm->CardType ?> </td>
                      <td><?= $pm->lastFour ?> </td>
                      <td><?= $expDate ?> </td>
-                     <td><input type="radio" value="<?= $pm->ID ?>" name="paymentMethodId" id="paymentMethodId" checked="checked" /></td>
+                     <td><input type="radio" value="<?= $pm->ID ?>" name="paymentMethodId" id="paymentMethodId"  /></td>
                   </tr>
             <?
                endif;
             endforeach;
             ?>
-         </table>
+         </table> 
+         <div id='cardpay2' class="rn_Hidden">
+         <label for="cvnum2">Card verification number (CVN) <span class="required">*</span></label>
+         <input type="text" id="cvnum2" name="cvnumber2" placeholder="" style="width: 80px!important;" >
+         </div>
       </rn:condition>
+
       <? //foreach ($this->data['js']['postToFsVals'] as $key => $value) : ?>
          <!-- <input type="hidden" name="<?= $key ?>" value="<?= $value ?>" /> -->
       <? //endforeach; ?>
@@ -99,6 +104,8 @@ sub:input_Contact.Name.Last:label_input="#rn:msg:LAST_NAME_LBL#" sub:input_Conta
                </select>
             </div>
          </div>
+         <label for="cvnum">Card verification number (CVN) <span class="required">*</span></label>
+         <input type="text" id="cvnum" name="cvnumber" placeholder="" style="width: 80px!important;" >
       </div>
       <div id="checkpay" class="tab_content checkpay">
          <label for="ckname">Name on Check <span class="required">*</span></label>

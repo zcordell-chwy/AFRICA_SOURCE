@@ -15,13 +15,20 @@
                                     #rn:msg:CONTACT_INFO_LBL#
                                 </legend>
                                 <rn:widget path="input/ContactNameInput" required="true" />
-                                <rn:widget path="input/FormInput" name="Contact.Address.Street" required="false" label_input="#rn:msg:CUSTOM_MSG_STREET_LBL#" />
-                                <rn:widget path="input/FormInput" name="Contact.Address.City" required="false" />
+                                <rn:widget path="input/FormInput" name="Contact.Address.Street"  label_input="#rn:msg:CUSTOM_MSG_STREET_LBL#" />
+                                <rn:widget path="input/FormInput" name="Contact.Address.City"  />
                                 <rn:widget path="input/FormInput" name="Contact.Address.Country" />
-                                <rn:widget path="input/FormInput" name="Contact.Address.PostalCode" required="true" label_input="Postal Code" />
+                                <rn:widget path="input/FormInput" name="Contact.Address.StateOrProvince" />
+                                <rn:widget path="input/FormInput" name="Contact.Address.PostalCode"  label_input="Postal Code" />
                                 <rn:widget path="input/FormInput" name="Contact.Phones.HOME.Number" label_input="Phone Number" />
-                                <rn:widget path="input/FormInput" name="Contact.Emails.PRIMARY.Address" required="true" validate_on_blur="true" initial_focus="true" label_input="#rn:msg:EMAIL_ADDR_LBL#" />
-                            </fieldset>
+                                <rn:widget path="input/FormInput" name="Contact.Emails.PRIMARY.Address"   initial_focus="true" label_input="#rn:msg:EMAIL_ADDR_LBL#" />
+                                <rn:widget path="input/FormInput" name="Contact.CustomFields.CO.how_did_you_hear" label_input="How did you hear about us?" />
+                                <rn:widget path="input/SelectionInput" name="Contact.MarketingSettings.MarketingOptIn" />
+                                <rn:widget path="input/EmailPrefSelectionInput" name="Contact.CustomFields.c.preferences" />
+                                </fieldset>
+                        </div>
+                        <div style="padding: 10px 0 20px 0;">
+                                #rn:msg:CUSTOM_MSG_SHARING_INFO#
                         </div>
                         <div>
                             <div id="rn_Challenge"></div>
@@ -51,8 +58,8 @@
                                     <rn:widget path="input/FormInput" name="Contact.Name.Last" label_input="#rn:msg:LAST_NAME_LBL#" required="true" />
                                 </rn:condition>
 
-                                <rn:widget path="input/FormInput" name="Contact.Address.Street" label_input="#rn:msg:CUSTOM_MSG_STREET_LBL#" />
-                                <rn:widget path="input/FormInput" name="Contact.Address.City" label_input="#rn:msg:CITY_LBL#" />
+                                <rn:widget path="input/FormInput" name="Contact.Address.Street" label_input="#rn:msg:CUSTOM_MSG_STREET_LBL#" required="true" />
+                                <rn:widget path="input/FormInput" name="Contact.Address.City" label_input="#rn:msg:CITY_LBL#" required="true" />
                                 <rn:widget path="input/FormInput" name="Contact.Address.Country" label_input="#rn:msg:COUNTRY_LBL#" default_value="1" required="true" />
                                 <rn:widget path="input/FormInput" name="Contact.Address.StateOrProvince" label_input="#rn:msg:STATE_PROV_LBL#" />
                                 <rn:widget path="input/FormInput" name="Contact.Address.PostalCode" required="true" label_input="#rn:msg:POSTAL_CODE_LBL#" />
@@ -60,15 +67,22 @@
                                 <rn:widget path="input/FormInput" name="Contact.Emails.PRIMARY.Address" required="true" validate_on_blur="true" label_input="#rn:msg:EMAIL_ADDR_LBL#" />
                                 <rn:widget path="input/FormInput" required="true" name="Contact.NewPassword" require_validation="false" label_input="#rn:msg:PASSWORD_LBL#" label_validation="#rn:msg:VERIFY_PASSWD_LBL#" />
                                 <rn:widget path="input/FormInput" required="false" name="Contact.CustomFields.CO.how_did_you_hear" label_input="How did you hear about us?" />
-                                <input type="checkbox" id="subscribeToEmailCheckbox" name="subscribeToEmailCheckbox" value="" checked>
+                                <div style="padding: 10px 0 20px 0;">
+                                #rn:msg:CUSTOM_MSG_SHARING_INFO#
+                                </div>
+				<input type="checkbox" id="subscribeToEmailCheckbox" name="subscribeToEmailCheckbox" value="" onclick="checkFluency()" checked>
                                 <label id="subscribeToEmailCheckboxLabel" for="subscribeToEmailCheckbox">#rn:msg:CUSTOM_MSG_cp_CheckoutAssistant_email_preferences_checkbox_label#</label>
+                                
+                                <!--label id="subscribeToEmailCheckboxLabel" for="subscribeToEmailCheckbox">#rn:msg:CUSTOM_MSG_cp_CheckoutAssistant_email_preferences_checkbox_label#</label-->
                                 <div style="display:none;">
                                     <rn:widget path="custom/input/AutoDefaultingLoginInput" name="Contact.Login" required="false" validate_on_blur="true" label_input="#rn:msg:USERNAME_LBL#" />
                                     <rn:condition config_check="EU_CUST_PASSWD_ENABLED == true">
                                         <!-- <rn:widget path="custom/input/AutoDefaultingPasswordInput" name="Contact.NewPassword" required="false" require_validation="true" label_input="#rn:msg:PASSWORD_LBL#" label_validation="#rn:msg:VERIFY_PASSWD_LBL#" /> -->
-                                    </rn:condition>
-                                    <rn:widget path="input/EmailPrefSelectionInput" name="Contact.CustomFields.c.preferences" default_value="14" label_input="Email Prefs" />
+                                    </rn:condition>    
+                                <rn:widget path="input/SelectionInput" required="false" name="Contact.MarketingSettings.MarketingOptIn" default_value="1"  display_as_checkbox="true"/>
+                                    <rn:widget path="input/EmailPrefSelectionInput" name="Contact.CustomFields.c.preferences" default_value="14" label_input="Email Prefs" /><!--166 Unsubscribed 14 Email -->
                                 </div>
+
                                 <div>
                                     <div id="rn_Challenge"></div>
                                 </div>

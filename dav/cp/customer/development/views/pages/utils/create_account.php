@@ -15,8 +15,8 @@
                 </rn:condition>
 
                 <!-- Added this section for temporary fix  START-->
-                <rn:widget path="input/FormInput" name="Contact.Address.Street" label_input="#rn:msg:STREET_LBL#" />
-                <rn:widget path="input/FormInput" name="Contact.Address.City" label_input="#rn:msg:CITY_LBL#" />
+                <rn:widget path="input/FormInput" name="Contact.Address.Street" required="true" label_input="#rn:msg:STREET_LBL#" />
+                <rn:widget path="input/FormInput" name="Contact.Address.City" required="true" label_input="#rn:msg:CITY_LBL#" />
                 <rn:widget path="input/FormInput" name="Contact.Address.Country" label_input="#rn:msg:COUNTRY_LBL#" default_value="1" required="true" />
                 <rn:widget path="input/FormInput" name="Contact.Address.StateOrProvince" label_input="#rn:msg:STATE_PROV_LBL#" />
                 <rn:widget path="input/FormInput" name="Contact.Address.PostalCode" required="true" label_input="#rn:msg:POSTAL_CODE_LBL#" />

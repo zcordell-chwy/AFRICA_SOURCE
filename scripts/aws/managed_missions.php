@@ -314,6 +314,8 @@ class managedMissions
         //todo make sure this doesn't send a receipt
         $transaction = $this->createTransaction($donor, $mmDonation->GrossAmount, null, $donation );
 
+        RNCPHP\ConnectAPI::commit();
+        
         return true;
 
     }

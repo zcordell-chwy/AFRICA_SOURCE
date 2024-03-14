@@ -1,7 +1,7 @@
 <rn:meta title="#rn:msg:ACCOUNT_OVERVIEW_LBL#" template="standard.php" login_required="true" />
 <? 
-   $CI = & get_instance(); 
-   $profile = $this -> CI -> session -> getProfile(); 
+   $CI = &get_instance(); 
+   $profile = $CI -> session -> getProfile(); 
 ?>
 
 
@@ -34,7 +34,7 @@
 					    </div>
 						<rn:widget path="input/FormInput" name="incidents.thread" required="true" label_input="Please write your letter below:"/>
 						<div class="form-footer">
-							<rn:widget path="input/FileAttachmentUpload2" valid_file_extensions="jpg" label_input="Attach Photos" max_attachments="3" />
+							<rn:widget path="input/FileAttachmentUpload2" valid_file_extensions="jpg,jpeg" label_input="Attach Photos" max_attachments="3" />
 							<rn:widget path="input/FormSubmit" label_button="Send" on_success_url="/app/letters_confirm" error_location="rn_ErrorLocation" />
 						</div>  
 					</form>
@@ -59,15 +59,14 @@
 		</div>
 
 		<?}else{
-            $this->data['children'] = $this->CI->model('custom/sponsor_model')->getSponsoredChildren($profile->c_id->value);
-            if (count($this->data['children']) > 0){
-            ?>
-                
-            <?}
-            header('Location: /app/account/letters/c_id/'.$profile->c_id->value."/pledge/".$this->data['children'][0]->PledgeId);
+            $this->data['children'] = $CI->model('custom/sponsor_model')->getSponsoredChildren($profile->c_id->value);
+            if (count($this->data['children']) > 0){ 
+                header('Location: /app/account/letters/c_id/'.$profile->c_id->value."/pledge/".$this->data['children'][0]->PledgeId);
+            }else{
+				header('Location: /app/account/overview');
+			}
          }
          ?>
 
 	</div>
 </div>   
-

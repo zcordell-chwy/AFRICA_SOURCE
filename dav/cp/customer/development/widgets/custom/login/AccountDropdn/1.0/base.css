@@ -1,0 +1,72 @@
+/**
+ * base.css: Base CSS for AccountDropdn
+ */
+
+ body header .rn_LoginStatus .rn_AccountDropdn .rn_AccountDropdownParent .rn_LoggedInUser, body header .rn_LoginStatus .rn_AccountDropdn .rn_AccountDropdownParent #rn_LoginLink, body header .rn_LoginStatus .rn_AccountDropdn .rn_AccountDropdownParent #rn_DisabledLoginLink {
+    border: 2px solid var(--theme-dark-brown);
+    color: var(--theme-dark-brown);
+    background: none;
+    text-transform: uppercase;
+    font-size: 14px;
+    font-weight: bold;
+    padding: 4px 10px;
+}
+
+.rn_AccountDropdn .rn_AccountDropdownParent .rn_LoggedInUser .rn_DisplayName {
+    min-width: 100px;
+    max-width: 120px;
+    display: inline-block;
+    float: left;
+    overflow: hidden;
+    padding: 0 1em 0 0.2em;
+    position: relative;
+    text-align: right;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.rn_AccountDropdownParent .rn_LoggedInUser, body header .rn_LoginStatus .rn_AccountDropdn .rn_AccountDropdownParent #rn_LoginLink, body header .rn_LoginStatus .rn_AccountDropdn .rn_AccountDropdownParent #rn_DisabledLoginLink {
+    border: 2px solid var(--theme-dark-brown);
+    color: var(--theme-dark-brown);
+    background: none;
+    text-transform: uppercase;
+    font-size: 14px;
+    font-weight: bold;
+    padding: 4px 10px;
+}
+
+.rn_AccountDropdn.rn_SubNavigation {
+    display:block;
+    float:none;
+    position:absolute;
+    z-index:1;
+}
+
+.rn_AccountDropdn .rn_SubNavigation a:last-child {
+    border-bottom-right-radius: 0.1875em;
+    border-bottom-left-radius: 0.1875em;
+}
+
+.rn_AccountDropdn .rn_SubNavigation a:first-child {
+    border-top-right-radius: 0.1875em;
+    border-top-left-radius: 0.1875em;
+}
+
+.rn_AccountDropdn .rn_SubNavigation a {
+    display: block;
+    border-bottom: 1px solid #f1f1f1;
+    line-height: 0.9em;
+    padding: 12px;
+}
+
+.rn_AccountDropdn .rn_AccountDropdownParent .rn_LoggedInUser {
+    *zoom: 1;
+    margin-top: 0.7em;
+    padding: 0.4em 0.5em;
+}
+
+.rn_AccountDropdn .rn_AccountDropdownParent .rn_LoggedInUser, .rn_AccountDropdn .rn_AccountDropdownParent #rn_LoginLink, .rn_AccountDropdn .rn_AccountDropdownParent #rn_DisabledLoginLink {
+    background: #3873c4;
+    border-radius: 0.1875em;
+    padding: 0.5em 1em;
+}

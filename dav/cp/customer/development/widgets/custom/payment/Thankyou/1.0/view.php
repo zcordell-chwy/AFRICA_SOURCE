@@ -31,7 +31,7 @@
 					<button id="giftPage" type="button">I'd Like to Send a Gift to my Student</button>
 				</form>			
 				<form action="/home" class="inline">
-					<button id="bigImpactPage" type="button">I'd Like to Make a Bigger Impact</button>
+					<button id="bigImpactPage" type="button">#rn:msg:CUSTOM_MSG_IMPACT_BTN#</button>
 				</form>
 			</div>
 		<? endif; ?>						

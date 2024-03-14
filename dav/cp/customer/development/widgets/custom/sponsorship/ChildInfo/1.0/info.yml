@@ -19,6 +19,5 @@ attributes:
     default: true
     required: false
 requires:
-  jsModule:
-    - standard
-    - mobile
+  framework: ["3.7", "3.8", "3.9"]
+  jsModule: [standard, mobile]

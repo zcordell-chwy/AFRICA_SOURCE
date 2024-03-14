@@ -11,5 +11,6 @@
 	</div>
 	<div class="rn_AfricaNewLifeLayoutRightColumn">
 		<rn:widget path="custom/shopping/ChildGiftShoppingCart" id="gift" />
+
 	</div>
 </div>

@@ -97,7 +97,7 @@ class transaction_model extends \RightNow\Models\Base
         return true;
     }
 
-    public function create_transaction($c_id, $amt, $desc = null, $donationId = null)
+    public function create_transaction($c_id = null, $amt, $desc = null, $donationId = null, $ipaddr = null)
     {
         $this->CI->load->helper('constants');
         $desc = addslashes($desc);
@@ -108,9 +108,17 @@ class transaction_model extends \RightNow\Models\Base
             $trans = new RNCPHP\financial\transactions;
             $transMeta = RNCPHP\financial\transactions::getMetaData();
             $trans->currentStatus = RNCPHP\financial\transaction_status::fetch(DEFAULT_TRANSACTION_STATUS);
+	    $ipaddr=$_SERVER['REMOTE_ADDR'];
+            if($ipaddr != null) {
+                $trans->ipAddress = $ipaddr;
+            }
 
             $trans->totalCharge = number_format($amt, 2, '.', '');
-            $trans->contact = intval($c_id);
+            if($c_id == null)   {
+                $trans->contact = null;
+            } else {
+                $trans->contact = intval($c_id);
+            }
             $trans->description = is_null($desc) ? DEFAULT_TRANSACTION_DESC : $desc;
             if (!is_null($donationId)) {
                 $trans->donation = intval($donationId);
@@ -119,6 +127,7 @@ class transaction_model extends \RightNow\Models\Base
             RNCPHP\ConnectAPI::commit();
         } catch (\Exception $e) {
             helplog(__FILE__, __FUNCTION__ . __LINE__, "", $e->getMessage());
+            logMessage($e->getMessage());
             return false;
         }
         return $trans->ID;

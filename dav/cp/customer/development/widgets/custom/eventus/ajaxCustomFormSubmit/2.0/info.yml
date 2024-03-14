@@ -1,8 +1,7 @@
 version: "2.0"
 requires:
-  jsModule:
-  - standard
-  - mobile
+  framework: ["3.7", "3.8", "3.9"]
+  jsModule: [standard, mobile]
 attributes:
   default_ajax_endpoint:
     name: default_ajax_endpoint

@@ -107,7 +107,9 @@ class sponsorship_model extends \RightNow\Models\Base
             // else if($child->LastRecordLockOwner == $loggedInContactID) {//if the logged in user is the person with the lock, then let it go through.
             //     $status->isLocked = false;
             // }
-            if (is_null($child->LastRecordLock)) {
+            if($child->SponsorshipStatus->ID === 3 ){//sponsored, no need for anymore checks
+                $status->isLocked = true;
+            }else if (is_null($child->LastRecordLock)) {
                 $status->isLocked = false;
             }else if($child->LastRecordLockOwner == $loggedInContactID || $child->RecordLockOwner == $sessionID) {
                 $status->isLocked = false;
@@ -294,6 +296,7 @@ class sponsorship_model extends \RightNow\Models\Base
      */
     public function getChildImg($childRef)
     {
+        try {
         $imgPath = false;
         $childPhoto = $childRef . ".JPG";
         $hashDir = substr(md5($childPhoto), 0, 2);
@@ -302,6 +305,9 @@ class sponsorship_model extends \RightNow\Models\Base
         }
 
         return $imgPath;
+        } catch (Exception $e) {
+            $this->logError($e->getMessage(), "getChildImg()");
+        }
     }
 
     // Gets unsponsored children based on gender, age and community. Supports pagination via $page and $count. 
@@ -748,5 +754,15 @@ class sponsorship_model extends \RightNow\Models\Base
             $con->sortcode = $contacts->CustomFields->eft_routingnumber;
         }
         return $con;
+    }
+
+    function logError($message, $function)
+    {
+        $error = new RNCP\ErrorLogs\Log();
+        $error->Error = $message;
+        $error->PostedMessage = "Gift Page";
+        $error->Function = $function;
+        $error->File = "sponsorship_model.php";
+        $error->save();
     }
 }

@@ -107,13 +107,29 @@ class ajaxCustomFormSubmit extends \RightNow\Libraries\Widget\Base
         // echo response
         try {
 
+            $blockedips = explode(",", RNCPHP\Configuration::fetch("CUSTOM_CFG_BLOCKED_IP_ADDRESSES")->Value);
+            logMessage($_SERVER['HTTP_REFERER']);
 
+            foreach ($blockedips as $ip) {
+                if($_SERVER['REMOTE_ADDR'] == $ip)  {
+                    echo $this->createResponseObject("Unqualified", [\RightNow\Utils\Config::getMessage(ERROR_PAGE_PLEASE_S_TRY_MSG)]);
+                    return;
+                }
+            }
+
+            // if($params["Street"] != null && $params["City"] != null && $params["CLName"] != null && $params["CFName"] != null && $params["Emails"] != null && $params["Zip"] != null){} else    {
+            //     echo $this->createResponseObject("Invalid Fields", null);
+            //     return;
+            // }
+            
             $rawFormDataArr = json_decode($params['formData']);
 
-            if($this->checkIsUserQualified() == 1){
+            //if($this->checkIsUserQualified() == 1){
+            if( $this->CI->model('custom/user_tracking')->checkIsUserQualified()==1){
                 // continue;
             }else{
-                return $this->renderJSON(["errors" => RNCPHP\MessageBase::fetch(1000063)->Value, "error" => "Limit of Transactions reached."]);
+                echo $this->createResponseObject(RNCPHP\MessageBase::fetch(1000063)->Value, [\RightNow\Utils\Config::getMessage(ERROR_PAGE_PLEASE_S_TRY_MSG)]);
+                return;
             }
 
             if (!$rawFormDataArr) {
@@ -129,6 +145,10 @@ class ajaxCustomFormSubmit extends \RightNow\Libraries\Widget\Base
                 $cleanIndex = addslashes($rawData->name);
                 if (($rawData->name == "paymentMethodId" && $rawData->checked == true) || $rawData->name != "paymentMethodId")
                     $cleanFormArray[$cleanIndex] = $cleanData;
+                 //cvv
+                    if ($rawData->name == "cvnumber2" )
+                       $cleanFormArray[$cleanIndex] = $cleanData;
+            
             }
 
             $sanityCheckMsgs = array();
@@ -166,7 +186,8 @@ class ajaxCustomFormSubmit extends \RightNow\Libraries\Widget\Base
             }
 
             //Creating the User entries in user tracking table
-            $this->createUserLogEntry();
+           // $this->createUserLogEntry();
+           $this->CI->model('custom/user_tracking')->createUserLogEntry();
 
             // If this is a sponsorship pledge, verify that the child being sponsored is still locked by the user executing the transaction.
             $transItemType = $this->CI->session->getSessionData('item_type');
@@ -196,7 +217,11 @@ class ajaxCustomFormSubmit extends \RightNow\Libraries\Widget\Base
 
             $this->_logToFile(181, "---------Begining Run Transaction $transactionId with Paymethod " . $thisPayMethod->ID . " for " . intval($this->CI->model('custom/items')->getTotalDueNow($this->CI->session->getSessionData('sessionID'))) . "------------");
             logMessage("---------Begining Run Transaction $transactionId with Paymethod " . $thisPayMethod->ID . " for " . intval($this->CI->model('custom/items')->getTotalDueNow($this->CI->session->getSessionData('sessionID'))) . "------------");
-            $frontstreamResp = $this->CI->model('custom/frontstream_model')->ProcessPayment($transactionId, $thisPayMethod, intval($this->CI->model('custom/items')->getTotalDueNow($this->CI->session->getSessionData('sessionID'))), FS_SALE_TYPE);
+
+            //ProcessPayment($transactionId, RNCPHP\financial\paymentMethod $paymentMethod, $amount = "0", $transType = "",$ccard="", $cvv="",$expdate="", $isguest=false,$savedcard=false)
+           // $frontstreamResp = $this->CI->model('custom/frontstream_model')->ProcessPayment($transactionId, $thisPayMethod, intval($this->CI->session->getSessionData('total')), FS_SALE_TYPE); old before cvv
+           
+            $frontstreamResp = $this->CI->model('custom/frontstream_model')->ProcessPayment($transactionId, $thisPayMethod, intval($this->CI->model('custom/items')->getTotalDueNow($this->CI->session->getSessionData('sessionID'))), FS_SALE_TYPE,'',$cleanFormArray['cvnumber2'],'',false,$_SERVER['REMOTE_ADDR'],true);
 
             $this->_logToFile(185, "Front Stream Response:");
             $this->_logToFile(186, print_r($frontstreamResp, true));
@@ -305,6 +330,7 @@ class ajaxCustomFormSubmit extends \RightNow\Libraries\Widget\Base
         } else {
             $result['data'] = (object) array();
         }
+        $result['newFormToken'] = Framework::createTokenWithExpiration(0);
         return json_encode((object)$result);
     }
 
@@ -312,7 +338,7 @@ class ajaxCustomFormSubmit extends \RightNow\Libraries\Widget\Base
      * Handles the creation of user entry in log table
      * captures the request uri, IP & form submit time stamp
      */
-    function createUserLogEntry(){
+   /* function createUserLogEntry(){
         logMessage("User IP Address : " . $_SERVER['REMOTE_ADDR']);                    
         logMessage("User Request URL : " . $_SERVER['REQUEST_URI']);       
         
@@ -322,25 +348,32 @@ class ajaxCustomFormSubmit extends \RightNow\Libraries\Widget\Base
         $userLogEntry->user_ip = $_SERVER['REMOTE_ADDR'];
         $userLogEntry->request_url = $_SERVER['REQUEST_URI'];
         $userLogEntry->form_submit_time = strtotime("now");
+	
+	$c_id = $this->CI->session->getSessionData('contact_id');
+	if($c_id!=null){
+        $userLogEntry->contact_id=intval($c_id);
+        }
+
         //Save Object & Commit
         $userLogEntry->save(RNCPHP\RNObject::SuppressAll);
         RNCPHP\ConnectAPI::commit();
-    }
+    }*/
 
     /**
      * Query number of submits per IP address with in an hour
      * returns true or false
      */
-    function checkIsUserQualified(){
+  /*  function checkIsUserQualified(){
+        try {
         $count = 0;
         $ip_address = $_SERVER['REMOTE_ADDR'];
         $userTracking = RNCPHP\Log\user_tracking::find("user_ip='$ip_address'");
         $origin = date_create(gmdate("Y-m-d\TH:i:s\Z", strtotime("now")));
-        foreach ($userTracking as $userTracking) {
-            $target = date_create(gmdate("Y-m-d\TH:i:s\Z", $userTracking->form_submit_time));
+        foreach ($userTracking as $ut) {
+            $target = date_create(gmdate("Y-m-d\TH:i:s\Z", $ut->form_submit_time));
             $interval = date_diff($origin, $target);
-            // print_r($interval->format('%h'));
-            if(intval($interval->format('%h')) < 1)
+            logMessage($interval);
+            if(intval($interval->h) < 1 && intval($interval->d) < 1)
                 $count++;        
         }
         if($count > RNCPHP\Configuration::fetch('CUSTOM_CFG_CP_MAX_TRANSACTION_PER_HOUR')->Value){
@@ -348,9 +381,12 @@ class ajaxCustomFormSubmit extends \RightNow\Libraries\Widget\Base
         }else{
             return true;
         }
+        } catch (\Exception $e) {
+            $this->_logToFile(186, print_r($e->getMessage()));
+        }
     }
 
-
+*/
 
 
     function _logToFile($lineNum, $message)

@@ -1,5 +1,6 @@
 <?php
 namespace Custom\Widgets\display;
+use RightNow\Connect\v1_4 as RNCPHP;
 
 class GiftPopupGallery extends \Custom\Widgets\display\ItemPopupGallery {
     protected static $WIDGET_SCOPE = 'custom/display/GiftPopupGallery';
@@ -23,7 +24,7 @@ class GiftPopupGallery extends \Custom\Widgets\display\ItemPopupGallery {
      */
     protected function getItemMetadataForPage($page, $doPreload = false){
         //$this->CI->logging->logFunctionCall(self::$WIDGET_SCOPE, 'getItemMetadataForPage',  array('$page' => $page, '$doPreload' => $doPreload));
-
+        try {
         // Get gifts
         $this->CI->load->model('custom/items');
         $gifts = $this->CI->items->getGiftItems();
@@ -59,6 +60,9 @@ class GiftPopupGallery extends \Custom\Widgets\display\ItemPopupGallery {
 
         //$this->CI->logging->logFunctionReturn(self::$WIDGET_SCOPE, 'getItemMetadataForPage', $metaData, '$metaData');
         return $metaData;
+        } catch (Exception $e) {
+            $this->logError($e->getMessage(), "getItemMetadataForPage()");
+        }
     }
 
     /**
@@ -68,6 +72,7 @@ class GiftPopupGallery extends \Custom\Widgets\display\ItemPopupGallery {
     * @param object $gift The gift in question
     */
     private function getChildrenEligibleForGift($children, $gift){
+        try {
         $eligibleChildren = array();
 
         foreach($children as $child){
@@ -80,5 +85,18 @@ class GiftPopupGallery extends \Custom\Widgets\display\ItemPopupGallery {
         }
 
         return $eligibleChildren;
+        } catch (Exception $e) {
+            $this->logError($e->getMessage(), "getItemMetadataForPage()");
+        }
+    }
+
+    function logError($message, $function)
+    {
+        $error = new RNCPHP\ErrorLogs\Log();
+        $error->Error = $message;
+        $error->PostedMessage = "Gift Page";
+        $error->Function = $function;
+        $error->File = "Gift";
+        $error->save();
     }
 }

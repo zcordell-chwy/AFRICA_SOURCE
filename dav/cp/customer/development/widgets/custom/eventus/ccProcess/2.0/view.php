@@ -28,23 +28,27 @@
 							$expDate = ($pm->expMonth != "") ? $pm->expMonth . '/' . $pm->expYear : "";
 
 							if (count($this->data['paymentMethodsArr']) > 1) {
-								print('<tr>
+								print('<tr onclick="callme(this)">
 								<td>' . $pm->CardType . '</td>
-								<td> ************' . $pm->lastFour . ' </td>
+								<td>  ***' . $pm->lastFour . ' </td>
 								<td>' . $expDate . '</td>
 								<td><input type="radio" value="' . $pm->ID . '" name="paymentMethodId"/></td>
 								</tr>');
 							} else {
-								print('<tr>
+								print('<tr onclick="callme(this)">
 								<td>' . $pm->CardType . '</td>
-								<td> ************' . $pm->lastFour . ' </td>
+								<td>  ***' . $pm->lastFour . ' </td>
 								<td>' . $expDate . '</td>
-								<td><input type="radio" value="' . $pm->ID . '" name="paymentMethodId" checked="checked" /></td>
+								<td><input type="radio" value="' . $pm->ID . '" name="paymentMethodId"  /></td>
 								</tr>');
 							}
 						}
 						?>
 					</table>
+					<div id='cardpay2' class="rn_Hidden">
+         				<label for="cvnum2">Card verification number (CVN) <span class="required">*</span></label>
+         				<input type="text" id="cvnum2" name="cvnumber2" placeholder="" style="width: 80px!important;" >
+         			</div>
 					<?
 					foreach ($this->data['js']['postToFsVals'] as $key => $value) {
 						print('<input type="hidden" name="' . $key . '" value="' . $value . '" />');

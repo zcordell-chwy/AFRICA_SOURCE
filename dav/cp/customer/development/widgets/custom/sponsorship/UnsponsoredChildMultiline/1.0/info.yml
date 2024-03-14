@@ -1,7 +1,7 @@
 version: "1.0"
 requires:
-  jsModule:
-    - standard
+  framework: ["3.7", "3.8", "3.9"]
+  jsModule: [standard, mobile]
 info:
   urlParameters:
     kw:

@@ -44,10 +44,9 @@ class SponsorshipSubmit extends \RightNow\Widgets\FormSubmit
          * Otherwise, the token may need to be refreshed as often as the sessionID needs to be refreshed. */
         if (Framework::isLoggedIn()) {
             $idleLength = $this->CI->session->getProfileCookieLength();
-        if ($idleLength === 0)
-            $idleLength = PHP_INT_MAX;
-        }
-        else {
+            if ($idleLength === 0)
+                $idleLength = PHP_INT_MAX;
+        } else {
             $idleLength = $this->CI->session->getSessionIdleLength();
         }
 
@@ -64,6 +63,7 @@ class SponsorshipSubmit extends \RightNow\Widgets\FormSubmit
 
         $data = parent::getData();
         $this->data['js']['child_id'] = !empty($this->CI->session->getSessionData('child_id')) ? $this->CI->session->getSessionData('child_id') : '';
+        $this->data['js']['loggedin'] = $this->CI->session->getProfileData('contactID');
         return $data;
     }
 
@@ -114,46 +114,48 @@ class SponsorshipSubmit extends \RightNow\Widgets\FormSubmit
             helplog(__FILE__, __FUNCTION__ . __LINE__, "Front Stream Manage Customer Response =>" . $res, "");
             return $res["RecurringResult"]["CustomerKey"];
         } catch (\Exception $e) {
-            helplog(__FILE__, __FUNCTION__ . __LINE__,"", "Error in Front Stream Manage Customer Response =>" . $xml);
-            helplog(__FILE__, __FUNCTION__ . __LINE__,"", "Error in Front Stream Manage Customer Exception =>" . $e->getMessage());
+            helplog(__FILE__, __FUNCTION__ . __LINE__, "", "Error in Front Stream Manage Customer Response =>" . $xml);
+            helplog(__FILE__, __FUNCTION__ . __LINE__, "", "Error in Front Stream Manage Customer Exception =>" . $e->getMessage());
         }
     }
 
     //Check and Create OSvC Contact 
-    function createContact($params){
-        try{
-            $existingContact = $this->CI->model('Contact')->lookupContactByEmail($params["Emails"],$params["CFName"] ? $params["CFName"] : null,$params["CLName"] ? $params["CLName"] : null)->result;
+    function createContact($params)
+    {
+        try {
+            $existingContact = $this->CI->model('Contact')->lookupContactByEmail($params["Emails"], $params["CFName"] ? $params["CFName"] : null, $params["CLName"] ? $params["CLName"] : null)->result;
 
             logMessage("Guest Existing Contact: " . print_r($existingContact, true));
             helplog(__FILE__, __FUNCTION__ . __LINE__, "Guest Existing Contact: " . print_r($existingContact, true), "");
-            
-            if($existingContact){
+
+            if ($existingContact) {
                 logMessage("Guest Existing Contact Condition");
-                $contact = RNCPHP\Contact::fetch(intval($existingContact));  
-                if(is_null($contact->Login)){
+                $contact = RNCPHP\Contact::fetch(intval($existingContact));
+                if (is_null($contact->Login)) {
                     //Set Login / Pass
-                    $contact->Login = $params["Emails"];                      
+                    $contact->Login = $params["Emails"];
                 }
-                
+
                 // $contact->CustomFields->c->last_login_ip = $_SERVER['REMOTE_ADDR'];
                 // $contact->CustomFields->c->last_login = strtotime("now");
-                $contact->save();             
+                $contact->save();
 
                 //User Entry Creation
-                $this->createUserLogEntry();
+                // $this->createUserLogEntry();
+                $this->CI->model('custom/user_tracking')->createUserLogEntry();
 
-                logMessage("Guest Existing Contact Fetch: ". print_r($contact, true));
-            }else{
+                logMessage("Guest Existing Contact Fetch: " . print_r($contact, true));
+            } else {
                 logMessage("Guest New Contact Condition");
                 $contact = new RNCPHP\Contact();
 
                 //add email addresses
                 $contact->Emails = new RNCPHP\EmailArray();
                 $contact->Emails[0] = new RNCPHP\Email();
-                $contact->Emails[0]->AddressType=new RNCPHP\NamedIDOptList();
+                $contact->Emails[0]->AddressType = new RNCPHP\NamedIDOptList();
                 $contact->Emails[0]->AddressType->LookupName = "Email - Primary";
                 $contact->Emails[0]->Address = $params["Emails"];
-                
+
                 //Set contact with First Name Last Name
                 $contact->Name = new RNCPHP\PersonName();
                 $contact->Name->First = $params["CFName"];
@@ -166,20 +168,20 @@ class SponsorshipSubmit extends \RightNow\Widgets\FormSubmit
                 $contact->Address->StateOrProvince = new RNCPHP\NamedIDLabel();
                 $contact->Address->StateOrProvince->ID = intval($params["State"]);
                 $contact->Address->Country = RNCPHP\Country::fetch(intval($params["Country"]));
-                $contact->Address->PostalCode =$params["Zip"]; 
+                $contact->Address->PostalCode = $params["Zip"];
 
                 //Set Login / Pass
                 $contact->Login = $params["Emails"];
-                logMessage("User Login : " . $params["Emails"]);  
-                if(strlen($params["CPass"]) > 1)
+                logMessage("User Login : " . $params["Emails"]);
+                if (strlen($params["CPass"]) > 1)
                     $contact->NewPassword = $params["CPass"];
-                    
-               	$newPassword = $params["CPass"];
-                logMessage("User Login : " . $newPassword);  
+
+                $newPassword = $params["CPass"];
+                logMessage("User Login : " . $newPassword);
 
                 //Hear about us field
-                if(strlen($params["AboutUS"]) > 0 )
-                    $contact->CustomFields->CO->how_did_you_hear =$params["AboutUS"]; 
+                if (strlen($params["AboutUS"]) > 0)
+                    $contact->CustomFields->CO->how_did_you_hear = $params["AboutUS"];
 
 
                 // logMessage("User IP Address : " . $_SERVER['REMOTE_ADDR']);                    
@@ -187,24 +189,25 @@ class SponsorshipSubmit extends \RightNow\Widgets\FormSubmit
                 // $contact->CustomFields->c->last_login_ip = $_SERVER['REMOTE_ADDR'];
                 // $contact->CustomFields->c->last_login = strtotime("now");
 
-                $this->createUserLogEntry();
+                //$this->createUserLogEntry();
+
+                $this->CI->model('custom/user_tracking')->createUserLogEntry();
 
                 //Save Contact Object & Commit
                 $contact->save(RNCPHP\RNObject::SuppressAll);
                 RNCPHP\ConnectAPI::commit();
-
             }
-
         } catch (\Exception $e) {
             $this->renderJSON(["code" => "error", "message" => $e->getMessage()]);
         }
-        return $contact;        
+        return $contact;
     }
 
     /**
      * Handles the creation of user entry in log table
      * captures the request uri, IP & form submit time stamp
      */
+    /*
     function createUserLogEntry(){
         logMessage("User IP Address : " . $_SERVER['REMOTE_ADDR']);                    
         logMessage("User Request URL : " . $_SERVER['REQUEST_URI']);       
@@ -215,25 +218,31 @@ class SponsorshipSubmit extends \RightNow\Widgets\FormSubmit
         $userLogEntry->user_ip = $_SERVER['REMOTE_ADDR'];
         $userLogEntry->request_url = $_SERVER['REQUEST_URI'];
         $userLogEntry->form_submit_time = strtotime("now");
+	$c_id = $this->CI->session->getSessionData('contact_id');
+	if($c_id!=null){
+        $userLogEntry->contact_id=intval($c_id);
+        }
+
         //Save Object & Commit
         $userLogEntry->save(RNCPHP\RNObject::SuppressAll);
         RNCPHP\ConnectAPI::commit();
-    }
+    }*/
 
     /**
      * Query number of submits per IP address with in an hour
      * returns true or false
      */
-    function checkIsUserQualified(){
+    /*  function checkIsUserQualified(){
+        try {
         $count = 0;
         $ip_address = $_SERVER['REMOTE_ADDR'];
         $userTracking = RNCPHP\Log\user_tracking::find("user_ip='$ip_address'");
         $origin = date_create(gmdate("Y-m-d\TH:i:s\Z", strtotime("now")));
-        foreach ($userTracking as $userTracking) {
-            $target = date_create(gmdate("Y-m-d\TH:i:s\Z", $userTracking->form_submit_time));
+        foreach ($userTracking as $ut) {
+            $target = date_create(gmdate("Y-m-d\TH:i:s\Z", $ut->form_submit_time));
             $interval = date_diff($origin, $target);
             // print_r($interval->format('%h'));
-            if(intval($interval->format('%h')) < 1)
+            if(intval($interval->h) < 1 && intval($interval->d) < 1)
                 $count++;        
         }
         if($count > RNCPHP\Configuration::fetch('CUSTOM_CFG_CP_MAX_TRANSACTION_PER_HOUR')->Value){
@@ -241,7 +250,10 @@ class SponsorshipSubmit extends \RightNow\Widgets\FormSubmit
         }else{
             return true;
         }
+    } catch (\Exception $e) {
+        $this->_logToFile(186, print_r($e->getMessage()));
     }
+    }*/
 
 
     /**
@@ -250,30 +262,39 @@ class SponsorshipSubmit extends \RightNow\Widgets\FormSubmit
      */
     function handle_save_card_payment_method($params)
     {
+        try {
+            $blockedips = explode(",", RNCPHP\Configuration::fetch("CUSTOM_CFG_BLOCKED_IP_ADDRESSES")->Value);
 
-        // AbuseDetection::check();
-        if (AbuseDetection::check() || AbuseDetection::isAbuse()) {
-            Framework::writeContentWithLengthAndExit(json_encode(true), 'application/json');
-        }
+            foreach ($blockedips as $ip) {
+                if ($_SERVER['REMOTE_ADDR'] == $ip) {
+                    echo $this->createResponseObject("Unqualified", [\RightNow\Utils\Config::getMessage(ERROR_PAGE_PLEASE_S_TRY_MSG)]);
+                    return;
+                }
+            }
 
-        if($this->checkIsUserQualified() == 1){
-            // continue;
-        }else{
-            return $this->renderJSON(["errors" => RNCPHP\MessageBase::fetch(1000063)->Value, "error" => "Limit of Transactions reached."]);
-        }
+            // AbuseDetection::check();
+            if (AbuseDetection::check() || AbuseDetection::isAbuse()) {
+                Framework::writeContentWithLengthAndExit(json_encode(true), 'application/json');
+            }
 
-        
-        // Perform AJAX-handling here...
-        $xml = "";
-        logMessage("Form Parameters: " . print_r($params, true));
-        try {            
+            //if($this->checkIsUserQualified() == 1){
+            if ($this->CI->model('custom/user_tracking')->checkIsUserQualified() == 1) {
+                logMessage("user is qualified");
+            } else {
+                return $this->renderJSON(["errors" => \RightNow\Utils\Config::getMessage(ERROR_PAGE_PLEASE_S_TRY_MSG), "error" => ""]);
+            }
+
+
+            // Perform AJAX-handling here...
+            $xml = "";
+            logMessage("Form Parameters: " . print_r($params, true));
             $contact = $this->CI->model('Contact')->get()->result;
             logMessage("Guest Contact Object Response: " . print_r($contact, true));
-            if($contact)
-            $customerKey = $this->CI->model('Contact')->get()->result->CustomFields->c->customer_key;
-            
+            if ($contact)
+                $customerKey = $this->CI->model('Contact')->get()->result->CustomFields->c->customer_key;
+
             // logMessage("Guest New Contact Customer Key: " . print_r($contact->CustomFields->c->customer_key, true));
-            if(is_null($contact)){
+            if (is_null($contact)) {
                 logMessage("Guest Contact Checking..!!");
                 $contact = $this->createContact($params);
                 $customerKey = $contact->CustomFields->c->customer_key;
@@ -292,95 +313,96 @@ class SponsorshipSubmit extends \RightNow\Widgets\FormSubmit
                 // logMessage("Guest Contact Object: " . print_r($contact, true));
             }
             $this->CI->session->setSessionData(array("contact_id" => $contact->ID));
-            if(!is_null($contact->CustomFields->c->customer_key)){
-                    $data = [
-                        "Username" => RNCPHP\Configuration::fetch('CUSTOM_CFG_FS_UN_CP')->Value,
-                        "Password" => RNCPHP\Configuration::fetch('CUSTOM_CFG_FS_PW_CP')->Value,
-                        "TransType" => "ADD",
-                        "Vendor" => RNCPHP\Configuration::fetch('CUSTOM_CFG_frontstream_vendor')->Value,
-                        "CustomerKey" => !empty($customerKey) ? $customerKey : '',
-                        "CardInfoKey" => "",
-                        "CcAccountNum" => $params["CardNum"],
-                        "CcExpDate" => $params["ExpMonth"] . substr($params["ExpYear"], 2, 2),
-                        "CcNameOnCard" => $params["NameOnCard"],
-                        "CcStreet" => "",
-                        "CcZip" => "",
-                        "ExtData" => ""
-                    ];
-                    //"CustomerKey" => !empty($contact->CustomFields->c->customer_key) ? $contact->CustomFields->c->customer_key : '',
-                    logMessage("Front Stream ManageCredit Info Request =>" . $data);
+            if (!is_null($contact->CustomFields->c->customer_key)) {
+                $data = [
+                    "Username" => RNCPHP\Configuration::fetch('CUSTOM_CFG_FS_UN_CP')->Value,
+                    "Password" => RNCPHP\Configuration::fetch('CUSTOM_CFG_FS_PW_CP')->Value,
+                    "TransType" => "ADD",
+                    "Vendor" => RNCPHP\Configuration::fetch('CUSTOM_CFG_frontstream_vendor')->Value,
+                    "CustomerKey" => !empty($customerKey) ? $customerKey : '',
+                    "CardInfoKey" => "",
+                    "CcAccountNum" => $params["CardNum"],
+                    "CcExpDate" => $params["ExpMonth"] . substr($params["ExpYear"], 2, 2),
+                    "CcNameOnCard" => $params["NameOnCard"],
+                    "CcStreet" => "",
+                    "CcZip" => "",
+                    "ExtData" => ""
+                ];
+                //"CustomerKey" => !empty($contact->CustomFields->c->customer_key) ? $contact->CustomFields->c->customer_key : '',
+                logMessage("Front Stream ManageCredit Info Request =>" . $data);
 
-                    if($params['Amount']){
-                    	$this->CI->session->setSessionData(array("TOTAL" => $params['Amount']));
-                    }
+                if ($params['Amount']) {
+                    $this->CI->session->setSessionData(array("TOTAL" => $params['Amount']));
+                }
 
-                    $url = RNCPHP\Configuration::fetch('CUSTOM_CFG_frontstream_endpoint')->Value . '/admin/ws/recurring.asmx/ManageCreditCardInfo';
-                    $xml = $this->CI->curllibrary->httpPost($url, $data);
-                    logMessage("Front Stream Manage Credit Card Info =>" . $xml);
-                    $res = $this->CI->xmltoarray->load($xml);
-                    logMessage($res);
+                $url = RNCPHP\Configuration::fetch('CUSTOM_CFG_frontstream_endpoint')->Value . '/admin/ws/recurring.asmx/ManageCreditCardInfo';
+                $xml = $this->CI->curllibrary->httpPost($url, $data);
+                logMessage("Front Stream Manage Credit Card Info =>" . $xml);
+                $res = $this->CI->xmltoarray->load($xml);
+                logMessage($res);
 
-                    if (is_null($res["RecurringResult"]["CcInfoKey"]))
-                        throw new \Exception("Ensure all fields have correct information.");
+                if (is_null($res["RecurringResult"]["CcInfoKey"]))
+                    throw new \Exception("Ensure all fields have correct information.");
 
-                    $url = RNCPHP\Configuration::fetch('CUSTOM_CFG_frontstream_endpoint')->Value .'/ArgoFire/validate.asmx/GetCardType';
-                    $xml = $this->CI->curllibrary->httpPost($url, ["CardNumber" => $params["CardNum"]]);
-                    logMessage("Front Stream GetCardType =>" . $xml);
-                    $cardtype = $this->CI->xmltoarray->load($xml);
+                $url = RNCPHP\Configuration::fetch('CUSTOM_CFG_frontstream_endpoint')->Value . '/ArgoFire/validate.asmx/GetCardType';
+                $xml = $this->CI->curllibrary->httpPost($url, ["CardNumber" => $params["CardNum"]]);
+                logMessage("Front Stream GetCardType =>" . $xml);
+                $cardtype = $this->CI->xmltoarray->load($xml);
 
-                    if (is_null($cardtype["string"]["cdata"]))
-                        throw new \Exception("Card Type Lookup Failure. Please Try Again.");
+                if (is_null($cardtype["string"]["cdata"]))
+                    throw new \Exception("Card Type Lookup Failure. Please Try Again.");
 
-                    $id = $this->CI->model('custom/paymentMethod_model')->createPaymentMethod($contact->ID, $cardtype["string"]["cdata"], null, 1, $params["ExpMonth"], $params["ExpYear"], substr($params["CardNum"], -4), $res["RecurringResult"]["CcInfoKey"])->ID;
-                    logMessage("Payment Method ID  =>" . $id);
+                $id = $this->CI->model('custom/paymentMethod_model')->createPaymentMethod($contact->ID, $cardtype["string"]["cdata"], null, 1, $params["ExpMonth"], $params["ExpYear"], substr($params["CardNum"], -4), $res["RecurringResult"]["CcInfoKey"])->ID;
+                logMessage("Payment Method ID  =>" . $id);
 
-                    $paymentMethodsArr = $this->CI->model('custom/paymentMethod_model')->getCurrentPaymentMethodsObjs($contact->ID);
-                    logMessage("Payment Method Array  =>" . $paymentMethodsArr);
+                $paymentMethodsArr = $this->CI->model('custom/paymentMethod_model')->getCurrentPaymentMethodsObjs($contact->ID);
+                logMessage("Payment Method Array  =>" . $paymentMethodsArr);
 
-                    if(!is_null($id)){ 
-                        $transObj = $this->CI->model('custom/transaction_model')->create_transaction($contact->ID, $this->CI->session->getSessionData('TOTAL'),$this->CI->session->getSessionData('child_desc'),null);
-                        $transactionId = $transObj;
-                        $this->CI->session->setSessionData(array("transId" => $transObj));
+                if (!is_null($id)) {
+                    $transObj = $this->CI->model('custom/transaction_model')->create_transaction($contact->ID, $this->CI->session->getSessionData('TOTAL'), $this->CI->session->getSessionData('child_desc'), null, $_SERVER['REMOTE_ADDR']);
+                    $transactionId = $transObj;
+                    $this->CI->session->setSessionData(array("transId" => $transObj));
 
-                        $payMethod = RNCPHP\financial\paymentMethod::fetch(intval($id));
-                        logMessage("---------Begining Run Transaction $transId with Paymethod " . $payMethod->ID . " for " . intval($this->CI->session->getSessionData('TOTAL')) . "------------");
-                        $frontstreamResp = $this->CI->model('custom/frontstream_model')->ProcessPayment($transactionId, $payMethod, intval($this->CI->session->getSessionData('TOTAL')), FS_SALE_TYPE);
+                    $payMethod = RNCPHP\financial\paymentMethod::fetch(intval($id));
+                    $expdate = $params["ExpMonth"] . substr($params["ExpYear"], 2, 2);
+                    logMessage("---------Begining Run Transaction $transId with Paymethod " . $payMethod->ID . " for " . intval($this->CI->session->getSessionData('TOTAL')) . "------------");
+                    $frontstreamResp = $this->CI->model('custom/frontstream_model')->ProcessPayment($transactionId, $payMethod, intval($this->CI->session->getSessionData('TOTAL')), FS_SALE_TYPE, $params["CardNum"], $params["CVNum"], $expdate, true, $_SERVER['REMOTE_ADDR'], false);
 
-                        logMessage("Front Stream Response: " . print_r($frontstreamResp, true));
+                    logMessage("Front Stream Response: " . print_r($frontstreamResp, true));
 
-                        $result = array();
+                    $result = array();
 
-                        if ($frontstreamResp['isSuccess'] === true) {
-                            $this->_logToFile(91, "Processing a successful transaction");
-                            $donationId = $this->afterTransactionDonationCreation($payMethod);
+                    if ($frontstreamResp['isSuccess'] === true) {
+                        $this->_logToFile(91, "Processing a successful transaction");
+                        $donationId = $this->afterTransactionDonationCreation($payMethod);
 
-                            if ($donationId === false || $donationId < 1) {
-                                echo $this->createResponseObject("The payment processed correctly, but your donation may not have been properly credited.  Please contact donor services", $sanityCheckMsgs);
-                                return;
-                            }
-
-                            if ($contact->Login !== null) {
-                                $profile = $this->CI->model('Contact')->getProfileSid($contact->Login, $params["CPass"] ?: '', $this->CI->session->getSessionData('sessionID'))->result;
-                                logMessage("Guest New Contact Profile: " . print_r($profile, true));
-                                if ($profile !== null && !is_string($profile)) {
-                                    $this->CI->session->createProfileCookie($profile);
-                                }
-                            }
-
-                            //need to update status to complete only after donation is associated.  otherwise CPM will not pick up the donation.
-                            $this->CI->model('custom/transaction_model')->updateTransStatus($transactionId, TRANSACTION_SALE_SUCCESS_STATUS_ID, $payMethod->ID, $frontstreamResp['pnRef']);
-                            //$this -> clearCartData();
-                            $this->_logToFile(202, "---------Ending Run Transaction $transactionId Redirecting to " . "/app/payment/success/t_id/" . $transactionId . "/authCode/" . $this->CI->model('custom/frontstream_model')->authCode . "/" . "------------");
-                            $this->_logToFile(203, "---------");
-                            $this->_logToFile(204, "---------");
-                            echo $this->createResponseObject("Success!", array(), "/app/payment/success/id/" . $this->CI->session->getSessionData('child_id'));
+                        if ($donationId === false || $donationId < 1) {
+                            echo $this->createResponseObject("The payment processed correctly, but your donation may not have been properly credited.  Please contact donor services", $sanityCheckMsgs);
                             return;
                         }
-                    }
-                    echo $this->createResponseObject("Error Processing Payment", $this->CI->model('custom/frontstream_model')->getEndUserErrorMsg());
-                    return;
 
-                    // $this->renderJSON(["code" => "success", "id" => $id]);
+                        if ($contact->Login !== null) {
+                            $profile = $this->CI->model('Contact')->getProfileSid($contact->Login, $params["CPass"] ?: '', $this->CI->session->getSessionData('sessionID'))->result;
+                            logMessage("Guest New Contact Profile: " . print_r($profile, true));
+                            if ($profile !== null && !is_string($profile)) {
+                                $this->CI->session->createProfileCookie($profile);
+                            }
+                        }
+
+                        //need to update status to complete only after donation is associated.  otherwise CPM will not pick up the donation.
+                        $this->CI->model('custom/transaction_model')->updateTransStatus($transactionId, TRANSACTION_SALE_SUCCESS_STATUS_ID, $payMethod->ID, $frontstreamResp['pnRef']);
+                        //$this -> clearCartData();
+                        $this->_logToFile(202, "---------Ending Run Transaction $transactionId Redirecting to " . "/app/payment/success/t_id/" . $transactionId . "/authCode/" . $this->CI->model('custom/frontstream_model')->authCode . "/" . "------------");
+                        $this->_logToFile(203, "---------");
+                        $this->_logToFile(204, "---------");
+                        echo $this->createResponseObject("Success!", array(), "/app/payment/success/id/" . $this->CI->session->getSessionData('child_id'));
+                        return;
+                    }
+                }
+                echo $this->createResponseObject("Error Processing Payment", $this->CI->model('custom/frontstream_model')->getEndUserErrorMsg());
+                return;
+
+                // $this->renderJSON(["code" => "success", "id" => $id]);
             }
         } catch (\Exception $e) {
             $this->renderJSON(["code" => "error", "message" => $e->getMessage()]);
@@ -393,28 +415,38 @@ class SponsorshipSubmit extends \RightNow\Widgets\FormSubmit
      * @param array $params Get / Post parameters
      */
     function handle_save_check_payment_method($params)
-    {// Perform AJAX-handling here...
+    { // Perform AJAX-handling here...
         $xml = "";
         logMessage("Form Parameters: " . print_r($params, true));
         try {
-            
-            if($this->checkIsUserQualified() == 1){
-                // continue;
-            }else{
-                return $this->renderJSON(["errors" => RNCPHP\MessageBase::fetch(1000063)->Value, "error" => "Limit of Transactions reached."]);
+
+            $blockedips = explode(",", RNCPHP\Configuration::fetch("CUSTOM_CFG_BLOCKED_IP_ADDRESSES")->Value);
+
+            foreach ($blockedips as $ip) {
+                if ($_SERVER['REMOTE_ADDR'] == $ip) {
+                    echo $this->createResponseObject("Unqualified", [\RightNow\Utils\Config::getMessage(ERROR_PAGE_PLEASE_S_TRY_MSG)]);
+                    return;
+                }
             }
-    
-            
+
+            //if($this->checkIsUserQualified() == 1){
+            if ($this->CI->model('custom/user_tracking')->checkIsUserQualified() == 1) {
+                logMessage("user is qualified");
+            } else {
+                return $this->renderJSON(["errors" => \RightNow\Utils\Config::getMessage(ERROR_PAGE_PLEASE_S_TRY_MSG), "error" => ""]);
+            }
+
+
             $contact = $this->CI->model('Contact')->get()->result;
             logMessage("Guest Contact Object Response: " . print_r($contact, true));
             $customerKey = $this->CI->model('Contact')->get()->result->CustomFields->c->customer_key;
-            
+
             //Store the IP and last submit time against contact
             $contact->CustomFields->c->last_login_ip = $_SERVER['REMOTE_ADDR'];
             $contact->CustomFields->c->last_login = strtotime();
             $contact->save();
 
-            if(is_null($contact)){
+            if (is_null($contact)) {
                 logMessage("Guest Contact Checking..!!");
                 $contact = $this->createContact($params);
                 $customerKey = $contact->CustomFields->c->customer_key;
@@ -433,7 +465,7 @@ class SponsorshipSubmit extends \RightNow\Widgets\FormSubmit
                 // logMessage("Guest Contact Object: " . print_r($contact, true));
             }
             $this->CI->session->setSessionData(array("contact_id" => $contact->ID));
-            if(!is_null($contact->CustomFields->c->customer_key)){
+            if (!is_null($contact->CustomFields->c->customer_key)) {
                 $data = [
                     "Username" => RNCPHP\Configuration::fetch("CUSTOM_CFG_FS_UN_CP")->Value,
                     "Password" => RNCPHP\Configuration::fetch("CUSTOM_CFG_FS_PW_CP")->Value,
@@ -465,73 +497,73 @@ class SponsorshipSubmit extends \RightNow\Widgets\FormSubmit
                     "PostalCode" => "",
                     "CountryID" => "",
                     "ExtData" => ""
-                    ];                    
-                    
-                    logMessage("Front Stream ManageCredit Info Request =>" . $data);
+                ];
 
-                    if($params['Amount']){
-                        $this->CI->session->setSessionData(array("TOTAL" => $params['Amount']));
-                    }
+                logMessage("Front Stream ManageCredit Info Request =>" . $data);
 
-                    $url = RNCPHP\Configuration::fetch("CUSTOM_CFG_frontstream_endpoint")->Value . '/admin/ws/recurring.asmx/ManageCheckInfo';
-                    $xml = $this->CI->curllibrary->httpPost($url, $data);
-                    logMessage("Front Stream Manage Credit Card Info =>" . $xml);
-                    $res = $this->CI->xmltoarray->load($xml);
+                if ($params['Amount']) {
+                    $this->CI->session->setSessionData(array("TOTAL" => $params['Amount']));
+                }
 
-                    if (is_null($res["RecurringResult"]["CcInfoKey"]))
-                        throw new \Exception("Ensure all fields have correct information.");
+                $url = RNCPHP\Configuration::fetch("CUSTOM_CFG_frontstream_endpoint")->Value . '/admin/ws/recurring.asmx/ManageCheckInfo';
+                $xml = $this->CI->curllibrary->httpPost($url, $data);
+                logMessage("Front Stream Manage Credit Card Info =>" . $xml);
+                $res = $this->CI->xmltoarray->load($xml);
+
+                if (is_null($res["RecurringResult"]["CcInfoKey"]))
+                    throw new \Exception("Ensure all fields have correct information.");
 
 
-                    $id = $this->CI->model('custom/paymentMethod_model')->createPaymentMethod($contact->ID, "Checking", null, 2, null, null, substr($params["AccountNum"], -4), $res["RecurringResult"]["CheckInfoKey"])->ID;
-                    logMessage("Payment Method ID  =>" . $id);
+                $id = $this->CI->model('custom/paymentMethod_model')->createPaymentMethod($contact->ID, "Checking", null, 2, null, null, substr($params["AccountNum"], -4), $res["RecurringResult"]["CheckInfoKey"])->ID;
+                logMessage("Payment Method ID  =>" . $id);
 
-                    $paymentMethodsArr = $this->CI->model('custom/paymentMethod_model')->getCurrentPaymentMethodsObjs($contact->ID);
-                    logMessage("Payment Method Array  =>" . $paymentMethodsArr);
+                $paymentMethodsArr = $this->CI->model('custom/paymentMethod_model')->getCurrentPaymentMethodsObjs($contact->ID);
+                logMessage("Payment Method Array  =>" . $paymentMethodsArr);
 
-                    if(!is_null($id)){ 
-                        $transObj = $this->CI->model('custom/transaction_model')->create_transaction($contact->ID, $this->CI->session->getSessionData('TOTAL'),$this->CI->session->getSessionData('child_desc'),null);
-                        $transactionId = $transObj;
-                        $this->CI->session->setSessionData(array("transId" => $transObj));
+                if (!is_null($id)) {
+                    $transObj = $this->CI->model('custom/transaction_model')->create_transaction($contact->ID, $this->CI->session->getSessionData('TOTAL'), $this->CI->session->getSessionData('child_desc'), null, $_SERVER['REMOTE_ADDR']);
+                    $transactionId = $transObj;
+                    $this->CI->session->setSessionData(array("transId" => $transObj));
 
-                        $payMethod = RNCPHP\financial\paymentMethod::fetch(intval($id));
-                        logMessage("---------Begining Run Transaction $transId with Paymethod " . $payMethod->ID . " for " . intval($this->CI->session->getSessionData('TOTAL')) . "------------");
-                        $frontstreamResp = $this->CI->model('custom/frontstream_model')->ProcessPayment($transactionId, $payMethod, intval($this->CI->session->getSessionData('TOTAL')), FS_SALE_TYPE);
+                    $payMethod = RNCPHP\financial\paymentMethod::fetch(intval($id));
+                    logMessage("---------Begining Run Transaction $transId with Paymethod " . $payMethod->ID . " for " . intval($this->CI->session->getSessionData('TOTAL')) . "------------");
+                    $frontstreamResp = $this->CI->model('custom/frontstream_model')->ProcessPayment($transactionId, $payMethod, intval($this->CI->session->getSessionData('TOTAL')), FS_SALE_TYPE);
 
-                        logMessage("Front Stream Response: " . print_r($frontstreamResp, true));
+                    logMessage("Front Stream Response: " . print_r($frontstreamResp, true));
 
-                        $result = array();
+                    $result = array();
 
-                        if ($frontstreamResp['isSuccess'] === true) {
-                            $this->_logToFile(91, "Processing a successful transaction");
-                            $donationId = $this->afterTransactionDonationCreation($payMethod);
+                    if ($frontstreamResp['isSuccess'] === true) {
+                        $this->_logToFile(91, "Processing a successful transaction");
+                        $donationId = $this->afterTransactionDonationCreation($payMethod);
 
-                            if ($donationId === false || $donationId < 1) {
-                                echo $this->createResponseObject("The payment processed correctly, but your donation may not have been properly credited.  Please contact donor services", $sanityCheckMsgs);
-                                return;
-                            }
-
-                            if ($contact->Login !== null) {
-                                $profile = $this->CI->model('Contact')->getProfileSid($contact->Login, $params["CPass"] ?: '', $this->CI->session->getSessionData('sessionID'))->result;
-                                logMessage("Guest New Contact Profile: " . print_r($profile, true));
-                                if ($profile !== null && !is_string($profile)) {
-                                    $this->CI->session->createProfileCookie($profile);
-                                }
-                            }
-                            
-                            //need to update status to complete only after donation is associated.  otherwise CPM will not pick up the donation.
-                            $this->CI->model('custom/transaction_model')->updateTransStatus($transactionId, TRANSACTION_SALE_SUCCESS_STATUS_ID, $payMethod->ID, $frontstreamResp['pnRef']);
-                            //$this -> clearCartData();
-                            $this->_logToFile(202, "---------Ending Run Transaction $transactionId Redirecting to " . "/app/payment/success/t_id/" . $transactionId . "/authCode/" . $this->CI->model('custom/frontstream_model')->authCode . "/" . "--------Child ID > " . $this->CI->session->getSessionData('child_id'));
-                            $this->_logToFile(203, "---------");
-                            $this->_logToFile(204, "---------");
-                            echo $this->createResponseObject("Success!", array(), "/app/payment/success/id/" . $this->CI->session->getSessionData('child_id'));
+                        if ($donationId === false || $donationId < 1) {
+                            echo $this->createResponseObject("The payment processed correctly, but your donation may not have been properly credited.  Please contact donor services", $sanityCheckMsgs);
                             return;
                         }
-                    }
-                    echo $this->createResponseObject("Error Processing Payment", $this->CI->model('custom/frontstream_model')->getEndUserErrorMsg());
-                    return;
 
-                    // $this->renderJSON(["code" => "success", "id" => $id]);
+                        if ($contact->Login !== null) {
+                            $profile = $this->CI->model('Contact')->getProfileSid($contact->Login, $params["CPass"] ?: '', $this->CI->session->getSessionData('sessionID'))->result;
+                            logMessage("Guest New Contact Profile: " . print_r($profile, true));
+                            if ($profile !== null && !is_string($profile)) {
+                                $this->CI->session->createProfileCookie($profile);
+                            }
+                        }
+
+                        //need to update status to complete only after donation is associated.  otherwise CPM will not pick up the donation.
+                        $this->CI->model('custom/transaction_model')->updateTransStatus($transactionId, TRANSACTION_SALE_SUCCESS_STATUS_ID, $payMethod->ID, $frontstreamResp['pnRef']);
+                        //$this -> clearCartData();
+                        $this->_logToFile(202, "---------Ending Run Transaction $transactionId Redirecting to " . "/app/payment/success/t_id/" . $transactionId . "/authCode/" . $this->CI->model('custom/frontstream_model')->authCode . "/" . "--------Child ID > " . $this->CI->session->getSessionData('child_id'));
+                        $this->_logToFile(203, "---------");
+                        $this->_logToFile(204, "---------");
+                        echo $this->createResponseObject("Success!", array(), "/app/payment/success/id/" . $this->CI->session->getSessionData('child_id'));
+                        return;
+                    }
+                }
+                echo $this->createResponseObject("Error Processing Payment", $this->CI->model('custom/frontstream_model')->getEndUserErrorMsg());
+                return;
+
+                // $this->renderJSON(["code" => "success", "id" => $id]);
             }
         } catch (\Exception $e) {
             $this->renderJSON(["code" => "error", "message" => $e->getMessage()]);
@@ -547,20 +579,32 @@ class SponsorshipSubmit extends \RightNow\Widgets\FormSubmit
     function handle_default_ajax_endpoint($params)
     {
         try {
+
+            $blockedips = explode(",", RNCPHP\Configuration::fetch("CUSTOM_CFG_BLOCKED_IP_ADDRESSES")->Value);
+
+            foreach ($blockedips as $ip) {
+                if ($_SERVER['REMOTE_ADDR'] == $ip) {
+                    echo $this->createResponseObject("Unqualified", [\RightNow\Utils\Config::getMessage(ERROR_PAGE_PLEASE_S_TRY_MSG)]);
+                    return;
+                }
+            }
+
             $rawFormDataArr = json_decode($params['formData']);
-            if($this->checkIsUserQualified() == 1){
-                // continue;
-            }else{
-                return $this->renderJSON(["errors" => RNCPHP\MessageBase::fetch(1000063)->Value, "error" => "Limit of Transactions reached."]);
+            //$this->CI->model('custom/user_tracking')->checkIsUserQualified();
+            //if($this->checkIsUserQualified() == 1){
+            if ($this->CI->model('custom/user_tracking')->checkIsUserQualified() == 1) {
+                logMessage("user is qualified");
+            } else {
+                return $this->renderJSON(["errors" => \RightNow\Utils\Config::getMessage(ERROR_PAGE_PLEASE_S_TRY_MSG), "error" => ""]);
             }
             if (!$rawFormDataArr) {
                 header("HTTP/1.1 400 Bad Request");
                 // Pad the error message with spaces so IE will actually display it instead of a misleading, but pretty, error message.
                 Framework::writeContentWithLengthAndExit(json_encode(Config::getMessage(END_REQS_BODY_REQUESTS_FORMATTED_MSG)) . str_repeat("\n", 512));
             }
-			logMessage("**Total = " . $params['amt']);
-            if($params['amt']){
-            	$this->CI->session->setSessionData(array("TOTAL" => $params['amt']));            	
+            logMessage("**Total = " . $params['amt']);
+            if ($params['amt']) {
+                $this->CI->session->setSessionData(array("TOTAL" => $params['amt']));
             }
 
             $cleanFormArray = array();
@@ -568,6 +612,9 @@ class SponsorshipSubmit extends \RightNow\Widgets\FormSubmit
                 $cleanData = addslashes($rawData->value);
                 $cleanIndex = addslashes($rawData->name);
                 if (($rawData->name == "paymentMethodId" && $rawData->checked == true) || $rawData->name != "paymentMethodId")
+                    $cleanFormArray[$cleanIndex] = $cleanData;
+                //cvv
+                if ($rawData->name == "cvnumber2")
                     $cleanFormArray[$cleanIndex] = $cleanData;
             }
 
@@ -601,7 +648,7 @@ class SponsorshipSubmit extends \RightNow\Widgets\FormSubmit
                 $sanityCheckMsgs[] = "Unable to access stored payment method";
             }
 
-            if (is_null($this->CI->session->getSessionData('TOTAL')) ||  !is_numeric($this->CI->session->getSessionData('TOTAL')) ) {
+            if (is_null($this->CI->session->getSessionData('TOTAL')) ||  !is_numeric($this->CI->session->getSessionData('TOTAL'))) {
                 logMessage("**Total = " . $this->CI->session->getSessionData('TOTAL'));
                 $sanityCheckMsgs[] = "Invalid Payment Amount";
             }
@@ -609,7 +656,10 @@ class SponsorshipSubmit extends \RightNow\Widgets\FormSubmit
             // If this is a sponsorship pledge, verify that the child being sponsored is still locked by the user executing the transaction.
             $transItemType = $this->CI->session->getSessionData('item_type');
 
-            $this->createUserLogEntry();
+            // $this->createUserLogEntry();
+            $this->CI->model('custom/user_tracking')->createUserLogEntry();
+
+
 
             logMessage('Running sponsorship transaction. Verifying child record lock is still held by logged in user.');
             $status = $this->CI->model('custom/sponsorship_model')->isChildRecordLocked(intval($this->CI->session->getSessionData('child_id')));
@@ -622,8 +672,10 @@ class SponsorshipSubmit extends \RightNow\Widgets\FormSubmit
 
             $this->_logToFile(181, "---------Begining Run Transaction $transactionId with Paymethod " . $thisPayMethod->ID . " for " . intval($this->CI->model('custom/items')->getTotalDueNow($this->CI->session->getSessionData('sessionID'))) . "------------");
             logMessage("---------Begining Run Transaction $transactionId with Paymethod " . $thisPayMethod->ID . " for " . intval($this->CI->session->getSessionData('TOTAL')) . "------------");
-           
-            $frontstreamResp = $this->CI->model('custom/frontstream_model')->ProcessPayment($transactionId, $thisPayMethod, intval($this->CI->session->getSessionData('TOTAL')), FS_SALE_TYPE);
+
+            //ProcessPayment($transactionId, RNCPHP\financial\paymentMethod $paymentMethod, $amount = "0", $transType = "",$ccard="", $cvv="",$expdate="", $isguest=false,$savedcard=false)
+            // $frontstreamResp = $this->CI->model('custom/frontstream_model')->ProcessPayment($transactionId, $thisPayMethod, intval($this->CI->session->getSessionData('TOTAL')), FS_SALE_TYPE); old before cvv
+            $frontstreamResp = $this->CI->model('custom/frontstream_model')->ProcessPayment($transactionId, $thisPayMethod, intval($this->CI->session->getSessionData('TOTAL')), FS_SALE_TYPE, '', $cleanFormArray['cvnumber2'], '', false, $_SERVER['REMOTE_ADDR'], true);
 
             $this->_logToFile(185, "Front Stream Response:");
             $this->_logToFile(186, print_r($frontstreamResp, true));
@@ -643,7 +695,7 @@ class SponsorshipSubmit extends \RightNow\Widgets\FormSubmit
                 //need to update status to complete only after donation is associated.  otherwise CPM will not pick up the donation.
                 $this->CI->model('custom/transaction_model')->updateTransStatus($transactionId, TRANSACTION_SALE_SUCCESS_STATUS_ID, $thisPayMethod->ID, $frontstreamResp['pnRef']);
                 //$this -> clearCartData();
-                $this->_logToFile(202, "---------Ending Run Transaction $transactionId Redirecting to " . "/app/payment/success/t_id/" . $transactionId . "/authCode/" . $this->CI->model('custom/frontstream_model')->authCode . "/id/".$this->CI->session->getSessionData('child_id'). "------------");
+                $this->_logToFile(202, "---------Ending Run Transaction $transactionId Redirecting to " . "/app/payment/success/t_id/" . $transactionId . "/authCode/" . $this->CI->model('custom/frontstream_model')->authCode . "/id/" . $this->CI->session->getSessionData('child_id') . "------------");
                 $this->_logToFile(203, "---------");
                 $this->_logToFile(204, "---------");
                 echo $this->createResponseObject("Success!", array(), "/app/payment/success/id/" . $this->CI->session->getSessionData('child_id'));
@@ -722,5 +774,4 @@ class SponsorshipSubmit extends \RightNow\Widgets\FormSubmit
         fwrite($fp,  date('H:i:s.') . $hundredths . ": ajaxCustomFormSubmit Controller @ $lineNum : " . $message . "\n");
         fclose($fp);
     }
-
 }

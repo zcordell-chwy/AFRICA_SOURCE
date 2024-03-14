@@ -18,6 +18,13 @@
 			<div class="rn_DonationFundPopupGalleryItemPopupDescriptionContainer">
 				<span class="rn_DonationFundPopupGalleryItemPopupDescription"><%= data.description %></span>
 			</div>
+			<% //if (!loggedIn){ %>
+				<!--div class="giftAdditionalInfo">
+				  <p>
+					<a href="/app/utils/login_form/redirect/donate">Log In</a> to continue with the donation
+				  </p>
+				</div-->
+				<% //} else { %>
 			<div class="rn_DonationFundPopupGalleryItemPopupAddToCartForm">
 				<% /* Add missionary selector for missionaryList item. */ %>
 				<% if(data.type === "missionaryList"){ %>
@@ -52,6 +59,7 @@
 					<button value="cancel">Cancel</button>
 				</div>
 			</div>
+			<% //} %>
 		</div>
 	</div>
 </rn:block>

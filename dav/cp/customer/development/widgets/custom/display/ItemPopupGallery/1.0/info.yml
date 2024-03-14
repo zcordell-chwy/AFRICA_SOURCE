@@ -1,9 +1,8 @@
 version: "1.0"
 requires:
-  jsModule:
-  - standard
-  - mobile
-  yui: [selector-css3, panel]
+  framework: ["3.7", "3.8", "3.9"]
+  jsModule: [standard, mobile]
+  yui: [anim-scroll, selector-css3,panel]
 attributes:
   getItemMetadataForPage:
     name: getItemMetadataForPage

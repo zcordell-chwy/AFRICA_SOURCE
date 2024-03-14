@@ -1,4 +1,4 @@
-<rn:meta title="Make a Donation" template="standard.php" login_required="false" clickstream="donate" />
+<rn:meta title="Support a Program" template="standard.php" login_required="false" clickstream="donate" />
 <!-- <div class="rn_HeaderContainer">
 	<rn:condition config_check="CUSTOM_CFG_SHOW_ALERT == true">
 		<div id="rn_Alert" class="rn_Alert rn_AlertBox rn_ErrorAlert">#rn:msg:CUSTOM_MSG_ALERT#</div>

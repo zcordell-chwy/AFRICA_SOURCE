@@ -52,10 +52,18 @@ Custom.Widgets.payment.SingleDonation = RightNow.Widgets.extend({
 
   _otherAmountChecked: function () {
     if (document.getElementById("amount_other").checked) {
+     
       $("#other_amount").removeClass("rn_Hidden");
-      $("#onetime").text("$0");
-      $("#giftAmount").text("$0");
-      $("#monthly").text("$0");
+      if(document.getElementById("other_amount").value >0){ 
+        $("#onetime").text("$" + document.getElementById("other_amount").value );   
+	$("#giftAmount").text( "$" + document.getElementById("other_amount").value);
+	$("#monthly").text("$" + document.getElementById("other_amount").value);
+	}
+      else{
+      	$("#onetime").text("$0");
+      	$("#giftAmount").text("$0");
+     	 $("#monthly").text("$0");
+      }
       $("#amount_other").closest("label").addClass("sliderAmount");
       $("#amount_50").closest("label").removeClass("sliderAmount");
       $("#amount_100").closest("label").removeClass("sliderAmount");
@@ -143,18 +151,208 @@ Custom.Widgets.payment.SingleDonation = RightNow.Widgets.extend({
       $("#giftOneTime").removeClass("rn_Hidden");
       $("#giftAmount").text("$" + oneTime);
     }
+    
+   // slide logic on load 
+    var amount = "";
+
+    $("#other_amount").addClass("rn_Hidden");
+
+    if (document.getElementById("onetime_radio").checked) {
+
+      amount = $("#onetime").text().replace('$','');
+
+      if(parseInt(amount)!== NaN){
+
+      if(parseInt(amount)===25){
+
+      $("#amount_25").closest("label").addClass("sliderAmount");
+        $("#amount_50").closest("label").removeClass("sliderAmount");
+        $("#amount_100").closest("label").removeClass("sliderAmount");
+        // $("#other_amount").closest("label").removeClass("sliderAmount");
+        $("#amount_other").closest("label").removeClass("sliderAmount");
+        }
+        else if (parseInt(amount)===50){
+
+          $("#amount_50").closest("label").addClass("sliderAmount");
+          $("#amount_25").closest("label").removeClass("sliderAmount");
+          $("#amount_100").closest("label").removeClass("sliderAmount");
+          // $("#other_amount").closest("label").removeClass("sliderAmount");
+          $("#amount_other").closest("label").removeClass("sliderAmount");
+
+        }else if (parseInt(amount)===100){
+
+          $("#amount_100").closest("label").addClass("sliderAmount");
+          $("#amount_25").closest("label").removeClass("sliderAmount");
+          $("#amount_50").closest("label").removeClass("sliderAmount");
+          // $("#other_amount").closest("label").removeClass("sliderAmount");
+          $("#amount_other").closest("label").removeClass("sliderAmount");
+
+
+        }else{
+          $("#amount_other").closest("label").addClass("sliderAmount");
+          $("#amount_100").closest("label").removeClass("sliderAmount");
+          $("#amount_25").closest("label").removeClass("sliderAmount");
+          $("#amount_50").closest("label").removeClass("sliderAmount");
+          $("#other_amount").removeClass("rn_Hidden");
+          $("#other_amount").val(parseInt(amount));
+          // $("#other_amount").closest("label").removeClass("sliderAmount");
+          
+
+        }
+
+      }
+      
+    } else if (document.getElementById("monthly_radio").checked) {
+
+      amount = $("#monthly").text().replace('$','');
+
+      if(parseInt(amount)!== NaN){
+
+        if(parseInt(amount)===25){
+  
+        $("#amount_25").closest("label").addClass("sliderAmount");
+          $("#amount_50").closest("label").removeClass("sliderAmount");
+          $("#amount_100").closest("label").removeClass("sliderAmount");
+           $("#other_amount").closest("label").removeClass("sliderAmount");
+          $("#amount_other").closest("label").removeClass("sliderAmount");
+          }
+          else if (parseInt(amount)===50){
+  
+            $("#amount_50").closest("label").addClass("sliderAmount");
+            $("#amount_25").closest("label").removeClass("sliderAmount");
+            $("#amount_100").closest("label").removeClass("sliderAmount");
+             $("#other_amount").closest("label").removeClass("sliderAmount");
+            $("#amount_other").closest("label").removeClass("sliderAmount");
+  
+          }else if (parseInt(amount)===100){
+  
+            $("#amount_100").closest("label").addClass("sliderAmount");
+            $("#amount_25").closest("label").removeClass("sliderAmount");
+            $("#amount_50").closest("label").removeClass("sliderAmount");
+             $("#other_amount").closest("label").removeClass("sliderAmount");
+            $("#amount_other").closest("label").removeClass("sliderAmount");
+  
+  
+          }else{
+            $("#amount_other").closest("label").addClass("sliderAmount");
+            $("#amount_100").closest("label").removeClass("sliderAmount");
+            $("#amount_25").closest("label").removeClass("sliderAmount");
+            $("#amount_50").closest("label").removeClass("sliderAmount");
+            // $("#other_amount").closest("label").removeClass("sliderAmount");
+            $("#other_amount").removeClass("rn_Hidden");
+            $("#other_amount").val(parseInt(amount));
+            
+  
+          }
+  
+        }
+      
+    }
+    
+    // slide logic on load end 
+
+
   },
 
   _selectedMonthly: function () {
     $("#giftOneTime").addClass("rn_Hidden");
     $("#giftamount").removeClass("rn_Hidden");
     $("#giftAmount").text("$" + monthly);
+    
+    amount = $("#monthly").text().replace('$','');
+    $("#other_amount").addClass("rn_Hidden");
+
+      if(parseInt(amount)!== NaN){
+
+      if(parseInt(amount)===25){
+
+      $("#amount_25").closest("label").addClass("sliderAmount");
+        $("#amount_50").closest("label").removeClass("sliderAmount");
+        $("#amount_100").closest("label").removeClass("sliderAmount");
+         $("#other_amount").closest("label").removeClass("sliderAmount");
+        $("#amount_other").closest("label").removeClass("sliderAmount");
+        }
+        else if (parseInt(amount)===50){
+
+          $("#amount_50").closest("label").addClass("sliderAmount");
+          $("#amount_25").closest("label").removeClass("sliderAmount");
+          $("#amount_100").closest("label").removeClass("sliderAmount");
+           $("#other_amount").closest("label").removeClass("sliderAmount");
+          $("#amount_other").closest("label").removeClass("sliderAmount");
+
+        }else if (parseInt(amount)===100){
+
+          $("#amount_100").closest("label").addClass("sliderAmount");
+          $("#amount_25").closest("label").removeClass("sliderAmount");
+          $("#amount_50").closest("label").removeClass("sliderAmount");
+           $("#other_amount").closest("label").removeClass("sliderAmount");
+          $("#amount_other").closest("label").removeClass("sliderAmount");
+
+
+        }else{
+          $("#amount_other").closest("label").addClass("sliderAmount");
+          $("#amount_100").closest("label").removeClass("sliderAmount");
+          $("#amount_25").closest("label").removeClass("sliderAmount");
+          $("#amount_50").closest("label").removeClass("sliderAmount");
+          $("#other_amount").removeClass("rn_Hidden");
+          $("#other_amount").val(parseInt(amount));
+          // $("#other_amount").closest("label").removeClass("sliderAmount");
+          
+
+        }
+     }
+    
+
+
   },
 
   _selectedRadio: function () {
     $("#giftamount").addClass("rn_Hidden");
     $("#giftOneTime").removeClass("rn_Hidden");
     $("#giftAmount").text("$" + oneTime);
+    
+    amount = $("#onetime").text().replace('$','');
+	$("#other_amount").addClass("rn_Hidden");
+      if(parseInt(amount)!== NaN){
+
+      if(parseInt(amount)===25){
+
+      $("#amount_25").closest("label").addClass("sliderAmount");
+        $("#amount_50").closest("label").removeClass("sliderAmount");
+        $("#amount_100").closest("label").removeClass("sliderAmount");
+         $("#other_amount").closest("label").removeClass("sliderAmount");
+        $("#amount_other").closest("label").removeClass("sliderAmount");
+        }
+        else if (parseInt(amount)===50){
+
+          $("#amount_50").closest("label").addClass("sliderAmount");
+          $("#amount_25").closest("label").removeClass("sliderAmount");
+          $("#amount_100").closest("label").removeClass("sliderAmount");
+           $("#other_amount").closest("label").removeClass("sliderAmount");
+          $("#amount_other").closest("label").removeClass("sliderAmount");
+
+        }else if (parseInt(amount)===100){
+
+          $("#amount_100").closest("label").addClass("sliderAmount");
+          $("#amount_25").closest("label").removeClass("sliderAmount");
+          $("#amount_50").closest("label").removeClass("sliderAmount");
+           $("#other_amount").closest("label").removeClass("sliderAmount");
+          $("#amount_other").closest("label").removeClass("sliderAmount");
+
+
+        }else{
+          $("#amount_other").closest("label").addClass("sliderAmount");
+          $("#amount_100").closest("label").removeClass("sliderAmount");
+          $("#amount_25").closest("label").removeClass("sliderAmount");
+          $("#amount_50").closest("label").removeClass("sliderAmount");
+          $("#other_amount").removeClass("rn_Hidden");
+          $("#other_amount").val(parseInt(amount));
+          // $("#other_amount").closest("label").removeClass("sliderAmount");
+          
+
+        }
+       }
+      
   },
 
   _otherAmount: function () {
@@ -182,21 +380,21 @@ Custom.Widgets.payment.SingleDonation = RightNow.Widgets.extend({
         $("#amount_25").closest("label").addClass("sliderAmount");
         $("#amount_50").closest("label").removeClass("sliderAmount");
         $("#amount_100").closest("label").removeClass("sliderAmount");
-        // $("#other_amount").closest("label").removeClass("sliderAmount");
+         $("#other_amount").closest("label").removeClass("sliderAmount");
         $("#amount_other").closest("label").removeClass("sliderAmount");
       } else if (document.getElementById("amount_50").checked) {
         amount = document.getElementById("amount_50").value;
         $("#amount_50").closest("label").addClass("sliderAmount");
         $("#amount_25").closest("label").removeClass("sliderAmount");
         $("#amount_100").closest("label").removeClass("sliderAmount");
-        // $("#other_amount").closest("label").removeClass("sliderAmount");
+         $("#other_amount").closest("label").removeClass("sliderAmount");
         $("#amount_other").closest("label").removeClass("sliderAmount");
       } else if (document.getElementById("amount_100").checked) {
         amount = document.getElementById("amount_100").value;
         $("#amount_100").closest("label").addClass("sliderAmount");
         $("#amount_25").closest("label").removeClass("sliderAmount");
         $("#amount_50").closest("label").removeClass("sliderAmount");
-        // $("#other_amount").closest("label").removeClass("sliderAmount");
+         $("#other_amount").closest("label").removeClass("sliderAmount");
         $("#amount_other").closest("label").removeClass("sliderAmount");
       }
 
@@ -208,21 +406,21 @@ Custom.Widgets.payment.SingleDonation = RightNow.Widgets.extend({
         $("#amount_25").closest("label").addClass("sliderAmount");
         $("#amount_50").closest("label").removeClass("sliderAmount");
         $("#amount_100").closest("label").removeClass("sliderAmount");
-        // $("#other_amount").closest("label").removeClass("sliderAmount");
+         $("#other_amount").closest("label").removeClass("sliderAmount");
         $("#amount_other").closest("label").removeClass("sliderAmount");
       } else if (document.getElementById("amount_50").checked) {
         amount = document.getElementById("amount_50").value;
         $("#amount_50").closest("label").addClass("sliderAmount");
         $("#amount_25").closest("label").removeClass("sliderAmount");
         $("#amount_100").closest("label").removeClass("sliderAmount");
-        // $("#other_amount").closest("label").removeClass("sliderAmount");
+         $("#other_amount").closest("label").removeClass("sliderAmount");
         $("#amount_other").closest("label").removeClass("sliderAmount");
       } else if (document.getElementById("amount_100").checked) {
         amount = document.getElementById("amount_100").value;
         $("#amount_100").closest("label").addClass("sliderAmount");
         $("#amount_25").closest("label").removeClass("sliderAmount");
         $("#amount_50").closest("label").removeClass("sliderAmount");
-        // $("#other_amount").closest("label").removeClass("sliderAmount");
+         $("#other_amount").closest("label").removeClass("sliderAmount");
         $("#amount_other").closest("label").removeClass("sliderAmount");
       }
 

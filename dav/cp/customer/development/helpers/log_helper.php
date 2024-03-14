@@ -15,7 +15,7 @@ use RightNow\Connect\v1_3 as RNCPHP;
  *
  * Once loaded you can call this function by simply using helperFunction()
  */
-function helplog($filename, $functionname, $message, $errorMessage)
+function helplog($filename, $functionname, $message, $errorMessage,$c_id=null)
 {
     try {
         $log = new RNCPHP\ErrorLogs\Log();
@@ -23,6 +23,10 @@ function helplog($filename, $functionname, $message, $errorMessage)
         $index = strpos($filename, $prefix) + strlen($prefix);
         $result = substr($filename, $index);
         $log->File = substr($result, 0, 100);
+	//$c_id = $this->CI->session->getSessionData('contact_id');
+        if($c_id!=null){
+            $log->contact_id=intval($c_id);
+        }
         $log->Function = substr($functionname, 0, 50);
         if ($message) if (strlen($message) > 0) $log->PostedMessage = substr($message, 0, 3995);
         if ($errorMessage) if (strlen($errorMessage) > 0) $log->Error = substr($errorMessage, 0, 3995);

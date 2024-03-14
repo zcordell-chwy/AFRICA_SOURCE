@@ -1,4 +1,4 @@
-<rn:meta title="Child Info" template="standard.php" login_required="false" clickstream="child_info" />
+<rn:meta title="Student Info" template="standard.php" login_required="false" clickstream="child_info" />
 <div class="rn_Container">
 	<div class="rn_PageContent">
 		<!-- <div class="rn_HeaderContainer">

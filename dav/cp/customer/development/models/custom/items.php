@@ -309,7 +309,35 @@ class items extends  \RightNow\Models\Base {
 
     public function getGiftItems($itemId = null) {
         $items = array();
-        $sql = "Select ONLINE.Items from ONLINE.Items Where ONLINE.Items.Gift = 1 ";
+        $sql = "Select ONLINE.Items from ONLINE.Items Where ONLINE.Items.Gift = 1 and ONLINE.Items.Singlegiftitem != 1 ";
+        if($itemId){
+            $sql .= " AND Online.Items.ID = ".intval($itemId);
+        }
+        $sql .= " ORDER BY ONLINE.Items.WebDisplayOrder ";
+
+
+        $resultSet = RNCP\ROQL::queryObject($sql) -> next();
+
+        while ($item = $resultSet -> next()) {
+
+            //$child = $item->ID;
+            if ($item -> ID != null) {
+                $thischild = new \stdClass();
+                $thischild -> ID = $item -> ID;
+                $thischild -> Title = $item -> Title;
+                $thischild -> Description = $item -> Description;
+                $thischild -> Amount = $item -> Amount;
+                $thischild -> PhotoURL = $item -> PhotoURL;
+                $items[] = $thischild;
+            }
+        }
+
+        return $items;
+    }
+
+    public function getsingleGiftItems($itemId = null) {
+        $items = array();
+        $sql = "Select ONLINE.Items from ONLINE.Items Where ONLINE.Items.Gift = 1 and ONLINE.Items.Singlegiftitem = 1 ";
         if($itemId){
             $sql .= " AND Online.Items.ID = ".intval($itemId);
         }

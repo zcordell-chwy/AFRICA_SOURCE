@@ -1,4 +1,4 @@
-<rn:meta title="Gift for Child" template="standard.php" login_required="false" clickstream="give_gift" />
+<rn:meta title="Gift for Student" template="standard.php" login_required="false" clickstream="give_gift" />
 <!-- <div class="rn_HeaderContainer">
 	<rn:condition config_check="CUSTOM_CFG_SHOW_ALERT == true">
 		<div id="rn_Alert" class="rn_Alert rn_AlertBox rn_ErrorAlert">#rn:msg:CUSTOM_MSG_ALERT#</div>
@@ -11,7 +11,7 @@
 
 
 	<div class="rn_AfricaNewLifeLayoutLeftColumn">
-		<rn:widget path="custom/display/GiftPopupGallery" title="#rn:msg:CUSTOM_MSG_cp_give_page_gift_popup_gallery_title#" description="#rn:msg:CUSTOM_MSG_cp_give_page_popup_gallery_description#" . preload_item_popup_data="true" columns="4" rows="4" loading_msg="Loading gift gallery..." />
+		<rn:widget path="custom/display/GiftPopupGallery" title="#rn:msg:CUSTOM_MSG_cp_give_page_gift_popup_gallery_title#" description="#rn:msg:CUSTOM_MSG_cp_give_page_popup_gallery_description#" preload_item_popup_data="true" columns="4" rows="4" loading_msg="Loading gift gallery..." />
 	</div>
 	<div class="rn_AfricaNewLifeLayoutRightColumn">
 		<rn:widget path="custom/shopping/ChildGiftShoppingCart" id="gift" />

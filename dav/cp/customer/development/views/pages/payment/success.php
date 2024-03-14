@@ -6,3 +6,11 @@
     	<rn:widget path="payment/Thankyou" />
     </div>    
 </div>
+
+<script>  
+window.onload = function()  {
+    gtag('event', 'Single_Donation_Success', {
+		'Donated' : 'true'
+	  }); 
+}
+</script>

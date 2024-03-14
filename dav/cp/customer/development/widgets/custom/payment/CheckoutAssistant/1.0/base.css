@@ -30,3 +30,14 @@
 		padding: 1em 1em !important;
 	}
 }
+@media only screen and (max-width: 720px){
+
+.rn_LoginForm .rn_ThirdPartyLogin {
+    float: left;
+    display: block;
+    margin-right: 2.35765%;
+    width: 100%!important; 
+    border-right: 1px solid #999;
+    padding-right: 2em;
+}
+}

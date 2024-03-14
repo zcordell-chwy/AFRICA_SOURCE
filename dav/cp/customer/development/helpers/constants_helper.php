@@ -10,7 +10,7 @@ $baseURL = \RightNow\Utils\Url::getShortEufBaseUrl(true);
 define(CUSTOM_CFG_frontstream_endpoint_id, 1000001);
 define(CUSTOM_CFG_frontstream_pass_id, 1000002);
 define(CUSTOM_CFG_frontstream_user_id, 1000004);
-define(CUSTOM_CFG_general_cc_error_id, 1000005);
+define(CUSTOM_CFG_general_cc_error_id, 1000007);//1000005
 
 define(GIFTS_APPEAL_ID, 839);//seem to be unused
 DEFINE(GIFTS_FUND_ID, 292);//seem to be unused

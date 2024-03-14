@@ -1,5 +1,4 @@
 <?
-
 $CI = get_instance();
 $existingPaymentMethods = $this->CI->model('custom/paymentMethod_model')->getCurrentPaymentMethodsObjs();
 
@@ -16,6 +15,17 @@ $items = $this->CI->model('custom/items')->getItemsFromCart($this->CI->session->
 // logMessage("VIEW");
 // logMessage($items);
 // logMessage($dbitems);
+
+$totalRecurring = $this -> CI -> model('custom/items') -> getTotalReoccurring($this->CI->session->getSessionData('sessionID'));
+
+if($amt != 0 && $amt<intval(getConfig(CUSTOM_CFG_MINMUM_AMNT))){
+    $errorCondition = true;
+    logMessage('ERROR on payment page: Total amount is less than $5');
+}
+if($totalRecurring != 0 && $totalRecurring<intval(getConfig(CUSTOM_CFG_MINMUM_AMNT))){
+    $errorCondition = true;
+    logMessage('ERROR on payment page: Total amount is less than $5');
+}
 
 $transId = $this->CI->session->getSessionData('transId');
 
@@ -90,7 +100,7 @@ if ($items === false) {
                                     </legend>
                                     <rn:widget path="input/ContactNameInput" required="true" />
                                     <rn:widget path="input/FormInput" name="contacts.street" required="true" />
-                                    <rn:widget path="input/FormInput" name="contacts.city" required="true" />
+                                    <rn:widget path="input/FormInput" name="contacts.city" required="true"/>
                                     <rn:widget path="input/FormInput" name="contacts.country_id" />
                                     <rn:widget path="input/FormInput" name="contacts.prov_id" label_input="State Or Province" />
                                     <rn:widget path="input/FormInput" name="contacts.postal_code" required="true" label_input="Postal Code" />
@@ -121,18 +131,19 @@ if ($items === false) {
                                             <rn:widget path="input/FormInput" name="Contact.Name.Last" label_input="#rn:msg:LAST_NAME_LBL#" required="true" />
                                         </rn:condition>
 
-                                        <rn:widget path="input/FormInput" name="Contact.Address.Street" label_input="#rn:msg:STREET_LBL#" />
-                                        <rn:widget path="input/FormInput" name="Contact.Address.City" label_input="#rn:msg:CITY_LBL#" />
+                                        <rn:widget path="input/FormInput" name="Contact.Address.Street" required="true" label_input="#rn:msg:STREET_LBL#" />
+                                        <rn:widget path="input/FormInput" name="Contact.Address.City" required="true" label_input="#rn:msg:CITY_LBL#" />
                                         <rn:widget path="input/FormInput" name="Contact.Address.Country" label_input="#rn:msg:COUNTRY_LBL#" default_value="1" required="true" />
                                         <rn:widget path="input/FormInput" name="Contact.Address.StateOrProvince" label_input="#rn:msg:STATE_PROV_LBL#" />
                                         <rn:widget path="input/FormInput" name="Contact.Address.PostalCode" required="true" label_input="#rn:msg:POSTAL_CODE_LBL#" />
                                         <rn:widget path="input/FormInput" name="Contacts.CustomFields.CO.how_did_you_hear" />
+					
                                         <input type="checkbox" id="subscribeToEmailCheckbox" name="subscribeToEmailCheckbox" value="" checked>
                                         <label id="subscribeToEmailCheckboxLabel" for="subscribeToEmailCheckbox">#rn:msg:CUSTOM_MSG_cp_CheckoutAssistant_email_preferences_checkbox_label#</label>
                                         <div style="display:none;">
                                             <rn:widget path="custom/input/AutoDefaultingLoginInput" name="Contact.Login" required="false" validate_on_blur="true" label_input="#rn:msg:USERNAME_LBL#" />
                                             <rn:condition config_check="EU_CUST_PASSWD_ENABLED == true">
-                                                <rn:widget path="custom/input/AutoDefaultingPasswordInput" name="Contact.NewPassword" required="false" require_validation="true" label_input="#rn:msg:PASSWORD_LBL#" label_validation="#rn:msg:VERIFY_PASSWD_LBL#" />
+                                                <rn:widget path="custom/input/AutoDefaultingPasswordInput" name="Contact.NewPassword" required="false" require_validation="false" label_input="#rn:msg:PASSWORD_LBL#" label_validation="#rn:msg:VERIFY_PASSWD_LBL#" />
                                             </rn:condition>
                                             <rn:widget path="input/EmailPrefSelectionInput" name="Contact.CustomFields.c.preferences" default_value="14" label_input="Email Prefs" />
                                         </div>

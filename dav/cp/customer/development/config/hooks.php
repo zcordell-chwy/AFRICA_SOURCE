@@ -95,9 +95,15 @@ $rnHooks['pre_report_get'][] = array(
     'function' => 'pre_report_get',
     'filepath' => ''
 );
+$rnHooks['post_report_get_data'][] = array(
+    'class' => 'hooks_model',
+    'function' => 'post_report_get_data',
+    'filepath' => ''
+);
 //pre_page_render
 $rnHooks['pre_page_render'][] = array(
     'class' => 'hooks_model',
     'function' => 'prePageRenderModel',
     'filepath' => ''
 );
+

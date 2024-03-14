@@ -23,12 +23,49 @@ Custom.Widgets.eventus.ajaxCustomFormSubmit = RightNow.Widgets.extend({
       var response = confirm(this.data.attrs.confirm_message);
       if (response == true) {
         this._toggleClickListener(false);
+        
         this.getDefault_ajax_endpoint();
       }
     } else {
       this._toggleClickListener(false);
+      
       this.getDefault_ajax_endpoint();
     }
+  },
+  validatePaymentMethod: function () {
+    var validated;
+    if(!document.getElementById("cardpay2").classList.contains('rn_Hidden')){
+    validated = this.validate([document.querySelector('input[name="cvnumber2"]').value]);
+    
+    
+    if (
+      !/^\d+$/.test(
+        document
+          .querySelector('input[name="cvnumber2"]')
+          .value.split(" ")
+          .join("")
+      )
+    ) {
+      validated =
+        "Please input cvv number";
+    }
+  
+}
+    return validated;
+
+  },
+  validate: function (array, offset = 0) {
+    var allFilled =
+      array[offset] === null ||
+      array[offset] === undefined ||
+      array[offset] === 0 ||
+      array[offset] === "" ||
+      array[offset] === false ||
+      array[offset] === NaN;
+
+    return offset + 1 < array.length
+      ? allFilled || this.validate(array, offset + 1)
+      : allFilled;
   },
 
   /**
@@ -110,7 +147,22 @@ Custom.Widgets.eventus.ajaxCustomFormSubmit = RightNow.Widgets.extend({
       );
     } else {
       //process stored payment
+      if(!document.getElementById("cardpay2").classList.contains('rn_Hidden')){
+        let validateError = this.validatePaymentMethod();
+        if (validateError) {
+          this._errorMessageDiv.append(validateError);
+        this._errorMessageDiv.removeClass("rn_Hidden");
+          //$("#rn_ErrorLocation").text(validateError);
+	  //this._toggleLoadingIndicators(false);
+          //this._toggleClickListener(true);
+	//this._resetFormButton();
+         $(this.baseSelector + "_LoadingIcon").addClass("rn_Hidden");
+         this._toggleClickListener(true);
 
+	
+          return;
+        }
+      }
       $.each($(inputArea), function (key, value) {
         formData[formData.length] = {
           name: value.name,
@@ -118,6 +170,7 @@ Custom.Widgets.eventus.ajaxCustomFormSubmit = RightNow.Widgets.extend({
           checked: value.checked,
         };
       });
+      
 
       // Make AJAX request:
       var eventObj = new RightNow.Event.EventObject(this, {
@@ -187,6 +240,8 @@ Custom.Widgets.eventus.ajaxCustomFormSubmit = RightNow.Widgets.extend({
       this._displayErrorDialog(
         RightNow.Interface.getMessage("ERROR_REQUEST_ACTION_COMPLETED_MSG")
       );
+      $(this.baseSelector + "_LoadingIcon").addClass("rn_Hidden");
+      this._toggleClickListener(true);
     } else if (response.errors) {
       // Error message(s) on the response object.
       var errorMessage = "";
@@ -195,11 +250,13 @@ Custom.Widgets.eventus.ajaxCustomFormSubmit = RightNow.Widgets.extend({
       });
       this._errorMessageDiv.append(errorMessage);
       this._errorMessageDiv.removeClass("rn_Hidden");
+      $(this.baseSelector + "_LoadingIcon").addClass("rn_Hidden");
+      this._toggleClickListener(true);
     } else if (response.result) {
       result = response.result;
 
       if (result.sa) {
-        // trap SmartAssistant™ case here
+        // trap SmartAssistant� case here
         if (result.newFormToken) {
           // Check if a new form token was passed back and use it the next time the the form is submitted
           this.data.js.f_tok = result.newFormToken;
@@ -223,13 +280,19 @@ Custom.Widgets.eventus.ajaxCustomFormSubmit = RightNow.Widgets.extend({
       } else {
         // Response object with a result, but not the result we expect.
         this._displayErrorDialog();
+        $(this.baseSelector + "_LoadingIcon").addClass("rn_Hidden");
+        this._toggleClickListener(true);
       }
     } else {
       // Response object didn't have a result or errors on it.
       this._displayErrorDialog();
+      $(this.baseSelector + "_LoadingIcon").addClass("rn_Hidden");
+      this._toggleClickListener(true);
     }
 
-    this._toggleClickListener(true);
+    //this._resetFormButton();
+    $(this.baseSelector + "_LoadingIcon").addClass("rn_Hidden");
+      this._toggleClickListener(true);
     return;
   },
 
@@ -238,6 +301,7 @@ Custom.Widgets.eventus.ajaxCustomFormSubmit = RightNow.Widgets.extend({
       message || RightNow.Interface.getMessage("ERROR_PAGE_PLEASE_S_TRY_MSG"),
       { icon: "WARN" }
     );
+    
   },
 
   _toggleClickListener: function (enable) {

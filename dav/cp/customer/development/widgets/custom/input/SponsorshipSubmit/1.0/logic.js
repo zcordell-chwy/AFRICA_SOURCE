@@ -35,8 +35,10 @@ Custom.Widgets.input.SponsorshipSubmit = RightNow.Widgets.FormSubmit.extend({
           if (result.transaction || result.redirectOverride) {
             // return this._handleFormResponseSuccess(result);
             // alert("this is where I process payment");
+            this._navigateToUrlFlag=true;
             this.getDefault_ajax_endpoint();
           } else {
+            this._navigateToUrlFlag=false;
             // Response object has a result, but not a result we expect.
             this._displayErrorDialog();
           }
@@ -165,11 +167,26 @@ Custom.Widgets.input.SponsorshipSubmit = RightNow.Widgets.FormSubmit.extend({
         let validateError = this.validatePaymentMethod();
         if (validateError) {
           $("#paymentMethodError").text(validateError);
-          this.disabled = false;
+          //this.disabled = false;
+this._navigateToUrlFlag=false;
+this._resetFormButton();
+
           return;
         }
 
         if (document.getElementById("cardpay_radio").checked) {
+          if(this.data.js.loggedin != false) {
+            this.saveCardPaymentMethod({
+              CardNum: document
+                .querySelector('input[name="cardnumber"]')
+                .value.split(" ")
+                .join(""),
+              CVNum: document.querySelector('input[name="cvnumber"]').value,
+              ExpMonth: document.querySelector('select[name="expmonth"]').value,
+              ExpYear: document.querySelector('select[name="expyear"]').value,
+              NameOnCard: document.querySelector('input[name="cardname"]').value
+            });
+          } else  {
           this.saveCardPaymentMethod({
             CardNum: document
               .querySelector('input[name="cardnumber"]')
@@ -178,6 +195,7 @@ Custom.Widgets.input.SponsorshipSubmit = RightNow.Widgets.FormSubmit.extend({
             ExpMonth: document.querySelector('select[name="expmonth"]').value,
             ExpYear: document.querySelector('select[name="expyear"]').value,
             NameOnCard: document.querySelector('input[name="cardname"]').value,
+            CVNum: document.querySelector('input[name="cvnumber"]').value,
             City: document.getElementsByName("Contact.Address.City")[
               document.getElementsByName("Contact.Address.City")["length"] - 1
             ].value,
@@ -231,7 +249,20 @@ Custom.Widgets.input.SponsorshipSubmit = RightNow.Widgets.FormSubmit.extend({
               )["length"] - 1
             ].value,
           });
+        }
         } else if (document.getElementById("checkpay_radio").checked) {
+          if(this.data.js.loggedin != false) {
+            this.saveCardPaymentMethod({
+              TransitNum: document.querySelector('input[name="routingnumber"]')
+              .value,
+            AccountNum: document.querySelector('input[name="accountnumber"]')
+              .value,
+            NameOnCheck: document.querySelector('input[name="checkname"]')
+              .value,
+            AccountType: document.querySelector('select[name="accounttype"]')
+              .value,
+            });
+          } else  {
           this.saveCheckPaymentMethod({
             TransitNum: document.querySelector('input[name="routingnumber"]')
               .value,
@@ -294,6 +325,7 @@ Custom.Widgets.input.SponsorshipSubmit = RightNow.Widgets.FormSubmit.extend({
               )["length"] - 1
             ].value,
           });
+          }
         }
       } else {
         formNode = this._formButton.ancestor("form");
@@ -305,6 +337,19 @@ Custom.Widgets.input.SponsorshipSubmit = RightNow.Widgets.FormSubmit.extend({
             checked: value.checked,
           };
         });
+
+        if(!document.getElementById("cardpay2").classList.contains('rn_Hidden')){
+          let validateError = this.validatePaymentMethodcvv();
+          if (validateError) {
+            $("#paymentMethodError").text(validateError);
+            //$("#rn_ErrorLocation").text(validateError);
+            //this.disabled = false;
+this._navigateToUrlFlag=false;
+		this._resetFormButton();
+
+            return;
+          }
+        }
 
         // Make AJAX request:
         var eventObj = new RightNow.Event.EventObject(this, {
@@ -410,6 +455,28 @@ Custom.Widgets.input.SponsorshipSubmit = RightNow.Widgets.FormSubmit.extend({
 
     return dfd.promise();
   },
+  validatePaymentMethodcvv: function () {
+    var validated;
+    if(!document.getElementById("cardpay2").classList.contains('rn_Hidden')){
+    validated = this.validate([document.querySelector('input[name="cvnumber2"]').value]);
+    
+    
+    if (
+      !/^\d+$/.test(
+        document
+          .querySelector('input[name="cvnumber2"]')
+          .value.split(" ")
+          .join("")
+      )
+    ) {
+      validated =
+        "Please input cvv number";
+    }
+  
+}
+    return validated;
+
+  },
 
   validatePaymentMethod: function () {
     var validated;
@@ -419,6 +486,7 @@ Custom.Widgets.input.SponsorshipSubmit = RightNow.Widgets.FormSubmit.extend({
         document.querySelector('input[name="cardnumber"]').value,
         document.querySelector('select[name="expmonth"]').value,
         document.querySelector('select[name="expyear"]').value,
+        document.querySelector('input[name="cvnumber"]').value,
         document.getElementsByName("Contact.Name.First")[
           document.getElementsByName("Contact.Name.First")["length"] - 1
         ].value,
@@ -495,6 +563,17 @@ Custom.Widgets.input.SponsorshipSubmit = RightNow.Widgets.FormSubmit.extend({
         validated =
           "Please input a properly formated credit card: 1111222233334444 / 1111 2222 3333 4444.";
       }
+     if (
+        !/^\d+$/.test(
+          document
+            .querySelector('input[name="cvnumber"]')
+            .value.split(" ")
+            .join("")
+        )
+      ) {
+        validated =
+          "Please input cvv number";
+      }
     } else {
       validated = "Make sure all fields are filled.";
     }
@@ -552,16 +631,19 @@ Custom.Widgets.input.SponsorshipSubmit = RightNow.Widgets.FormSubmit.extend({
    */
   default_ajax_endpointCallback: function (response, originalEventObj) {
     if (!response) {
+      this._navigateToUrlFlag=false;
       // Didn't get any kind of a response object back; that's... unexpected.
       this._displayErrorDialog(
         RightNow.Interface.getMessage("ERROR_REQUEST_ACTION_COMPLETED_MSG")
       );
     } else if (response.errors) {
       // Error message(s) on the response object.
+      this._navigateToUrlFlag=false;
       var errorMessage = "";
       this.Y.Array.each(response.errors, function (error) {
         errorMessage += "<b>" + error + "</b>";
       });
+      errorMessage += "</br> Please refresh the page and try again.";
       $(this.baseSelector + "_LoadingIcon").addClass("rn_Hidden");
       this._errorMessageDiv.append(errorMessage);
       this._errorMessageDiv.removeClass("rn_Hidden");
@@ -591,15 +673,21 @@ Custom.Widgets.input.SponsorshipSubmit = RightNow.Widgets.FormSubmit.extend({
 
         RightNow.Url.navigate(url);
       } else {
+        this._navigateToUrlFlag=false;
         // Response object with a result, but not the result we expect.
         this._displayErrorDialog();
       }
     } else {
+      this._navigateToUrlFlag=false;
       // Response object didn't have a result or errors on it.
       this._displayErrorDialog();
     }
+    if (response.result != null && response.result.newFormToken) {
+      this.data.js.f_tok = result.newFormToken;
+      RightNow.Event.fire("evt_formTokenUpdate", new RightNow.Event.EventObject(this, {data: {newToken: response.result.newFormToken}}));}
 
-    this._toggleClickListener(true);
+     this._resetFormButton();
+	//this._toggleClickListener(true);
     return;
   },
 
@@ -614,16 +702,19 @@ Custom.Widgets.input.SponsorshipSubmit = RightNow.Widgets.FormSubmit.extend({
       response = res;
     }
     if (!response) {
+      this._navigateToUrlFlag=false;
       // Didn't get any kind of a response object back; that's... unexpected.
       this._displayErrorDialog(
         RightNow.Interface.getMessage("ERROR_REQUEST_ACTION_COMPLETED_MSG")
       );
     } else if (response.errors) {
+      this._navigateToUrlFlag=false;
       // Error message(s) on the response object.
       var errorMessage = "";
       this.Y.Array.each(response.errors, function (error) {
         errorMessage += "<b>" + error + "</b>";
       });
+      errorMessage += "</br> Please refresh the page and try again.";
       this._errorMessageDiv.append(errorMessage);
       this._errorMessageDiv.removeClass("rn_Hidden");
     } else if (response.result) {
@@ -652,15 +743,21 @@ Custom.Widgets.input.SponsorshipSubmit = RightNow.Widgets.FormSubmit.extend({
 
         RightNow.Url.navigate(url);
       } else {
+        this._navigateToUrlFlag=false;
         // Response object with a result, but not the result we expect.
         this._displayErrorDialog();
       }
     } else {
+      this._navigateToUrlFlag=false;
       // Response object didn't have a result or errors on it.
       this._displayErrorDialog();
     }
+    if (response.result != null && response.result.newFormToken) {
+      this.data.js.f_tok = result.newFormToken;
+      RightNow.Event.fire("evt_formTokenUpdate", new RightNow.Event.EventObject(this, {data: {newToken: response.result.newFormToken}}));}
 
-    this._toggleClickListener(true);
+     this._resetFormButton();
+	//this._toggleClickListener(true);
     return;
   },
 
@@ -685,6 +782,7 @@ Custom.Widgets.input.SponsorshipSubmit = RightNow.Widgets.FormSubmit.extend({
       this.Y.Array.each(response.errors, function (error) {
         errorMessage += "<b>" + error + "</b>";
       });
+      errorMessage += "</br> Please refresh the page and try again.";
       this._errorMessageDiv.append(errorMessage);
       this._errorMessageDiv.removeClass("rn_Hidden");
     } else if (response.result) {
@@ -720,8 +818,11 @@ Custom.Widgets.input.SponsorshipSubmit = RightNow.Widgets.FormSubmit.extend({
       // Response object didn't have a result or errors on it.
       this._displayErrorDialog();
     }
+    if (response.result != null && response.result.newFormToken) {
+      this.data.js.f_tok = response.result.newFormToken;
+      RightNow.Event.fire("evt_formTokenUpdate", new RightNow.Event.EventObject(this, {data: {newToken: response.result.newFormToken}}));}
 
-    this._toggleClickListener(true);
+     this._toggleClickListener(true);
     return;
   },
 
@@ -782,7 +883,10 @@ Custom.Widgets.input.SponsorshipSubmit = RightNow.Widgets.FormSubmit.extend({
   ajaxCallback: function (response, originalEventObj) {
     if (response.code != "success") {
       $("#paymentMethodError").text(response.message);
-      this.disabled = false;
+      //this.disabled = false;
+this._navigateToUrlFlag=false;
+this._resetFormButton();
+
     } else {
       this.closeDialog();
       this.successCallback(response, originalEventObj);

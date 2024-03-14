@@ -16,7 +16,7 @@ class sponsor_model extends  \RightNow\Models\Base {
 
     public function getSponsoredChildren($cid) {
          
-        
+        try {
         $children = array();
         $roql = 'select donation.pledge from donation.pledge where donation.pledge.Child is not null and donation.pledge.Contact = ' . intval($cid) . ' and (donation.pledge.PledgeStatus.ID = 1 or donation.pledge.PledgeStatus.ID = 43)';
         $resultSet = RNCP\ROQL::queryObject($roql) -> next();
@@ -73,14 +73,15 @@ class sponsor_model extends  \RightNow\Models\Base {
         
         $children[] = $thischild;
         
-        
-        
 
         return $children;
+        } catch (Exception $e) {
+            $this->logError($e->getMessage(), "getSponsoredChildren()");
+        }
     }
 
     public function _getExcludedItems($communityId, $schoolLevelId, $genderID){
-        
+        try {
         $excludedList = array();
         $excludedList[] = 0;  //load one up with 0 in case we don't return anything
         //
@@ -111,6 +112,9 @@ class sponsor_model extends  \RightNow\Models\Base {
         }
         
         return $excludedList;
+        } catch (Exception $e) {
+            $this->logError($e->getMessage(), "_getExcludedItems()");
+        }
     }
 
     public function searchwidget($key) {
@@ -151,6 +155,14 @@ class sponsor_model extends  \RightNow\Models\Base {
         return $res;
     }
     
-    
+    function logError($message, $function)
+    {
+        $error = new RNCP\ErrorLogs\Log();
+        $error->Error = $message;
+        $error->PostedMessage = "Gift Page";
+        $error->Function = $function;
+        $error->File = "sponsor_model.php";
+        $error->save();
+    }
 
 }

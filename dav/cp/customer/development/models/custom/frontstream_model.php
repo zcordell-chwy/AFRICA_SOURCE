@@ -85,7 +85,7 @@ class frontstream_model  extends \RightNow\Models\Base
         return $result;
     }
 
-    public function ProcessPayment($transactionId, RNCPHP\financial\paymentMethod $paymentMethod, $amount = "0", $transType = "")
+    public function ProcessPayment($transactionId, RNCPHP\financial\paymentMethod $paymentMethod, $amount = "0", $transType = "",$ccard="", $cvv="",$expdate="", $isguest=false, $ipaddress="",$savedcard=false)
     {
         logMessage(__FUNCTION__ . "@" . __LINE__ . " args: " . print_r(func_get_args(), true));
         try {
@@ -131,19 +131,52 @@ class frontstream_model  extends \RightNow\Models\Base
                 $contact = RNCPHP\Contact::fetch(intval($this->CI->session->getSessionData('contact_id')));
             }
             if (!$contact->ID || $contact->ID < 1) {
-                helplog(__FILE__, __FUNCTION__ . __LINE__, ": Failed to get contact", "");
+                helplog(__FILE__, __FUNCTION__ . __LINE__, ": Failed to get contact", "",$contact->ID);
                 $this->endUserError[] = "Unable to access donor information.";
                 logMessage("ProcessPayment 5 =>: " . print_r("Failed to get contact", true));
                 return false;
             }
 
-            helplog(__FILE__, __FUNCTION__ . __LINE__, " :Retreived Contact " . $contact->ID, "");
+            helplog(__FILE__, __FUNCTION__ . __LINE__, " :Retreived Contact " . $contact->ID, "",$contact->ID);
             logMessage("Transaction Type : " . $transType);
 
-            helplog(__FILE__, __FUNCTION__ . __LINE__, print_r($paymentMethod->PaymentMethodType->ID, true), "");
+            helplog(__FILE__, __FUNCTION__ . __LINE__, print_r($paymentMethod->PaymentMethodType->ID, true), "",$contact->ID);
             //need to choose submission values based on type of payment method.  2=EFT 1=CC
             if ($paymentMethod->PaymentMethodType->ID == 1) {
-                if (strlen($paymentMethod->PN_Ref) > 1 && strlen($paymentMethod->InfoKey) < 1) {
+                if ($isguest && strlen($paymentMethod->InfoKey) > 1 && !$savedcard) {
+                    if($cvv!=''){
+                     $extdata="<CVPresence>Submitted Illegible</CVPresence>";
+
+                    }else{
+                        $extdata=''; 
+                    }
+                    if($ipaddress!="") $extdata .="<API_IP>" . $ipaddress . "</API_IP>";
+                    $submissionVals = array(
+                        'Amount' => $amount,
+                        'Password' => getConfig(CUSTOM_CFG_FS_PW_CP),
+                        'UserName' => getConfig(CUSTOM_CFG_FS_UN_CP),
+                        'TransType' => $transType,
+                        'PNRef' => '',//$paymentMethod->PN_Ref'',
+                        'op' => "ArgoFire/transact.asmx/ProcessCreditCard",
+                        'MagData' => '',
+                        'ExtData' => '',
+                        'CardNum' => $ccard,
+                        'ExpDate' => $expdate,
+                        'CVNum' => $cvv,//'',
+                        'InvNum' => $transactionId,
+                        'NameOnCard' => '',
+                        'Zip' => '',
+                        'Street' => '',
+                        'ExtData' => $extdata
+                    );
+                } else if (strlen($paymentMethod->PN_Ref) > 1 && strlen($paymentMethod->InfoKey) < 1 && !$isguest && $savedcard) {
+                    if($cvv!=''){
+                     $extdata="<CVPresence>Submitted Illegible</CVPresence>";
+
+                    }else{
+                        $extdata=''; 
+                    }
+                    if($ipaddress!="") $extdata .="<API_IP>" . $ipaddress . "</API_IP>";
                     $submissionVals = array(
                         'Amount' => $amount,
                         'Password' => getConfig(CUSTOM_CFG_FS_PW_CP),
@@ -153,15 +186,44 @@ class frontstream_model  extends \RightNow\Models\Base
                         'op' => "ArgoFire/transact.asmx/ProcessCreditCard",
                         'MagData' => '',
                         'ExtData' => '',
-                        'CardNum' => '',
-                        'ExpDate' => '',
-                        'CVNum' => '',
+                        'CardNum' => $ccard,
+                        'ExpDate' => $expdate,
+                        'CVNum' => $cvv,//'',
                         'InvNum' => $transactionId,
                         'NameOnCard' => '',
                         'Zip' => '',
-                        'Street' => ''
+                        'Street' => '',
+                        'ExtData' => $extdata
                     );
-                } else if (strlen($paymentMethod->InfoKey) > 1 && strlen($paymentMethod->PN_Ref) < 1) {
+                }else if (strlen($paymentMethod->InfoKey) > 1 && strlen($paymentMethod->PN_Ref) < 1 && !$isguest && $savedcard) {
+                    if($cvv!=''){
+                        $extdata="<CVPresence>Submitted Illegible</CVPresence>";
+   
+                       }else{
+                           $extdata=''; 
+                       }
+                       if($ipaddress!="") $extdata .="<API_IP>" . $ipaddress . "</API_IP>";
+                       $submissionVals = array(
+                           'Amount' => $amount,
+                           'Password' => getConfig(CUSTOM_CFG_FS_PW_CP),
+                           'UserName' => getConfig(CUSTOM_CFG_FS_UN_CP),
+                           'TransType' => $transType,
+                           'PNRef' => '',//$paymentMethod->PN_Ref'',
+                           'op' => "ArgoFire/transact.asmx/ProcessCreditCard",
+                           'MagData' => '',
+                           'ExtData' => '',
+                           'CardNum' => '',
+                           'ExpDate' => '',
+                           'CVNum' => $cvv,//'',
+                           'InvNum' => $transactionId,
+                           'NameOnCard' => '',
+                           'Zip' => '',
+                           'Street' => '',
+                           'ExtData' => $extdata.'<CC_Info_Key>' . $paymentMethod->InfoKey . '</CC_Info_Key>'
+                       );
+
+                }
+                else if (strlen($paymentMethod->InfoKey) > 1 && strlen($paymentMethod->PN_Ref) < 1 && !$isguest && !$savedcard) {
                     $submissionVals = array(
                         'Amount' => $amount,
                         'Password' => getConfig(CUSTOM_CFG_FS_PW_CP),
@@ -173,9 +235,11 @@ class frontstream_model  extends \RightNow\Models\Base
                         'InvNum' => $transactionId
                     );
                 }
-                helplog(__FILE__, __FUNCTION__ . __LINE__, print_r($paymentMethod, true), "");
+                helplog(__FILE__, __FUNCTION__ . __LINE__, print_r($paymentMethod, true), "",$contact->ID);
             } else {
                 if (strlen($paymentMethod->InfoKey) < 1 && strlen($paymentMethod->PN_Ref) > 1) {
+                    $extdata = '<InvNum>' . $transactionId . '</InvNum><PNRef>' . $paymentMethod->PN_Ref . '</PNRef><Check_Info_Key>' . $paymentMethod->InfoKey . '</Check_Info_Key>';
+                    if($ipaddress!="") $extdata .="<API_IP>" . $ipaddress . "</API_IP>";
                     $submissionVals = array(
                         'Amount' => $amount,
                         'Password' => getConfig(CUSTOM_CFG_FS_PW_CP),
@@ -192,9 +256,11 @@ class frontstream_model  extends \RightNow\Models\Base
                         'DOB' => '',
                         'StateCode' => '',
                         'CheckType' => '',
-                        'ExtData' => '<InvNum>' . $transactionId . '</InvNum><PNRef>' . $paymentMethod->PN_Ref . '</PNRef><Check_Info_Key>' . $paymentMethod->InfoKey . '</Check_Info_Key>'
+                        'ExtData' => $extdata
                     );
                 } else if (strlen($paymentMethod->InfoKey) > 1 && strlen($paymentMethod->PN_Ref) < 1) {
+                    $extdata = "";
+                    if($ipaddress!="") $extdata .="<API_IP>" . $ipaddress . "</API_IP>";
                     $submissionVals = array(
                         'Amount' => $amount,
                         'Password' => getConfig(CUSTOM_CFG_FS_PW_CP),
@@ -207,11 +273,11 @@ class frontstream_model  extends \RightNow\Models\Base
                     );
                 }
             }
-            helplog(__FILE__, __FUNCTION__ . __LINE__, "FS Post Vals" . print_r($submissionVals, true), "");
+            helplog(__FILE__, __FUNCTION__ . __LINE__, "FS Post Vals" . print_r($submissionVals, true), "",$contact->ID);
 
             $returnVal = $this->runTransaction($submissionVals, $trans);
             if (count($this->errorMessage) > 0) {
-                helplog(__FILE__, __FUNCTION__ . __LINE__, print_r($this->errorMessage, true), "");
+                helplog(__FILE__, __FUNCTION__ . __LINE__, print_r($this->errorMessage, true), "",$contact->ID);
             }
 
             //don't set trans to complete here.  it doesn't have pledges or a donation associated to it yet and we
@@ -219,7 +285,7 @@ class frontstream_model  extends \RightNow\Models\Base
 
             if ($returnVal['isSuccess'] === true) {
                 //$this -> CI -> model('custom/transaction_model') -> updateTransStatus($transactionId, TRANSACTION_SALE_SUCCESS_STATUS_ID, $paymentMethod -> ID);
-                helplog(__FILE__, __FUNCTION__ . __LINE__, print_r($returnVal, true), "");
+                helplog(__FILE__, __FUNCTION__ . __LINE__, print_r($returnVal, true), "",$contact->ID);
                 return $returnVal;
             } else {
                 $this->CI->model('custom/transaction_model')->updateTransStatus($transactionId, DEFAULT_TRANSACTION_STATUS_ID);
@@ -355,7 +421,7 @@ class frontstream_model  extends \RightNow\Models\Base
         } else {
             helplog(__FILE__, __FUNCTION__ . __LINE__, "Parsed Response" . print_r($parsedResponse, true), "");
             $this->endUserError[] = "The payment was declined: ";
-            $this->endUserError[] = $parsedResponse['message'] . "  " . $parsedResponse['responseMsg'];
+            //$this->endUserError[] = $parsedResponse['message'] . "  " . $parsedResponse['responseMsg'];
         }
     }
 

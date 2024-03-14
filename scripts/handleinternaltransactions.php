@@ -81,7 +81,7 @@ class handleInternalTransactions {
         $prevStatus = (isset($obj -> prev)) ? $obj -> prev -> currentStatus -> ID : -1;
         if ($obj -> currentStatus -> ID == $prevStatus) {
             $this -> handleLogging("No Status change (" . $obj -> currentStatus -> Name . ") checking Allocation Completed which = " . $obj -> allocationCompleted, logWorker::Notice);
-            if ($obj -> allocationCompleted == 1) {
+            if ($obj -> allocationCompleted == 1 || $obj->description == 'Managed Missions Initiated Transaction') {
                 $this -> handleLogging("No status change, exiting");
                 return $this -> cleanup($obj);
             }

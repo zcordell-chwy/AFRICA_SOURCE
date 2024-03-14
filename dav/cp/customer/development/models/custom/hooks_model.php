@@ -20,8 +20,8 @@ class hooks_model extends  \RightNow\Models\Base
 
     function pre_report_get(&$hookData)
     {
-        logMessage(__FUNCTION__);
-        logMessage($hookData);
+        //logMessage(__FUNCTION__);
+        //logMessage($hookData);
         $report_id = $hookData['data']['reportId'];
         //101825 - Advocates (Profile)
         if ($report_id == 101825)
@@ -38,7 +38,7 @@ class hooks_model extends  \RightNow\Models\Base
                 $contact_filter->type = 'ContactID';
 
                 $hookData['data']['filters']['ContactID'] = $contact_filter;
-                logMessage($hookData['data']['filters']);
+                //logMessage($hookData['data']['filters']);
             }
         // [ContactID] => stdClass Object
         // (
@@ -59,15 +59,29 @@ class hooks_model extends  \RightNow\Models\Base
         // )
     }
 
-    function prePageRenderModel(&$hookData){
-        $url = Url::getOriginalUrl();
+    function post_report_get_data(&$hookData)
+    {
+        //logMessage($hookData['data']['filters']);
+        $report_id = $hookData['data']['reportId'];
+        if ($report_id == 101901) {
+            $url = \RightNow\Utils\Url::getOriginalUrl();
+            if ($hookData['data']['filters']['event']) {
+                \RightNow\Utils\Url::addParameter($url, 'event', 691);
+            }
+        }
+    }
 
-        $CI = & get_instance();
-        
-        // Check if the page contains only attachments or url.
-        // if(strpos($url,self::ACCOUNT_OVERVIEW_PAGE) !== FALSE && strpos($url,'c_id') === FALSE){
-        //     $url = $url . '/c_id/'. $CI->session->getProfileData('contactID');
-        //     header("Location: ".$url);
-        // }
+    function prePageRenderModel(&$hookData)
+    {
+        $url = Url::getOriginalUrl();
+        $request_uri = $_SERVER['REQUEST_URI'];
+        $event_link = "/app/home/event/";
+
+        if (substr($request_uri, 0, strlen($event_link)) === $event_link) {
+            $event_id = URL::getParameter('event');
+            Framework::setLocationHeader('/app/event_home/st/8/kw/' . $event_id.'/event/'.$event_id);
+        }
+        logMessage($url);
+        logMessage($hookData);
     }
 }

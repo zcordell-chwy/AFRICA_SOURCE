@@ -5,6 +5,12 @@ Custom.Widgets.sponsorship.UnsponsoredChildMultiline =
       constructor: function () {
         // Call into parent's constructor
         this.parent();
+	//get the oaginator id of current page 
+	var y=document.getElementsByClassName("rn_Paginator");
+
+        if(this.data.js.reportData.total_pages<2){
+		RightNow.UI.hide(y[0].id);
+	}
         this.sponsorshipButtons = this.Y.all(".sponsorshipButton");
         this.sponsorshipButtons.on("click", this.sponsorshipClick, this);
       },
@@ -14,6 +20,28 @@ Custom.Widgets.sponsorship.UnsponsoredChildMultiline =
        * @param {Array} args Arguments passed with event
        */
       _onReportChanged: function (type, args) {
+
+        var dtataelements = [];       
+        if( args[0].data.data.length>0){
+        
+          args[0].data.data.forEach((adat1, index, array) => {
+            i=0;
+            var items=[];
+
+            adat1.forEach(element=>{
+              if(typeof element !== 'number'){
+                element= element.replace("<em class='rn_Highlight'>",'').replace('</em>','');
+                
+                }
+                items[i]=element;
+                ++i;
+                
+            });
+            dtataelements[index]=items;
+
+          });
+         }
+     args[0].data.data=dtataelements;
         var newdata = args[0].data,
           ariaLabel,
           firstLink,

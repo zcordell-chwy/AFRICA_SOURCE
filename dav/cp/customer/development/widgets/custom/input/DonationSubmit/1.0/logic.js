@@ -1,3 +1,5 @@
+"use strict";
+
 RightNow.namespace("Custom.Widgets.input.DonationSubmit");
 Custom.Widgets.input.DonationSubmit = RightNow.Widgets.FormSubmit.extend({
   /**
@@ -26,7 +28,7 @@ Custom.Widgets.input.DonationSubmit = RightNow.Widgets.FormSubmit.extend({
     _formSubmitResponse: function (tye, args) {
       console.log(args);
       var responseObject = args[0].data,
-        result;
+      result;
 
       if (
         !this._handleFormResponseFailure(responseObject) &&
@@ -51,6 +53,7 @@ Custom.Widgets.input.DonationSubmit = RightNow.Widgets.FormSubmit.extend({
       args[0].data.form = this._parentForm;
       // RightNow.Event.fire('evt_formButtonSubmitResponse', args[0]);
     },
+
     /**
      * Overridable methods from FormSubmit:
      *
@@ -89,11 +92,10 @@ Custom.Widgets.input.DonationSubmit = RightNow.Widgets.FormSubmit.extend({
     if (this._errorMessageDiv)
       this._errorMessageDiv.addClass("rn_Hidden").set("innerHTML", "");
 
-    var formData = [];
-    var formNode;
+    let formData = [];
+    let formNode;
 
-    var endpoint = this.data.attrs.default_ajax_endpoint;
-    inputArea = "#storedMethodForm input";
+    let inputArea = "#storedMethodForm input";
 
     if (this.data.attrs.formname == "changePayMethod") {
       //change a payment method
@@ -161,20 +163,33 @@ Custom.Widgets.input.DonationSubmit = RightNow.Widgets.FormSubmit.extend({
       );
     } else {
       //process stored payment & New payment
-      var amount = "";
+
       //Fetch amount
-      // if (document.getElementById("amount").value == "other") {
-      //   amt = document.getElementById("other_amount").value;
-      // } else {
-      //   amt = document.getElementById("amount").value;
-      // }
-      if (document.getElementById("onetime_radio").checked) {
-        amt = document.getElementById("onetime").innerHTML.split("$")[1];
-        rec = "0";
-      } else {
-        amt = document.getElementById("monthly").innerHTML.split("$")[1];
-        rec = "1";
-      }
+      let rec = document.getElementById("onetime_radio").checked ? "0" : "1";
+      let amt = document
+        .getElementById(rec === "0" ? "onetime" : "monthly")
+        .innerHTML.split("$")[1];
+      console.log(rec, amt);
+
+	if(parseInt(amt)!==0 && parseInt(amt)< parseInt(RightNow.Interface.getConfig('CUSTOM_CFG_MINMUM_AMNT'))){
+        let validateError= 'There was an error with your payment';
+      $("#paymentMethodError").text(validateError);
+      //this.disabled = false;
+        this._navigateToUrlFlag=false;
+	this._resetFormButton();
+
+      return;
+       }
+       if(parseInt(rec)!==0 && parseInt(amt)<parseInt(RightNow.Interface.getConfig('CUSTOM_CFG_MINMUM_AMNT'))){
+        let validateError= 'There was an error with your payment';
+        $("#paymentMethodError").text(validateError);
+         //this.disabled = false;
+	this._navigateToUrlFlag=false;
+	this._resetFormButton();
+
+        return;
+         }
+        console.log(this.data.js.loggedin);
       if (
         (document.getElementById("cardpay_radio").checked ||
           document.getElementById("checkpay_radio").checked) &&
@@ -186,11 +201,28 @@ Custom.Widgets.input.DonationSubmit = RightNow.Widgets.FormSubmit.extend({
         let validateError = this.validatePaymentMethod();
         if (validateError) {
           $("#paymentMethodError").text(validateError);
-          this.disabled = false;
+          //this.disabled = false;
+                this._navigateToUrlFlag=false;
+		this._resetFormButton();
+
           return;
         }
 
         if (document.getElementById("cardpay_radio").checked) {
+          if(this.data.js.loggedin != false) {
+            this.saveCardPaymentMethod({
+              CardNum: document
+                .querySelector('input[name="cardnumber"]')
+                .value.split(" ")
+                .join(""),
+              ExpMonth: document.querySelector('select[name="expmonth"]').value,
+              ExpYear: document.querySelector('select[name="expyear"]').value,
+              NameOnCard: document.querySelector('input[name="cardname"]').value,
+              CVNum: document.querySelector('input[name="cvnumber"]').value,
+              Amount: amt,
+              monthly: rec,
+            });
+          } else  {
           this.saveCardPaymentMethod({
             CardNum: document
               .querySelector('input[name="cardnumber"]')
@@ -199,6 +231,7 @@ Custom.Widgets.input.DonationSubmit = RightNow.Widgets.FormSubmit.extend({
             ExpMonth: document.querySelector('select[name="expmonth"]').value,
             ExpYear: document.querySelector('select[name="expyear"]').value,
             NameOnCard: document.querySelector('input[name="cardname"]').value,
+            CVNum: document.querySelector('input[name="cvnumber"]').value,
             City: document.getElementsByName("Contact.Address.City")[
               document.getElementsByName("Contact.Address.City")["length"] - 1
             ].value,
@@ -254,7 +287,22 @@ Custom.Widgets.input.DonationSubmit = RightNow.Widgets.FormSubmit.extend({
             Amount: amt,
             monthly: rec,
           });
+          }
         } else if (document.getElementById("checkpay_radio").checked) {
+          if(this.data.js.loggedin != false) {
+            this.saveCardPaymentMethod({
+                TransitNum: document.querySelector('input[name="routingnumber"]')
+                .value,
+              AccountNum: document.querySelector('input[name="accountnumber"]')
+                .value,
+              NameOnCheck: document.querySelector('input[name="checkname"]')
+                .value,
+              AccountType: document.querySelector('select[name="accounttype"]')
+                .value,
+              Amount: amt,
+              monthly: rec,
+            });
+          } else {
           this.saveCheckPaymentMethod({
             TransitNum: document.querySelector('input[name="routingnumber"]')
               .value,
@@ -319,6 +367,7 @@ Custom.Widgets.input.DonationSubmit = RightNow.Widgets.FormSubmit.extend({
             Amount: amt,
             monthly: rec,
           });
+          }
         }
       } else {
         formNode = this._formButton.ancestor("form");
@@ -330,6 +379,20 @@ Custom.Widgets.input.DonationSubmit = RightNow.Widgets.FormSubmit.extend({
             checked: value.checked,
           };
         });
+
+              //process stored payment
+      if(!document.getElementById("cardpay2").classList.contains('rn_Hidden')){
+        let validateError = this.validatePaymentMethodcvv();
+        if (validateError) {
+          $("#paymentMethodError").text(validateError);
+          //$("#rn_ErrorLocation").text(validateError);
+          //this.disabled = false;
+                this._navigateToUrlFlag=false;
+		this._resetFormButton();
+
+          return;
+        }
+      }
 
         // Make AJAX request:
         var eventObj = new RightNow.Event.EventObject(this, {
@@ -362,6 +425,28 @@ Custom.Widgets.input.DonationSubmit = RightNow.Widgets.FormSubmit.extend({
       }
     }
   },
+  validatePaymentMethodcvv: function () {
+    var validated;
+    if(!document.getElementById("cardpay2").classList.contains('rn_Hidden')){
+    validated = this.validate([document.querySelector('input[name="cvnumber2"]').value]);
+    
+    
+    if (
+      !/^\d+$/.test(
+        document
+          .querySelector('input[name="cvnumber2"]')
+          .value.split(" ")
+          .join("")
+      )
+    ) {
+      validated =
+        "Please input cvv number";
+    }
+  
+}
+    return validated;
+
+  },
 
   validatePaymentMethod: function () {
     var validated;
@@ -371,6 +456,7 @@ Custom.Widgets.input.DonationSubmit = RightNow.Widgets.FormSubmit.extend({
         document.querySelector('input[name="cardnumber"]').value,
         document.querySelector('select[name="expmonth"]').value,
         document.querySelector('select[name="expyear"]').value,
+        document.querySelector('input[name="cvnumber"]').value,
         document.getElementsByName("Contact.Name.First")[
           document.getElementsByName("Contact.Name.First")["length"] - 1
         ].value,
@@ -447,6 +533,18 @@ Custom.Widgets.input.DonationSubmit = RightNow.Widgets.FormSubmit.extend({
         validated =
           "Please input a properly formated credit card: 1111222233334444 / 1111 2222 3333 4444.";
       }
+
+      if (
+        !/^\d+$/.test(
+          document
+            .querySelector('input[name="cvnumber"]')
+            .value.split(" ")
+            .join("")
+        )
+      ) {
+        validated =
+          "Please input cvv number";
+      }
     } else {
       validated = "Make sure all fields are filled.";
     }
@@ -514,11 +612,12 @@ Custom.Widgets.input.DonationSubmit = RightNow.Widgets.FormSubmit.extend({
       this.Y.Array.each(response.errors, function (error) {
         errorMessage += "<b>" + error + "</b>";
       });
+      errorMessage += "</br> Please refresh the page and try again.";
       $(this.baseSelector + "_LoadingIcon").addClass("rn_Hidden");
       this._errorMessageDiv.append(errorMessage);
       this._errorMessageDiv.removeClass("rn_Hidden");
     } else if (response.result) {
-      result = response.result;
+      var result = response.result;
 
       if (result.sa) {
         // trap SmartAssistant™ case here
@@ -551,7 +650,12 @@ Custom.Widgets.input.DonationSubmit = RightNow.Widgets.FormSubmit.extend({
       this._displayErrorDialog();
     }
 
-    this._toggleClickListener(true);
+    // this._toggleClickListener(true);
+    console.log(response);
+    if (response != null && response.newFormToken) {
+      console.log(response.newFormToken);
+      this.data.js.f_tok = response.newFormToken;
+      RightNow.Event.fire("evt_formTokenUpdate", new RightNow.Event.EventObject(this, {data: {newToken: response.newFormToken}}));}
     return;
   },
 
@@ -576,10 +680,11 @@ Custom.Widgets.input.DonationSubmit = RightNow.Widgets.FormSubmit.extend({
       this.Y.Array.each(response.errors, function (error) {
         errorMessage += "<b>" + error + "</b>";
       });
+      errorMessage += "</br> Please refresh the page and try again.";
       this._errorMessageDiv.append(errorMessage);
       this._errorMessageDiv.removeClass("rn_Hidden");
     } else if (response.result) {
-      result = response.result;
+      var result = response.result;
 
       if (result.sa) {
         // trap SmartAssistant™ case here
@@ -612,7 +717,12 @@ Custom.Widgets.input.DonationSubmit = RightNow.Widgets.FormSubmit.extend({
       this._displayErrorDialog();
     }
 
-    this._toggleClickListener(true);
+    // this._toggleClickListener(true);
+    console.log(response);
+    if (response != null && response.newFormToken) {
+      console.log(response.newFormToken);
+      this.data.js.f_tok = response.newFormToken;
+      RightNow.Event.fire("evt_formTokenUpdate", new RightNow.Event.EventObject(this, {data: {newToken: response.newFormToken}}));}
     return;
   },
 
@@ -637,10 +747,11 @@ Custom.Widgets.input.DonationSubmit = RightNow.Widgets.FormSubmit.extend({
       this.Y.Array.each(response.errors, function (error) {
         errorMessage += "<b>" + error + "</b>";
       });
+      errorMessage += "</br> Please refresh the page and try again.";
       this._errorMessageDiv.append(errorMessage);
       this._errorMessageDiv.removeClass("rn_Hidden");
     } else if (response.result) {
-      result = response.result;
+      var result = response.result;
 
       if (result.sa) {
         // trap SmartAssistant™ case here
@@ -673,7 +784,12 @@ Custom.Widgets.input.DonationSubmit = RightNow.Widgets.FormSubmit.extend({
       this._displayErrorDialog();
     }
 
-    this._toggleClickListener(true);
+    // this._toggleClickListener(true);
+    console.log(response);
+    if (response != null && response.newFormToken) {
+      console.log(response.newFormToken);
+      this.data.js.f_tok = response.newFormToken;
+      RightNow.Event.fire("evt_formTokenUpdate", new RightNow.Event.EventObject(this, {data: {newToken: response.newFormToken}}));}
     return;
   },
 
@@ -734,7 +850,10 @@ Custom.Widgets.input.DonationSubmit = RightNow.Widgets.FormSubmit.extend({
   ajaxCallback: function (response, originalEventObj) {
     if (response.code != "success") {
       $("#paymentMethodError").text(response.message);
-      this.disabled = false;
+      //this.disabled = false;
+         this._navigateToUrlFlag=false;
+	this._resetFormButton();
+
     } else {
       this.closeDialog();
       this.successCallback(response, originalEventObj);

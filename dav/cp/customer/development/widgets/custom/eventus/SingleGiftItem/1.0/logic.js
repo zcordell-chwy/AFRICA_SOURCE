@@ -5,11 +5,13 @@ Custom.Widgets.eventus.SingleGiftItem = RightNow.Widgets.extend({     /**
     constructor: function() {
 
         var submitButton = this.Y.one(".rn_GiftPopupGalleryItemPopupAddToCartForm button[value=\"submit\"]");
+        if(submitButton !== null){
         if(this.data.js.cospon){
             submitButton.on("click", function(evt){ this.handleGiftPopupSubmitButtonClickForCosponAmount(evt); }, this);
         }else{
             submitButton.on("click", function(evt){ this.handleGiftPopupSubmitButtonClick(evt); }, this);
         }
+	}
         
             
         var allCheckbox = this.Y.one(".rn_GiftPopupGalleryItemPopupSponsoredChildRecipient[value='all']");

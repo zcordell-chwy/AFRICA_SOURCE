@@ -1,8 +1,7 @@
 version: "1.0"
 requires:
-  jsModule:
-  - standard
-  - mobile
+  framework: ["3.7", "3.8", "3.9"]
+  jsModule: [standard, mobile]
 info:
   description: rn:msg:LG_SS_DD_LG_PTS_TWT_KB_LG_SYS_CFG_VRBS_D_MSG
   urlParameters:

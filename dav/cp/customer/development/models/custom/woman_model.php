@@ -47,7 +47,16 @@ class woman_model extends \RightNow\Models\Base {
         file_put_contents("/tmp/cartStorage_" . date('Y_m_d') . ".log", date('Y/m/d h:i:s').":buildWomanObj 44 \n", FILE_APPEND);
         $thiswoman -> Program = $woman -> Program -> LookupName;
         file_put_contents("/tmp/cartStorage_" . date('Y_m_d') . ".log", date('Y/m/d h:i:s').":buildWomanObj 46 \n", FILE_APPEND);
-        $thiswoman -> ActivePledgeTotal = 150 - $this->getActivePledgeTotal($woman -> ID);
+        //$thiswoman -> ActivePledgeTotal = 150 - $this->getActivePledgeTotal($woman -> ID);
+	$ActivePledgeTotal = round(((intval(getConfig(CUSTOM_CFG_WOMEN_MINISTRY_SCHIP))*12) - $this->getActivePledgeTotal($woman -> ID))/12,2);
+        
+        if(fmod($ActivePledgeTotal, 1) !== 0.00){
+		$thiswoman -> ActivePledgeTotal = $ActivePledgeTotal >0 ? number_format($ActivePledgeTotal,2,'.','') : 0;
+		
+	}else{
+        
+		$thiswoman -> ActivePledgeTotal = $ActivePledgeTotal >0 ? $ActivePledgeTotal : 0;
+        }
         file_put_contents("/tmp/cartStorage_" . date('Y_m_d') . ".log", date('Y/m/d h:i:s').":buildWomanObj 48 \n", FILE_APPEND);
 
 
@@ -293,8 +302,22 @@ class woman_model extends \RightNow\Models\Base {
             if(intval($pledge['PledgeStatus']) == PLEDGE_SPECIAL_HOLD){
                 return false;
             }
+	    if(in_array(intval($pledge['PledgeStatus']), $active_pledge_status_list)){
+                
+                if($pledge['Frequency'] == 1)//annual
+                    $totalAmt += $pledge['PledgeAmount'] ;// 12;
+                else if($pledge['Frequency'] == 7)//quarterly
+                    $totalAmt += $pledge['PledgeAmount'] * 3;
+                else if($pledge['Frequency'] == 5)//monthly
+                    $totalAmt += $pledge['PledgeAmount'] * 12;
+		else if($pledge['Frequency'] == 9)//Special/One Time
+                    $totalAmt += $pledge['PledgeAmount'];
+
+                
+                
+            }
     
-            if(in_array(intval($pledge['PledgeStatus']), $active_pledge_status_list)){
+            /*if(in_array(intval($pledge['PledgeStatus']), $active_pledge_status_list)){
                 
                 if($pledge['Frequency'] == 1)//annual
                     $totalAmt += $pledge['PledgeAmount'] / 12;
@@ -304,7 +327,9 @@ class woman_model extends \RightNow\Models\Base {
                     $totalAmt += $pledge['PledgeAmount'];
                 
                 
-            }
+            }*/
+
+
             $numTotalPledges++;
         }
         

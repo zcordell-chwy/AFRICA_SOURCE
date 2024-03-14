@@ -32,15 +32,25 @@
     <!-- Magnific Popup core JS file -->
     <script src="/euf/assets/javascript/magnific-popup/jquery.magnific-popup.js"></script>
     <!-- Font Awesome -->
-    <link rel="stylesheet" href="/euf/assets/css/font-awesome/css/font-awesome.min.css">    
+    <link rel="stylesheet" href="/euf/assets/css/font-awesome/css/font-awesome.min.css">
+    <script type='text/javascript'>
+    window.EESvcs = { eeid: 202401109753952  };
+    </script>
+    <script type='text/javascript' src="//ee.channels.ocs.oraclecloud.com/js/eesvcs.js">
+    </script>    
 </head>
 
-<body class="yui-skin-sam yui3-skin-sam page-id-<?php echo $this->page; ?>" itemscope itemtype="https://schema.org/WebPage">
-       <rn:condition show_on_pages="account/letters, account/overview">
-            <rn:condition config_check="CUSTOM_CFG_inspectlet_enabled == true">
-               <rn:widget path="custom/eventus/inspectlet" transaction="" />
-            </rn:condition>
+<?php $page = $this->page;
+if ($page == 'event_home')
+    $page = 'home';
+?>
+
+<body class="yui-skin-sam yui3-skin-sam page-id-<?php echo $page; ?>" itemscope itemtype="https://schema.org/WebPage">
+    <rn:condition>
+        <rn:condition config_check="CUSTOM_CFG_inspectlet_enabled == true">
+            <rn:widget path="custom/eventus/inspectlet" transaction="" />
         </rn:condition>
+    </rn:condition>
     <a href="#rn_MainContent" class="rn_SkipNav rn_ScreenReaderOnly">#rn:msg:SKIP_NAVIGATION_CMD#</a>
 
     <header>
@@ -81,11 +91,35 @@
                 </div>
                 <? $CI = & get_instance();?>
                 <div class="rn_LoginStatus">
+                    <!--
                     <rn:condition logged_in="false">
                         <rn:widget path="custom/login/AccountDropdown" open_login_providers="" label_open_login_intro="" subpages="#rn:msg:ACCOUNT_OVERVIEW_LBL# > account/overview" sub:input_Contact.Emails.PRIMARY.Address:label_input="#rn:msg:EMAIL_ADDR_LBL#" sub:input_Contact.Emails.PRIMARY.Address:required="true" sub:input_Contact.Emails.PRIMARY.Address:validate_on_blur="false" sub:input_Contact.Login:label_input="#rn:msg:USERNAME_LBL#" sub:input_Contact.Login:required="true" sub:input_Contact.Login:validate_on_blur="false" sub:input_Contact.Name.First:required="true" sub:input_Contact.Name.First:label_input="#rn:msg:FIRST_NAME_LBL#" sub:input_Contact.Name.Last:required="true" sub:input_Contact.Name.Last:label_input="#rn:msg:LAST_NAME_LBL#" sub:input_SocialUser.DisplayName:label_input="#rn:msg:DISPLAY_NAME_LBL#" sub:input_Contact.NewPassword:label_input="#rn:msg:PASSWORD_LBL#" />
                         <rn:condition_else />
+                        <div  style="float:right">
+                        <rn:widget path="login/LogoutLink" />
+                        
+                        <rn:widget path="login/AccountDropdn" subpages="#rn:msg:ACCOUNT_OVERVIEW_LBL# > account/overview,  #rn:msg:ACCOUNT_SETTINGS_LBL# > account/profile" />
+                
+                        </div>
                             <rn:widget path="custom/login/AccountDropdown" subpages="#rn:msg:ACCOUNT_OVERVIEW_LBL# > account/overview,  #rn:msg:ACCOUNT_SETTINGS_LBL# > account/profile" />
-                    </rn:condition>
+                   
+                   
+                        </rn:condition>
+-->
+
+            <rn:condition logged_in="true">
+                <!--strong><rn:field name="Contact.LookupName"/><rn:condition language_in="ja-JP">#rn:msg:NAME_SUFFIX_LBL#</rn:condition></strong>&nbsp;|
+                <rn:widget path="login/BasicLogoutLink" label="#rn:msg:LOGOUT_CMD#"/>&nbsp;|
+                <a href="/app/account/overview#rn:session#">#rn:msg:YOUR_ACCOUNT_LBL#</a-->
+                <div  style="float:right">
+                <!--rn:widget path="login/LogoutLink" /-->
+                
+                <rn:widget path="login/AccountDropdn" subpages="#rn:msg:ACCOUNT_OVERVIEW_LBL# > account/overview,  #rn:msg:ACCOUNT_SETTINGS_LBL# > account/profile" />
+           
+                </div>
+                <rn:condition_else />
+                <rn:widget path="custom/login/AccountDropdown" open_login_providers="" label_open_login_intro="" subpages="#rn:msg:ACCOUNT_OVERVIEW_LBL# > account/overview" sub:input_Contact.Emails.PRIMARY.Address:label_input="#rn:msg:EMAIL_ADDR_LBL#" sub:input_Contact.Emails.PRIMARY.Address:required="true" sub:input_Contact.Emails.PRIMARY.Address:validate_on_blur="false" sub:input_Contact.Login:label_input="#rn:msg:USERNAME_LBL#" sub:input_Contact.Login:required="true" sub:input_Contact.Login:validate_on_blur="false" sub:input_Contact.Name.First:required="true" sub:input_Contact.Name.First:label_input="#rn:msg:FIRST_NAME_LBL#" sub:input_Contact.Name.Last:required="true" sub:input_Contact.Name.Last:label_input="#rn:msg:LAST_NAME_LBL#" sub:input_SocialUser.DisplayName:label_input="#rn:msg:DISPLAY_NAME_LBL#" sub:input_Contact.NewPassword:label_input="#rn:msg:PASSWORD_LBL#" />
+                         </rn:condition>
                 </div>
             </nav>
         </div>
@@ -212,5 +246,22 @@
             }
         </script>
 </body>
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-319N4JKH1L"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-319N4JKH1L');
+
+  <?$f_id = getUrlParm('f_id');
+  if($f_id == 632)	{
+	echo "gtag('event', 'Single_Donation_Event', {
+		'clicked' : 'true'
+	  });";
+    }?>
+</script>
 
 </html>

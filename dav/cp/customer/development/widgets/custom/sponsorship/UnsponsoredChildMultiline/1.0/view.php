@@ -28,7 +28,7 @@
                                             $summary_lines = array();
                                             if (!empty($value['Favorite Subject'])) $summary_lines[] = '<span class="subject">' . $value['Favorite Subject'] . '</span>';
                                             if (!empty($value['Hobby'])) $summary_lines[] = '<span class="hobby">' . $value['Hobby']  . '</span>';
-                                            if (!empty($value['Grade'])) $summary_lines[] = '<span class="Grade">' . $value['Grade']  . '</span>';
+                                            if (!empty($value['Grade'])) $summary_lines[] = '<span class="Grade">' . str_replace("</em>",'',str_replace("<em class='rn_Highlight'>",'',$value['Grade']) )  . '</span>';
                                             ?>
                                             <span class="summary">
                                                 <? echo implode('', $summary_lines); ?>

@@ -1,8 +1,7 @@
 version: "3.0"
 requires:
-  jsModule:
-  - standard
-  - mobile
+  framework: ["3.7", "3.8", "3.9"]
+  jsModule: [standard, mobile]
 attributes:
   save_card_payment_method:
     name: save_card_payment_method

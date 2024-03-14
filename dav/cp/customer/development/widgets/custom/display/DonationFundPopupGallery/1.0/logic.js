@@ -21,11 +21,13 @@ Custom.Widgets.display.DonationFundPopupGallery = Custom.Widgets.display.ItemPop
         */
         onItemPopupDialogCreated: function(itemPopupContent, itemPopupDialog){
             // Register event handler for donation fund popup form buttons
+	 //if(this.data.js.isLoggedIn){
             var submitButton = this.Y.one(this.baseSelector + " .rn_DonationFundPopupGalleryItemPopupAddToCartForm button[value=\"submit\"]"),
                 cancelButton = this.Y.one(this.baseSelector + " .rn_DonationFundPopupGalleryItemPopupAddToCartForm button[value=\"cancel\"]");
             submitButton.on("click", function(evt){ this.handleDonationFundPopupSubmitButtonClick(evt, itemPopupContent, itemPopupDialog); }, this);
             cancelButton.on("click", function(evt){ this.handleDonationFundPopupCancelButtonClick(evt, itemPopupContent, itemPopupDialog); }, this);
-        }
+         //}
+	}
     },
 
     /**

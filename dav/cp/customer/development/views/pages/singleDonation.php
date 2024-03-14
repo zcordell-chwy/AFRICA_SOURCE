@@ -19,8 +19,6 @@ $CI->session->setSessionData(array("DonateDesc" => $items[0]->Title));
 		<figure class="giftImg">
 			<img src=<?php echo $items[0]->PhotoURL; ?>>
 		</figure>
-		<!-- Commented below line as part of issue fix Issue#110-->
-		<!-- <h2>YOUR <span id="giftAmount">$50</span> GIFT WILL HELP</h2> -->
 
 		<span id="donate_campaign_desc" class="donate_campaign_desc">
 			<p><?php echo $items[0]->Description; ?></p>
