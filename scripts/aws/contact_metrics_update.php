@@ -497,7 +497,7 @@ function executeUpdatesForRecords($startVal){
             }
 
             //Amt of largest nonspon
-            if($largestNonSponAmt &&$largestNonSponAmt != $contactObj->CustomFields->Metrics->largestNonSponLifetimeAmt){
+            if($largestNonSponAmt && $largestNonSponAmt != $contactObj->CustomFields->Metrics->largestNonSponLifetimeAmt){
                 $contactObj->CustomFields->Metrics->largestNonSponLifetimeAmt = $largestNonSponAmt;
                 $results['largestNonSponAmt'] = $largestNonSponAmt;
                 $saveNeeded = true;

@@ -32,10 +32,12 @@ if (!function_exists("\curl_init"))
 
 require_once("/cgi-bin/africanewlife.cfg/scripts/custom/Log/esglogpaycron-v2.0.php");
 
-$fileLogger = new fileLogger(true, fileLogger::All);  //file logger is a log worker
-$logger = esgLogger::getInstance();
-$logger->registerLogWorker($fileLogger);  //register the log worker with the esgLogger event bus singleton
-esgLogger::log("Begin Pledge Processing...", logWorker::Debug);
+// $fileLogger = new fileLogger(true, fileLogger::All);  //file logger is a log worker
+// $logger = esgLogger::getInstance();
+// $logger->registerLogWorker($fileLogger);  //register the log worker with the esgLogger event bus singleton
+// $logArray[] = date("Y-m-d H:i:s  ")."Begin Pledge Processing...";
+
+$logArray = array();
 
 // /********CONSTANTS*********/
 
@@ -49,6 +51,8 @@ switch(intval($_GET['pledge'])){
         $pledge = RNCPHP\donation\pledge::fetch(intval($_GET['pledge']));
         $payMeth = ($pledge->paymentMethod2->PaymentMethodType->LookupName == "Credit Card") ? 1 : 2;
         $runResult = Initialize($pledge->ID, $pledge->PledgeAmount, $payMeth, $pledge->Balance, $pledge->firstTimeDonationCredit);
+
+        logToFile($logArray);
         return outputResponse($response, null);
         break;
 
@@ -89,12 +93,12 @@ function returnPledgeIdChunks(){
 function Initialize($pledgeID, $pledgeAmt, $payMeth, $balance, $firstTimeDonationCredit)
 {
     /* Removed balance b/c of unallocated solution ZC 10/25
-    esgLogger::log("balance before = ".$balance, logWorker::Debug);
+    $logArray[] = date("Y-m-d H:i:s  ")."balance before = ".$balance;
     if ($balance > 0){
     }else{
         $balance = 0;
     }
-    esgLogger::log("Balance = ".$balance, logWorker::Debug);
+    $logArray[] = date("Y-m-d H:i:s  ")."Balance = ".$balance;
     */
 
     //if its the first donation toward a pledge and they have a first time donation credit
@@ -106,7 +110,7 @@ function Initialize($pledgeID, $pledgeAmt, $payMeth, $balance, $firstTimeDonatio
         $totalToCharge = $pledgeAmt;
     }
 
-    esgLogger::log("totalTocharge = " . $totalToCharge . " pledge amount = " . $pledgeAmt, logWorker::Debug);
+    $logArray[] = date("Y-m-d H:i:s  ")."totalTocharge = " . $totalToCharge . " pledge amount = " . $pledgeAmt;
 
     if ($totalToCharge > 0) { //we have something to charge
         if ($pledgeAmt > 0  && $payMeth > 0) {
@@ -114,7 +118,7 @@ function Initialize($pledgeID, $pledgeAmt, $payMeth, $balance, $firstTimeDonatio
 
                 $pledge = RNCPHP\donation\pledge::fetch($pledgeID);
                 //0-none 1-cc 2-eft
-                esgLogger::log("Processing pledge ID = " . $pledgeID, logWorker::Debug);
+                $logArray[] = date("Y-m-d H:i:s  ")."Processing pledge ID = " . $pledgeID;
                 $result = ($pledge->paymentMethod2->PaymentMethodType->ID == "1") ? processCCpayment($pledge, $totalToCharge) : processEFTpayment($pledge, $totalToCharge);
 
                 if ($result > 0) {
@@ -122,14 +126,14 @@ function Initialize($pledgeID, $pledgeAmt, $payMeth, $balance, $firstTimeDonatio
                     resetNextPayment($pledge, true);
                 } else {
                     //reset the pledge set next trans date to tomorrow. Increment # of attempts
-                    esgLogger::log("46 - processCCpayment returned bad result", logWorker::Debug);
+                    $logArray[] = date("Y-m-d H:i:s  ")."46 - processCCpayment returned bad result";
                     //_output("46 - processCCpayment returned bad result");
                     resetNextPayment($pledge, false);
                 }
             } catch (Exception $e) {
-                esgLogger::log("PHP Error " . $e->getMessage(), logWorker::Debug, $e->getTrace());
+                $logArray[] = date("Y-m-d H:i:s  ")."PHP Error " . $e->getMessage();
             } catch (RNCPHP\ConnectAPIError $e) {
-                esgLogger::log("API Error " . $e->getMessage(), logWorker::Debug);
+                $logArray[] = date("Y-m-d H:i:s  ")."API Error " . $e->getMessage();
             }
         } //end if
     } else { //we have a siatuion where they've paid ahead more than a month.
@@ -148,10 +152,10 @@ function Initialize($pledgeID, $pledgeAmt, $payMeth, $balance, $firstTimeDonatio
             $newDonation->Type = RNCPHP\donation\Type::fetch(1);
             $newDonation->save(RNCPHP\RNObject::SuppressAll);
         } catch (Exception $e) {
-            esgLogger::log($e->getMessage(), logWorker::Debug);
+            $logArray[] = date("Y-m-d H:i:s  ").$e->getMessage();
             return 0;
         } catch (RNCPHP\ConnectAPIError $e) {
-            esgLogger::log("API Error " . $e->getMessage(), logWorker::Debug);
+            $logArray[] = date("Y-m-d H:i:s  ")."API Error " . $e->getMessage();
         }
 
         $donation2Pledge = new RNCPHP\donation\donationToPledge();
@@ -162,10 +166,10 @@ function Initialize($pledgeID, $pledgeAmt, $payMeth, $balance, $firstTimeDonatio
             $donation2Pledge->save(RNCPHP\RNObject::SuppressAll);
             //logMessage($donation2Pledge);
         } catch (Exception $e) {
-            esgLogger::log($e->getMessage(), logWorker::Debug);
+            $logArray[] = date("Y-m-d H:i:s  ").$e->getMessage();
             return false;
         } catch (RNCPHP\ConnectAPIError $e) {
-            esgLogger::log("API Error " . $e->getMessage(), logWorker::Debug);
+            $logArray[] = date("Y-m-d H:i:s  ")."API Error " . $e->getMessage();
         }
 
         try {
@@ -187,10 +191,10 @@ function Initialize($pledgeID, $pledgeAmt, $payMeth, $balance, $firstTimeDonatio
 
             $trans->save();
         } catch (\Exception $e) {
-            esgLogger::log($e->getMessage(), logWorker::Debug);
+            $logArray[] = date("Y-m-d H:i:s  ").$e->getMessage();
             return false;
         } catch (RNCPHP\ConnectAPIError $e) {
-            esgLogger::log("API Error " . $e->getMessage(), logWorker::Debug);
+            $logArray[] = date("Y-m-d H:i:s  ")."API Error " . $e->getMessage();
             return false;
         }
     }
@@ -245,12 +249,14 @@ function processCCpayment(RNCPHP\donation\pledge $pledge, $totalToCharge)
 
     //strlen condition put in to interpret whitespace as a decline
     if (!$returnValues || $returnValues['code'] != 0 || strlen(trim($returnValues['code'])) == 0) {
-        esgLogger::log("87 - frontstream failure ", logWorker::Debug, $returnValues);
+        $logArray[] = date("Y-m-d H:i:s  ")."87 - frontstream failure ";
+        $logArray[] = date("Y-m-d H:i:s  ").print_r($returnValues);
         //dont need to create donation or d2p if declined
         createTransaction($pledge->paymentMethod2, null, $totalToCharge, createDonation($pledge, $totalToCharge), "Declined", $pledge->Contact, $notes, $trans);
         $transID = -99; //set to negative so we know to not to reset the next pledge date to tomorrow instead of calculating based on frequency
     } else {
-        esgLogger::log("84 - frontstream success ", logWorker::Debug, $returnValues);
+        $logArray[] = date("Y-m-d H:i:s  ")."84 - frontstream success ";
+        $logArray[] = date("Y-m-d H:i:s  ").print_r($returnValues);
         //create donation and associate it to existing pledge
         //then create transaction and associate it to existing donation
         $transID = createTransaction($pledge->paymentMethod2, $returnValues['auth'], $totalToCharge, createDonation($pledge, $totalToCharge), "Completed", $pledge->Contact, $notes, $trans);
@@ -302,11 +308,13 @@ function processEFTpayment(RNCPHP\donation\pledge $pledge, $totalToCharge)
     $notes = print_r($returnValues, true);
 
     if (!$returnValues || $returnValues['code'] != 0  || strlen(trim($returnValues['code'])) == 0) {
-        esgLogger::log("87 - frontstream failure ", logWorker::Debug, $returnValues);
+        $logArray[] = date("Y-m-d H:i:s  ")."87 - frontstream failure ";
+        $logArray[] = date("Y-m-d H:i:s  ").print_r($returnValues);
         createTransaction($pledge->paymentMethod2, null, $totalToCharge, createDonation($pledge, $totalToCharge), "Declined", $pledge->Contact, $notes, $trans);
         $transID = -99; //set to negative so we know to not to reset the next pledge date to tomorrow instead of calculating based on frequency
     } else {
-        esgLogger::log("84 - frontstream success ", logWorker::Debug, $returnValues);
+        $logArray[] = date("Y-m-d H:i:s  ")."84 - frontstream success ";
+        $logArray[] = date("Y-m-d H:i:s  ").print_r($returnValues);
         $transID = createTransaction($pledge->paymentMethod2, $returnValues['auth'], $totalToCharge, createDonation($pledge, $totalToCharge), "Completed", $pledge->Contact, $notes, $trans);
     }
 
@@ -344,12 +352,12 @@ function resetNextPayment($pledge, $goodTrans)
         //_output($pledge);
         $pledge->save(RNCPHP\RNObject::SuppressAll);
     } catch (Exception $e) {
-        esgLogger::log("264 - reset date failure " . $e->getMessage(), logWorker::Debug);
+        $logArray[] = date("Y-m-d H:i:s  ")."264 - reset date failure " . $e->getMessage();
         _output($e->getMessage());
         _output($pledge);
         return false;
     } catch (RNCPHP\ConnectAPIError $e) {
-        esgLogger::log("API Error " . $e->getMessage(), logWorker::Debug);
+        $logArray[] = date("Y-m-d H:i:s  ")."API Error " . $e->getMessage();
         return false;
     }
 
@@ -364,7 +372,7 @@ function runTransaction(array $postVals)
     $user = cfg_get(CUSTOM_CFG_FS_UN_CRON);   //cfg_get(CUSTOM_CFG_frontstream_user_id);
 
     if (!verifyMinTransReqs($postVals, $host, $user, $pass)) {
-        //esgLogger::log("103 - could not verify min trans request", logWorker::Debug, $postVals);
+        //$logArray[] = date("Y-m-d H:i:s  ")."103 - could not verify min trans request";
         return false;
     }
 
@@ -378,19 +386,22 @@ function runTransaction(array $postVals)
     $mybuilder[] = 'username=' . $user;
     $mybuilder[] = 'password=' . $pass;
 
-    esgLogger::log("my params", logWorker::Debug, $mybuilder);
+    $logArray[] = date("Y-m-d H:i:s  ")."my params";
+    $logArray[] = date("Y-m-d H:i:s  ").print_r($mybuilder);
 
     $result = runCurl($host, $mybuilder);
 
-    esgLogger::log("returned result ", logWorker::Debug, $result);
+    $logArray[] = date("Y-m-d H:i:s  ")."returned result ";
+    $logArray[] = date("Y-m-d H:i:s  ").print_r($result);
 
     if ($result == false) {
         //_output("121 - Unable to run transaction");
-        esgLogger::log("121 - Unable to run transaction", logWorker::Debug, $postVals);
+        $logArray[] = date("Y-m-d H:i:s  ")."121 - Unable to run transaction";
+        $logArray[] = date("Y-m-d H:i:s  ").$postVals;
         return false;
     }
 
-    //esgLogger::log("238 - result after run transaction ", logWorker::Debug, $result);
+    //$logArray[] = date("Y-m-d H:i:s  ")."238 - result after run transaction ", logWorker::Debug, $result);
     if ($postVals['op'] == "ArgoFire/transact.asmx/ProcessCheck") {
         $transType = ($postVals['op'] == "ArgoFire/transact.asmx/ProcessCheck") ? "check" : "credit";
     } else if ($postVals['op'] == "admin/ws/recurring.asmx/ProcessCheck") {
@@ -419,20 +430,22 @@ function runCurl($host, array $postData)
         $result = curl_exec($ch);
 
         if (curl_errno($ch) > 0) {
-            esgLogger::log("152 - could not verify min trans request", logWorker::Debug, curl_error($ch));
+            $logArray[] = date("Y-m-d H:i:s  ")."152 - could not verify min trans request";
+            $logArray[] = date("Y-m-d H:i:s  ").print_r(curl_error($ch));
             curl_close($ch);
             return false;
         } else if (strpos($result, "HTTP Error") !== false) {
-            esgLogger::log("157 - runCurl - http error", logWorker::Debug, curl_error($ch));
+            $logArray[] = date("Y-m-d H:i:s  ")."157 - runCurl - http error";
+            $logArray[] = date("Y-m-d H:i:s  ").print_r(curl_error($ch));
             curl_close($ch);
             return false;
         }
     } catch (Exception $e) {
         curl_close($ch);
-        esgLogger::log("164 - " . $e->getMessage(), logWorker::Debug);
+        $logArray[] = date("Y-m-d H:i:s  ")."164 - " . $e->getMessage();
         return false;
     } catch (RNCPHP\ConnectAPIError $e) {
-        esgLogger::log("API Error " . $e->getMessage(), logWorker::Debug);
+        $logArray[] = date("Y-m-d H:i:s  ")."API Error " . $e->getMessage();
         return false;
     }
     curl_close($ch);
@@ -448,26 +461,28 @@ function parseFrontStreamRespOneTime($result, $transType)
     xml_parse_into_struct($xmlparser, $result, $values, $indices);
     xml_parser_free($xmlparser);
 
-    esgLogger::log("283 - parseFrontStreamRespOneTime transtype =" . $transType, logWorker::Debug);
+    $logArray[] = date("Y-m-d H:i:s  ")."283 - parseFrontStreamRespOneTime transtype =" . $transType;
 
     if ($transType == "credit") {
-        //esgLogger::log("284 - response", logWorker::Debug, $response);
+        //$logArray[] = date("Y-m-d H:i:s  ")."284 - response", logWorker::Debug, $response);
         $response['code'] = $values[$indices['RESULT'][0]]['value'];
         $response['auth'] = $values[$indices['PNREF'][0]]['value'];
         $response['error'] = $values[$indices['RESPMSG'][0]]['value'];
         $response['msg'] = $values[$indices['MESSAGE'][0]]['value'];
-        //esgLogger::log("284 -  values ", logWorker::Debug, $values);
+        //$logArray[] = date("Y-m-d H:i:s  ")."284 -  values ", logWorker::Debug, $values);
         //_output($response);
     } else if ($transType == "check") {
-        //esgLogger::log("295 - check response", logWorker::Debug, $response);
+        //$logArray[] = date("Y-m-d H:i:s  ")."295 - check response", logWorker::Debug, $response);
         $response['code'] = $values[$indices['RESULT'][0]]['value'];
         $response['auth'] = $values[$indices['PNREF'][0]]['value'];
         $response['error'] = $values[$indices['MESSAGE'][0]]['value'];
-        //esgLogger::log("298 -  check values ", logWorker::Debug, $values);
+        //$logArray[] = date("Y-m-d H:i:s  ")."298 -  check values ", logWorker::Debug, $values);
     }
 
-    esgLogger::log(" values ", logWorker::Debug, $values);
-    esgLogger::log(" response ", logWorker::Debug, $response);
+    $logArray[] = date("Y-m-d H:i:s  ")." values ";
+    $logArray[] = date("Y-m-d H:i:s  ").print_r($values);
+    $logArray[] = date("Y-m-d H:i:s  ")." response ";
+    $logArray[] = date("Y-m-d H:i:s  ").print_r($response);
 
     return $response;
 }
@@ -477,27 +492,32 @@ function verifyMinTransReqs($postVals, $host, $user, $pass)
     //using id's due to http://communities.rightnow.com/posts/3a27a1b48d?commentId=33912#33912
 
     if (is_null($host) || strlen($host) < 1) {
-        esgLogger::log("182 - Invalid host passed to runTransaction", logWorker::Debug, $postVals);
+        $logArray[] = date("Y-m-d H:i:s  ")."182 - Invalid host passed to runTransaction";
+        $logArray[] = date("Y-m-d H:i:s  ").print_r($postVals);
         return false;
     }
     if (is_null($user) || strlen($user) < 1) {
-        esgLogger::log("186 - Invalid user passed to runTransaction", logWorker::Debug, $postVals);
+        $logArray[] = date("Y-m-d H:i:s  ")."186 - Invalid user passed to runTransaction";
+        $logArray[] = date("Y-m-d H:i:s  ").print_r($postVals);
         echo "";
         return false;
     }
 
     if (is_null($pass) || strlen($pass) < 1) {
-        esgLogger::log("192 - Invalid password passed to runTransaction", logWorker::Debug, $postVals);
+        $logArray[] = date("Y-m-d H:i:s  ")."192 - Invalid password passed to runTransaction";
+        $logArray[] = date("Y-m-d H:i:s  ").print_r($postVals);
         echo "";
         return false;
     }
     if (is_null($postVals) || count($postVals) < 1) {
-        esgLogger::log("197 - Invalid post values passed to runTransaction", logWorker::Debug, $postVals);
+        $logArray[] = date("Y-m-d H:i:s  ")."197 - Invalid post values passed to runTransaction";
+        $logArray[] = date("Y-m-d H:i:s  ").print_r($postVals);
         echo "";
         return false;
     }
     if (is_null($postVals['op'])) {
-        esgLogger::log("203 - Invalid operation.", logWorker::Debug, $postVals);
+        $logArray[] = date("Y-m-d H:i:s  ")."203 - Invalid operation.";
+        $logArray[] = date("Y-m-d H:i:s  ").print_r($postVals);
         echo "";
         return false;
     }
@@ -530,10 +550,10 @@ function createTransaction(RNCPHP\financial\paymentMethod $payMeth, $refnum, $to
 
         return $trans->ID;
     } catch (\Exception $e) {
-        esgLogger::log("229 - Create Transaction Failed.", logWorker::Debug, $e->getMessage());
+        $logArray[] = date("Y-m-d H:i:s  ")."229 - Create Transaction Failed.". $e->getMessage();
         return false;
     } catch (RNCPHP\ConnectAPIError $e) {
-        esgLogger::log("API Error " . $e->getMessage(), logWorker::Debug);
+        $logArray[] = date("Y-m-d H:i:s  ")."API Error " . $e->getMessage();
         return false;
     }
 }
@@ -567,7 +587,7 @@ function createDonation($pledge, $totalToCharge)
         log_message($e->getMessage());
         return false;
     } catch (RNCPHP\ConnectAPIError $e) {
-        esgLogger::log("API Error " . $e->getMessage(), logWorker::Debug);
+        $logArray[] = date("Y-m-d H:i:s  ")."API Error " . $e->getMessage();
         return false;
     }
 
@@ -618,6 +638,7 @@ function _getValues($parent)
     }
 }
 
+
 function _output($value)
 {
     log_message($value);
@@ -634,4 +655,11 @@ function log_message($msg)
     $log = new RNCPHP\Log\LogMessage();
     $log->message = $msg;
     //$log->save();
+}
+
+function logToFile($logMessage){
+
+    $logFile = fopen("/tmp/esgLogPayCron/".date("Y_m_d").".log", "a");
+    fwrite($logFile, $logMessage."\n");
+    fclose($logFile);
 }

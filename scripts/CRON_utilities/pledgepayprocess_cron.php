@@ -263,7 +263,7 @@ function processEFTpayment(RNCPHP\donation\pledge $pledge, $totalToCharge)
     $returnValues = runTransaction($mytx);
     $notes = print_r($returnValues, true);
 
-    if (!$returnValues || $returnValues['code'] != 0 || strlen(trim($returnValues['code'])) == 0) {
+    if (!$returnValues || $returnValues['code'] != 0  || strlen(trim($returnValues['code'])) == 0) {
         esgLogger::log("87 - frontstream failure ", logWorker::Debug, $returnValues);
         createTransaction($pledge->paymentMethod2, null, $totalToCharge, createDonation($pledge, $totalToCharge), "Declined", $pledge->Contact, $notes, $trans);
         $transID = -99; //set to negative so we know to not to reset the next pledge date to tomorrow instead of calculating based on frequency
