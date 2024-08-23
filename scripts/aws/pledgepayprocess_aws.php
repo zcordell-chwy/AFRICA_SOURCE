@@ -51,7 +51,6 @@ switch(intval($_GET['pledge'])){
         $pledge = RNCPHP\donation\pledge::fetch(intval($_GET['pledge']));
         $payMeth = ($pledge->paymentMethod2->PaymentMethodType->LookupName == "Credit Card") ? 1 : 2;
         $runResult = Initialize($pledge->ID, $pledge->PledgeAmount, $payMeth, $pledge->Balance, $pledge->firstTimeDonationCredit);
-
         logToFile($logArray);
         return outputResponse($response, null);
         break;
@@ -92,6 +91,7 @@ function returnPledgeIdChunks(){
 
 function Initialize($pledgeID, $pledgeAmt, $payMeth, $balance, $firstTimeDonationCredit)
 {
+    global $logArray;
     /* Removed balance b/c of unallocated solution ZC 10/25
     $logArray[] = date("Y-m-d H:i:s  ")."balance before = ".$balance;
     if ($balance > 0){
@@ -208,6 +208,7 @@ function Initialize($pledgeID, $pledgeAmt, $payMeth, $balance, $firstTimeDonatio
 
 function processCCpayment(RNCPHP\donation\pledge $pledge, $totalToCharge)
 {
+    global $logArray;
     //create transaction and pass in id.  then set all the values before save in the createTransaction
     $trans = new RNCPHP\financial\transactions();
     $trans->currentStatus = RNCPHP\financial\transaction_status::fetch(4); //processing then we'll update
@@ -250,13 +251,13 @@ function processCCpayment(RNCPHP\donation\pledge $pledge, $totalToCharge)
     //strlen condition put in to interpret whitespace as a decline
     if (!$returnValues || $returnValues['code'] != 0 || strlen(trim($returnValues['code'])) == 0) {
         $logArray[] = date("Y-m-d H:i:s  ")."87 - frontstream failure ";
-        $logArray[] = date("Y-m-d H:i:s  ").print_r($returnValues);
+        $logArray[] = date("Y-m-d H:i:s  ").print_r($returnValues, true);
         //dont need to create donation or d2p if declined
         createTransaction($pledge->paymentMethod2, null, $totalToCharge, createDonation($pledge, $totalToCharge), "Declined", $pledge->Contact, $notes, $trans);
         $transID = -99; //set to negative so we know to not to reset the next pledge date to tomorrow instead of calculating based on frequency
     } else {
         $logArray[] = date("Y-m-d H:i:s  ")."84 - frontstream success ";
-        $logArray[] = date("Y-m-d H:i:s  ").print_r($returnValues);
+        $logArray[] = date("Y-m-d H:i:s  ").print_r($returnValues, true);
         //create donation and associate it to existing pledge
         //then create transaction and associate it to existing donation
         $transID = createTransaction($pledge->paymentMethod2, $returnValues['auth'], $totalToCharge, createDonation($pledge, $totalToCharge), "Completed", $pledge->Contact, $notes, $trans);
@@ -268,7 +269,7 @@ function processCCpayment(RNCPHP\donation\pledge $pledge, $totalToCharge)
 
 function processEFTpayment(RNCPHP\donation\pledge $pledge, $totalToCharge)
 {
-
+    global $logArray;
     //create transaction and pass in id.  then set all the values before save in the createTransaction
     $trans = new RNCPHP\financial\transactions();
     $trans->currentStatus = RNCPHP\financial\transaction_status::fetch(4); //processing then we'll update
@@ -309,12 +310,12 @@ function processEFTpayment(RNCPHP\donation\pledge $pledge, $totalToCharge)
 
     if (!$returnValues || $returnValues['code'] != 0  || strlen(trim($returnValues['code'])) == 0) {
         $logArray[] = date("Y-m-d H:i:s  ")."87 - frontstream failure ";
-        $logArray[] = date("Y-m-d H:i:s  ").print_r($returnValues);
+        $logArray[] = date("Y-m-d H:i:s  ").print_r($returnValues, true);
         createTransaction($pledge->paymentMethod2, null, $totalToCharge, createDonation($pledge, $totalToCharge), "Declined", $pledge->Contact, $notes, $trans);
         $transID = -99; //set to negative so we know to not to reset the next pledge date to tomorrow instead of calculating based on frequency
     } else {
         $logArray[] = date("Y-m-d H:i:s  ")."84 - frontstream success ";
-        $logArray[] = date("Y-m-d H:i:s  ").print_r($returnValues);
+        $logArray[] = date("Y-m-d H:i:s  ").print_r($returnValues, true);
         $transID = createTransaction($pledge->paymentMethod2, $returnValues['auth'], $totalToCharge, createDonation($pledge, $totalToCharge), "Completed", $pledge->Contact, $notes, $trans);
     }
 
@@ -323,7 +324,7 @@ function processEFTpayment(RNCPHP\donation\pledge $pledge, $totalToCharge)
 
 function resetNextPayment($pledge, $goodTrans)
 {
-
+    global $logArray;
     try {
         if ($goodTrans) {
             //good trans we want to set the numProcessingAttempts field to 0 and set teh date.
@@ -366,6 +367,7 @@ function resetNextPayment($pledge, $goodTrans)
 
 function runTransaction(array $postVals)
 {
+    global $logArray;
     //using id's due to http://communities.rightnow.com/posts/3a27a1b48d?commentId=33912#33912
     $host = cfg_get(CUSTOM_CFG_frontstream_endpoint);
     $pass = cfg_get(CUSTOM_CFG_FS_PW_CRON);    //cfg_get(CUSTOM_CFG_frontstream_pass_id);
@@ -387,12 +389,12 @@ function runTransaction(array $postVals)
     $mybuilder[] = 'password=' . $pass;
 
     $logArray[] = date("Y-m-d H:i:s  ")."my params";
-    $logArray[] = date("Y-m-d H:i:s  ").print_r($mybuilder);
+    $logArray[] = date("Y-m-d H:i:s  ").print_r($mybuilder, true);
 
     $result = runCurl($host, $mybuilder);
 
     $logArray[] = date("Y-m-d H:i:s  ")."returned result ";
-    $logArray[] = date("Y-m-d H:i:s  ").print_r($result);
+    $logArray[] = date("Y-m-d H:i:s  ").print_r($result, true);
 
     if ($result == false) {
         //_output("121 - Unable to run transaction");
@@ -418,6 +420,7 @@ function runTransaction(array $postVals)
  */
 function runCurl($host, array $postData)
 {
+    global $logArray;
     try {
         // Initialize Curl and send the request
         $ch = curl_init();
@@ -431,12 +434,12 @@ function runCurl($host, array $postData)
 
         if (curl_errno($ch) > 0) {
             $logArray[] = date("Y-m-d H:i:s  ")."152 - could not verify min trans request";
-            $logArray[] = date("Y-m-d H:i:s  ").print_r(curl_error($ch));
+            $logArray[] = date("Y-m-d H:i:s  ").print_r(curl_error($ch), true);
             curl_close($ch);
             return false;
         } else if (strpos($result, "HTTP Error") !== false) {
             $logArray[] = date("Y-m-d H:i:s  ")."157 - runCurl - http error";
-            $logArray[] = date("Y-m-d H:i:s  ").print_r(curl_error($ch));
+            $logArray[] = date("Y-m-d H:i:s  ").print_r(curl_error($ch), true);
             curl_close($ch);
             return false;
         }
@@ -455,6 +458,7 @@ function runCurl($host, array $postData)
 
 function parseFrontStreamRespOneTime($result, $transType)
 {
+    global $logArray;
     //different return val for eft and cc
 
     $xmlparser = xml_parser_create();
@@ -479,45 +483,46 @@ function parseFrontStreamRespOneTime($result, $transType)
         //$logArray[] = date("Y-m-d H:i:s  ")."298 -  check values ", logWorker::Debug, $values);
     }
 
-    $logArray[] = date("Y-m-d H:i:s  ")." values ";
-    $logArray[] = date("Y-m-d H:i:s  ").print_r($values);
+    // $logArray[] = date("Y-m-d H:i:s  ")." values ";
+    // $logArray[] = date("Y-m-d H:i:s  ").print_r($values, true);
     $logArray[] = date("Y-m-d H:i:s  ")." response ";
-    $logArray[] = date("Y-m-d H:i:s  ").print_r($response);
+    $logArray[] = date("Y-m-d H:i:s  ").print_r($response, true);
 
     return $response;
 }
 
 function verifyMinTransReqs($postVals, $host, $user, $pass)
 {
+    global $logArray;
     //using id's due to http://communities.rightnow.com/posts/3a27a1b48d?commentId=33912#33912
 
     if (is_null($host) || strlen($host) < 1) {
         $logArray[] = date("Y-m-d H:i:s  ")."182 - Invalid host passed to runTransaction";
-        $logArray[] = date("Y-m-d H:i:s  ").print_r($postVals);
+        $logArray[] = date("Y-m-d H:i:s  ").print_r($postVals, true);
         return false;
     }
     if (is_null($user) || strlen($user) < 1) {
         $logArray[] = date("Y-m-d H:i:s  ")."186 - Invalid user passed to runTransaction";
-        $logArray[] = date("Y-m-d H:i:s  ").print_r($postVals);
+        $logArray[] = date("Y-m-d H:i:s  ").print_r($postVals, true);
         echo "";
         return false;
     }
 
     if (is_null($pass) || strlen($pass) < 1) {
         $logArray[] = date("Y-m-d H:i:s  ")."192 - Invalid password passed to runTransaction";
-        $logArray[] = date("Y-m-d H:i:s  ").print_r($postVals);
+        $logArray[] = date("Y-m-d H:i:s  ").print_r($postVals, true);
         echo "";
         return false;
     }
     if (is_null($postVals) || count($postVals) < 1) {
         $logArray[] = date("Y-m-d H:i:s  ")."197 - Invalid post values passed to runTransaction";
-        $logArray[] = date("Y-m-d H:i:s  ").print_r($postVals);
+        $logArray[] = date("Y-m-d H:i:s  ").print_r($postVals, true);
         echo "";
         return false;
     }
     if (is_null($postVals['op'])) {
         $logArray[] = date("Y-m-d H:i:s  ")."203 - Invalid operation.";
-        $logArray[] = date("Y-m-d H:i:s  ").print_r($postVals);
+        $logArray[] = date("Y-m-d H:i:s  ").print_r($postVals, true);
         echo "";
         return false;
     }
@@ -527,7 +532,7 @@ function verifyMinTransReqs($postVals, $host, $user, $pass)
 function createTransaction(RNCPHP\financial\paymentMethod $payMeth, $refnum, $totalcharge, $donation, $status, RNCPHP\Contact $contact, $notes, $trans)
 {
 
-
+    global $logArray;
 
     try {
 
@@ -560,7 +565,7 @@ function createTransaction(RNCPHP\financial\paymentMethod $payMeth, $refnum, $to
 
 function createDonation($pledge, $totalToCharge)
 {
-
+    global $logArray;
     //create donation and donation2pledge
 
     try {
@@ -600,7 +605,7 @@ function createDonation($pledge, $totalToCharge)
 
 function getCountPledgeDonations($pledgeId)
 {
-
+    global $logArray;
     try {
         $roql = sprintf(" SELECT donation.donationToPledge FROM donation.donationToPledge where donation.donationToPledge.PledgeRef.ID = %s", $pledgeId);
         $pages = RNCPHP\ROQL::queryObject($roql)->next();
@@ -612,6 +617,7 @@ function getCountPledgeDonations($pledgeId)
 //forces lazy loading of array or object
 function _getValues($parent)
 {
+    global $logArray;
     try {
         // $parent is a non-associative (numerically-indexed) array
         if (is_array($parent)) {
@@ -658,8 +664,11 @@ function log_message($msg)
 }
 
 function logToFile($logMessage){
-
+    global $logArray;
     $logFile = fopen("/tmp/esgLogPayCron/".date("Y_m_d").".log", "a");
-    fwrite($logFile, $logMessage."\n");
+    fwrite($logFile, "\n\n");
+    fwrite($logFile, "_______________");
+    fwrite($logFile, print_r($logMessage, true));
+    fwrite($logFile, "\n\n");
     fclose($logFile);
 }

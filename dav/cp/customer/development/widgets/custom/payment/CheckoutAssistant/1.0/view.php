@@ -1,4 +1,5 @@
-<?
+<?php 
+
 $CI = get_instance();
 $existingPaymentMethods = $this->CI->model('custom/paymentMethod_model')->getCurrentPaymentMethodsObjs();
 
@@ -45,7 +46,7 @@ if ($items === false) {
 } else {
     foreach ($items as $item) {
         $itemDescs[] = $item['itemName'];
-    }
+    } 
 
     if ($c_id !== false) {
         $createTrans = true;
@@ -100,7 +101,7 @@ if ($items === false) {
                                     </legend>
                                     <rn:widget path="input/ContactNameInput" required="true" />
                                     <rn:widget path="input/FormInput" name="contacts.street" required="true" />
-                                    <rn:widget path="input/FormInput" name="contacts.city" required="true"/>
+                                    <rn:widget path="input/FormInput" name="contacts.city" required="true"  />
                                     <rn:widget path="input/FormInput" name="contacts.country_id" />
                                     <rn:widget path="input/FormInput" name="contacts.prov_id" label_input="State Or Province" />
                                     <rn:widget path="input/FormInput" name="contacts.postal_code" required="true" label_input="Postal Code" />
@@ -131,13 +132,15 @@ if ($items === false) {
                                             <rn:widget path="input/FormInput" name="Contact.Name.Last" label_input="#rn:msg:LAST_NAME_LBL#" required="true" />
                                         </rn:condition>
 
-                                        <rn:widget path="input/FormInput" name="Contact.Address.Street" required="true" label_input="#rn:msg:STREET_LBL#" />
-                                        <rn:widget path="input/FormInput" name="Contact.Address.City" required="true" label_input="#rn:msg:CITY_LBL#" />
+                                        <rn:widget path="input/FormInput" name="Contact.Address.Street" label_input="#rn:msg:STREET_LBL#" required="true" />
+                                        <rn:widget path="input/FormInput" name="Contact.Address.City" label_input="#rn:msg:CITY_LBL#" required="true" />
                                         <rn:widget path="input/FormInput" name="Contact.Address.Country" label_input="#rn:msg:COUNTRY_LBL#" default_value="1" required="true" />
                                         <rn:widget path="input/FormInput" name="Contact.Address.StateOrProvince" label_input="#rn:msg:STATE_PROV_LBL#" />
                                         <rn:widget path="input/FormInput" name="Contact.Address.PostalCode" required="true" label_input="#rn:msg:POSTAL_CODE_LBL#" />
-                                        <rn:widget path="input/FormInput" name="Contacts.CustomFields.CO.how_did_you_hear" />
 					
+                                        <rn:widget path="input/FormInput" name="Contacts.CustomFields.CO.how_did_you_hear" />
+ 					
+
                                         <input type="checkbox" id="subscribeToEmailCheckbox" name="subscribeToEmailCheckbox" value="" checked>
                                         <label id="subscribeToEmailCheckboxLabel" for="subscribeToEmailCheckbox">#rn:msg:CUSTOM_MSG_cp_CheckoutAssistant_email_preferences_checkbox_label#</label>
                                         <div style="display:none;">

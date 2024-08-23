@@ -29,8 +29,8 @@
                             <?= $this->data['Child']->Age; ?> years old, &nbsp;<?= $this->data['Child']->Gender->LookupName; ?>
                         </span>
                         Born
-                        <span class='Birthday'>
-                            <?= date('d-M-Y', strtotime($this->data['Child']->Birthday)); ?>
+                        <span class='Birthday'>	
+                            <?= $this->data['Child']-> MonthOfBirth."/".$this->data['Child']->DayOfBirth."/".$this->data['Child']->YearOfBirth;?>		    
                         </span>
                         <? if(strpos(\RightNow\Utils\Url::getOriginalUrl(),'app/child/sponsor') === FALSE) : ?>
                         <a id="sponsorshipButton">Sponsor me</a>

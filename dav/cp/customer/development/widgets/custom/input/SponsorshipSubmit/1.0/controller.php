@@ -306,8 +306,8 @@ class SponsorshipSubmit extends \RightNow\Widgets\FormSubmit
                 $contact->CustomFields->c->customer_key = $customerKey;
                 $contact->CustomFields->c->customer_key = $customerKey;
                 //Store the IP and last submit time against contact
-                $contact->CustomFields->c->last_login_ip = $_SERVER['REMOTE_ADDR'];
-                $contact->CustomFields->c->last_login = strtotime("now");
+                //$contact->CustomFields->c->last_login_ip = $_SERVER['REMOTE_ADDR'];
+                //$contact->CustomFields->c->last_login = strtotime("now");
 
                 $contact->save();
                 // logMessage("Guest Contact Object: " . print_r($contact, true));
@@ -442,9 +442,9 @@ class SponsorshipSubmit extends \RightNow\Widgets\FormSubmit
             $customerKey = $this->CI->model('Contact')->get()->result->CustomFields->c->customer_key;
 
             //Store the IP and last submit time against contact
-            $contact->CustomFields->c->last_login_ip = $_SERVER['REMOTE_ADDR'];
-            $contact->CustomFields->c->last_login = strtotime();
-            $contact->save();
+            //$contact->CustomFields->c->last_login_ip = $_SERVER['REMOTE_ADDR'];
+            //$contact->CustomFields->c->last_login = strtotime("now");
+           // $contact->save();
 
             if (is_null($contact)) {
                 logMessage("Guest Contact Checking..!!");
@@ -458,8 +458,8 @@ class SponsorshipSubmit extends \RightNow\Widgets\FormSubmit
                 $contact->CustomFields->c->customer_key = $customerKey;
 
                 //Store the IP and last submit time against contact
-                $contact->CustomFields->c->last_login_ip = $_SERVER['REMOTE_ADDR'];
-                $contact->CustomFields->c->last_login = strtotime();
+                //$contact->CustomFields->c->last_login_ip = $_SERVER['REMOTE_ADDR'];
+                //$contact->CustomFields->c->last_login = strtotime("now");
 
                 $contact->save();
                 // logMessage("Guest Contact Object: " . print_r($contact, true));
@@ -499,7 +499,7 @@ class SponsorshipSubmit extends \RightNow\Widgets\FormSubmit
                     "ExtData" => ""
                 ];
 
-                logMessage("Front Stream ManageCredit Info Request =>" . $data);
+                logMessage("Front Stream ManageCheckInfo Request =>" . $data);
 
                 if ($params['Amount']) {
                     $this->CI->session->setSessionData(array("TOTAL" => $params['Amount']));
@@ -507,7 +507,7 @@ class SponsorshipSubmit extends \RightNow\Widgets\FormSubmit
 
                 $url = RNCPHP\Configuration::fetch("CUSTOM_CFG_frontstream_endpoint")->Value . '/admin/ws/recurring.asmx/ManageCheckInfo';
                 $xml = $this->CI->curllibrary->httpPost($url, $data);
-                logMessage("Front Stream Manage Credit Card Info =>" . $xml);
+                logMessage("Front Stream ManageCheckInfo =>" . $xml);
                 $res = $this->CI->xmltoarray->load($xml);
 
                 if (is_null($res["RecurringResult"]["CcInfoKey"]))
@@ -625,6 +625,8 @@ class SponsorshipSubmit extends \RightNow\Widgets\FormSubmit
                 $sanityCheckMsgs[] = "Invalid Payment Method";
             }
 
+            $c_id = $this->CI->session->getProfileData('contactID');
+            $this->CI->session->setSessionData(array("contact_id" => $c_id));
 
             $transactionId = $this->CI->session->getSessionData('transId');
             if (is_null($transactionId) || strlen($transactionId) < 1) {

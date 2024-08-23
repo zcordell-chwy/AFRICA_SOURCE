@@ -13,7 +13,8 @@ Custom.Widgets.payment.Thankyou = RightNow.Widgets.extend({     /**
 		
 		document.getElementById("bigImpactPage").onclick = function () {
 			//Navigate to GIFT FOR STUDENT PAGE
-			location.href = RightNow.Interface.getMessage("CUSTOM_MSG_IMPACT_BTN_LNK");//"/app/donate";
+      
+			location.href =RightNow.Interface.getMessage("CUSTOM_MSG_IMPACT_BTN_LNK");//'/app/singleDonation/f_id/636';// "/app/donate";
 		};
     },
     /**

@@ -8,7 +8,9 @@
     if (getUrlParm('c_id') > 0 && getUrlParm('c_id') == $profile->c_id->value) { ?>
 
         <?
-        initConnectAPI('cp_082022_user', '$qQJ616xWWJ9lXzb$');
+        $user= \RightNow\Utils\Config::getConfig(CUSTOM_CFG_CP_PHP_API_USER);
+        $pwd =\RightNow\Utils\Config::getConfig(CUSTOM_CFG_CP_PHP_API_USER_PWD);
+        initConnectAPI($user,$pwd);
         $attach_id = getUrlParm('attach_id');
         $contactObj = $this->CI->model('Contact')->get()->result;
         $attachments = $contactObj->FileAttachments;

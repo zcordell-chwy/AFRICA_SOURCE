@@ -72,12 +72,15 @@
         }
 
         $contactObj = $this -> CI -> model('Contact') -> get() -> result;
+        $user= \RightNow\Utils\Config::getConfig(CUSTOM_CFG_CP_PHP_API_USER);
+        $pwd =\RightNow\Utils\Config::getConfig(CUSTOM_CFG_CP_PHP_API_USER_PWD);
 
         $endpoint = sprintf("https://africanewlife.custhelp.com/services/rest/connect/v1.4/contacts/%s/fileAttachments/%s/data", $contactObj->ID, getUrlParm('attach_id'));
 
+        $basicauth=base64_encode($user.":".$pwd );
         $headerArr = array(
             'OSvC-CREST-Application-Context:Contact',
-            'Authorization: Basic Y3BfMDgyMDIyX3VzZXI6JHFRSjYxNnhXV0o5bFh6YiQ='
+            'Authorization: Basic '.$basicauth
         );
 
         $result = runCurl($endpoint, 'GET', null, $headerArr, false, false, 20, false, true);

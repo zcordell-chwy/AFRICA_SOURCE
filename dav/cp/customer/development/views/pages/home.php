@@ -51,7 +51,9 @@ if ($event_id) {
                                 <div class="rn_SearchFilters">
                                     <rn:widget path="search/FilterDropdown" filter_name="PriorityM" label_any="All" />
                                     <rn:widget path="search/FilterDropdown" filter_name="Birth Month" label_any="All" />
-                                    <rn:widget path="search/FilterDropdown" filter_name="Birth Year" label_any="All" />
+                                    <rn:widget path="search/FilterDropdown" filter_name="Birth Year" 
+                                    options_to_ignore="1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,
+                                    43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87,88,89,90,91,92,93,94,95,96,97,98,99,100,101,102" label_any="All" />
                                     <rn:widget path="search/FilterDropdown" filter_name="Gender" label_any="All" />
                                     <rn:widget path="search/FilterDropdown" filter_name="Community" options_to_ignore="8,9,10,11,12,14,15,20,21" label_any="All" />
                                     <? if (strpos($url, "/app/home/event") !== FALSE) : ?>
@@ -72,9 +74,9 @@ if ($event_id) {
                 <div class="rn_PageContent rn_Container">
                     <h2 class="rn_ScreenReaderOnly">#rn:msg:SEARCH_RESULTS_CMD#</h2>
                     <!-- <rn:widget path="reports/ResultInfo" /> -->
-                    <rn:widget path="custom/sponsorship/UnsponsoredChildMultiLine" />
+                    <rn:widget path="custom/sponsorship/UnsponsoredChildMultiLine" per_page="9"/>
                     <!-- <rn:widget path="reports/MultiLine" label_caption="<span class='rn_ScreenReaderOnly'>#rn:msg:SEARCH_YOUR_SUPPORT_HISTORY_CMD#</span>" /> -->
-                    <rn:widget path="reports/Paginator" />
+                    <rn:widget path="reports/Paginator" per_page="9"  />
 
                     <!-- <rn:widget path="custom/reports/CustomPaginator" report_page_url="/app/home/#rn:url_param:event#/" force_page_flip="true" static_filter="/st/8/kw/#rn:url_param_value:event#/" /> -->
                 </div>

@@ -45,22 +45,14 @@ define(FS_ADD_PM_POSTBACK_URL, $baseURL . "/app/payment/success_paymethod");
 define(FS_HEADER_URL, "#");
 ////https://africanewlife--tst.custhelp.com/euf/assets/themes/africa/images/anlm-header-logo.png");
 
-//development credentials
-//define(FS_MERCHANT_TOKEN, "2B2A1C9F7ED4E76600184CA9D");
-//define(FS_USERNAME, "FThost5193");
-//define(FS_USERTOKEN, "PdgAaExjPzkhF1aD1W43Zbvc48/Rl/UEkVDYS35vHRsQyFXVFnk2jlzD1x14y5Vp");
-//define(FS_MERCHANT_KEY, "1245");
-
-//old config settings
-//CUSTOM_CFG_frontstream_pass = 6919RUw7
-//CUSTOM_CFG_frontstream_user = iihj3840
 
 
 //production credentials.
-define(FS_MERCHANT_TOKEN, "2B2A1C9F7ED4E76600184CA9D");
-define(FS_USERNAME, "xtti3002");
-define(FS_USERTOKEN, "yAC/GV7JObMmlaoQGH7toRJ54N+7hWeddczX8nGokssyrfaaoeYRbtcDgr0oYMbs");
-define(FS_MERCHANT_KEY, "1436");
+//\RightNow\Utils\Config::getMessage(CUSTOM_CFG_merchant_key)
+define(FS_MERCHANT_TOKEN, \RightNow\Utils\Config::getConfig(CUSTOM_CFG_merchant_token));
+define(FS_USERNAME, \RightNow\Utils\Config::getConfig(CUSTOM_CFG_frontstream_user));
+define(FS_USERTOKEN,\RightNow\Utils\Config::getConfig(CUSTOM_CFG_direct_user_token));
+define(FS_MERCHANT_KEY,\RightNow\Utils\Config::getConfig(CUSTOM_CFG_merchant_key));
 
 
 define(FS_API_ENDPOINT, "https://secure.ftipgw.com/smartpayments/transact.asmx");
@@ -108,14 +100,11 @@ define(WEB_APPEAL_ID, 515);
 //define(DONATION_TYPE_SPONSOR, 1);
 //define(DONATION_TYPE_GIFT, 2);
 //
-//define(ADD_METHOD_TRACKING_ID, "addPaymentMethod");
-//define(FS_MERCHANT_TOKEN, "2B2A1C9F7ED4E76600184CA9D");
+
 //define(FS_POSTBACK_URL, "https://africanewlife.custhelp.com/app/payment/successNewPM");
 //define(FS_HEADER_URL, "#");
 //////https://africanewlife--tst.custhelp.com/euf/assets/themes/africa/images/anlm-header-logo.png");
-//define(FS_USERNAME, "FThost5193");
-//define(FS_USERTOKEN, "PdgAaExjPzkhF1aD1W43Zbvc48/Rl/UEkVDYS35vHRsQyFXVFnk2jlzD1x14y5Vp");
-//define(FS_MERCHANT_KEY, "1245");
+
 //define(FS_API_ENDPOINT, "https://secure.ftipgw.com/smartpayments/transact.asmx");
 //define(FS_COMSUMER_ENDPOINT, "https://partnerportal.fasttransact.net/Web/Payment.aspx");
 //define(FS_SALE_TYPE, "Sale");

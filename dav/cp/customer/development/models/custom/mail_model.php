@@ -1,9 +1,9 @@
 <?php
 namespace Custom\Models;
 
-use RightNow\Connect\v1_2 as RNCPHP;
+use RightNow\Connect\v1_3 as RNCPHP;
 require_once (get_cfg_var('doc_root') . '/include/ConnectPHP/Connect_init.phph');
-initConnectAPI('cp_082022_user', '$qQJ616xWWJ9lXzb$');
+initConnectAPI();
 
 class mail_model  extends \RightNow\Models\Base {
     function __construct() {

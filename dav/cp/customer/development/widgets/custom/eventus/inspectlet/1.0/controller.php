@@ -1,6 +1,6 @@
 <?php
 namespace Custom\Widgets\eventus;
-use \RightNow\Connect\v1_2 as RNCPHP;
+use \RightNow\Connect\v1_4 as RNCPHP;
  
 class inspectlet extends \RightNow\Libraries\Widget\Base {
     function __construct($attrs) {

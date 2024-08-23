@@ -174,14 +174,24 @@ class Logging
             // $parent is an associative array or an object
             elseif (is_object($parent)) {
 
-                while (list($key, $val) = each($parent)) {
+                foreach($parent  as $key => $val){
+                    //$parent = [$key, $val];
+                    $tmp = $parent -> $key;
+
+                    if ((is_object($parent -> $key)) || (is_array($parent -> $key))) {
+                        $this -> _getValues($parent -> $key);
+                    }
+
+                }
+
+              /*  while (list($key, $val) = each($parent)) {
 
                     $tmp = $parent -> $key;
 
                     if ((is_object($parent -> $key)) || (is_array($parent -> $key))) {
                         $this -> _getValues($parent -> $key);
                     }
-                }
+                }*/
             }
         } catch (exception $err) {
             // error but continue

@@ -9,7 +9,6 @@
             <form id="rn_CreateAccount" onsubmit="return false;">
                 <div id="rn_ErrorLocation"></div>
                 <rn:widget path="input/FormInput" name="Contact.Emails.PRIMARY.Address" required="true" validate_on_blur="true" initial_focus="true" label_input="#rn:msg:EMAIL_ADDR_LBL#" />
-                <rn:widget path="input/FormInput" name="Contact.Login" required="true" validate_on_blur="true" label_input="#rn:msg:USERNAME_LBL#" />
                 <rn:condition config_check="EU_CUST_PASSWD_ENABLED == true">
                     <rn:widget path="input/FormInput" name="Contact.NewPassword" require_validation="true" label_input="#rn:msg:PASSWORD_LBL#" label_validation="#rn:msg:VERIFY_PASSWD_LBL#" />
                 </rn:condition>
@@ -27,7 +26,9 @@
                 <rn:widget path="input/FormInput" name="Contacts.CustomFields.CO.how_did_you_hear" />
                 <rn:widget path="input/FormInput" name="contacts.c$contacttype" required="false" />
                 <rn:widget path="input/FormInput" name="contact.c$anonymous" display_as_checkbox="true" always_show_hint="true" hint="#rn:msg:CUSTOM_MSG_ANONYMOUS_LABEL#" label_input=" " />
-
+                <div style="display:none;">
+                <rn:widget path="input/FormInput" name="Contact.Login"  validate_on_blur="true" label_input="#rn:msg:USERNAME_LBL#" />
+                </div>
 
                 <? if (getUrlParm('rdirect') == "payment") { ?>
                     <!--in checkout logic-->
@@ -40,3 +41,10 @@
         </div>
     </div>
 </div>
+<script  type="text/javascript">
+$(document).ready(function(){
+  $('[name="Contact.Emails.PRIMARY.Address"').change(function(){
+    $('[name="Contact.Login"').val($('[name="Contact.Emails.PRIMARY.Address"').val().toLowerCase());
+  });
+});
+</script></script>

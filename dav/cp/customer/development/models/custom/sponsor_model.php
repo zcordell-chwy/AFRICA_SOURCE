@@ -1,7 +1,7 @@
 <?php
 namespace Custom\Models;
 
-use RightNow\Connect\v1 as RNCP;
+use RightNow\Connect\v1_3 as RNCP;
 
 require_once (get_cfg_var('doc_root') . '/include/ConnectPHP/Connect_init.phph');
 initConnectAPI();

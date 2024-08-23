@@ -2,8 +2,8 @@
 <h3>#rn:msg:CUSTOM_MSG_PLEASE_CHOOSE_STUDENT#</h3>
 <h1><?=$this -> data['pledgeToShow'] -> GivenName ?> 
     <?if($this->data['previousPledge'] > 0){?>
-       <a href='/app/account/letters/c_id/<?=getUrlParm('c_id') ?>/pledge/<?=$this -> data['previousPledge'] ?>'>
-	<?/*<!--a href='/app/account/letters/c_id/<?=getUrlParm('c_id') ?>/pledge/<?=$this -> data['previousPledge'] ?>'-->*/?>
+        <a href='/app/account/letters/pledge/<?=$this -> data['previousPledge'] ?>'>
+	<!--a href='/app/account/letters/c_id/<?=getUrlParm('c_id') ?>/pledge/<?=$this -> data['previousPledge'] ?>'-->
     <?} ?>
         <i id="leftArrow" class="fa fa-angle-left" aria-hidden="true"></i>
      <?if($this->data['previousPledge'] > 0){?> 
@@ -11,8 +11,8 @@
      <?} ?>
      |
       <?if($this->data['nextPledge'] > 0){?>
-           <a href='/app/account/letters/c_id/<?=getUrlParm('c_id') ?>/pledge/<?=$this -> data['nextPledge'] ?>'>
-		   <?/*<!--a href='/app/account/letters/c_id/<?=getUrlParm('c_id') ?>/pledge/<?=$this -> data['nextPledge'] ?>'-->*/?>
+            <a href='/app/account/letters/pledge/<?=$this -> data['nextPledge'] ?>'>
+	    <!--a href='/app/account/letters/c_id/<?=getUrlParm('c_id') ?>/pledge/<?=$this -> data['nextPledge'] ?>'-->
 
       <?} ?>
         <i id="rightArrow" class="fa fa-angle-right" aria-hidden="true"></i>

@@ -6,7 +6,7 @@
 <? else: ?>
 <div id="rn_<?= $this->instanceID ?>" class="<?= $this->classList ?>">
     <rn:block id="top"/>
-<? if ($this->data['displayType'] !== 'Radio'): ?>
+<? if ($this->data['displayType'] !== 'Radio' || $this->data['displayType'] !== 'Checkbox'): ?>
     <div id="rn_<?= $this->instanceID ?>_LabelContainer">
         <rn:block id="preLabel"/>
         <label for="rn_<?= $this->instanceID ?>_<?= $this->data['js']['name'] ?>" id="rn_<?= $this->instanceID ?>_Label" class="rn_Label"><?= $this->data['attrs']['label_input'] ?>
@@ -47,6 +47,10 @@
         <rn:block id="preInput"/>
         <input type="checkbox" id="rn_<?= $this->instanceID ?>_<?= $this->data['js']['name'] ?>" name="<?= $this->data['inputName'] ?>" <?= $this->outputChecked(1) ?> value="1"/>
         <rn:block id="postInput"/>
+        <rn:block id="precheckLabel"/>
+        <label for="rn_<?= $this->instanceID ?>_<?= $this->data['js']['name'] ?>" id="rn_<?= $this->instanceID ?>_Label" class="rn_Label"><?= $this->data['attrs']['label_input'] ?>
+        </label>
+        <rn:block id="postcheckLabel"/>
         <? if ($this->data['attrs']['hint'] && $this->data['attrs']['always_show_hint']): ?>
             <rn:block id="preHint"/>
             <span id="rn_<?= $this->instanceID ?>_Hint" class="rn_HintText"><?= $this->data['attrs']['hint'] ?></span>

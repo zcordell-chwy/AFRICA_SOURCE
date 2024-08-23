@@ -1,17 +1,19 @@
 <a class="newPaymentLink" id="newPaymentLink" title="" href="#">
     <img alt="" src="images/newPaymentIcon.png" />
-    <span class="a-letter-space"></span><span class="addCardLink">Add card or checking account</span>
+    <span class="a-letter-space"></span><span class="addCardLink">Add Bank Withdrawal or Card</span>
 </a>
 
 <form id="newPaymentForm" class="rn_Hidden">
     <p style="color:red;"><span class="required">*</span> Required</p>
     <label for="paymenttype">Payment Type <span class="required">*</span></label>
     <select id="paymenttype" name="paymenttype">
-        <option hidden disabled selected value>Select an option.</option>
-        <option value="card">Credit Card</option>
-        <option value="check">Check</option>
+        <option hidden disabled  value>Select an option.</option>
+        <option  value="check" selected>Bank Withdrawal</option>
+        <option value="card">Credit/Debit Card</option>
     </select>
     <div id="cardpay" class="rn_Hidden">
+    <p style="    padding: 10px 0 20px 0;text-align: justify;">
+    #rn:msg:CUSTOM_MSG_EFT_CARD_WARNING#</p>
         <label>Accepted Cards</label>
         <div class="icon-container">
             <i class="fa fa-cc-visa" style="color:navy;"></i>
@@ -55,7 +57,9 @@
             </div>
         </div>
     </div>
-    <div id="checkpay" class="rn_Hidden">
+    <div id="checkpay" >
+    <p style="    padding: 10px 0 20px 0;text-align: justify;">
+    #rn:msg:CUSTOM_MSG_EFT_CARD_WARNING#</p>
         <label for="ckname">Name on Check <span class="required">*</span></label>
         <input type="text" id="ckname" name="checkname" placeholder="John More Doe">
         <label for="anum">Account Number <span class="required">*</span></label>

@@ -9,7 +9,7 @@ class event_model extends \RightNow\Models\Base {
 
     function __construct() {
         parent::__construct();
-        initConnectAPI('cp_082022_user', '$qQJ616xWWJ9lXzb$');
+        initConnectAPI();
         $this -> CI -> load -> helper('constants');
         $this->CI->load->library('logging');
 

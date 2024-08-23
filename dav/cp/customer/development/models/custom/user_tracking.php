@@ -32,7 +32,7 @@ class user_tracking extends \RightNow\Models\Base
             $userLogEntry->user_ip = $_SERVER['REMOTE_ADDR'];
             $userLogEntry->request_url = $_SERVER['REQUEST_URI'];
             $userLogEntry->form_submit_time = strtotime("now");
-            $c_id = $this->CI->session->getSessionData('contact_id');
+            $c_id = $this->CI->session->getSessionData('contactID');
             if ($c_id != null) {
                 $userLogEntry->contact_id = intval($c_id);
             }

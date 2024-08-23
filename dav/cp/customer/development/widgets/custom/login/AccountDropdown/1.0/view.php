@@ -51,6 +51,7 @@
         <a href="javascript:void(0);" role="button" id="rn_LoginLink"><?=$this->data['attrs']['label_login']?></a>
     </div>
     <? endif; ?>
-    <rn:widget path="login/LoginDialog" trigger_element="rn_LoginLink" sub_id='login' sub:input_Contact.Address.StateOrProvince:label_input="#rn:msg:STATE_PROV_LBL#" sub:input_Contact.Address.PostalCode:label_input="#rn:msg:POSTAL_CODE_LBL#" sub:input_Contact.Phones.HOME.Number:label_input="#rn:msg:PHONE_NUMBER_LBL#" create_account_fields="Contact.Emails.PRIMARY.Address;Contact.Login;Contact.NewPassword;Contact.Address.Street;Contact.Address.City;Contact.Address.Country;Contact.Address.StateOrProvince;Contact.Address.PostalCode;Contact.Name.First;Contact.Name.Last;Contact.Phones.HOME.Number;Contact.CustomFields.CO.how_did_you_hear;Contact.CustomFields.c.contacttype;Contact.CustomFields.c.anonymous"/>
+    <!-- Contact.Login; -->
+    <rn:widget path="custom/login/CustomLoginDialog" trigger_element="rn_LoginLink" sub_id='login' sub:input_Contact.Address.StateOrProvince:label_input="#rn:msg:STATE_PROV_LBL#" sub:input_Contact.Address.PostalCode:label_input="#rn:msg:POSTAL_CODE_LBL#" sub:input_Contact.Phones.HOME.Number:label_input="#rn:msg:PHONE_NUMBER_LBL#" create_account_fields="Contact.Emails.PRIMARY.Address;Contact.NewPassword;Contact.Address.Street;Contact.Address.City;Contact.Address.Country;Contact.Address.StateOrProvince;Contact.Address.PostalCode;Contact.Name.First;Contact.Name.Last;Contact.Phones.HOME.Number;Contact.CustomFields.CO.how_did_you_hear;Contact.CustomFields.c.contacttype;Contact.CustomFields.c.anonymous"/>
     <rn:block id="postAccountDropdown"/>
 </div>

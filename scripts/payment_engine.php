@@ -208,7 +208,7 @@ class PaymentEngine
                         $fsReqData['CardNum'] = base64_decode($paymentMethod->ccNum);
                         $fsReqData['ExpDate'] = $paymentMethod->expMonth . substr($paymentMethod->expYear, 2, 2);
                         $fsReqData['CVNum'] = $DEVMODE ? '' : $paymentMethod->cvc;
-                        $fsReqData['ExtData'] = '<InvNum>'.$reqJson->transID.'</InvNum>';
+	               $fsReqData['ExtData'] = '<InvNum>'.$reqJson->transID.'</InvNum>';
                     } else {
                         // * it's a repeat sale
                         if (!empty($paymentMethod->infoKey)) {
@@ -352,7 +352,7 @@ class PaymentEngine
         $postStr = implode("&", $postData);
         self::logMessage('postStr: ', $postStr);
 
-        $response = network_utilities\runCurl($url, 'POST', $postStr);
+        $response = network_utilities\runCurl($url, 'POST', $postStr, null, false, false, 40);
         self::logMessage('response: ', $response);
 
         if (!empty($response)) {

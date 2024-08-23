@@ -72,9 +72,15 @@
 
             <form action="<?= $this->data['attrs']['create_account_ajax'] ?>" id="rn_<?= $this->instanceID ?>_SignUpForm">
             <? foreach ($this->data['create_account_fields'] as $fieldName): ?>
-                <rn:widget path="input/FormInput" sub_id='#rn:php:"input_$fieldName"#' name="#rn:php:$fieldName#"/>
+                <rn:widget path="input/FormInput" sub_id='#rn:php:"input_$fieldName"#' name="#rn:php:$fieldName#" />
             <? endforeach; ?>
+           
+            <div style="display:none;">
+            <rn:widget path="custom/input/AutoDefaultingLoginInput" name="Contact.Login" required="false" validate_on_blur="true" label_input="#rn:msg:USERNAME_LBL#" />
+
+                       </div>
             <div class="rn_Hidden">
+            
                 <rn:widget path="input/FormSubmit" sub_id="submit" error_location="rn_#rn:php:$this->instanceID#_SignUpErrorMessage" on_success_url="#rn:php:$this->data['currentPage']#"/>
             </div>
             </form>
@@ -94,3 +100,10 @@
 </form>
     <rn:block id="bottom"/>
 </div>
+<script  type="text/javascript">
+$(document).ready(function(){
+  $('[name="Contact.Emails.PRIMARY.Address"').change(function(){
+    $('[name="Contact.Login"').val($('[name="Contact.Emails.PRIMARY.Address"').val().toLowerCase());
+  });
+});
+</script></script>

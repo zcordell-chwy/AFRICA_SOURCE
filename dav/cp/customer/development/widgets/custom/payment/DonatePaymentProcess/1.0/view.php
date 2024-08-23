@@ -59,11 +59,14 @@ sub:input_Contact.Name.Last:label_input="#rn:msg:LAST_NAME_LBL#" sub:input_Conta
    <rn:condition_else />
       <div class="tabs" id="newPaymentForm" >
    </rn:condition> 
-      <input type="radio" id="cardpay_radio" name="paymenttype" class="cardpay" checked>
-      <label for="cardpay_radio" class="cardpay radio tablinks">Credit Card</label>
-      <input type="radio" id="checkpay_radio" name="paymenttype" class="checkpay">
+   <input type="radio" id="checkpay_radio" name="paymenttype" class="checkpay" checked>
       <label for="checkpay_radio" class="checkpay radio tablinks">Bank Withdrawal</label>
+      <input type="radio" id="cardpay_radio" name="paymenttype" class="cardpay">
+      <label for="cardpay_radio" class="cardpay radio tablinks">Credit/Debit Card</label>
+      
       <div id="cardpay" class="tab_content cardpay">
+      <p style="    padding: 10px 0 20px 0;text-align: justify;">
+         #rn:msg:CUSTOM_MSG_EFT_CARD_WARNING#</p>
          <label>Accepted Cards</label>
          <div class="icon-container">
             <i class="fa fa-cc-visa" style="color:navy;"></i>
@@ -108,6 +111,8 @@ sub:input_Contact.Name.Last:label_input="#rn:msg:LAST_NAME_LBL#" sub:input_Conta
          <input type="text" id="cvnum" name="cvnumber" placeholder="" style="width: 80px!important;" >
       </div>
       <div id="checkpay" class="tab_content checkpay">
+      <p style="    padding: 10px 0 20px 0;text-align: justify;">
+      #rn:msg:CUSTOM_MSG_EFT_CARD_WARNING#</p>
          <label for="ckname">Name on Check <span class="required">*</span></label>
          <input type="text" id="ckname" name="checkname" placeholder="John More Doe">
          <label for="anum">Account Number <span class="required">*</span></label>

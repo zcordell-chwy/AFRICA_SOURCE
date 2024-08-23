@@ -3,7 +3,7 @@
  */
 
 .rn_managepaymethods {}
-
+.rn_PayMethodsList{text-align: left;margin-top: 10px;margin-bottom: 30px;}
 #newPaymentForm {
     height: fit-content;
     width: fit-content;

@@ -290,7 +290,7 @@ Custom.Widgets.input.DonationSubmit = RightNow.Widgets.FormSubmit.extend({
           }
         } else if (document.getElementById("checkpay_radio").checked) {
           if(this.data.js.loggedin != false) {
-            this.saveCardPaymentMethod({
+            this.saveCheckPaymentMethod({
                 TransitNum: document.querySelector('input[name="routingnumber"]')
                 .value,
               AccountNum: document.querySelector('input[name="accountnumber"]')

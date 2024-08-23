@@ -38,7 +38,7 @@ define('ALLOW_POST', false);
 define('ALLOW_GET', true);
 define('ALLOW_PUT', false);
 define('ALLOW_PATCH', false);
-define('CONTACT_CHUNK_SIZE', 30);
+define('CONTACT_CHUNK_SIZE', 100);
 
 
 require_once SCRIPT_PATH . '/utilities/make.me.an.api.php';
@@ -138,18 +138,25 @@ function executeUpdatesForRecords($startVal){
 
             /*********Get report results */
 
-            $contact_filter= new RNCPHP\AnalyticsReportSearchFilter;
-            $contact_filter->Name = 'contactID';
-            $contact_filter->Values = array( intval($currentRecord) );
             $filters = new RNCPHP\AnalyticsReportSearchFilterArray;
+
+            $contact_filter= new RNCPHP\AnalyticsReportSearchFilter;
+            $contact_filter->Name = 'PledgeContact';
+            $contact_filter->Values = array( intval($currentRecord) );
             $filters[] = $contact_filter;
+
+            $contact_filter= new RNCPHP\AnalyticsReportSearchFilter;
+            $contact_filter->Name = 'DonationContact';
+            $contact_filter->Values = array( intval($currentRecord) );
+            $filters[] = $contact_filter;
+            
             $transactionList = array();
             $ar = RNCPHP\AnalyticsReport::fetch(101751);
             $transactionList = $ar->run(0, $filters);
 
-            if ($transactionList->count() < 1 ) { 
-                continue; 
-            }
+            // if ($transactionList->count() < 1 ) { 
+            //     continue; 
+            // }
 
             $firstIsSet = false;
             $firstNonSponSet = false;
@@ -165,10 +172,13 @@ function executeUpdatesForRecords($startVal){
             $largestDonationAmt2Years = null;
             $largestDonationFund2Years = null;
             $totalDonationsLifetime = 0;
+            $totalNumberDonationsLifetime = 0;
             $totalSoftDonationsLifetime = 0;
             $firstDonationDate = null;
             $firstDonationAmt = null;
             $firstDonationFund = null;
+            $largestDonationAmtWGifts = null;
+            $largestDonationDateWGifts = null;
             $recentDonationDate = null;
             $recentDonationAmt = null;
             $recentDonationFund = null;
@@ -193,12 +203,21 @@ function executeUpdatesForRecords($startVal){
 
                 //total Donation lifetime including gifts.
                 $totalDonationsLifetime += $transaction['Total Charge'];
+                //echo "This transaction:".$transaction['Total Charge']." Current Total:".$totalDonationsLifetime." DonationID:".$transaction['Donation ID']."\n";
+
+                $totalNumberDonationsLifetime++;
 
                 //get the fund for the transaction.
                 if($transaction['Donation Type'] == 'Gift'){
                     $fund = getGiftFund($transaction['Donation ID']);
                 }else{
                     list($fund, $child) = getPledgeDetails($transaction['Donation ID']);
+                }
+
+                //set largest donation (include gifts) //need to use donation amount because gifts don't have pledges
+                if(intval($transaction['Donation Amount']) >= $largestDonationAmtWGifts){
+                    $largestDonationAmtWGifts = intval($transaction['Donation Amount']);
+                    $largestDonationDateWGifts = $transaction['Donation Date'];
                 }
 
                 //most metrics we don't want gifts included
@@ -233,12 +252,12 @@ function executeUpdatesForRecords($startVal){
                     }
 
                     //set total for donations that are not sponsorship or STM
-                    if(strtotime($transaction['Donation Date']) > strtotime('Midnight January 1 '.date(Y)) && !in_array($fund->LookupName, $fundsToIgnore)){
+                    if(strtotime($transaction['Donation Date']) > strtotime('Midnight January 1 '.date('Y')) && !in_array($fund->LookupName, $fundsToIgnore)){
                         $totalDonationAmtCurrentYear += $transaction['Total Charge'];
                     }
 
                     //set total for donations last year that are not sponsorship or STM
-                    if(strtotime($transaction['Donation Date']) < strtotime('Midnight January 1 '.date(Y)) && 
+                    if(strtotime($transaction['Donation Date']) < strtotime('Midnight January 1 '.date('Y')) && 
                         strtotime($transaction['Donation Date']) > strtotime('Midnight January 1 '.date("Y",strtotime("-1 year"))) &&  !in_array($fund->LookupName, $fundsToIgnore)){
                         $totalDonationAmtLastYear += $transaction['Total Charge'];
                     }
@@ -300,6 +319,13 @@ function executeUpdatesForRecords($startVal){
             if($count != $contactObj->CustomFields->Metrics->totalCompletedDonations){
                 $contactObj->CustomFields->Metrics->totalCompletedDonations = $count;
                 $results['totalCompletedDonations'] = $count;
+                $saveNeeded = true;
+            }
+            
+            //number of total completed donations
+            if($totalNumberDonationsLifetime != $contactObj->CustomFields->Metrics->totalNumberCompletedDonations){
+                $contactObj->CustomFields->Metrics->totalNumberCompletedDonations = $totalNumberDonationsLifetime;
+                $results['totalNumberCompletedDonations'] = $totalNumberDonationsLifetime;
                 $saveNeeded = true;
             }
             
@@ -398,11 +424,23 @@ function executeUpdatesForRecords($startVal){
                 $saveNeeded = true;
             }
 
+            if($largestDonationDateWGifts != $contactObj->CustomFields->Metrics->largestDonationDateWGifts){
+                $contactObj->CustomFields->Metrics->largestDonationDateWGifts = $largestDonationDateWGifts;
+                $results['largestDonationDateWGifts'] = date('Y/m/d', $largestDonationDateWGifts);
+                $saveNeeded = true;
+            }
+
             //Amount of largest donation all time
             //$results['largestDonationAmt'] = $contactObj->CustomFields->Metrics->largestDonationAmt;
             if($largestDonationAmt != $contactObj->CustomFields->Metrics->largestDonationAmt){
                 $contactObj->CustomFields->Metrics->largestDonationAmt = $largestDonationAmt;
                 $results['largestDonationAmt'] = $largestDonationAmt;
+                $saveNeeded = true;
+            }
+
+            if($largestDonationAmtWGifts != $contactObj->CustomFields->Metrics->largestDonationAmtWGifts){
+                $contactObj->CustomFields->Metrics->largestDonationAmtWGifts = $largestDonationAmtWGifts;
+                $results['largestDonationAmtWGifts'] = $largestDonationAmtWGifts;
                 $saveNeeded = true;
             }
 
@@ -457,8 +495,7 @@ function executeUpdatesForRecords($startVal){
 
             //Total Donations Lifetime
             $results['totalDonationsLifetime'] = $totalDonationsLifetime;
-            if($contactObj->CustomFields->Metrics->totalDonationsLifetime != $totalDonationsLifetime
-                && $totalDonationsLifetime > 0){
+            if($contactObj->CustomFields->Metrics->totalDonationsLifetime != $totalDonationsLifetime){
                     $contactObj->CustomFields->Metrics->totalDonationsLifetime = intval($totalDonationsLifetime);
                     $saveNeeded = true;
                 }
@@ -467,8 +504,7 @@ function executeUpdatesForRecords($startVal){
             $totalSoftDonationsLifetime = getSoftDonationsForContact($contactObj->ID);
             $results['totalSoftDonationsLifetime'] =  $totalSoftDonationsLifetime;
             //echo "Before Saving soft donations for ".$contactObj->ID.":".$totalSoftDonationsLifetime.":".$contactObj->CustomFields->Metrics->totalSoftDonationsLifetime;
-            if($contactObj->CustomFields->Metrics->totalSoftDonationLifetime != $totalSoftDonationsLifetime
-                && $totalSoftDonationsLifetime > 0){
+            if($contactObj->CustomFields->Metrics->totalSoftDonationLifetime != $totalSoftDonationsLifetime){
                     //echo "saving soft donations:".$totalSoftDonationsLifetime;
                     $contactObj->CustomFields->Metrics->totalSoftDonationLifetime = intval($totalSoftDonationsLifetime);
                     $saveNeeded = true;

@@ -37,3 +37,4 @@ function checkFluency()
     checkbox1[0].checked=true;
   }
 }
+

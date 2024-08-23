@@ -2,6 +2,7 @@
 
 namespace Custom\Controllers;
 
+use Exception;
 use RightNow\Utils\Framework, RightNow\Libraries\AbuseDetection, RightNow\Utils\Config;
 
 use RightNow\Connect\v1_3 as RNCPHP;
@@ -692,6 +693,117 @@ class AjaxCustom extends \RightNow\Controllers\Base
         fclose($fp);
     }
 
+
+    /*
+        create new church values
+
+    */
+    function saveChurch(){
+
+     //  $_POST = 
+
+     //$postedData = file_get_contents('php://input');
+try {
+     $data=$_POST['text'] ; //json_decode($postedData, true);
+     $state=$_POST['State'];
+     $city = $_POST['City'];
+
+     logMessage($data.' '.$state);
+    if($data!==''){
+        $Churches = new RNCPHP\sponsorship\Churches();
+        $Churches->Code = $data;
+        $Churches->Name = $data;
+        $Churches->Labels = new RNCPHP\LabelRequiredArray();
+        $Churches->Labels[0]=new RNCPHP\LabelRequired();
+        $Churches->Labels[0]->LabelText = $data;
+        $Churches->Labels[0]->Language=new RNCPHP\NamedIDOptList();
+        $Churches->Labels[0]->Language->ID=1;
+        $Churches->State  = new RNCPHP\NamedIDLabel();
+        $Churches->State->LookupName =$state;
+        $Churches->City = $city;
+
+        $rnd= rand();
+        $Churches->DisplayOrder = $rnd;
+        $this->logError(json_encode($Churches),__FUNCTION__);
+
+        //$this->logError('Testing Save',__FUNCTION__);
+
+        $Churches->save();
+
+        if($Churches->ID>0){
+
+        $result = array( 'ID'=>$Churches->ID,'Name'=> $Churches->Name);
+   
+        echo json_encode($result);
+        }else{
+
+            echo '{"ID":0,"Name":"","Error":"error creating Church '.$data.'".}';
+        }
+    }else{
+
+        echo '{"ID":0,"Name":"","Error":"error creating Church "'.$data.'}';
+
+    }
+        
+    }catch(Exception $ex){
+       // $this->logError($ex->getMessage(),__FUNCTION__);
+        logMessage($ex->getMessage());
+        echo '{"ID":0,"Name":"","Error":'.$ex->getMessage().'"}';
+
+    }
+
+
+    }
+
+    function getChurches($state=null){
+
+        $query= "Select sponsorship.Churches.Name, ID,sponsorship.Churches.State.LookupName as State from sponsorship.Churches";
+        if($state!=null){
+
+            $query= $query. " Where sponsorship.Churches.State.LookupName ='" .$state."'";
+        }
+        $query= $query." ORDER BY sponsorship.Churches.Name Limit 1000";
+     
+        $roql_result_set = RNCPHP\ROQL::query($query)->next();
+
+        //echo $query;
+
+        $Churches=null;
+         $i=0;
+
+        while ($roql_result = $roql_result_set->next()) {
+           
+               // if (isset($row['Name'])) {
+
+                    $Churches[$i]['Name']  =$roql_result['Name'];
+                    $Churches[$i]['ID']  =$roql_result['ID'];
+                    $Churches[$i]['State']  =$roql_result['State'];
+                    //echo $row['Name'];
+              // }
+                
+        
+            ++$i;
+        }
+        if($Churches!=null){
+
+            echo json_encode($Churches);
+        }else{
+            '[{"ID":0,"Name":"","Error":"error creating Church "}]';
+
+        }
+
+    }
+
+    function logError($message, $function)
+    {
+        $error = new RNCPHP\ErrorLogs\Log();
+        $error->Error = $message;
+        $error->PostedMessage = 'AjaxCustom Errors';
+        $error->Function = $function;
+        $error->File = "ajaxCustom.php";
+        $error->save();
+    }
+
     function testIsUserQualified()
     {
         try {
@@ -719,6 +831,7 @@ class AjaxCustom extends \RightNow\Controllers\Base
             $this->_logToFile(186, print_r($e->getMessage()));
         }
     }
+
     function createEntry()
     {
         $response = $this->model('custom/user_tracking')->createUserLogEntry();

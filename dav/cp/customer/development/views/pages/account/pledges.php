@@ -18,14 +18,41 @@
         <?
         // if (getUrlParm('c_id') > 0 && getUrlParm('c_id') == $profile->c_id->value){
         ?>
+<div class="tab">
+  <button class="tablinks" onclick="openTab(event, 'Active')" id="defaultOpen">Active Pledges</button>
+  <button class="tablinks" onclick="openTab(event, 'CancelledPayment')">Closed Pledges</button>
+</div>
+<div id="Active" class="tabcontent">
         <div class="rn_PledgeList">
-            <rn:widget path="custom/eventus/AccountMultiline" report_id="100778" label_caption="" static_filter="c_id=#rn:profile:contactID#"/>
+            <rn:widget path="custom/eventus/AccountMultiline" report_id="102251" label_caption="" static_filter="c_id=#rn:profile:contactID#"/>
         </div>
-        <?
-        // }else{   
-        //     header('Location: /app/account/pledges/c_id/'.$profile->c_id->value);
-        // }
-        ?>
+       
+</div>
+<div id="CancelledPayment" class="tabcontent">
+<div class="rn_PledgeList">
+            <rn:widget path="custom/eventus/AccountMultiline" report_id="102252" label_caption="" static_filter="c_id=#rn:profile:contactID#"/>
+        </div>
+       
+</div>        
 
     </div>
 </div>
+
+<script>
+function openTab(evt, tabName) {
+  var i, tabcontent, tablinks;
+  tabcontent = document.getElementsByClassName("tabcontent");
+  for (i = 0; i < tabcontent.length; i++) {
+    tabcontent[i].style.display = "none";
+  }
+  tablinks = document.getElementsByClassName("tablinks");
+  for (i = 0; i < tablinks.length; i++) {
+    tablinks[i].className = tablinks[i].className.replace(" active", "");
+  }
+  document.getElementById(tabName).style.display = "block";
+  evt.currentTarget.className += " active";
+}
+
+// Get the element with id="defaultOpen" and click on it
+document.getElementById("defaultOpen").click();
+</script>

@@ -18,9 +18,9 @@ class CustomLoginDialog extends \RightNow\Libraries\Widget\Base {
     function getData() {
         $siteConfigValue = \RightNow\Utils\Framework::getSiteConfigValue('CP.EmailConfirmationLoop.Enable');
 
-        // We need to remove password field if 'CP.EmailConfirmationLoop.Enable' config is set to 1.
+        // We need to remove password field if 'CP.EmailConfirmationLoop.Enable' config is set to 1.//
         if($siteConfigValue === 1) {
-            $this->data['attrs']['create_account_fields'] = "Contact.Emails.PRIMARY.Address;Contact.Login;CommunityUser.DisplayName;Contact.FullName";
+            $this->data['attrs']['create_account_fields'] = "Contact.Emails.PRIMARY.Address;CommunityUser.DisplayName;Contact.Login;Contact.FullName";
 
             // if cookie is set, display message dialog and delete cookie.
             if(isset($_COOKIE['cp_createUser'])) {

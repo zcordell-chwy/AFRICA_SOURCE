@@ -22,7 +22,7 @@ class sponsorship_model extends \RightNow\Models\Base
     function __construct()
     {
         parent::__construct();
-        initConnectAPI('cp_082022_user', '$qQJ616xWWJ9lXzb$');
+        initConnectAPI();//'cp_082022_user', '$qQJ616xWWJ9lXzb$');
         $this->CI->load->helper('constants');
         $this->CI->load->helper('log');
         $this->CI->load->library('logging');
@@ -110,8 +110,10 @@ class sponsorship_model extends \RightNow\Models\Base
             if($child->SponsorshipStatus->ID === 3 ){//sponsored, no need for anymore checks
                 $status->isLocked = true;
             }else if (is_null($child->LastRecordLock)) {
+                logMessage("setting lock based on last record lock");
                 $status->isLocked = false;
             }else if($child->LastRecordLockOwner == $loggedInContactID || $child->RecordLockOwner == $sessionID) {
+                logMessage("setting lock based on logged in contact");
                 $status->isLocked = false;
             }else {
                 logMessage('Checking to see if last lock has expired.');

@@ -11,7 +11,11 @@
 
 	<div class="rn_Overview rn_AfricaNewLifeLayoutSingleColumn ">
 		<!-- && getUrlParm('c_id') == $CI->session->getProfileData('contactID') -->
-		<?if (getUrlParm('c_id') > 0 && getUrlParm('c_id') == $profile->c_id->value){?>
+		<?
+        
+        //if (getUrlParm('c_id') > 0 && getUrlParm('c_id') == $profile->c_id->value)
+        if(isset($profile))
+        {?>
 		<div class="page-content cf">
 			<div class="content-container">
 			    <p>
@@ -60,8 +64,8 @@
 
 		<?}else{
             $this->data['children'] = $CI->model('custom/sponsor_model')->getSponsoredChildren($profile->c_id->value);
-            if (count($this->data['children']) > 0){ 
-                header('Location: /app/account/letters/c_id/'.$profile->c_id->value."/pledge/".$this->data['children'][0]->PledgeId);
+            if (count($this->data['children']) > 0){
+            header('Location: /app/account/letters/c_id/'.$profile->c_id->value."/pledge/".$this->data['children'][0]->PledgeId);
             }else{
 				header('Location: /app/account/overview');
 			}

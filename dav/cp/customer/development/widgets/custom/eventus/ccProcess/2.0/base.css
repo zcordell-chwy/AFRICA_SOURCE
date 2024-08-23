@@ -11,3 +11,8 @@
 @media only screen and (max-width: 340px){
 	div.esg_PaymentSummary{font-size:.4em;}
 }
+#rn_Challenge
+{
+    padding: 5px 0;
+    margin: 0 auto;
+}

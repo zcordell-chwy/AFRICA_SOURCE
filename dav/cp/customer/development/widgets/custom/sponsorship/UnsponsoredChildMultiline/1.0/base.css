@@ -8,7 +8,7 @@
     padding: 0;
     white-space: nowrap;
     width: 100%;
-    overflow-x: auto;
+    /*overflow-x: auto;*/
     display: flex;
     flex-flow: row wrap;
     justify-content: space-between;
