@@ -65,10 +65,14 @@ implements RNCPM\ObjectEventHandler {
         self::logToFile("Log", "Beginning Processing for ".$obj->ID);
 
         $pledges = null;
-        if($obj->transaction -> donation -> Type -> ID == static::$giftsDonationType){
-            $gifts = self::getGifts($obj -> transaction -> donation -> ID);
+        if($obj && $obj->transaction && $obj->transaction -> donation && $obj->transaction -> donation -> Type -> ID == static::$giftsDonationType){
+            if($obj && $obj->transaction && $obj->transaction->donation){
+                $gifts = self::getGifts($obj -> transaction -> donation -> ID);
+            }
         }else{
-            $pledges = self::getPledges($obj -> transaction -> donation -> ID);
+            if($obj && $obj->transaction && $obj->transaction->donation){
+                $pledges = self::getPledges($obj->transaction->donation->ID);
+            }
         }
 
         self::_sendCommunications($obj->transaction, $pledges);
@@ -106,7 +110,10 @@ implements RNCPM\ObjectEventHandler {
 
             
             //receipt mailings
-            if ($trans -> donation -> Contact && $skipReciept == false) {
+            if ($trans 
+                    && $trans->donation 
+                    && $trans -> donation -> Contact 
+                    && $skipReciept == false) {
                 
                 if($trans->currentStatus->ID == static::$refundedStatus){// refund receipt
                     $refundMailSend = -1;
@@ -269,7 +276,7 @@ implements RNCPM\ObjectEventHandler {
 
                 $pledgeTotal += $intTrans->amount;
 
-                $transactionDate = date("m/d/Y", $intTrans->CreatedTime);
+                $transactionDate = ($intTrans->transactionRef->donation->DonationDate) ? date("m/d/Y", $intTrans->transactionRef->donation->DonationDate) : date("m/d/Y", $intTrans->CreatedTime);
                 
             }
             
@@ -321,7 +328,6 @@ implements RNCPM\ObjectEventHandler {
                 while ($gift = $giftReturn -> next()) {
                     $gifts[] = $gift;
                     $giftDate = date("m/d/Y", $gift->CreatedTime);
-                    // altered this for the computer single item page where there is a variable amount gift.
                     // static::$giftsTotalTable .= "<tr><td>".$giftDate."</td><td>".$gift->Item->LookupName."</td><td>".$gift->Quantity."</td><td>".$gift->Child->FullName."</td><td>$".  number_format(($gift->Quantity * $gift->Item->Amount), 2, ".", "")."</td>";
                     // $giftsTotal += ($gift->Quantity * $gift->Item->Amount);
                     

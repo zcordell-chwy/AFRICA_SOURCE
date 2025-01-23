@@ -88,11 +88,48 @@ $CHANGED = "YES";
         }
     }
     
+/* Priority  and Priority Menu Fields*/
 $OLDPRIORITY =  $child->Priority;
-    $child->Priority = ($child->ManualOverridePriority) ? $child->ManualOverridePriority : getPriority($newStatusObj->ID, $child);
+    $child->Priority = ($child->ManualOverridePriority) ? $child->Priority : getPriority($newStatusObj->ID, $child);
 $NEWPRIORITY = $child->Priority;
-    if($OLDPRIORITY != $NEWPRIORITY)
+    if($OLDPRIORITY != $NEWPRIORITY){
 $CHANGED = "YES";
+        //reset the menu field
+        switch($child->Priority){
+            case 1:
+                $child->PriorityM = RNCPHP\sponsorship\Priority::fetch(1);
+                break;
+            case 2:
+                $child->PriorityM = RNCPHP\sponsorship\Priority::fetch(2);
+                break;
+            case 3:
+            case 4:
+                $child->PriorityM = RNCPHP\sponsorship\Priority::fetch(3);
+            default: //null
+                $child->PriorityM = null;
+        }
+        
+    }
+
+    if($child->Priority > 0){
+        //reset the menu field
+        $CHANGED = "YES";
+        switch($child->Priority){
+            case 1:
+                $child->PriorityM = RNCPHP\sponsorship\Priority::fetch(1);
+                break;
+            case 2:
+                $child->PriorityM = RNCPHP\sponsorship\Priority::fetch(2);
+                break;
+            case 3:
+            case 4:
+                $child->PriorityM = RNCPHP\sponsorship\Priority::fetch(3);
+            default: //null
+                $child->PriorityM = null;
+        }
+    }
+
+/******** */ 
     
    
     

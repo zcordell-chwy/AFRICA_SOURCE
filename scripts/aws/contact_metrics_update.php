@@ -165,6 +165,14 @@ function executeUpdatesForRecords($startVal){
 
             $count = 0;
             
+            //firsts
+
+            //recents
+
+            //largest
+
+            //totals
+
             //initialize
             $totalDonationAmtCurrentYear = 0;
             $totalDonationAmtLastYear = 0;
@@ -182,6 +190,9 @@ function executeUpdatesForRecords($startVal){
             $recentDonationDate = null;
             $recentDonationAmt = null;
             $recentDonationFund = null;
+            $recentNonSponDonationDate = null;
+            $recentNonSponDonationAmt = null;
+            $recentNonSponDonationFund = null;
             $largestDonationDate = null;
             $largestDonationAmt = null;
             $largestDonationFund = null;
@@ -196,6 +207,7 @@ function executeUpdatesForRecords($startVal){
             $firstNonSponSoft = false;
             $firstNonSponFund = null;
             $totalNonSponAmt = 0;
+            $contactYearlyMetrics = array();
 
             
 
@@ -206,6 +218,12 @@ function executeUpdatesForRecords($startVal){
                 //echo "This transaction:".$transaction['Total Charge']." Current Total:".$totalDonationsLifetime." DonationID:".$transaction['Donation ID']."\n";
 
                 $totalNumberDonationsLifetime++;
+
+                //aggregate all transactions for each year
+                $yearOfDonation = getYearOfDonation($transaction);
+                if(!empty($yearOfDonation)){
+                    $contactYearlyMetrics[$yearOfDonation] += $transaction['Total Charge'];
+                }
 
                 //get the fund for the transaction.
                 if($transaction['Donation Type'] == 'Gift'){
@@ -273,6 +291,15 @@ function executeUpdatesForRecords($startVal){
                     if(!empty($fund)){
                         $recentDonationFund = $fund;
                     }
+
+                    //Latest Non Spon Donation excluding gifts
+                    if(in_array($fund->LookupName, $nonSponFundArray)){
+                        $recentNonSponDonationAmt = intval($transaction['Total Charge']);
+                        $recentNonSponDonationDate = $transaction['Donation Date'];
+                        if(!empty($fund)){
+                            $recentNonSponDonationFund = $fund;
+                        }
+                    }
                         
 
                     //total donation with completed transactions
@@ -323,9 +350,9 @@ function executeUpdatesForRecords($startVal){
             }
             
             //number of total completed donations
-            if($totalNumberDonationsLifetime != $contactObj->CustomFields->Metrics->totalNumberCompletedDonations){
-                $contactObj->CustomFields->Metrics->totalNumberCompletedDonations = $totalNumberDonationsLifetime;
-                $results['totalNumberCompletedDonations'] = $totalNumberDonationsLifetime;
+            if($totalNumberDonationsLifetime != $contactObj->CustomFields->Metrics->totalNumberDonationsLifetime){
+                $contactObj->CustomFields->Metrics->totalNumberDonationsLifetime = $totalNumberDonationsLifetime;
+                $results['totalNumberDonationsLifetime'] = $totalNumberDonationsLifetime;
                 $saveNeeded = true;
             }
             
@@ -393,7 +420,6 @@ function executeUpdatesForRecords($startVal){
             }
 
             //Most Recent Donation Date
-            //$results['recentDonationDate'] = (empty($contactObj->CustomFields->Metrics->recentDonationDate)) ? "" : date('Y/m/d', $contactObj->CustomFields->Metrics->recentDonationDate);
             if($recentDonationDate != $contactObj->CustomFields->Metrics->recentDonationDate){
                 $contactObj->CustomFields->Metrics->recentDonationDate = $recentDonationDate;
                 $results['recentDonationDate'] = date('Y/m/d', $contactObj->CustomFields->Metrics->recentDonationDate);
@@ -401,7 +427,6 @@ function executeUpdatesForRecords($startVal){
             }
 
             //Most Recent Donation Amount
-            //$results['recentDonationAmt'] = $contactObj->CustomFields->Metrics->recentDonationAmt;
             if($recentDonationAmt != $contactObj->CustomFields->Metrics->recentDonationAmt){
                 $contactObj->CustomFields->Metrics->recentDonationAmt = $recentDonationAmt;
                 $results['recentDonationAmt'] = $recentDonationAmt;
@@ -409,10 +434,30 @@ function executeUpdatesForRecords($startVal){
             }
 
             //Most Recent Donation Fund
-            //$results['recentDonationFund'] = $contactObj->CustomFields->Metrics->recentDonationFund->LookupName;
             if($recentDonationFund->LookupName != $contactObj->CustomFields->Metrics->recentDonationFund->LookupName){
                 $contactObj->CustomFields->Metrics->recentDonationFund = $recentDonationFund;
                 $results['recentDonationFund'] = $recentDonationFund->LookupName;
+                $saveNeeded = true;
+            }
+            
+            //Most Recent Non Spon Donation Date
+            if($recentNonSponDonationDate != $contactObj->CustomFields->Metrics->recentNonSponDonationDate){
+                $contactObj->CustomFields->Metrics->recentNonSponDonationDate = $recentNonSponDonationDate;
+                $results['recentNonSponDonationDate'] = date('Y/m/d', $contactObj->CustomFields->Metrics->recentNonSponDonationDate);
+                $saveNeeded = true;
+            }
+
+            //Most Recent Donation Amount
+            if($recentNonSponDonationAmt != $contactObj->CustomFields->Metrics->recentNonSponDonationAmt){
+                $contactObj->CustomFields->Metrics->recentNonSponDonationAmt = $recentNonSponDonationAmt;
+                $results['recentNonSponDonationAmt'] = $recentNonSponDonationAmt;
+                $saveNeeded = true;
+            }
+
+            //Most Recent Donation Fund
+            if($recentNonSponDonationFund->LookupName != $contactObj->CustomFields->Metrics->recentNonSponDonationFund->LookupName){
+                $contactObj->CustomFields->Metrics->recentNonSponDonationFund = $recentNonSponDonationFund;
+                $results['recentNonSponDonationFund'] = $recentNonSponDonationFund->LookupName;
                 $saveNeeded = true;
             }
 
@@ -580,12 +625,32 @@ function executeUpdatesForRecords($startVal){
                 $saveNeeded = true;
             }
 
+            //update contact yearly metrics if necessary
+            foreach($contactYearlyMetrics as $key => $val){
+                $metricRecord = RNCPHP\Metrics\ContactsYearlyStats::first("Contact = ".$contactObj->ID." AND Year = '".$key."'");
+                //if not exists, create
+                //if exists and different value, update
+                //if exists and not different, skip
+                if(!$metricRecord){
+                    $mr = new RNCPHP\Metrics\ContactsYearlyStats();
+                    $mr->TotalDonations = intval($val);
+                    $mr->Contact = $contactObj->ID;
+                    $mr->Year = $key;
+                    $mr->save();
+                }elseif($metricRecord->TotalDonations != $val){
+                    $metricRecord->TotalDonations = $val;
+                    $metricRecord->save();
+                }
+            }
+
             if($saveNeeded){
                 $contactObj->save();
             }
                 
             $results['saveNeeded'] = ($saveNeeded) ? "True" : "False";
             $returnVal[] = $results;
+
+            //print_r($contactYearlyMetrics);
             
         } catch (\Exception $ex) {
             return outputResponse(null, $ex->getMessage());
@@ -593,7 +658,11 @@ function executeUpdatesForRecords($startVal){
             return outputResponse(null, $ex->getMessage());
         }
 
+
     }
+
+    
+
     return outputResponse(json_encode($returnVal), null);
 
 }
@@ -685,6 +754,13 @@ function getSoftDonationsForContact($contactId){
         }
 
         return $totalSoftDonationsLifetime;
+}
+
+function getYearOfDonation($transaction){
+    $year = '';
+    $dateValue = strtotime($transaction['Donation Date']);                  
+    $year = date("Y", $dateValue); 
+    return $year;
 }
 
 

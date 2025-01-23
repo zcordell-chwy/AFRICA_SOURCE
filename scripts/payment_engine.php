@@ -15,6 +15,8 @@ define('FS_AUTH_TYPE', 'Auth');
 
 define('CUSTOM_CFG_frontstream_cc_url', '/smartpayments/transact.asmx/ProcessCreditCard');
 define('CUSTOM_CFG_frontstream_check_url', '/smartpayments/transact.asmx/ProcessCheck');
+define('CUSTOM_CFG_frontstream_recurring_check_url', '/admin/ws/recurring.asmx/ProcessCheck');
+define('CUSTOM_CFG_frontstream_vendor', '1436');
 
 $DEVMODE = false;
 
@@ -149,7 +151,11 @@ class PaymentEngine
         $transType = $reqJson->transType;
         self::logMessage('transType: ', $transType);
         $fsReqData = $this->getFSPostArray($pmType);
+        $recurringEndpoint = false;
+
         if ($pmType == 'EFT') {
+
+            $fsReqData['op'] = CUSTOM_CFG_frontstream_check_url;
 
             switch ($transType) {
                 case FS_SALE_TYPE:
@@ -166,9 +172,21 @@ class PaymentEngine
                     break;
 
                 case FS_EFT_SALE_TYPE:
+
+                    
                     $fsReqData['Amount'] = $reqJson->amount;
                     $fsReqData['InvNum'] = $reqJson->transID;
-                    $fsReqData['ExtData'] = (!empty($paymentMethod->infoKey)) ? '<Check_Info_Key>' . $paymentMethod->infoKey . '</Check_Info_Key><InvNum>'.$reqJson->transID.'</InvNum>' : '<PNRef>' . $paymentMethod->pnRef . '</PNRef><InvNum>'.$reqJson->transID.'</InvNum>';
+                    $fsReqData['Vendor'] = '1436';
+                    if(!empty($paymentMethod->infoKey)){
+                        $fsReqData['op'] = CUSTOM_CFG_frontstream_recurring_check_url;
+                        $recurringEndpoint = true;
+                        $fsReqData['CheckInfoKey'] = $paymentMethod->infoKey;
+                        $fsReqData['ExtData'] = '<InvNum>'.$reqJson->transID.'</InvNum>';
+                    }else{
+                        $fsReqData['PNRef'] = $paymentMethod->pnRef;
+                        $fsReqData['ExtData'] = '<PNRef>' . $paymentMethod->pnRef . '</PNRef><InvNum>'.$reqJson->transID.'</InvNum>';
+                    }
+                    
                     break;
 
                 case FS_REFUND_TYPE:
@@ -189,7 +207,7 @@ class PaymentEngine
                     break;
             }
 
-            $fsReqData['op'] = CUSTOM_CFG_frontstream_check_url;
+            
             $fsReqData['TransType'] = $transType;
         } else if ($pmType == 'Credit Card') {
 
@@ -258,7 +276,7 @@ class PaymentEngine
         }
         self::logMessage('fsReqData: ', $fsReqData);
 
-        return $this->runTransaction($fsReqData);
+        return $this->runTransaction($fsReqData, $recurringEndpoint);
     }
 
     public function generateInfoKey($reqJson)
@@ -335,7 +353,7 @@ class PaymentEngine
         }
     }
 
-    function runTransaction(array $postVals)
+    function runTransaction(array $postVals, $recurringEndpoint = false)
     {
         self::logMessage(' Starting ' . __FUNCTION__ . '@' . __CLASS__ . '(Line: ' . __LINE__ . ')');
 
@@ -358,7 +376,7 @@ class PaymentEngine
         if (!empty($response)) {
 
             if ($response['success']) {
-                $returnArr = $this->parseFrontStreamRespOneTime($response['body']);
+                $returnArr = ($recurringEndpoint) ? $this->parseFrontStreamRespOneTimeTransact($response['body']): $this->parseFrontStreamRespOneTime($response['body']);
                 self::logMessage('returnArr: ', $returnArr);
 
                 return outputResponse($returnArr, null, $response['status']);
@@ -393,4 +411,30 @@ class PaymentEngine
 
         return $frontStreamResponse;
     }
+
+    //parse the response specifically from the "Transact" endpoint for EFTs only, not recurring
+    function parseFrontStreamRespOneTimeTransact($result)
+    {
+        
+        $xmlparser = xml_parser_create();
+        xml_parse_into_struct($xmlparser, $result, $values, $indices);
+        xml_parser_free($xmlparser);
+
+        $response['code'] = $values[$indices['RESULT'][0]]['value'];
+        $response['auth'] = $values[$indices['PNREF'][0]]['value'];
+        $response['message'] = $values[$indices['MESSAGE'][0]]['value'];
+
+        $response['rawXml'] = $result;
+        $response['parsedXml'] = $values;
+
+        if (!$response || $response['code'] != 0 || strlen(trim($response['code'])) == 0) {
+            $response['isSuccess'] = false;
+        } else {
+            $response['isSuccess'] = true;
+        }
+
+        return $response;
+    }
+
+
 }

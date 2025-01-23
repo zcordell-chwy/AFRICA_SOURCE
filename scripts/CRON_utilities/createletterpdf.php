@@ -76,7 +76,7 @@ function createPDF($incID){
         $pledge = $inc->CustomFields->CO->PledgeRef;
         
         // //_logToFile("\n Before if", 63);
-        if(!file_exists('/tmp/ANLM_Logo_Black.jpg')){
+        //if(!file_exists('/tmp/ANLM_Logo_Black.jpg')){
             //_logToFile("\n Inside file not exists", 64);
             //$fileContents = file_get_contents('http://africanewlife.custhelp.com/euf/assets/images/ANLM_Logo_Black.jpg');
             $fileContents = network_utilities\runCurl('https://africanewlife.custhelp.com/euf/assets/images/ANLM_Logo_Black.jpg', "GET", null, array());
@@ -85,9 +85,9 @@ function createPDF($incID){
             //_logToFile("\n Past get contents", 66);
             file_put_contents('/tmp/ANLM_Logo_Black.jpg', $fileContents);
             //_logToFile("\n Past put contents", 68);
-        }else{
-            //_logToFile("\n else", 70);
-        }
+        // }else{
+        //     //_logToFile("\n else", 70);
+        // }
         
 
         $pdf = new PDF();
